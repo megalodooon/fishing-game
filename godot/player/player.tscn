@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://y7shj7okkm2m"]
+
+[ext_resource type="Script" uid="uid://c545kbv6sjinc" path="res://player/player.gd" id="1_rkbax"]
+[ext_resource type="Script" uid="uid://dvu2w3k56bm8m" path="res://components/state_machine/state_machine_class.gd" id="2_g1dw6"]
+[ext_resource type="Script" uid="uid://l4vqku7l6jl8" path="res://player/states/idle.gd" id="3_yw30f"]
+[ext_resource type="Script" uid="uid://c0bqqdwxeknsl" path="res://player/states/walk.gd" id="4_qjkh3"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vkqoe"]
+radius = 2.0
+
+[node name="Player" type="CharacterBody2D" unique_id=893027470]
+script = ExtResource("1_rkbax")
+
+[node name="Sprite" type="Sprite2D" parent="." unique_id=1591027741]
+unique_name_in_owner = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=429442161]
+shape = SubResource("CircleShape2D_vkqoe")
+
+[node name="StateMachine" type="Node" parent="." unique_id=459386207 node_paths=PackedStringArray("initialState")]
+script = ExtResource("2_g1dw6")
+initialState = NodePath("Idle")
+metadata/_custom_type_script = "uid://dvu2w3k56bm8m"
+
+[node name="Idle" type="Node" parent="StateMachine" unique_id=1542467623]
+script = ExtResource("3_yw30f")
+metadata/_custom_type_script = "uid://l4vqku7l6jl8"
+
+[node name="Walk" type="Node" parent="StateMachine" unique_id=277868945]
+script = ExtResource("4_qjkh3")
+metadata/_custom_type_script = "uid://c0bqqdwxeknsl"
