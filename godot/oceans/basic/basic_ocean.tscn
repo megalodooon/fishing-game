@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://dw4byakruepaa"]
+
+[ext_resource type="Script" uid="uid://bpejegmgve8km" path="res://oceans/ocean_base.gd" id="1_jyfkx"]
+[ext_resource type="Shader" uid="uid://d7lbyqicaeny" path="res://shaders/water.gdshader" id="2_8sb1p"]
+[ext_resource type="Texture2D" uid="uid://dkenf1ss6jir8" path="res://oceans/192x108_ocean_base.png" id="2_icuff"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_56kpk"]
+shader = ExtResource("2_8sb1p")
+shader_parameter/shallow_color = Color(0.18, 0.62, 0.78, 1)
+shader_parameter/deep_color = Color(0.04, 0.17, 0.36, 1)
+shader_parameter/caustic_color = Color(0.8, 1, 1, 1)
+shader_parameter/depth_scale = 500.0
+shader_parameter/depth_contrast = 2.0670000981825
+shader_parameter/depth_speed = 0.01
+shader_parameter/wave_scale = 160.0
+shader_parameter/wave_strength = 6.0
+shader_parameter/wave_speed = 0.8
+shader_parameter/clarity = 0.55
+shader_parameter/refraction_strength = 2.5
+shader_parameter/caustic_amount = 0.5730000272175
+shader_parameter/caustic_cell_size = 6.0
+shader_parameter/caustic_speed = 0.36
+shader_parameter/caustic_sharpness = 4.1130001478675
+shader_parameter/caustic_coverage = 75.0
+shader_parameter/caustic_patch_size = 48.0
+
+[node name="BasicOcean" type="Node2D" unique_id=548284199 node_paths=PackedStringArray("sprite")]
+z_index = -2
+script = ExtResource("1_jyfkx")
+sprite = NodePath("Sprite2D")
+depth_scale = 500.0
+depth_contrast = 2.0670000981825
+wave_scale = 160.0
+wave_strength = 6.0
+caustic_amount = 0.5730000272175
+caustic_cell_size = 6.0
+caustic_speed = 0.36
+caustic_sharpness = 4.1130001478675
+caustic_coverage = 75.0
+metadata/_custom_type_script = "uid://bpejegmgve8km"
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1513361312]
+material = SubResource("ShaderMaterial_56kpk")
+texture = ExtResource("2_icuff")
+centered = false
