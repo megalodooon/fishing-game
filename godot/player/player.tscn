@@ -4,9 +4,10 @@
 [ext_resource type="Script" uid="uid://dvu2w3k56bm8m" path="res://components/state_machine/state_machine_class.gd" id="2_g1dw6"]
 [ext_resource type="Texture2D" uid="uid://dcr751xpq3bih" path="res://player/assets/player_placeholder.png" id="2_yw30f"]
 [ext_resource type="Script" uid="uid://c0bqqdwxeknsl" path="res://player/states/move.gd" id="4_qjkh3"]
+[ext_resource type="Texture2D" uid="uid://cnxobivsk8i4q" path="res://player/assets/hand_placeholder.png" id="5_qjkh3"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vkqoe"]
-radius = 2.0
+radius = 4.1231055
 
 [sub_resource type="Animation" id="Animation_qjkh3"]
 resource_name = "idle"
@@ -82,6 +83,7 @@ texture = ExtResource("2_yw30f")
 offset = Vector2(0, -8)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=429442161]
+position = Vector2(0, 3)
 shape = SubResource("CircleShape2D_vkqoe")
 
 [node name="StateMachine" type="Node" parent="." unique_id=459386207 node_paths=PackedStringArray("initialState")]
@@ -98,3 +100,7 @@ libraries/ = SubResource("AnimationLibrary_boad6")
 autoplay = &"idle"
 
 [node name="Center" type="Node2D" parent="." unique_id=529566900]
+
+[node name="Hand" type="Sprite2D" parent="Center" unique_id=573258472]
+position = Vector2(8, 1)
+texture = ExtResource("5_qjkh3")
