@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://c86eyaxmw1kj"]
+
+[ext_resource type="PackedScene" uid="uid://dw4byakruepaa" path="res://oceans/basic/basic_ocean.tscn" id="1_lr5j1"]
+[ext_resource type="PackedScene" uid="uid://y7shj7okkm2m" path="res://player/player.tscn" id="1_m5cd5"]
+[ext_resource type="PackedScene" uid="uid://drxm5o7rmt26t" path="res://boat/basic/basic_boat.tscn" id="2_56kpk"]
+
+[node name="TestScene" type="Node2D" unique_id=733697435]
+y_sort_enabled = true
+
+[node name="BasicOcean" parent="." unique_id=548284199 instance=ExtResource("1_lr5j1")]
+depth_scale = null
+depth_contrast = null
+depth_speed = null
+wave_scale = null
+wave_strength = null
+wave_speed = null
+clarity = null
+refraction_strength = null
+caustic_amount = null
+caustic_cell_size = null
+caustic_speed = null
+caustic_sharpness = null
+caustic_coverage = null
+caustic_patch_size = null
+
+[node name="BasicBoat" parent="." unique_id=545784032 instance=ExtResource("2_56kpk")]
+position = Vector2(100, 43)
+
+[node name="Player" parent="." unique_id=893027470 instance=ExtResource("1_m5cd5")]
+position = Vector2(91.01503, 40.267616)
