@@ -3,6 +3,10 @@
 [ext_resource type="Script" uid="uid://bpejegmgve8km" path="res://oceans/ocean_base.gd" id="1_jyfkx"]
 [ext_resource type="Shader" uid="uid://d7lbyqicaeny" path="res://shaders/water.gdshader" id="2_8sb1p"]
 [ext_resource type="Texture2D" uid="uid://dkenf1ss6jir8" path="res://oceans/192x108_ocean_base.png" id="2_icuff"]
+[ext_resource type="Script" uid="uid://cclail607eeul" path="res://components/decoration_layer/decoration_layer.gd" id="4_1c5nx"]
+[ext_resource type="Texture2D" uid="uid://b0ggxspdempd8" path="res://oceans/decorations/brain_coral.png" id="5_um4mx"]
+[ext_resource type="Texture2D" uid="uid://hy5y32ccobx3" path="res://oceans/decorations/kelp.png" id="6_f7fq8"]
+[ext_resource type="Texture2D" uid="uid://esk2vu61axhl" path="res://oceans/decorations/tube_coral.png" id="7_81jie"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_56kpk"]
 shader = ExtResource("2_8sb1p")
@@ -23,6 +27,7 @@ shader_parameter/caustic_speed = 0.36
 shader_parameter/caustic_sharpness = 4.1130001478675
 shader_parameter/caustic_coverage = 75.0
 shader_parameter/caustic_patch_size = 48.0
+shader_parameter/flow = Vector2(-10, 0)
 
 [node name="BasicOcean" type="Node2D" unique_id=548284199 node_paths=PackedStringArray("sprite")]
 z_index = -2
@@ -37,7 +42,17 @@ caustic_cell_size = 6.0
 caustic_speed = 0.36
 caustic_sharpness = 4.1130001478675
 caustic_coverage = 75.0
+flow = Vector2(-10, 0)
 metadata/_custom_type_script = "uid://bpejegmgve8km"
+
+[node name="DecorationLayer" type="TileMapLayer" parent="." unique_id=559902252]
+script = ExtResource("4_1c5nx")
+decorations = Array[Texture2D]([ExtResource("5_um4mx"), ExtResource("6_f7fq8"), ExtResource("7_81jie")])
+amount = 16.0
+randomAmount = true
+minAmount = 5.0
+maxAmount = 10.0
+metadata/_custom_type_script = "uid://cclail607eeul"
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1513361312]
 material = SubResource("ShaderMaterial_56kpk")

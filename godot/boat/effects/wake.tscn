@@ -1,0 +1,84 @@
+[gd_scene format=3]
+
+[ext_resource type="Shader" path="res://boat/effects/wake.gdshader" id="1_wake"]
+[ext_resource type="Shader" path="res://boat/effects/foam.gdshader" id="2_foam"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wake"]
+shader = ExtResource("1_wake")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_foam"]
+shader = ExtResource("2_foam")
+
+[sub_resource type="Gradient" id="Gradient_dot"]
+offsets = PackedFloat32Array(0, 0.5, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0.8, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_dot"]
+gradient = SubResource("Gradient_dot")
+width = 16
+height = 16
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.5)
+
+[sub_resource type="Curve" id="Curve_spread"]
+_data = [Vector2(0, 0.5), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_foam"]
+offsets = PackedFloat32Array(0, 0.1, 0.45, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 0.9, 1, 1, 1, 0.55, 1, 1, 1, 0)
+
+[node name="Wake" type="Node2D"]
+z_index = -1
+texture_filter = 2
+
+[node name="BackBufferCopy" type="BackBufferCopy" parent="."]
+copy_mode = 2
+
+[node name="Distortion" type="Polygon2D" parent="."]
+material = SubResource("ShaderMaterial_wake")
+polygon = PackedVector2Array(0, -22, 0, 22, -64, 22, -64, -22)
+
+[node name="Foam" type="CanvasGroup" parent="."]
+material = SubResource("ShaderMaterial_foam")
+
+[node name="Stern" type="CPUParticles2D" parent="Foam"]
+position = Vector2(2, 0)
+amount = 90
+lifetime = 2.4
+preprocess = 2.4
+lifetime_randomness = 0.4
+texture = SubResource("GradientTexture2D_dot")
+emission_shape = 3
+emission_rect_extents = Vector2(1, 12)
+direction = Vector2(-1, 0)
+spread = 14.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 10.0
+initial_velocity_max = 16.0
+damping_min = 3.0
+damping_max = 5.0
+scale_amount_min = 0.3
+scale_amount_max = 0.5
+scale_amount_curve = SubResource("Curve_spread")
+color_ramp = SubResource("Gradient_foam")
+
+[node name="Bow" type="CPUParticles2D" parent="Foam"]
+position = Vector2(85, 6)
+amount = 90
+lifetime = 1.3
+preprocess = 1.3
+lifetime_randomness = 0.4
+texture = SubResource("GradientTexture2D_dot")
+emission_shape = 5
+emission_points = PackedVector2Array(2, -9, 2, -8, 2, -7, 2, -6, 2, -5, 2, -4, 2, -3, 2, -2, 2, -1, 2, 0, 1.0, 0.6, 0.0, 1.2, -1.0, 1.8, -2.0, 2.4, -3.0, 3.0, -4.0, 3.6, -5.0, 4.2, -6.0, 4.8, -7.0, 5.4, -8.0, 6.0, -9.0, 6.6, -10.0, 7.2, -11.0, 7.8, -12.0, 8.4, -13.0, 9.0, -14.0, 9.6, -15.0, 10.2, -16.0, 10.8, -17.0, 11.4, -18.0, 12.0)
+emission_normals = PackedVector2Array(1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0.51, 0.86, 0.51, 0.86, 0.51, 0.86, 0.51, 0.86, 0.51, 0.86, 0.51, 0.86, 0.51, 0.86, 0.51, 0.86, 0.51, 0.86, 0.51, 0.86, 0.51, 0.86, 0.51, 0.86, 0.51, 0.86, 0.51, 0.86, 0.51, 0.86, 0.51, 0.86, 0.51, 0.86, 0.51, 0.86, 0.51, 0.86, 0.51, 0.86)
+spread = 25.0
+gravity = Vector2(-12, 0)
+initial_velocity_min = 3.0
+initial_velocity_max = 7.0
+scale_amount_min = 0.18
+scale_amount_max = 0.3
+scale_amount_curve = SubResource("Curve_spread")
+color_ramp = SubResource("Gradient_foam")

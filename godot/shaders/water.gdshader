@@ -29,43 +29,15 @@ uniform float caustic_sharpness : hint_range(1.0, 8.0) = 3.5;
 uniform float caustic_coverage : hint_range(0.0, 100.0, 1.0) = 100.0;
 uniform float caustic_patch_size : hint_range(4.0, 256.0, 1.0) = 48.0;
 
+group_uniforms flow;
+uniform vec2 flow = vec2(0.0); // px/s the whole surface drifts
+
 varying vec2 world_pos;
 
-float hash(vec2 p) {
-	return fract(sin(dot(p, vec2(127.1, 311.7))) * 43758.5453);
-}
-
-vec2 hash2(vec2 p) {
-	return fract(sin(vec2(dot(p, vec2(127.1, 311.7)), dot(p, vec2(269.5, 183.3)))) * 43758.5453);
-}
-
-float value_noise(vec2 p) {
-	vec2 i = floor(p);
-	vec2 f = fract(p);
-	f = f * f * (3.0 - 2.0 * f);
-	return mix(
-		mix(hash(i), hash(i + vec2(1.0, 0.0)), f.x),
-		mix(hash(i + vec2(0.0, 1.0)), hash(i + vec2(1.0, 1.0)), f.x),
-		f.y);
-}
-
-// Distance to the nearest moving cell point; bright at cell borders.
-float voronoi(vec2 p, float t) {
-	vec2 cell = floor(p);
-	vec2 f = fract(p);
-	float d = 1.0;
-	for (int y = -1; y <= 1; y++) {
-		for (int x = -1; x <= 1; x++) {
-			vec2 o = vec2(float(x), float(y));
-			vec2 diff = o + 0.5 + 0.5 * sin(t + 6.2831 * hash2(cell + o)) - f;
-			d = min(d, dot(diff, diff));
-		}
-	}
-	return sqrt(d);
-}
+#include "res://shaders/noise.gdshaderinc"
 
 void vertex() {
-	world_pos = (MODEL_MATRIX * vec4(VERTEX, 0.0, 1.0)).xy;
+	world_pos = (MODEL_MATRIX * vec4(VERTEX, 0.0, 1.0)).xy - flow * TIME;
 }
 
 void fragment() {

@@ -1,6 +1,6 @@
 shader_type canvas_item;
 
-#include "res://boat/effects/noise.gdshaderinc"
+#include "res://shaders/noise.gdshaderinc"
 
 uniform vec4 crest_color : source_color = vec4(0.85, 0.97, 1.0, 0.55);
 uniform vec4 trough_color : source_color = vec4(0.0, 0.08, 0.2, 0.2);
@@ -13,11 +13,19 @@ uniform float start_distance = 0.3;
 uniform float reach = 11.0;
 uniform float wobble = 0.8;
 uniform float breakup : hint_range(0.0, 1.0) = 0.35;
+// Boat speed relative to ripple speed; the bow faces +x. Water streaming past
+// squeezes ripples into a short bow wave and stretches them out behind.
+uniform float drift : hint_range(0.0, 0.9) = 0.6;
 
 void fragment() {
 	vec2 p = UV / TEXTURE_PIXEL_SIZE;
+	vec2 e = TEXTURE_PIXEL_SIZE;
 	float d = texture(TEXTURE, UV).r;
+	float ahead = normalize(vec2(
+		texture(TEXTURE, UV + vec2(e.x, 0.0)).r - texture(TEXTURE, UV - vec2(e.x, 0.0)).r,
+		texture(TEXTURE, UV + vec2(0.0, e.y)).r - texture(TEXTURE, UV - vec2(0.0, e.y)).r) + 1e-6).x;
 	d += (value_noise(p * 0.08 + TIME * 0.25) - 0.5) * wobble;
+	d /= 1.0 - drift * ahead;
 
 	float phase = d / spacing - TIME * speed;
 	float offset = (fract(phase + 0.5) - 0.5) * spacing;

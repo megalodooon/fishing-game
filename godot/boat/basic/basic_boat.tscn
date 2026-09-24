@@ -1,13 +1,24 @@
 [gd_scene format=3 uid="uid://drxm5o7rmt26t"]
 
-[ext_resource type="Texture2D" path="res://boat/basic/basic_boat_deck.png" id="1_deck"]
+[ext_resource type="Texture2D" uid="uid://2w3yam7x8kl" path="res://boat/basic/basic_boat_deck.png" id="1_deck"]
 [ext_resource type="Texture2D" uid="uid://c5d7iwn5xvvbm" path="res://boat/basic/basic_boat_bottom.png" id="2_mll2o"]
 [ext_resource type="Texture2D" uid="uid://bwuv66pyjoho2" path="res://boat/basic/basic_boat_mast.png" id="3_mast"]
 [ext_resource type="Texture2D" uid="uid://kaecbpunso7l" path="res://boat/basic/basic_boat_front.png" id="4_front"]
+[ext_resource type="Shader" uid="uid://chsgvhhkl4eyx" path="res://boat/effects/sail_wind.gdshader" id="5_7vrn7"]
 [ext_resource type="PackedScene" path="res://boat/effects/sail.tscn" id="5_sail"]
 [ext_resource type="PackedScene" path="res://boat/effects/ripples.tscn" id="6_ripples"]
-[ext_resource type="Texture2D" path="res://boat/basic/basic_boat_sail.png" id="7_sail"]
-[ext_resource type="Script" path="res://boat/boat_base.gd" id="8_boat"]
+[ext_resource type="Texture2D" uid="uid://bw5n8rr6bjqms" path="res://boat/basic/basic_boat_sail.png" id="7_sail"]
+[ext_resource type="Script" uid="uid://b4asjp0rxss7o" path="res://boat/boat_base.gd" id="8_boat"]
+[ext_resource type="PackedScene" path="res://boat/effects/wake.tscn" id="9_wake"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vhv45"]
+resource_local_to_scene = true
+shader = ExtResource("5_7vrn7")
+shader_parameter/sail_rect = Vector4(43, 9, 15, 42)
+shader_parameter/anchor_inset = 1.0
+shader_parameter/strength = 2.5
+shader_parameter/speed = 1.6
+shader_parameter/ripple_frequency = 0.6
 
 [sub_resource type="Animation" id="Animation_bob"]
 resource_name = "bob"
@@ -44,7 +55,7 @@ _data = {
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vkqoe"]
-radius = 4.1231055
+radius = 3.0
 
 [node name="BasicBoat" type="Node2D" unique_id=545784032 node_paths=PackedStringArray("visuals")]
 y_sort_enabled = true
@@ -65,6 +76,7 @@ texture = ExtResource("3_mast")
 offset = Vector2(0, -4)
 
 [node name="Sail" parent="Visuals/Mast" unique_id=1847362915 instance=ExtResource("5_sail")]
+material = SubResource("ShaderMaterial_vhv45")
 texture = ExtResource("7_sail")
 offset = Vector2(0, -4)
 
@@ -82,6 +94,9 @@ texture = ExtResource("2_mll2o")
 deckTexture = ExtResource("1_deck")
 frontTexture = ExtResource("4_front")
 
+[node name="Wake" parent="." unique_id=460309898 instance=ExtResource("9_wake")]
+position = Vector2(-43, 20)
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1873402615]
 libraries/ = SubResource("AnimationLibrary_boat")
 autoplay = &"bob"
@@ -93,5 +108,6 @@ build_mode = 1
 polygon = PackedVector2Array(-39, -11, 26.3, -12, 41.5, -0.6, 41, 10, 23, 21, -39, 21)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=221996447]
-position = Vector2(-6, 8)
+z_index = 1
+position = Vector2(-6, 7)
 shape = SubResource("CircleShape2D_vkqoe")

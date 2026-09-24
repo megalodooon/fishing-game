@@ -9,6 +9,7 @@ const SHADER_PARAMETERS : Array[String] = [
 	"clarity", "refraction_strength",
 	"caustic_amount", "caustic_cell_size", "caustic_speed",
 	"caustic_sharpness", "caustic_coverage", "caustic_patch_size",
+	"flow",
 ]
 
 #------------------------#
@@ -91,6 +92,12 @@ const SHADER_PARAMETERS : Array[String] = [
 	set(value):
 		caustic_patch_size = value
 		update_shader("caustic_patch_size", value)
+
+@export_group("Flow")
+@export var flow : Vector2 = Vector2.ZERO:
+	set(value):
+		flow = value
+		update_shader("flow", value)
 #------------------------#
 
 
