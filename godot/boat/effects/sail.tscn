@@ -1,0 +1,12 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://boat/effects/sail.gd" id="1_sail"]
+[ext_resource type="Shader" path="res://boat/effects/sail_wind.gdshader" id="2_wind"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wind"]
+resource_local_to_scene = true
+shader = ExtResource("2_wind")
+
+[node name="Sail" type="Sprite2D"]
+material = SubResource("ShaderMaterial_wind")
+script = ExtResource("1_sail")

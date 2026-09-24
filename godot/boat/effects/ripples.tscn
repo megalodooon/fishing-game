@@ -1,0 +1,13 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://boat/effects/ripples.gd" id="1_script"]
+[ext_resource type="Shader" path="res://boat/effects/ripples.gdshader" id="2_ripples"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ripples"]
+shader = ExtResource("2_ripples")
+
+[node name="Ripples" type="Node2D"]
+z_index = -1
+texture_filter = 2
+material = SubResource("ShaderMaterial_ripples")
+script = ExtResource("1_script")

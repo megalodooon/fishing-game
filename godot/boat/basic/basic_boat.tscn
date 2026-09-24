@@ -1,0 +1,97 @@
+[gd_scene format=3 uid="uid://drxm5o7rmt26t"]
+
+[ext_resource type="Texture2D" path="res://boat/basic/basic_boat_deck.png" id="1_deck"]
+[ext_resource type="Texture2D" uid="uid://c5d7iwn5xvvbm" path="res://boat/basic/basic_boat_bottom.png" id="2_mll2o"]
+[ext_resource type="Texture2D" uid="uid://bwuv66pyjoho2" path="res://boat/basic/basic_boat_mast.png" id="3_mast"]
+[ext_resource type="Texture2D" uid="uid://kaecbpunso7l" path="res://boat/basic/basic_boat_front.png" id="4_front"]
+[ext_resource type="PackedScene" path="res://boat/effects/sail.tscn" id="5_sail"]
+[ext_resource type="PackedScene" path="res://boat/effects/ripples.tscn" id="6_ripples"]
+[ext_resource type="Texture2D" path="res://boat/basic/basic_boat_sail.png" id="7_sail"]
+[ext_resource type="Script" path="res://boat/boat_base.gd" id="8_boat"]
+
+[sub_resource type="Animation" id="Animation_bob"]
+resource_name = "bob"
+length = 6.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visuals:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5, 3, 4.5, 6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 0.5), Vector2(0, 0), Vector2(0, 0.5), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Visuals:rotation")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.5, 4.5, 6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.01, -0.01, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_boat"]
+_data = {
+&"bob": SubResource("Animation_bob")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vkqoe"]
+radius = 4.1231055
+
+[node name="BasicBoat" type="Node2D" unique_id=545784032 node_paths=PackedStringArray("visuals")]
+y_sort_enabled = true
+script = ExtResource("8_boat")
+visuals = NodePath("Visuals")
+
+[node name="Visuals" type="Node2D" parent="." unique_id=1650293847]
+y_sort_enabled = true
+
+[node name="Top" type="Sprite2D" parent="Visuals" unique_id=1396517689]
+position = Vector2(0, -46)
+texture = ExtResource("1_deck")
+offset = Vector2(0, 46)
+
+[node name="Mast" type="Sprite2D" parent="Visuals" unique_id=1739215064]
+position = Vector2(0, 4)
+texture = ExtResource("3_mast")
+offset = Vector2(0, -4)
+
+[node name="Sail" parent="Visuals/Mast" unique_id=1847362915 instance=ExtResource("5_sail")]
+texture = ExtResource("7_sail")
+offset = Vector2(0, -4)
+
+[node name="Front" type="Sprite2D" parent="Visuals" unique_id=1206847731]
+position = Vector2(0, 19)
+texture = ExtResource("4_front")
+offset = Vector2(0, -19)
+
+[node name="Bottom" type="Sprite2D" parent="Visuals" unique_id=910420262]
+z_index = -3
+position = Vector2(0, 24)
+texture = ExtResource("2_mll2o")
+
+[node name="Ripples" parent="." unique_id=1560384927 instance=ExtResource("6_ripples")]
+deckTexture = ExtResource("1_deck")
+frontTexture = ExtResource("4_front")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1873402615]
+libraries/ = SubResource("AnimationLibrary_boat")
+autoplay = &"bob"
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1298249037]
+
+[node name="Walls" type="CollisionPolygon2D" parent="StaticBody2D" unique_id=26680089]
+build_mode = 1
+polygon = PackedVector2Array(-39, -11, 26.3, -12, 41.5, -0.6, 41, 10, 23, 21, -39, 21)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=221996447]
+position = Vector2(-6, 8)
+shape = SubResource("CircleShape2D_vkqoe")
