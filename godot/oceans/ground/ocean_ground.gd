@@ -49,6 +49,7 @@ const PARAMETERS : Array[String] = [
 @export var grass_spread : float = 3.0
 
 var offset : float = 0.0
+var renderedScroll : float = NAN
 var groundTexture : GradientTexture1D = GradientTexture1D.new()
 var grassTexture : GradientTexture1D = GradientTexture1D.new()
 var viewport : SubViewport
@@ -64,7 +65,7 @@ func _ready() -> void:
 	canvas = ColorRect.new()
 	display = Sprite2D.new()
 	viewport.disable_3d = true
-	viewport.render_target_update_mode = SubViewport.UPDATE_ALWAYS
+	viewport.render_target_update_mode = SubViewport.UPDATE_ALWAYS if Engine.is_editor_hint() else SubViewport.UPDATE_DISABLED
 	viewport.add_child(canvas)
 	display.centered = false
 	display.texture = viewport.get_texture()
@@ -78,9 +79,17 @@ func _process(_delta : float) -> void:
 	if viewport.size != texels:
 		viewport.size = texels
 		canvas.size = texels
-	canvas.material = material
+		renderedScroll = NAN
+	if canvas.material != material:
+		canvas.material = material
+		renderedScroll = NAN
 	display.region_enabled = true
 	display.region_rect = Rect2(offset - floorf(offset), 0.0, size.x, size.y)
+	if floorf(offset) == renderedScroll and not Engine.is_editor_hint():
+		return
+	renderedScroll = floorf(offset)
+	if not Engine.is_editor_hint():
+		viewport.render_target_update_mode = SubViewport.UPDATE_ONCE
 	var rid : RID = material.get_rid()
 	for parameter in PARAMETERS:
 		RenderingServer.material_set_param(rid, parameter, get(parameter))
@@ -96,6 +105,10 @@ func scroll(distance : float) -> void:
 
 func new_seed() -> void:
 	groundSeed = randi() % 10000
+	refresh()
+
+func refresh() -> void:
+	renderedScroll = NAN
 
 func seed_offset() -> Vector2:
 	return Vector2((groundSeed * 7919) % 10007, (groundSeed * 104729) % 10009)

@@ -12,6 +12,7 @@ const CLIP_MARGIN : int = 4
 @export var startTime : float = 2.0
 @export var testAcceleration : float = 60.0
 @export var motionEffects : Array[CanvasItem] = []
+@export var movingOnly : Array[CanvasItem] = []
 @export var deck : Sprite2D
 @export var deckFloor : Polygon2D
 @export var hull : Array[Sprite2D] = []
@@ -32,6 +33,7 @@ var occluderFrame : int = -1
 var faded : bool = false
 var usedRects : Dictionary = {}
 var fadeTween : Tween
+var appliedMotion : float = -1.0
 #------------------------#
 
 
@@ -64,11 +66,16 @@ func _process(delta : float) -> void:
 		speed = clampf(speed + throttle * testAcceleration * delta, 0.0, maxSpeed)
 		targetSpeed = speed
 	var motion : float = get_motion()
+	if motion == appliedMotion:
+		return
+	appliedMotion = motion
 	for effect in motionEffects:
 		if effect.material is ShaderMaterial:
 			effect.material.set_shader_parameter("motion", motion)
 		else:
 			effect.modulate.a = motion
+	for item in movingOnly:
+		item.visible = motion > 0.0
 
 func _unhandled_input(event : InputEvent) -> void:
 	if event.is_action_pressed("anchor"):

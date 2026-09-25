@@ -74,11 +74,12 @@ _data = {
 [sub_resource type="CircleShape2D" id="CircleShape2D_vkqoe"]
 radius = 3.0
 
-[node name="BasicBoat" type="Node2D" unique_id=545784032 node_paths=PackedStringArray("visuals", "motionEffects", "deck", "deckFloor", "hull", "occluders")]
+[node name="BasicBoat" type="Node2D" unique_id=545784032 node_paths=PackedStringArray("visuals", "motionEffects", "movingOnly", "deck", "deckFloor", "hull", "occluders")]
 y_sort_enabled = true
 script = ExtResource("8_boat")
 visuals = NodePath("Visuals")
 motionEffects = [NodePath("Wake/Distortion"), NodePath("Wake/Foam/Stern"), NodePath("Wake/Foam/Bow"), NodePath("Visuals/Top"), NodePath("Visuals/Front"), NodePath("Visuals/FrontUnderwater")]
+movingOnly = [NodePath("Wake/BackBufferCopy"), NodePath("Wake/Distortion")]
 deck = NodePath("Visuals/Top")
 deckFloor = NodePath("Visuals/Floor")
 hull = [NodePath("Visuals/Top"), NodePath("Visuals/Front")]
