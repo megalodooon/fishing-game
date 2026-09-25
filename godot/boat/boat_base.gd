@@ -1,6 +1,7 @@
 extends Node2D
 class_name Boat
 
+const CLIP_MARGIN : int = 4
 
 #------------------------#
 @export var visuals : Node2D
@@ -37,6 +38,23 @@ var fadeTween : Tween
 func _ready() -> void:
 	speed = cruiseSpeed
 	targetSpeed = cruiseSpeed
+	if visuals:
+		for sprite : Sprite2D in visuals.find_children("*", "Sprite2D", true, false):
+			if sprite.texture and not sprite is BoatWaterline:
+				clip_to_rect(sprite, art_rect(sprite, CLIP_MARGIN))
+
+static func art_rect(sprite : Sprite2D, margin : int) -> Rect2:
+	var full : Vector2 = sprite.texture.get_size()
+	var used : Rect2 = Rect2(sprite.texture.get_image().get_used_rect().grow(margin)).intersection(Rect2(Vector2.ZERO, full))
+	var rect : Rect2 = Rect2(sprite.offset - (full / 2.0 if sprite.centered else Vector2.ZERO) + used.position, used.size)
+	for child in sprite.get_children():
+		if child is Sprite2D and child.texture:
+			rect = rect.merge(child.transform * art_rect(child, margin))
+	return rect
+
+static func clip_to_rect(item : CanvasItem, rect : Rect2) -> void:
+	RenderingServer.canvas_item_set_custom_rect(item.get_canvas_item(), true, rect)
+	RenderingServer.canvas_item_set_clip(item.get_canvas_item(), true)
 
 func _process(delta : float) -> void:
 	var throttle : float = Input.get_axis("slow_down", "speed_up")

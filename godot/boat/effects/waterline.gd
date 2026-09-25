@@ -3,6 +3,7 @@ extends Sprite2D
 class_name BoatWaterline
 
 const MAX_COLUMNS : int = 128
+const CROP_MARGIN : int = 2
 
 @export var edgeTexture : Texture2D:
 	set(value):
@@ -21,6 +22,8 @@ var flow : float = 0.0
 func _ready() -> void:
 	texture_changed.connect(bake)
 	bake()
+	if not Engine.is_editor_hint():
+		crop()
 
 func _process(delta : float) -> void:
 	var visuals : Node2D = get_parent() as Node2D
@@ -29,6 +32,17 @@ func _process(delta : float) -> void:
 		flow += delta * (motion if motion != null else 0.0)
 		RenderingServer.material_set_param(material.get_rid(), "bob", Vector2(visuals.position.y, visuals.rotation))
 		RenderingServer.material_set_param(material.get_rid(), "flow", flow)
+
+func crop() -> void:
+	if not texture or region_enabled:
+		return
+	var full : Rect2i = Rect2i(Vector2i.ZERO, Vector2i(texture.get_size()))
+	var used : Rect2i = texture.get_image().get_used_rect()
+	if edgeTexture:
+		used = used.merge(edgeTexture.get_image().get_used_rect())
+	var bounds : Rect2i = used.grow(CROP_MARGIN).intersection(full)
+	var corner : Vector2 = offset - (Vector2(full.size) / 2.0 if centered else Vector2.ZERO)
+	Boat.clip_to_rect(self, Rect2(corner + Vector2(bounds.position), bounds.size))
 
 func bake() -> void:
 	if not texture or not material:
