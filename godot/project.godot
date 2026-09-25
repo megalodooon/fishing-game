@@ -20,6 +20,7 @@ window/size/viewport_width=192
 window/size/viewport_height=108
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
+window/stretch/aspect.web="keep"
 window/stretch/scale_mode="integer"
 mouse_cursor/custom_image="uid://bv8q5j1fuyyt4"
 

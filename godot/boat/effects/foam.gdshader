@@ -22,7 +22,7 @@ void vertex() {
 }
 
 void fragment() {
-	float density = textureLod(screen_texture, SCREEN_UV, 0.0).a;
+	float density = textureLod(screen_texture, SCREEN_UV, 0.0).r;
 	if (density * 1.25 <= threshold) {
 		COLOR = vec4(0.0);
 	} else {
