@@ -4,6 +4,7 @@
 [ext_resource type="Shader" path="res://boat/effects/ripples.gdshader" id="2_ripples"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ripples"]
+resource_local_to_scene = true
 shader = ExtResource("2_ripples")
 
 [node name="Ripples" type="Node2D"]

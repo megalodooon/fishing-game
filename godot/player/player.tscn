@@ -5,6 +5,20 @@
 [ext_resource type="Texture2D" uid="uid://dcr751xpq3bih" path="res://player/assets/player_placeholder.png" id="2_yw30f"]
 [ext_resource type="Script" uid="uid://c0bqqdwxeknsl" path="res://player/states/move.gd" id="4_qjkh3"]
 [ext_resource type="Texture2D" uid="uid://cnxobivsk8i4q" path="res://player/assets/hand_placeholder.png" id="5_qjkh3"]
+[ext_resource type="PackedScene" path="res://rods/starter_rod.tscn" id="6_rod"]
+[ext_resource type="Script" uid="uid://6vkic8ksg00r" path="res://player/states/hand/idle.gd" id="7_idle"]
+[ext_resource type="Script" uid="uid://3efxdxtchxiy" path="res://player/states/hand/switch.gd" id="8_switch"]
+[ext_resource type="Script" uid="uid://c22c3oomandkp" path="res://player/states/hand/charge.gd" id="9_charge"]
+[ext_resource type="Script" uid="uid://bvmo647sgtrw5" path="res://player/states/hand/cast.gd" id="10_cast"]
+[ext_resource type="Script" uid="uid://bl3i4q1lreioe" path="res://player/states/hand/fishing.gd" id="11_fishing"]
+[ext_resource type="Script" uid="uid://bxehp2lrqtyvn" path="res://player/states/hand/reel.gd" id="12_reel"]
+[ext_resource type="Texture2D" uid="uid://ccwpmnurcm8ir" path="res://player/assets/shadow.png" id="13_shadow"]
+[ext_resource type="Shader" uid="uid://dwjgftfpviq66" path="res://shaders/floor_clip.gdshader" id="14_clip"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_shadow"]
+shader = ExtResource("14_clip")
+shader_parameter/floor_points = PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+shader_parameter/floor_count = 0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vkqoe"]
 radius = 4.1231055
@@ -16,7 +30,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite:scale:y")
+tracks/0/path = NodePath("Body/Sprite:scale:y")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -28,7 +42,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite:rotation")
+tracks/1/path = NodePath("Body/Sprite:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -45,7 +59,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite:rotation")
+tracks/0/path = NodePath("Body/Sprite:rotation")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -57,7 +71,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite:scale:y")
+tracks/1/path = NodePath("Body/Sprite:scale:y")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -75,10 +89,18 @@ _data = {
 
 [node name="Player" type="CharacterBody2D" unique_id=893027470]
 script = ExtResource("1_rkbax")
+hotbar = Array[PackedScene]([ExtResource("6_rod")])
 
-[node name="Sprite" type="Sprite2D" parent="." unique_id=1591027741]
-unique_name_in_owner = true
+[node name="Shadow" type="Sprite2D" parent="." unique_id=1318463946]
+material = SubResource("ShaderMaterial_shadow")
+position = Vector2(0, 1)
+texture = ExtResource("13_shadow")
+
+[node name="Body" type="Node2D" parent="." unique_id=2137300822]
 position = Vector2(0, 8)
+
+[node name="Sprite" type="Sprite2D" parent="Body" unique_id=1591027741]
+unique_name_in_owner = true
 texture = ExtResource("2_yw30f")
 offset = Vector2(0, -8)
 
@@ -95,12 +117,45 @@ metadata/_custom_type_script = "uid://dvu2w3k56bm8m"
 script = ExtResource("4_qjkh3")
 metadata/_custom_type_script = "uid://c0bqqdwxeknsl"
 
+[node name="HandStateMachine" type="Node" parent="." unique_id=1629663784 node_paths=PackedStringArray("initialState")]
+script = ExtResource("2_g1dw6")
+initialState = NodePath("Idle")
+
+[node name="Idle" type="Node" parent="HandStateMachine" unique_id=1271754999]
+unique_name_in_owner = true
+script = ExtResource("7_idle")
+
+[node name="Switch" type="Node" parent="HandStateMachine" unique_id=610307632]
+unique_name_in_owner = true
+script = ExtResource("8_switch")
+
+[node name="Charge" type="Node" parent="HandStateMachine" unique_id=826147501]
+unique_name_in_owner = true
+script = ExtResource("9_charge")
+
+[node name="Cast" type="Node" parent="HandStateMachine" unique_id=1945930246]
+unique_name_in_owner = true
+script = ExtResource("10_cast")
+
+[node name="Fishing" type="Node" parent="HandStateMachine" unique_id=1680690408]
+unique_name_in_owner = true
+script = ExtResource("11_fishing")
+
+[node name="Reel" type="Node" parent="HandStateMachine" unique_id=2116760767]
+unique_name_in_owner = true
+script = ExtResource("12_reel")
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=2015660693]
 libraries/ = SubResource("AnimationLibrary_boad6")
 autoplay = &"idle"
 
 [node name="Center" type="Node2D" parent="." unique_id=529566900]
+z_index = 1
+
+[node name="ItemHolder" type="Node2D" parent="Center" unique_id=526813440]
+unique_name_in_owner = true
 
 [node name="Hand" type="Sprite2D" parent="Center" unique_id=573258472]
+unique_name_in_owner = true
 position = Vector2(8, 1)
 texture = ExtResource("5_qjkh3")

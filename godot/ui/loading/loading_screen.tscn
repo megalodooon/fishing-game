@@ -1,0 +1,42 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://ui/loading/loading_screen.gd" id="1_loading"]
+
+[node name="LoadingScreen" type="Node"]
+script = ExtResource("1_loading")
+
+[node name="Layer" type="CanvasLayer" parent="."]
+layer = 100
+
+[node name="Background" type="ColorRect" parent="Layer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.04, 0.1, 0.16, 1)
+
+[node name="Box" type="VBoxContainer" parent="Layer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -10.0
+offset_right = 40.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 3
+alignment = 1
+
+[node name="Label" type="Label" parent="Layer/Box"]
+theme_override_font_sizes/font_size = 8
+text = "Loading..."
+horizontal_alignment = 1
+
+[node name="Bar" type="ProgressBar" parent="Layer/Box"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(80, 4)
+show_percentage = false

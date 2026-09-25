@@ -30,14 +30,33 @@ uniform float caustic_coverage : hint_range(0.0, 100.0, 1.0) = 100.0;
 uniform float caustic_patch_size : hint_range(4.0, 256.0, 1.0) = 48.0;
 
 group_uniforms flow;
-uniform vec2 flow = vec2(0.0); // px/s the whole surface drifts
+uniform vec2 scroll = vec2(0.0);
+uniform sampler2D fields : filter_linear, repeat_disable;
+uniform vec2 fields_origin = vec2(0.0);
+uniform vec2 fields_size = vec2(1.0);
+uniform sampler2D cells_a : filter_nearest, repeat_disable;
+uniform sampler2D cells_b : filter_nearest, repeat_disable;
+uniform vec2 cells_a_origin = vec2(0.0);
+uniform vec2 cells_b_origin = vec2(0.0);
 
 varying vec2 world_pos;
 
-#include "res://shaders/noise.gdshaderinc"
+float cell_voronoi(vec2 p, sampler2D cells, vec2 origin) {
+	vec2 cell = floor(p);
+	vec2 f = fract(p);
+	float d = 1.0;
+	for (int y = -1; y <= 1; y++) {
+		for (int x = -1; x <= 1; x++) {
+			vec2 o = vec2(float(x), float(y));
+			vec2 diff = o + texelFetch(cells, ivec2(cell + o - origin), 0).rg - f;
+			d = min(d, dot(diff, diff));
+		}
+	}
+	return sqrt(d);
+}
 
 void vertex() {
-	world_pos = (MODEL_MATRIX * vec4(VERTEX, 0.0, 1.0)).xy - flow * TIME;
+	world_pos = (MODEL_MATRIX * vec4(VERTEX, 0.0, 1.0)).xy + scroll;
 }
 
 void fragment() {
@@ -48,20 +67,17 @@ void fragment() {
 		cos(w.x * 6.28 + wt * 0.9) + cos((w.x - w.y) * 3.7 + wt * 1.1));
 	vec2 p = world_pos + wave * wave_strength;
 
-	vec2 q = p / depth_scale + TIME * depth_speed;
-	float depth = value_noise(q) * 0.65 + value_noise(q * 2.3 + 5.1) * 0.35;
-	depth = clamp((depth - 0.5) * depth_contrast + 0.5, 0.0, 1.0);
+	vec2 field = texture(fields, (p - fields_origin) / fields_size).rg;
+	float depth = field.r;
 	vec3 water = mix(shallow_color.rgb, deep_color.rgb, depth);
 
 	vec3 below = texture(screen_texture, SCREEN_UV + wave * refraction_strength * SCREEN_PIXEL_SIZE).rgb;
 	vec3 col = mix(water, below, clarity * (1.0 - depth * 0.5));
 
-	float edge = (1.0 - caustic_coverage * 0.01) * 1.3 - 0.3;
-	float coverage = smoothstep(edge, edge + 0.3, value_noise(p / caustic_patch_size + 31.7));
+	float coverage = field.g;
 	if (coverage > 0.0) {
 		vec2 c = p / caustic_cell_size;
-		float ct = TIME * caustic_speed;
-		float caustic = min(voronoi(c, ct), voronoi(c * 0.8 + vec2(13.7, 7.3), ct * 1.3));
+		float caustic = min(cell_voronoi(c, cells_a, cells_a_origin), cell_voronoi(c * 0.8 + vec2(13.7, 7.3), cells_b, cells_b_origin));
 		col += caustic_color.rgb * pow(caustic, caustic_sharpness) * caustic_amount * coverage * (1.0 - depth * 0.5);
 	}
 

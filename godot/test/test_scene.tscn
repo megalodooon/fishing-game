@@ -3,28 +3,42 @@
 [ext_resource type="PackedScene" uid="uid://dw4byakruepaa" path="res://oceans/basic/basic_ocean.tscn" id="1_lr5j1"]
 [ext_resource type="PackedScene" uid="uid://y7shj7okkm2m" path="res://player/player.tscn" id="1_m5cd5"]
 [ext_resource type="PackedScene" uid="uid://drxm5o7rmt26t" path="res://boat/basic/basic_boat.tscn" id="2_56kpk"]
+[ext_resource type="Script" uid="uid://ckmtq4wdfsim1" path="res://fishing/fishing_spots/fishing_spot_spawner.gd" id="4_spawner"]
+[ext_resource type="PackedScene" path="res://fishing/fishing_spots/fishing_spot.tscn" id="5_spot"]
+[ext_resource type="PackedScene" path="res://components/day_night/day_night_cycle.tscn" id="6_cycle"]
+[ext_resource type="Script" path="res://ui/clock/clock_label.gd" id="7_clock"]
 
 [node name="TestScene" type="Node2D" unique_id=733697435]
 y_sort_enabled = true
 
-[node name="BasicOcean" parent="." unique_id=548284199 instance=ExtResource("1_lr5j1")]
-depth_scale = null
-depth_contrast = null
-depth_speed = null
-wave_scale = null
-wave_strength = null
-wave_speed = null
-clarity = null
-refraction_strength = null
-caustic_amount = null
-caustic_cell_size = null
-caustic_speed = null
-caustic_sharpness = null
-caustic_coverage = null
-caustic_patch_size = null
+[node name="BasicOcean" parent="." unique_id=548284199 node_paths=PackedStringArray("boat") instance=ExtResource("1_lr5j1")]
+boat = NodePath("../BasicBoat")
 
 [node name="BasicBoat" parent="." unique_id=545784032 instance=ExtResource("2_56kpk")]
 position = Vector2(100, 43)
 
-[node name="Player" parent="." unique_id=893027470 instance=ExtResource("1_m5cd5")]
-position = Vector2(91.01503, 40.267616)
+[node name="FishingSpotSpawner" type="Node2D" parent="." node_paths=PackedStringArray("boat")]
+script = ExtResource("4_spawner")
+boat = NodePath("../BasicBoat")
+spotScene = ExtResource("5_spot")
+
+[node name="Player" parent="." unique_id=893027470 node_paths=PackedStringArray("boat") instance=ExtResource("1_m5cd5")]
+position = Vector2(74, 46)
+boat = NodePath("../BasicBoat")
+
+[node name="DayNightCycle" parent="." instance=ExtResource("6_cycle")]
+
+[node name="Hud" type="CanvasLayer" parent="."]
+layer = 20
+
+[node name="Clock" type="Label" parent="Hud" node_paths=PackedStringArray("cycle")]
+offset_left = 3.0
+offset_top = 1.0
+offset_right = 43.0
+offset_bottom = 12.0
+theme_override_font_sizes/font_size = 8
+theme_override_colors/font_outline_color = Color(0.04, 0.1, 0.16, 1)
+theme_override_constants/outline_size = 2
+text = "00:00"
+script = ExtResource("7_clock")
+cycle = NodePath("../../DayNightCycle")

@@ -1,0 +1,22 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://oceans/ground/ocean_ground.gd" id="1_ground"]
+[ext_resource type="Shader" path="res://oceans/ground/ground.gdshader" id="2_ground"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ground"]
+resource_local_to_scene = true
+shader = ExtResource("2_ground")
+
+[sub_resource type="Gradient" id="Gradient_ground"]
+offsets = PackedFloat32Array(0, 0.35, 0.7, 1)
+colors = PackedColorArray(0.58, 0.54, 0.41, 1, 0.47, 0.45, 0.36, 1, 0.26, 0.31, 0.31, 1, 0.1, 0.16, 0.2, 1)
+
+[sub_resource type="Gradient" id="Gradient_grass"]
+colors = PackedColorArray(0.2, 0.32, 0.22, 1, 0.33, 0.44, 0.28, 1)
+
+[node name="SandyGround" type="Node2D"]
+z_index = -2
+material = SubResource("ShaderMaterial_ground")
+script = ExtResource("1_ground")
+ground_colors = SubResource("Gradient_ground")
+grass_colors = SubResource("Gradient_grass")

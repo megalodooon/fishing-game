@@ -9,11 +9,11 @@ const SHADER_PARAMETERS : Array[String] = [
 	"clarity", "refraction_strength",
 	"caustic_amount", "caustic_cell_size", "caustic_speed",
 	"caustic_sharpness", "caustic_coverage", "caustic_patch_size",
-	"flow",
 ]
 
 #------------------------#
 @export var sprite : Sprite2D
+@export var ground : OceanGround
 
 @export_group("Colors")
 @export var shallow_color : Color = Color(0.18, 0.62, 0.78):
@@ -94,17 +94,85 @@ const SHADER_PARAMETERS : Array[String] = [
 		update_shader("caustic_patch_size", value)
 
 @export_group("Flow")
-@export var flow : Vector2 = Vector2.ZERO:
-	set(value):
-		flow = value
-		update_shader("flow", value)
+@export var boat : Boat
+@export var fallbackSpeed : float = 10.0
+@export var decorationLayers : Array[DecorationLayer] = []
+
+var scroll : Vector2 = Vector2.ZERO
+var fieldsMaterial : ShaderMaterial = ShaderMaterial.new()
+var cellsAMaterial : ShaderMaterial = ShaderMaterial.new()
+var cellsBMaterial : ShaderMaterial = ShaderMaterial.new()
+var fieldsViewport : SubViewport
+var cellsAViewport : SubViewport
+var cellsBViewport : SubViewport
 #------------------------#
 
 
 func _ready() -> void:
+	fieldsMaterial.shader = preload("res://shaders/water_fields.gdshader")
+	cellsAMaterial.shader = preload("res://shaders/caustic_cells.gdshader")
+	cellsBMaterial.shader = cellsAMaterial.shader
+	cellsBMaterial.set_shader_parameter("speed_scale", 1.3)
+	fieldsViewport = create_pass(fieldsMaterial)
+	cellsAViewport = create_pass(cellsAMaterial)
+	cellsBViewport = create_pass(cellsBMaterial)
 	for parameter in SHADER_PARAMETERS:
 		update_shader(parameter, get(parameter))
+
+func _process(delta : float) -> void:
+	var distance : float = (boat.speed if boat and not Engine.is_editor_hint() else fallbackSpeed) * delta
+	if ground:
+		ground.scroll(distance)
+	scroll.x += distance
+	if not Engine.is_editor_hint():
+		for layer in decorationLayers:
+			layer.scroll(distance)
+	update_fields()
+
+func update_fields() -> void:
+	if not sprite or not sprite.texture or not fieldsViewport:
+		return
+	var margin : int = ceili(absf(wave_strength)) + 2
+	var texels : Vector2i = Vector2i(sprite.texture.get_size()) + Vector2i(margin, margin) * 2 + Vector2i.ONE
+	var origin : Vector2 = (sprite.global_position + scroll).floor() - Vector2(margin, margin)
+	resize_pass(fieldsViewport, texels)
+	RenderingServer.material_set_param(fieldsMaterial.get_rid(), "fields_origin", origin)
+	var rid : RID = sprite.material.get_rid()
+	RenderingServer.material_set_param(rid, "scroll", scroll)
+	RenderingServer.material_set_param(rid, "fields", fieldsViewport.get_texture().get_rid())
+	RenderingServer.material_set_param(rid, "fields_origin", origin)
+	RenderingServer.material_set_param(rid, "fields_size", Vector2(texels))
+	var cellSize : float = maxf(caustic_cell_size, 0.01)
+	var area : Rect2 = Rect2(origin, texels)
+	update_cells(cellsAViewport, cellsAMaterial, "a", area.position / cellSize, area.end / cellSize)
+	update_cells(cellsBViewport, cellsBMaterial, "b", area.position / cellSize * 0.8 + Vector2(13.7, 7.3), area.end / cellSize * 0.8 + Vector2(13.7, 7.3))
+
+func update_cells(viewport : SubViewport, cellsMaterial : ShaderMaterial, layer : String, low : Vector2, high : Vector2) -> void:
+	var start : Vector2 = low.floor() - Vector2.ONE
+	resize_pass(viewport, Vector2i(high.floor() - start) + Vector2i(2, 2))
+	RenderingServer.material_set_param(cellsMaterial.get_rid(), "cells_origin", start)
+	var rid : RID = sprite.material.get_rid()
+	RenderingServer.material_set_param(rid, "cells_" + layer, viewport.get_texture().get_rid())
+	RenderingServer.material_set_param(rid, "cells_%s_origin" % layer, start)
+
+func create_pass(passMaterial : ShaderMaterial) -> SubViewport:
+	var viewport : SubViewport = SubViewport.new()
+	var canvas : ColorRect = ColorRect.new()
+	canvas.material = passMaterial
+	viewport.disable_3d = true
+	viewport.use_hdr_2d = true
+	viewport.render_target_update_mode = SubViewport.UPDATE_ALWAYS
+	viewport.add_child(canvas)
+	add_child(viewport, false, Node.INTERNAL_MODE_FRONT)
+	return viewport
+
+func resize_pass(viewport : SubViewport, texels : Vector2i) -> void:
+	if viewport.size != texels:
+		viewport.size = texels
+		(viewport.get_child(0) as ColorRect).size = texels
 
 func update_shader(parameter: String, value: Variant):
 	if sprite:
 		sprite.material.set_shader_parameter(parameter, value)
+	for passMaterial in [fieldsMaterial, cellsAMaterial, cellsBMaterial]:
+		passMaterial.set_shader_parameter(parameter, value)

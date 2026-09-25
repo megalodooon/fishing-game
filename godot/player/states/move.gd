@@ -11,7 +11,7 @@ var flipSpeed : float = 0.2
 
 
 func update_physics(_delta : float) -> void:
-	var direction : Vector2 = Input.get_vector("left","right","up","down")
+	var direction : Vector2 = Vector2.ZERO if player.rooted else Input.get_vector("left","right","up","down")
 	if direction != Vector2.ZERO:
 		player.velocity = player.velocity.move_toward(direction * player.speed, player.acceleration)
 	else:
@@ -22,7 +22,9 @@ func update_physics(_delta : float) -> void:
 
 
 func handle_flip(directionX : float) -> void:
-	if directionX:
+	if player.rooted:
+		facing = player.facing
+	elif directionX:
 		facing = signf(directionX)
 	player.sprite.scale.x = move_toward(player.sprite.scale.x, facing, flipSpeed)
 

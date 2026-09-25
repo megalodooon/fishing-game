@@ -11,4 +11,8 @@ func fit_to_texture() -> void:
 	if not texture:
 		return
 	var rect : Rect2i = texture.get_image().get_used_rect()
-	material.set_shader_parameter("sail_rect", Vector4(rect.position.x, rect.position.y, rect.size.x, rect.size.y))
+	material.set_shader_parameter("sail_rect",
+	 Vector4(rect.position.x, 
+	rect.position.y, 
+	rect.size.x, 
+	rect.size.y))

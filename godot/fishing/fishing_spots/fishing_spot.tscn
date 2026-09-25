@@ -1,0 +1,7 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" uid="uid://d228retyhnmmp" path="res://fishing/fishing_spots/fishing_spot.gd" id="1_spot"]
+
+[node name="FishingSpot" type="Node2D"]
+z_index = -1
+script = ExtResource("1_spot")

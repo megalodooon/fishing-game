@@ -1,0 +1,38 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://rods/fishing_rod.gd" id="1_rod"]
+[ext_resource type="PackedScene" path="res://rods/bobbers/basic_bobber.tscn" id="2_bobber"]
+[ext_resource type="Shader" path="res://rods/effects/rod_bend.gdshader" id="3_shader"]
+[ext_resource type="Texture2D" path="res://rods/starter.png" id="4_texture"]
+[ext_resource type="Shader" path="res://rods/effects/fishing_line.gdshader" id="5_line"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rod"]
+resource_local_to_scene = true
+shader = ExtResource("3_shader")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_line"]
+resource_local_to_scene = true
+shader = ExtResource("5_line")
+
+[node name="StarterRod" type="Node2D"]
+script = ExtResource("1_rod")
+bobberScene = ExtResource("2_bobber")
+handAimWeight = 0.35
+aimFollow = 0.25
+tilt = 0.34906584
+maxCastDistance = 48.0
+
+[node name="Line" type="Line2D" parent="."]
+material = SubResource("ShaderMaterial_line")
+width = 0.45
+joint_mode = 2
+antialiased = true
+
+[node name="Sprite" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_rod")
+texture = ExtResource("4_texture")
+
+[node name="Target" type="Node2D" parent="."]
+top_level = true
+z_as_relative = false
+z_index = -1
