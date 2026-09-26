@@ -2,6 +2,7 @@ extends Node2D
 class_name Boat
 
 const CLIP_MARGIN : int = 4
+const HOLE_MARGIN : float = 2.0
 
 #------------------------#
 @export var visuals : Node2D
@@ -34,6 +35,7 @@ var faded : bool = false
 var usedRects : Dictionary = {}
 var fadeTween : Tween
 var appliedMotion : float = -1.0
+var opaqueRect : Variant = null
 #------------------------#
 
 
@@ -57,6 +59,84 @@ static func art_rect(sprite : Sprite2D, margin : int) -> Rect2:
 static func clip_to_rect(item : CanvasItem, rect : Rect2) -> void:
 	RenderingServer.canvas_item_set_custom_rect(item.get_canvas_item(), true, rect)
 	RenderingServer.canvas_item_set_clip(item.get_canvas_item(), true)
+	item.draw.connect(RenderingServer.canvas_item_set_clip.bind(item.get_canvas_item(), true))
+
+static func pixel_aligned(item : CanvasItem) -> bool:
+	var xform : Transform2D = item.get_viewport().get_final_transform() * item.get_global_transform_with_canvas()
+	return xform.x.y == 0.0 and xform.y.x == 0.0 and xform.x.x == xform.y.y and xform.x.x == floorf(xform.x.x) and xform.origin == xform.origin.floor()
+
+static func band_rects(outer : Rect2, hole : Rect2) -> Array[Rect2]:
+	var start : Vector2 = hole.position.ceil()
+	var end : Vector2 = hole.end.floor()
+	if end.x <= start.x or end.y <= start.y:
+		return [outer]
+	var cut : Rect2 = Rect2(start, end - start).intersection(outer)
+	if cut.size.x <= 0.0 or cut.size.y <= 0.0:
+		return [outer]
+	return [
+		Rect2(outer.position.x, outer.position.y, outer.size.x, cut.position.y - outer.position.y),
+		Rect2(outer.position.x, cut.end.y, outer.size.x, outer.end.y - cut.end.y),
+		Rect2(outer.position.x, cut.position.y, cut.position.x - outer.position.x, cut.size.y),
+		Rect2(cut.end.x, cut.position.y, outer.end.x - cut.end.x, cut.size.y),
+	]
+
+func opaque_rect() -> Rect2:
+	if opaqueRect == null:
+		opaqueRect = find_opaque_rect()
+	return opaqueRect
+
+func find_opaque_rect() -> Rect2:
+	var waterline : BoatWaterline = deck as BoatWaterline
+	var shaded : ShaderMaterial = waterline.material as ShaderMaterial if waterline else null
+	if not shaded or not waterline.texture:
+		return Rect2()
+	var clearance : float = 4.0
+	for pair in [["depth", 1.0], ["wave_height", 1.725], ["line_width", 0.5], ["end_rise", 1.0]]:
+		var value : Variant = parameter(shaded, pair[0])
+		if value == null:
+			return Rect2()
+		clearance += absf(value) * pair[1]
+	var image : Image = waterline.texture.get_image()
+	var edgeImage : Image = (waterline.edgeTexture if waterline.edgeTexture else waterline.texture).get_image()
+	var width : int = image.get_width()
+	var tops : PackedInt32Array = PackedInt32Array()
+	var limits : PackedInt32Array = PackedInt32Array()
+	var edges : PackedInt32Array = PackedInt32Array()
+	for x in width:
+		var edge : int = 0
+		for y in range(edgeImage.get_height() - 1, -1, -1):
+			if edgeImage.get_pixel(x, y).a > 0.0:
+				edge = y + 1
+				break
+		edges.append(edge)
+	for x in width:
+		var top : int = -1
+		for y in image.get_height():
+			if image.get_pixel(x, y).a > 0.0:
+				top = y
+				break
+		var bottom : int = top
+		while top >= 0 and bottom + 1 < image.get_height() and image.get_pixel(x, bottom + 1).a > 0.0:
+			bottom += 1
+		var edge : int = mini(edges[x], mini(edges[maxi(x - 1, 0)], edges[mini(x + 1, width - 1)]))
+		tops.append(top)
+		limits.append(mini(bottom + 1, floori(edge - clearance)) if top >= 0 and edge > 0 else -1)
+	var best : Rect2i = Rect2i()
+	for x0 in width:
+		var y0 : int = 0
+		var y1 : int = 1 << 30
+		for x1 in range(x0, width):
+			if limits[x1] <= tops[x1]:
+				break
+			y0 = maxi(y0, tops[x1])
+			y1 = mini(y1, limits[x1])
+			if y1 > y0 and (x1 - x0 + 1) * (y1 - y0) > best.get_area():
+				best = Rect2i(x0, y0, x1 - x0 + 1, y1 - y0)
+	if not best.has_area():
+		return Rect2()
+	var corner : Vector2 = waterline.offset - (Vector2(width, image.get_height()) / 2.0 if waterline.centered else Vector2.ZERO)
+	var local : Rect2 = (global_transform.affine_inverse() * waterline.global_transform) * Rect2(corner + Vector2(best.position), best.size)
+	return local.grow(-HOLE_MARGIN)
 
 func _process(delta : float) -> void:
 	var throttle : float = Input.get_axis("slow_down", "speed_up")

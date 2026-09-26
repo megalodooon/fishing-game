@@ -36,10 +36,20 @@ var seeds : PackedFloat32Array = PackedFloat32Array()
 var timer : float = 0.0
 var bounds : Rect2
 var waterlineRect : Rect2
+var bands : Array[RID] = []
+var reach : float = 0.0
+var hullCenter : Vector2
+var hullRadii : Vector2
+var paramsRead : bool = false
 #------------------------#
 
 
 func _ready() -> void:
+	for i in 4:
+		var band : RID = RenderingServer.canvas_item_create()
+		RenderingServer.canvas_item_set_parent(band, get_canvas_item())
+		RenderingServer.canvas_item_set_use_parent_material(band, true)
+		bands.append(band)
 	build()
 	for i in floori(lifetime / interval):
 		rings.append(Vector4(global_position.x, global_position.y, lifetime - (i + 1) * interval, 1.0))
@@ -60,18 +70,30 @@ func _process(delta : float) -> void:
 			rings.append(Vector4(global_position.x, global_position.y, 0.0, 1.0))
 			seeds.append(randf() * 100.0)
 	update_shader()
-	queue_redraw()
+	update_bands()
+
+func _notification(what : int) -> void:
+	if what == NOTIFICATION_PREDELETE:
+		for band in bands:
+			RenderingServer.free_rid(band)
+
+func read_params() -> bool:
+	var values : Array = [shader_value("crest_width"), shader_value("trough_width"), shader_value("wobble"), shader_value("hull_center"), shader_value("hull_radii")]
+	if values.has(null):
+		return false
+	reach = 2.0 * values[0] + 2.5 * values[1] + 0.5 * absf(values[2]) + 1.0
+	hullCenter = values[3]
+	hullRadii = values[4]
+	paramsRead = not Engine.is_editor_hint()
+	return true
 
 func update_shader() -> void:
-	if not distanceTexture:
+	if not distanceTexture or (not paramsRead and not read_params()):
 		return
 	var packed : PackedVector4Array = PackedVector4Array()
 	var packedSeeds : PackedFloat32Array = seeds.duplicate()
 	packed.resize(MAX_RINGS)
 	packedSeeds.resize(MAX_RINGS)
-	var reach : float = 2.0 * shader_value("crest_width") + 2.5 * shader_value("trough_width") + 0.5 * absf(shader_value("wobble")) + 1.0
-	var hullCenter : Vector2 = shader_value("hull_center")
-	var hullRadii : Vector2 = shader_value("hull_radii")
 	bounds = Rect2()
 	for i in rings.size():
 		var ring : Vector4 = rings[i]
@@ -92,9 +114,16 @@ func shader_value(parameter : StringName) -> Variant:
 	var value : Variant = material.get_shader_parameter(parameter)
 	return value if value != null else RenderingServer.shader_get_parameter_default(material.shader.get_rid(), parameter)
 
-func _draw() -> void:
-	if not rings.is_empty():
-		draw_rect(bounds, Color.WHITE)
+func update_bands() -> void:
+	var outer : Rect2 = Rect2(bounds.position.floor() - Vector2.ONE, Vector2.ZERO).expand(bounds.end.ceil() + Vector2.ONE)
+	var hole : Rect2 = transform.affine_inverse() * boat.opaque_rect() if boat and not Engine.is_editor_hint() and Boat.pixel_aligned(self) else Rect2()
+	var rects : Array[Rect2] = Boat.band_rects(outer, hole) if not rings.is_empty() else []
+	for i in bands.size():
+		RenderingServer.canvas_item_clear(bands[i])
+		if i < rects.size() and rects[i].has_area():
+			RenderingServer.canvas_item_set_clip(bands[i], true)
+			RenderingServer.canvas_item_set_custom_rect(bands[i], true, rects[i])
+			RenderingServer.canvas_item_add_rect(bands[i], bounds, Color.WHITE)
 
 func build() -> void:
 	if not is_node_ready() or not deckTexture or not frontTexture:
@@ -128,7 +157,6 @@ func build() -> void:
 		for x in width:
 			image.set_pixel(x, y, Color(field[x + y * width], 0.0, 0.0))
 	distanceTexture = ImageTexture.create_from_image(image)
-	queue_redraw()
 
 func waterline_mask(deck : Image, front : Image, width : int, height : int) -> PackedByteArray:
 	var inside : PackedByteArray = PackedByteArray()
