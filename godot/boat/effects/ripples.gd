@@ -180,24 +180,17 @@ func distance_squared(inside : PackedByteArray, target : int, width : int, heigh
 	for i in grid.size():
 		grid[i] = 0.0 if inside[i] == target else FAR
 	var line : PackedFloat32Array = PackedFloat32Array()
+	line.resize(height)
 	for x in width:
-		line.resize(height)
 		for y in height:
 			line[y] = grid[x + y * width]
-		line = distance_line(line)
-		for y in height:
-			grid[x + y * width] = line[y]
+		distance_line(line, grid, x, width)
 	for y in height:
-		line = grid.slice(y * width, (y + 1) * width)
-		line = distance_line(line)
-		for x in width:
-			grid[x + y * width] = line[x]
+		distance_line(grid.slice(y * width, (y + 1) * width), grid, y * width, 1)
 	return grid
 
-func distance_line(f : PackedFloat32Array) -> PackedFloat32Array:
+func distance_line(f : PackedFloat32Array, result : PackedFloat32Array, start : int, stride : int) -> void:
 	var n : int = f.size()
-	var result : PackedFloat32Array = PackedFloat32Array()
-	result.resize(n)
 	var hull : PackedInt32Array = PackedInt32Array()
 	hull.resize(n)
 	var breaks : PackedFloat32Array = PackedFloat32Array()
@@ -206,10 +199,13 @@ func distance_line(f : PackedFloat32Array) -> PackedFloat32Array:
 	breaks[0] = -FAR
 	breaks[1] = FAR
 	for q in range(1, n):
-		var s : float = intersection(f, q, hull[k])
+		var lifted : float = f[q] + q * q
+		var p : int = hull[k]
+		var s : float = (lifted - (f[p] + p * p)) / (2.0 * (q - p))
 		while s <= breaks[k]:
 			k -= 1
-			s = intersection(f, q, hull[k])
+			p = hull[k]
+			s = (lifted - (f[p] + p * p)) / (2.0 * (q - p))
 		k += 1
 		hull[k] = q
 		breaks[k] = s
@@ -218,22 +214,33 @@ func distance_line(f : PackedFloat32Array) -> PackedFloat32Array:
 	for q in n:
 		while breaks[k + 1] < q:
 			k += 1
-		result[q] = (q - hull[k]) * (q - hull[k]) + f[hull[k]]
-	return result
-
-func intersection(f : PackedFloat32Array, q : int, p : int) -> float:
-	return ((f[q] + q * q) - (f[p] + p * p)) / (2.0 * (q - p))
+		var p : int = hull[k]
+		result[start + q * stride] = (q - p) * (q - p) + f[p]
 
 func blur(field : PackedFloat32Array, width : int, height : int, direction : Vector2i) -> PackedFloat32Array:
-	var weights : Array[float] = [1.0, 4.0, 6.0, 4.0, 1.0]
 	var result : PackedFloat32Array = PackedFloat32Array()
 	result.resize(field.size())
-	for y in height:
-		for x in width:
+	var lines : int = height if direction.x != 0 else width
+	var length : int = width if direction.x != 0 else height
+	var step : int = 1 if direction.x != 0 else width
+	var across : int = width if direction.x != 0 else 1
+	var last : int = length - 1
+	for line in lines:
+		var base : int = line * across
+		for i in length:
 			var sum : float = 0.0
-			for i in 5:
-				var sx : int = clampi(x + (i - 2) * direction.x, 0, width - 1)
-				var sy : int = clampi(y + (i - 2) * direction.y, 0, height - 1)
-				sum += field[sx + sy * width] * weights[i]
-			result[x + y * width] = sum / 16.0
+			if i >= 2 and i <= last - 2:
+				var at : int = base + i * step
+				sum += field[at - step - step] * 1.0
+				sum += field[at - step] * 4.0
+				sum += field[at] * 6.0
+				sum += field[at + step] * 4.0
+				sum += field[at + step + step] * 1.0
+			else:
+				sum += field[base + maxi(i - 2, 0) * step] * 1.0
+				sum += field[base + maxi(i - 1, 0) * step] * 4.0
+				sum += field[base + i * step] * 6.0
+				sum += field[base + mini(i + 1, last) * step] * 4.0
+				sum += field[base + mini(i + 2, last) * step] * 1.0
+			result[base + i * step] = sum / 16.0
 	return result
