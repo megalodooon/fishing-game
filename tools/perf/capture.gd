@@ -18,6 +18,10 @@ func _initialize() -> void:
 	scene = (load("res://test/test_scene.tscn") as PackedScene).instantiate()
 	root.add_child(scene)
 	current_scene = scene
+	player = scene.get_node("Player")
+	physics_frame.connect(func() -> void:
+		if player.aimTarget == null:
+			player.aimTarget = aim)
 	run()
 
 func step(count : int = 1) -> void:
@@ -37,7 +41,6 @@ func capture(label : String) -> void:
 func run() -> void:
 	await step()
 	cycle = scene.get_node("DayNightCycle")
-	player = scene.get_node("Player")
 	boat = scene.get_node("BasicBoat")
 	cycle.paused = true
 	cycle.set_time(12.0)
