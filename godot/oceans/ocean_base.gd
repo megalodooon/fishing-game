@@ -145,7 +145,7 @@ func water_texture() -> Texture2D:
 func update_bands() -> void:
 	if not bands:
 		return
-	var hole : Rect2 = sprite.global_transform.affine_inverse() * (boat.global_transform * boat.opaque_rect()) if boat and CanvasClip.pixel_aligned(sprite) else Rect2()
+	var hole : Rect2 = CanvasClip.inner_rect(sprite.global_transform.affine_inverse() * boat.global_transform, boat.opaque_rect()) if boat and CanvasClip.pixel_aligned(sprite) else Rect2()
 	var rects : Array[Rect2] = CanvasClip.band_rects(water_rect(), hole)
 	if rects == bandRects:
 		return
