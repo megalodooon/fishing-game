@@ -7,11 +7,6 @@ uniform vec4 shallow_color : source_color = vec4(0.18, 0.62, 0.78, 1.0);
 uniform vec4 deep_color : source_color = vec4(0.04, 0.17, 0.36, 1.0);
 uniform vec4 caustic_color : source_color = vec4(0.8, 1.0, 1.0, 1.0);
 
-group_uniforms depth;
-uniform float depth_scale = 64.0;
-uniform float depth_contrast : hint_range(0.0, 4.0) = 1.6;
-uniform float depth_speed = 0.01;
-
 group_uniforms waves;
 uniform float wave_scale = 20.0;
 uniform float wave_strength = 0.8;
@@ -24,10 +19,7 @@ uniform float refraction_strength = 2.5;
 group_uniforms caustics;
 uniform float caustic_amount : hint_range(0.0, 8.0) = 2.5;
 uniform float caustic_cell_size : hint_range(1.0, 64.0, 0.5) = 9.0;
-uniform float caustic_speed = 0.7;
 uniform float caustic_sharpness : hint_range(1.0, 8.0) = 3.5;
-uniform float caustic_coverage : hint_range(0.0, 100.0, 1.0) = 100.0;
-uniform float caustic_patch_size : hint_range(4.0, 256.0, 1.0) = 48.0;
 
 group_uniforms flow;
 uniform vec2 scroll = vec2(0.0);

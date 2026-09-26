@@ -36,7 +36,7 @@ var seeds : PackedFloat32Array = PackedFloat32Array()
 var timer : float = 0.0
 var bounds : Rect2
 var waterlineRect : Rect2
-var bands : Array[RID] = []
+var bands : CanvasClip
 var reach : float = 0.0
 var hullCenter : Vector2
 var hullRadii : Vector2
@@ -45,11 +45,7 @@ var paramsRead : bool = false
 
 
 func _ready() -> void:
-	for i in 4:
-		var band : RID = RenderingServer.canvas_item_create()
-		RenderingServer.canvas_item_set_parent(band, get_canvas_item())
-		RenderingServer.canvas_item_set_use_parent_material(band, true)
-		bands.append(band)
+	bands = CanvasClip.new(self)
 	build()
 	for i in floori(lifetime / interval):
 		rings.append(Vector4(global_position.x, global_position.y, lifetime - (i + 1) * interval, 1.0))
@@ -71,11 +67,6 @@ func _process(delta : float) -> void:
 			seeds.append(randf() * 100.0)
 	update_shader()
 	update_bands()
-
-func _notification(what : int) -> void:
-	if what == NOTIFICATION_PREDELETE:
-		for band in bands:
-			RenderingServer.free_rid(band)
 
 func read_params() -> bool:
 	var values : Array = [shader_value("crest_width"), shader_value("trough_width"), shader_value("wobble"), shader_value("hull_center"), shader_value("hull_radii")]
@@ -116,14 +107,14 @@ func shader_value(parameter : StringName) -> Variant:
 
 func update_bands() -> void:
 	var outer : Rect2 = Rect2(bounds.position.floor() - Vector2.ONE, Vector2.ZERO).expand(bounds.end.ceil() + Vector2.ONE)
-	var hole : Rect2 = transform.affine_inverse() * boat.opaque_rect() if boat and not Engine.is_editor_hint() and Boat.pixel_aligned(self) else Rect2()
-	var rects : Array[Rect2] = Boat.band_rects(outer, hole) if not rings.is_empty() else []
-	for i in bands.size():
-		RenderingServer.canvas_item_clear(bands[i])
-		if i < rects.size() and rects[i].has_area():
-			RenderingServer.canvas_item_set_clip(bands[i], true)
-			RenderingServer.canvas_item_set_custom_rect(bands[i], true, rects[i])
-			RenderingServer.canvas_item_add_rect(bands[i], bounds, Color.WHITE)
+	var hole : Rect2 = transform.affine_inverse() * boat.opaque_rect() if boat and not Engine.is_editor_hint() and CanvasClip.pixel_aligned(self) else Rect2()
+	var rects : Array[Rect2] = []
+	if not rings.is_empty():
+		rects = CanvasClip.band_rects(outer, hole)
+	bands.record(rects, draw_band)
+
+func draw_band(item : RID) -> void:
+	RenderingServer.canvas_item_add_rect(item, bounds, Color.WHITE)
 
 func build() -> void:
 	if not is_node_ready() or not deckTexture or not frontTexture:

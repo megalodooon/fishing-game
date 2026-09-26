@@ -13,40 +13,12 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_81jie"]
 resource_local_to_scene = true
 shader = ExtResource("3_f7fq8")
-shader_parameter/scroll = 0.0
-shader_parameter/seed_offset = Vector2(0, 0)
-shader_parameter/depth_scale = 90.0
-shader_parameter/depth_contrast = 1.4
-shader_parameter/depth_bias = 0.0
-shader_parameter/color_bands = 6
-shader_parameter/relief = 0.6
-shader_parameter/light_direction = Vector2(-0.7, -0.7)
-shader_parameter/grain = 0.04
-shader_parameter/speckle_density = 0.03
-shader_parameter/speckle_strength = 0.12
-shader_parameter/fog_color = Color(0.1, 0.2, 0.28, 1)
-shader_parameter/fog_amount = 0.3
-shader_parameter/ripple_scale = 5.0
-shader_parameter/ripple_angle = 0.4
-shader_parameter/ripple_strength = 0.06
-shader_parameter/ripple_warp = 1.5
-shader_parameter/ripple_max_depth = 0.45
-shader_parameter/grass_cell = 12.0
-shader_parameter/grass_density = 0.3
-shader_parameter/grass_depth = Vector2(0.2, 0.65)
-shader_parameter/grass_softness = 0.08
-shader_parameter/grass_blades = Vector2(3, 6)
-shader_parameter/grass_height = Vector2(2, 4)
-shader_parameter/grass_spread = 3.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_56kpk"]
 shader = ExtResource("2_8sb1p")
 shader_parameter/shallow_color = Color(0.18, 0.62, 0.78, 1)
 shader_parameter/deep_color = Color(0.04, 0.17, 0.36, 1)
 shader_parameter/caustic_color = Color(0.8, 1, 1, 1)
-shader_parameter/depth_scale = 500.0
-shader_parameter/depth_contrast = 2.0670000981825
-shader_parameter/depth_speed = 0.01
 shader_parameter/wave_scale = 160.0
 shader_parameter/wave_strength = 6.0
 shader_parameter/wave_speed = 0.8
@@ -54,10 +26,7 @@ shader_parameter/clarity = 0.55
 shader_parameter/refraction_strength = 2.5
 shader_parameter/caustic_amount = 0.5730000272175
 shader_parameter/caustic_cell_size = 6.0
-shader_parameter/caustic_speed = 0.36
 shader_parameter/caustic_sharpness = 4.1130001478675
-shader_parameter/caustic_coverage = 75.0
-shader_parameter/caustic_patch_size = 48.0
 shader_parameter/scroll = Vector2(0, 0)
 
 [node name="BasicOcean" type="Node2D" unique_id=548284199 node_paths=PackedStringArray("sprite", "ground", "decorationLayers")]

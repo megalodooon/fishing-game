@@ -42,7 +42,7 @@ func crop() -> void:
 		used = used.merge(edgeTexture.get_image().get_used_rect())
 	var bounds : Rect2i = used.grow(CROP_MARGIN).intersection(full)
 	var corner : Vector2 = offset - (Vector2(full.size) / 2.0 if centered else Vector2.ZERO)
-	Boat.clip_to_rect(self, Rect2(corner + Vector2(bounds.position), bounds.size))
+	CanvasClip.clip_to_rect(self, Rect2(corner + Vector2(bounds.position), bounds.size))
 
 func bake() -> void:
 	if not texture or not material:

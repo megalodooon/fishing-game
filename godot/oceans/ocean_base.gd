@@ -106,9 +106,10 @@ var fieldsViewport : SubViewport
 var cellsAViewport : SubViewport
 var cellsBViewport : SubViewport
 var waterTexture : Texture2D
-var bands : Array[RID] = []
+var bands : CanvasClip
 var bandHole : Rect2
 var bandsDirty : bool = true
+var uniformNames : Dictionary = {}
 #------------------------#
 
 
@@ -125,16 +126,7 @@ func _ready() -> void:
 	if sprite and sprite.texture and not Engine.is_editor_hint():
 		waterTexture = sprite.texture
 		sprite.texture = null
-		for i in 4:
-			var band : RID = RenderingServer.canvas_item_create()
-			RenderingServer.canvas_item_set_parent(band, sprite.get_canvas_item())
-			RenderingServer.canvas_item_set_use_parent_material(band, true)
-			bands.append(band)
-
-func _notification(what : int) -> void:
-	if what == NOTIFICATION_PREDELETE:
-		for band in bands:
-			RenderingServer.free_rid(band)
+		bands = CanvasClip.new(sprite)
 
 func _process(delta : float) -> void:
 	var distance : float = (boat.speed if boat and not Engine.is_editor_hint() else fallbackSpeed) * delta
@@ -151,22 +143,21 @@ func water_texture() -> Texture2D:
 	return waterTexture if waterTexture else (sprite.texture if sprite else null)
 
 func update_bands() -> void:
-	if bands.is_empty():
+	if not bands:
 		return
-	var hole : Rect2 = sprite.global_transform.affine_inverse() * (boat.global_transform * boat.opaque_rect()) if boat and Boat.pixel_aligned(sprite) else Rect2()
+	var hole : Rect2 = sprite.global_transform.affine_inverse() * (boat.global_transform * boat.opaque_rect()) if boat and CanvasClip.pixel_aligned(sprite) else Rect2()
 	if hole == bandHole and not bandsDirty:
 		return
 	bandHole = hole
 	bandsDirty = false
+	bands.record(CanvasClip.band_rects(water_rect(), hole), draw_band)
+
+func water_rect() -> Rect2:
 	var size : Vector2 = waterTexture.get_size()
-	var rect : Rect2 = Rect2(sprite.offset - (size / 2.0 if sprite.centered else Vector2.ZERO), size)
-	var rects : Array[Rect2] = Boat.band_rects(rect, hole)
-	for i in bands.size():
-		RenderingServer.canvas_item_clear(bands[i])
-		if i < rects.size() and rects[i].has_area():
-			RenderingServer.canvas_item_set_clip(bands[i], true)
-			RenderingServer.canvas_item_set_custom_rect(bands[i], true, rects[i])
-			RenderingServer.canvas_item_add_texture_rect_region(bands[i], rect, waterTexture.get_rid(), Rect2(Vector2.ZERO, size), Color(1, 1, 1), false, false)
+	return Rect2(sprite.offset - (size / 2.0 if sprite.centered else Vector2.ZERO), size)
+
+func draw_band(item : RID) -> void:
+	RenderingServer.canvas_item_add_texture_rect_region(item, water_rect(), waterTexture.get_rid(), Rect2(Vector2.ZERO, waterTexture.get_size()), Color(1, 1, 1), false, false)
 
 func update_fields() -> void:
 	if not sprite or not water_texture() or not fieldsViewport:
@@ -211,7 +202,16 @@ func resize_pass(viewport : SubViewport, texels : Vector2i) -> void:
 		(viewport.get_child(0) as ColorRect).size = texels
 
 func update_shader(parameter: String, value: Variant):
-	if sprite:
-		sprite.material.set_shader_parameter(parameter, value)
-	for passMaterial in [fieldsMaterial, cellsAMaterial, cellsBMaterial]:
-		passMaterial.set_shader_parameter(parameter, value)
+	for target in [sprite.material if sprite else null, fieldsMaterial, cellsAMaterial, cellsBMaterial]:
+		if target is ShaderMaterial and declares(target, parameter):
+			target.set_shader_parameter(parameter, value)
+
+func declares(target : ShaderMaterial, parameter : String) -> bool:
+	if not target.shader:
+		return true
+	if Engine.is_editor_hint() or not uniformNames.has(target.shader):
+		var names : Dictionary = {}
+		for uniform in target.shader.get_shader_uniform_list():
+			names[uniform["name"]] = true
+		uniformNames[target.shader] = names
+	return uniformNames[target.shader].has(parameter)
