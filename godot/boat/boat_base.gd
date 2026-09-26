@@ -2,7 +2,7 @@ extends Node2D
 class_name Boat
 
 const CLIP_MARGIN : int = 4
-const HOLE_MARGIN : float = 2.0
+const HOLE_MARGIN : float = 1.0
 
 #------------------------#
 @export var visuals : Node2D
@@ -35,7 +35,7 @@ var faded : bool = false
 var usedRects : Dictionary = {}
 var fadeTween : Tween
 var appliedMotion : float = -1.0
-var opaqueRect : Variant = null
+var opaqueTexels : Variant = null
 #------------------------#
 
 
@@ -45,14 +45,27 @@ func _ready() -> void:
 	if visuals:
 		for sprite : Sprite2D in visuals.find_children("*", "Sprite2D", true, false):
 			if sprite.texture and not sprite is BoatWaterline:
-				CanvasClip.clip_to_rect(sprite, CanvasClip.art_rect(sprite, CLIP_MARGIN))
+				CanvasClip.clip_to_art(sprite, CLIP_MARGIN)
 
 func opaque_rect() -> Rect2:
-	if opaqueRect == null:
-		opaqueRect = find_opaque_rect()
-	return opaqueRect
+	var waterline : BoatWaterline = deck as BoatWaterline
+	if not waterline or not waterline.texture:
+		return Rect2()
+	if opaqueTexels == null:
+		opaqueTexels = find_opaque_texels()
+		if not waterline.texture_changed.is_connected(forget_opaque_texels):
+			waterline.texture_changed.connect(forget_opaque_texels)
+	if not opaqueTexels.has_area():
+		return Rect2()
+	var size : Vector2 = waterline.texture.get_size()
+	var corner : Vector2 = waterline.offset - (size / 2.0 if waterline.centered else Vector2.ZERO)
+	var rect : Rect2 = Rect2(corner + opaqueTexels.position, opaqueTexels.size)
+	return CanvasClip.inner_rect(global_transform.affine_inverse() * waterline.global_transform, rect).grow(-HOLE_MARGIN)
 
-func find_opaque_rect() -> Rect2:
+func forget_opaque_texels() -> void:
+	opaqueTexels = null
+
+func find_opaque_texels() -> Rect2:
 	var waterline : BoatWaterline = deck as BoatWaterline
 	var shaded : ShaderMaterial = waterline.material as ShaderMaterial if waterline else null
 	if not shaded or not waterline.texture:
@@ -99,11 +112,7 @@ func find_opaque_rect() -> Rect2:
 			y1 = mini(y1, limits[x1])
 			if y1 > y0 and (x1 - x0 + 1) * (y1 - y0) > best.get_area():
 				best = Rect2i(x0, y0, x1 - x0 + 1, y1 - y0)
-	if not best.has_area():
-		return Rect2()
-	var corner : Vector2 = waterline.offset - (Vector2(width, image.get_height()) / 2.0 if waterline.centered else Vector2.ZERO)
-	var local : Rect2 = (global_transform.affine_inverse() * waterline.global_transform) * Rect2(corner + Vector2(best.position), best.size)
-	return local.grow(-HOLE_MARGIN)
+	return Rect2(best)
 
 func _process(delta : float) -> void:
 	var throttle : float = Input.get_axis("slow_down", "speed_up")

@@ -21,9 +21,10 @@ var flow : float = 0.0
 
 func _ready() -> void:
 	texture_changed.connect(bake)
-	bake()
 	if not Engine.is_editor_hint():
-		crop()
+		child_entered_tree.connect(crop.unbind(1))
+		child_exiting_tree.connect(crop.unbind(1))
+	bake()
 
 func _process(delta : float) -> void:
 	var visuals : Node2D = get_parent() as Node2D
@@ -34,15 +35,8 @@ func _process(delta : float) -> void:
 		RenderingServer.material_set_param(material.get_rid(), "flow", flow)
 
 func crop() -> void:
-	if not texture or region_enabled:
-		return
-	var full : Rect2i = Rect2i(Vector2i.ZERO, Vector2i(texture.get_size()))
-	var used : Rect2i = texture.get_image().get_used_rect()
-	if edgeTexture:
-		used = used.merge(edgeTexture.get_image().get_used_rect())
-	var bounds : Rect2i = used.grow(CROP_MARGIN).intersection(full)
-	var corner : Vector2 = offset - (Vector2(full.size) / 2.0 if centered else Vector2.ZERO)
-	CanvasClip.clip_to_rect(self, Rect2(corner + Vector2(bounds.position), bounds.size))
+	if texture and not region_enabled:
+		CanvasClip.clip_to_rect(self, CanvasClip.art_rect(self, CROP_MARGIN, edgeTexture.get_image().get_used_rect() if edgeTexture else Rect2i()))
 
 func bake() -> void:
 	if not texture or not material:
@@ -69,3 +63,5 @@ func bake() -> void:
 				weight += w
 		smoothed[x] = maxf(total / weight, edges[x])
 	material.set_shader_parameter("edges", smoothed)
+	if not Engine.is_editor_hint():
+		crop()

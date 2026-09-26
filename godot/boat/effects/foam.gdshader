@@ -3,8 +3,10 @@ render_mode unshaded;
 
 #include "res://shaders/noise.gdshaderinc"
 
-// CanvasGroup material: the child particles only paint foam density (alpha);
-// this turns it into a bubbly sheet that goes from solid to lace to nothing.
+// CanvasGroup material: the child particles only paint foam density (keep them
+// white; density is read from red because the web renderer does not accumulate
+// alpha inside canvas groups). This turns it into a bubbly sheet that goes from
+// solid to lace to nothing.
 uniform sampler2D screen_texture : hint_screen_texture, repeat_disable, filter_nearest;
 uniform vec4 foam_color : source_color = vec4(0.93, 0.98, 1.0, 0.85);
 uniform vec4 shade_color : source_color = vec4(0.62, 0.8, 0.88, 1.0);

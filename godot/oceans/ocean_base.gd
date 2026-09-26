@@ -107,7 +107,7 @@ var cellsAViewport : SubViewport
 var cellsBViewport : SubViewport
 var waterTexture : Texture2D
 var bands : CanvasClip
-var bandKey : Array = []
+var bandRects : Array[Rect2] = []
 var uniformNames : Dictionary = {}
 var fieldsLayout : Array = []
 #------------------------#
@@ -145,12 +145,12 @@ func water_texture() -> Texture2D:
 func update_bands() -> void:
 	if not bands:
 		return
-	var key : Array = [sprite.get_global_transform_with_canvas(), sprite.get_viewport().get_final_transform(), boat.global_transform if boat else Transform2D()]
-	if key == bandKey:
-		return
-	bandKey = key
 	var hole : Rect2 = sprite.global_transform.affine_inverse() * (boat.global_transform * boat.opaque_rect()) if boat and CanvasClip.pixel_aligned(sprite) else Rect2()
-	bands.record(CanvasClip.band_rects(water_rect(), hole), draw_band)
+	var rects : Array[Rect2] = CanvasClip.band_rects(water_rect(), hole)
+	if rects == bandRects:
+		return
+	bandRects = rects
+	bands.record(rects, draw_band)
 
 func water_rect() -> Rect2:
 	var size : Vector2 = waterTexture.get_size()
