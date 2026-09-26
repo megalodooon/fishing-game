@@ -45,7 +45,6 @@ var paramsRead : bool = false
 
 
 func _ready() -> void:
-	bands = CanvasClip.new(self)
 	build()
 	for i in floori(lifetime / interval):
 		rings.append(Vector4(global_position.x, global_position.y, lifetime - (i + 1) * interval, 1.0))
@@ -106,6 +105,8 @@ func shader_value(parameter : StringName) -> Variant:
 	return value if value != null else RenderingServer.shader_get_parameter_default(material.shader.get_rid(), parameter)
 
 func update_bands() -> void:
+	if not bands:
+		bands = CanvasClip.new(self)
 	var outer : Rect2 = Rect2(bounds.position.floor() - Vector2.ONE, Vector2.ZERO).expand(bounds.end.ceil() + Vector2.ONE)
 	var hole : Rect2 = transform.affine_inverse() * boat.opaque_rect() if boat and not Engine.is_editor_hint() and CanvasClip.pixel_aligned(self) else Rect2()
 	var rects : Array[Rect2] = []
