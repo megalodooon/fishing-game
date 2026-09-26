@@ -2,6 +2,10 @@
 extends HeldItem
 class_name FishingRod
 
+# The bobber hit the water. score is 1 (edge of the spot) to 5 (dead center),
+# or 0 when it missed every fishing spot, and then spot is null.
+signal landed(spot : FishingSpot, score : int)
+
 enum Mode { HOLD, FLIGHT, WATER, REEL }
 
 #------------------------#
@@ -87,6 +91,10 @@ var targetGoal : Vector2
 var targetAlpha : float = 0.0
 var targetShown : bool = false
 var time : float = 0.0
+var castScore : int = 0
+var castSpot : FishingSpot:
+	get:
+		return castSpot if is_instance_valid(castSpot) else null
 #------------------------#
 
 
@@ -272,6 +280,7 @@ func fly(anchor : Vector3, delta : float) -> void:
 		previous[last] = points[last]
 		length = anchor.distance_to(points[last]) * slack
 		bobber.splash()
+		score_cast()
 
 func flight_point(t : float) -> Vector3:
 	return flightStart + flightVelocity * t - Vector3(0.0, 0.0, 0.5 * castGravity * t * t)
@@ -400,6 +409,14 @@ func launch(point : Vector2) -> void:
 	flightTime = 0.0
 	mode = Mode.FLIGHT
 	castBehind = holder.is_behind_occluders()
+	castSpot = null
+	castScore = 0
+
+func score_cast() -> void:
+	var point : Vector2 = get_bobber_point()
+	castSpot = FishingSpot.find_at(get_tree(), point)
+	castScore = castSpot.score_at(point) if castSpot else 0
+	landed.emit(castSpot, castScore)
 
 func reel() -> void:
 	if mode == Mode.WATER or mode == Mode.FLIGHT:

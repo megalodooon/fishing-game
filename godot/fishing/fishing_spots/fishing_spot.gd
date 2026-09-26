@@ -2,6 +2,8 @@
 extends Node2D
 class_name FishingSpot
 
+const GROUP : StringName = &"fishing_spots"
+const MAX_SCORE : int = 5
 const RING_START : float = 1.5
 const BUBBLE_FRAMES : int = 3
 
@@ -50,6 +52,8 @@ func _ready() -> void:
 	framePhase = random.randf()
 	if Engine.is_editor_hint():
 		presence = 1.0
+		return
+	add_to_group(GROUP)
 
 func _process(delta : float) -> void:
 	age += delta
@@ -124,3 +128,31 @@ func diagonal_closeness(pixel : Vector2, shape : Vector2i) -> float:
 
 func pixel_radius(value : float) -> Vector2i:
 	return Vector2i(roundi(value), roundi(value * squash))
+
+# How far a point is from the middle of the spot: 0 in the middle, 1 at the
+# edge. The spot is a circle on the water seen at an angle, so up and down
+# count as much as the squashed look suggests.
+func center_distance(point : Vector2) -> float:
+	var reach : float = size * presence
+	if reach <= 0.0:
+		return INF
+	var offset : Vector2 = point - global_position
+	return Vector2(offset.x, offset.y / squash).length() / reach
+
+# 5 in the middle down to 1 at the edge, in equal steps. 0 outside the spot.
+func score_at(point : Vector2) -> int:
+	var distance : float = center_distance(point)
+	if distance > 1.0:
+		return 0
+	return clampi(MAX_SCORE - floori(distance * MAX_SCORE), 1, MAX_SCORE)
+
+# The spot whose middle is closest to the point, if the point is inside one.
+static func find_at(tree : SceneTree, point : Vector2) -> FishingSpot:
+	var best : FishingSpot = null
+	var closest : float = 1.0
+	for spot : FishingSpot in tree.get_nodes_in_group(GROUP):
+		var distance : float = spot.center_distance(point)
+		if distance <= closest:
+			best = spot
+			closest = distance
+	return best
