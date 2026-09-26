@@ -22,6 +22,9 @@ listed under [Tried and rejected](#tried-and-rejected).
 | GPU time per frame, web renderer (average of 4 test scenes) | 7.19 ms | 5.79 ms | **-19.5% (1.24x faster)** |
 | GPU time per frame at a vsync-locked 60 fps (desktop, day) | 7.20 ms | 6.17 ms | -14.3% (1.17x), and at a lower GPU clock |
 | CPU time of the whole game process per frame at 60 fps (desktop, day) | 4.87 ms | 4.61 ms | -5.4% (1.06x) |
+| Frame time while sailing at cruise speed, uncapped | 9.36 ms (107 fps) | 8.53 ms (117 fps) | **-8.9% (1.10x faster)** |
+| Frame time while sailing at full speed, uncapped | 10.02 ms (100 fps) | 8.27 ms (121 fps) | **-17.5% (1.21x faster)** |
+| Slowest 1% of frames at full speed | 20.0 ms | 15.2 ms | **-24% (1.32x faster)** |
 | Game logic per frame (CPU, average of 3 scenes) | 0.86 ms | 0.74 ms | -14% (1.17x faster) |
 | Time to the first frame | 342 ms | 210 ms | **-38.5% (1.63x faster)** |
 | Loading plus the first 10 frames | 914 ms | 831 ms | -9.1% (1.10x faster) |
@@ -29,8 +32,9 @@ listed under [Tried and rejected](#tried-and-rejected).
 | Pixels that changed in the 23 test frames (both renderers) | | 0 | identical |
 
 In short, the GPU does about 28% less work per frame, and about 35% less
-while the boat is stopped. The game starts faster. The web version is live
-and redeploys itself on every push.
+while the boat is stopped. Frames while sailing are 10-21% faster, and the
+slowest frames are up to 24% shorter. The game starts faster. The web
+version is live and redeploys itself on every push.
 
 ## Web version
 
@@ -77,8 +81,8 @@ interleaved runs of 300 frames per scene. The four test scenes:
 - **Fishing** has a cast line and the bobber in the water.
 - **Stopped** is the boat at anchor.
 
-Each table compares a commit with the one before it. These step-by-step
-numbers come from one measurement session. The [Whole project](#whole-project)
+The GPU tables for changes 1-4 compare each commit with the one before it.
+These step-by-step numbers come from one measurement session. The [Whole project](#whole-project)
 numbers come from a separate final session, which is why the steps do not
 multiply out to the total exactly.
 
@@ -217,7 +221,56 @@ steps. The water bands are only re-recorded when their rectangles change.
   `remove_upgrade`, `BoatUpgrade`) is unused today but is the planned
   upgrade system; `OceanGround.newSeedButton` is an editor tool button.
 
-### 8. Web build (`6fcd30e`)
+### 8. Stop resizing the caustic passes while scrolling (`bb0a7c4`)
+
+The caustics come from two small SubViewports, about 38x24 and 31x19
+texels, that hold one animated value per caustic cell. Their size was
+computed from the range of cells under the water at the current scroll
+position, and that range flips between two sizes as the ocean scrolls.
+Every flip reallocated a render target. That happened about 117 times per
+200 pixels of scrolling: 6 times a second at cruise speed, and 29 at full
+speed. Each one cost about 0.65 ms of main-thread time, plus rebuilding
+the texture on the GPU side.
+
+The size now comes from the area's size alone, with room for every scroll
+position, so it never changes while sailing. The water shader reads the
+cells with `texelFetch` at absolute cell coordinates and never reads the
+extra row and column, so the picture is bit-identical.
+
+| Metric | Before | After | Change |
+|---|---|---|---|
+| Render-target reallocations per 200 px of scrolling | 117 | 0 | gone |
+| Ocean `update_fields`, average per frame at cruise speed | 75 us | 17 us | -77% (4.3x) |
+| Frame time at cruise speed, uncapped (mean) | 8.69 ms | 8.49 ms | -2.3% (1.02x) |
+| Slowest 1% of frames at cruise speed | 18.3 ms | 15.6 ms | -15% (1.17x) |
+| Frame time at full speed, uncapped (mean) | 9.14 ms | 8.28 ms | -9.4% (1.10x) |
+| Slowest 1% of frames at full speed | 19.0 ms | 15.2 ms | -20% (1.25x) |
+
+Frame times are wall-clock times per frame with vsync off. Each value is
+the mean of two alternating runs of 3000 frames per version.
+
+### 9. Faster fishing line constraints (`10c52a3`)
+
+The rod's update is the most expensive script in the game. About 40% of it
+is the loop that relaxes the fishing line, a 13-point rope, 6 times per
+physics tick. In that loop the end segments multiplied their correction by
+0 or 1 before adding it, and every segment picked its weights with two
+branches. The loop now handles the fixed first point, the last segment and
+the middle segments separately, with the same float operations in the same
+order.
+
+The rope is bit-identical. Its full state (points, velocities, bend,
+tension, and the drawn line) was recorded for 570 physics ticks of holding,
+casting, floating and reeling, and every tick matches the old code. A
+deliberate change of 0.00005% in one factor makes 566 of the 570 ticks
+differ, so the check is sensitive enough.
+
+| Function (per physics tick) | Before | After | Change |
+|---|---|---|---|
+| Line constraint loop | 52 us | 39 us | -26% (1.36x) |
+| Whole rod update | 130 us | 110 us | -15% (1.18x) |
+
+### 10. Web build (`6fcd30e`)
 
 See [Web version](#web-version). This commit is also the "before" of every
 comparison in this report (it only adds the export setup and the foam fix,
@@ -226,8 +279,9 @@ which is pixel-identical on desktop).
 ## Whole project
 
 The original build (`6fcd30e`) against the final build (`e7fccc7`), measured
-together in one final session. The commits after `e7fccc7` don't change what is
-drawn (the pixel test is identical), so these numbers still apply.
+together in one final session. Changes 8 and 9 came after that session. They
+don't change what is drawn, and they only make the game faster; their own
+sections and the sailing table below show their effect.
 
 ### GPU time per frame, desktop renderer (D3D12)
 
@@ -251,6 +305,8 @@ drawn (the pixel test is identical), so these numbers still apply.
 
 ### Frame time with vsync off
 
+From the final GPU session (before changes 8 and 9), in the four test scenes.
+
 | Scene | Before | After | Change |
 |---|---|---|---|
 | Desktop renderer, day | 9.08 ms (110 fps) | 8.75 ms (114 fps) | -3.6% (1.04x) |
@@ -262,7 +318,27 @@ On this laptop, the uncapped frame time is longer than the GPU time. It is
 set mostly by costs these changes don't touch, on the CPU side and in
 presenting the frame. So the uncapped frame rate rises less than the GPU
 time falls. In normal play the game runs at 60 fps with vsync, and there the
-saving shows up differently (next table).
+saving shows up differently (see [At 60 fps](#at-60-fps-normal-play)).
+
+### Frame time while sailing (vsync off)
+
+This table includes changes 8 and 9. Each value is the wall-clock time per
+frame over 3000 frames, as the mean of two alternating runs per version.
+
+| Speed | Measure | Before | After | Change |
+|---|---|---|---|---|
+| Cruise | Mean | 9.36 ms (107 fps) | 8.53 ms (117 fps) | -8.9% (1.10x) |
+| Cruise | Median | 8.56 ms | 8.23 ms | -3.8% (1.04x) |
+| Cruise | Slowest 1% | 18.34 ms | 15.42 ms | -15.9% (1.19x) |
+| Full | Mean | 10.02 ms (100 fps) | 8.27 ms (121 fps) | -17.5% (1.21x) |
+| Full | Median | 9.43 ms | 7.75 ms | -17.8% (1.22x) |
+| Full | Slowest 1% | 20.03 ms | 15.15 ms | -24.4% (1.32x) |
+
+The slow frames that remain (with vsync off) are spread over ordinary frames,
+not tied to any game event such as a seabed re-render or a new column of
+decorations. Each one is followed by an unusually fast frame. That pattern
+points at the graphics driver's frame presentation rather than at the game,
+and vsync absorbs it in normal play.
 
 ### At 60 fps (normal play)
 
@@ -315,13 +391,16 @@ table lists the functions that changed, plus the new band bookkeeping.
 | Ripple bands (new) | | 24 us | |
 
 About every sixth frame at cruise speed, the ocean and the ground take a
-whole-pixel scroll step. On those frames they push their settings, which
-costs about as much as before.
+whole-pixel scroll step and push their settings. Before change 8, about
+half of those steps also reallocated the caustic render targets. Change 8
+shows the average cost including the steps.
 
-Adding it up, the scripts do about the same work per frame as before. The
-bookkeeping for the clipped bands (about 0.045 ms per frame) costs about
-what the other script changes saved. It pays for about 0.5 ms of GPU time
-per frame (changes 3 and 4).
+Before changes 8 and 9, the scripts did about the same work per frame as the
+original. The bookkeeping for the clipped bands (about 0.045 ms per frame)
+cost about what the other script changes saved, and it pays for about 0.5 ms
+of GPU time per frame (changes 3 and 4). Changes 8 and 9 then removed about
+another 0.08 ms of script time per frame at cruise speed, and more at full
+speed.
 
 ### Startup
 
@@ -347,22 +426,32 @@ Most of this comes from the faster ripple distance field (change 5).
 ## How it was verified
 
 - **Pixel-exact regression test.** A capture script runs the test scene at a
-  fixed 60 fps, with a fixed random seed and a fixed aim point. The lantern
-  flicker is turned off, because the original flicker used the wall clock.
+  fixed 60 fps, with a fixed random seed and a fixed aim point that is set
+  before every physics tick. The lantern flicker is turned off, because the
+  original flicker used the wall clock.
   The script saves 23 frames covering:
   - the first frames, day, sunrise, dusk, and night;
   - casting, and the bobber in the water;
   - walking behind the mast, and standing at the rim (shadow clipping);
   - the boat slowing down, stopped, stopped at night, and speeding up again.
 
-  Two runs of the same build are bit-identical, so any difference means a
-  real change. Against the original build, every kept change produces 23/23
-  identical frames on both renderers. The final build was checked again at
-  the end with the scripts in `tools/perf`.
+  Two runs of the same build are bit-identical, even with the mouse cursor
+  in different places, so any difference means a real change. Against the
+  original build, every kept change produces 23/23 identical frames on both
+  renderers. The final build was checked again at the end with the scripts
+  in `tools/perf`.
+
+  At first the script set the aim point only once per frame, after the
+  physics tick. So on the first tick, and right after the hand went idle,
+  the player aimed at the real mouse cursor. That was found and fixed at the
+  end (`4b9b3a9`). The flaw could only make identical builds look
+  different, never hide a real difference, so the earlier results stand.
 - **Mutation test.** At runtime, the test tilts and flips the boat, swaps
   the sail and deck textures, and attaches a new sprite to the mast. It checks
   that the clipping follows and that the frames still match the original
   build (7/7 identical on both renderers).
+- **Rope trace.** For change 9, the rope's full state was hashed on every
+  physics tick and compared with the old code: 570/570 identical.
 - **GPU timing.** The measure is
   `RenderingServer.viewport_get_measured_render_time_gpu`, summed over the
   main viewport and all internal SubViewports. Settings: vsync off,
@@ -416,7 +505,7 @@ godot --path godot --fullscreen -s "$PWD\tools\perf\startup.gd"
 | Split the foam into separate stern and bow canvas groups | Not exact (+-1 in a few hundred pixels) and slower (+0.3 ms): every canvas group has a fixed cost. |
 | Shrink the foam canvas group's margins | Moves the group's rectangle, which shifts the foam's noise pattern by +-1 in up to 28 pixels. |
 | Tint with `CanvasModulate` instead of the night overlay | The water and wake read the screen, so they would be darkened twice. |
-| Rewrite the fishing-line rope simulation (~0.1 ms CPU per physics frame) | Any restructuring changes floating-point rounding, which moves the line by fractions of a pixel. |
+| A deeper rewrite of the fishing-line rope simulation (reordering or combining its math) | That changes floating-point rounding, which moves the line by fractions of a pixel. Change 9 instead removes work without changing any float operation. |
 | Lower-resolution caustics or ripples, fewer ripple rings, GPU particles for the foam, a frame-rate cap | All of these change how the game looks or feels. They are listed below as options for you to decide on. |
 
 ## What still costs the most
