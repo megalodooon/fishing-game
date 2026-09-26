@@ -107,9 +107,9 @@ var cellsAViewport : SubViewport
 var cellsBViewport : SubViewport
 var waterTexture : Texture2D
 var bands : CanvasClip
-var bandHole : Rect2
-var bandsDirty : bool = true
+var bandKey : Array = []
 var uniformNames : Dictionary = {}
+var fieldsLayout : Array = []
 #------------------------#
 
 
@@ -145,11 +145,11 @@ func water_texture() -> Texture2D:
 func update_bands() -> void:
 	if not bands:
 		return
-	var hole : Rect2 = sprite.global_transform.affine_inverse() * (boat.global_transform * boat.opaque_rect()) if boat and CanvasClip.pixel_aligned(sprite) else Rect2()
-	if hole == bandHole and not bandsDirty:
+	var key : Array = [sprite.get_global_transform_with_canvas(), sprite.get_viewport().get_final_transform(), boat.global_transform if boat else Transform2D()]
+	if key == bandKey:
 		return
-	bandHole = hole
-	bandsDirty = false
+	bandKey = key
+	var hole : Rect2 = sprite.global_transform.affine_inverse() * (boat.global_transform * boat.opaque_rect()) if boat and CanvasClip.pixel_aligned(sprite) else Rect2()
 	bands.record(CanvasClip.band_rects(water_rect(), hole), draw_band)
 
 func water_rect() -> Rect2:
@@ -165,10 +165,14 @@ func update_fields() -> void:
 	var margin : int = ceili(absf(wave_strength)) + 2
 	var texels : Vector2i = Vector2i(water_texture().get_size()) + Vector2i(margin, margin) * 2 + Vector2i.ONE
 	var origin : Vector2 = (sprite.global_position + scroll).floor() - Vector2(margin, margin)
-	resize_pass(fieldsViewport, texels)
-	RenderingServer.material_set_param(fieldsMaterial.get_rid(), "fields_origin", origin)
 	var rid : RID = sprite.material.get_rid()
 	RenderingServer.material_set_param(rid, "scroll", scroll)
+	var layout : Array = [origin, texels, caustic_cell_size, sprite.material]
+	if layout == fieldsLayout and not Engine.is_editor_hint():
+		return
+	fieldsLayout = layout
+	resize_pass(fieldsViewport, texels)
+	RenderingServer.material_set_param(fieldsMaterial.get_rid(), "fields_origin", origin)
 	RenderingServer.material_set_param(rid, "fields", fieldsViewport.get_texture().get_rid())
 	RenderingServer.material_set_param(rid, "fields_origin", origin)
 	RenderingServer.material_set_param(rid, "fields_size", Vector2(texels))
