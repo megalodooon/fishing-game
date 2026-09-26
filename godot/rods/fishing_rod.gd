@@ -65,6 +65,11 @@ enum Mode { HOLD, FLIGHT, WATER, REEL }
 @export_range(0.1, 4.0, 0.05, "or_greater", "suffix:x") var spotSizeScale : float = 1.0
 @export_range(0.1, 4.0, 0.05, "or_greater", "suffix:x") var spotLifetimeScale : float = 1.0
 
+@export_group("Bite")
+@export var perfectBiteDelay : Vector2 = Vector2(2.0, 4.0)
+@export var badBiteDelay : Vector2 = Vector2(10.0, 16.0)
+@export var biteWindow : float = 1.0
+
 @onready var sprite : Sprite2D = $Sprite
 @onready var line : Line2D = $Line
 @onready var target : Node2D = $Target
@@ -377,6 +382,10 @@ func spot_size_scale() -> float:
 
 func spot_lifetime_scale() -> float:
 	return spotLifetimeScale * (bobber.spotLifetimeScale if bobber else 1.0)
+
+func bite_delay(score : int) -> float:
+	var delays : Vector2 = badBiteDelay.lerp(perfectBiteDelay, clampf((score - 1) / (FishingSpot.MAX_SCORE - 1.0), 0.0, 1.0))
+	return randf_range(delays.x, delays.y)
 
 func find_landing(origin : Vector2, toward : Vector2, power : float) -> Variant:
 	var direction : Vector2 = origin.direction_to(toward) if origin.distance_squared_to(toward) > 0.01 else Vector2.RIGHT

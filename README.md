@@ -14,6 +14,7 @@ The web version is rebuilt and redeployed automatically on every push to `main`
 | Walk | W A S D |
 | Equip / unequip the rod | 1 |
 | Charge and cast | Hold and release the left mouse button |
+| Hook a fish | Left click while the ! is showing |
 | Reel in | Left or right click while the line is out |
 | Cancel a charge | Right click |
 | Speed up / slow down the boat | Right / left arrow |

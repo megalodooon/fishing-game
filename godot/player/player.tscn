@@ -14,6 +14,9 @@
 [ext_resource type="Script" uid="uid://bxehp2lrqtyvn" path="res://player/states/hand/reel.gd" id="12_reel"]
 [ext_resource type="Texture2D" uid="uid://ccwpmnurcm8ir" path="res://player/assets/shadow.png" id="13_shadow"]
 [ext_resource type="Shader" uid="uid://dwjgftfpviq66" path="res://shaders/floor_clip.gdshader" id="14_clip"]
+[ext_resource type="Script" path="res://player/states/hand/catch.gd" id="15_catch"]
+[ext_resource type="Script" path="res://components/callout/callout.gd" id="16_callout"]
+[ext_resource type="FontFile" path="res://ui/fonts/PressStart2P.ttf" id="17_font"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_shadow"]
 shader = ExtResource("14_clip")
@@ -145,6 +148,10 @@ script = ExtResource("11_fishing")
 unique_name_in_owner = true
 script = ExtResource("12_reel")
 
+[node name="Catch" type="Node" parent="HandStateMachine"]
+unique_name_in_owner = true
+script = ExtResource("15_catch")
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=2015660693]
 libraries/ = SubResource("AnimationLibrary_boad6")
 autoplay = &"idle"
@@ -159,3 +166,26 @@ unique_name_in_owner = true
 unique_name_in_owner = true
 position = Vector2(8, 1)
 texture = ExtResource("5_qjkh3")
+
+[node name="Callouts" type="CanvasLayer" parent="."]
+layer = 15
+follow_viewport_enabled = true
+
+[node name="Rating" type="Node2D" parent="Callouts"]
+unique_name_in_owner = true
+visible = false
+script = ExtResource("16_callout")
+font = ExtResource("17_font")
+fontSize = 4
+outlineWidth = 0.5
+offset = Vector2(0, -6)
+rise = 2.0
+
+[node name="BiteMark" type="Node2D" parent="Callouts"]
+unique_name_in_owner = true
+visible = false
+script = ExtResource("16_callout")
+font = ExtResource("17_font")
+offset = Vector2(0, -3)
+rise = 0.0
+bob = 1.0
