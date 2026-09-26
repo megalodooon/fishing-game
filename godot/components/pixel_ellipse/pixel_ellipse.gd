@@ -9,7 +9,6 @@ const PAD : float = 0.25
 
 #------------------------#
 static var outlines : Dictionary = {}
-static var fills : Dictionary = {}
 #------------------------#
 
 
@@ -36,17 +35,6 @@ static func outline(radius : Vector2i) -> PackedVector2Array:
 			corners.append(Vector2(cell) - Vector2(0.5, 0.5))
 	outlines[radius] = corners
 	return corners
-
-# The filled ellipse as one rect per row of pixels.
-static func rows(radius : Vector2i) -> Array[Rect2]:
-	if fills.has(radius):
-		return fills[radius]
-	var result : Array[Rect2] = []
-	for y in range(-radius.y, radius.y + 1):
-		var half : int = column_height(Vector2i(radius.y, radius.x), absi(y))
-		result.append(Rect2(-half - 0.5, y - 0.5, half * 2 + 1, 1.0))
-	fills[radius] = result
-	return result
 
 # A pixel at the bend of an L shaped step, which the line doesn't need because
 # its two neighbors already touch corner to corner.

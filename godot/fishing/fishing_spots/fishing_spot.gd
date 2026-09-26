@@ -4,8 +4,6 @@ class_name FishingSpot
 
 const GROUP : StringName = &"fishing_spots"
 const MAX_SCORE : int = 5
-const RING_START : float = 1.5
-const BUBBLE_FRAMES : int = 3
 
 #------------------------#
 @export var radius : float = 10.0
@@ -15,18 +13,12 @@ const BUBBLE_FRAMES : int = 3
 @export var resizeSpeed : float = 4.0
 
 @export_group("Look")
-@export_range(0.1, 1.0) var squash : float = 0.55
+@export_range(0.1, 1.0) var squash : float = 0.5
 @export var frameRate : float = 12.0
-@export var ringColors : PackedColorArray = PackedColorArray([Color(0.9, 0.99, 1.0, 1.0), Color(0.86, 0.97, 1.0, 0.72), Color(0.86, 0.97, 1.0, 0.45)])
 @export var ringSpeed : float = 4.0
-@export var ringInterval : Vector2 = Vector2(1.0, 1.2)
-@export_range(0.0, 1.0) var ringOpen : float = 0.45
-@export_range(0.0, 1.0) var farSideAge : float = 0.25
-@export var shadowColor : Color = Color(0.0, 0.06, 0.16, 0.17)
-@export_range(0.0, 1.0) var shadowSize : float = 0.55
-@export var bubbleColor : Color = Color(0.92, 0.99, 1.0, 1.0)
-@export var bubbleInterval : Vector2 = Vector2(0.4, 1.2)
-@export_range(0.0, 1.0) var bubbleSpread : float = 0.35
+@export var ringInterval : float = 1.0
+@export var ringColor : Color = Color(0.9, 0.98, 1.0, 1.0)
+@export_range(1, 8) var fadeSteps : int = 4
 
 var sizeScale : float = 1.0
 var lifetimeScale : float = 1.0
@@ -37,8 +29,6 @@ var age : float = 0.0
 var life : float = 0.0
 var rings : PackedFloat32Array = PackedFloat32Array()
 var ringTimer : float = 0.0
-var bubbles : PackedVector3Array = PackedVector3Array()
-var bubbleTimer : float = 0.0
 var frame : int = -1
 var framePhase : float = 0.0
 var random : RandomNumberGenerator = RandomNumberGenerator.new()
@@ -50,6 +40,7 @@ func _ready() -> void:
 	size = target_size()
 	life = random.randf_range(lifetime.x, lifetime.y)
 	framePhase = random.randf()
+	ringTimer = random.randf() * ringInterval * 0.5
 	if Engine.is_editor_hint():
 		presence = 1.0
 		return
@@ -66,16 +57,16 @@ func _process(delta : float) -> void:
 			queue_free()
 			return
 	update_rings(delta)
-	bubbleTimer -= delta
 	var tick : int = floori(age * frameRate + framePhase)
 	if tick != frame:
 		frame = tick
-		update_bubbles()
 		queue_redraw()
 
 func target_size() -> float:
 	return radius * (1.0 if Engine.is_editor_hint() else sizeScale)
 
+# No new rings start after this, the ones already out finish spreading, and
+# the spot frees itself once they are gone.
 func disappear() -> void:
 	leaving = true
 
@@ -86,48 +77,25 @@ func update_rings(delta : float) -> void:
 			rings.remove_at(i)
 	ringTimer -= delta
 	if ringTimer <= 0.0:
-		ringTimer += maxf(random.randf_range(ringInterval.x, ringInterval.y), 0.05)
+		ringTimer += maxf(ringInterval, 0.05)
 		if not leaving:
-			rings.append(RING_START)
-
-func update_bubbles() -> void:
-	for i in range(bubbles.size() - 1, -1, -1):
-		if frame - int(bubbles[i].z) >= BUBBLE_FRAMES:
-			bubbles.remove_at(i)
-	if bubbleTimer <= 0.0 and not leaving:
-		bubbleTimer = random.randf_range(bubbleInterval.x, bubbleInterval.y)
-		var offset : Vector2 = Vector2.from_angle(random.randf() * TAU) * sqrt(random.randf()) * size * bubbleSpread
-		bubbles.append(Vector3(roundf(offset.x), roundf(offset.y * squash), frame))
+			rings.append(0.0)
 
 func _draw() -> void:
-	if size <= 0.0 or ringColors.is_empty():
-		return
-	var shade : float = size * shadowSize * presence
-	for reach : float in [shade, shade * 0.6]:
-		if reach >= 0.5:
-			for row in PixelEllipse.rows(pixel_radius(reach)):
-				draw_rect(row, shadowColor)
 	for ring in rings:
-		var near : float = clampf(ring / size, 0.0, 1.0)
-		var far : float = minf(near + farSideAge, 1.0)
-		var shape : Vector2i = pixel_radius(ring)
-		for corner in PixelEllipse.outline(shape):
-			var progress : float = far if corner.y < -0.5 else near
-			var gap : float = clampf((progress - ringOpen) / maxf(1.0 - ringOpen, 0.001), 0.0, 1.0) * PI / 4.0
-			if gap <= 0.0 or diagonal_closeness(corner + Vector2(0.5, 0.5), shape) > gap:
-				draw_rect(Rect2(corner, Vector2.ONE), ringColors[mini(floori(progress * ringColors.size()), ringColors.size() - 1)])
-	for bubble in bubbles:
-		var step : int = frame - int(bubble.z)
-		draw_rect(Rect2(bubble.x - 0.5, bubble.y - 0.5, 1.0, 1.0), bubbleColor if step == 1 else Color(bubbleColor, bubbleColor.a * 0.5))
+		var shape : Vector2i = pixel_shape(ring)
+		var strength : float = roundf(sin(clampf(ring / size, 0.0, 1.0) * PI) * fadeSteps) / fadeSteps
+		if shape.y > 0 and strength > 0.0:
+			var color : Color = Color(ringColor, ringColor.a * strength)
+			for corner in PixelEllipse.outline(shape):
+				draw_rect(Rect2(corner, Vector2.ONE), color)
 
-# How far a pixel on an outline is from the nearest of the top, bottom, left
-# and right points, as an angle: 0 there, up to PI / 4 on the diagonals.
-func diagonal_closeness(pixel : Vector2, shape : Vector2i) -> float:
-	var angle : float = absf(atan2(pixel.y / (shape.y + PixelEllipse.PAD), pixel.x / (shape.x + PixelEllipse.PAD)))
-	return absf(fposmod(angle + PI / 4.0, PI / 2.0) - PI / 4.0)
-
-func pixel_radius(value : float) -> Vector2i:
-	return Vector2i(roundi(value), roundi(value * squash))
+# The pixel ellipse of a circle with this radius on the water. Rings grow a
+# whole row at a time and take their width from it, so every ring keeps the
+# same angled look (2 to 1 with the default squash).
+func pixel_shape(reach : float) -> Vector2i:
+	var height : int = roundi(reach * squash)
+	return Vector2i(roundi(height / squash), height)
 
 # How far a point is from the middle of the spot: 0 in the middle, 1 at the
 # edge. The spot is a circle on the water seen at an angle, so up and down
