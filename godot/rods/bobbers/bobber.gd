@@ -10,6 +10,10 @@ class_name Bobber
 @export var chargeTimeOffset : float = 0.0
 @export var rangeOffset : float = 0.0
 
+@export_group("Fishing Spots")
+@export_range(0.1, 4.0, 0.05, "or_greater", "suffix:x") var spotSizeScale : float = 1.0
+@export_range(0.1, 4.0, 0.05, "or_greater", "suffix:x") var spotLifetimeScale : float = 1.0
+
 @export_group("Rings")
 @export var ringColor : Color = Color(0.9, 0.98, 1.0, 0.4)
 @export var ringSize : float = 5.0

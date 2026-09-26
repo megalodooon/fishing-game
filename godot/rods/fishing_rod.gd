@@ -56,6 +56,10 @@ enum Mode { HOLD, FLIGHT, WATER, REEL }
 @export var reelSpeed : float = 120.0
 @export var reelAcceleration : float = 480.0
 
+@export_group("Fishing Spots")
+@export_range(0.1, 4.0, 0.05, "or_greater", "suffix:x") var spotSizeScale : float = 1.0
+@export_range(0.1, 4.0, 0.05, "or_greater", "suffix:x") var spotLifetimeScale : float = 1.0
+
 @onready var sprite : Sprite2D = $Sprite
 @onready var line : Line2D = $Line
 @onready var target : Node2D = $Target
@@ -357,6 +361,12 @@ func charge_time() -> float:
 
 func cast_range() -> float:
 	return maxf(maxCastDistance + (bobber.rangeOffset if bobber else 0.0), minCastDistance)
+
+func spot_size_scale() -> float:
+	return spotSizeScale * (bobber.spotSizeScale if bobber else 1.0)
+
+func spot_lifetime_scale() -> float:
+	return spotLifetimeScale * (bobber.spotLifetimeScale if bobber else 1.0)
 
 func find_landing(origin : Vector2, toward : Vector2, power : float) -> Variant:
 	var direction : Vector2 = origin.direction_to(toward) if origin.distance_squared_to(toward) > 0.01 else Vector2.RIGHT

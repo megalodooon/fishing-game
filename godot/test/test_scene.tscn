@@ -17,9 +17,10 @@ boat = NodePath("../BasicBoat")
 [node name="BasicBoat" parent="." unique_id=545784032 instance=ExtResource("2_56kpk")]
 position = Vector2(100, 43)
 
-[node name="FishingSpotSpawner" type="Node2D" parent="." node_paths=PackedStringArray("boat")]
+[node name="FishingSpotSpawner" type="Node2D" parent="." node_paths=PackedStringArray("boat", "player")]
 script = ExtResource("4_spawner")
 boat = NodePath("../BasicBoat")
+player = NodePath("../Player")
 spotScene = ExtResource("5_spot")
 
 [node name="Player" parent="." unique_id=893027470 node_paths=PackedStringArray("boat") instance=ExtResource("1_m5cd5")]
