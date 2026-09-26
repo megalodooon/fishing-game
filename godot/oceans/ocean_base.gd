@@ -178,12 +178,12 @@ func update_fields() -> void:
 	RenderingServer.material_set_param(rid, "fields_size", Vector2(texels))
 	var cellSize : float = maxf(caustic_cell_size, 0.01)
 	var area : Rect2 = Rect2(origin, texels)
-	update_cells(cellsAViewport, cellsAMaterial, "a", area.position / cellSize, area.end / cellSize)
-	update_cells(cellsBViewport, cellsBMaterial, "b", area.position / cellSize * 0.8 + Vector2(13.7, 7.3), area.end / cellSize * 0.8 + Vector2(13.7, 7.3))
+	update_cells(cellsAViewport, cellsAMaterial, "a", area.position / cellSize, area.size / cellSize)
+	update_cells(cellsBViewport, cellsBMaterial, "b", area.position / cellSize * 0.8 + Vector2(13.7, 7.3), area.size / cellSize * 0.8)
 
-func update_cells(viewport : SubViewport, cellsMaterial : ShaderMaterial, layer : String, low : Vector2, high : Vector2) -> void:
+func update_cells(viewport : SubViewport, cellsMaterial : ShaderMaterial, layer : String, low : Vector2, span : Vector2) -> void:
 	var start : Vector2 = low.floor() - Vector2.ONE
-	resize_pass(viewport, Vector2i(high.floor() - start) + Vector2i(2, 2))
+	resize_pass(viewport, Vector2i(span.ceil()) + Vector2i(4, 4))
 	RenderingServer.material_set_param(cellsMaterial.get_rid(), "cells_origin", start)
 	var rid : RID = sprite.material.get_rid()
 	RenderingServer.material_set_param(rid, "cells_" + layer, viewport.get_texture().get_rid())
