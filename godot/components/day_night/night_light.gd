@@ -43,8 +43,8 @@ const GROUP : StringName = &"night_lights"
 func _enter_tree() -> void:
 	add_to_group(GROUP)
 
-func strength(darkness : float) -> float:
-	var t : float = Time.get_ticks_msec() * 0.001 * flickerSpeed + get_instance_id() % 1000
+func strength(darkness : float, seconds : float) -> float:
+	var t : float = seconds * flickerSpeed + get_instance_id() % 1000
 	var wave : float = sin(t * 7.3) * 0.5 + sin(t * 12.9 + 1.7) * 0.3 + sin(t * 23.1 + 4.2) * 0.2
 	return energy * smoothstep(darknessRange.x, darknessRange.y, darkness) * (1.0 + flicker * wave)
 

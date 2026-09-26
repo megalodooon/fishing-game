@@ -32,6 +32,7 @@ var lightColors : PackedVector4Array = PackedVector4Array()
 var glowRects : Array[Rect2] = []
 var glowColors : PackedColorArray = PackedColorArray()
 var frames : int = 0
+var clock : float = 0.0
 #------------------------#
 
 
@@ -59,6 +60,7 @@ func _process(delta : float) -> void:
 			time = fmod(time, 24.0)
 			day += 1
 	frames += 1
+	clock += delta
 	update_clock()
 	update_light()
 
@@ -86,7 +88,7 @@ func update_light() -> void:
 	glowRects.clear()
 	glowColors.clear()
 	for light : NightLight in get_tree().get_nodes_in_group(NightLight.GROUP):
-		var strength : float = light.strength(darkness)
+		var strength : float = light.strength(darkness, clock)
 		if count >= MAX_LIGHTS or strength <= 0.0 or not light.is_visible_in_tree():
 			continue
 		var center : Vector2 = view * (light.global_position + Vector2(0.0, light.height))
