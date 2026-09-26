@@ -105,6 +105,10 @@ var cellsBMaterial : ShaderMaterial = ShaderMaterial.new()
 var fieldsViewport : SubViewport
 var cellsAViewport : SubViewport
 var cellsBViewport : SubViewport
+var waterTexture : Texture2D
+var bands : Array[RID] = []
+var bandHole : Rect2
+var bandsDirty : bool = true
 #------------------------#
 
 
@@ -118,6 +122,19 @@ func _ready() -> void:
 	cellsBViewport = create_pass(cellsBMaterial)
 	for parameter in SHADER_PARAMETERS:
 		update_shader(parameter, get(parameter))
+	if sprite and sprite.texture and not Engine.is_editor_hint():
+		waterTexture = sprite.texture
+		sprite.texture = null
+		for i in 4:
+			var band : RID = RenderingServer.canvas_item_create()
+			RenderingServer.canvas_item_set_parent(band, sprite.get_canvas_item())
+			RenderingServer.canvas_item_set_use_parent_material(band, true)
+			bands.append(band)
+
+func _notification(what : int) -> void:
+	if what == NOTIFICATION_PREDELETE:
+		for band in bands:
+			RenderingServer.free_rid(band)
 
 func _process(delta : float) -> void:
 	var distance : float = (boat.speed if boat and not Engine.is_editor_hint() else fallbackSpeed) * delta
@@ -128,12 +145,34 @@ func _process(delta : float) -> void:
 		for layer in decorationLayers:
 			layer.scroll(distance)
 	update_fields()
+	update_bands()
+
+func water_texture() -> Texture2D:
+	return waterTexture if waterTexture else (sprite.texture if sprite else null)
+
+func update_bands() -> void:
+	if bands.is_empty():
+		return
+	var hole : Rect2 = sprite.global_transform.affine_inverse() * (boat.global_transform * boat.opaque_rect()) if boat and Boat.pixel_aligned(sprite) else Rect2()
+	if hole == bandHole and not bandsDirty:
+		return
+	bandHole = hole
+	bandsDirty = false
+	var size : Vector2 = waterTexture.get_size()
+	var rect : Rect2 = Rect2(sprite.offset - (size / 2.0 if sprite.centered else Vector2.ZERO), size)
+	var rects : Array[Rect2] = Boat.band_rects(rect, hole)
+	for i in bands.size():
+		RenderingServer.canvas_item_clear(bands[i])
+		if i < rects.size() and rects[i].has_area():
+			RenderingServer.canvas_item_set_clip(bands[i], true)
+			RenderingServer.canvas_item_set_custom_rect(bands[i], true, rects[i])
+			RenderingServer.canvas_item_add_texture_rect_region(bands[i], rect, waterTexture.get_rid(), Rect2(Vector2.ZERO, size), Color(1, 1, 1), false, false)
 
 func update_fields() -> void:
-	if not sprite or not sprite.texture or not fieldsViewport:
+	if not sprite or not water_texture() or not fieldsViewport:
 		return
 	var margin : int = ceili(absf(wave_strength)) + 2
-	var texels : Vector2i = Vector2i(sprite.texture.get_size()) + Vector2i(margin, margin) * 2 + Vector2i.ONE
+	var texels : Vector2i = Vector2i(water_texture().get_size()) + Vector2i(margin, margin) * 2 + Vector2i.ONE
 	var origin : Vector2 = (sprite.global_position + scroll).floor() - Vector2(margin, margin)
 	resize_pass(fieldsViewport, texels)
 	RenderingServer.material_set_param(fieldsMaterial.get_rid(), "fields_origin", origin)
