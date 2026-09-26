@@ -65,6 +65,11 @@ version is live and redeploys itself on every push.
   - charging, casting, the "can't reach" rule, and reeling;
   - skipping hours and the night lighting;
   - resizing the window and high-DPI scaling.
+- Checked again at the end in a real Edge window at this laptop's 150%
+  display scaling (a device pixel ratio of 1.5). The game shows the full view
+  at an integer scale, centered, with nothing cut off. The browser preview
+  pane inside the Claude app shows the game cropped, because of how it
+  emulates the window size. Real browsers don't do this.
 - Known harmless message: at startup, the browser console shows two
   `WebGL: INVALID_OPERATION: bindBuffer/bufferSubData` warnings. They come
   from Godot's WebGL backend, not from the project, and nothing visible is
