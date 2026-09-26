@@ -17,12 +17,14 @@ class_name PlayerChargeState
 
 var elapsed : float = 0.0
 var power : float = 0.0
+var heading : float = 0.0
 #------------------------#
 
 
 func enter() -> void:
 	elapsed = 0.0
 	power = 0.0
+	heading = (player.get_global_mouse_position() - player.global_position).angle()
 	player.rooted = true
 	player.stop_pose()
 
@@ -42,7 +44,12 @@ func update_physics(delta : float) -> void:
 	player.poseAngle = lerpf(windupAngle, fullAngle, eased) + sin(elapsed * 40.0) * tremble * smoothstep(0.85, 1.0, power)
 	player.poseOffset = windupOffset.lerp(fullOffset, eased)
 	player.lean = fullLean * eased
-	var landing : Variant = rod.find_landing(player.global_position, player.get_global_mouse_position(), power)
+	var mouse : Vector2 = player.get_global_mouse_position() - player.global_position
+	if mouse.length_squared() > 0.01:
+		heading = rotate_toward(heading, mouse.angle(), deg_to_rad(rod.steerSpeed) * (1.0 - power) * delta)
+	var toward : Vector2 = player.global_position + Vector2.from_angle(heading) * rod.cast_range()
+	var landing : Variant = rod.find_landing(player.global_position, toward, power)
+	player.aimTarget = toward if landing == null else landing
 	if landing == null:
 		rod.hide_target()
 	else:
@@ -51,7 +58,7 @@ func update_physics(delta : float) -> void:
 		if landing == null:
 			stateMachine.change_state(idle)
 		else:
-			cast.power = power
+			cast.target = landing
 			stateMachine.change_state(cast)
 
 func update_input(event : InputEvent) -> void:

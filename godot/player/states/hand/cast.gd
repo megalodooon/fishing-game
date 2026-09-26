@@ -17,7 +17,6 @@ class_name PlayerCastState
 @export var followOffset : Vector2 = Vector2(2.0, 0.5)
 @export var releaseSquash : Vector2 = Vector2(0.8, 1.2)
 
-var power : float = 0.0
 var target : Vector2
 var released : bool = false
 var elapsed : float = 0.0
@@ -25,8 +24,6 @@ var elapsed : float = 0.0
 
 
 func enter() -> void:
-	var rod : FishingRod = player.heldItem as FishingRod
-	target = rod.find_landing(player.global_position, player.get_global_mouse_position(), power)
 	player.aimTarget = target
 	player.rooted = true
 	released = false

@@ -49,6 +49,7 @@ enum Mode { HOLD, FLIGHT, WATER, REEL }
 
 @export_group("Cast")
 @export var chargeTime : float = 2.2
+@export_range(0.0, 1440.0, 1.0, "or_greater", "suffix:°/s") var steerSpeed : float = 720.0
 @export var minCastDistance : float = 3.0
 @export var maxCastDistance : float = 64.0
 @export var landingMargin : float = 3.0
