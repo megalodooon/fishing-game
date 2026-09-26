@@ -235,19 +235,21 @@ func constrain_line(last : int) -> void:
 	var rest : float = length / segments
 	for iteration in iterations:
 		for i in last:
-			var wa : float = 0.0 if i == 0 else 1.0
-			var wb : float = 0.0 if i + 1 == last else 1.0
-			if wa + wb == 0.0:
-				continue
 			var a : Vector3 = points[i]
 			var b : Vector3 = points[i + 1]
 			var offset : Vector3 = b - a
 			var distance : float = offset.length()
 			if distance < 0.0001:
 				continue
-			var correction : Vector3 = offset * ((distance - rest) / (distance * (wa + wb)))
-			points[i] = a + correction * wa
-			points[i + 1] = b - correction * wb
+			if i == 0:
+				if last > 1:
+					points[1] = b - offset * ((distance - rest) / distance)
+			elif i + 1 == last:
+				points[i] = a + offset * ((distance - rest) / distance)
+			else:
+				var correction : Vector3 = offset * ((distance - rest) / (distance * 2.0))
+				points[i] = a + correction
+				points[i + 1] = b - correction
 		for i in range(1, last):
 			var point : Vector3 = points[i]
 			if point.z < floors[i]:
