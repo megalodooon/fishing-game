@@ -24,3 +24,4 @@ The web version is rebuilt and redeployed automatically on every push to `main`
 
 - `godot/` - the Godot project (open `godot/project.godot`).
 - `docs/optimization-report.md` - what was optimized, how it was measured and the results.
+- `tools/perf/` - the scripts that check nothing changed visually and measure performance (see the report).
