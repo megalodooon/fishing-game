@@ -49,6 +49,7 @@ func update_physics(delta : float) -> void:
 	var rod : FishingRod = player.heldItem as FishingRod
 	var spot : FishingSpot = rod.castSpot
 	player.aimTarget = rod.get_bobber_point()
+	rating.anchor = rod.get_bobber_point()
 	if biteLeft > 0.0:
 		biteLeft -= delta
 		if biteLeft <= 0.0:
