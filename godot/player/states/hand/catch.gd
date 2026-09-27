@@ -12,4 +12,10 @@ class_name PlayerCatchState
 
 func enter() -> void:
 	(player.heldItem as FishingRod).bobber.splash(hookSplash)
-	stateMachine.change_state(reel)
+
+func update_physics(_delta : float) -> void:
+	player.aimTarget = (player.heldItem as FishingRod).get_bobber_point()
+
+func update_input(event : InputEvent) -> void:
+	if event.is_action_pressed("cancel"):
+		stateMachine.change_state(reel)
