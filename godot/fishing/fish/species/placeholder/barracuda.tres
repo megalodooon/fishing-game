@@ -12,3 +12,4 @@ rarity = ExtResource("3_rarity")
 description = "Long, fast and full of teeth. Keep your fingers clear."
 weightRange = Vector2(2, 12)
 basePrice = 60
+heldSize = 1

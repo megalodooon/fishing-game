@@ -1,0 +1,12 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://components/held_item/held_item.gd" id="1_held"]
+
+[node name="HeldFish" type="Node2D" node_paths=PackedStringArray("iconSprite")]
+script = ExtResource("1_held")
+handAimWeight = 0.0
+aimFollow = 0.0
+iconSprite = NodePath("Icon")
+overhead = true
+
+[node name="Icon" type="Sprite2D" parent="."]

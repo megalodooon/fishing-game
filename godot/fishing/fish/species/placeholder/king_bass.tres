@@ -12,3 +12,4 @@ rarity = ExtResource("3_rarity")
 description = "The oldest bass in the sea, scarred by a hundred hooks."
 weightRange = Vector2(8, 20)
 basePrice = 450
+heldSize = 1.2

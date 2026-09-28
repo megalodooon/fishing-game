@@ -10,6 +10,8 @@ class_name FishData
 @export_range(0.0, 100.0, 0.01, "or_greater") var spawnRate : float = 1.0
 @export var weightRange : Vector2 = Vector2(0.5, 1.0)
 @export var basePrice : int = 10
+# How big the species looks in the hand at half its max weight.
+@export_range(0.1, 3.0, 0.05) var heldSize : float = 1.0
 # The hours it bites between, from x to y. Wraps past midnight when y is
 # smaller than x. The same hour twice (like 0 to 24) means any time.
 @export var hours : Vector2 = Vector2(0.0, 24.0)

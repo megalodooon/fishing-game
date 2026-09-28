@@ -12,3 +12,4 @@ rarity = ExtResource("3_rarity")
 description = "Said to bring luck to whoever lands one."
 weightRange = Vector2(15, 50)
 basePrice = 500
+heldSize = 1.25

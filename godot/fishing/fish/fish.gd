@@ -2,6 +2,9 @@ extends Item
 class_name Fish
 
 const HEAVY_BIAS : float = 1.6
+# Keeps the lightest fish from shrinking to a speck in the hand.
+const MIN_HELD_SCALE : float = 0.6
+const HELD_SCENE : PackedScene = preload("res://fishing/fish/held_fish.tscn")
 
 #------------------------#
 var species : FishData
@@ -16,6 +19,7 @@ static func caught(data : FishData) -> Fish:
 	fish.displayName = data.displayName
 	fish.icon = data.icon
 	fish.rarity = data.rarity
+	fish.heldScene = HELD_SCENE
 	fish.weight = lerpf(data.weightRange.x, data.weightRange.y, pow(randf(), HEAVY_BIAS))
 	return fish
 
@@ -27,6 +31,13 @@ func heft() -> float:
 func price() -> int:
 	var average : float = (species.weightRange.x + species.weightRange.y) * 0.5
 	return maxi(roundi(species.basePrice * weight / average), 1) if average > 0.0 else species.basePrice
+
+# The species' held size at half its max weight, 1.5x that at the max weight.
+func held_scale() -> float:
+	if not species:
+		return 1.0
+	var byWeight : float = clampf(0.5 + weight / species.weightRange.y, MIN_HELD_SCALE, 1.5) if species.weightRange.y > 0.0 else 1.0
+	return species.heldSize * byWeight
 
 func details() -> PackedStringArray:
 	var lines : PackedStringArray = super()

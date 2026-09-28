@@ -12,4 +12,5 @@ rarity = ExtResource("3_rarity")
 description = "Its silver scales glow faintly under the moon."
 weightRange = Vector2(10, 60)
 basePrice = 180
+heldSize = 1.2
 hours = Vector2(20, 4)

@@ -20,6 +20,8 @@ signal slept(share : float)
 
 @export_group("Rules")
 @export_range(0.0, 24.0, 0.25) var wakeHour : float = 7.0
+# Going to sleep only works from this hour on.
+@export_range(0.0, 24.0, 0.25) var earliestSleepHour : float = 20.0
 @export_range(0.0, 24.0, 0.25) var fullRestHour : float = 2.0
 @export_range(0.0, 24.0, 0.25) var passOutHour : float = 3.0
 @export_range(0.0, 1.0) var lateRest : float = 0.75
@@ -120,7 +122,9 @@ func hour_text(hour : float) -> String:
 func _unhandled_input(event : InputEvent) -> void:
 	if sleeping or not event.is_action_pressed("sleep"):
 		return
-	if player.handStates.currentState is PlayerHandIdleState:
+	if not since(earliestSleepHour):
+		notices.post("Not tired yet", "You can go to sleep after %s." % hour_text(earliestSleepHour), infoColor, sleepyIcon)
+	elif player.handStates.currentState is PlayerHandIdleState:
 		go_to_sleep()
 	else:
 		notices.post("Not now", "Reel in before going to sleep.", sleepyColor, sleepyIcon)

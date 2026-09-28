@@ -12,3 +12,4 @@ rarity = ExtResource("3_rarity")
 description = "A famous fighter. Anglers still tell stories about the one that got away."
 weightRange = Vector2(30, 150)
 basePrice = 240
+heldSize = 1.3

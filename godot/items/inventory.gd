@@ -3,6 +3,7 @@ class_name Inventory
 
 # Something was caught or hooked with no room left, so the backpack should open.
 signal needs_room
+signal trashed(item : Item)
 
 #------------------------#
 @export var hotbarSize : int = 5
@@ -67,11 +68,18 @@ func can_move(from : int, to : int) -> bool:
 		return false
 	return from != trashSlot or target.discardable
 
-# Moving into the trash throws away what was in it before.
+# Moving into the trash throws the item away for good.
 func move(from : int, to : int) -> void:
 	if not can_move(from, to):
 		return
-	var target : Item = null if to == trashSlot else items[to]
+	if to == trashSlot:
+		var thrown : Item = items[from]
+		items[from] = null
+		items[trashSlot] = null
+		emit_changed()
+		trashed.emit(thrown)
+		return
+	var target : Item = items[to]
 	items[to] = items[from]
 	items[from] = target
 	emit_changed()

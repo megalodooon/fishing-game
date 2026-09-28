@@ -27,6 +27,7 @@ signal laid_out
 @export_group("Icons")
 @export var trashIcon : Texture2D
 @export var catchIcon : Texture2D
+@export var trashTime : float = 0.35
 
 @export_group("Layout")
 @export var slotSize : int = 12
@@ -70,6 +71,8 @@ var tipTitle : String = ""
 var tipColor : Color = Color.WHITE
 var tipLines : PackedStringArray = PackedStringArray()
 var tipSize : Vector2 = Vector2.ZERO
+var thrown : Item
+var thrownAge : float = 0.0
 #------------------------#
 
 
@@ -88,6 +91,7 @@ func _ready() -> void:
 		inventory = player.inventory
 		inventory.changed.connect(refresh)
 		inventory.needs_room.connect(show_backpack)
+		inventory.trashed.connect(throw_away)
 	set_anchors_preset(PRESET_TOP_LEFT)
 	resized.connect(layout)
 	get_viewport().size_changed.connect(fit)
@@ -101,10 +105,33 @@ func fit() -> void:
 	size = get_viewport_rect().size / uiScale
 	layout()
 
-func _process(_delta : float) -> void:
+func _process(delta : float) -> void:
 	if player and player.heldSlot != shownSlot:
 		shownSlot = player.heldSlot
 		queue_redraw()
+	if hovered != NONE and dragFrom == NONE and not rects[hovered].has_point(get_local_mouse_position()):
+		hover(NONE)
+	if thrown:
+		thrownAge += delta
+		if thrownAge >= trashTime:
+			thrown = null
+		backpack.queue_redraw()
+
+func throw_away(item : Item) -> void:
+	thrown = item
+	thrownAge = 0.0
+
+# A number key over an item in the open inventory swaps it into that hotbar
+# slot instead of switching the held item.
+func _input(event : InputEvent) -> void:
+	if not open or hovered == NONE or dragFrom != NONE or not inventory.get_item(hovered):
+		return
+	var slot : int = player.slot_pressed(event)
+	if slot < 0:
+		return
+	get_viewport().set_input_as_handled()
+	if slot != hovered and can_drop(hovered, slot):
+		inventory.move(hovered, slot)
 
 func _unhandled_input(event : InputEvent) -> void:
 	if event.is_action_pressed("backpack"):
@@ -191,7 +218,7 @@ func hover(slot : int) -> void:
 		tipLines = PackedStringArray(["Fish that didn't fit", ""])
 	elif inventory and slot == inventory.trashSlot:
 		tipTitle = "Trash"
-		tipLines = PackedStringArray(["Drop items to throw away", ""])
+		tipLines = PackedStringArray(["Drop items here to", "", "throw them away", ""])
 	tipSize = tip_size(tipTitle, tipLines)
 	redraw()
 
@@ -286,7 +313,11 @@ func draw_slot(canvas : CanvasItem, slot : int) -> void:
 	if item and item.icon:
 		draw_icon(canvas, item.icon, area.get_center(), Color(1.0, 1.0, 1.0, 0.35 if slot == dragFrom else 1.0), outline_color(item))
 	elif slot == inventory.trashSlot and trashIcon:
-		canvas.draw_texture(trashIcon, (area.get_center() - trashIcon.get_size() * 0.5).floor(), Color(1.0, 1.0, 1.0, 0.35))
+		var t : float = clampf(thrownAge / trashTime, 0.0, 1.0) if thrown else 1.0
+		var bump : float = sin(t * PI)
+		canvas.draw_texture(trashIcon, (area.get_center() - trashIcon.get_size() * 0.5).floor() - Vector2(0.0, roundf(bump * 1.5)), Color(1.0, 1.0, 1.0, 0.35 + bump * 0.4))
+		if thrown and thrown.icon and t < 1.0:
+			draw_icon(canvas, thrown.icon, area.get_center() + Vector2(0.0, t * t * 4.0), Color(1.0, 1.0, 1.0, 1.0 - t * t), outline_color(thrown), fit_scale(thrown.icon) * (1.0 - t * 0.7))
 	elif slot == inventory.catchSlot and catchIcon:
 		canvas.draw_texture(catchIcon, (area.get_center() - catchIcon.get_size() * 0.5).floor(), Color(1.0, 1.0, 1.0, 0.35))
 

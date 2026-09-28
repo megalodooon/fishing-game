@@ -12,3 +12,4 @@ rarity = ExtResource("3_rarity")
 description = "A patient hunter that lurks near rocks."
 weightRange = Vector2(1, 5)
 basePrice = 24
+heldSize = 1.1

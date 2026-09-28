@@ -12,3 +12,4 @@ rarity = ExtResource("3_rarity")
 description = "Tiny and quick. Bigger fish love to snack on them."
 weightRange = Vector2(0.02, 0.06)
 basePrice = 4
+heldSize = 0.6

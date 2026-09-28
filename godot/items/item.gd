@@ -19,6 +19,10 @@ class_name Item
 func unique() -> Item:
 	return self
 
+# How much bigger than usual it looks in the hand.
+func held_scale() -> float:
+	return 1.0
+
 func title_color() -> Color:
 	return rarity.color if rarity else Color.WHITE
 

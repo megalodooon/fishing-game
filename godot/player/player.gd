@@ -40,6 +40,10 @@ class_name Player
 @export var itemStiffness : float = 340.0
 @export_range(0.0, 1.0) var itemDamping : float = 0.45
 @export var walkBob : float = 0.45
+# Where the top of the head is, for items held up over it.
+@export var headTop : float = -8.0
+@export var overheadGap : float = -0.5
+@export var overheadSway : float = 0.04
 @export var idleSway : float = 0.025
 
 var center_follow_speed : float = 15.0
@@ -47,6 +51,7 @@ var center_rest_position : Vector2
 var last_global_position : Vector2
 
 var heldItem : HeldItem
+var offHand : Sprite2D
 var heldSlot : int = -1
 var rooted : bool = false
 var asleep : bool = false
@@ -75,6 +80,9 @@ func _ready() -> void:
 	if journal:
 		journal.setup()
 	center_rest_position = center.position
+	offHand = hand.duplicate()
+	offHand.visible = false
+	center.add_child(offHand)
 	last_global_position = global_position
 	if boat:
 		shadow.material.set_shader_parameter("occluders", boat.occluders.slice(0, 3).map(func(occluder : Sprite2D) -> Texture2D: return occluder.texture))
@@ -154,7 +162,10 @@ func update_hand(delta : float) -> void:
 	if boat:
 		var bodyRect : Rect2 = Rect2(global_position - Vector2(5.0, 8.0), Vector2(10.0, 16.0)).expand(hand.global_position)
 		boat.fade_occluders(is_behind_occluders() and boat.overlaps_occluders(bodyRect.grow(2.0 if boat.faded else 0.0)))
-	if heldItem:
+	offHand.visible = heldItem != null and heldItem.overhead
+	if offHand.visible:
+		hold_overhead(bob)
+	elif heldItem:
 		update_item(delta)
 
 func update_item(delta : float) -> void:
@@ -166,6 +177,25 @@ func update_item(delta : float) -> void:
 	itemHolder.scale = Vector2(size, size if facingBlend >= 0.0 else -size)
 	heldItem.appear = itemScale
 	heldItem.angularVelocity = itemVelocity
+
+# Both hands hold the item up over the head at its bottom corners, however
+# wide it is, and it faces the way the body faces (walking), not the mouse.
+func hold_overhead(bob : float) -> void:
+	var size : float = maxf(itemScale, 0.001)
+	var extent : Vector2 = heldItem.held_extent() * size
+	var middle : Vector2 = Vector2(0.0, headTop - overheadGap - extent.y * 0.5 + bob) + handOffset * 0.5
+	itemHolder.position = middle
+	itemHolder.rotation = sin(time * 1.7) * overheadSway
+	itemHolder.scale = Vector2(size * sprite.scale.x, size)
+	var corner : Vector2 = Vector2(maxf(extent.x * 0.5 - 1.5, 2.0), extent.y * 0.5 - 1.0)
+	hand.position = middle + corner.rotated(itemHolder.rotation)
+	offHand.position = middle + Vector2(-corner.x, corner.y).rotated(itemHolder.rotation)
+	hand.rotation = -PI * 0.5
+	offHand.rotation = -PI * 0.5
+	hand.scale = handScale
+	offHand.scale = handScale
+	heldItem.appear = itemScale
+	heldItem.angularVelocity = 0.0
 
 func snap_item() -> void:
 	if heldItem:
