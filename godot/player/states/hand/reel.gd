@@ -35,7 +35,7 @@ func update_physics(delta : float) -> void:
 	player.poseAngle = lerpf(player.poseAngle, reelAngle, weight)
 	player.poseOffset = player.poseOffset.lerp(reelOffset + crank, weight)
 	player.aimTarget = rod.get_bobber_point()
-	if rod.mode == FishingRod.Mode.HOLD:
+	if rod.all_in():
 		if switchAfter:
 			switchState.slot = switchSlot
 			stateMachine.change_state(switchState)

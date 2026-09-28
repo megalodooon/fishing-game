@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="FishData" format=3]
+
+[ext_resource type="Script" path="res://fishing/fish/fish_data.gd" id="1_fish"]
+[ext_resource type="Texture2D" path="res://fishing/fish/assets/mackerel.png" id="2_icon"]
+[ext_resource type="Resource" path="res://items/rarities/common.tres" id="3_rarity"]
+
+[resource]
+script = ExtResource("1_fish")
+displayName = "Mackerel"
+icon = ExtResource("2_icon")
+rarity = ExtResource("3_rarity")
+description = "Striped and restless, it never stops swimming."
+weightRange = Vector2(0.3, 1.2)
+basePrice = 8

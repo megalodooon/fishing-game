@@ -7,6 +7,28 @@
 [ext_resource type="PackedScene" path="res://fishing/fishing_spots/fishing_spot.tscn" id="5_spot"]
 [ext_resource type="PackedScene" path="res://components/day_night/day_night_cycle.tscn" id="6_cycle"]
 [ext_resource type="Script" path="res://ui/clock/clock_label.gd" id="7_clock"]
+[ext_resource type="Script" path="res://ui/inventory/inventory_ui.gd" id="8_inventory"]
+[ext_resource type="FontFile" path="res://ui/fonts/PressStart2P.ttf" id="9_font"]
+[ext_resource type="Texture2D" path="res://ui/inventory/icons/trash.png" id="11_trash"]
+[ext_resource type="Texture2D" path="res://ui/inventory/icons/hook.png" id="12_hook"]
+[ext_resource type="Script" path="res://fishing/minigames/minigame_screen.gd" id="13_screen"]
+[ext_resource type="Script" path="res://fishing/tacklebox/tacklebox_ui.gd" id="14_tacklebox"]
+[ext_resource type="Texture2D" path="res://fishing/rods/bobbers/basic.png" id="15_bobber"]
+[ext_resource type="Texture2D" path="res://fishing/tacklebox/icons/line.png" id="16_line"]
+[ext_resource type="Texture2D" path="res://fishing/tacklebox/icons/hook.png" id="17_hook"]
+[ext_resource type="Texture2D" path="res://fishing/tacklebox/icons/tech.png" id="18_tech"]
+[ext_resource type="Script" path="res://fishing/journal/journal_ui.gd" id="19_journal"]
+[ext_resource type="Script" path="res://components/sleep/sleep_schedule.gd" id="20_sleep"]
+[ext_resource type="Script" path="res://ui/clock/period_icon.gd" id="21_period"]
+[ext_resource type="Script" path="res://ui/energy/energy_bar.gd" id="22_energy"]
+[ext_resource type="Script" path="res://ui/notice/notice_board.gd" id="23_notices"]
+[ext_resource type="Texture2D" path="res://ui/clock/icons/late.png" id="24_late"]
+[ext_resource type="Texture2D" path="res://ui/clock/icons/bedtime.png" id="25_bedtime"]
+[ext_resource type="Texture2D" path="res://ui/clock/icons/dawn.png" id="26_dawn"]
+[ext_resource type="Texture2D" path="res://ui/clock/icons/day.png" id="27_day"]
+[ext_resource type="Texture2D" path="res://ui/clock/icons/dusk.png" id="28_dusk"]
+[ext_resource type="Texture2D" path="res://ui/clock/icons/night.png" id="29_night"]
+[ext_resource type="Texture2D" path="res://ui/energy/bolt.png" id="30_bolt"]
 
 [node name="TestScene" type="Node2D" unique_id=733697435]
 y_sort_enabled = true
@@ -23,19 +45,32 @@ boat = NodePath("../BasicBoat")
 player = NodePath("../Player")
 spotScene = ExtResource("5_spot")
 
-[node name="Player" parent="." unique_id=893027470 node_paths=PackedStringArray("boat") instance=ExtResource("1_m5cd5")]
+[node name="Player" parent="." unique_id=893027470 node_paths=PackedStringArray("boat", "minigameScreen") instance=ExtResource("1_m5cd5")]
 position = Vector2(74, 46)
 boat = NodePath("../BasicBoat")
+minigameScreen = NodePath("../MinigameLayer/MinigameScreen")
 
 [node name="DayNightCycle" parent="." instance=ExtResource("6_cycle")]
 
 [node name="Hud" type="CanvasLayer" parent="."]
 layer = 20
 
-[node name="Clock" type="Label" parent="Hud" node_paths=PackedStringArray("cycle")]
-offset_left = 3.0
+[node name="PeriodIcon" type="Control" parent="Hud" node_paths=PackedStringArray("cycle")]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 2.0
 offset_top = 1.0
-offset_right = 43.0
+offset_right = 15.0
+offset_bottom = 14.0
+script = ExtResource("21_period")
+cycle = NodePath("../../DayNightCycle")
+icons = Array[Texture2D]([ExtResource("24_late"), ExtResource("25_bedtime"), ExtResource("26_dawn"), ExtResource("27_day"), ExtResource("28_dusk"), ExtResource("29_night")])
+starts = PackedFloat32Array(0, 2, 5, 8, 17, 20)
+
+[node name="Clock" type="Label" parent="Hud" node_paths=PackedStringArray("cycle", "sleep")]
+offset_left = 16.0
+offset_top = 1.0
+offset_right = 56.0
 offset_bottom = 12.0
 theme_override_font_sizes/font_size = 8
 theme_override_colors/font_outline_color = Color(0.04, 0.1, 0.16, 1)
@@ -43,3 +78,68 @@ theme_override_constants/outline_size = 2
 text = "00:00"
 script = ExtResource("7_clock")
 cycle = NodePath("../../DayNightCycle")
+sleep = NodePath("../../SleepSchedule")
+
+[node name="Inventory" type="Control" parent="Hud" node_paths=PackedStringArray("player")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("8_inventory")
+player = NodePath("../../Player")
+font = ExtResource("9_font")
+trashIcon = ExtResource("11_trash")
+catchIcon = ExtResource("12_hook")
+
+[node name="EnergyBar" type="Control" parent="Hud" node_paths=PackedStringArray("player", "ui", "sleep")]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("22_energy")
+player = NodePath("../../Player")
+ui = NodePath("../Inventory")
+sleep = NodePath("../../SleepSchedule")
+bolt = ExtResource("30_bolt")
+
+[node name="Tacklebox" type="Control" parent="Hud" node_paths=PackedStringArray("player", "ui")]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("14_tacklebox")
+player = NodePath("../../Player")
+ui = NodePath("../Inventory")
+kindIcons = Array[Texture2D]([ExtResource("15_bobber"), ExtResource("16_line"), ExtResource("17_hook"), ExtResource("18_tech")])
+
+[node name="Journal" type="Control" parent="Hud" node_paths=PackedStringArray("player", "ui", "tacklebox")]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("19_journal")
+player = NodePath("../../Player")
+ui = NodePath("../Inventory")
+tacklebox = NodePath("../Tacklebox")
+
+[node name="Notices" type="Control" parent="Hud" node_paths=PackedStringArray("ui")]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("23_notices")
+ui = NodePath("../Inventory")
+
+[node name="SleepSchedule" type="CanvasLayer" parent="." node_paths=PackedStringArray("cycle", "player", "ui", "notices", "menus")]
+layer = 30
+script = ExtResource("20_sleep")
+cycle = NodePath("../DayNightCycle")
+player = NodePath("../Player")
+ui = NodePath("../Hud/Inventory")
+notices = NodePath("../Hud/Notices")
+menus = [NodePath("../Hud/Inventory"), NodePath("../Hud/Tacklebox"), NodePath("../Hud/Journal")]
+sleepyIcon = ExtResource("24_late")
+urgentIcon = ExtResource("25_bedtime")
+
+[node name="MinigameLayer" type="CanvasLayer" parent="."]
+layer = 25
+
+[node name="MinigameScreen" type="Control" parent="MinigameLayer"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("13_screen")
+font = ExtResource("9_font")

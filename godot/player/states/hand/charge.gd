@@ -53,7 +53,7 @@ func update_physics(delta : float) -> void:
 	if landing == null:
 		rod.hide_target()
 	else:
-		rod.show_target(landing)
+		rod.show_targets(player.global_position, landing)
 	if not Input.is_action_pressed("use") and elapsed >= minChargeTime:
 		if landing == null:
 			stateMachine.change_state(idle)

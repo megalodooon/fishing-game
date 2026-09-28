@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="Tackle" format=3]
+
+[ext_resource type="Script" path="res://fishing/tacklebox/tackle.gd" id="1_tackle"]
+[ext_resource type="Texture2D" path="res://fishing/rods/bobbers/basic.png" id="2_icon"]
+[ext_resource type="Resource" path="res://items/rarities/common.tres" id="r_rarity"]
+
+[resource]
+script = ExtResource("1_tackle")
+kind = 0
+displayName = "Cork Bobber"
+icon = ExtResource("2_icon")
+rarity = ExtResource("r_rarity")
+discardable = false
+tint = Color(1, 0.78, 0.5, 1)
+rangeBonus = -6.0
+spotSize = 1.25
+spotTime = 1.2

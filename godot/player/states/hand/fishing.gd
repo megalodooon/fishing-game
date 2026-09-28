@@ -22,7 +22,10 @@ class_name PlayerFishingState
 @export var biteColor : Color = Color(1.0, 0.9, 0.35)
 @export_range(0.0, 1.0) var biteTug : float = 0.35
 
-var biteTimer : float = 0.0
+# One bite timer per line. Only one line bites at a time.
+var biteTimers : PackedFloat32Array = PackedFloat32Array()
+var biting : FishingRod
+var shown : FishingRod
 var biteLeft : float = 0.0
 #------------------------#
 
@@ -36,32 +39,46 @@ func _ready() -> void:
 func enter() -> void:
 	player.pose_to(holdAngle, holdOffset, settleTime)
 	var rod : FishingRod = player.heldItem as FishingRod
-	var index : int = mini(rod.castScore, mini(ratingNames.size(), ratingColors.size()) - 1)
+	var lines : Array[FishingRod] = rod.line_rods()
+	shown = rod
+	biteTimers.resize(lines.size())
+	for i in lines.size():
+		biteTimers[i] = lines[i].bite_delay(lines[i].castScore)
+		if lines[i].castScore > shown.castScore:
+			shown = lines[i]
+	var index : int = mini(shown.castScore, mini(ratingNames.size(), ratingColors.size()) - 1)
 	if index >= 0:
-		rating.pop(rod.get_bobber_point(), ratingNames[index], ratingColors[index], ratingTime)
+		rating.pop(shown.get_bobber_point(), ratingNames[index], ratingColors[index], ratingTime)
 	biteLeft = 0.0
-	biteTimer = rod.bite_delay(rod.castScore)
+	biting = null
 
 func exit() -> void:
 	biteMark.dismiss()
 
 func update_physics(delta : float) -> void:
 	var rod : FishingRod = player.heldItem as FishingRod
-	var spot : FishingSpot = rod.castSpot
-	player.aimTarget = rod.get_bobber_point()
-	rating.anchor = rod.get_bobber_point()
+	var lines : Array[FishingRod] = rod.line_rods()
+	player.aimTarget = (biting if biting else rod).get_bobber_point()
+	rating.anchor = shown.get_bobber_point()
 	if biteLeft > 0.0:
 		biteLeft -= delta
 		if biteLeft <= 0.0:
 			biteMark.dismiss()
-			biteTimer = rod.bite_delay(rod.castScore)
-	elif spot and not spot.leaving:
-		biteTimer -= delta
-		if biteTimer <= 0.0:
-			biteLeft = rod.biteWindow
-			rod.bobber.splash(biteTug)
-			rating.dismiss()
-			biteMark.pop(spot.global_position - Vector2(0.0, spot.size * spot.squash), "!", biteColor)
+			biteTimers[lines.find(biting)] = biting.bite_delay(biting.castScore)
+			biting = null
+	else:
+		for i in mini(lines.size(), biteTimers.size()):
+			var spot : FishingSpot = lines[i].castSpot
+			if lines[i].mode != FishingRod.Mode.WATER or not spot or spot.leaving:
+				continue
+			biteTimers[i] -= delta
+			if biteTimers[i] <= 0.0:
+				biting = lines[i]
+				biteLeft = biting.bite_window()
+				biting.bobber.splash(biteTug)
+				rating.dismiss()
+				biteMark.pop(spot.global_position - Vector2(0.0, spot.size * spot.squash), "!", biteColor)
+				break
 	if rod.should_return():
 		stateMachine.change_state(reel)
 
@@ -71,7 +88,8 @@ func update_input(event : InputEvent) -> void:
 		reel.switchAfter = true
 		reel.switchSlot = -1 if slot == player.heldSlot else slot
 		stateMachine.change_state(reel)
-	elif event.is_action_pressed("use") and biteLeft > 0.0:
+	elif event.is_action_pressed("use") and biteLeft > 0.0 and biting:
+		catchState.line = biting
 		stateMachine.change_state(catchState)
 	elif event.is_action_pressed("use") or event.is_action_pressed("cancel"):
 		stateMachine.change_state(reel)

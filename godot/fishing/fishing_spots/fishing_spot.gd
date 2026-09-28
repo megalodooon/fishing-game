@@ -11,6 +11,8 @@ const MAX_SCORE : int = 5
 @export var appearTime : float = 1.0
 @export var disappearTime : float = 1.0
 @export var resizeSpeed : float = 4.0
+# Spawned spots take the fish of the ocean's biome instead.
+@export var fish : Array[FishData] = []
 
 @export_group("Look")
 @export_range(0.1, 1.0) var squash : float = 0.5

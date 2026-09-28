@@ -30,6 +30,6 @@ func _physics_process(delta: float) -> void:
 	if currentState:
 		currentState.update_physics(delta)
 
-func _input(event: InputEvent) -> void:
+func _unhandled_input(event: InputEvent) -> void:
 	if currentState:
 		currentState.update_input(event)

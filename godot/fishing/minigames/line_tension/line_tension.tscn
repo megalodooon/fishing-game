@@ -1,0 +1,8 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://fishing/minigames/line_tension/line_tension.gd" id="1_game"]
+
+[node name="LineTension" type="Node2D"]
+script = ExtResource("1_game")
+size = Vector2(52, 18)
+hint = "Hold to reel, let go when it flashes"

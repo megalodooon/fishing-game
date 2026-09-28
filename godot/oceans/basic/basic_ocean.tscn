@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://hy5y32ccobx3" path="res://oceans/decorations/kelp.png" id="6_f7fq8"]
 [ext_resource type="Texture2D" uid="uid://esk2vu61axhl" path="res://oceans/decorations/tube_coral.png" id="7_81jie"]
 [ext_resource type="PackedScene" path="res://oceans/ground/sandy_ground.tscn" id="8_ground"]
+[ext_resource type="Resource" path="res://oceans/basic/basic_biome.tres" id="b_biome"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_81jie"]
 resource_local_to_scene = true
@@ -32,6 +33,7 @@ shader_parameter/scroll = Vector2(0, 0)
 [node name="BasicOcean" type="Node2D" unique_id=548284199 node_paths=PackedStringArray("sprite", "ground", "decorationLayers")]
 z_index = -2
 script = ExtResource("1_jyfkx")
+biome = ExtResource("b_biome")
 sprite = NodePath("Sprite2D")
 ground = NodePath("Ground")
 depth_scale = 500.0

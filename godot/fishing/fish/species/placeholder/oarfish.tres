@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="FishData" format=3]
+
+[ext_resource type="Script" path="res://fishing/fish/fish_data.gd" id="1_fish"]
+[ext_resource type="Texture2D" path="res://fishing/fish/assets/placeholder_long.png" id="2_icon"]
+[ext_resource type="Resource" path="res://items/rarities/trophy.tres" id="3_rarity"]
+
+[resource]
+script = ExtResource("1_fish")
+displayName = "Oarfish"
+icon = ExtResource("2_icon")
+rarity = ExtResource("3_rarity")
+description = "A ribbon-like giant from the deep, rarely seen alive."
+weightRange = Vector2(20, 80)
+basePrice = 600

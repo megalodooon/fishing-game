@@ -2,6 +2,7 @@
 extends Node2D
 class_name Ocean
 
+const GROUP : StringName = &"oceans"
 const SHADER_PARAMETERS : Array[String] = [
 	"shallow_color", "deep_color", "caustic_color",
 	"depth_scale", "depth_contrast", "depth_speed",
@@ -14,6 +15,8 @@ const SHADER_PARAMETERS : Array[String] = [
 #------------------------#
 @export var sprite : Sprite2D
 @export var ground : OceanGround
+# The fish living here, also the ocean's journal page.
+@export var biome : Biome
 
 @export_group("Colors")
 @export var shallow_color : Color = Color(0.18, 0.62, 0.78):
@@ -114,6 +117,8 @@ var fieldsLayout : Array = []
 
 
 func _ready() -> void:
+	if not Engine.is_editor_hint():
+		add_to_group(GROUP)
 	fieldsMaterial.shader = preload("res://shaders/water_fields.gdshader")
 	cellsAMaterial.shader = preload("res://shaders/caustic_cells.gdshader")
 	cellsBMaterial.shader = cellsAMaterial.shader
@@ -127,6 +132,10 @@ func _ready() -> void:
 		waterTexture = sprite.texture
 		sprite.texture = null
 		bands = CanvasClip.new(sprite)
+
+static func current_biome(tree : SceneTree) -> Biome:
+	var ocean : Ocean = tree.get_first_node_in_group(GROUP) as Ocean
+	return ocean.biome if ocean else null
 
 func _process(delta : float) -> void:
 	var distance : float = (boat.speed if boat and not Engine.is_editor_hint() else fallbackSpeed) * delta

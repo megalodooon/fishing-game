@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Rarity" format=3]
+
+[ext_resource type="Script" path="res://items/rarity.gd" id="1_rarity"]
+
+[resource]
+script = ExtResource("1_rarity")
+displayName = "Uncommon"
+color = Color(0.5, 0.92, 0.45, 1)
+chance = 25.0
+difficulty = 0.3

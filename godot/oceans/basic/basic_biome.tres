@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="Biome" format=3]
+
+[ext_resource type="Script" path="res://oceans/biome.gd" id="1_biome"]
+[ext_resource type="Script" path="res://fishing/fish/fish_data.gd" id="17_data"]
+[ext_resource type="Resource" path="res://fishing/fish/species/sardine.tres" id="2_fish"]
+[ext_resource type="Resource" path="res://fishing/fish/species/anchovy.tres" id="3_fish"]
+[ext_resource type="Resource" path="res://fishing/fish/species/mackerel.tres" id="4_fish"]
+[ext_resource type="Resource" path="res://fishing/fish/species/sea_bass.tres" id="5_fish"]
+[ext_resource type="Resource" path="res://fishing/fish/species/red_snapper.tres" id="6_fish"]
+[ext_resource type="Resource" path="res://fishing/fish/species/flounder.tres" id="7_fish"]
+[ext_resource type="Resource" path="res://fishing/fish/species/placeholder/pufferfish.tres" id="8_fish"]
+[ext_resource type="Resource" path="res://fishing/fish/species/placeholder/barracuda.tres" id="9_fish"]
+[ext_resource type="Resource" path="res://fishing/fish/species/placeholder/yellowfin_tuna.tres" id="10_fish"]
+[ext_resource type="Resource" path="res://fishing/fish/species/placeholder/swordfish.tres" id="11_fish"]
+[ext_resource type="Resource" path="res://fishing/fish/species/placeholder/moonfish.tres" id="12_fish"]
+[ext_resource type="Resource" path="res://fishing/fish/species/placeholder/marlin.tres" id="13_fish"]
+[ext_resource type="Resource" path="res://fishing/fish/species/placeholder/golden_grouper.tres" id="14_fish"]
+[ext_resource type="Resource" path="res://fishing/fish/species/placeholder/oarfish.tres" id="15_fish"]
+[ext_resource type="Resource" path="res://fishing/fish/species/placeholder/king_bass.tres" id="16_fish"]
+
+[resource]
+script = ExtResource("1_biome")
+displayName = "Basic Ocean"
+description = "Calm open water close to shore."
+fish = Array[ExtResource("17_data")]([ExtResource("2_fish"), ExtResource("3_fish"), ExtResource("4_fish"), ExtResource("5_fish"), ExtResource("6_fish"), ExtResource("7_fish"), ExtResource("8_fish"), ExtResource("9_fish"), ExtResource("10_fish"), ExtResource("11_fish"), ExtResource("12_fish"), ExtResource("13_fish"), ExtResource("14_fish"), ExtResource("15_fish"), ExtResource("16_fish")])

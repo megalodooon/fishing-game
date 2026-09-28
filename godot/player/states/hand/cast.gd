@@ -24,6 +24,8 @@ var elapsed : float = 0.0
 
 
 func enter() -> void:
+	if player.energy:
+		player.energy.spend(player.castEnergy)
 	player.aimTarget = target
 	player.rooted = true
 	released = false
@@ -41,7 +43,7 @@ func update_physics(delta : float) -> void:
 	elapsed += delta
 	if not released and (player.itemAngle >= releaseAngle or elapsed >= whipTime):
 		released = true
-		rod.launch(target)
+		rod.launch_all(player.global_position, target)
 		player.handScale = releaseSquash
 		player.create_tween().tween_property(player, "handScale", Vector2.ONE, 0.3).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
 	if released and rod.mode == FishingRod.Mode.WATER:

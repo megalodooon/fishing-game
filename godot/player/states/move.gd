@@ -11,7 +11,8 @@ var flipSpeed : float = 0.2
 
 
 func update_physics(_delta : float) -> void:
-	var direction : Vector2 = Vector2.ZERO if player.rooted else Input.get_vector("left","right","up","down")
+	var typing : bool = player.get_viewport().gui_get_focus_owner() is LineEdit
+	var direction : Vector2 = Vector2.ZERO if player.rooted or player.asleep or typing else Input.get_vector("left","right","up","down")
 	if direction != Vector2.ZERO:
 		player.velocity = player.velocity.move_toward(direction * player.speed, player.acceleration)
 	else:

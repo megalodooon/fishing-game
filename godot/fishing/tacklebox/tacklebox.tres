@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Item" format=3]
+
+[ext_resource type="Script" path="res://items/item.gd" id="1_item"]
+[ext_resource type="Texture2D" path="res://fishing/tacklebox/tacklebox.png" id="2_icon"]
+[ext_resource type="Resource" path="res://items/rarities/common.tres" id="r_rarity"]
+
+[resource]
+script = ExtResource("1_item")
+displayName = "Tacklebox"
+icon = ExtResource("2_icon")
+rarity = ExtResource("r_rarity")
+discardable = false
+useAction = &"tacklebox"
+hint = "Click or T to open"

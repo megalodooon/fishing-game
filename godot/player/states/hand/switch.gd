@@ -6,8 +6,8 @@ class_name PlayerSwitchState
 @onready var player : Player = owner
 @onready var idle : PlayerHandIdleState = %Idle
 
-@export var lowerTime : float = 0.13
-@export var raiseTime : float = 0.36
+@export var lowerTime : float = 0.07
+@export var raiseTime : float = 0.2
 @export_range(-180.0, 180.0, 0.1, "radians_as_degrees") var lowerAngle : float = deg_to_rad(55.0)
 @export_range(-180.0, 180.0, 0.1, "radians_as_degrees") var raiseAngle : float = deg_to_rad(-35.0)
 @export var lowerOffset : Vector2 = Vector2(-2.0, 3.0)

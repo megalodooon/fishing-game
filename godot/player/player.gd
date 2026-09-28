@@ -9,6 +9,7 @@ class_name Player
 @onready var center : Node2D = $Center
 @onready var hand : Sprite2D = %Hand
 @onready var itemHolder : Node2D = %ItemHolder
+@onready var handStates : StateMachine = $HandStateMachine
 #----------Movement Variables-----------#
 @export var speed : float = 50.0
 @export var acceleration : float = 100.0
@@ -16,7 +17,20 @@ class_name Player
 
 #----------Hand Variables-----------#
 @export var boat : Boat
-@export var hotbar : Array[PackedScene] = []
+@export var inventory : Inventory
+@export var tacklebox : Tacklebox
+@export var journal : Journal
+@export var energy : Energy
+# Energy used up by every cast.
+@export var castEnergy : float = 2.0
+@export var minigameScreen : MinigameScreen
+# How big held items other than rods are drawn. Meant for the settings screen.
+@export_range(0.25, 2.0, 0.05) var heldItemScale : float = 0.75:
+	set(value):
+		heldItemScale = value
+		if heldItem:
+			heldItem.set_icon_scale(value)
+@export var heldIconScene : PackedScene
 @export var handRadius : float = 8.0
 @export var footOffset : float = 7.0
 @export var aimSpeed : float = 25.0
@@ -35,6 +49,7 @@ var last_global_position : Vector2
 var heldItem : HeldItem
 var heldSlot : int = -1
 var rooted : bool = false
+var asleep : bool = false
 var aimTarget : Variant = null
 var facing : float = 1.0
 var facingBlend : float = 1.0
@@ -54,6 +69,11 @@ var time : float = 0.0
 
 
 func _ready() -> void:
+	inventory.setup()
+	if tacklebox:
+		tacklebox.setup()
+	if journal:
+		journal.setup()
 	center_rest_position = center.position
 	last_global_position = global_position
 	if boat:
@@ -62,7 +82,11 @@ func _ready() -> void:
 
 func warm_up() -> void:
 	var items : Array[HeldItem] = []
-	for scene in hotbar:
+	var scenes : Array[PackedScene] = [heldIconScene]
+	for slot in inventory.items:
+		if slot and slot.heldScene and not scenes.has(slot.heldScene):
+			scenes.append(slot.heldScene)
+	for scene in scenes:
 		if scene:
 			var item : HeldItem = scene.instantiate()
 			item.holder = self
@@ -152,16 +176,33 @@ func equip(slot : int) -> void:
 	if heldItem:
 		heldItem.queue_free()
 		heldItem = null
-	heldSlot = slot if slot >= 0 and slot < hotbar.size() and hotbar[slot] else -1
-	if heldSlot >= 0:
-		heldItem = hotbar[heldSlot].instantiate()
+	heldSlot = slot if slot >= 0 and slot < inventory.hotbarSize else -1
+	var item : Item = inventory.get_item(heldSlot)
+	var scene : PackedScene = (item.heldScene if item.heldScene else heldIconScene) if item else null
+	if scene:
+		heldItem = scene.instantiate()
 		heldItem.holder = self
+		heldItem.item = item
 		itemHolder.add_child(heldItem)
 		snap_item()
 		update_item(0.0)
 
+# Ends whatever the hand was doing (a catch, a cast in the water) and puts a
+# fresh copy of the held item back in it, like after falling asleep.
+func wake_reset() -> void:
+	if not handStates.currentState is PlayerHandIdleState:
+		handStates.change_state(handStates.get_node("Idle"))
+		equip(heldSlot)
+
+func held_data() -> Item:
+	return heldItem.item if heldItem else null
+
+# The held slot stays put while the hand is busy with it.
+func can_move_slot(slot : int) -> bool:
+	return slot != heldSlot or handStates.currentState is PlayerHandIdleState
+
 func slot_pressed(event : InputEvent) -> int:
-	for i in hotbar.size():
+	for i in inventory.hotbarSize:
 		var action : String = "slot_%d" % (i + 1)
 		if InputMap.has_action(action) and event.is_action_pressed(action):
 			return i

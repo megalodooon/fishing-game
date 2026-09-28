@@ -1,0 +1,13 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://components/held_item/held_item.gd" id="1_held"]
+
+[node name="HeldIcon" type="Node2D" node_paths=PackedStringArray("iconSprite")]
+script = ExtResource("1_held")
+handAimWeight = 0.5
+aimFollow = 0.0
+iconSprite = NodePath("Icon")
+
+[node name="Icon" type="Sprite2D" parent="."]
+position = Vector2(6, 0)
+rotation = 1.5707964

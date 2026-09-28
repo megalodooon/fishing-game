@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://dcr751xpq3bih" path="res://player/assets/player_placeholder.png" id="2_yw30f"]
 [ext_resource type="Script" uid="uid://c0bqqdwxeknsl" path="res://player/states/move.gd" id="4_qjkh3"]
 [ext_resource type="Texture2D" uid="uid://cnxobivsk8i4q" path="res://player/assets/hand_placeholder.png" id="5_qjkh3"]
-[ext_resource type="PackedScene" path="res://rods/starter_rod.tscn" id="6_rod"]
+[ext_resource type="Script" path="res://items/inventory.gd" id="6_inventory"]
 [ext_resource type="Script" uid="uid://6vkic8ksg00r" path="res://player/states/hand/idle.gd" id="7_idle"]
 [ext_resource type="Script" uid="uid://3efxdxtchxiy" path="res://player/states/hand/switch.gd" id="8_switch"]
 [ext_resource type="Script" uid="uid://c22c3oomandkp" path="res://player/states/hand/charge.gd" id="9_charge"]
@@ -17,11 +17,86 @@
 [ext_resource type="Script" path="res://player/states/hand/catch.gd" id="15_catch"]
 [ext_resource type="Script" path="res://components/callout/callout.gd" id="16_callout"]
 [ext_resource type="FontFile" path="res://ui/fonts/PressStart2P.ttf" id="17_font"]
+[ext_resource type="Script" path="res://items/item.gd" id="18_item"]
+[ext_resource type="Resource" path="res://fishing/rods/starter_rod.tres" id="19_rod"]
+[ext_resource type="PackedScene" path="res://items/held_icon.tscn" id="20_icon"]
+[ext_resource type="PackedScene" path="res://fishing/minigames/reel_bar/reel_bar.tscn" id="21_reel_bar"]
+[ext_resource type="PackedScene" path="res://fishing/minigames/timing_needle/timing_needle.tscn" id="22_needle"]
+[ext_resource type="PackedScene" path="res://fishing/minigames/line_tension/line_tension.tscn" id="23_tension"]
+[ext_resource type="Resource" path="res://fishing/tacklebox/tacklebox.tres" id="24_box_item"]
+[ext_resource type="Resource" path="res://fishing/tacklebox/samples/sample_pro_rod.tres" id="25_pro_rod"]
+[ext_resource type="Script" path="res://fishing/tacklebox/tacklebox.gd" id="26_box"]
+[ext_resource type="Script" path="res://fishing/tacklebox/tackle.gd" id="27_tackle"]
+[ext_resource type="Resource" path="res://fishing/tacklebox/tackle/basic_bobber.tres" id="28_bobber"]
+[ext_resource type="Resource" path="res://fishing/tacklebox/tackle/basic_line.tres" id="29_line"]
+[ext_resource type="Resource" path="res://fishing/tacklebox/tackle/basic_hook.tres" id="30_hook"]
+[ext_resource type="Resource" path="res://fishing/tacklebox/samples/cork_bobber.tres" id="31_cork"]
+[ext_resource type="Resource" path="res://fishing/tacklebox/samples/braided_line.tres" id="32_braided"]
+[ext_resource type="Resource" path="res://fishing/tacklebox/samples/barbed_hook.tres" id="33_barbed"]
+[ext_resource type="Resource" path="res://fishing/tacklebox/samples/lucky_hook.tres" id="34_lucky"]
+[ext_resource type="Resource" path="res://fishing/tacklebox/samples/fish_finder.tres" id="35_finder"]
+[ext_resource type="Resource" path="res://fishing/tacklebox/samples/reel_motor.tres" id="36_motor"]
+[ext_resource type="Resource" path="res://fishing/tacklebox/samples/neon_line.tres" id="37_neon"]
+[ext_resource type="Script" path="res://fishing/journal/journal.gd" id="38_journal"]
+[ext_resource type="Resource" path="res://fishing/journal/journal.tres" id="39_journal_item"]
+[ext_resource type="Script" path="res://oceans/biome.gd" id="40_biome"]
+[ext_resource type="Resource" path="res://oceans/basic/basic_biome.tres" id="41_basic"]
+[ext_resource type="Resource" path="res://fishing/fish/species/sardine.tres" id="42_sardine"]
+[ext_resource type="Resource" path="res://fishing/fish/species/anchovy.tres" id="43_anchovy"]
+[ext_resource type="Resource" path="res://fishing/fish/species/flounder.tres" id="44_flounder"]
+[ext_resource type="Resource" path="res://fishing/fish/species/placeholder/barracuda.tres" id="45_barracuda"]
+[ext_resource type="Resource" path="res://fishing/fish/species/placeholder/marlin.tres" id="46_marlin"]
+[ext_resource type="Script" path="res://fishing/fish/fish_data.gd" id="47_data"]
+[ext_resource type="Script" path="res://player/energy.gd" id="48_energy"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_shadow"]
 shader = ExtResource("14_clip")
 shader_parameter/floor_points = PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
 shader_parameter/floor_count = 0
+
+[sub_resource type="Resource" id="Resource_inventory"]
+resource_local_to_scene = true
+script = ExtResource("6_inventory")
+items = Array[ExtResource("18_item")]([ExtResource("19_rod"), ExtResource("24_box_item"), ExtResource("39_journal_item"), null, null, ExtResource("25_pro_rod")])
+
+[sub_resource type="Resource" id="Resource_tacklebox"]
+resource_local_to_scene = true
+script = ExtResource("26_box")
+catalog = Array[ExtResource("27_tackle")]([ExtResource("28_bobber"), ExtResource("31_cork"), ExtResource("29_line"), ExtResource("32_braided"), ExtResource("37_neon"), ExtResource("30_hook"), ExtResource("33_barbed"), ExtResource("34_lucky"), ExtResource("35_finder"), ExtResource("36_motor")])
+owned = {
+ExtResource("28_bobber"): 2,
+ExtResource("29_line"): 3,
+ExtResource("30_hook"): 2,
+ExtResource("31_cork"): 1,
+ExtResource("32_braided"): 2,
+ExtResource("37_neon"): 1,
+ExtResource("33_barbed"): 1,
+ExtResource("35_finder"): 1,
+ExtResource("36_motor"): 1
+}
+
+[sub_resource type="Resource" id="Resource_journal"]
+resource_local_to_scene = true
+script = ExtResource("38_journal")
+biomes = Array[ExtResource("40_biome")]([ExtResource("41_basic")])
+caught = Dictionary[ExtResource("47_data"), int]({
+ExtResource("42_sardine"): 4,
+ExtResource("43_anchovy"): 2,
+ExtResource("44_flounder"): 1,
+ExtResource("45_barracuda"): 1,
+ExtResource("46_marlin"): 1
+})
+heaviest = Dictionary[ExtResource("47_data"), float]({
+ExtResource("42_sardine"): 0.17,
+ExtResource("43_anchovy"): 0.05,
+ExtResource("44_flounder"): 2.31,
+ExtResource("45_barracuda"): 6.8,
+ExtResource("46_marlin"): 92.4
+})
+
+[sub_resource type="Resource" id="Resource_energy"]
+resource_local_to_scene = true
+script = ExtResource("48_energy")
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vkqoe"]
 radius = 4.1231055
@@ -92,7 +167,11 @@ _data = {
 
 [node name="Player" type="CharacterBody2D" unique_id=893027470]
 script = ExtResource("1_rkbax")
-hotbar = Array[PackedScene]([ExtResource("6_rod")])
+inventory = SubResource("Resource_inventory")
+tacklebox = SubResource("Resource_tacklebox")
+journal = SubResource("Resource_journal")
+energy = SubResource("Resource_energy")
+heldIconScene = ExtResource("20_icon")
 
 [node name="Shadow" type="Sprite2D" parent="." unique_id=1318463946]
 material = SubResource("ShaderMaterial_shadow")
@@ -151,6 +230,7 @@ script = ExtResource("12_reel")
 [node name="Catch" type="Node" parent="HandStateMachine"]
 unique_name_in_owner = true
 script = ExtResource("15_catch")
+minigames = Array[PackedScene]([ExtResource("21_reel_bar"), ExtResource("22_needle"), ExtResource("23_tension")])
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=2015660693]
 libraries/ = SubResource("AnimationLibrary_boad6")
@@ -167,7 +247,14 @@ unique_name_in_owner = true
 position = Vector2(8, 1)
 texture = ExtResource("5_qjkh3")
 
+[node name="CatchSprite" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+visible = false
+top_level = true
+z_index = 20
+
 [node name="Callouts" type="CanvasLayer" parent="."]
+unique_name_in_owner = true
 layer = 15
 follow_viewport_enabled = true
 
@@ -189,3 +276,12 @@ font = ExtResource("17_font")
 offset = Vector2(0, -3)
 rise = 0.0
 bob = 1.0
+
+[node name="CatchText" type="Node2D" parent="Callouts"]
+unique_name_in_owner = true
+visible = false
+script = ExtResource("16_callout")
+font = ExtResource("17_font")
+fontSize = 4
+outlineWidth = 0.5
+rise = 2.0

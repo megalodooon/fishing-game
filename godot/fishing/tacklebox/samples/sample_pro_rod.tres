@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="RodItem" format=3]
+
+[ext_resource type="Script" path="res://fishing/rods/rod_item.gd" id="1_rod"]
+[ext_resource type="Texture2D" path="res://fishing/rods/starter.png" id="2_icon"]
+[ext_resource type="PackedScene" path="res://fishing/rods/starter_rod.tscn" id="3_scene"]
+[ext_resource type="Script" path="res://fishing/tacklebox/tackle.gd" id="4_tackle"]
+[ext_resource type="Resource" path="res://fishing/tacklebox/tackle/basic_bobber.tres" id="5_bobber"]
+[ext_resource type="Resource" path="res://fishing/tacklebox/tackle/basic_line.tres" id="6_line"]
+[ext_resource type="Resource" path="res://fishing/tacklebox/tackle/basic_hook.tres" id="7_hook"]
+[ext_resource type="Resource" path="res://items/rarities/rare.tres" id="r_rarity"]
+
+[resource]
+script = ExtResource("1_rod")
+slots = Array[int]([0, 1, 1, 2, 3, 3])
+tackle = Array[ExtResource("4_tackle")]([ExtResource("5_bobber"), ExtResource("6_line"), null, ExtResource("7_hook"), null, null])
+displayName = "Sample Pro Rod"
+icon = ExtResource("2_icon")
+rarity = ExtResource("r_rarity")
+heldScene = ExtResource("3_scene")
+hint = "T to customize"

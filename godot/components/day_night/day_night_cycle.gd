@@ -4,6 +4,7 @@ class_name DayNightCycle
 
 signal time_changed(hour : int, minute : int)
 
+const GROUP : StringName = &"day_night_cycles"
 const MAX_LIGHTS : int = 16
 const WARM_UP_FRAMES : int = 2
 
@@ -38,6 +39,8 @@ var clock : float = 0.0
 
 func _ready() -> void:
 	time = startTime
+	if not Engine.is_editor_hint():
+		add_to_group(GROUP)
 	lights.resize(MAX_LIGHTS)
 	lightColors.resize(MAX_LIGHTS)
 	overlay = ColorRect.new()
@@ -52,6 +55,11 @@ func _ready() -> void:
 	glows.draw.connect(draw_glows)
 	add_child(overlay, false, Node.INTERNAL_MODE_FRONT)
 	add_child(glows, false, Node.INTERNAL_MODE_FRONT)
+
+# The hour of the day as a fraction, or -1 when there's no clock.
+static func now(tree : SceneTree) -> float:
+	var cycle : DayNightCycle = tree.get_first_node_in_group(GROUP) as DayNightCycle
+	return cycle.time if cycle else -1.0
 
 func _process(delta : float) -> void:
 	if not Engine.is_editor_hint() and not paused and dayLength > 0.0:

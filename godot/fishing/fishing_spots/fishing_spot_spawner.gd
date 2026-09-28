@@ -44,6 +44,9 @@ func _process(delta : float) -> void:
 
 func spawn(screen : Rect2) -> FishingSpot:
 	var spot : FishingSpot = spotScene.instantiate()
+	var biome : Biome = Ocean.current_biome(get_tree())
+	if biome:
+		spot.fish = biome.fish
 	var growth : float = spot.radius * (sizeScale - 1.0)
 	for attempt in 16:
 		var point : Vector2 = Vector2(screen.end.x + screenMargin + growth, randf_range(screen.position.y + screenMargin, screen.end.y - screenMargin))
