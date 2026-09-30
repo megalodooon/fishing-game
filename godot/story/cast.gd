@@ -27,6 +27,9 @@ const PEOPLE : Dictionary = {
 	"moss": ["Auntie Moss", Color(0.6, 0.85, 0.45)],
 	"finn": ["Grandpa Finn", Color(1.0, 0.9, 0.55)],
 	"wally": ["Wally the Walrus", Color(0.95, 0.45, 0.45)],
+	"oriel": ["Oriel the Wanderer", Color(0.78, 0.55, 1.0)],
+	"barnaby": ["Banker Barnaby", Color(0.55, 0.9, 0.6)],
+	"odette": ["Odette", Color(0.55, 0.75, 1.0)],
 }
 
 

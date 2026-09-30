@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="Bait" format=3]
+
+[ext_resource type="Script" path="res://fishing/fish/fish_data.gd" id="1_laauo"]
+[ext_resource type="Texture2D" path="res://fishing/bait/icons/prize_lure.png" id="2_554xf"]
+[ext_resource type="Resource" path="res://items/rarities/rare.tres" id="3_ea677"]
+[ext_resource type="Script" path="res://items/rarity.gd" id="4_xfv2e"]
+[ext_resource type="Resource" path="res://items/rarities/legendary.tres" id="5_m2byk"]
+[ext_resource type="Script" path="res://fishing/bait/bait.gd" id="6_upnj2"]
+
+[resource]
+script = ExtResource("6_upnj2")
+rarityBoost = Dictionary[ExtResource("4_xfv2e"), float]({
+ExtResource("3_ea677"): 1.5,
+ExtResource("5_m2byk"): 1.4
+})
+kind = 4
+displayName = "Prize Lure"
+icon = ExtResource("2_554xf")
+rarity = ExtResource("3_ea677")
+description = "A contest prize. Big fish can't resist it."
+maxStack = 99

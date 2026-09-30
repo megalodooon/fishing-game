@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="TrophyFish" format=3]
+
+[ext_resource type="Resource" path="res://oceans/basic/basic_biome.tres" id="1_ofrer"]
+[ext_resource type="Texture2D" path="res://world/trophy/icons/bay_ghostfin.png" id="2_m205j"]
+[ext_resource type="Script" path="res://fishing/fish/requirements/fish_requirement.gd" id="3_qqi1o"]
+[ext_resource type="Script" path="res://fishing/fish/requirements/weather_requirement.gd" id="4_wxjnm"]
+[ext_resource type="Script" path="res://world/trophy/trophy_fish.gd" id="5_5wwn5"]
+[ext_resource type="Script" path="res://items/item.gd" id="6_0ht2t"]
+[ext_resource type="Resource" path="res://items/trophy/bay_ghostfin_bronze.tres" id="7_csiru"]
+[ext_resource type="Resource" path="res://items/trophy/bay_ghostfin_silver.tres" id="8_sgtw8"]
+[ext_resource type="Resource" path="res://items/trophy/bay_ghostfin_gold.tres" id="9_jb7f6"]
+[ext_resource type="Resource" path="res://items/trophy/bay_ghostfin_diamond.tres" id="10_ia63y"]
+
+[sub_resource type="Resource" id="Resource_h7su3"]
+script = ExtResource("4_wxjnm")
+weather = 2
+
+[resource]
+script = ExtResource("5_5wwn5")
+displayName = "Bay Ghostfin"
+icon = ExtResource("2_m205j")
+lore = "Some say it's a fish. Some say it's the fog."
+biome = ExtResource("1_ofrer")
+hint = "In the fog"
+requirements = Array[ExtResource("3_qqi1o")]([SubResource("Resource_h7su3")])
+chance = 0.05
+tiers = Array[ExtResource("6_0ht2t")]([ExtResource("7_csiru"), ExtResource("8_sgtw8"), ExtResource("9_jb7f6"), ExtResource("10_ia63y")])
+scales = PackedInt32Array(4, 8, 16, 32)

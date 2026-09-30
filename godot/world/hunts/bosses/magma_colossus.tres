@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="SeaCreature" format=3]
+
+[ext_resource type="Script" path="res://items/item.gd" id="1_p2bm7"]
+[ext_resource type="PackedScene" path="res://fishing/minigames/boss_duel/boss_duel.tscn" id="2_ogrxc"]
+[ext_resource type="Texture2D" path="res://world/hunts/art/magma_colossus.png" id="3_sac60"]
+[ext_resource type="Resource" path="res://items/rarities/legendary.tres" id="4_gqqib"]
+[ext_resource type="Script" path="res://fishing/fish/requirements/fish_requirement.gd" id="5_2c4yd"]
+[ext_resource type="Script" path="res://fishing/creatures/sea_creature.gd" id="6_6dtxn"]
+
+[resource]
+script = ExtResource("6_6dtxn")
+displayName = "Magma Colossus"
+description = "The boss of the Ember Hunt. Only shows itself to a hunter who's earned it."
+icon = ExtResource("3_sac60")
+rarity = ExtResource("4_gqqib")
+spawnRate = 0.0
+fight = ExtResource("2_ogrxc")
+difficulty = 0.62
+toughness = 1.9
+style = &"ember"
+coins = Vector2i(1100, 2200)
+xp = 480.0
+dropChances = PackedFloat32Array()

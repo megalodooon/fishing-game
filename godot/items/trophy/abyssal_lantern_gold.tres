@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Item" format=3]
+
+[ext_resource type="Texture2D" path="res://items/trophy/icons/abyssal_lantern_gold.png" id="1_rcxb4"]
+[ext_resource type="Resource" path="res://items/rarities/legendary.tres" id="2_1fpr3"]
+[ext_resource type="Script" path="res://items/item.gd" id="3_rca1c"]
+
+[resource]
+script = ExtResource("3_rca1c")
+displayName = "Gold Abyssal Lantern"
+category = "Trophy Fish"
+icon = ExtResource("1_rcxb4")
+rarity = ExtResource("2_1fpr3")
+description = "A gold trophy. Odette at the Trophy Lodge fillets them for Trophy Scales."
+maxStack = 99
+sellPrice = 270

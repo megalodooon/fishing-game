@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Item" format=3]
+
+[ext_resource type="Texture2D" path="res://items/trophy/icons/magma_carp_gold.png" id="1_ldd7k"]
+[ext_resource type="Resource" path="res://items/rarities/legendary.tres" id="2_fps8p"]
+[ext_resource type="Script" path="res://items/item.gd" id="3_hyb8p"]
+
+[resource]
+script = ExtResource("3_hyb8p")
+displayName = "Gold Magma Carp"
+category = "Trophy Fish"
+icon = ExtResource("1_ldd7k")
+rarity = ExtResource("2_fps8p")
+description = "A gold trophy. Odette at the Trophy Lodge fillets them for Trophy Scales."
+maxStack = 99
+sellPrice = 270

@@ -1,5 +1,7 @@
 [gd_scene format=3]
 
+[ext_resource type="Script" path="res://world/village/shop/shop.gd" id="g_shop"]
+[ext_resource type="Resource" path="res://world/village/shop/stock/grim_treasure.tres" id="g_stock"]
 [ext_resource type="Script" path="res://world/island/island.gd" id="1_island"]
 [ext_resource type="Script" path="res://world/island/island_room.gd" id="2_room"]
 [ext_resource type="PackedScene" uid="uid://dw4byakruepaa" path="res://oceans/basic/basic_ocean.tscn" id="3_ocean"]
@@ -196,7 +198,7 @@ coins = 50
 prompt = "Search"
 reach = 8.0
 
-[node name="Npc_Grim" type="Node2D" parent="Landing" node_paths=PackedStringArray("art")]
+[node name="Npc_Grim" type="Node2D" parent="Landing" node_paths=PackedStringArray("art", "shop")]
 position = Vector2(112, 88)
 script = ExtResource("w_e1")
 id = "grim"
@@ -204,6 +206,8 @@ greeting = "Arr. Treasure's out there."
 reach = 12.0
 promptOffset = Vector2(0, -24)
 art = NodePath("Art")
+shop = NodePath("Stall")
+shopLabel = "Treasure"
 quests = Array[ExtResource("w_e2")]([ExtResource("w_e3"), ExtResource("w_e4"), ExtResource("w_e5"), ExtResource("w_e6"), ExtResource("w_e7"), ExtResource("w_e8"), ExtResource("w_e9"), ExtResource("w_e10"), ExtResource("w_e11")])
 
 [node name="Art" type="Sprite2D" parent="Landing/Npc_Grim"]
@@ -285,3 +289,12 @@ kind = 1
 position = Vector2(16, 68)
 script = ExtResource("fg_spot")
 kind = 7
+
+[node name="Stall" type="Node2D" parent="Landing/Npc_Grim"]
+script = ExtResource("g_shop")
+stock = ExtResource("g_stock")
+title = "Grim's Treasure Stall"
+listed = false
+buyRate = 0.0
+buysFish = false
+greeting = "Maps, spades, and the patience to use 'em."

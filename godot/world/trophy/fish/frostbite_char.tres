@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="TrophyFish" format=3]
+
+[ext_resource type="Resource" path="res://oceans/cold/cold_biome.tres" id="1_yeecf"]
+[ext_resource type="Texture2D" path="res://world/trophy/icons/frostbite_char.png" id="2_whhrw"]
+[ext_resource type="Script" path="res://fishing/fish/requirements/fish_requirement.gd" id="3_psifj"]
+[ext_resource type="Script" path="res://world/trophy/trophy_fish.gd" id="4_oowmr"]
+[ext_resource type="Script" path="res://items/item.gd" id="5_85jih"]
+[ext_resource type="Resource" path="res://items/trophy/frostbite_char_bronze.tres" id="6_6ks82"]
+[ext_resource type="Resource" path="res://items/trophy/frostbite_char_silver.tres" id="7_wn38n"]
+[ext_resource type="Resource" path="res://items/trophy/frostbite_char_gold.tres" id="8_fvvas"]
+[ext_resource type="Resource" path="res://items/trophy/frostbite_char_diamond.tres" id="9_3ljuq"]
+
+[resource]
+script = ExtResource("4_oowmr")
+displayName = "Frostbite Char"
+icon = ExtResource("2_whhrw")
+lore = "So cold it burns to hold."
+biome = ExtResource("1_yeecf")
+hint = "Before sunrise, 3:00 to 6:00"
+hours = Vector2(3, 6)
+chance = 0.035
+tiers = Array[ExtResource("5_85jih")]([ExtResource("6_6ks82"), ExtResource("7_wn38n"), ExtResource("8_fvvas"), ExtResource("9_3ljuq")])
+scales = PackedInt32Array(8, 16, 32, 64)

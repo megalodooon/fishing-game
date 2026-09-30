@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="SeaCreature" format=3]
+
+[ext_resource type="Script" path="res://items/item.gd" id="1_83k5e"]
+[ext_resource type="PackedScene" path="res://fishing/minigames/boss_duel/boss_duel.tscn" id="2_vscsf"]
+[ext_resource type="Texture2D" path="res://world/hunts/art/sludge_titan.png" id="3_okkjk"]
+[ext_resource type="Resource" path="res://items/rarities/legendary.tres" id="4_hhk41"]
+[ext_resource type="Script" path="res://fishing/fish/requirements/fish_requirement.gd" id="5_m3lmr"]
+[ext_resource type="Script" path="res://fishing/creatures/sea_creature.gd" id="6_m1ywq"]
+
+[resource]
+script = ExtResource("6_m1ywq")
+displayName = "Sludge Titan"
+description = "The boss of the Sludge Hunt. Only shows itself to a hunter who's earned it."
+icon = ExtResource("3_okkjk")
+rarity = ExtResource("4_hhk41")
+spawnRate = 0.0
+fight = ExtResource("2_vscsf")
+difficulty = 0.55
+toughness = 1.7
+style = &"sludge"
+coins = Vector2i(700, 1400)
+xp = 320.0
+dropChances = PackedFloat32Array()

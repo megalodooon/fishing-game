@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="BaitRecipe" format=3]
+
+[ext_resource type="Resource" path="res://items/hunts/colossus_ember.tres" id="1_x0idf"]
+[ext_resource type="Resource" path="res://items/materials/obsidian_plate.tres" id="2_dp887"]
+[ext_resource type="Resource" path="res://fishing/tacklebox/tackle/colossus_bobber.tres" id="3_8nfrw"]
+[ext_resource type="Script" path="res://fishing/bait/bait_recipe.gd" id="4_1gd67"]
+
+[resource]
+script = ExtResource("4_1gd67")
+output = ExtResource("3_8nfrw")
+amount = 1
+ingredients = Array[Resource]([ExtResource("1_x0idf"), ExtResource("2_dp887")])
+counts = Array[int]([4, 1])
+xp = 260.0
+station = &"forge"
+category = "Tackle"
+requiredSkill = &"hunting"
+requiredLevel = 19

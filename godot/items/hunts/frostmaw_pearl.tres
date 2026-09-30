@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Item" format=3]
+
+[ext_resource type="Texture2D" path="res://items/hunts/icons/frostmaw_pearl.png" id="1_x7jb1"]
+[ext_resource type="Resource" path="res://items/rarities/rare.tres" id="2_p0lkt"]
+[ext_resource type="Script" path="res://items/item.gd" id="3_dbreu"]
+
+[resource]
+script = ExtResource("3_dbreu")
+displayName = "Frostmaw Pearl"
+category = "Hunt Trophy"
+icon = ExtResource("1_x7jb1")
+rarity = ExtResource("2_p0lkt")
+description = "A pearl of ice that never melts."
+maxStack = 99
+sellPrice = 400

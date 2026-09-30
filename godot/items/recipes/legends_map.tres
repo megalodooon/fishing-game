@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="BaitRecipe" format=3]
+
+[ext_resource type="Resource" path="res://items/rare/pirate_doubloon.tres" id="1_x7hu4"]
+[ext_resource type="Resource" path="res://items/materials/deep_coral.tres" id="2_0qno2"]
+[ext_resource type="Resource" path="res://items/materials/pearl_dust.tres" id="3_s54jr"]
+[ext_resource type="Resource" path="res://items/digging/legends_map.tres" id="4_kyd6n"]
+[ext_resource type="Script" path="res://fishing/bait/bait_recipe.gd" id="5_1hbxu"]
+
+[resource]
+script = ExtResource("5_1hbxu")
+output = ExtResource("4_kyd6n")
+amount = 1
+ingredients = Array[Resource]([ExtResource("1_x7hu4"), ExtResource("2_0qno2"), ExtResource("3_s54jr")])
+counts = Array[int]([3, 2, 4])
+xp = 120.0
+station = &"workbench"
+category = "Tools"
+requiredSkill = &"foraging"
+requiredLevel = 18

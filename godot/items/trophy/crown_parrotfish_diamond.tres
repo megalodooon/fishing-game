@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Item" format=3]
+
+[ext_resource type="Texture2D" path="res://items/trophy/icons/crown_parrotfish_diamond.png" id="1_pttt3"]
+[ext_resource type="Resource" path="res://items/rarities/trophy.tres" id="2_qrsvf"]
+[ext_resource type="Script" path="res://items/item.gd" id="3_qkrgg"]
+
+[resource]
+script = ExtResource("3_qkrgg")
+displayName = "Diamond Crown Parrotfish"
+category = "Trophy Fish"
+icon = ExtResource("1_pttt3")
+rarity = ExtResource("2_qrsvf")
+description = "A diamond trophy. Odette at the Trophy Lodge fillets them for Trophy Scales."
+maxStack = 99
+sellPrice = 480

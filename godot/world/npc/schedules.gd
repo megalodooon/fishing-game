@@ -20,8 +20,8 @@ const PEOPLE : Dictionary = {
 	"hale": [[0.0, "Home", Vector2(163, 68), "inside"], [9.0, "Home", Vector2(140, 82), ""], [13.0, "Harbor", Vector2(60, 74), ""], [16.0, "Home", Vector2(116, 96), ""], [20.0, "Home", Vector2(163, 68), "inside"]],
 	"marina": [[0.0, "Lane", Vector2(114, 46), "inside"], [7.0, "Lane", Vector2(140, 56), ""], [18.0, "Lane", Vector2(58, 94), ""], [21.0, "Lane", Vector2(114, 46), "inside"]],
 	"bo": [[0.0, "Lane", Vector2(68, 50), "inside"], [8.0, "Lane", Vector2(84, 60), ""], [11.0, "Square", Vector2(176, 90), ""], [14.0, "Pier", Vector2(62, 84), ""], [17.0, "Home", Vector2(40, 80), ""], [19.0, "Lane", Vector2(68, 50), "inside"]],
-	"barnaby": [[0.0, "Harbor", Vector2(54, 46), "inside"], [8.0, "Harbor", Vector2(54, 58), ""], [17.0, "Square", Vector2(140, 84), "week"], [17.0, "Pier", Vector2(128, 50), "sun"], [20.0, "Harbor", Vector2(54, 46), "inside"]],
-	"odette": [[0.0, "Harbor", Vector2(120, 46), "inside"], [6.0, "Harbor", Vector2(150, 88), ""], [10.0, "Harbor", Vector2(122, 60), ""], [17.0, "Pier", Vector2(90, 100), ""], [21.0, "Harbor", Vector2(120, 46), "inside"]],
+	"barnaby": [[0.0, "Harbor", Vector2(40, 54), "inside"], [8.0, "Harbor", Vector2(54, 60), ""], [17.0, "Square", Vector2(140, 84), "week"], [17.0, "Pier", Vector2(128, 50), "sun"], [20.0, "Harbor", Vector2(40, 54), "inside"]],
+	"odette": [[0.0, "Harbor", Vector2(104, 52), "inside"], [6.0, "Harbor", Vector2(140, 90), ""], [10.0, "Harbor", Vector2(122, 60), ""], [17.0, "Pier", Vector2(90, 100), ""], [21.0, "Harbor", Vector2(104, 52), "inside"]],
 	# The islands.
 	"tilly": [[0.0, "Fields", Vector2(72, 104), "inside"], [6.0, "Fields", Vector2(60, 60), ""], [11.0, "Landing", Vector2(119, 62), ""], [14.0, "Orchard", Vector2(96, 76), ""], [18.0, "Landing", Vector2(100, 66), ""], [21.0, "Fields", Vector2(72, 104), "inside"]],
 	"silas": [[0.0, "Landing", Vector2(116, 40), "inside"], [5.0, "Lagoon", Vector2(34, 80), ""], [10.0, "Landing", Vector2(116, 48), ""], [16.0, "Lagoon", Vector2(44, 72), ""], [21.0, "Landing", Vector2(116, 40), "inside"]],

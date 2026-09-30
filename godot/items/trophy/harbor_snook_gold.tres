@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Item" format=3]
+
+[ext_resource type="Texture2D" path="res://items/trophy/icons/harbor_snook_gold.png" id="1_uc7pn"]
+[ext_resource type="Resource" path="res://items/rarities/legendary.tres" id="2_ydd7q"]
+[ext_resource type="Script" path="res://items/item.gd" id="3_50mbx"]
+
+[resource]
+script = ExtResource("3_50mbx")
+displayName = "Gold Harbor Snook"
+category = "Trophy Fish"
+icon = ExtResource("1_uc7pn")
+rarity = ExtResource("2_ydd7q")
+description = "A gold trophy. Odette at the Trophy Lodge fillets them for Trophy Scales."
+maxStack = 99
+sellPrice = 270

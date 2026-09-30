@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="BaitRecipe" format=3]
+
+[ext_resource type="Resource" path="res://items/hunts/drowned_crown.tres" id="1_hikvc"]
+[ext_resource type="Resource" path="res://items/materials/storm_core.tres" id="2_3j2on"]
+[ext_resource type="Resource" path="res://items/charms/drowned_kings_crown.tres" id="3_6otig"]
+[ext_resource type="Script" path="res://fishing/bait/bait_recipe.gd" id="4_4waw0"]
+
+[resource]
+script = ExtResource("4_4waw0")
+output = ExtResource("3_6otig")
+amount = 1
+ingredients = Array[Resource]([ExtResource("1_hikvc"), ExtResource("2_3j2on")])
+counts = Array[int]([8, 2])
+xp = 500.0
+station = &"forge"
+category = "Charms"
+requiredSkill = &"hunting"
+requiredLevel = 26

@@ -31,10 +31,10 @@ const LIST : Array = [
 	["treasure_50", "Treasure Hunter", "Fish up 50 treasure chests.", "Fishing", 1, false, "counter", "treasure_found", 50],
 	["rare_1", "Lucky Find", "Get your first rare catch.", "Fishing", 0, false, "counter", "rare_drops", 1],
 	["rare_all", "Beyond Luck", "Find every rare catch.", "Fishing", 2, false, "rares_all", 0, 0],
-	["trophy_first", "Trophy Angler", "Catch your first trophy fish.", "Trophy fishing", 0, false, "counter", "trophy_caught", 1],
-	["trophy_gold", "Gold Standard", "Catch a gold trophy fish.", "Trophy fishing", 1, false, "counter", "trophy_gold", 1],
-	["trophy_diamond", "Flawless", "Catch a diamond trophy fish.", "Trophy fishing", 2, false, "counter", "trophy_diamond", 1],
-	["trophy_all", "Hall of Trophies", "Catch every trophy fish.", "Trophy fishing", 2, false, "counter", "trophy_kinds", 13],
+	["trophy_first", "Trophy Angler", "Catch your first trophy fish.", "Trophies", 0, false, "counter", "trophy_caught", 1],
+	["trophy_gold", "Gold Standard", "Catch a gold trophy fish.", "Trophies", 1, false, "counter", "trophy_gold", 1],
+	["trophy_diamond", "Flawless", "Catch a diamond trophy fish.", "Trophies", 2, false, "counter", "trophy_diamond", 1],
+	["trophy_all", "Hall of Trophies", "Catch every trophy fish.", "Trophies", 2, false, "counter", "trophy_kinds", 13],
 	["creature_1", "Sea Monster", "Beat your first sea creature.", "Hunting", 0, false, "counter", "creatures", 1],
 	["creature_100", "Monster Hunter", "Beat 100 sea creatures.", "Hunting", 1, false, "counter", "creatures", 100],
 	["bestiary_all", "Bestiary Complete", "Beat every kind of sea creature.", "Hunting", 2, false, "bestiary_all", 0, 0],
@@ -172,7 +172,10 @@ static func met(player : Player, each : Array) -> bool:
 					return false
 			return true
 		"bestiary_all":
-			return progress.bestiary.size() >= Catalog.creatures().size()
+			for creature in Catalog.creatures():
+				if not progress.bestiary.has(creature):
+					return false
+			return true
 		"any_skill":
 			for skill in Skills.LIST:
 				if Skills.level(player, skill) >= int(value):

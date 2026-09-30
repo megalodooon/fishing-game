@@ -1,0 +1,71 @@
+[gd_resource type="Resource" script_class="GameEvent" format=3]
+
+[ext_resource type="Script" path="res://fishing/creatures/sea_creature.gd" id="1_ur3b6"]
+[ext_resource type="Script" path="res://items/item.gd" id="2_220qh"]
+[ext_resource type="Texture2D" path="res://world/events/icons/harvest_contest.png" id="3_48aq7"]
+[ext_resource type="Script" path="res://world/events/game_event.gd" id="4_colei"]
+[ext_resource type="Script" path="res://world/village/shop/shop_offer.gd" id="5_3srhj"]
+[ext_resource type="Resource" path="res://items/events/contest_ribbon.tres" id="6_wnujf"]
+[ext_resource type="Resource" path="res://world/village/farm/seeds/starfruit_seeds.tres" id="7_gltai"]
+[ext_resource type="Resource" path="res://world/village/farm/seeds/ghost_pepper_seeds.tres" id="8_a8ou1"]
+[ext_resource type="Resource" path="res://world/village/farm/seeds/squash_seeds.tres" id="9_j3yxd"]
+[ext_resource type="Resource" path="res://items/potions/green_thumb_potion.tres" id="10_ggb1d"]
+[ext_resource type="Resource" path="res://items/charms/blue_ribbon.tres" id="11_n6mha"]
+[ext_resource type="Resource" path="res://items/charms/harvest_2.tres" id="12_5elpx"]
+
+[sub_resource type="Resource" id="Resource_mmah4"]
+script = ExtResource("5_3srhj")
+item = ExtResource("7_gltai")
+amount = 2
+price = 3
+currency = ExtResource("6_wnujf")
+
+[sub_resource type="Resource" id="Resource_n6cn4"]
+script = ExtResource("5_3srhj")
+item = ExtResource("8_a8ou1")
+amount = 5
+price = 2
+currency = ExtResource("6_wnujf")
+
+[sub_resource type="Resource" id="Resource_tyg25"]
+script = ExtResource("5_3srhj")
+item = ExtResource("9_j3yxd")
+amount = 5
+price = 2
+currency = ExtResource("6_wnujf")
+
+[sub_resource type="Resource" id="Resource_vg3su"]
+script = ExtResource("5_3srhj")
+item = ExtResource("10_ggb1d")
+amount = 2
+price = 3
+currency = ExtResource("6_wnujf")
+
+[sub_resource type="Resource" id="Resource_p40bb"]
+script = ExtResource("5_3srhj")
+item = ExtResource("11_n6mha")
+price = 14
+currency = ExtResource("6_wnujf")
+
+[sub_resource type="Resource" id="Resource_2x6cn"]
+script = ExtResource("5_3srhj")
+item = ExtResource("12_5elpx")
+price = 24
+currency = ExtResource("6_wnujf")
+
+[resource]
+script = ExtResource("4_colei")
+displayName = "Farming Contest"
+description = "Every Tuesday: harvest as much of the day's featured crop as you can. Medals pay Contest Ribbons, which Tilly trades for rare seeds and farm prizes."
+icon = ExtResource("3_48aq7")
+color = Color(0.5411765, 0.8156863, 0.2901961, 1)
+weekday = 1
+requiredFlag = "quest/q_meadow"
+hours = Vector2(8, 18)
+fishChance = 0.0
+dropChances = PackedFloat32Array()
+contest = &"harvest"
+host = "tilly"
+shopTitle = "Contest Prizes"
+shop = Array[ExtResource("5_3srhj")]([SubResource("Resource_mmah4"), SubResource("Resource_n6cn4"), SubResource("Resource_tyg25"), SubResource("Resource_vg3su"), SubResource("Resource_p40bb"), SubResource("Resource_2x6cn")])
+startText = "Tilly's Farming Contest is on! Check the featured crop."

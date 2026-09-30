@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Item" format=3]
+
+[ext_resource type="Texture2D" path="res://items/trophy/icons/harbor_snook_bronze.png" id="1_holb3"]
+[ext_resource type="Resource" path="res://items/rarities/uncommon.tres" id="2_dxn76"]
+[ext_resource type="Script" path="res://items/item.gd" id="3_bfl62"]
+
+[resource]
+script = ExtResource("3_bfl62")
+displayName = "Bronze Harbor Snook"
+category = "Trophy Fish"
+icon = ExtResource("1_holb3")
+rarity = ExtResource("2_dxn76")
+description = "A bronze trophy. Odette at the Trophy Lodge fillets them for Trophy Scales."
+maxStack = 99
+sellPrice = 30

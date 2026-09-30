@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Item" format=3]
+
+[ext_resource type="Texture2D" path="res://items/hunts/icons/drowned_crown.png" id="1_gmpot"]
+[ext_resource type="Resource" path="res://items/rarities/legendary.tres" id="2_8rthd"]
+[ext_resource type="Script" path="res://items/item.gd" id="3_n5e6e"]
+
+[resource]
+script = ExtResource("3_n5e6e")
+displayName = "Drowned Crown"
+category = "Hunt Trophy"
+icon = ExtResource("1_gmpot")
+rarity = ExtResource("2_8rthd")
+description = "Shards of a crown from a kingdom under the sea."
+maxStack = 99
+sellPrice = 900

@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="TrophyFish" format=3]
+
+[ext_resource type="Resource" path="res://oceans/storm/storm_biome.tres" id="1_5ikvp"]
+[ext_resource type="Texture2D" path="res://world/trophy/icons/thunder_eel.png" id="2_ue20t"]
+[ext_resource type="Script" path="res://fishing/fish/requirements/fish_requirement.gd" id="3_n0oeg"]
+[ext_resource type="Script" path="res://fishing/fish/requirements/weather_requirement.gd" id="4_dhh5j"]
+[ext_resource type="Script" path="res://fishing/fish/requirements/cast_requirement.gd" id="5_622tx"]
+[ext_resource type="Script" path="res://world/trophy/trophy_fish.gd" id="6_hmhw1"]
+[ext_resource type="Script" path="res://items/item.gd" id="7_nahys"]
+[ext_resource type="Resource" path="res://items/trophy/thunder_eel_bronze.tres" id="8_4r8iw"]
+[ext_resource type="Resource" path="res://items/trophy/thunder_eel_silver.tres" id="9_3voj5"]
+[ext_resource type="Resource" path="res://items/trophy/thunder_eel_gold.tres" id="10_2gvje"]
+[ext_resource type="Resource" path="res://items/trophy/thunder_eel_diamond.tres" id="11_xj7xp"]
+
+[sub_resource type="Resource" id="Resource_8tset"]
+script = ExtResource("4_dhh5j")
+
+[sub_resource type="Resource" id="Resource_bx0fg"]
+script = ExtResource("5_622tx")
+minScore = 3
+
+[resource]
+script = ExtResource("6_hmhw1")
+displayName = "Thunder Eel"
+icon = ExtResource("2_ue20t")
+lore = "The hair on your arms stands up when it bites."
+biome = ExtResource("1_5ikvp")
+hint = "In the rain, with a good cast"
+requirements = Array[ExtResource("3_n0oeg")]([SubResource("Resource_8tset"), SubResource("Resource_bx0fg")])
+chance = 0.03
+tiers = Array[ExtResource("7_nahys")]([ExtResource("8_4r8iw"), ExtResource("9_3voj5"), ExtResource("10_2gvje"), ExtResource("11_xj7xp")])
+scales = PackedInt32Array(10, 20, 40, 80)

@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="TrophyFish" format=3]
+
+[ext_resource type="Resource" path="res://oceans/islands/mangrove_biome.tres" id="1_30v4q"]
+[ext_resource type="Texture2D" path="res://world/trophy/icons/bog_king.png" id="2_wyy2e"]
+[ext_resource type="Script" path="res://fishing/fish/requirements/fish_requirement.gd" id="3_dcvmp"]
+[ext_resource type="Script" path="res://fishing/fish/requirements/weather_requirement.gd" id="4_ql7br"]
+[ext_resource type="Script" path="res://world/trophy/trophy_fish.gd" id="5_x1afm"]
+[ext_resource type="Script" path="res://items/item.gd" id="6_mtel7"]
+[ext_resource type="Resource" path="res://items/trophy/bog_king_bronze.tres" id="7_ol07j"]
+[ext_resource type="Resource" path="res://items/trophy/bog_king_silver.tres" id="8_dm3hc"]
+[ext_resource type="Resource" path="res://items/trophy/bog_king_gold.tres" id="9_1ogwk"]
+[ext_resource type="Resource" path="res://items/trophy/bog_king_diamond.tres" id="10_8ia1p"]
+
+[sub_resource type="Resource" id="Resource_l7sts"]
+script = ExtResource("4_ql7br")
+
+[resource]
+script = ExtResource("5_x1afm")
+displayName = "Bog King"
+icon = ExtResource("2_wyy2e")
+lore = "The bayou's oldest resident, and it knows it."
+biome = ExtResource("1_30v4q")
+hint = "In the rain"
+requirements = Array[ExtResource("3_dcvmp")]([SubResource("Resource_l7sts")])
+tiers = Array[ExtResource("6_mtel7")]([ExtResource("7_ol07j"), ExtResource("8_dm3hc"), ExtResource("9_1ogwk"), ExtResource("10_8ia1p")])
+scales = PackedInt32Array(6, 12, 24, 48)

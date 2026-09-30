@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Item" format=3]
+
+[ext_resource type="Texture2D" path="res://items/trophy/icons/thunder_eel_bronze.png" id="1_5mf2u"]
+[ext_resource type="Resource" path="res://items/rarities/uncommon.tres" id="2_m71bi"]
+[ext_resource type="Script" path="res://items/item.gd" id="3_itamn"]
+
+[resource]
+script = ExtResource("3_itamn")
+displayName = "Bronze Thunder Eel"
+category = "Trophy Fish"
+icon = ExtResource("1_5mf2u")
+rarity = ExtResource("2_m71bi")
+description = "A bronze trophy. Odette at the Trophy Lodge fillets them for Trophy Scales."
+maxStack = 99
+sellPrice = 30

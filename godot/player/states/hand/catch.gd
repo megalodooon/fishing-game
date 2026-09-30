@@ -119,6 +119,12 @@ func next_fish() -> void:
 		var creatures : Array[SeaCreature] = biome.creatures.duplicate() if biome else []
 		for event in events:
 			creatures.append_array(event.creatures)
+		var hunted : SeaCreature = Hunts.boss_bite(player)
+		if hunted:
+			creature = hunted
+			var boss_scene : PackedScene = hunted.fight if hunted.fight else bossMinigames.pick_random()
+			start(boss_scene, hunted.difficulty, 0.5, Hunts.COLOR, hunted.icon, hunted.style, hunted.toughness, hunted.announce)
+			return
 		if not creatures.is_empty() and randf() * 100.0 < player.stat(&"seaCreature"):
 			creature = SeaCreature.roll(creatures, context, Skills.level(player, Skills.FISHING))
 			if creature:
@@ -129,6 +135,9 @@ func next_fish() -> void:
 			var junk : Item = biome.junk.pick_random()
 			if junk and player.inventory.give(junk, 1) == 0:
 				player.progress.count("junk")
+				if junk.resource_path.ends_with("old_boot.tres"):
+					player.progress.count("boots")
+				Quest.notify(player, &"junk", junk)
 				results.append({"icon": junk.icon, "text": junk.displayName, "color": Color(0.7, 0.72, 0.62), "from": line.get_bobber_point()})
 			continue
 		var data : FishData = null
@@ -240,6 +249,10 @@ func land(caught : Fish) -> void:
 			var board : NoticeBoard = NoticeBoard.find(get_tree())
 			if board:
 				board.post("RARE DROP!", "%s came up with the catch." % rare.displayName, RareDrops.COLOR, rare.icon)
+	var context : FishingContext = FishingContext.make(player, line, fishSpot if is_instance_valid(fishSpot) else null)
+	var trophy : Item = TrophyFishing.roll(player, context, where)
+	if trophy:
+		results.append({"icon": trophy.icon, "text": "TROPHY! %s" % trophy.displayName, "color": Color(1.0, 0.82, 0.3), "from": line.get_bobber_point()})
 	if randf() * 100.0 < player.stat(&"treasure"):
 		var chest : TreasureChest = TreasureChest.pick(where.tier if where else 0, player.stat(&"luck"))
 		if chest and player.inventory.give(chest, 1) == 0:
@@ -247,6 +260,11 @@ func land(caught : Fish) -> void:
 			results.append({"icon": chest.icon, "text": "Treasure! %s" % chest.displayName, "color": treasureColor, "from": line.get_bobber_point()})
 
 func finish_fight(won : bool) -> void:
+	if Hunts.is_boss(creature):
+		Hunts.boss_fought(player, won)
+		# The bestiary and collections count the boss itself, not the tougher
+		# copy made for this fight.
+		creature = Hunts.bossBase
 	if not won:
 		results.append({"text": "%s got away" % creature.displayName, "color": escapeColor})
 		return
@@ -259,6 +277,12 @@ func finish_fight(won : bool) -> void:
 			names.append(pair[0].displayName if pair[1] <= 1 else "%s x%d" % [pair[0].displayName, pair[1]])
 	player.progress.bestiary[creature] = player.progress.bestiary.get(creature, 0) + 1
 	player.progress.count("creatures")
+	# Sea Essence for enchanting, more from tougher creatures.
+	var essence : Item = load(Enchanting.ESSENCE) as Item
+	var essenceAmount : int = maxi(ceili(creature.xp / 50.0), 1)
+	if essence and Counter.fits(player, essence, essenceAmount):
+		Counter.deliver(player, essence, essenceAmount)
+		names.append("%d Sea Essence" % essenceAmount)
 	Skills.add(player, Skills.HUNTING, creature.xp)
 	Skills.add(player, Skills.FISHING, creature.xp * 0.5)
 	Collections.check(player, creature)

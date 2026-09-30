@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="TrophyFish" format=3]
+
+[ext_resource type="Resource" path="res://oceans/islands/lagoon_biome.tres" id="1_67vht"]
+[ext_resource type="Texture2D" path="res://world/trophy/icons/glass_eel.png" id="2_vhg0y"]
+[ext_resource type="Script" path="res://fishing/fish/requirements/fish_requirement.gd" id="3_bxc6c"]
+[ext_resource type="Script" path="res://world/trophy/trophy_fish.gd" id="4_3aunp"]
+[ext_resource type="Script" path="res://items/item.gd" id="5_6jpti"]
+[ext_resource type="Resource" path="res://items/trophy/glass_eel_bronze.tres" id="6_kptmi"]
+[ext_resource type="Resource" path="res://items/trophy/glass_eel_silver.tres" id="7_wa7rw"]
+[ext_resource type="Resource" path="res://items/trophy/glass_eel_gold.tres" id="8_ut7fc"]
+[ext_resource type="Resource" path="res://items/trophy/glass_eel_diamond.tres" id="9_ughx1"]
+
+[resource]
+script = ExtResource("4_3aunp")
+displayName = "Glass Eel"
+icon = ExtResource("2_vhg0y")
+lore = "You can see its heart beating."
+biome = ExtResource("1_67vht")
+hint = "At night, 22:00 to 3:00"
+hours = Vector2(22, 3)
+tiers = Array[ExtResource("5_6jpti")]([ExtResource("6_kptmi"), ExtResource("7_wa7rw"), ExtResource("8_ut7fc"), ExtResource("9_ughx1")])
+scales = PackedInt32Array(6, 12, 24, 48)

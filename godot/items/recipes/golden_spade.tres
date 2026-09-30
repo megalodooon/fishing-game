@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="BaitRecipe" format=3]
+
+[ext_resource type="Resource" path="res://items/materials/obsidian_plate.tres" id="1_mlsxc"]
+[ext_resource type="Resource" path="res://items/enchanted/enchanted_iron_scrap.tres" id="2_6f3nl"]
+[ext_resource type="Resource" path="res://items/rare/pirate_doubloon.tres" id="3_r05m6"]
+[ext_resource type="Resource" path="res://items/digging/golden_spade.tres" id="4_4ynfk"]
+[ext_resource type="Script" path="res://fishing/bait/bait_recipe.gd" id="5_ib4ty"]
+
+[resource]
+script = ExtResource("5_ib4ty")
+output = ExtResource("4_4ynfk")
+amount = 1
+ingredients = Array[Resource]([ExtResource("1_mlsxc"), ExtResource("2_6f3nl"), ExtResource("3_r05m6")])
+counts = Array[int]([2, 2, 3])
+xp = 150.0
+station = &"forge"
+category = "Tools"
+requiredSkill = &"foraging"
+requiredLevel = 20

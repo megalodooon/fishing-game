@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Item" format=3]
+
+[ext_resource type="Texture2D" path="res://items/trophy/icons/crown_parrotfish_bronze.png" id="1_t200f"]
+[ext_resource type="Resource" path="res://items/rarities/uncommon.tres" id="2_qnupg"]
+[ext_resource type="Script" path="res://items/item.gd" id="3_f1mii"]
+
+[resource]
+script = ExtResource("3_f1mii")
+displayName = "Bronze Crown Parrotfish"
+category = "Trophy Fish"
+icon = ExtResource("1_t200f")
+rarity = ExtResource("2_qnupg")
+description = "A bronze trophy. Odette at the Trophy Lodge fillets them for Trophy Scales."
+maxStack = 99
+sellPrice = 30

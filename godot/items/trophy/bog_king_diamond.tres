@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Item" format=3]
+
+[ext_resource type="Texture2D" path="res://items/trophy/icons/bog_king_diamond.png" id="1_8yobn"]
+[ext_resource type="Resource" path="res://items/rarities/trophy.tres" id="2_ysods"]
+[ext_resource type="Script" path="res://items/item.gd" id="3_3rq38"]
+
+[resource]
+script = ExtResource("3_3rq38")
+displayName = "Diamond Bog King"
+category = "Trophy Fish"
+icon = ExtResource("1_8yobn")
+rarity = ExtResource("2_ysods")
+description = "A diamond trophy. Odette at the Trophy Lodge fillets them for Trophy Scales."
+maxStack = 99
+sellPrice = 480

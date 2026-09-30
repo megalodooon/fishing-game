@@ -5,12 +5,14 @@ class_name ProfileUI
 # the Angler Level; click one to open it: its level, XP and perk on the left,
 # and its level road on the right, every level with what it unlocks (hover a
 # level for all of it, scroll for more). The Angler page shows where the
-# Angler XP comes from and what the next levels give. The Stats page adds up
-# every stat with all its sources, plus the running totals.
+# Angler XP comes from and what the next levels give. The Tide Tree page
+# grows perks with Tide Tokens (see TideTree). Feats lists the achievements
+# by group. The Stats page adds up every stat with all its sources, plus the
+# running totals.
 
-enum Tab { SKILLS, ANGLER, STATS }
-enum Zone { NONE, TAB, CARD, BACK, ROAD, UP, DOWN }
-const TAB_NAMES : PackedStringArray = ["Skills", "Angler", "Stats"]
+enum Tab { SKILLS, ANGLER, TREE, FEATS, STATS }
+enum Zone { NONE, TAB, CARD, BACK, ROAD, UP, DOWN, NODE, GROUP, FEAT }
+const TAB_NAMES : PackedStringArray = ["Skills", "Angler", "Tide Tree", "Feats", "Stats"]
 const COUNTERS : Array = [["Fish caught", "fish_caught"], ["Sea creatures beaten", "creatures"], ["Treasure found", "treasure_found"], ["Treasure opened", "treasure_opened"], ["Rare catches", "rare_drops"], ["Crops harvested", "harvests"], ["Things foraged", "forage"], ["Meals eaten", "meals"], ["Things crafted", "crafted"], ["Trips sailed", "trips"], ["Coins from sales", "coins_earned"], ["Orders delivered", "orders"], ["Days", "days"], ["Giant fish", "variant_giant"], ["Shiny fish", "variant_shiny"], ["Golden fish", "variant_golden"]]
 const SKILL_ICONS : Dictionary = {
 	Skills.FISHING: preload("res://ui/hub/icons/skill_fishing.png"),
@@ -58,6 +60,14 @@ var mouse : Vector2 = Vector2(-100.0, -100.0)
 var completion : float = 0.0
 var time : float = 0.0
 var pick : float = 1.0
+var nodeRects : Array[Rect2] = []
+var treeArea : Rect2
+var groupRects : Array[Rect2] = []
+var featRects : Array[Rect2] = []
+var featGroup : int = 0
+var featFirst : int = 0
+var feats : Array = []
+var sparkles : Sparkles = Sparkles.new()
 #------------------------#
 
 
@@ -100,7 +110,41 @@ func fit() -> void:
 	upRect = Rect2(road.end.x - 11.0, road.position.y + 2.0, 8.0, 6.0)
 	downRect = Rect2(road.end.x - 11.0, road.end.y - 8.0, 8.0, 6.0)
 	layout_road()
+	layout_tree()
+	layout_feats()
 	queue_redraw()
+
+func layout_tree() -> void:
+	nodeRects.clear()
+	treeArea = Rect2(body.position.x, body.position.y + 10.0, body.size.x, body.size.y - 10.0)
+	var step : Vector2 = Vector2(treeArea.size.x / 7.0, treeArea.size.y / 5.0)
+	for each in TideTree.NODES:
+		var place_at : Vector2i = each[7]
+		var center : Vector2 = Vector2(treeArea.position.x + (place_at.x + 0.5) * step.x, treeArea.end.y - (place_at.y + 0.5) * step.y).round()
+		nodeRects.append(Rect2(center - Vector2(5.0, 5.0), Vector2(10.0, 10.0)))
+
+func layout_feats() -> void:
+	groupRects.clear()
+	var groups : PackedStringArray = Achievements.groups()
+	var rowHeight : float = floorf((body.size.y - 4.0) / maxf(groups.size(), 1.0))
+	for i in groups.size():
+		groupRects.append(Rect2(body.position.x + 2.0, body.position.y + 2.0 + i * rowHeight, 56.0, rowHeight - 1.0))
+	feats.clear()
+	featRects.clear()
+	if groups.is_empty():
+		return
+	var wanted : String = groups[clampi(featGroup, 0, groups.size() - 1)]
+	var all_here : Array = []
+	for each in Achievements.LIST:
+		if each[3] == wanted:
+			all_here.append(each)
+	var fits : int = floori((body.size.y - 4.0) / 10.0)
+	featFirst = clampi(featFirst, 0, maxi(all_here.size() - fits, 0))
+	var y : float = body.position.y + 2.0
+	for i in range(featFirst, mini(featFirst + fits, all_here.size())):
+		feats.append(all_here[i])
+		featRects.append(Rect2(body.position.x + 62.0, y, body.size.x - 64.0, 9.0))
+		y += 10.0
 
 func hub_open() -> void:
 	if not shown:
@@ -178,6 +222,19 @@ func zone_at(point : Vector2) -> Vector2i:
 	for i in tabRects.size():
 		if tabRects[i].has_point(point):
 			return Vector2i(Zone.TAB, i)
+	if tab == Tab.TREE:
+		for i in nodeRects.size():
+			if nodeRects[i].grow(1.0).has_point(point):
+				return Vector2i(Zone.NODE, i)
+		return Vector2i(Zone.NONE, -1)
+	if tab == Tab.FEATS:
+		for i in groupRects.size():
+			if groupRects[i].has_point(point):
+				return Vector2i(Zone.GROUP, i)
+		for i in featRects.size():
+			if featRects[i].has_point(point):
+				return Vector2i(Zone.FEAT, i)
+		return Vector2i(Zone.NONE, -1)
 	if tab != Tab.SKILLS:
 		return Vector2i(Zone.NONE, -1)
 	if skill.is_empty():
@@ -215,6 +272,10 @@ func _gui_input(event : InputEvent) -> void:
 			MOUSE_BUTTON_WHEEL_UP, MOUSE_BUTTON_WHEEL_DOWN:
 				if tab == Tab.SKILLS and not skill.is_empty():
 					scroll_road(-2 if event.button_index == MOUSE_BUTTON_WHEEL_UP else 2)
+				elif tab == Tab.FEATS:
+					featFirst += -1 if event.button_index == MOUSE_BUTTON_WHEEL_UP else 1
+					layout_feats()
+					queue_redraw()
 			MOUSE_BUTTON_LEFT:
 				var found : Vector2i = zone_at(event.position)
 				match found.x:
@@ -228,13 +289,22 @@ func _gui_input(event : InputEvent) -> void:
 						scroll_road(-3)
 					Zone.DOWN:
 						scroll_road(3)
+					Zone.NODE:
+						var id : String = TideTree.NODES[found.y][0]
+						if TideTree.grow(player, id):
+							sparkles.burst(nodeRects[found.y].get_center(), TideTree.TOKEN_COLOR, 12)
+							AnglerLevel.forget()
+					Zone.GROUP:
+						featGroup = found.y
+						featFirst = 0
+						layout_feats()
 				zone = Zone.NONE
 				queue_redraw()
 	accept_event()
 
 func _process(delta : float) -> void:
 	time += delta
-	if pick < 1.0 or zone in [Zone.CARD, Zone.ROAD, Zone.BACK]:
+	if sparkles.update(delta) or pick < 1.0 or zone in [Zone.CARD, Zone.ROAD, Zone.BACK, Zone.NODE]:
 		pick = minf(pick + delta * 6.0, 1.0)
 		queue_redraw()
 
@@ -252,7 +322,6 @@ func _draw() -> void:
 		var active : bool = i == tab
 		UiKit.box(self, skin.tabOn if active else (skin.tabHover if zone == Zone.TAB and index == i else skin.tab), area if active else area.grow_individual(0.0, -1.0, 0.0, 0.0))
 		UiKit.label(self, font, Vector2(area.position.x, UiKit.baseline(font, area, ui.statSize)), TAB_NAMES[i], ui.statSize, skin.text if active else skin.dim, HORIZONTAL_ALIGNMENT_CENTER, area.size.x)
-	UiKit.label(self, font, Vector2(panel.position.x, line_at(panel.position.y + 6.0)), "Completion %.1f%%" % completion, ui.statSize, skin.good, HORIZONTAL_ALIGNMENT_RIGHT, panel.size.x - 6.0)
 	match tab:
 		Tab.SKILLS:
 			if skill.is_empty():
@@ -261,8 +330,13 @@ func _draw() -> void:
 				draw_skill(font)
 		Tab.ANGLER:
 			draw_angler(font)
+		Tab.TREE:
+			draw_tree(font)
+		Tab.FEATS:
+			draw_feats(font)
 		Tab.STATS:
 			draw_stats(font)
+	sparkles.draw(self)
 	var shown_tip : Array = tip()
 	if not shown_tip.is_empty():
 		ui.paint_tip(self, mouse, shown_tip[0], shown_tip[2] if shown_tip.size() > 2 else ui.textColor, shown_tip[1], ui.tip_size(shown_tip[0], shown_tip[1]))
@@ -281,7 +355,7 @@ func draw_grid(font : Font) -> void:
 	for each in Skills.LIST:
 		total += Skills.level(player, each)
 	UiKit.label(self, font, Vector2(inner.position.x, line_at(inner.position.y)), "Skill average %.1f" % (total / Skills.LIST.size()), ui.statSize, skin.text, HORIZONTAL_ALIGNMENT_RIGHT, inner.size.x)
-	UiKit.label(self, font, Vector2(inner.position.x, line_at(inner.position.y + ui.statSize + 2.0)), "Click a skill", ui.statSize, skin.dim, HORIZONTAL_ALIGNMENT_RIGHT, inner.size.x)
+	UiKit.label(self, font, Vector2(inner.position.x, line_at(inner.position.y + ui.statSize + 2.0)), "Completion %.1f%%" % completion, ui.statSize, skin.good, HORIZONTAL_ALIGNMENT_RIGHT, inner.size.x)
 	for i in Skills.LIST.size():
 		draw_card(font, i)
 
@@ -470,6 +544,73 @@ func draw_angler(font : Font) -> void:
 		UiKit.label(self, font, Vector2(list.position.x, line_at(y)), "%d" % (count * source[1]), ui.statSize, ANGLER_COLOR if count > 0 else skin.dim, HORIZONTAL_ALIGNMENT_RIGHT, list.size.x)
 		y += ui.statSize + 1.0
 
+# ---------------------------------------------------------------- tide tree
+
+func draw_tree(font : Font) -> void:
+	UiKit.box(self, skin.well, body)
+	var tokens : int = TideTree.tokens(player)
+	UiKit.label(self, font, Vector2(body.position.x + 3.0, line_at(body.position.y + 2.0)), "Tide Tokens: %d" % tokens, ui.statSize, TideTree.TOKEN_COLOR if tokens > 0 else skin.dim)
+	UiKit.label(self, font, Vector2(body.position.x, line_at(body.position.y + 2.0)), "1 per Angler Level", ui.statSize, skin.dim, HORIZONTAL_ALIGNMENT_RIGHT, body.size.x - 3.0)
+	# Branches first, under the nodes.
+	for i in TideTree.NODES.size():
+		for parent in TideTree.NODES[i][6]:
+			for j in TideTree.NODES.size():
+				if TideTree.NODES[j][0] == parent:
+					var grown : bool = TideTree.level(player.progress, parent) > 0
+					draw_line(nodeRects[i].get_center(), nodeRects[j].get_center(), Color(TideTree.TOKEN_COLOR, 0.8) if grown else Color(skin.line, 0.6), 1.0)
+	for i in TideTree.NODES.size():
+		var each : Array = TideTree.NODES[i]
+		var area : Rect2 = nodeRects[i]
+		var at : int = TideTree.level(player.progress, each[0])
+		var full : bool = at >= int(each[4])
+		var open : bool = TideTree.reachable(player.progress, each[0])
+		var fill : Color = Color(1.0, 0.82, 0.3) if full else (TideTree.TOKEN_COLOR if at > 0 else (Color(0.2, 0.3, 0.4) if open else Color(0.1, 0.12, 0.16)))
+		draw_rect(area, Color(0.03, 0.05, 0.1))
+		draw_rect(area.grow(-1.0), fill)
+		if at > 0 and not full:
+			draw_rect(Rect2(area.position.x + 1.0, area.end.y - 2.0, (area.size.x - 2.0) * at / float(each[4]), 1.0), Color(1.0, 1.0, 1.0, 0.8))
+		if open and TideTree.blocked(player, each[0]).is_empty():
+			UiKit.brackets(self, area.grow(1.0), TideTree.TOKEN_COLOR, time)
+		if zone == Zone.NODE and index == i:
+			UiKit.outline(self, area.grow(1.0), skin.title)
+		var glyph : String = "%d" % at if at > 0 else String(each[1]).left(1)
+		UiKit.label(self, font, Vector2(area.position.x, UiKit.baseline(font, area, ui.statSize)), glyph, ui.statSize, Color(0.05, 0.08, 0.12) if at > 0 else Color(0.5, 0.62, 0.72, 0.9 if open else 0.4), HORIZONTAL_ALIGNMENT_CENTER, area.size.x)
+
+# ---------------------------------------------------------------- feats
+
+func draw_feats(font : Font) -> void:
+	UiKit.box(self, skin.well, body)
+	var groups : PackedStringArray = Achievements.groups()
+	draw_rect(Rect2(body.position.x + 59.0, body.position.y + 2.0, 1.0, body.size.y - 4.0), skin.line)
+	for i in groupRects.size():
+		var area : Rect2 = groupRects[i]
+		var done : int = 0
+		var count : int = 0
+		for each in Achievements.LIST:
+			if each[3] == groups[i]:
+				count += 1
+				if Achievements.unlocked(player.progress, each[0]):
+					done += 1
+		if i == featGroup:
+			draw_rect(area, Color(skin.accent, 0.25))
+			draw_rect(Rect2(area.position, Vector2(1.0, area.size.y)), skin.accent)
+		elif zone == Zone.GROUP and index == i:
+			draw_rect(area, skin.hover)
+		UiKit.label(self, font, Vector2(area.position.x + 2.0, UiKit.baseline(font, area, ui.statSize)), groups[i], ui.statSize, skin.text if i == featGroup else skin.dim, HORIZONTAL_ALIGNMENT_LEFT, area.size.x - 14.0)
+		UiKit.label(self, font, Vector2(area.position.x, UiKit.baseline(font, area, ui.statSize)), "%d/%d" % [done, count], ui.statSize, skin.good if done == count else skin.dim, HORIZONTAL_ALIGNMENT_RIGHT, area.size.x - 1.0)
+	for i in feats.size():
+		var each : Array = feats[i]
+		var area : Rect2 = featRects[i]
+		if area.end.y > body.end.y:
+			break
+		var have : bool = Achievements.unlocked(player.progress, each[0])
+		if zone == Zone.FEAT and index == i:
+			draw_rect(area, skin.hover)
+		var icon : Texture2D = Achievements.ICONS[each[4]] if have else Achievements.LOCKED_ICON
+		draw_texture(icon, Vector2(area.position.x, area.position.y - 1.0))
+		var secret : bool = each[5] and not have
+		UiKit.label(self, font, Vector2(area.position.x + 14.0, line_at(area.position.y + 1.0)), "???" if secret else each[1], ui.statSize, Achievements.TIER_COLORS[each[4]] if have else skin.text, HORIZONTAL_ALIGNMENT_LEFT, area.size.x - 14.0)
+
 # ---------------------------------------------------------------- stats
 
 func draw_stats(font : Font) -> void:
@@ -506,6 +647,23 @@ func draw_stats(font : Font) -> void:
 # [title, lines, title color] for what's under the pointer, or [].
 func tip() -> Array:
 	match zone:
+		Zone.NODE:
+			if index >= 0 and index < TideTree.NODES.size():
+				var each : Array = TideTree.NODES[index]
+				var at : int = TideTree.level(player.progress, each[0])
+				var lines : PackedStringArray = PackedStringArray([each[8], "", "Level", "%d/%d" % [at, each[4]], "Now", Stats.bonus_text(each[2], float(each[3]) * at) if at > 0 else "-"])
+				if at < int(each[4]):
+					lines.append_array(["Next", Stats.bonus_text(each[2], float(each[3]) * (at + 1)), "Costs", "%d token%s" % [each[5], "" if int(each[5]) == 1 else "s"]])
+				var why : String = TideTree.blocked(player, each[0])
+				lines.append_array([why if not why.is_empty() else "Click to grow", ""])
+				return [each[1], lines, TideTree.TOKEN_COLOR]
+		Zone.FEAT:
+			if index >= 0 and index < feats.size():
+				var each : Array = feats[index]
+				var have : bool = Achievements.unlocked(player.progress, each[0])
+				var secret : bool = each[5] and not have
+				var lines : PackedStringArray = PackedStringArray(["A secret." if secret else each[2], "", Achievements.TIER_NAMES[each[4]], "Unlocked on day %d" % int(player.progress.get_flag(Achievements.key(each[0]))) if have else "Locked"])
+				return ["???" if secret else each[1], lines, Achievements.TIER_COLORS[each[4]]]
 		Zone.ROAD:
 			if index >= 0 and index < roadRects.size():
 				var at : int = roadFirst + index

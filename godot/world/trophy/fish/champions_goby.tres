@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="TrophyFish" format=3]
+
+[ext_resource type="Resource" path="res://oceans/islands/champion_biome.tres" id="1_45h2e"]
+[ext_resource type="Texture2D" path="res://world/trophy/icons/champions_goby.png" id="2_5uttc"]
+[ext_resource type="Script" path="res://fishing/fish/requirements/fish_requirement.gd" id="3_wm07a"]
+[ext_resource type="Script" path="res://world/trophy/trophy_fish.gd" id="4_54pig"]
+[ext_resource type="Script" path="res://items/item.gd" id="5_s33y3"]
+[ext_resource type="Resource" path="res://items/trophy/champions_goby_bronze.tres" id="6_ajl85"]
+[ext_resource type="Resource" path="res://items/trophy/champions_goby_silver.tres" id="7_h7gyx"]
+[ext_resource type="Resource" path="res://items/trophy/champions_goby_gold.tres" id="8_gqf5j"]
+[ext_resource type="Resource" path="res://items/trophy/champions_goby_diamond.tres" id="9_tfsj5"]
+
+[resource]
+script = ExtResource("4_54pig")
+displayName = "Champion's Goby"
+icon = ExtResource("2_5uttc")
+lore = "Tiny, golden and very proud of itself."
+biome = ExtResource("1_45h2e")
+hint = "While a festival or happening is on"
+special = 2
+chance = 0.035
+tiers = Array[ExtResource("5_s33y3")]([ExtResource("6_ajl85"), ExtResource("7_h7gyx"), ExtResource("8_gqf5j"), ExtResource("9_tfsj5")])
+scales = PackedInt32Array(12, 24, 48, 96)

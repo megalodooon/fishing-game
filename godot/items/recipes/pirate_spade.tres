@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="BaitRecipe" format=3]
+
+[ext_resource type="Resource" path="res://items/materials/iron_ingot.tres" id="1_2eanw"]
+[ext_resource type="Resource" path="res://items/materials/treated_plank.tres" id="2_xm8t8"]
+[ext_resource type="Resource" path="res://items/rare/pirate_doubloon.tres" id="3_ilpww"]
+[ext_resource type="Resource" path="res://items/digging/pirate_spade.tres" id="4_i2qpj"]
+[ext_resource type="Script" path="res://fishing/bait/bait_recipe.gd" id="5_v2nws"]
+
+[resource]
+script = ExtResource("5_v2nws")
+output = ExtResource("4_i2qpj")
+amount = 1
+ingredients = Array[Resource]([ExtResource("1_2eanw"), ExtResource("2_xm8t8"), ExtResource("3_ilpww")])
+counts = Array[int]([5, 3, 1])
+xp = 100.0
+station = &"workbench"
+category = "Tools"
+requiredSkill = &"foraging"
+requiredLevel = 10

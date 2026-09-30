@@ -100,6 +100,32 @@ func _process(delta : float) -> void:
 	if tick >= 1.0:
 		tick = 0.0
 		queue_redraw()
+	# The treasure compass follows the camera every frame while a trail is on.
+	if Digging.active_here(player):
+		queue_redraw()
+
+# An arrow to the next treasure spot: over it when it's on screen, at the
+# screen's edge pointing the way when it isn't.
+func draw_compass() -> void:
+	var goal : Vector2 = Digging.target(player)
+	if goal == Vector2.INF:
+		return
+	var at : Vector2 = (get_viewport().get_canvas_transform() * goal) / maxf(ui.scale.x, 0.01)
+	var view : Rect2 = Rect2(Vector2.ZERO, size).grow(-10.0)
+	var dig : Dictionary = Digging.trail(player.progress)
+	var label : String = "%d/%d" % [int(dig.index) + 1, (dig.points as Array).size()]
+	var bob : float = roundf(sin(Time.get_ticks_msec() * 0.006) * 1.5)
+	if view.has_point(at):
+		var tip : Vector2 = at + Vector2(0.0, -7.0 + bob)
+		draw_colored_polygon(PackedVector2Array([tip + Vector2(-2.5, -3.0), tip + Vector2(2.5, -3.0), tip]), Digging.COLOR)
+		return
+	var center : Vector2 = size * 0.5
+	var direction : Vector2 = (at - center).normalized()
+	var edge : Vector2 = Vector2(clampf(at.x, view.position.x, view.end.x), clampf(at.y, view.position.y, view.end.y))
+	var side : Vector2 = direction.orthogonal()
+	var point : Vector2 = edge + direction * bob
+	draw_colored_polygon(PackedVector2Array([point + direction * 4.0, point - direction * 2.0 + side * 3.0, point - direction * 2.0 - side * 3.0]), Digging.COLOR)
+	UiKit.label(self, ui.font, point - direction * 9.0 + Vector2(-6.0, 1.0), label, ui.statSize, Digging.COLOR, HORIZONTAL_ALIGNMENT_CENTER, 12.0, outline)
 
 func tracked_quest() -> Quest:
 	var quest : Quest = player.progress.tracked
@@ -111,6 +137,7 @@ func tracked_quest() -> Quest:
 func _draw() -> void:
 	var font : Font = ui.font
 	var tip : Array = []
+	draw_compass()
 	if weather:
 		var icon : Texture2D = weather.icon(weather.state)
 		weatherRect = Rect2(weatherAt, icon.get_size() if icon else Vector2(8.0, 8.0))

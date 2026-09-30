@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="DigMap" format=3]
+
+[ext_resource type="Texture2D" path="res://items/digging/icons/legends_map.png" id="1_hhmce"]
+[ext_resource type="Resource" path="res://items/rarities/legendary.tres" id="2_ebk8t"]
+[ext_resource type="Script" path="res://world/digging/dig_map.gd" id="3_b1u4g"]
+
+[resource]
+script = ExtResource("3_b1u4g")
+tier = 3
+extraSpots = 2
+displayName = "Legend's Map"
+icon = ExtResource("1_hhmce")
+rarity = ExtResource("2_ebk8t")
+description = "Open it on an island to bury a trail of treasure there. You'll need a spade."
+hint = "Click to open"
+maxStack = 20
+sellPrice = 300

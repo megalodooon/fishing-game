@@ -125,9 +125,13 @@ static func tier(player : Player, thing : Resource) -> int:
 static func flag(thing : Resource, level : int) -> String:
 	return "collection/%s/%d" % [thing.resource_path.get_file().get_basename(), level]
 
+# Currencies are spent, not collected.
+static func uncollected(item : Item) -> bool:
+	return item.category == "Currency" or item.category == "Essence"
+
 # An item came into the bag or the tacklebox. Fish count through the journal.
 static func add(player : Player, item : Item, amount : int) -> void:
-	if not player or not player.progress or not item or item is Fish:
+	if not player or not player.progress or not item or item is Fish or uncollected(item):
 		return
 	var thing : Resource = key(item)
 	if thing.resource_path.is_empty():

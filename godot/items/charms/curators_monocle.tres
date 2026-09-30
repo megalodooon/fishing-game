@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="Charm" format=3]
+
+[ext_resource type="Texture2D" path="res://items/charms/icons/curators_monocle.png" id="1_acdjn"]
+[ext_resource type="Resource" path="res://items/rarities/legendary.tres" id="2_igm3g"]
+[ext_resource type="Script" path="res://items/charms/charm.gd" id="3_gpeyg"]
+
+[resource]
+script = ExtResource("3_gpeyg")
+stats = Dictionary[StringName, float]({
+&"rareFind": 5.0,
+&"xpBonus": 3.0
+})
+displayName = "Curator's Monocle"
+icon = ExtResource("1_acdjn")
+rarity = ExtResource("2_igm3g")
+description = "Nora's thank-you for filling the museum. You notice everything now."
+sellPrice = 500

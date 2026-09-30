@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="Charm" format=3]
+
+[ext_resource type="Texture2D" path="res://items/charms/icons/trophy_hunter_1.png" id="1_glmy6"]
+[ext_resource type="Resource" path="res://items/rarities/uncommon.tres" id="2_x5bka"]
+[ext_resource type="Script" path="res://items/charms/charm.gd" id="3_dsvco"]
+
+[resource]
+script = ExtResource("3_dsvco")
+stats = Dictionary[StringName, float]({
+&"trophyLuck": 6.0
+})
+family = "trophy_hunter"
+displayName = "Trophy Hunter's Charm"
+icon = ExtResource("1_glmy6")
+rarity = ExtResource("2_x5bka")
+description = "Odette made it herself. Trophy fish come up in better tiers."
+sellPrice = 200

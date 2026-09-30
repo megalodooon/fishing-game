@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="TrophyFish" format=3]
+
+[ext_resource type="Resource" path="res://oceans/volcanic/volcanic_biome.tres" id="1_kncae"]
+[ext_resource type="Texture2D" path="res://world/trophy/icons/magma_carp.png" id="2_4y4sm"]
+[ext_resource type="Script" path="res://fishing/fish/requirements/fish_requirement.gd" id="3_p1s8v"]
+[ext_resource type="Script" path="res://world/trophy/trophy_fish.gd" id="4_1b8g4"]
+[ext_resource type="Script" path="res://items/item.gd" id="5_57nvt"]
+[ext_resource type="Resource" path="res://items/trophy/magma_carp_bronze.tres" id="6_5frq8"]
+[ext_resource type="Resource" path="res://items/trophy/magma_carp_silver.tres" id="7_66jcf"]
+[ext_resource type="Resource" path="res://items/trophy/magma_carp_gold.tres" id="8_15e4v"]
+[ext_resource type="Resource" path="res://items/trophy/magma_carp_diamond.tres" id="9_xerao"]
+
+[resource]
+script = ExtResource("4_1b8g4")
+displayName = "Magma Carp"
+icon = ExtResource("2_4y4sm")
+lore = "It glows like a coal fresh from the forge."
+biome = ExtResource("1_kncae")
+hint = "At midday, 11:00 to 14:00"
+hours = Vector2(11, 14)
+chance = 0.035
+tiers = Array[ExtResource("5_57nvt")]([ExtResource("6_5frq8"), ExtResource("7_66jcf"), ExtResource("8_15e4v"), ExtResource("9_xerao")])
+scales = PackedInt32Array(9, 18, 35, 70)

@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="TrophyFish" format=3]
+
+[ext_resource type="Resource" path="res://oceans/islands/village_biome.tres" id="1_wg8ca"]
+[ext_resource type="Texture2D" path="res://world/trophy/icons/harbor_snook.png" id="2_tj2us"]
+[ext_resource type="Script" path="res://fishing/fish/requirements/fish_requirement.gd" id="3_qdj34"]
+[ext_resource type="Script" path="res://world/trophy/trophy_fish.gd" id="4_05w8x"]
+[ext_resource type="Script" path="res://items/item.gd" id="5_752le"]
+[ext_resource type="Resource" path="res://items/trophy/harbor_snook_bronze.tres" id="6_w086v"]
+[ext_resource type="Resource" path="res://items/trophy/harbor_snook_silver.tres" id="7_uodk1"]
+[ext_resource type="Resource" path="res://items/trophy/harbor_snook_gold.tres" id="8_j848d"]
+[ext_resource type="Resource" path="res://items/trophy/harbor_snook_diamond.tres" id="9_fg2nq"]
+
+[resource]
+script = ExtResource("4_05w8x")
+displayName = "Harbor Snook"
+icon = ExtResource("2_tj2us")
+lore = "It hunts the harbor lights at first light."
+biome = ExtResource("1_wg8ca")
+hint = "At dawn, 5:00 to 7:00"
+hours = Vector2(5, 7)
+chance = 0.05
+tiers = Array[ExtResource("5_752le")]([ExtResource("6_w086v"), ExtResource("7_uodk1"), ExtResource("8_j848d"), ExtResource("9_fg2nq")])
+scales = PackedInt32Array(4, 8, 16, 32)

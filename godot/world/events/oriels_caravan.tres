@@ -1,0 +1,149 @@
+[gd_resource type="Resource" script_class="GameEvent" format=3]
+
+[ext_resource type="Script" path="res://fishing/creatures/sea_creature.gd" id="1_ppkru"]
+[ext_resource type="Script" path="res://items/item.gd" id="2_45fpw"]
+[ext_resource type="Texture2D" path="res://world/events/icons/oriels_caravan.png" id="3_b37w8"]
+[ext_resource type="Script" path="res://world/events/game_event.gd" id="4_n7os5"]
+[ext_resource type="Script" path="res://world/village/shop/shop_offer.gd" id="5_f2k2b"]
+[ext_resource type="Resource" path="res://items/rare/sea_glass.tres" id="6_nws85"]
+[ext_resource type="Resource" path="res://items/rare/lucky_stone.tres" id="7_v58ut"]
+[ext_resource type="Resource" path="res://items/rare/treasure_map.tres" id="8_tlbuo"]
+[ext_resource type="Resource" path="res://items/rare/old_map_fragment.tres" id="9_txyfh"]
+[ext_resource type="Resource" path="res://items/charms/angler_1.tres" id="10_v446u"]
+[ext_resource type="Resource" path="res://items/charms/fortune_1.tres" id="11_ig6fi"]
+[ext_resource type="Resource" path="res://items/charms/seeker_1.tres" id="12_bbkx2"]
+[ext_resource type="Resource" path="res://items/charms/treasure_1.tres" id="13_poxg7"]
+[ext_resource type="Resource" path="res://items/charms/tide_hunter_1.tres" id="14_nefoj"]
+[ext_resource type="Resource" path="res://items/tools/pouch_stitching_1.tres" id="15_pt0wp"]
+[ext_resource type="Resource" path="res://world/village/farm/seeds/starfruit_seeds.tres" id="16_flygb"]
+[ext_resource type="Resource" path="res://world/village/farm/seeds/ghost_pepper_seeds.tres" id="17_m26bj"]
+[ext_resource type="Resource" path="res://world/village/farm/seeds/moonmelon_seeds.tres" id="18_jmgx1"]
+[ext_resource type="Resource" path="res://fishing/bait/feather_lure.tres" id="19_ei5hu"]
+[ext_resource type="Resource" path="res://fishing/bait/deep_bait.tres" id="20_mg0tv"]
+[ext_resource type="Resource" path="res://items/potions/fortune_elixir_1.tres" id="21_oblo7"]
+[ext_resource type="Resource" path="res://items/potions/scholars_potion_2.tres" id="22_fcoj7"]
+[ext_resource type="Resource" path="res://items/enchanted/enchanted_sea_salt.tres" id="23_mtgwi"]
+[ext_resource type="Resource" path="res://items/enchanted/enchanted_palm_frond.tres" id="24_utdth"]
+[ext_resource type="Resource" path="res://items/materials/deep_coral.tres" id="25_nqxr0"]
+
+[sub_resource type="Resource" id="Resource_taoay"]
+script = ExtResource("5_f2k2b")
+item = ExtResource("6_nws85")
+price = 900
+
+[sub_resource type="Resource" id="Resource_y3yar"]
+script = ExtResource("5_f2k2b")
+item = ExtResource("7_v58ut")
+price = 6500
+
+[sub_resource type="Resource" id="Resource_ugv5x"]
+script = ExtResource("5_f2k2b")
+item = ExtResource("8_tlbuo")
+price = 2400
+
+[sub_resource type="Resource" id="Resource_xs8nl"]
+script = ExtResource("5_f2k2b")
+item = ExtResource("9_txyfh")
+price = 1500
+
+[sub_resource type="Resource" id="Resource_chwy0"]
+script = ExtResource("5_f2k2b")
+item = ExtResource("10_v446u")
+price = 2200
+
+[sub_resource type="Resource" id="Resource_n0gsc"]
+script = ExtResource("5_f2k2b")
+item = ExtResource("11_ig6fi")
+price = 4800
+
+[sub_resource type="Resource" id="Resource_7cse4"]
+script = ExtResource("5_f2k2b")
+item = ExtResource("12_bbkx2")
+price = 3200
+
+[sub_resource type="Resource" id="Resource_215j3"]
+script = ExtResource("5_f2k2b")
+item = ExtResource("13_poxg7")
+price = 3800
+
+[sub_resource type="Resource" id="Resource_qhai5"]
+script = ExtResource("5_f2k2b")
+item = ExtResource("14_nefoj")
+price = 2600
+
+[sub_resource type="Resource" id="Resource_r7bhf"]
+script = ExtResource("5_f2k2b")
+item = ExtResource("15_pt0wp")
+price = 12000
+
+[sub_resource type="Resource" id="Resource_aibhr"]
+script = ExtResource("5_f2k2b")
+item = ExtResource("16_flygb")
+price = 600
+
+[sub_resource type="Resource" id="Resource_gkwqd"]
+script = ExtResource("5_f2k2b")
+item = ExtResource("17_m26bj")
+amount = 3
+price = 380
+
+[sub_resource type="Resource" id="Resource_5brbw"]
+script = ExtResource("5_f2k2b")
+item = ExtResource("18_jmgx1")
+price = 450
+
+[sub_resource type="Resource" id="Resource_glsg7"]
+script = ExtResource("5_f2k2b")
+item = ExtResource("19_ei5hu")
+amount = 3
+price = 700
+
+[sub_resource type="Resource" id="Resource_v5s3b"]
+script = ExtResource("5_f2k2b")
+item = ExtResource("20_mg0tv")
+amount = 2
+price = 1400
+
+[sub_resource type="Resource" id="Resource_wdsej"]
+script = ExtResource("5_f2k2b")
+item = ExtResource("21_oblo7")
+price = 900
+
+[sub_resource type="Resource" id="Resource_odq31"]
+script = ExtResource("5_f2k2b")
+item = ExtResource("22_fcoj7")
+price = 1600
+
+[sub_resource type="Resource" id="Resource_qd4ds"]
+script = ExtResource("5_f2k2b")
+item = ExtResource("23_mtgwi")
+price = 1100
+
+[sub_resource type="Resource" id="Resource_fqd3q"]
+script = ExtResource("5_f2k2b")
+item = ExtResource("24_utdth")
+price = 1100
+
+[sub_resource type="Resource" id="Resource_ew2h6"]
+script = ExtResource("5_f2k2b")
+item = ExtResource("25_nqxr0")
+amount = 2
+price = 520
+
+[resource]
+script = ExtResource("4_n7os5")
+displayName = "Oriel's Caravan"
+description = "A traveling merchant sets up in the square for a day, with a few rare things from far away. Different wares every visit."
+icon = ExtResource("3_b37w8")
+color = Color(0.6039216, 0.3529412, 0.9098039, 1)
+requiredFlag = "quest/q_debt"
+every = 6
+firstDay = 4
+hours = Vector2(8, 20)
+fishChance = 0.0
+dropChances = PackedFloat32Array()
+host = "oriel"
+shopTitle = "Oriel's Curiosities"
+shop = Array[ExtResource("5_f2k2b")]([SubResource("Resource_taoay"), SubResource("Resource_y3yar"), SubResource("Resource_ugv5x"), SubResource("Resource_xs8nl"), SubResource("Resource_chwy0"), SubResource("Resource_n0gsc"), SubResource("Resource_7cse4"), SubResource("Resource_215j3"), SubResource("Resource_qhai5"), SubResource("Resource_r7bhf"), SubResource("Resource_aibhr"), SubResource("Resource_gkwqd"), SubResource("Resource_5brbw"), SubResource("Resource_glsg7"), SubResource("Resource_v5s3b"), SubResource("Resource_wdsej"), SubResource("Resource_odq31"), SubResource("Resource_qd4ds"), SubResource("Resource_fqd3q"), SubResource("Resource_ew2h6")])
+specialCount = 5
+startText = "Oriel's caravan has rolled into the square!"

@@ -123,7 +123,7 @@ static func items_in(lists : Dictionary) -> Array[Item]:
 		for folder in ITEM_FOLDERS:
 			for resource in scan(folder):
 				var item : Item = resource as Item
-				if item and item.useAction.is_empty() and not list.has(item) and not SKIP.has(item.resource_path.get_file().get_basename()) and not item.category == "Key Item":
+				if item and item.useAction.is_empty() and not list.has(item) and not SKIP.has(item.resource_path.get_file().get_basename()) and not item.category == "Key Item" and not Collections.uncollected(item):
 					list.append(item)
 		lists["items"] = list
 	return lists["items"]

@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="Charm" format=3]
+
+[ext_resource type="Texture2D" path="res://items/charms/icons/drowned_kings_crown.png" id="1_gh4yc"]
+[ext_resource type="Resource" path="res://items/rarities/trophy.tres" id="2_nenou"]
+[ext_resource type="Script" path="res://items/charms/charm.gd" id="3_5p3m2"]
+
+[resource]
+script = ExtResource("3_5p3m2")
+stats = Dictionary[StringName, float]({
+&"damage": 15.0,
+&"rareFind": 5.0,
+&"seaCreature": 3.0
+})
+displayName = "Crown of the Drowned King"
+icon = ExtResource("1_gh4yc")
+rarity = ExtResource("2_nenou")
+description = "Remade from the Drowned King's crown. The sea's creatures know who you are now."
+sellPrice = 4000

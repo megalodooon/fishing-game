@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="Bait" format=3]
+
+[ext_resource type="Script" path="res://fishing/fish/fish_data.gd" id="1_en8ej"]
+[ext_resource type="Texture2D" path="res://fishing/bait/icons/trophy_bait.png" id="2_h8kt6"]
+[ext_resource type="Resource" path="res://items/rarities/rare.tres" id="3_n0ues"]
+[ext_resource type="Script" path="res://items/rarity.gd" id="4_r084t"]
+[ext_resource type="Resource" path="res://items/rarities/legendary.tres" id="5_qn82h"]
+[ext_resource type="Resource" path="res://items/rarities/trophy.tres" id="6_b0or3"]
+[ext_resource type="Script" path="res://fishing/bait/bait.gd" id="7_t7mjw"]
+
+[resource]
+script = ExtResource("7_t7mjw")
+rarityBoost = Dictionary[ExtResource("4_r084t"), float]({
+ExtResource("5_qn82h"): 1.35,
+ExtResource("6_b0or3"): 1.6
+})
+kind = 4
+displayName = "Trophy Bait"
+icon = ExtResource("2_h8kt6")
+rarity = ExtResource("3_n0ues")
+description = "Odette's own recipe. Big, proud fish can't resist it."
+maxStack = 99

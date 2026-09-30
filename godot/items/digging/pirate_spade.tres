@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Spade" format=3]
+
+[ext_resource type="Texture2D" path="res://items/digging/icons/pirate_spade.png" id="1_udq2k"]
+[ext_resource type="Resource" path="res://items/rarities/rare.tres" id="2_ab6sd"]
+[ext_resource type="Script" path="res://world/digging/spade.gd" id="3_re5ma"]
+
+[resource]
+script = ExtResource("3_re5ma")
+tier = 2
+trail = 5
+displayName = "Pirate Spade"
+category = "Tool"
+icon = ExtResource("1_udq2k")
+rarity = ExtResource("2_ab6sd")
+description = "Keep it in the bag to dig up treasure trails. Better spades dig longer trails."
+discardable = false

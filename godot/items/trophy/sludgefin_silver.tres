@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Item" format=3]
+
+[ext_resource type="Texture2D" path="res://items/trophy/icons/sludgefin_silver.png" id="1_86f8q"]
+[ext_resource type="Resource" path="res://items/rarities/rare.tres" id="2_fltqu"]
+[ext_resource type="Script" path="res://items/item.gd" id="3_vv2lr"]
+
+[resource]
+script = ExtResource("3_vv2lr")
+displayName = "Silver Sludgefin"
+category = "Trophy Fish"
+icon = ExtResource("1_86f8q")
+rarity = ExtResource("2_fltqu")
+description = "A silver trophy. Odette at the Trophy Lodge fillets them for Trophy Scales."
+maxStack = 99
+sellPrice = 120

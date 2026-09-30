@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="Tackle" format=3]
+
+[ext_resource type="Texture2D" path="res://fishing/tacklebox/icons/tyrant_fang_hook.png" id="1_a46fn"]
+[ext_resource type="Resource" path="res://items/rarities/legendary.tres" id="2_d6j44"]
+[ext_resource type="Script" path="res://fishing/tacklebox/tackle.gd" id="3_ipx3f"]
+
+[resource]
+script = ExtResource("3_ipx3f")
+kind = 2
+biteSpeed = 1.1
+hookWindowBonus = 0.35
+control = 0.25
+displayName = "Tyrant Fang Hook"
+icon = ExtResource("1_a46fn")
+rarity = ExtResource("2_d6j44")
+description = "Carved from the Reef Tyrant's fang."
+discardable = false

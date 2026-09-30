@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Tackle" format=3]
+
+[ext_resource type="Texture2D" path="res://fishing/tacklebox/icons/titan_core_reel.png" id="1_pad57"]
+[ext_resource type="Resource" path="res://items/rarities/legendary.tres" id="2_ttjy2"]
+[ext_resource type="Script" path="res://fishing/tacklebox/tackle.gd" id="3_f8ffb"]
+
+[resource]
+script = ExtResource("3_f8ffb")
+kind = 3
+castTimeBonus = -0.3
+reelSpeed = 1.5
+displayName = "Titan Core Reel"
+icon = ExtResource("1_pad57")
+rarity = ExtResource("2_ttjy2")
+description = "A reel that never stops turning."
+discardable = false

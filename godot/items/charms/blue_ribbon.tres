@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="Charm" format=3]
+
+[ext_resource type="Texture2D" path="res://items/charms/icons/blue_ribbon.png" id="1_jeevh"]
+[ext_resource type="Resource" path="res://items/rarities/rare.tres" id="2_n4nqk"]
+[ext_resource type="Script" path="res://items/charms/charm.gd" id="3_6y4gk"]
+
+[resource]
+script = ExtResource("3_6y4gk")
+stats = Dictionary[StringName, float]({
+&"harvestBonus": 5.0,
+&"luck": 3.0
+})
+displayName = "Blue Ribbon"
+icon = ExtResource("1_jeevh")
+rarity = ExtResource("2_n4nqk")
+description = "Proof you can win a contest. Judges seem to like you."
+sellPrice = 120

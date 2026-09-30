@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Item" format=3]
+
+[ext_resource type="Texture2D" path="res://items/trophy/icons/sunspear_marlin_bronze.png" id="1_gu7ry"]
+[ext_resource type="Resource" path="res://items/rarities/uncommon.tres" id="2_e6ae6"]
+[ext_resource type="Script" path="res://items/item.gd" id="3_lww7g"]
+
+[resource]
+script = ExtResource("3_lww7g")
+displayName = "Bronze Sunspear Marlin"
+category = "Trophy Fish"
+icon = ExtResource("1_gu7ry")
+rarity = ExtResource("2_e6ae6")
+description = "A bronze trophy. Odette at the Trophy Lodge fillets them for Trophy Scales."
+maxStack = 99
+sellPrice = 30

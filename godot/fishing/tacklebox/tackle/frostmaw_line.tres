@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="Tackle" format=3]
+
+[ext_resource type="Texture2D" path="res://fishing/tacklebox/icons/frostmaw_line.png" id="1_u0sbe"]
+[ext_resource type="Resource" path="res://items/rarities/legendary.tres" id="2_qsvq0"]
+[ext_resource type="Script" path="res://fishing/tacklebox/tackle.gd" id="3_nf12c"]
+
+[resource]
+script = ExtResource("3_nf12c")
+kind = 1
+lineColor = Color(0.78431374, 0.9411765, 1, 1)
+rangeBonus = 12.0
+control = 0.1
+reelSpeed = 1.35
+displayName = "Frostmaw Line"
+icon = ExtResource("1_u0sbe")
+rarity = ExtResource("2_qsvq0")
+description = "Spun from ice that never melts."
+discardable = false

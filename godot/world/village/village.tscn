@@ -271,6 +271,28 @@
 [ext_resource type="Resource" path="res://world/quests/side/x_rare.tres" id="xq_rare"]
 [ext_resource type="Script" path="res://world/forage/forage_spot.gd" id="fg_spot"]
 
+[ext_resource type="Texture2D" path="res://world/village/land/harbor.png" id="hb_land"]
+[ext_resource type="Texture2D" path="res://world/village/buildings/bank.png" id="hb_bank_art"]
+[ext_resource type="Texture2D" path="res://world/village/buildings/trophy_lodge.png" id="hb_lodge_art"]
+[ext_resource type="Texture2D" path="res://world/village/props/hunt_board.png" id="hb_board_art"]
+[ext_resource type="Texture2D" path="res://world/village/props/tide_altar.png" id="hb_altar_art"]
+[ext_resource type="Texture2D" path="res://world/npcs/barnaby.png" id="hb_barnaby"]
+[ext_resource type="Texture2D" path="res://world/npcs/odette.png" id="hb_odette"]
+[ext_resource type="Script" path="res://world/bank/bank_counter.gd" id="hb_bank"]
+[ext_resource type="Script" path="res://world/trophy/trophy_lodge.gd" id="hb_lodge"]
+[ext_resource type="Script" path="res://world/hunts/hunt_board.gd" id="hb_hunts"]
+[ext_resource type="Script" path="res://fishing/enchanting/enchanting_altar.gd" id="hb_altar"]
+[ext_resource type="Script" path="res://world/museum/museum_counter.gd" id="hb_museum"]
+
+[sub_resource type="RectangleShape2D" id="hb_rect_bank"]
+size = Vector2(38, 8)
+
+[sub_resource type="RectangleShape2D" id="hb_rect_lodge"]
+size = Vector2(34, 8)
+
+[sub_resource type="RectangleShape2D" id="hb_rect_small"]
+size = Vector2(10, 4)
+
 [sub_resource type="RectangleShape2D" id="v_s1"]
 size = Vector2(6, 3)
 
@@ -1105,13 +1127,15 @@ title = "Harbor Orders"
 portrait = ExtResource("n_p2")
 listed = false
 
-[node name="Npc_Nora" type="Node2D" parent="Square" unique_id=2075377887 node_paths=PackedStringArray("art")]
+[node name="Npc_Nora" type="Node2D" parent="Square" unique_id=2075377887 node_paths=PackedStringArray("art", "service")]
 position = Vector2(122, 56)
 script = ExtResource("v_e1")
 id = "nora"
 quests = Array[ExtResource("v_e2")]([ExtResource("v_e21"), ExtResource("v_e22"), ExtResource("v_e23"), ExtResource("v_e24"), ExtResource("v_e25"), ExtResource("v_e26"), ExtResource("v_e27"), ExtResource("v_e28"), ExtResource("v_e29"), ExtResource("v_e30"), ExtResource("v_e31"), ExtResource("v_e32"), ExtResource("v_e33"), ExtResource("v_e34"), ExtResource("v_e35"), ExtResource("v_e36"), ExtResource("xq_recipes"), ExtResource("xq_rare")])
 greeting = "Oh! Hello!"
 art = NodePath("Art")
+service = NodePath("Museum")
+serviceLabel = "Museum"
 reach = 12.0
 promptOffset = Vector2(0, -24)
 listed = null
@@ -1126,6 +1150,11 @@ offset = Vector2(-6, -20)
 [node name="Shape" type="CollisionShape2D" parent="Square/Npc_Nora/Body" unique_id=375853806]
 position = Vector2(0, -1)
 shape = SubResource("v_s4")
+
+[node name="Museum" type="Node2D" parent="Square/Npc_Nora"]
+script = ExtResource("hb_museum")
+title = "Museum Wing"
+listed = false
 
 [node name="Npc_Vera" type="Node2D" parent="Square" unique_id=2018591267 node_paths=PackedStringArray("art")]
 position = Vector2(160, 72)
@@ -1676,3 +1705,163 @@ kind = 0
 position = Vector2(156, 26)
 script = ExtResource("fg_spot")
 kind = 3
+
+[node name="Harbor" type="Node2D" parent="." node_paths=PackedStringArray("land")]
+y_sort_enabled = true
+position = Vector2(384, 108)
+script = ExtResource("2_room")
+land = [NodePath("Land")]
+
+[node name="Water" parent="Harbor" instance=ExtResource("3_ocean")]
+biome = ExtResource("v_e126")
+
+[node name="Land" type="Sprite2D" parent="Harbor"]
+z_index = -1
+texture = ExtResource("hb_land")
+centered = false
+
+[node name="Bank" type="Node2D" parent="Harbor"]
+position = Vector2(40, 50)
+script = ExtResource("v_e64")
+displayName = "Harbor Bank"
+unlockFlag = "quest/q_bank"
+unlockHint = "Barnaby is still dusting off the vault. Pip knows more."
+
+[node name="Art" type="Sprite2D" parent="Harbor/Bank"]
+texture = ExtResource("hb_bank_art")
+centered = false
+offset = Vector2(-22, -32)
+
+[node name="Body" type="StaticBody2D" parent="Harbor/Bank"]
+
+[node name="Shape" type="CollisionShape2D" parent="Harbor/Bank/Body"]
+position = Vector2(0, -4)
+shape = SubResource("hb_rect_bank")
+
+[node name="Counter" type="Node2D" parent="Harbor/Bank"]
+position = Vector2(0, 2)
+script = ExtResource("hb_bank")
+title = "Harbor Bank"
+prompt = "Bank"
+reach = 11.0
+promptOffset = Vector2(0, -34)
+
+[node name="TrophyLodge" type="Node2D" parent="Harbor"]
+position = Vector2(104, 48)
+script = ExtResource("v_e64")
+displayName = "Trophy Lodge"
+unlockFlag = "quest/q_lodge"
+unlockHint = "Odette is still hanging the trophies. She'll open when she's ready."
+
+[node name="Art" type="Sprite2D" parent="Harbor/TrophyLodge"]
+texture = ExtResource("hb_lodge_art")
+centered = false
+offset = Vector2(-20, -30)
+
+[node name="Body" type="StaticBody2D" parent="Harbor/TrophyLodge"]
+
+[node name="Shape" type="CollisionShape2D" parent="Harbor/TrophyLodge/Body"]
+position = Vector2(0, -4)
+shape = SubResource("hb_rect_lodge")
+
+[node name="Counter" type="Node2D" parent="Harbor/TrophyLodge"]
+position = Vector2(0, 2)
+script = ExtResource("hb_lodge")
+title = "Trophy Lodge"
+prompt = "Trophy Lodge"
+reach = 11.0
+promptOffset = Vector2(0, -32)
+
+[node name="HuntBoard" type="Node2D" parent="Harbor"]
+position = Vector2(146, 70)
+script = ExtResource("v_e64")
+displayName = "Hunters' Board"
+unlockFlag = "quest/q_hunts"
+unlockHint = "Captain Grim hasn't pinned any bounties up yet."
+
+[node name="Art" type="Sprite2D" parent="Harbor/HuntBoard"]
+texture = ExtResource("hb_board_art")
+centered = false
+offset = Vector2(-10, -21)
+
+[node name="Body" type="StaticBody2D" parent="Harbor/HuntBoard"]
+
+[node name="Shape" type="CollisionShape2D" parent="Harbor/HuntBoard/Body"]
+position = Vector2(0, -1.5)
+shape = SubResource("hb_rect_small")
+
+[node name="Board" type="Node2D" parent="Harbor/HuntBoard"]
+script = ExtResource("hb_hunts")
+title = "Hunters' Board"
+prompt = "Hunters' board"
+reach = 10.0
+promptOffset = Vector2(0, -24)
+
+[node name="TideAltar" type="Node2D" parent="Harbor"]
+position = Vector2(76, 80)
+script = ExtResource("v_e64")
+displayName = "Tide Altar"
+unlockFlag = "quest/q_altar"
+unlockHint = "The altar is cold. Luma says it needs a spark from the Tidal Shrine."
+
+[node name="Art" type="Sprite2D" parent="Harbor/TideAltar"]
+texture = ExtResource("hb_altar_art")
+centered = false
+offset = Vector2(-9, -23)
+
+[node name="Body" type="StaticBody2D" parent="Harbor/TideAltar"]
+
+[node name="Shape" type="CollisionShape2D" parent="Harbor/TideAltar/Body"]
+position = Vector2(0, -1.5)
+shape = SubResource("hb_rect_small")
+
+[node name="Altar" type="Node2D" parent="Harbor/TideAltar"]
+script = ExtResource("hb_altar")
+title = "Tide Altar"
+prompt = "Enchant"
+reach = 10.0
+promptOffset = Vector2(0, -26)
+
+[node name="Npc_Barnaby" type="Node2D" parent="Harbor" node_paths=PackedStringArray("art")]
+position = Vector2(54, 60)
+script = ExtResource("v_e1")
+id = "barnaby"
+greeting = "Coins, kept safe, growing quietly. That's the harbor way."
+art = NodePath("Art")
+appearFlag = "quest/q_debt"
+reach = 12.0
+promptOffset = Vector2(0, -24)
+listed = null
+
+[node name="Art" type="Sprite2D" parent="Harbor/Npc_Barnaby"]
+texture = ExtResource("hb_barnaby")
+centered = false
+offset = Vector2(-6, -20)
+
+[node name="Body" type="StaticBody2D" parent="Harbor/Npc_Barnaby"]
+
+[node name="Shape" type="CollisionShape2D" parent="Harbor/Npc_Barnaby/Body"]
+position = Vector2(0, -1)
+shape = SubResource("v_s8")
+
+[node name="Npc_Odette" type="Node2D" parent="Harbor" node_paths=PackedStringArray("art")]
+position = Vector2(122, 60)
+script = ExtResource("v_e1")
+id = "odette"
+greeting = "Every fish has a story. The trophies have the best ones."
+art = NodePath("Art")
+appearFlag = "quest/q_reef"
+reach = 12.0
+promptOffset = Vector2(0, -24)
+listed = null
+
+[node name="Art" type="Sprite2D" parent="Harbor/Npc_Odette"]
+texture = ExtResource("hb_odette")
+centered = false
+offset = Vector2(-6, -20)
+
+[node name="Body" type="StaticBody2D" parent="Harbor/Npc_Odette"]
+
+[node name="Shape" type="CollisionShape2D" parent="Harbor/Npc_Odette/Body"]
+position = Vector2(0, -1)
+shape = SubResource("v_s8")

@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="TrophyFish" format=3]
+
+[ext_resource type="Resource" path="res://oceans/abyss/abyss_biome.tres" id="1_67dmy"]
+[ext_resource type="Texture2D" path="res://world/trophy/icons/abyssal_lantern.png" id="2_7fo7u"]
+[ext_resource type="Script" path="res://fishing/fish/requirements/fish_requirement.gd" id="3_danos"]
+[ext_resource type="Resource" path="res://fishing/bait/glow_bait.tres" id="4_vsbnu"]
+[ext_resource type="Script" path="res://fishing/fish/requirements/bait_requirement.gd" id="5_ke300"]
+[ext_resource type="Script" path="res://world/trophy/trophy_fish.gd" id="6_f2vmd"]
+[ext_resource type="Script" path="res://items/item.gd" id="7_xt2ob"]
+[ext_resource type="Resource" path="res://items/trophy/abyssal_lantern_bronze.tres" id="8_n1x36"]
+[ext_resource type="Resource" path="res://items/trophy/abyssal_lantern_silver.tres" id="9_2e3jw"]
+[ext_resource type="Resource" path="res://items/trophy/abyssal_lantern_gold.tres" id="10_8uru7"]
+[ext_resource type="Resource" path="res://items/trophy/abyssal_lantern_diamond.tres" id="11_yy14l"]
+
+[sub_resource type="Resource" id="Resource_ma62i"]
+script = ExtResource("5_ke300")
+bait = ExtResource("4_vsbnu")
+
+[resource]
+script = ExtResource("6_f2vmd")
+displayName = "Abyssal Lantern"
+icon = ExtResource("2_7fo7u")
+lore = "Its light is the last thing most fish see."
+biome = ExtResource("1_67dmy")
+hint = "Glow Bait, at night"
+hours = Vector2(20, 4)
+requirements = Array[ExtResource("3_danos")]([SubResource("Resource_ma62i")])
+chance = 0.03
+tiers = Array[ExtResource("7_xt2ob")]([ExtResource("8_n1x36"), ExtResource("9_2e3jw"), ExtResource("10_8uru7"), ExtResource("11_yy14l")])
+scales = PackedInt32Array(12, 24, 48, 96)

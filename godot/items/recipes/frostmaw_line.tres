@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="BaitRecipe" format=3]
+
+[ext_resource type="Resource" path="res://items/hunts/frostmaw_pearl.tres" id="1_ku026"]
+[ext_resource type="Resource" path="res://items/materials/cotton.tres" id="2_rsctd"]
+[ext_resource type="Resource" path="res://fishing/tacklebox/tackle/frostmaw_line.tres" id="3_fwrsf"]
+[ext_resource type="Script" path="res://fishing/bait/bait_recipe.gd" id="4_cpufj"]
+
+[resource]
+script = ExtResource("4_cpufj")
+output = ExtResource("3_fwrsf")
+amount = 1
+ingredients = Array[Resource]([ExtResource("1_ku026"), ExtResource("2_rsctd")])
+counts = Array[int]([4, 8])
+xp = 220.0
+station = &"workbench"
+category = "Tackle"
+requiredSkill = &"hunting"
+requiredLevel = 15

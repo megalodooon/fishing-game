@@ -148,7 +148,7 @@ static func encode(value : Variant) -> Variant:
 		return {"@fish": fish.species.resource_path, "weight": fish.weight, "variant": fish.variant}
 	if value is RodItem and (value as RodItem).original().resource_path.begins_with("res://") and value != (value as RodItem).original():
 		var rod : RodItem = value
-		return {"@rod": rod.original().resource_path, "tackle": encode(rod.tackle), "reforge": encode(rod.reforge)}
+		return {"@rod": rod.original().resource_path, "tackle": encode(rod.tackle), "reforge": encode(rod.reforge), "enchants": rod.enchants.duplicate()}
 	if value is Item and (value as Item).base != null:
 		return {"@item": (value as Item).original().resource_path, "amount": (value as Item).amount}
 	if value is Resource:
@@ -188,6 +188,7 @@ static func decode(value : Variant) -> Variant:
 			var reforged : Reforge = decode(dict.get("reforge")) as Reforge
 			if reforged:
 				rod.apply_reforge(reforged)
+			rod.enchants = (dict.get("enchants", {}) as Dictionary).duplicate()
 			return rod
 		if dict.has("@item"):
 			var kind : Item = load(dict["@item"]) if ResourceLoader.exists(dict["@item"]) else null

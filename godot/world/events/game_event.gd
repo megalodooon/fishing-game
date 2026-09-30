@@ -26,6 +26,9 @@ const FOLDER : String = "res://world/events"
 # Happenings instead repeat: weekly on this weekday (0 Monday), or every this
 # many days from firstDay of the year, for length days.
 @export_range(-1, 6) var weekday : int = -1
+# Only on the calendar once this progress flag is set (like a building being
+# restored), so happenings turn up as the story introduces them.
+@export var requiredFlag : String = ""
 @export var every : int = 0
 @export var firstDay : int = 1
 @export var length : int = 1
@@ -104,7 +107,16 @@ func last_day() -> int:
 		return firstDay + length - 1
 	return season * Calendar.SEASON_DAYS + days.y
 
+func unlocked() -> bool:
+	if requiredFlag.is_empty():
+		return true
+	var tree : SceneTree = Engine.get_main_loop() as SceneTree
+	var player : Player = Player.find(tree) if tree else null
+	return player != null and player.progress != null and player.progress.has_flag(requiredFlag)
+
 func on_day(day : int) -> bool:
+	if not unlocked():
+		return false
 	if weekday >= 0:
 		return Calendar.weekday(day) == weekday
 	var inYear : int = Calendar.day_of_year(day)

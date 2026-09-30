@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Item" format=3]
+
+[ext_resource type="Texture2D" path="res://items/trophy/icons/trophy_scale.png" id="1_ky1s2"]
+[ext_resource type="Resource" path="res://items/rarities/rare.tres" id="2_6i42x"]
+[ext_resource type="Script" path="res://items/item.gd" id="3_1f6iu"]
+
+[resource]
+script = ExtResource("3_1f6iu")
+displayName = "Trophy Scale"
+category = "Currency"
+icon = ExtResource("1_ky1s2")
+rarity = ExtResource("2_6i42x")
+description = "Odette pays these for filleted trophy fish, and takes them for her prizes."
+maxStack = 999

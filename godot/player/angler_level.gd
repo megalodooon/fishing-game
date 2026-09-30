@@ -3,8 +3,9 @@ class_name AnglerLevel
 
 # The Angler Level (like the SkyBlock Level): one number for everything the
 # player has done. Skill levels, collection tiers, fish found, sea creatures
-# beaten, quests, pearls, rare catches, crew, Magical Power, recipes and
-# festivals all give Angler XP; every 100 XP is a level. Levels raise max
+# beaten, quests, pearls, rare catches, crew, Magical Power, recipes,
+# festivals, trophy fish, museum pieces, sea hunts, friendships, treasure
+# trails and achievements all give Angler XP; every 100 XP is a level. Levels raise max
 # energy, and every few levels open another charm pouch slot and another crew
 # slot. The skills menu shows where the XP comes from and what's next.
 
@@ -22,6 +23,12 @@ const SOURCES : Array = [
 	["Magical Power", 1, "power"],
 	["Recipes made", 2, "recipes"],
 	["Festivals joined", 15, "festivals"],
+	["Trophy tiers caught", 5, "trophies"],
+	["Museum pieces", 3, "museum"],
+	["Sea hunts finished", 8, "hunts"],
+	["Friendship hearts", 3, "hearts"],
+	["Treasure trails dug", 3, "trails"],
+	["Achievements", 4, "achievements"],
 ]
 const POUCH_EVERY : int = 3
 const CREW_EVERY : int = 5
@@ -75,6 +82,15 @@ static func counts(player : Player) -> Dictionary:
 	found["recipes"] = recipes
 	found["festivals"] = festivals
 	found["power"] = CharmPouch.pouch_power(player)
+	found["trophies"] = TrophyFishing.tiers_caught(player.progress)
+	found["museum"] = player.progress.counter("museum_items")
+	found["hunts"] = player.progress.counter("hunts_done")
+	var hearts : int = 0
+	for id in player.progress.friends:
+		hearts += Friendship.hearts(player.progress, id)
+	found["hearts"] = hearts
+	found["trails"] = player.progress.counter("trails")
+	found["achievements"] = player.progress.counter("achievements")
 	var total : int = 0
 	for source in SOURCES:
 		total += found.get(source[2], 0) * source[1]

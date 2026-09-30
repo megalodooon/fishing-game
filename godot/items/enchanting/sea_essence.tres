@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Item" format=3]
+
+[ext_resource type="Texture2D" path="res://items/enchanting/icons/sea_essence.png" id="1_j5xlx"]
+[ext_resource type="Resource" path="res://items/rarities/rare.tres" id="2_xpih8"]
+[ext_resource type="Script" path="res://items/item.gd" id="3_v1r65"]
+
+[resource]
+script = ExtResource("3_v1r65")
+displayName = "Sea Essence"
+category = "Essence"
+icon = ExtResource("1_j5xlx")
+rarity = ExtResource("2_xpih8")
+description = "The sea's magic, gathered from what lives in it. Enchanting altars run on it."
+maxStack = 999
+sellPrice = 6

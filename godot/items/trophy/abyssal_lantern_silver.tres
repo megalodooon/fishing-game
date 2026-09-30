@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Item" format=3]
+
+[ext_resource type="Texture2D" path="res://items/trophy/icons/abyssal_lantern_silver.png" id="1_5jcjn"]
+[ext_resource type="Resource" path="res://items/rarities/rare.tres" id="2_4l0ob"]
+[ext_resource type="Script" path="res://items/item.gd" id="3_ck4jv"]
+
+[resource]
+script = ExtResource("3_ck4jv")
+displayName = "Silver Abyssal Lantern"
+category = "Trophy Fish"
+icon = ExtResource("1_5jcjn")
+rarity = ExtResource("2_4l0ob")
+description = "A silver trophy. Odette at the Trophy Lodge fillets them for Trophy Scales."
+maxStack = 99
+sellPrice = 120

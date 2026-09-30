@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Item" format=3]
+
+[ext_resource type="Texture2D" path="res://items/digging/icons/sunken_crown.png" id="1_kv3hj"]
+[ext_resource type="Resource" path="res://items/rarities/legendary.tres" id="2_2xhgw"]
+[ext_resource type="Script" path="res://items/item.gd" id="3_jxkaq"]
+
+[resource]
+script = ExtResource("3_jxkaq")
+displayName = "Sunken Crown"
+category = "Relic"
+icon = ExtResource("1_kv3hj")
+rarity = ExtResource("2_2xhgw")
+description = "The crown of a drowned kingdom, buried for a thousand years. The museum would love it."
+sellPrice = 5000

@@ -13,6 +13,8 @@ class_name RodItem
 @export var rodTint : Color = Color.WHITE
 # Set at the anvil (see Reforge): a word in front of the name and more stats.
 @export var reforge : Reforge
+# Put on at the enchanting altar: enchantment id -> level (see Enchanting).
+@export var enchants : Dictionary = {}
 #------------------------#
 
 
@@ -21,6 +23,7 @@ func unique() -> Item:
 	copy.base = original()
 	copy.tackle = tackle.duplicate()
 	copy.tackle.resize(slots.size())
+	copy.enchants = enchants.duplicate()
 	return copy
 
 # Puts a reforge on this rod (a copy in the bag, never the original).
@@ -56,6 +59,9 @@ func default_type() -> String:
 
 func details() -> PackedStringArray:
 	var lines : PackedStringArray = super()
+	var magic : PackedStringArray = Enchanting.lines(self)
+	for i in range(magic.size() - 1, -1, -1):
+		lines.insert(0, magic[i])
 	if reforge:
 		lines.insert(0, reforge.prefix)
 		lines.insert(0, "Reforge")

@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="ShopStock" format=3]
+
+[ext_resource type="Script" path="res://world/village/shop/shop_offer.gd" id="1_03b86"]
+[ext_resource type="Resource" path="res://items/digging/faded_map.tres" id="2_6mwc7"]
+[ext_resource type="Resource" path="res://items/digging/rusty_spade.tres" id="3_gjfeg"]
+[ext_resource type="Resource" path="res://items/rare/old_map_fragment.tres" id="4_4iybl"]
+[ext_resource type="Script" path="res://world/village/shop/shop_stock.gd" id="5_3vtbs"]
+
+[sub_resource type="Resource" id="Resource_kte6u"]
+script = ExtResource("1_03b86")
+item = ExtResource("2_6mwc7")
+price = 700
+
+[sub_resource type="Resource" id="Resource_fcnmc"]
+script = ExtResource("1_03b86")
+item = ExtResource("3_gjfeg")
+price = 450
+
+[sub_resource type="Resource" id="Resource_j0qw8"]
+script = ExtResource("1_03b86")
+item = ExtResource("4_4iybl")
+price = 350
+dailyStock = 3
+
+[resource]
+script = ExtResource("5_3vtbs")
+shopName = "Grim's treasure stall"
+offers = Array[ExtResource("1_03b86")]([SubResource("Resource_kte6u"), SubResource("Resource_fcnmc"), SubResource("Resource_j0qw8")])

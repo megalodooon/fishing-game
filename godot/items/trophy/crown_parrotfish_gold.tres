@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Item" format=3]
+
+[ext_resource type="Texture2D" path="res://items/trophy/icons/crown_parrotfish_gold.png" id="1_sqltj"]
+[ext_resource type="Resource" path="res://items/rarities/legendary.tres" id="2_bcf6b"]
+[ext_resource type="Script" path="res://items/item.gd" id="3_ixkdj"]
+
+[resource]
+script = ExtResource("3_ixkdj")
+displayName = "Gold Crown Parrotfish"
+category = "Trophy Fish"
+icon = ExtResource("1_sqltj")
+rarity = ExtResource("2_bcf6b")
+description = "A gold trophy. Odette at the Trophy Lodge fillets them for Trophy Scales."
+maxStack = 99
+sellPrice = 270

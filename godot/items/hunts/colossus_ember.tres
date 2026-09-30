@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Item" format=3]
+
+[ext_resource type="Texture2D" path="res://items/hunts/icons/colossus_ember.png" id="1_67rpc"]
+[ext_resource type="Resource" path="res://items/rarities/legendary.tres" id="2_wbuko"]
+[ext_resource type="Script" path="res://items/item.gd" id="3_awmc2"]
+
+[resource]
+script = ExtResource("3_awmc2")
+displayName = "Colossus Ember"
+category = "Hunt Trophy"
+icon = ExtResource("1_67rpc")
+rarity = ExtResource("2_wbuko")
+description = "The fire that kept the colossus moving."
+maxStack = 99
+sellPrice = 900

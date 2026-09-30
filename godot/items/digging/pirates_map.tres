@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="DigMap" format=3]
+
+[ext_resource type="Texture2D" path="res://items/digging/icons/pirates_map.png" id="1_ouq81"]
+[ext_resource type="Resource" path="res://items/rarities/rare.tres" id="2_lwwfm"]
+[ext_resource type="Script" path="res://world/digging/dig_map.gd" id="3_i50on"]
+
+[resource]
+script = ExtResource("3_i50on")
+tier = 2
+extraSpots = 1
+displayName = "Pirate's Map"
+icon = ExtResource("1_ouq81")
+rarity = ExtResource("2_lwwfm")
+description = "Open it on an island to bury a trail of treasure there. You'll need a spade."
+hint = "Click to open"
+maxStack = 20
+sellPrice = 200

@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="SeaCreature" format=3]
+
+[ext_resource type="Script" path="res://items/item.gd" id="1_ratjg"]
+[ext_resource type="PackedScene" path="res://fishing/minigames/boss_duel/boss_duel.tscn" id="2_8xx25"]
+[ext_resource type="Texture2D" path="res://world/hunts/art/frostmaw.png" id="3_urjit"]
+[ext_resource type="Resource" path="res://items/rarities/legendary.tres" id="4_87fru"]
+[ext_resource type="Script" path="res://fishing/fish/requirements/fish_requirement.gd" id="5_mxv21"]
+[ext_resource type="Script" path="res://fishing/creatures/sea_creature.gd" id="6_bfuog"]
+
+[resource]
+script = ExtResource("6_bfuog")
+displayName = "Frostmaw"
+description = "The boss of the Frost Hunt. Only shows itself to a hunter who's earned it."
+icon = ExtResource("3_urjit")
+rarity = ExtResource("4_87fru")
+spawnRate = 0.0
+fight = ExtResource("2_8xx25")
+difficulty = 0.6
+toughness = 1.8
+style = &"frost"
+coins = Vector2i(900, 1800)
+xp = 420.0
+dropChances = PackedFloat32Array()

@@ -112,6 +112,7 @@ static func notify(player : Player, event : StringName, data : Variant = null, e
 	if not player or not player.progress:
 		return
 	Contests.notify(player, event, data, extra)
+	Hunts.notify(player, event, data)
 	Achievements.notify(player, event, data, extra)
 	for quest in player.progress.active_quests():
 		var wasReady : bool = quest.ready(player)

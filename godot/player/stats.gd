@@ -76,6 +76,9 @@ static func extras(player : Player, stat : StringName) -> float:
 	total += Council.bonus(player, stat)
 	total += Calendar.bonus(player.get_tree(), stat)
 	total += TideTree.bonus(player, stat)
+	total += Enchanting.bonus(player, stat)
+	if stat == &"damage" and player.progress:
+		total += Hunts.damage_bonus(player.progress)
 	if player.progress:
 		total += BoatParts.bonus(player.progress, stat)
 		total += Pearls.bonus(player.progress, stat)

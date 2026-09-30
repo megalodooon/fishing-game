@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="TrophyFish" format=3]
+
+[ext_resource type="Resource" path="res://oceans/polluted/polluted_biome.tres" id="1_pyk38"]
+[ext_resource type="Texture2D" path="res://world/trophy/icons/sludgefin.png" id="2_u12m5"]
+[ext_resource type="Script" path="res://fishing/fish/requirements/fish_requirement.gd" id="3_for33"]
+[ext_resource type="Resource" path="res://fishing/bait/rust_bait.tres" id="4_1by1w"]
+[ext_resource type="Script" path="res://fishing/fish/requirements/bait_requirement.gd" id="5_ucbrh"]
+[ext_resource type="Script" path="res://world/trophy/trophy_fish.gd" id="6_ux4en"]
+[ext_resource type="Script" path="res://items/item.gd" id="7_y6isl"]
+[ext_resource type="Resource" path="res://items/trophy/sludgefin_bronze.tres" id="8_1bnwg"]
+[ext_resource type="Resource" path="res://items/trophy/sludgefin_silver.tres" id="9_7kanq"]
+[ext_resource type="Resource" path="res://items/trophy/sludgefin_gold.tres" id="10_5jhk2"]
+[ext_resource type="Resource" path="res://items/trophy/sludgefin_diamond.tres" id="11_0hrmj"]
+
+[sub_resource type="Resource" id="Resource_en5x1"]
+script = ExtResource("5_ucbrh")
+bait = ExtResource("4_1by1w")
+
+[resource]
+script = ExtResource("6_ux4en")
+displayName = "Sludgefin"
+icon = ExtResource("2_u12m5")
+lore = "It thrives in the muck. Nobody knows how."
+biome = ExtResource("1_pyk38")
+hint = "Rust Bait on the rod"
+requirements = Array[ExtResource("3_for33")]([SubResource("Resource_en5x1")])
+chance = 0.045
+tiers = Array[ExtResource("7_y6isl")]([ExtResource("8_1bnwg"), ExtResource("9_7kanq"), ExtResource("10_5jhk2"), ExtResource("11_0hrmj")])
+scales = PackedInt32Array(5, 10, 21, 42)

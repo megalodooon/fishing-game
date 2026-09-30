@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="SeaCreature" format=3]
+
+[ext_resource type="Script" path="res://items/item.gd" id="1_5cwcw"]
+[ext_resource type="PackedScene" path="res://fishing/minigames/boss_duel/boss_duel.tscn" id="2_rd8s0"]
+[ext_resource type="Texture2D" path="res://world/hunts/art/drowned_king.png" id="3_a0hba"]
+[ext_resource type="Resource" path="res://items/rarities/legendary.tres" id="4_wojnc"]
+[ext_resource type="Script" path="res://fishing/fish/requirements/fish_requirement.gd" id="5_wjxk7"]
+[ext_resource type="Script" path="res://fishing/creatures/sea_creature.gd" id="6_ekffc"]
+
+[resource]
+script = ExtResource("6_ekffc")
+displayName = "The Drowned King"
+description = "The boss of the Deep Hunt. Only shows itself to a hunter who's earned it."
+icon = ExtResource("3_a0hba")
+rarity = ExtResource("4_wojnc")
+spawnRate = 0.0
+fight = ExtResource("2_rd8s0")
+difficulty = 0.66
+toughness = 2.1
+style = &"abyss"
+coins = Vector2i(1500, 3000)
+xp = 700.0
+dropChances = PackedFloat32Array()

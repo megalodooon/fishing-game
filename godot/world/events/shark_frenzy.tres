@@ -1,0 +1,68 @@
+[gd_resource type="Resource" script_class="GameEvent" format=3]
+
+[ext_resource type="Script" path="res://fishing/creatures/sea_creature.gd" id="1_wj3vg"]
+[ext_resource type="Resource" path="res://fishing/creatures/reef_shark_brute.tres" id="2_e86jr"]
+[ext_resource type="Script" path="res://items/item.gd" id="3_5w1rc"]
+[ext_resource type="Resource" path="res://items/materials/shark_tooth.tres" id="4_bujcu"]
+[ext_resource type="Texture2D" path="res://world/events/icons/shark_frenzy.png" id="5_eacx1"]
+[ext_resource type="Script" path="res://world/events/game_event.gd" id="6_8yy3b"]
+[ext_resource type="Script" path="res://world/village/shop/shop_offer.gd" id="7_wk6g2"]
+[ext_resource type="Resource" path="res://fishing/bait/squid_bait.tres" id="8_gkedw"]
+[ext_resource type="Resource" path="res://fishing/bait/feather_lure.tres" id="9_ky671"]
+[ext_resource type="Resource" path="res://items/charms/tide_hunter_1.tres" id="10_ynemv"]
+[ext_resource type="Resource" path="res://items/rare/treasure_map.tres" id="11_pmyd2"]
+[ext_resource type="Resource" path="res://items/enchanted/enchanted_shark_tooth.tres" id="12_eojo6"]
+
+[sub_resource type="Resource" id="Resource_stekg"]
+script = ExtResource("7_wk6g2")
+item = ExtResource("8_gkedw")
+amount = 10
+price = 5
+currency = ExtResource("4_bujcu")
+
+[sub_resource type="Resource" id="Resource_vmskl"]
+script = ExtResource("7_wk6g2")
+item = ExtResource("9_ky671")
+amount = 3
+price = 12
+currency = ExtResource("4_bujcu")
+
+[sub_resource type="Resource" id="Resource_sv5yj"]
+script = ExtResource("7_wk6g2")
+item = ExtResource("10_ynemv")
+price = 30
+currency = ExtResource("4_bujcu")
+
+[sub_resource type="Resource" id="Resource_qq74m"]
+script = ExtResource("7_wk6g2")
+item = ExtResource("11_pmyd2")
+price = 25
+currency = ExtResource("4_bujcu")
+
+[sub_resource type="Resource" id="Resource_i4hxs"]
+script = ExtResource("7_wk6g2")
+item = ExtResource("12_eojo6")
+price = 40
+currency = ExtResource("4_bujcu")
+
+[resource]
+script = ExtResource("6_8yy3b")
+displayName = "Shark Frenzy"
+description = "For two days each season sharks crowd the seas: more sea creatures, and shark teeth come up with the catch. Captain Grim trades teeth for gear."
+icon = ExtResource("5_eacx1")
+color = Color(0.5411765, 0.6039216, 0.6666667, 1)
+requiredFlag = "quest/q_reef"
+every = 14
+firstDay = 11
+length = 2
+fishChance = 0.0
+drops = Array[ExtResource("3_5w1rc")]([ExtResource("4_bujcu")])
+dropChances = PackedFloat32Array(0.08)
+creatures = Array[ExtResource("1_wj3vg")]([ExtResource("2_e86jr")])
+stats = Dictionary[StringName, float]({
+&"seaCreature": 4.0
+})
+host = "grim"
+shopTitle = "Grim's Shark Gear"
+shop = Array[ExtResource("7_wk6g2")]([SubResource("Resource_stekg"), SubResource("Resource_vmskl"), SubResource("Resource_sv5yj"), SubResource("Resource_qq74m"), SubResource("Resource_i4hxs")])
+startText = "Shark Frenzy! Fins in every sea."

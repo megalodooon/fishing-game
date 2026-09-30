@@ -104,6 +104,7 @@ func arrived() -> void:
 	var island : Island = world.island() if world else null
 	if not island:
 		return
+	Digging.place_spot.call_deferred(get_tree())
 	for event in running:
 		if not event.host.is_empty() and player.atlas.current and player.atlas.current.resource_path.ends_with("village.tres"):
 			place_host(island, event)

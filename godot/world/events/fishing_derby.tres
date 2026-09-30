@@ -1,0 +1,70 @@
+[gd_resource type="Resource" script_class="GameEvent" format=3]
+
+[ext_resource type="Script" path="res://fishing/creatures/sea_creature.gd" id="1_us3x5"]
+[ext_resource type="Script" path="res://items/item.gd" id="2_ovoud"]
+[ext_resource type="Texture2D" path="res://world/events/icons/fishing_derby.png" id="3_83wq6"]
+[ext_resource type="Script" path="res://world/events/game_event.gd" id="4_limdm"]
+[ext_resource type="Script" path="res://world/village/shop/shop_offer.gd" id="5_6bs6a"]
+[ext_resource type="Resource" path="res://items/events/contest_ribbon.tres" id="6_akukg"]
+[ext_resource type="Resource" path="res://fishing/bait/prize_lure.tres" id="7_vnq11"]
+[ext_resource type="Resource" path="res://items/charms/blue_ribbon.tres" id="8_hpqk8"]
+[ext_resource type="Resource" path="res://fishing/bait/feather_lure.tres" id="9_j65d1"]
+[ext_resource type="Resource" path="res://items/rare/treasure_map.tres" id="10_k5hxb"]
+[ext_resource type="Resource" path="res://items/tools/pouch_stitching_2.tres" id="11_387j0"]
+[ext_resource type="Resource" path="res://items/potions/anglers_brew_2.tres" id="12_3pyue"]
+
+[sub_resource type="Resource" id="Resource_cxjil"]
+script = ExtResource("5_6bs6a")
+item = ExtResource("7_vnq11")
+amount = 5
+price = 2
+currency = ExtResource("6_akukg")
+
+[sub_resource type="Resource" id="Resource_ah47n"]
+script = ExtResource("5_6bs6a")
+item = ExtResource("8_hpqk8")
+price = 14
+currency = ExtResource("6_akukg")
+
+[sub_resource type="Resource" id="Resource_oddmp"]
+script = ExtResource("5_6bs6a")
+item = ExtResource("9_j65d1")
+amount = 3
+price = 3
+currency = ExtResource("6_akukg")
+
+[sub_resource type="Resource" id="Resource_tww4e"]
+script = ExtResource("5_6bs6a")
+item = ExtResource("10_k5hxb")
+price = 6
+currency = ExtResource("6_akukg")
+
+[sub_resource type="Resource" id="Resource_mydxp"]
+script = ExtResource("5_6bs6a")
+item = ExtResource("11_387j0")
+price = 40
+currency = ExtResource("6_akukg")
+
+[sub_resource type="Resource" id="Resource_s10wq"]
+script = ExtResource("5_6bs6a")
+item = ExtResource("12_3pyue")
+amount = 2
+price = 4
+currency = ExtResource("6_akukg")
+
+[resource]
+script = ExtResource("4_limdm")
+displayName = "Fishing Derby"
+description = "Every Wednesday morning: land the heaviest catch of the day's featured fish. Bronze, silver and gold medals pay Contest Ribbons, which Hale trades for prizes."
+icon = ExtResource("3_83wq6")
+color = Color(0.3529412, 0.6901961, 0.9098039, 1)
+weekday = 2
+requiredFlag = "project/tournament_hall"
+hours = Vector2(9, 15)
+fishChance = 0.0
+dropChances = PackedFloat32Array()
+contest = &"derby"
+host = "hale"
+shopTitle = "Derby Prizes"
+shop = Array[ExtResource("5_6bs6a")]([SubResource("Resource_cxjil"), SubResource("Resource_ah47n"), SubResource("Resource_oddmp"), SubResource("Resource_tww4e"), SubResource("Resource_mydxp"), SubResource("Resource_s10wq")])
+startText = "The Fishing Derby is on! Hale has the featured fish."

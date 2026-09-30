@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="GameEvent" format=3]
+
+[ext_resource type="Script" path="res://fishing/creatures/sea_creature.gd" id="1_pfsp5"]
+[ext_resource type="Script" path="res://items/item.gd" id="2_cps5u"]
+[ext_resource type="Resource" path="res://items/events/stardust.tres" id="3_cj4xk"]
+[ext_resource type="Resource" path="res://items/events/fallen_star.tres" id="4_47f6g"]
+[ext_resource type="Texture2D" path="res://world/events/icons/meteor_night.png" id="5_qab8e"]
+[ext_resource type="Script" path="res://world/events/game_event.gd" id="6_qi4sd"]
+[ext_resource type="Script" path="res://world/village/shop/shop_offer.gd" id="7_6v7sk"]
+
+[resource]
+script = ExtResource("6_qi4sd")
+displayName = "Meteor Night"
+description = "Stars fall into the sea all night. Rare fish come up more, and stardust sometimes comes up with the catch."
+icon = ExtResource("5_qab8e")
+color = Color(0.78431374, 0.72156864, 1, 1)
+every = 9
+firstDay = 5
+hours = Vector2(20, 4)
+fishChance = 0.0
+drops = Array[ExtResource("2_cps5u")]([ExtResource("3_cj4xk"), ExtResource("4_47f6g")])
+dropChances = PackedFloat32Array(0.06, 0.008)
+stats = Dictionary[StringName, float]({
+&"luck": 10.0,
+&"rareFind": 10.0
+})
+startText = "Meteor Night! Look up... and keep fishing."

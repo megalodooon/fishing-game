@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Item" format=3]
+
+[ext_resource type="Texture2D" path="res://items/trophy/icons/sunspear_marlin_gold.png" id="1_rxje5"]
+[ext_resource type="Resource" path="res://items/rarities/legendary.tres" id="2_oiok0"]
+[ext_resource type="Script" path="res://items/item.gd" id="3_2lh2g"]
+
+[resource]
+script = ExtResource("3_2lh2g")
+displayName = "Gold Sunspear Marlin"
+category = "Trophy Fish"
+icon = ExtResource("1_rxje5")
+rarity = ExtResource("2_oiok0")
+description = "A gold trophy. Odette at the Trophy Lodge fillets them for Trophy Scales."
+maxStack = 99
+sellPrice = 270

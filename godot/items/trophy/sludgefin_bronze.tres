@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Item" format=3]
+
+[ext_resource type="Texture2D" path="res://items/trophy/icons/sludgefin_bronze.png" id="1_yv6a2"]
+[ext_resource type="Resource" path="res://items/rarities/uncommon.tres" id="2_l70ou"]
+[ext_resource type="Script" path="res://items/item.gd" id="3_umo2v"]
+
+[resource]
+script = ExtResource("3_umo2v")
+displayName = "Bronze Sludgefin"
+category = "Trophy Fish"
+icon = ExtResource("1_yv6a2")
+rarity = ExtResource("2_l70ou")
+description = "A bronze trophy. Odette at the Trophy Lodge fillets them for Trophy Scales."
+maxStack = 99
+sellPrice = 30

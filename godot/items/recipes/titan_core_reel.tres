@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="BaitRecipe" format=3]
+
+[ext_resource type="Resource" path="res://items/hunts/titan_core.tres" id="1_ocs1e"]
+[ext_resource type="Resource" path="res://items/materials/scrap_wire.tres" id="2_xmrks"]
+[ext_resource type="Resource" path="res://fishing/tacklebox/tackle/titan_core_reel.tres" id="3_fxqq7"]
+[ext_resource type="Script" path="res://fishing/bait/bait_recipe.gd" id="4_gq4x0"]
+
+[resource]
+script = ExtResource("4_gq4x0")
+output = ExtResource("3_fxqq7")
+amount = 1
+ingredients = Array[Resource]([ExtResource("1_ocs1e"), ExtResource("2_xmrks")])
+counts = Array[int]([4, 10])
+xp = 180.0
+station = &"workbench"
+category = "Tackle"
+requiredSkill = &"hunting"
+requiredLevel = 11

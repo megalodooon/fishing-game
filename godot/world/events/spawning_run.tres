@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="GameEvent" format=3]
+
+[ext_resource type="Script" path="res://fishing/creatures/sea_creature.gd" id="1_k8f18"]
+[ext_resource type="Script" path="res://items/item.gd" id="2_v2l21"]
+[ext_resource type="Texture2D" path="res://world/events/icons/spawning_run.png" id="3_wh446"]
+[ext_resource type="Script" path="res://world/events/game_event.gd" id="4_vnyjw"]
+[ext_resource type="Script" path="res://world/village/shop/shop_offer.gd" id="5_r6yir"]
+
+[resource]
+script = ExtResource("4_vnyjw")
+displayName = "Spawning Run"
+description = "Fish crowd the shallows at dawn: they bite faster and double catches are more common."
+icon = ExtResource("3_wh446")
+color = Color(0.47843137, 0.8156863, 0.9098039, 1)
+every = 8
+firstDay = 3
+hours = Vector2(5, 11)
+fishChance = 0.0
+dropChances = PackedFloat32Array()
+stats = Dictionary[StringName, float]({
+&"biteSpeed": 12.0,
+&"doubleCatch": 8.0
+})
+startText = "A Spawning Run! The fish are everywhere this morning."

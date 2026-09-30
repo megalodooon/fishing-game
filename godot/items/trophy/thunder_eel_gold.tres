@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Item" format=3]
+
+[ext_resource type="Texture2D" path="res://items/trophy/icons/thunder_eel_gold.png" id="1_78hgf"]
+[ext_resource type="Resource" path="res://items/rarities/legendary.tres" id="2_olsq1"]
+[ext_resource type="Script" path="res://items/item.gd" id="3_81aui"]
+
+[resource]
+script = ExtResource("3_81aui")
+displayName = "Gold Thunder Eel"
+category = "Trophy Fish"
+icon = ExtResource("1_78hgf")
+rarity = ExtResource("2_olsq1")
+description = "A gold trophy. Odette at the Trophy Lodge fillets them for Trophy Scales."
+maxStack = 99
+sellPrice = 270

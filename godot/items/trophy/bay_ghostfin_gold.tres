@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Item" format=3]
+
+[ext_resource type="Texture2D" path="res://items/trophy/icons/bay_ghostfin_gold.png" id="1_gocsk"]
+[ext_resource type="Resource" path="res://items/rarities/legendary.tres" id="2_oy2jj"]
+[ext_resource type="Script" path="res://items/item.gd" id="3_1d1o2"]
+
+[resource]
+script = ExtResource("3_1d1o2")
+displayName = "Gold Bay Ghostfin"
+category = "Trophy Fish"
+icon = ExtResource("1_gocsk")
+rarity = ExtResource("2_oy2jj")
+description = "A gold trophy. Odette at the Trophy Lodge fillets them for Trophy Scales."
+maxStack = 99
+sellPrice = 270

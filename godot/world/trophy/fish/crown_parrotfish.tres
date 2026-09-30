@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="TrophyFish" format=3]
+
+[ext_resource type="Resource" path="res://oceans/reef/reef_biome.tres" id="1_06hjy"]
+[ext_resource type="Texture2D" path="res://world/trophy/icons/crown_parrotfish.png" id="2_r53gc"]
+[ext_resource type="Script" path="res://fishing/fish/requirements/fish_requirement.gd" id="3_uoiur"]
+[ext_resource type="Script" path="res://fishing/fish/requirements/cast_requirement.gd" id="4_7e7pc"]
+[ext_resource type="Script" path="res://world/trophy/trophy_fish.gd" id="5_1u75l"]
+[ext_resource type="Script" path="res://items/item.gd" id="6_i44bv"]
+[ext_resource type="Resource" path="res://items/trophy/crown_parrotfish_bronze.tres" id="7_7h7xy"]
+[ext_resource type="Resource" path="res://items/trophy/crown_parrotfish_silver.tres" id="8_0aot7"]
+[ext_resource type="Resource" path="res://items/trophy/crown_parrotfish_gold.tres" id="9_o40e6"]
+[ext_resource type="Resource" path="res://items/trophy/crown_parrotfish_diamond.tres" id="10_h0f1n"]
+
+[sub_resource type="Resource" id="Resource_sm5ce"]
+script = ExtResource("4_7e7pc")
+
+[resource]
+script = ExtResource("5_1u75l")
+displayName = "Crown Parrotfish"
+icon = ExtResource("2_r53gc")
+lore = "It wears a crest of coral like a crown."
+biome = ExtResource("1_06hjy")
+hint = "A perfect cast"
+requirements = Array[ExtResource("3_uoiur")]([SubResource("Resource_sm5ce")])
+chance = 0.045
+tiers = Array[ExtResource("6_i44bv")]([ExtResource("7_7h7xy"), ExtResource("8_0aot7"), ExtResource("9_o40e6"), ExtResource("10_h0f1n")])
+scales = PackedInt32Array(5, 10, 21, 42)

@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="SeaCreature" format=3]
+
+[ext_resource type="Script" path="res://items/item.gd" id="1_oomgn"]
+[ext_resource type="PackedScene" path="res://fishing/minigames/boss_duel/boss_duel.tscn" id="2_6cn8g"]
+[ext_resource type="Texture2D" path="res://world/hunts/art/reef_tyrant.png" id="3_v5trv"]
+[ext_resource type="Resource" path="res://items/rarities/legendary.tres" id="4_j2ybc"]
+[ext_resource type="Script" path="res://fishing/fish/requirements/fish_requirement.gd" id="5_qqw6r"]
+[ext_resource type="Script" path="res://fishing/creatures/sea_creature.gd" id="6_ypwjy"]
+
+[resource]
+script = ExtResource("6_ypwjy")
+displayName = "Reef Tyrant"
+description = "The boss of the Reef Hunt. Only shows itself to a hunter who's earned it."
+icon = ExtResource("3_v5trv")
+rarity = ExtResource("4_j2ybc")
+spawnRate = 0.0
+fight = ExtResource("2_6cn8g")
+difficulty = 0.55
+toughness = 1.6
+style = &"reef"
+coins = Vector2i(600, 1200)
+xp = 300.0
+dropChances = PackedFloat32Array()

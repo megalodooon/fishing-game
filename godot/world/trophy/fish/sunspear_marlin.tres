@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="TrophyFish" format=3]
+
+[ext_resource type="Resource" path="res://oceans/expanse/expanse_biome.tres" id="1_k8log"]
+[ext_resource type="Texture2D" path="res://world/trophy/icons/sunspear_marlin.png" id="2_gygtu"]
+[ext_resource type="Script" path="res://fishing/fish/requirements/fish_requirement.gd" id="3_5uxa6"]
+[ext_resource type="Script" path="res://world/trophy/trophy_fish.gd" id="4_w5fvn"]
+[ext_resource type="Script" path="res://items/item.gd" id="5_uev3w"]
+[ext_resource type="Resource" path="res://items/trophy/sunspear_marlin_bronze.tres" id="6_fc4yp"]
+[ext_resource type="Resource" path="res://items/trophy/sunspear_marlin_silver.tres" id="7_kpnta"]
+[ext_resource type="Resource" path="res://items/trophy/sunspear_marlin_gold.tres" id="8_ad5lk"]
+[ext_resource type="Resource" path="res://items/trophy/sunspear_marlin_diamond.tres" id="9_lgi2w"]
+
+[resource]
+script = ExtResource("4_w5fvn")
+displayName = "Sunspear Marlin"
+icon = ExtResource("2_gygtu")
+lore = "Finn swore he hooked one. Nobody believed him."
+biome = ExtResource("1_k8log")
+hint = "Only for grandpa's rod"
+special = 1
+chance = 0.03
+tiers = Array[ExtResource("5_uev3w")]([ExtResource("6_fc4yp"), ExtResource("7_kpnta"), ExtResource("8_ad5lk"), ExtResource("9_lgi2w")])
+scales = PackedInt32Array(12, 24, 48, 96)
