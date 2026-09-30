@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="BaitRecipe" format=3]
+
+[ext_resource type="Resource" path="res://items/materials/coral_shard.tres" id="1_qdpuf"]
+[ext_resource type="Resource" path="res://items/materials/iron_ingot.tres" id="2_ws2yt"]
+[ext_resource type="Resource" path="res://items/materials/rope.tres" id="3_5wios"]
+[ext_resource type="Resource" path="res://items/tools/coral_knife.tres" id="4_v61kf"]
+[ext_resource type="Script" path="res://fishing/bait/bait_recipe.gd" id="5_pg20p"]
+
+[resource]
+script = ExtResource("5_pg20p")
+output = ExtResource("4_v61kf")
+amount = 1
+ingredients = Array[Resource]([ExtResource("1_qdpuf"), ExtResource("2_ws2yt"), ExtResource("3_5wios")])
+counts = Array[int]([12, 3, 2])
+xp = 80.0
+station = &"workbench"
+category = "Tools"
+requiredSkill = &"foraging"
+requiredLevel = 9

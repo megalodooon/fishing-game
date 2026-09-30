@@ -81,12 +81,14 @@ func interact(who : Player) -> void:
 func _process(delta : float) -> void:
 	if Engine.is_editor_hint() or not concealed:
 		return
+	var was : float = glinting
 	glinting = maxf(glinting - delta, 0.0)
 	glintTimer -= delta
 	if glintTimer <= 0.0:
 		glintTimer = randf_range(glintEvery.x, glintEvery.y)
 		glinting = glintTime
-	queue_redraw()
+	if glinting > 0.0 or was > 0.0:
+		queue_redraw()
 
 func _draw() -> void:
 	if Engine.is_editor_hint():

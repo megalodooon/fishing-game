@@ -20,10 +20,6 @@ class_name Biome
 # How often junk bites instead of a fish, 0 to 1.
 @export_range(0.0, 1.0, 0.01) var junkChance : float = 0.04
 @export var junk : Array[Item] = []
-# What grows or washes up on this island's ground, gathered by walking over it
-# (see ForageNode). New spots every day.
-@export var forage : Array[Item] = []
-@export var foragePerRoom : int = 3
 #------------------------#
 
 

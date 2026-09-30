@@ -3,7 +3,7 @@ class_name Sources
 
 # Where every item comes from, worked out once from the content itself: the
 # junk each fishing ground brings up, sea creature drops, treasure chest loot,
-# crops, recipes and events, plus the item's own foundAt text for shops. The
+# crops, recipes, events and forage spots, plus the item's own foundAt text for shops. The
 # recipe book shows it for every ingredient, so nothing is a mystery.
 
 static var index : Dictionary = {}
@@ -57,6 +57,11 @@ static func build() -> void:
 		for offer in event.shop:
 			if offer and offer.item:
 				add(offer.item, "%s event shop" % event.displayName)
+	for kind in ForageSpot.KINDS:
+		var info : Array = ForageSpot.KINDS[kind]
+		for entry in info[3]:
+			add(load(entry[0]) as Item, "Gathered from %ss (%s)" % [String(info[1]).to_lower(), info[8]])
+		add(load(info[4]) as Item, "Rare find in %ss" % String(info[1]).to_lower())
 
 # The fish an ingredient means, when it's a species or any fish of a rarity.
 static func fish_text(ingredient : Resource, journal : Journal) -> PackedStringArray:

@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ForageTool" format=3]
+
+[ext_resource type="Texture2D" path="res://world/forage/icons/coral_knife.png" id="1_fbdlw"]
+[ext_resource type="Resource" path="res://items/rarities/rare.tres" id="2_r25mo"]
+[ext_resource type="Script" path="res://world/forage/forage_tool.gd" id="3_v68kb"]
+
+[resource]
+script = ExtResource("3_v68kb")
+tier = 2
+rareBoost = 1.5
+displayName = "Coral Knife"
+category = "Tool"
+icon = ExtResource("1_fbdlw")
+rarity = ExtResource("2_r25mo")
+description = "A foraging tool. Keep it in the bag: some spots need it, and every gathering gives more."
+discardable = false

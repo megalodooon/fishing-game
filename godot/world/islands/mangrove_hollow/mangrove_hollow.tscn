@@ -43,6 +43,8 @@
 [ext_resource type="Resource" path="res://world/village/pets/swamp_frog.tres" id="i_e41"]
 [ext_resource type="Texture2D" path="res://world/village/props/sign.png" id="i_e42"]
 
+[ext_resource type="Script" path="res://world/forage/forage_spot.gd" id="fg_spot"]
+
 [sub_resource type="RectangleShape2D" id="i_s1"]
 size = Vector2(26.0, 5.0)
 
@@ -408,3 +410,18 @@ reach = 10.0
 texture = ExtResource("i_e42")
 centered = false
 offset = Vector2(-5, -12)
+
+[node name="ForageReeds1" type="Node2D" parent="Landing"]
+position = Vector2(158, 62)
+script = ExtResource("fg_spot")
+kind = 6
+
+[node name="ForageReeds2" type="Node2D" parent="Bayou"]
+position = Vector2(142, 36)
+script = ExtResource("fg_spot")
+kind = 6
+
+[node name="ForageClayBank3" type="Node2D" parent="Bayou"]
+position = Vector2(52, 60)
+script = ExtResource("fg_spot")
+kind = 5

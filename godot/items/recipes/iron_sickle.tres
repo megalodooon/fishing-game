@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="BaitRecipe" format=3]
+
+[ext_resource type="Resource" path="res://items/materials/iron_scrap.tres" id="1_smb72"]
+[ext_resource type="Resource" path="res://items/materials/driftwood_plank.tres" id="2_c5y3p"]
+[ext_resource type="Resource" path="res://items/tools/iron_sickle.tres" id="3_4o2dg"]
+[ext_resource type="Script" path="res://fishing/bait/bait_recipe.gd" id="4_arneg"]
+
+[resource]
+script = ExtResource("4_arneg")
+output = ExtResource("3_4o2dg")
+amount = 1
+ingredients = Array[Resource]([ExtResource("1_smb72"), ExtResource("2_c5y3p")])
+counts = Array[int]([6, 4])
+xp = 40.0
+station = &"workbench"
+category = "Tools"
+requiredSkill = &"foraging"
+requiredLevel = 3

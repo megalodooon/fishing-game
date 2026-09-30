@@ -269,6 +269,8 @@
 [ext_resource type="Resource" path="res://world/quests/side/x_reforge.tres" id="xq_reforge"]
 [ext_resource type="Resource" path="res://world/quests/side/x_festival.tres" id="xq_festival"]
 [ext_resource type="Resource" path="res://world/quests/side/x_rare.tres" id="xq_rare"]
+[ext_resource type="Script" path="res://world/forage/forage_spot.gd" id="fg_spot"]
+
 [sub_resource type="RectangleShape2D" id="v_s1"]
 size = Vector2(6, 3)
 
@@ -1659,3 +1661,18 @@ extras = Array[ExtResource("v_e127")]([ExtResource("v_e130"), ExtResource("v_e12
 reach = 9.0
 promptOffset = Vector2(0, -8)
 listed = null
+
+[node name="ForageTidePool1" type="Node2D" parent="Pier"]
+position = Vector2(82, 92)
+script = ExtResource("fg_spot")
+kind = 1
+
+[node name="ForageBerryBush2" type="Node2D" parent="Home"]
+position = Vector2(16, 28)
+script = ExtResource("fg_spot")
+kind = 0
+
+[node name="ForageDriftwood3" type="Node2D" parent="Lane"]
+position = Vector2(156, 26)
+script = ExtResource("fg_spot")
+kind = 3

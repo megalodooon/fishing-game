@@ -47,6 +47,8 @@
 [ext_resource type="Script" path="res://items/item.gd" id="i_e44"]
 [ext_resource type="Resource" path="res://items/materials/seaweed.tres" id="i_e45"]
 
+[ext_resource type="Script" path="res://world/forage/forage_spot.gd" id="fg_spot"]
+
 [sub_resource type="RectangleShape2D" id="i_s1"]
 size = Vector2(6.0, 3.0)
 
@@ -491,3 +493,18 @@ title = "A lost pearl!"
 message = "Opal on Pearl Lagoon collects these."
 prompt = "Pick up"
 reach = 7.0
+
+[node name="ForageBerryBush1" type="Node2D" parent="Landing"]
+position = Vector2(144, 74)
+script = ExtResource("fg_spot")
+kind = 0
+
+[node name="ForageClayBank2" type="Node2D" parent="Fields"]
+position = Vector2(30, 66)
+script = ExtResource("fg_spot")
+kind = 5
+
+[node name="ForageBerryBush3" type="Node2D" parent="Orchard"]
+position = Vector2(68, 70)
+script = ExtResource("fg_spot")
+kind = 0

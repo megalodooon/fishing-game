@@ -23,4 +23,3 @@ region = "Sunny Seas"
 fish = Array[ExtResource("e2")]([ExtResource("e3"), ExtResource("e4"), ExtResource("e5"), ExtResource("e6"), ExtResource("e7")])
 tier = 1
 junk = Array[ExtResource("e9")]([ExtResource("e8")])
-forage = Array[ExtResource("e9")]([ExtResource("9_aui25"), ExtResource("10_flme0"), ExtResource("11_rngur"), ExtResource("12_tor2e")])

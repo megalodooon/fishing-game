@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ForageTool" format=3]
+
+[ext_resource type="Texture2D" path="res://world/forage/icons/iron_sickle.png" id="1_eom5x"]
+[ext_resource type="Resource" path="res://items/rarities/uncommon.tres" id="2_xx4vh"]
+[ext_resource type="Script" path="res://world/forage/forage_tool.gd" id="3_ffyol"]
+
+[resource]
+script = ExtResource("3_ffyol")
+displayName = "Iron Sickle"
+category = "Tool"
+icon = ExtResource("1_eom5x")
+rarity = ExtResource("2_xx4vh")
+description = "A foraging tool. Keep it in the bag: some spots need it, and every gathering gives more."
+discardable = false

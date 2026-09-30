@@ -64,6 +64,8 @@
 [ext_resource type="Resource" path="res://items/materials/driftwood_plank.tres" id="d_e23"]
 [ext_resource type="Resource" path="res://items/materials/crab_shell.tres" id="d_e24"]
 [ext_resource type="Resource" path="res://items/key/logbook_page_9.tres" id="d_e25"]
+[ext_resource type="Script" path="res://world/forage/forage_spot.gd" id="fg_spot"]
+
 [sub_resource type="RectangleShape2D" id="Rect_hut"]
 size = Vector2(26, 6)
 
@@ -447,3 +449,18 @@ message = "Wedged in the hut's floorboards."
 items = Array[ExtResource("d_e22")]([ExtResource("d_e25")])
 prompt = "Search"
 reach = 8.0
+
+[node name="ForageDriftwood1" type="Node2D" parent="Landing"]
+position = Vector2(150, 90)
+script = ExtResource("fg_spot")
+kind = 3
+
+[node name="ForageSaltCrust2" type="Node2D" parent="Lagoon"]
+position = Vector2(104, 88)
+script = ExtResource("fg_spot")
+kind = 2
+
+[node name="ForageTidePool3" type="Node2D" parent="Lagoon"]
+position = Vector2(20, 86)
+script = ExtResource("fg_spot")
+kind = 1

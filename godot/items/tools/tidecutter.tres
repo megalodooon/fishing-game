@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="ForageTool" format=3]
+
+[ext_resource type="Texture2D" path="res://world/forage/icons/tidecutter.png" id="1_jd81r"]
+[ext_resource type="Resource" path="res://items/rarities/legendary.tres" id="2_h7xta"]
+[ext_resource type="Script" path="res://world/forage/forage_tool.gd" id="3_sq7bq"]
+
+[resource]
+script = ExtResource("3_sq7bq")
+tier = 3
+yieldBonus = 2
+rareBoost = 2.0
+displayName = "Tidecutter"
+category = "Tool"
+icon = ExtResource("1_jd81r")
+rarity = ExtResource("2_h7xta")
+description = "A foraging tool. Keep it in the bag: some spots need it, and every gathering gives more."
+discardable = false

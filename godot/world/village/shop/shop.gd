@@ -88,7 +88,14 @@ func is_special(offer : ShopOffer) -> bool:
 	return specials.has(offer)
 
 func price_of(offer : ShopOffer) -> int:
-	return maxi(roundi(offer.cost() * (1.0 - discount)), 1) if is_special(offer) else offer.cost()
+	var price : int = maxi(roundi(offer.cost() * (1.0 - discount)), 1) if is_special(offer) else offer.cost()
+	return maxi(roundi(price * (1.0 - friend_discount())), 1) if not offer.currency else price
+
+# A villager's own shop sells a little cheaper to friends (see Friendship).
+func friend_discount() -> float:
+	var keeper : Npc = get_parent() as Npc
+	var player : Player = Player.find(get_tree())
+	return Friendship.discount(player.progress, keeper.id) if keeper and player and player.progress else 0.0
 
 func stock_key() -> String:
 	return "stock/" + String(get_path())

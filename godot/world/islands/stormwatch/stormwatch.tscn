@@ -22,6 +22,8 @@
 [ext_resource type="Resource" path="res://items/materials/crab_shell.tres" id="i_e20"]
 [ext_resource type="Texture2D" path="res://world/village/props/sign.png" id="i_e21"]
 
+[ext_resource type="Script" path="res://world/forage/forage_spot.gd" id="fg_spot"]
+
 [sub_resource type="RectangleShape2D" id="i_s1"]
 size = Vector2(24.0, 5.0)
 
@@ -258,3 +260,13 @@ reach = 10.0
 texture = ExtResource("i_e21")
 centered = false
 offset = Vector2(-5, -12)
+
+[node name="ForageNest1" type="Node2D" parent="Landing"]
+position = Vector2(148, 56)
+script = ExtResource("fg_spot")
+kind = 13
+
+[node name="ForageStormShards2" type="Node2D" parent="Cliffs"]
+position = Vector2(48, 40)
+script = ExtResource("fg_spot")
+kind = 10

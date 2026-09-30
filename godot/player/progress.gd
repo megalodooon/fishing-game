@@ -64,6 +64,12 @@ signal quest_handed_in(quest : Quest)
 # The crew at the crew board: per member its CrewMember, tier, the clock hour
 # it was last counted and how much it holds (see Crew).
 @export var crew : Array = []
+# Friendship with each villager, by Cast id (see Friendship).
+@export var friends : Dictionary = {}
+# The harbor bank: coin account and vault tiers, and the vault's stacks (see
+# Bank).
+@export var bank : Dictionary = {}
+@export var vault : Array = []
 #------------------------#
 
 
@@ -88,6 +94,9 @@ func setup() -> void:
 	charms = charms.duplicate()
 	orders = orders.duplicate(true)
 	crew = crew.duplicate(true)
+	friends = friends.duplicate(true)
+	bank = bank.duplicate(true)
+	vault = vault.duplicate()
 
 func chapter_title() -> String:
 	return Story.chapter_title(chapter)

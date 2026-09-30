@@ -25,4 +25,3 @@ displayName = "Village"
 description = "The calm water around the village, and whatever lives down the old well."
 region = "Home Waters"
 fish = Array[ExtResource("1_data")]([ExtResource("f_2"), ExtResource("f_3"), ExtResource("f_4"), ExtResource("f_5"), ExtResource("f_6"), ExtResource("f_7"), ExtResource("f_8"), ExtResource("f_9"), ExtResource("f_10"), ExtResource("f_11")])
-forage = Array[ExtResource("13_ag0dw")]([ExtResource("14_88ryt"), ExtResource("15_yx6e8"), ExtResource("16_gi2or"), ExtResource("17_dy1jc")])

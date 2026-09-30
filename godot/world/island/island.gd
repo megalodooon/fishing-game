@@ -20,6 +20,9 @@ var room : IslandRoom
 var world : World
 var fader : ColorRect
 var switching : bool = false
+var people : Array[Npc] = []
+var grid : WalkGrid
+var scheduleWait : float = 0.0
 #------------------------#
 
 
@@ -51,6 +54,35 @@ func enter(into : World) -> void:
 	world.player.global_position = global_position + arrival
 	var start : IslandRoom = room_at(world.player.global_position)
 	show_room(start if start else rooms[0])
+	people.clear()
+	for person in find_children("*", "Npc", true, false):
+		people.append(person)
+		(person as Npc).follow_schedule(true)
+
+func room_named(name_of_room : String) -> IslandRoom:
+	for each in rooms:
+		if each.name == name_of_room:
+			return each
+	return null
+
+# The walking grid, made the first time someone needs a path.
+func walk_grid() -> WalkGrid:
+	if not grid:
+		grid = WalkGrid.build(self)
+	return grid
+
+# Everyone on the island checks their schedule a few times a second: people
+# in the room on screen walk, the rest just turn up where they should be.
+func _process(delta : float) -> void:
+	if not world:
+		return
+	scheduleWait -= delta
+	if scheduleWait > 0.0:
+		return
+	scheduleWait = 0.25
+	for person in people:
+		if is_instance_valid(person) and not person.host:
+			person.follow_schedule(false)
 
 func leave() -> void:
 	if world:
@@ -89,8 +121,11 @@ func switch_to(next : IslandRoom) -> void:
 
 func show_room(next : IslandRoom) -> void:
 	room = next
+	# Rooms out of sight are hidden and stop processing, so what's in them
+	# (people, traps, plots, pickups) costs nothing until the player walks in.
 	for each in rooms:
 		each.visible = each == next
+		each.process_mode = Node.PROCESS_MODE_INHERIT if each == next else Node.PROCESS_MODE_DISABLED
 	# The shown room's water gets its passes rendered (and made the first time).
 	for water in next.get_children():
 		if water is Ocean:

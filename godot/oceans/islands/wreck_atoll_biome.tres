@@ -22,4 +22,3 @@ displayName = "Wreck Atoll"
 description = "Warm shallows around a sunken ship, with tide pools on the reef."
 region = "Sunny Seas"
 fish = Array[ExtResource("1_data")]([ExtResource("f_2"), ExtResource("f_3"), ExtResource("f_4"), ExtResource("f_5"), ExtResource("f_6"), ExtResource("f_7"), ExtResource("f_8")])
-forage = Array[ExtResource("10_jfrs7")]([ExtResource("11_0a0lf"), ExtResource("12_igkvq"), ExtResource("13_kvgsv"), ExtResource("14_nibeg")])

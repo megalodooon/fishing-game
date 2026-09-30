@@ -36,6 +36,8 @@
 [ext_resource type="Resource" path="res://oceans/islands/wreck_atoll_biome.tres" id="w_e17"]
 [ext_resource type="Resource" path="res://items/materials/iron_scrap.tres" id="w_e18"]
 [ext_resource type="Resource" path="res://items/materials/crab_shell.tres" id="w_e19"]
+[ext_resource type="Script" path="res://world/forage/forage_spot.gd" id="fg_spot"]
+
 [sub_resource type="RectangleShape2D" id="Rect_trunk"]
 size = Vector2(4, 3)
 
@@ -268,3 +270,18 @@ biome = ExtResource("w_e17")
 reach = 9.0
 promptOffset = Vector2(0, -8)
 extras = Array[ExtResource("w_e14")]([ExtResource("w_e18"), ExtResource("w_e19")])
+
+[node name="ForageDriftwood1" type="Node2D" parent="Landing"]
+position = Vector2(74, 92)
+script = ExtResource("fg_spot")
+kind = 3
+
+[node name="ForageTidePool2" type="Node2D" parent="TidePools"]
+position = Vector2(58, 92)
+script = ExtResource("fg_spot")
+kind = 1
+
+[node name="ForageOysterBed3" type="Node2D" parent="TidePools"]
+position = Vector2(16, 68)
+script = ExtResource("fg_spot")
+kind = 7

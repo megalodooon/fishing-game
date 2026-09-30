@@ -48,6 +48,7 @@ currency = ExtResource("6_ju6l6")
 
 [resource]
 script = ExtResource("8_se1px")
+days = Vector2i(7, 8)
 displayName = "Starfall Night"
 description = "Stars fall into the sea on summer nights. Gather fallen stars on the islands, catch the star fish, and trade stardust at Luma's stall."
 icon = ExtResource("4_o5qks")

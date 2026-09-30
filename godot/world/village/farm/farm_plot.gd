@@ -125,6 +125,7 @@ func click(who : Player, index : int) -> bool:
 		who.inventory.give(kind.crop, amount)
 		who.progress.clear_tile(id, index)
 		who.progress.count("harvests")
+		Quest.notify(who, &"harvest", kind.crop, amount)
 		Skills.add(who, Skills.FARMING, kind.xp())
 		who.say("+%d %s" % [amount, kind.crop.displayName], readyColor)
 		return true

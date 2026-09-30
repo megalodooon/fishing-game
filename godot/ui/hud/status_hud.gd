@@ -130,8 +130,12 @@ func _draw() -> void:
 			draw_texture_rect(event.icon, Rect2(area.position + Vector2(0.0, -1.0), Vector2(12.0, 12.0)), false)
 		if area.has_point(mouse):
 			var cycle_day : int = cycle.day if cycle else 1
-			var left : int = event.last_day() - Calendar.day_of_year(cycle_day)
-			tip = [event.displayName, PackedStringArray(["Festival fish", "biting now", "Ends", "today" if left <= 0 else "in %d day%s" % [left, "" if left == 1 else "s"], "Hours", event.hours_text()])]
+			var left : int = event.days_left(cycle_day) - 1
+			var lines : PackedStringArray = PackedStringArray(["Festival fish", "biting now"]) if event.page else PackedStringArray()
+			for key in event.stats:
+				lines.append_array([Stats.name_of(key), Stats.bonus_text(key, event.stats[key])])
+			lines.append_array(["Ends", "today" if left <= 0 else "in %d day%s" % [left, "" if left == 1 else "s"], "Hours", event.hours_text()])
+			tip = [event.displayName, lines]
 		badgeX += 13.0
 	var quest : Quest = tracked_quest() if showTracker else null
 	if quest:

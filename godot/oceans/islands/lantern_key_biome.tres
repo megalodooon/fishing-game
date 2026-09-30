@@ -23,4 +23,3 @@ displayName = "Lantern Key"
 description = "Clear water around the old lighthouse."
 region = "Home Waters"
 fish = Array[ExtResource("1_data")]([ExtResource("f_2"), ExtResource("f_3"), ExtResource("f_4"), ExtResource("f_5"), ExtResource("f_6"), ExtResource("f_7"), ExtResource("f_8"), ExtResource("f_9")])
-forage = Array[ExtResource("11_y2jrd")]([ExtResource("12_3fgc5"), ExtResource("13_o85do"), ExtResource("14_ug1d1"), ExtResource("15_3hu8m")])

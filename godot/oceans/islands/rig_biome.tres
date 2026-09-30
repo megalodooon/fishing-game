@@ -25,4 +25,3 @@ creatures = Array[ExtResource("e8")]([ExtResource("e7")])
 tier = 3
 junkChance = 0.2
 junk = Array[ExtResource("e12")]([ExtResource("e9"), ExtResource("e10"), ExtResource("e11")])
-forage = Array[ExtResource("e12")]([ExtResource("9_sqkjd"), ExtResource("10_cqwdy"), ExtResource("e9")])

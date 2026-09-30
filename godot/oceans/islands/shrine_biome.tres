@@ -20,4 +20,3 @@ region = "Storm Belt"
 fish = Array[ExtResource("e2")]([ExtResource("e3"), ExtResource("e4"), ExtResource("e5"), ExtResource("e6")])
 tier = 3
 junkChance = 0.0
-forage = Array[ExtResource("7_ph6kg")]([ExtResource("8_tx3hm"), ExtResource("9_ntgsj"), ExtResource("10_5jmcl")])

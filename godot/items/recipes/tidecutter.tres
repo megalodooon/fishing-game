@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="BaitRecipe" format=3]
+
+[ext_resource type="Resource" path="res://items/materials/storm_core.tres" id="1_klya2"]
+[ext_resource type="Resource" path="res://items/materials/obsidian_plate.tres" id="2_wrgrh"]
+[ext_resource type="Resource" path="res://items/enchanted/enchanted_mangrove_root.tres" id="3_d3ktq"]
+[ext_resource type="Resource" path="res://items/tools/tidecutter.tres" id="4_o4bbi"]
+[ext_resource type="Script" path="res://fishing/bait/bait_recipe.gd" id="5_woh7v"]
+
+[resource]
+script = ExtResource("5_woh7v")
+output = ExtResource("4_o4bbi")
+amount = 1
+ingredients = Array[Resource]([ExtResource("1_klya2"), ExtResource("2_wrgrh"), ExtResource("3_d3ktq")])
+counts = Array[int]([1, 2, 1])
+xp = 120.0
+station = &"forge"
+category = "Tools"
+requiredSkill = &"foraging"
+requiredLevel = 17

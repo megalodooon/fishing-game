@@ -36,6 +36,8 @@
 [ext_resource type="Texture2D" path="res://world/islands/props/snowman.png" id="i_e34"]
 [ext_resource type="Texture2D" path="res://world/village/props/sign.png" id="i_e35"]
 
+[ext_resource type="Script" path="res://world/forage/forage_spot.gd" id="fg_spot"]
+
 [sub_resource type="RectangleShape2D" id="i_s1"]
 size = Vector2(22.0, 5.0)
 
@@ -387,3 +389,13 @@ reach = 10.0
 texture = ExtResource("i_e35")
 centered = false
 offset = Vector2(-5, -12)
+
+[node name="ForageFrostRock1" type="Node2D" parent="Landing"]
+position = Vector2(138, 64)
+script = ExtResource("fg_spot")
+kind = 8
+
+[node name="ForageFrostRock2" type="Node2D" parent="Icefield"]
+position = Vector2(124, 64)
+script = ExtResource("fg_spot")
+kind = 8

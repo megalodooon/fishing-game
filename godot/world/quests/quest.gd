@@ -106,10 +106,13 @@ func turn_in(player : Player) -> bool:
 		player.progress.emit_changed()
 	return true
 
-# Something happened that quests might count: a catch, a sale, a trip, a craft.
+# Something happened that quests might count: a catch, a sale, a trip, a
+# craft, a harvest, a gathering. Contests and achievements hear it too.
 static func notify(player : Player, event : StringName, data : Variant = null, extra : Variant = null) -> void:
 	if not player or not player.progress:
 		return
+	Contests.notify(player, event, data, extra)
+	Achievements.notify(player, event, data, extra)
 	for quest in player.progress.active_quests():
 		var wasReady : bool = quest.ready(player)
 		for i in quest.goals.size():

@@ -23,4 +23,3 @@ fish = Array[ExtResource("e2")]([ExtResource("e3"), ExtResource("e4"), ExtResour
 tier = 2
 junkChance = 0.02
 junk = Array[ExtResource("e9")]([ExtResource("e8")])
-forage = Array[ExtResource("e9")]([ExtResource("9_mxhsd"), ExtResource("10_yidhr"), ExtResource("11_phd8o")])

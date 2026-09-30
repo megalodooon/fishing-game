@@ -30,6 +30,8 @@
 [ext_resource type="Script" path="res://items/item.gd" id="l_e14"]
 [ext_resource type="Resource" path="res://items/materials/crab_shell.tres" id="l_e15"]
 [ext_resource type="Resource" path="res://items/materials/glowcap.tres" id="l_e16"]
+[ext_resource type="Script" path="res://world/forage/forage_spot.gd" id="fg_spot"]
+
 [sub_resource type="RectangleShape2D" id="Rect_trunk"]
 size = Vector2(4, 3)
 
@@ -245,3 +247,13 @@ biome = ExtResource("l_e13")
 reach = 9.0
 promptOffset = Vector2(0, -8)
 extras = Array[ExtResource("l_e14")]([ExtResource("l_e15"), ExtResource("l_e16")])
+
+[node name="ForagePalmLitter1" type="Node2D" parent="Landing"]
+position = Vector2(168, 60)
+script = ExtResource("fg_spot")
+kind = 4
+
+[node name="ForageNest2" type="Node2D" parent="Lighthouse"]
+position = Vector2(54, 64)
+script = ExtResource("fg_spot")
+kind = 13

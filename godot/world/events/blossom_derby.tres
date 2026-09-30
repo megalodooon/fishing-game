@@ -48,6 +48,7 @@ currency = ExtResource("3_2205d")
 
 [resource]
 script = ExtResource("7_7mgye")
+days = Vector2i(7, 8)
 displayName = "Blossom Derby"
 description = "Petals drift over every island and the spring fish come up to play. Collect petals, catch the Derby fish, and trade at Tilly's stall."
 icon = ExtResource("4_uiwdb")

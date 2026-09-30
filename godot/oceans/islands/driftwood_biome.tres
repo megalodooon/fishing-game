@@ -25,4 +25,3 @@ region = "Home Waters"
 fish = Array[ExtResource("e2")]([ExtResource("e3"), ExtResource("e4"), ExtResource("e5"), ExtResource("e6"), ExtResource("e7"), ExtResource("e8")])
 junkChance = 0.06
 junk = Array[ExtResource("e11")]([ExtResource("e9"), ExtResource("e10")])
-forage = Array[ExtResource("e11")]([ExtResource("10_vvlmk"), ExtResource("11_tnqjp"), ExtResource("12_vqsi0"), ExtResource("13_740ls")])

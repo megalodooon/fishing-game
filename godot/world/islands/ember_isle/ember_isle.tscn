@@ -63,6 +63,8 @@
 [ext_resource type="Script" path="res://world/village/bait_crafter.gd" id="fx_crafter"]
 [ext_resource type="Script" path="res://fishing/reforges/reforge_anvil.gd" id="fx_anvil"]
 
+[ext_resource type="Script" path="res://world/forage/forage_spot.gd" id="fg_spot"]
+
 [sub_resource type="RectangleShape2D" id="Rect_forge"]
 size = Vector2(32, 6)
 
@@ -500,3 +502,13 @@ biome = ExtResource("m_e17")
 reach = 9.0
 promptOffset = Vector2(0, -8)
 extras = Array[ExtResource("m_e14")]([ExtResource("m_e18"), ExtResource("m_e19")])
+
+[node name="ForageEmberVent1" type="Node2D" parent="Landing"]
+position = Vector2(170, 34)
+script = ExtResource("fg_spot")
+kind = 9
+
+[node name="ForageEmberVent2" type="Node2D" parent="Springs"]
+position = Vector2(56, 68)
+script = ExtResource("fg_spot")
+kind = 9

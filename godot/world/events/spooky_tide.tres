@@ -48,6 +48,7 @@ currency = ExtResource("4_rwlaw")
 
 [resource]
 script = ExtResource("9_1fo2g")
+days = Vector2i(8, 9)
 displayName = "Spooky Tide"
 description = "Mist rolls in, candy washes up, and strange things bite. Catch the Spooky fish and beat the Phantom Squid, then spend your candy at Auntie Moss's cauldron."
 icon = ExtResource("6_w5yep")

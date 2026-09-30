@@ -32,6 +32,8 @@ const INFO : Dictionary = {
 	&"craftBonus": ["Double craft", "%"],
 	&"potionPower": ["Potion time", "%"],
 	&"crewSpeed": ["Crew speed", "%"],
+	&"trophyLuck": ["Trophy tier luck", "%"],
+	&"digLuck": ["Dig luck", "%"],
 }
 # What every player starts with.
 const BASE : Dictionary = {&"treasure": 1.5, &"hearts": 3.0, &"seaCreature": 5.0}
@@ -63,7 +65,8 @@ static func of(player : Player, stat : StringName) -> float:
 	return total
 
 # Charms (the best of each family, bag and pouch), Magical Power, the Angler
-# Level, the council's perk, boat parts, pearls and village projects.
+# Level, the council's perk, events running now, boat parts, pearls and
+# village projects.
 static func extras(player : Player, stat : StringName) -> float:
 	var total : float = 0.0
 	for charm in CharmPouch.counted(player):
@@ -71,6 +74,8 @@ static func extras(player : Player, stat : StringName) -> float:
 	total += CharmPouch.bonus(player, stat)
 	total += AnglerLevel.bonus(player, stat)
 	total += Council.bonus(player, stat)
+	total += Calendar.bonus(player.get_tree(), stat)
+	total += TideTree.bonus(player, stat)
 	if player.progress:
 		total += BoatParts.bonus(player.progress, stat)
 		total += Pearls.bonus(player.progress, stat)

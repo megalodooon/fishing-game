@@ -26,6 +26,8 @@
 [ext_resource type="Resource" path="res://items/materials/iron_scrap.tres" id="i_e24"]
 [ext_resource type="Resource" path="res://items/materials/oily_sludge.tres" id="i_e25"]
 
+[ext_resource type="Script" path="res://world/forage/forage_spot.gd" id="fg_spot"]
+
 [sub_resource type="RectangleShape2D" id="i_s1"]
 size = Vector2(20.0, 5.0)
 
@@ -267,3 +269,13 @@ title = "A lost pearl!"
 message = "Opal on Pearl Lagoon collects these."
 prompt = "Pick up"
 reach = 7.0
+
+[node name="ForageScrapHeap1" type="Node2D" parent="Landing"]
+position = Vector2(158, 36)
+script = ExtResource("fg_spot")
+kind = 11
+
+[node name="ForageScrapHeap2" type="Node2D" parent="Deck"]
+position = Vector2(28, 60)
+script = ExtResource("fg_spot")
+kind = 11
