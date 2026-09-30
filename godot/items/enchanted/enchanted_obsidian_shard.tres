@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Item" format=3]
+
+[ext_resource type="Texture2D" path="res://items/enchanted/icons/enchanted_obsidian_shard.png" id="1_80sfi"]
+[ext_resource type="Resource" path="res://items/rarities/legendary.tres" id="2_j6wdx"]
+[ext_resource type="Script" path="res://items/item.gd" id="3_gindd"]
+
+[resource]
+script = ExtResource("3_gindd")
+displayName = "Enchanted Obsidian Shard"
+category = "Enchanted Material"
+icon = ExtResource("1_80sfi")
+rarity = ExtResource("2_j6wdx")
+description = "32 Obsidian Shard pressed into one. Better recipes ask for these."
+maxStack = 99
+sellPrice = 1760

@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="BaitRecipe" format=3]
+
+[ext_resource type="Resource" path="res://items/materials/storm_glass.tres" id="1_mara1"]
+[ext_resource type="Resource" path="res://items/enchanted/enchanted_storm_glass.tres" id="2_lhdeu"]
+[ext_resource type="Script" path="res://fishing/bait/bait_recipe.gd" id="3_pdshe"]
+
+[resource]
+script = ExtResource("3_pdshe")
+output = ExtResource("2_lhdeu")
+amount = 1
+ingredients = Array[Resource]([ExtResource("1_mara1")])
+counts = Array[int]([32])
+requiredFlag = "collection/storm_glass/2"
+xp = 12.0
+category = "Materials"

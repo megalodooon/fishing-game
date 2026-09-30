@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="TreasureChest" format=3]
+
+[ext_resource type="Texture2D" path="res://items/events/icons/festive_gift.png" id="1_pqvl7"]
+[ext_resource type="Script" path="res://items/item.gd" id="2_dttw6"]
+[ext_resource type="Resource" path="res://items/events/snowflake.tres" id="3_fmthn"]
+[ext_resource type="Resource" path="res://items/events/candy_cane.tres" id="4_x4nqn"]
+[ext_resource type="Resource" path="res://items/events/gold_ornament.tres" id="5_l3bfs"]
+[ext_resource type="Resource" path="res://items/events/yule_log.tres" id="6_rsqoc"]
+[ext_resource type="Resource" path="res://items/events/tinsel_bait.tres" id="7_0opty"]
+[ext_resource type="Resource" path="res://items/events/grand_gift.tres" id="8_5k1pc"]
+[ext_resource type="Resource" path="res://items/rarities/rare.tres" id="9_kno2c"]
+[ext_resource type="Script" path="res://items/treasure/treasure_chest.gd" id="10_sflpk"]
+
+[resource]
+script = ExtResource("10_sflpk")
+coins = Vector2i(80, 220)
+rolls = Vector2i(2, 2)
+loot = Array[ExtResource("2_dttw6")]([ExtResource("3_fmthn"), ExtResource("4_x4nqn"), ExtResource("5_l3bfs"), ExtResource("6_rsqoc"), ExtResource("7_0opty"), ExtResource("8_5k1pc")])
+lootWeights = PackedFloat32Array(4, 3, 1.5, 1, 2, 0.3)
+lootAmounts = Array[Vector2i]([Vector2i(2, 5), Vector2i(2, 4), Vector2i(1, 1), Vector2i(1, 1), Vector2i(3, 5), Vector2i(1, 1)])
+openColor = Color(0.56, 0.93, 0.44, 1)
+displayName = "Festive Gift"
+category = "Gift"
+icon = ExtResource("1_pqvl7")
+rarity = ExtResource("9_kno2c")
+description = "Green paper, gold ribbon. Heavier than it looks."
+hint = "Click to open"
+maxStack = 99

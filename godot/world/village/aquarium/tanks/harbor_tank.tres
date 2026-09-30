@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="AquariumTank" format=3]
+
+[ext_resource type="Script" path="res://world/village/aquarium/aquarium_tank.gd" id="1_tank"]
+[ext_resource type="Script" path="res://fishing/fish/fish_data.gd" id="1_data"]
+[ext_resource type="Texture2D" path="res://world/village/aquarium/icons/harbor_tank.png" id="1_icon"]
+[ext_resource type="Resource" path="res://fishing/fish/species/islands/harbor_goby.tres" id="f_2"]
+[ext_resource type="Resource" path="res://fishing/fish/species/islands/dock_perch.tres" id="f_3"]
+[ext_resource type="Resource" path="res://fishing/fish/species/sardine.tres" id="f_4"]
+[ext_resource type="Resource" path="res://fishing/fish/species/anchovy.tres" id="f_5"]
+[ext_resource type="Resource" path="res://fishing/fish/species/flounder.tres" id="f_6"]
+
+[resource]
+script = ExtResource("1_tank")
+displayName = "Harbor Tank"
+description = "Fish from right around the village. Any four will do."
+icon = ExtResource("1_icon")
+fish = Array[ExtResource("1_data")]([ExtResource("f_2"), ExtResource("f_3"), ExtResource("f_4"), ExtResource("f_5"), ExtResource("f_6")])
+needs = 4
+rewardCoins = 100
+opens = "The Tackle Shop"

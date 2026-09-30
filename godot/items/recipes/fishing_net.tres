@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="BaitRecipe" format=3]
+
+[ext_resource type="Resource" path="res://items/materials/rope.tres" id="1_5xfyt"]
+[ext_resource type="Resource" path="res://items/materials/seaweed.tres" id="2_l4kx3"]
+[ext_resource type="Resource" path="res://items/materials/fishing_net.tres" id="3_aymjt"]
+[ext_resource type="Script" path="res://fishing/bait/bait_recipe.gd" id="4_0kych"]
+
+[resource]
+script = ExtResource("4_0kych")
+output = ExtResource("3_aymjt")
+amount = 1
+ingredients = Array[Resource]([ExtResource("1_5xfyt"), ExtResource("2_l4kx3")])
+counts = Array[int]([3, 4])
+xp = 6.0
+station = &"workbench"
+category = "Materials"
+requiredSkill = &"crafting"
+requiredLevel = 3

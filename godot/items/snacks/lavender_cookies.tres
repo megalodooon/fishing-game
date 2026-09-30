@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="Snack" format=3]
+
+[ext_resource type="Texture2D" path="res://items/snacks/icons/lavender_cookies.png" id="1_ipett"]
+[ext_resource type="Resource" path="res://items/rarities/uncommon.tres" id="2_427c6"]
+[ext_resource type="Script" path="res://items/snacks/snack.gd" id="3_batgt"]
+
+[resource]
+script = ExtResource("3_batgt")
+energy = 30.0
+buffStat = "xpBonus"
+buffAmount = 1.1
+displayName = "Lavender Cookies"
+icon = ExtResource("1_ipett")
+rarity = ExtResource("2_427c6")
+description = "Cooked at a kitchen."
+hint = "Click while holding it to eat"
+maxStack = 20
+sellPrice = 40

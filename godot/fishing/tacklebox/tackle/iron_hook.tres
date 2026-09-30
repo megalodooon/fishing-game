@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Tackle" format=3]
+
+[ext_resource type="Texture2D" path="res://fishing/tacklebox/icons/iron_hook.png" id="1_unx1a"]
+[ext_resource type="Resource" path="res://items/rarities/uncommon.tres" id="2_pkbx0"]
+[ext_resource type="Script" path="res://fishing/tacklebox/tackle.gd" id="3_7e1xm"]
+
+[resource]
+script = ExtResource("3_7e1xm")
+kind = 2
+hookWindowBonus = 0.25
+control = 0.15
+displayName = "Iron Hook"
+icon = ExtResource("1_unx1a")
+rarity = ExtResource("2_pkbx0")
+description = "A crafted rod part."
+discardable = false

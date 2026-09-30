@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="CrewContract" format=3]
+
+[ext_resource type="Resource" path="res://world/crew/members/scrap_scavenger.tres" id="1_udayq"]
+[ext_resource type="Texture2D" path="res://items/crew/icons/scrap_scavenger.png" id="2_ve2lk"]
+[ext_resource type="Resource" path="res://items/rarities/uncommon.tres" id="3_yujq1"]
+[ext_resource type="Script" path="res://world/crew/crew_contract.gd" id="4_64vc0"]
+
+[resource]
+script = ExtResource("4_64vc0")
+crew = ExtResource("1_udayq")
+displayName = "Scrap Scavenger Contract"
+icon = ExtResource("2_ve2lk")
+rarity = ExtResource("3_yujq1")
+description = "Hire a scrap scavenger at the crew board by your house. Knows every wreck on the coast."

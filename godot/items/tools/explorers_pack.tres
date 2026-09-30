@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="BagUpgrade" format=3]
+
+[ext_resource type="Texture2D" path="res://items/tools/icons/explorers_pack.png" id="1_oi6vv"]
+[ext_resource type="Resource" path="res://items/rarities/rare.tres" id="2_crjjt"]
+[ext_resource type="Script" path="res://items/tools/bag_upgrade.gd" id="3_q7ost"]
+
+[resource]
+script = ExtResource("3_q7ost")
+displayName = "Explorer's Pack"
+icon = ExtResource("1_oi6vv")
+rarity = ExtResource("2_crjjt")
+description = "Sew it into the backpack for 3 more slots."

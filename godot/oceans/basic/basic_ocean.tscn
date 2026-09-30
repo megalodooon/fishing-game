@@ -16,6 +16,7 @@ resource_local_to_scene = true
 shader = ExtResource("3_f7fq8")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_56kpk"]
+resource_local_to_scene = true
 shader = ExtResource("2_8sb1p")
 shader_parameter/shallow_color = Color(0.18, 0.62, 0.78, 1)
 shader_parameter/deep_color = Color(0.04, 0.17, 0.36, 1)

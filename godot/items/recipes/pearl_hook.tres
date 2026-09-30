@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="BaitRecipe" format=3]
+
+[ext_resource type="Resource" path="res://items/materials/pearl_dust.tres" id="1_gmtb7"]
+[ext_resource type="Resource" path="res://items/materials/iron_ingot.tres" id="2_1rbt7"]
+[ext_resource type="Resource" path="res://fishing/tacklebox/tackle/pearl_hook.tres" id="3_s1lrq"]
+[ext_resource type="Script" path="res://fishing/bait/bait_recipe.gd" id="4_woexl"]
+
+[resource]
+script = ExtResource("4_woexl")
+output = ExtResource("3_s1lrq")
+amount = 1
+ingredients = Array[Resource]([ExtResource("1_gmtb7"), ExtResource("2_1rbt7")])
+counts = Array[int]([4, 1])
+xp = 69.0
+station = &"workbench"
+category = "Tackle"
+requiredSkill = &"fishing"
+requiredLevel = 13

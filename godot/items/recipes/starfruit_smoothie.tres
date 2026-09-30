@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="BaitRecipe" format=3]
+
+[ext_resource type="Resource" path="res://items/materials/starfruit.tres" id="1_lalvo"]
+[ext_resource type="Resource" path="res://items/materials/wild_berries.tres" id="2_g0xgh"]
+[ext_resource type="Resource" path="res://items/materials/honey.tres" id="3_5m0bs"]
+[ext_resource type="Resource" path="res://items/snacks/starfruit_smoothie.tres" id="4_kr7nm"]
+[ext_resource type="Script" path="res://fishing/bait/bait_recipe.gd" id="5_oee7j"]
+
+[resource]
+script = ExtResource("5_oee7j")
+output = ExtResource("4_kr7nm")
+amount = 1
+ingredients = Array[Resource]([ExtResource("1_lalvo"), ExtResource("2_g0xgh"), ExtResource("3_5m0bs")])
+counts = Array[int]([1, 4, 1])
+xp = 38.0
+station = &"kitchen"
+category = "Food"
+requiredSkill = &"cooking"
+requiredLevel = 15

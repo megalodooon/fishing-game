@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="CrewContract" format=3]
+
+[ext_resource type="Resource" path="res://world/crew/members/salt_raker.tres" id="1_figf6"]
+[ext_resource type="Texture2D" path="res://items/crew/icons/salt_raker.png" id="2_jeawm"]
+[ext_resource type="Resource" path="res://items/rarities/uncommon.tres" id="3_ebyqf"]
+[ext_resource type="Script" path="res://world/crew/crew_contract.gd" id="4_rkuw6"]
+
+[resource]
+script = ExtResource("4_rkuw6")
+crew = ExtResource("1_figf6")
+displayName = "Salt Raker Contract"
+icon = ExtResource("2_jeawm")
+rarity = ExtResource("3_ebyqf")
+description = "Hire a salt raker at the crew board by your house. Rakes salt from the drying pans."

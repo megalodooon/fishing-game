@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="Biome" format=3]
+
+[ext_resource type="Resource" path="res://items/materials/scrap_wire.tres" id="9_sqkjd"]
+[ext_resource type="Resource" path="res://items/materials/barnacle.tres" id="10_cqwdy"]
+[ext_resource type="Script" path="res://oceans/biome.gd" id="e1"]
+[ext_resource type="Script" path="res://fishing/fish/fish_data.gd" id="e2"]
+[ext_resource type="Resource" path="res://fishing/fish/species/rig/three_eyed_carp.tres" id="e3"]
+[ext_resource type="Resource" path="res://fishing/fish/species/rig/oil_slick_eel.tres" id="e4"]
+[ext_resource type="Resource" path="res://fishing/fish/species/rig/chrome_bass.tres" id="e5"]
+[ext_resource type="Resource" path="res://fishing/fish/species/rig/mutant_grouper.tres" id="e6"]
+[ext_resource type="Resource" path="res://fishing/creatures/mecha_shark.tres" id="e7"]
+[ext_resource type="Script" path="res://fishing/creatures/sea_creature.gd" id="e8"]
+[ext_resource type="Resource" path="res://items/materials/iron_scrap.tres" id="e9"]
+[ext_resource type="Resource" path="res://items/materials/oily_sludge.tres" id="e10"]
+[ext_resource type="Resource" path="res://items/materials/tin_can.tres" id="e11"]
+[ext_resource type="Script" path="res://items/item.gd" id="e12"]
+
+[resource]
+script = ExtResource("e1")
+displayName = "Deepnet Rig"
+description = "Oily water under the platform. Something lives in it anyway."
+region = "Storm Belt"
+fish = Array[ExtResource("e2")]([ExtResource("e3"), ExtResource("e4"), ExtResource("e5"), ExtResource("e6")])
+creatures = Array[ExtResource("e8")]([ExtResource("e7")])
+tier = 3
+junkChance = 0.2
+junk = Array[ExtResource("e12")]([ExtResource("e9"), ExtResource("e10"), ExtResource("e11")])
+forage = Array[ExtResource("e12")]([ExtResource("9_sqkjd"), ExtResource("10_cqwdy"), ExtResource("e9")])

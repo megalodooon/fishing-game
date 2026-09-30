@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="Biome" format=3]
+
+[ext_resource type="Script" path="res://fishing/creatures/sea_creature.gd" id="1_upx8o"]
+[ext_resource type="Resource" path="res://items/materials/mangrove_root.tres" id="11_uf2qu"]
+[ext_resource type="Resource" path="res://items/materials/swamp_moss.tres" id="12_xpice"]
+[ext_resource type="Resource" path="res://items/materials/clay.tres" id="13_2scp5"]
+[ext_resource type="Resource" path="res://items/materials/wild_berries.tres" id="14_txw3o"]
+[ext_resource type="Script" path="res://oceans/biome.gd" id="e1"]
+[ext_resource type="Script" path="res://fishing/fish/fish_data.gd" id="e2"]
+[ext_resource type="Resource" path="res://fishing/fish/species/mangrove/mudskipper.tres" id="e3"]
+[ext_resource type="Resource" path="res://fishing/fish/species/mangrove/swamp_catfish.tres" id="e4"]
+[ext_resource type="Resource" path="res://fishing/fish/species/mangrove/bayou_gar.tres" id="e5"]
+[ext_resource type="Resource" path="res://fishing/fish/species/mangrove/firefly_tetra.tres" id="e6"]
+[ext_resource type="Resource" path="res://fishing/fish/species/mangrove/mangrove_snapper.tres" id="e7"]
+[ext_resource type="Resource" path="res://fishing/fish/species/mangrove/bog_arowana.tres" id="e8"]
+[ext_resource type="Resource" path="res://fishing/fish/species/mangrove/gator_gar.tres" id="e9"]
+[ext_resource type="Resource" path="res://items/materials/seaweed.tres" id="e10"]
+[ext_resource type="Resource" path="res://items/materials/old_boot.tres" id="e11"]
+[ext_resource type="Script" path="res://items/item.gd" id="e12"]
+
+[resource]
+script = ExtResource("e1")
+displayName = "Mangrove Hollow"
+description = "Warm, brown water between the roots."
+region = "Home Waters"
+fish = Array[ExtResource("e2")]([ExtResource("e3"), ExtResource("e4"), ExtResource("e5"), ExtResource("e6"), ExtResource("e7"), ExtResource("e8"), ExtResource("e9")])
+tier = 1
+junkChance = 0.06
+junk = Array[ExtResource("e12")]([ExtResource("e10"), ExtResource("e11")])
+forage = Array[ExtResource("e12")]([ExtResource("11_uf2qu"), ExtResource("12_xpice"), ExtResource("13_2scp5"), ExtResource("14_txw3o")])

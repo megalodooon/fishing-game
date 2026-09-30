@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="Quest" format=3 uid="uid://d3ndcbbltp0ot"]
+
+[ext_resource type="Script" uid="uid://ftrpy1hit5em" path="res://items/item.gd" id="5_673r7"]
+[ext_resource type="Script" uid="uid://t660ehs2ybui" path="res://world/location.gd" id="6_hxktp"]
+[ext_resource type="Script" uid="uid://b1p7iyi658nm7" path="res://world/quests/quest.gd" id="e1"]
+[ext_resource type="Script" uid="uid://depkark34l17n" path="res://world/quests/quest_goal.gd" id="e2"]
+[ext_resource type="Resource" path="res://world/locations/tidal_shrine.tres" id="e3"]
+[ext_resource type="Resource" uid="uid://drvnwfpseu4k" path="res://world/quests/story/q_expose.tres" id="e4"]
+
+[sub_resource type="Resource" id="s1"]
+script = ExtResource("e2")
+kind = 3
+target = ExtResource("e3")
+
+[resource]
+script = ExtResource("e1")
+title = "The Tidal Shrine"
+giver = "Old Silas"
+description = "Silas asks you to take him to the Tidal Shrine, where the four tides meet."
+story = true
+goals = Array[ExtResource("e2")]([SubResource("s1")])
+startScene = "q_shrine_start"
+endScene = "q_shrine_end"
+requires = Array[ExtResource("e1")]([ExtResource("e4")])
+rewardCoins = 1000

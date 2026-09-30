@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="BaitRecipe" format=3]
+
+[ext_resource type="Resource" path="res://items/rare/frozen_relic.tres" id="1_gbmg2"]
+[ext_resource type="Resource" path="res://items/rare/magma_heart.tres" id="2_namxc"]
+[ext_resource type="Resource" path="res://items/rare/storm_crystal.tres" id="3_2t33f"]
+[ext_resource type="Resource" path="res://items/rare/abyssal_pearl.tres" id="4_dehl3"]
+[ext_resource type="Resource" path="res://items/materials/abyssal_scale.tres" id="5_i13gp"]
+[ext_resource type="Resource" path="res://items/rare/four_tides_amulet.tres" id="6_oay0u"]
+[ext_resource type="Script" path="res://fishing/bait/bait_recipe.gd" id="7_bfhcj"]
+
+[resource]
+script = ExtResource("7_bfhcj")
+output = ExtResource("6_oay0u")
+amount = 1
+ingredients = Array[Resource]([ExtResource("1_gbmg2"), ExtResource("2_namxc"), ExtResource("3_2t33f"), ExtResource("4_dehl3"), ExtResource("5_i13gp")])
+counts = Array[int]([1, 1, 1, 1, 10])
+xp = 500.0
+station = &"forge"
+requiredSkill = &"fishing"
+requiredLevel = 28

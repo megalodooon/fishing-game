@@ -9,14 +9,28 @@ class_name PeriodIcon
 @export var icons : Array[Texture2D] = []
 @export var starts : PackedFloat32Array = PackedFloat32Array()
 @export var popTime : float = 0.45
+# Scaled with the rest of the HUD (the UI size setting).
+@export var ui : InventoryUI
+# The plate behind the clock, the day and the weather, from this icon's corner.
+@export var plate : Rect2 = Rect2(-1.0, -0.5, 59.0, 15.0)
+@export var plateColor : Color = Color(0.03, 0.06, 0.11, 0.55)
+@export var plateEdge : Color = Color(0.3, 0.42, 0.57, 0.5)
 
 var current : int = -1
+var home : Vector2
 var pop : float = 1.0
 #------------------------#
 
 
 func _ready() -> void:
 	mouse_filter = MOUSE_FILTER_IGNORE
+	home = position
+	if ui:
+		ui.laid_out.connect(func() -> void:
+			scale = ui.scale
+			position = home * ui.scale)
+		scale = ui.scale
+		position = home * ui.scale
 	if cycle:
 		cycle.time_changed.connect(update_period.unbind(2))
 		update_period()
@@ -51,6 +65,10 @@ func _process(delta : float) -> void:
 	queue_redraw()
 
 func _draw() -> void:
+	if plate.size.x > 0.0:
+		draw_rect(plate, plateColor)
+		draw_rect(Rect2(plate.position, Vector2(plate.size.x, 1.0)), plateEdge)
+		draw_rect(Rect2(plate.position.x, plate.end.y - 1.0, plate.size.x, 1.0), Color(0.0, 0.0, 0.0, 0.3))
 	if current < 0 or not icons[current]:
 		return
 	var icon : Texture2D = icons[current]

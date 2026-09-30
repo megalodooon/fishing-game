@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="Biome" format=3]
+
+[ext_resource type="Script" path="res://fishing/creatures/sea_creature.gd" id="1_p3tat"]
+[ext_resource type="Resource" path="res://items/materials/wild_berries.tres" id="9_15ioi"]
+[ext_resource type="Resource" path="res://items/materials/clay.tres" id="10_txyp1"]
+[ext_resource type="Resource" path="res://items/materials/beach_sand.tres" id="11_p2ur7"]
+[ext_resource type="Resource" path="res://items/materials/sea_salt.tres" id="12_jk42e"]
+[ext_resource type="Script" path="res://oceans/biome.gd" id="e1"]
+[ext_resource type="Script" path="res://fishing/fish/fish_data.gd" id="e2"]
+[ext_resource type="Resource" path="res://fishing/fish/species/meadow/pond_carp.tres" id="e3"]
+[ext_resource type="Resource" path="res://fishing/fish/species/meadow/lily_minnow.tres" id="e4"]
+[ext_resource type="Resource" path="res://fishing/fish/species/meadow/honey_perch.tres" id="e5"]
+[ext_resource type="Resource" path="res://fishing/fish/species/meadow/meadow_pike.tres" id="e6"]
+[ext_resource type="Resource" path="res://fishing/fish/species/meadow/emperor_koi.tres" id="e7"]
+[ext_resource type="Resource" path="res://items/materials/seaweed.tres" id="e8"]
+[ext_resource type="Script" path="res://items/item.gd" id="e9"]
+
+[resource]
+script = ExtResource("e1")
+displayName = "Meadow Isle"
+description = "A lily pond among Tilly's fields."
+region = "Home Waters"
+fish = Array[ExtResource("e2")]([ExtResource("e3"), ExtResource("e4"), ExtResource("e5"), ExtResource("e6"), ExtResource("e7")])
+junkChance = 0.03
+junk = Array[ExtResource("e9")]([ExtResource("e8")])
+forage = Array[ExtResource("e9")]([ExtResource("9_15ioi"), ExtResource("10_txyp1"), ExtResource("11_p2ur7"), ExtResource("12_jk42e")])

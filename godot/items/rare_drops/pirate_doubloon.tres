@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="RareDrop" format=3]
+
+[ext_resource type="Script" path="res://oceans/biome.gd" id="1_5aegp"]
+[ext_resource type="Resource" path="res://oceans/reef/reef_biome.tres" id="2_bcagp"]
+[ext_resource type="Resource" path="res://oceans/islands/lagoon_biome.tres" id="3_kesfo"]
+[ext_resource type="Resource" path="res://oceans/islands/wreck_atoll_biome.tres" id="4_e8pll"]
+[ext_resource type="Resource" path="res://oceans/polluted/polluted_biome.tres" id="5_t5sy0"]
+[ext_resource type="Resource" path="res://items/rare/pirate_doubloon.tres" id="6_xgkxc"]
+[ext_resource type="Script" path="res://items/rare_drops/rare_drop.gd" id="7_e3n3c"]
+
+[resource]
+script = ExtResource("7_e3n3c")
+item = ExtResource("6_xgkxc")
+chance = 0.0033333333333333335
+biomes = Array[ExtResource("1_5aegp")]([ExtResource("2_bcagp"), ExtResource("3_kesfo"), ExtResource("4_e8pll"), ExtResource("5_t5sy0")])
+minFishing = 5

@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="Tackle" format=3]
+
+[ext_resource type="Texture2D" path="res://fishing/tacklebox/icons/deep_coral_hook.png" id="1_myu3f"]
+[ext_resource type="Resource" path="res://items/rarities/legendary.tres" id="2_ory6i"]
+[ext_resource type="Script" path="res://fishing/tacklebox/tackle.gd" id="3_oji8l"]
+
+[resource]
+script = ExtResource("3_oji8l")
+kind = 2
+biteSpeed = 1.2
+hookWindowBonus = 0.3
+control = 0.3
+displayName = "Deep Coral Hook"
+icon = ExtResource("1_myu3f")
+rarity = ExtResource("2_ory6i")
+description = "A crafted rod part."
+discardable = false

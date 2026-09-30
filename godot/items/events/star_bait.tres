@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="Bait" format=3]
+
+[ext_resource type="Script" path="res://fishing/fish/fish_data.gd" id="1_ioj4h"]
+[ext_resource type="Texture2D" path="res://items/events/icons/star_bait.png" id="2_ak61b"]
+[ext_resource type="Resource" path="res://items/rarities/rare.tres" id="3_aqr3r"]
+[ext_resource type="Script" path="res://items/rarity.gd" id="4_yxyl3"]
+[ext_resource type="Resource" path="res://items/rarities/legendary.tres" id="5_k3ml1"]
+[ext_resource type="Script" path="res://fishing/bait/bait.gd" id="6_ijskl"]
+
+[resource]
+script = ExtResource("6_ijskl")
+rarityBoost = Dictionary[ExtResource("4_yxyl3"), float]({
+ExtResource("5_k3ml1"): 2.5
+})
+kind = 4
+displayName = "Star Bait"
+icon = ExtResource("2_ak61b")
+rarity = ExtResource("3_aqr3r")
+description = "Glows in the dark. Legendary fish come to look."
+maxStack = 99

@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="Charm" format=3]
+
+[ext_resource type="Texture2D" path="res://items/charms/icons/fortune_4.png" id="1_68p8t"]
+[ext_resource type="Resource" path="res://items/rarities/legendary.tres" id="2_rbmo4"]
+[ext_resource type="Script" path="res://items/charms/charm.gd" id="3_exe5e"]
+
+[resource]
+script = ExtResource("3_exe5e")
+stats = Dictionary[StringName, float]({
+&"luck": 10.0
+})
+family = "fortune"
+tier = 4
+displayName = "Fortune Relic"
+icon = ExtResource("1_68p8t")
+rarity = ExtResource("2_rbmo4")
+description = "Part of the Fortune line. Upgrade it at a bench to make it stronger."
+sellPrice = 640

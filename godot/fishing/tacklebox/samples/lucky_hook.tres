@@ -1,5 +1,6 @@
 [gd_resource type="Resource" script_class="Tackle" format=3]
 
+[ext_resource type="Resource" path="res://items/rarities/uncommon.tres" id="tier_uncommon"]
 [ext_resource type="Script" path="res://fishing/tacklebox/tackle.gd" id="1_tackle"]
 [ext_resource type="Texture2D" path="res://fishing/tacklebox/icons/hook.png" id="2_icon"]
 [ext_resource type="Resource" path="res://items/rarities/rare.tres" id="r_rarity"]
@@ -9,8 +10,10 @@ script = ExtResource("1_tackle")
 kind = 2
 displayName = "Lucky Hook"
 icon = ExtResource("2_icon")
-rarity = ExtResource("r_rarity")
+rarity = ExtResource("tier_uncommon")
 discardable = false
 tint = Color(0.6, 1, 0.6, 1)
-control = 0.2
-biteSpeed = 1.15
+control = 0.14
+biteSpeed = 1.1
+buyPrice = 600
+hookWindowBonus = 0.3

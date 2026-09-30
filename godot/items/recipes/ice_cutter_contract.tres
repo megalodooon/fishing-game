@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="BaitRecipe" format=3]
+
+[ext_resource type="Resource" path="res://items/materials/frost_crystal.tres" id="1_qx1ei"]
+[ext_resource type="Resource" path="res://items/materials/rope.tres" id="2_oohdh"]
+[ext_resource type="Resource" path="res://items/crew/ice_cutter_contract.tres" id="3_jfujc"]
+[ext_resource type="Script" path="res://fishing/bait/bait_recipe.gd" id="4_e8nqt"]
+
+[resource]
+script = ExtResource("4_e8nqt")
+output = ExtResource("3_jfujc")
+amount = 1
+ingredients = Array[Resource]([ExtResource("1_qx1ei"), ExtResource("2_oohdh")])
+counts = Array[int]([8, 2])
+requiredFlag = "collection/frost_crystal/1"
+xp = 25.0
+station = &"workbench"
+category = "Crew"

@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="Bait" format=3]
+
+[ext_resource type="Script" path="res://fishing/fish/fish_data.gd" id="1_ymn44"]
+[ext_resource type="Texture2D" path="res://items/events/icons/rainbow_bait.png" id="2_dxq3n"]
+[ext_resource type="Resource" path="res://items/rarities/rare.tres" id="3_im5ke"]
+[ext_resource type="Script" path="res://items/rarity.gd" id="4_fsbww"]
+[ext_resource type="Resource" path="res://items/rarities/legendary.tres" id="5_bdi3k"]
+[ext_resource type="Script" path="res://fishing/bait/bait.gd" id="6_1k12m"]
+
+[resource]
+script = ExtResource("6_1k12m")
+rarityBoost = Dictionary[ExtResource("4_fsbww"), float]({
+ExtResource("3_im5ke"): 2.0,
+ExtResource("5_bdi3k"): 1.5
+})
+kind = 4
+displayName = "Rainbow Bait"
+icon = ExtResource("2_dxq3n")
+rarity = ExtResource("3_im5ke")
+description = "Every color at once. Rare fish can't resist it."
+maxStack = 99

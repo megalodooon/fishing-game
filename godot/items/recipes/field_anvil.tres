@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="BaitRecipe" format=3]
+
+[ext_resource type="Resource" path="res://items/materials/obsidian_shard.tres" id="1_he8hg"]
+[ext_resource type="Resource" path="res://items/materials/iron_scrap.tres" id="2_cr3la"]
+[ext_resource type="Resource" path="res://items/tools/field_anvil.tres" id="3_370uf"]
+[ext_resource type="Script" path="res://fishing/bait/bait_recipe.gd" id="4_oo64j"]
+
+[resource]
+script = ExtResource("4_oo64j")
+output = ExtResource("3_370uf")
+amount = 1
+ingredients = Array[Resource]([ExtResource("1_he8hg"), ExtResource("2_cr3la")])
+counts = Array[int]([12, 25])
+xp = 120.0
+station = &"forge"
+requiredSkill = &"trading"
+requiredLevel = 14

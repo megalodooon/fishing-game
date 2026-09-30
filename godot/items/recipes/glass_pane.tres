@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="BaitRecipe" format=3]
+
+[ext_resource type="Resource" path="res://items/materials/beach_sand.tres" id="1_rchg0"]
+[ext_resource type="Resource" path="res://items/materials/glass_pane.tres" id="2_2r4oc"]
+[ext_resource type="Script" path="res://fishing/bait/bait_recipe.gd" id="3_futhw"]
+
+[resource]
+script = ExtResource("3_futhw")
+output = ExtResource("2_2r4oc")
+amount = 1
+ingredients = Array[Resource]([ExtResource("1_rchg0")])
+counts = Array[int]([4])
+xp = 6.0
+station = &"workbench"
+category = "Materials"

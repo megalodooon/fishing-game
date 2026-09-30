@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="BaitRecipe" format=3]
+
+[ext_resource type="Resource" path="res://items/materials/sea_shell.tres" id="1_4ljc7"]
+[ext_resource type="Resource" path="res://items/materials/rope.tres" id="2_58gbd"]
+[ext_resource type="Resource" path="res://items/crew/shell_diver_contract.tres" id="3_ngme4"]
+[ext_resource type="Script" path="res://fishing/bait/bait_recipe.gd" id="4_6t1o6"]
+
+[resource]
+script = ExtResource("4_6t1o6")
+output = ExtResource("3_ngme4")
+amount = 1
+ingredients = Array[Resource]([ExtResource("1_4ljc7"), ExtResource("2_58gbd")])
+counts = Array[int]([24, 2])
+requiredFlag = "collection/sea_shell/1"
+xp = 25.0
+station = &"workbench"
+category = "Crew"

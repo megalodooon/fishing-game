@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="BaitRecipe" format=3]
+
+[ext_resource type="Resource" path="res://items/materials/starfish.tres" id="1_sismw"]
+[ext_resource type="Resource" path="res://items/materials/rope.tres" id="2_mpqdk"]
+[ext_resource type="Resource" path="res://items/charms/fortune_1.tres" id="3_heyt3"]
+[ext_resource type="Script" path="res://fishing/bait/bait_recipe.gd" id="4_b6tiu"]
+
+[resource]
+script = ExtResource("4_b6tiu")
+output = ExtResource("3_heyt3")
+amount = 1
+ingredients = Array[Resource]([ExtResource("1_sismw"), ExtResource("2_mpqdk")])
+counts = Array[int]([16, 1])
+xp = 30.0
+station = &"workbench"
+category = "Charms"
+requiredSkill = &"fishing"
+requiredLevel = 8

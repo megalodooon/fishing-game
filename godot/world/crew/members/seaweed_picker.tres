@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="CrewMember" format=3]
+
+[ext_resource type="Resource" path="res://items/enchanted/enchanted_seaweed.tres" id="1_dx5kv"]
+[ext_resource type="Texture2D" path="res://items/materials/icons/seaweed.png" id="2_1mbwh"]
+[ext_resource type="Resource" path="res://items/materials/seaweed.tres" id="3_s873v"]
+[ext_resource type="Script" path="res://world/crew/crew_member.gd" id="4_x38b3"]
+
+[resource]
+script = ExtResource("4_x38b3")
+displayName = "Seaweed Picker"
+description = "Pulls seaweed off the rocks at low tide."
+icon = ExtResource("2_1mbwh")
+product = ExtResource("3_s873v")
+enchanted = ExtResource("1_dx5kv")
+hours = 0.5

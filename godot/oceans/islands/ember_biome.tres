@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="Biome" format=3 uid="uid://c5kcnydpk8ihc"]
+
+[ext_resource type="Script" path="res://fishing/creatures/sea_creature.gd" id="1_pkr2h"]
+[ext_resource type="Resource" path="res://items/materials/pumice.tres" id="9_8mfa7"]
+[ext_resource type="Resource" path="res://items/materials/ember_ash.tres" id="10_womau"]
+[ext_resource type="Script" path="res://oceans/biome.gd" id="e1"]
+[ext_resource type="Script" path="res://fishing/fish/fish_data.gd" id="e2"]
+[ext_resource type="Resource" path="res://fishing/fish/species/ember/ember_minnow.tres" id="e3"]
+[ext_resource type="Resource" path="res://fishing/fish/species/volcanic/ember_tetra.tres" id="e4"]
+[ext_resource type="Resource" path="res://fishing/fish/species/volcanic/ash_cod.tres" id="e5"]
+[ext_resource type="Resource" path="res://fishing/fish/species/ember/spring_loach.tres" id="e6"]
+[ext_resource type="Resource" path="res://fishing/fish/species/ember/salamander_koi.tres" id="e7"]
+[ext_resource type="Resource" path="res://items/materials/obsidian_shard.tres" id="e8"]
+[ext_resource type="Script" path="res://items/item.gd" id="e9"]
+
+[resource]
+script = ExtResource("e1")
+displayName = "Ember Isle"
+description = "Black sand, warm water and a hot spring."
+region = "Fire Isles"
+fish = Array[ExtResource("e2")]([ExtResource("e3"), ExtResource("e4"), ExtResource("e5"), ExtResource("e6"), ExtResource("e7")])
+tier = 3
+junk = Array[ExtResource("e9")]([ExtResource("e8")])
+forage = Array[ExtResource("e9")]([ExtResource("9_8mfa7"), ExtResource("10_womau"), ExtResource("e8")])

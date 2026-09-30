@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="Charm" format=3]
+
+[ext_resource type="Texture2D" path="res://items/charms/icons/chef_2.png" id="1_jpduh"]
+[ext_resource type="Resource" path="res://items/rarities/uncommon.tres" id="2_qqitl"]
+[ext_resource type="Script" path="res://items/charms/charm.gd" id="3_4hajd"]
+
+[resource]
+script = ExtResource("3_4hajd")
+stats = Dictionary[StringName, float]({
+&"foodPower": 10.0
+})
+family = "chef"
+tier = 2
+displayName = "Chef's Ring"
+icon = ExtResource("1_jpduh")
+rarity = ExtResource("2_qqitl")
+description = "Part of the Chef line. Upgrade it at a bench to make it stronger."
+sellPrice = 160

@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="SeaCreature" format=3]
+
+[ext_resource type="Script" path="res://fishing/creatures/sea_creature.gd" id="e1"]
+[ext_resource type="Texture2D" path="res://fishing/creatures/art/cinder_serpent.png" id="e2"]
+[ext_resource type="Resource" path="res://items/rarities/legendary.tres" id="e3"]
+[ext_resource type="PackedScene" path="res://fishing/minigames/bullet_hell/bullet_hell.tscn" id="e4"]
+[ext_resource type="Resource" path="res://items/materials/obsidian_shard.tres" id="e5"]
+[ext_resource type="Resource" path="res://items/materials/serpent_scale.tres" id="e6"]
+[ext_resource type="Script" path="res://items/item.gd" id="e7"]
+
+[resource]
+script = ExtResource("e1")
+displayName = "Cinder Serpent"
+description = "Leaves a trail of steam wherever it swims."
+icon = ExtResource("e2")
+rarity = ExtResource("e3")
+minFishing = 25
+announce = "A Cinder Serpent erupts from the sea!"
+fight = ExtResource("e4")
+difficulty = 0.7
+toughness = 1.4
+style = &"ember"
+coins = Vector2i(600, 1300)
+xp = 450.0
+drops = Array[ExtResource("e7")]([ExtResource("e5"), ExtResource("e6")])
+dropChances = PackedFloat32Array(1.0, 1.0)
+dropAmounts = Array[Vector2i]([Vector2i(2, 4), Vector2i(2, 3)])

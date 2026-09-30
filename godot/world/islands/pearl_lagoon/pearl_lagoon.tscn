@@ -1,0 +1,341 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://world/island/island.gd" id="i_e1"]
+[ext_resource type="Script" path="res://world/island/island_room.gd" id="i_e2"]
+[ext_resource type="Resource" path="res://oceans/islands/lagoon_biome.tres" id="i_e3"]
+[ext_resource type="PackedScene" path="res://oceans/basic/basic_ocean.tscn" id="i_e4"]
+[ext_resource type="Texture2D" path="res://world/islands/pearl_lagoon/land/landing.png" id="i_e5"]
+[ext_resource type="Script" path="res://world/village/building.gd" id="i_e6"]
+[ext_resource type="Texture2D" path="res://world/islands/props/dive_shop.png" id="i_e7"]
+[ext_resource type="Script" path="res://world/npc/npc.gd" id="i_e8"]
+[ext_resource type="Script" path="res://world/quests/quest.gd" id="i_e9"]
+[ext_resource type="Resource" path="res://world/quests/story/q_lagoon.tres" id="i_e10"]
+[ext_resource type="Resource" path="res://world/quests/side/o_diver.tres" id="i_e11"]
+[ext_resource type="Resource" path="res://world/quests/side/o_queen.tres" id="i_e12"]
+[ext_resource type="Resource" path="res://world/quests/side/o_all.tres" id="i_e13"]
+[ext_resource type="Texture2D" path="res://world/npcs/opal.png" id="i_e14"]
+[ext_resource type="Script" path="res://world/pearls/pearl_diver.gd" id="i_e15"]
+[ext_resource type="Script" path="res://world/village/shop/shop_offer.gd" id="i_e16"]
+[ext_resource type="Resource" path="res://fishing/bait/shrimp_bait.tres" id="i_e17"]
+[ext_resource type="Resource" path="res://fishing/bait/squid_bait.tres" id="i_e18"]
+[ext_resource type="Resource" path="res://fishing/tacklebox/tackle/coral_bobber.tres" id="i_e19"]
+[ext_resource type="Resource" path="res://items/charms/sea_glass_charm.tres" id="i_e20"]
+[ext_resource type="Resource" path="res://items/snacks/lucky_sushi.tres" id="i_e21"]
+[ext_resource type="Script" path="res://world/village/shop/shop.gd" id="i_e22"]
+[ext_resource type="Texture2D" path="res://world/islands/props/palm.png" id="i_e23"]
+[ext_resource type="Script" path="res://world/interact/secret.gd" id="i_e24"]
+[ext_resource type="Texture2D" path="res://world/islands/pearl_lagoon/land/lagoon.png" id="i_e25"]
+[ext_resource type="Texture2D" path="res://world/islands/props/pet_stall.png" id="i_e26"]
+[ext_resource type="Script" path="res://world/village/pets/pet_shop.gd" id="i_e27"]
+[ext_resource type="Script" path="res://world/village/pets/pet_data.gd" id="i_e28"]
+[ext_resource type="Resource" path="res://world/village/pets/pearl_seahorse.tres" id="i_e29"]
+[ext_resource type="Script" path="res://world/traps/trap_spot.gd" id="i_e30"]
+[ext_resource type="Script" path="res://items/item.gd" id="i_e31"]
+[ext_resource type="Resource" path="res://items/materials/sea_shell.tres" id="i_e32"]
+[ext_resource type="Texture2D" path="res://world/village/props/sign.png" id="i_e33"]
+
+[sub_resource type="RectangleShape2D" id="i_s1"]
+size = Vector2(28.0, 5.0)
+
+[sub_resource type="RectangleShape2D" id="i_s2"]
+size = Vector2(6.0, 3.0)
+
+[sub_resource type="Resource" id="i_s3"]
+script = ExtResource("i_e16")
+item = ExtResource("i_e17")
+amount = 5
+price = 45
+
+[sub_resource type="Resource" id="i_s4"]
+script = ExtResource("i_e16")
+item = ExtResource("i_e18")
+amount = 4
+price = 150
+
+[sub_resource type="Resource" id="i_s5"]
+script = ExtResource("i_e16")
+item = ExtResource("i_e19")
+amount = 1
+price = 350
+
+[sub_resource type="Resource" id="i_s6"]
+script = ExtResource("i_e16")
+item = ExtResource("i_e20")
+amount = 1
+price = 600
+dailyStock = 1
+
+[sub_resource type="Resource" id="i_s7"]
+script = ExtResource("i_e16")
+item = ExtResource("i_e21")
+amount = 1
+price = 100
+dailyStock = 3
+
+[sub_resource type="RectangleShape2D" id="i_s8"]
+size = Vector2(4.0, 3.0)
+
+[sub_resource type="RectangleShape2D" id="i_s9"]
+size = Vector2(4.0, 3.0)
+
+[sub_resource type="RectangleShape2D" id="i_s10"]
+size = Vector2(4.0, 3.0)
+
+[sub_resource type="RectangleShape2D" id="i_s11"]
+size = Vector2(4.0, 3.0)
+
+[sub_resource type="RectangleShape2D" id="i_s12"]
+size = Vector2(4.0, 3.0)
+
+[sub_resource type="RectangleShape2D" id="i_s13"]
+size = Vector2(22.0, 5.0)
+
+[node name="PearlLagoon" type="Node2D"]
+y_sort_enabled = true
+script = ExtResource("i_e1")
+
+[node name="Landing" type="Node2D" parent="." node_paths=PackedStringArray("land")]
+position = Vector2(0.0, 0.0)
+y_sort_enabled = true
+script = ExtResource("i_e2")
+land = [NodePath("Land")]
+
+[node name="Water" parent="Landing" instance=ExtResource("i_e4")]
+biome = ExtResource("i_e3")
+
+[node name="Land" type="Sprite2D" parent="Landing"]
+z_index = -1
+texture = ExtResource("i_e5")
+centered = false
+
+[node name="DiveShop" type="Node2D" parent="Landing"]
+position = Vector2(116, 36)
+script = ExtResource("i_e6")
+displayName = "Opal's Dive Shop"
+
+[node name="Art" type="Sprite2D" parent="Landing/DiveShop"]
+texture = ExtResource("i_e7")
+centered = false
+offset = Vector2(-16.0, -24.0)
+
+[node name="Body" type="StaticBody2D" parent="Landing/DiveShop"]
+
+[node name="Shape" type="CollisionShape2D" parent="Landing/DiveShop/Body"]
+position = Vector2(0.0, -3.5)
+shape = SubResource("i_s1")
+
+[node name="Npc_Opal" type="Node2D" parent="Landing" node_paths=PackedStringArray("art", "service", "shop")]
+position = Vector2(104, 66)
+script = ExtResource("i_e8")
+id = "opal"
+greeting = "The water's lovely today."
+reach = 12.0
+promptOffset = Vector2(0, -24)
+art = NodePath("Art")
+quests = Array[ExtResource("i_e9")]([ExtResource("i_e10"), ExtResource("i_e11"), ExtResource("i_e12"), ExtResource("i_e13")])
+service = NodePath("Pearls")
+serviceLabel = "Pearls"
+shop = NodePath("Stall")
+shopLabel = "Dive shop"
+
+[node name="Art" type="Sprite2D" parent="Landing/Npc_Opal"]
+texture = ExtResource("i_e14")
+centered = false
+offset = Vector2(-6, -20)
+
+[node name="Body" type="StaticBody2D" parent="Landing/Npc_Opal"]
+
+[node name="Shape" type="CollisionShape2D" parent="Landing/Npc_Opal/Body"]
+position = Vector2(0, -1)
+shape = SubResource("i_s2")
+
+[node name="Pearls" type="Node2D" parent="Landing/Npc_Opal"]
+position = Vector2(0, 2)
+script = ExtResource("i_e15")
+title = "Opal's Pearl Collection"
+listed = false
+
+[node name="Stall" type="Node2D" parent="Landing/Npc_Opal"]
+position = Vector2(0, 2)
+script = ExtResource("i_e22")
+offers = Array[ExtResource("i_e16")]([SubResource("i_s3"), SubResource("i_s4"), SubResource("i_s5"), SubResource("i_s6"), SubResource("i_s7")])
+title = "Dive Shop"
+listed = false
+buyRate = 1.0
+greeting = "Pearls, baits and snacks for divers"
+
+[node name="Palm" type="Sprite2D" parent="Landing"]
+position = Vector2(135, 96)
+texture = ExtResource("i_e23")
+centered = false
+offset = Vector2(-10.0, -28.0)
+
+[node name="Body" type="StaticBody2D" parent="Landing/Palm"]
+
+[node name="Shape" type="CollisionShape2D" parent="Landing/Palm/Body"]
+position = Vector2(0.0, -1.5)
+shape = SubResource("i_s8")
+
+[node name="Pearl1" type="Node2D" parent="Landing"]
+position = Vector2(89, 100)
+script = ExtResource("i_e24")
+flag = "pearl_pearl_lagoon_1"
+title = "A lost pearl!"
+message = "Opal on Pearl Lagoon collects these."
+prompt = "Pick up"
+reach = 7.0
+
+[node name="Lagoon" type="Node2D" parent="." node_paths=PackedStringArray("land")]
+position = Vector2(192.0, 0.0)
+y_sort_enabled = true
+script = ExtResource("i_e2")
+land = [NodePath("Land")]
+
+[node name="Water" parent="Lagoon" instance=ExtResource("i_e4")]
+biome = ExtResource("i_e3")
+
+[node name="Land" type="Sprite2D" parent="Lagoon"]
+z_index = -1
+texture = ExtResource("i_e25")
+centered = false
+
+[node name="Palm0" type="Sprite2D" parent="Lagoon"]
+position = Vector2(16.0, 96.0)
+texture = ExtResource("i_e23")
+centered = false
+offset = Vector2(-10.0, -28.0)
+
+[node name="Body" type="StaticBody2D" parent="Lagoon/Palm0"]
+
+[node name="Shape" type="CollisionShape2D" parent="Lagoon/Palm0/Body"]
+position = Vector2(0.0, -1.5)
+shape = SubResource("i_s9")
+
+[node name="Palm1" type="Sprite2D" parent="Lagoon"]
+position = Vector2(50.0, 20.0)
+texture = ExtResource("i_e23")
+centered = false
+offset = Vector2(-10.0, -28.0)
+
+[node name="Body" type="StaticBody2D" parent="Lagoon/Palm1"]
+
+[node name="Shape" type="CollisionShape2D" parent="Lagoon/Palm1/Body"]
+position = Vector2(0.0, -1.5)
+shape = SubResource("i_s10")
+
+[node name="Palm2" type="Sprite2D" parent="Lagoon"]
+position = Vector2(84.0, 96.0)
+texture = ExtResource("i_e23")
+centered = false
+offset = Vector2(-10.0, -28.0)
+
+[node name="Body" type="StaticBody2D" parent="Lagoon/Palm2"]
+
+[node name="Shape" type="CollisionShape2D" parent="Lagoon/Palm2/Body"]
+position = Vector2(0.0, -1.5)
+shape = SubResource("i_s11")
+
+[node name="Palm3" type="Sprite2D" parent="Lagoon"]
+position = Vector2(118.0, 20.0)
+texture = ExtResource("i_e23")
+centered = false
+offset = Vector2(-10.0, -28.0)
+
+[node name="Body" type="StaticBody2D" parent="Lagoon/Palm3"]
+
+[node name="Shape" type="CollisionShape2D" parent="Lagoon/Palm3/Body"]
+position = Vector2(0.0, -1.5)
+shape = SubResource("i_s12")
+
+[node name="SeahorseStall" type="Node2D" parent="Lagoon"]
+position = Vector2(40.0, 60.0)
+script = ExtResource("i_e6")
+displayName = "Seahorse Stall"
+
+[node name="Art" type="Sprite2D" parent="Lagoon/SeahorseStall"]
+texture = ExtResource("i_e26")
+centered = false
+offset = Vector2(-13.0, -22.0)
+
+[node name="Body" type="StaticBody2D" parent="Lagoon/SeahorseStall"]
+
+[node name="Shape" type="CollisionShape2D" parent="Lagoon/SeahorseStall/Body"]
+position = Vector2(0.0, -3.5)
+shape = SubResource("i_s13")
+
+[node name="Door" type="Node2D" parent="Lagoon/SeahorseStall"]
+position = Vector2(0, 2)
+script = ExtResource("i_e27")
+pets = Array[ExtResource("i_e28")]([ExtResource("i_e29")])
+title = "Seahorse Stall"
+prompt = "Pets"
+reach = 12.0
+
+[node name="Trap" type="Node2D" parent="Lagoon"]
+position = Vector2(140.0, 100.0)
+script = ExtResource("i_e30")
+biome = ExtResource("i_e3")
+reach = 9.0
+promptOffset = Vector2(0, -8)
+extras = Array[ExtResource("i_e31")]([ExtResource("i_e32")])
+
+[node name="Pearl2" type="Node2D" parent="Lagoon"]
+position = Vector2(20.0, 40.0)
+script = ExtResource("i_e24")
+flag = "pearl_pearl_lagoon_2"
+title = "A lost pearl!"
+message = "Opal on Pearl Lagoon collects these."
+prompt = "Pick up"
+reach = 7.0
+
+[node name="Pearl3" type="Node2D" parent="Lagoon"]
+position = Vector2(150.0, 16.0)
+script = ExtResource("i_e24")
+flag = "pearl_pearl_lagoon_3"
+title = "A lost pearl!"
+message = "Opal on Pearl Lagoon collects these."
+prompt = "Pick up"
+reach = 7.0
+
+[node name="Pearl4" type="Node2D" parent="Lagoon"]
+position = Vector2(64.0, 102.0)
+script = ExtResource("i_e24")
+flag = "pearl_pearl_lagoon_4"
+title = "A lost pearl!"
+message = "Opal on Pearl Lagoon collects these."
+prompt = "Pick up"
+reach = 7.0
+
+[node name="Pearl5" type="Node2D" parent="Lagoon"]
+position = Vector2(126.0, 48.0)
+script = ExtResource("i_e24")
+flag = "pearl_pearl_lagoon_5"
+title = "A lost pearl!"
+message = "Opal on Pearl Lagoon collects these."
+prompt = "Pick up"
+reach = 7.0
+
+[node name="Pearl6" type="Node2D" parent="Lagoon"]
+position = Vector2(10.0, 84.0)
+script = ExtResource("i_e24")
+flag = "pearl_pearl_lagoon_6"
+title = "A lost pearl!"
+message = "Opal on Pearl Lagoon collects these."
+prompt = "Pick up"
+reach = 7.0
+
+[node name="LagoonSign" type="Node2D" parent="Lagoon"]
+position = Vector2(80.0, 30.0)
+script = ExtResource("i_e24")
+flag = "lagoonsign"
+title = "Opal's note"
+message = "\"The Pearl Queen only comes on Sundays, and only for a perfect cast. Be patient.\""
+repeatable = true
+concealed = false
+prompt = "Read"
+reach = 10.0
+
+[node name="Art" type="Sprite2D" parent="Lagoon/LagoonSign"]
+texture = ExtResource("i_e33")
+centered = false
+offset = Vector2(-5, -12)

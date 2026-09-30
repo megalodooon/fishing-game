@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Charm" format=3]
+
+[ext_resource type="Texture2D" path="res://items/rare/icons/mermaid_charm.png" id="1_roorb"]
+[ext_resource type="Resource" path="res://items/rarities/legendary.tres" id="2_lkv7f"]
+[ext_resource type="Script" path="res://items/charms/charm.gd" id="3_jvo8m"]
+
+[resource]
+script = ExtResource("3_jvo8m")
+stats = Dictionary[StringName, float]({
+&"luck": 8.0,
+&"rareFind": 10.0
+})
+displayName = "Mermaid Charm"
+icon = ExtResource("1_roorb")
+rarity = ExtResource("2_lkv7f")
+description = "Made from a mermaid's comb. The sea gives more to whoever wears it."

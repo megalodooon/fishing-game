@@ -7,14 +7,27 @@ class_name RodItem
 @export var slots : Array[Tackle.Kind] = [Tackle.Kind.BOBBER, Tackle.Kind.LINE, Tackle.Kind.HOOK]
 # What sits in each slot, in the same order. Empty slots use the rod's defaults.
 @export var tackle : Array[Tackle] = []
+# Stats the rod itself adds on top of its parts. Use the Tech kind.
+@export var builtIn : Tackle
+# The held rod is tinted this color.
+@export var rodTint : Color = Color.WHITE
+# Set at the anvil (see Reforge): a word in front of the name and more stats.
+@export var reforge : Reforge
 #------------------------#
 
 
 func unique() -> Item:
 	var copy : RodItem = duplicate()
+	copy.base = original()
 	copy.tackle = tackle.duplicate()
 	copy.tackle.resize(slots.size())
 	return copy
+
+# Puts a reforge on this rod (a copy in the bag, never the original).
+func apply_reforge(which : Reforge) -> void:
+	reforge = which
+	displayName = ("%s %s" % [which.prefix, original().displayName]) if which else original().displayName
+	emit_changed()
 
 # The first bobber, line and hook slot always has to hold a part.
 func is_required(slot : int) -> bool:
@@ -37,3 +50,13 @@ func stat_rows(parts : Array[Tackle]) -> Array:
 	rod.free()
 	tackle = saved
 	return [values, texts]
+
+func default_type() -> String:
+	return "Fishing Rod"
+
+func details() -> PackedStringArray:
+	var lines : PackedStringArray = super()
+	if reforge:
+		lines.insert(0, reforge.prefix)
+		lines.insert(0, "Reforge")
+	return lines

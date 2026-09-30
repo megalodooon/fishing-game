@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="BaitRecipe" format=3]
+
+[ext_resource type="Resource" path="res://items/materials/rust_flakes.tres" id="1_1rt3u"]
+[ext_resource type="Resource" path="res://items/enchanted/enchanted_rust_flakes.tres" id="2_7v0hq"]
+[ext_resource type="Script" path="res://fishing/bait/bait_recipe.gd" id="3_u22ra"]
+
+[resource]
+script = ExtResource("3_u22ra")
+output = ExtResource("2_7v0hq")
+amount = 1
+ingredients = Array[Resource]([ExtResource("1_1rt3u")])
+counts = Array[int]([32])
+requiredFlag = "collection/rust_flakes/2"
+xp = 12.0
+category = "Materials"

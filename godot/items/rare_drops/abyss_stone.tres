@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="RareDrop" format=3]
+
+[ext_resource type="Script" path="res://oceans/biome.gd" id="1_twfdn"]
+[ext_resource type="Resource" path="res://oceans/abyss/abyss_biome.tres" id="2_2xhjn"]
+[ext_resource type="Resource" path="res://oceans/expanse/expanse_biome.tres" id="3_lpjqq"]
+[ext_resource type="Resource" path="res://oceans/islands/champion_biome.tres" id="4_nv8i3"]
+[ext_resource type="Resource" path="res://items/rare/abyss_stone.tres" id="5_xq5ve"]
+[ext_resource type="Script" path="res://items/rare_drops/rare_drop.gd" id="6_eemjf"]
+
+[resource]
+script = ExtResource("6_eemjf")
+item = ExtResource("5_xq5ve")
+chance = 0.0014285714285714286
+biomes = Array[ExtResource("1_twfdn")]([ExtResource("2_2xhjn"), ExtResource("3_lpjqq"), ExtResource("4_nv8i3")])
+minFishing = 25

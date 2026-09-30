@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="BaitRecipe" format=3]
+
+[ext_resource type="Resource" path="res://items/materials/tin_can.tres" id="1_bmkfi"]
+[ext_resource type="Resource" path="res://items/materials/iron_scrap.tres" id="2_kjdjr"]
+[ext_resource type="Script" path="res://fishing/bait/bait_recipe.gd" id="3_de16w"]
+
+[resource]
+script = ExtResource("3_de16w")
+output = ExtResource("2_kjdjr")
+amount = 1
+ingredients = Array[Resource]([ExtResource("1_bmkfi")])
+counts = Array[int]([3])
+xp = 3.0
+station = &"workbench"
+category = "Materials"

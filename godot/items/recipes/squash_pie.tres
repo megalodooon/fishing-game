@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="BaitRecipe" format=3]
+
+[ext_resource type="Resource" path="res://items/materials/winter_squash.tres" id="1_y3ybt"]
+[ext_resource type="Resource" path="res://items/materials/honey.tres" id="2_543wt"]
+[ext_resource type="Resource" path="res://items/materials/sweetcorn.tres" id="3_om303"]
+[ext_resource type="Resource" path="res://items/snacks/squash_pie.tres" id="4_a2c14"]
+[ext_resource type="Script" path="res://fishing/bait/bait_recipe.gd" id="5_lilfs"]
+
+[resource]
+script = ExtResource("5_lilfs")
+output = ExtResource("4_a2c14")
+amount = 1
+ingredients = Array[Resource]([ExtResource("1_y3ybt"), ExtResource("2_543wt"), ExtResource("3_om303")])
+counts = Array[int]([1, 1, 2])
+xp = 26.0
+station = &"kitchen"
+category = "Food"
+requiredSkill = &"cooking"
+requiredLevel = 9

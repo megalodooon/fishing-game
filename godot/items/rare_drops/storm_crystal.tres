@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="RareDrop" format=3]
+
+[ext_resource type="Script" path="res://oceans/biome.gd" id="1_h4fla"]
+[ext_resource type="Resource" path="res://oceans/storm/storm_biome.tres" id="2_e1n3h"]
+[ext_resource type="Resource" path="res://oceans/islands/stormwatch_biome.tres" id="3_gs3nb"]
+[ext_resource type="Resource" path="res://oceans/islands/shrine_biome.tres" id="4_uhw6e"]
+[ext_resource type="Resource" path="res://oceans/islands/rig_biome.tres" id="5_vl8r8"]
+[ext_resource type="Resource" path="res://items/rare/storm_crystal.tres" id="6_f1eqr"]
+[ext_resource type="Script" path="res://items/rare_drops/rare_drop.gd" id="7_8o3qy"]
+
+[resource]
+script = ExtResource("7_8o3qy")
+item = ExtResource("6_f1eqr")
+chance = 0.00125
+biomes = Array[ExtResource("1_h4fla")]([ExtResource("2_e1n3h"), ExtResource("3_gs3nb"), ExtResource("4_uhw6e"), ExtResource("5_vl8r8")])
+minFishing = 20

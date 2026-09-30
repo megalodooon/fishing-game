@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Item" format=3]
+
+[ext_resource type="Texture2D" path="res://items/tools/icons/field_anvil.png" id="1_mwx2i"]
+[ext_resource type="Resource" path="res://items/rarities/legendary.tres" id="2_5crdm"]
+[ext_resource type="Script" path="res://items/item.gd" id="3_2icmt"]
+
+[resource]
+script = ExtResource("3_2icmt")
+displayName = "Field Anvil"
+category = "Tool"
+icon = ExtResource("1_mwx2i")
+rarity = ExtResource("2_5crdm")
+description = "Heavy, but worth it. Carry it to use forge recipes anywhere."

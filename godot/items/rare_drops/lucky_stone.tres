@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="RareDrop" format=3]
+
+[ext_resource type="Script" path="res://oceans/biome.gd" id="1_l3mud"]
+[ext_resource type="Resource" path="res://items/rare/lucky_stone.tres" id="2_qbstd"]
+[ext_resource type="Script" path="res://items/rare_drops/rare_drop.gd" id="3_ir6pu"]
+
+[resource]
+script = ExtResource("3_ir6pu")
+item = ExtResource("2_qbstd")
+chance = 0.0016666666666666668
+minFishing = 10

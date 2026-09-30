@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="Charm" format=3]
+
+[ext_resource type="Script" path="res://items/charms/charm.gd" id="e1"]
+[ext_resource type="Texture2D" path="res://items/charms/icons/storm_totem.png" id="e2"]
+[ext_resource type="Resource" path="res://items/rarities/legendary.tres" id="e3"]
+
+[resource]
+script = ExtResource("e1")
+stats = Dictionary[StringName, float]({
+&"treasure": 1.0,
+&"doubleCatch": 2.0
+})
+displayName = "Storm Totem"
+icon = ExtResource("e2")
+rarity = ExtResource("e3")
+description = "Calls the storm, and what the storm brings."
+sellPrice = 320

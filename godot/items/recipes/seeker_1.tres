@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="BaitRecipe" format=3]
+
+[ext_resource type="Resource" path="res://items/materials/pearl_oyster.tres" id="1_a2ss2"]
+[ext_resource type="Resource" path="res://items/materials/rope.tres" id="2_xr5ff"]
+[ext_resource type="Resource" path="res://items/charms/seeker_1.tres" id="3_43ld3"]
+[ext_resource type="Script" path="res://fishing/bait/bait_recipe.gd" id="4_dybo2"]
+
+[resource]
+script = ExtResource("4_dybo2")
+output = ExtResource("3_43ld3")
+amount = 1
+ingredients = Array[Resource]([ExtResource("1_a2ss2"), ExtResource("2_xr5ff")])
+counts = Array[int]([16, 1])
+xp = 30.0
+station = &"workbench"
+category = "Charms"
+requiredSkill = &"foraging"
+requiredLevel = 4

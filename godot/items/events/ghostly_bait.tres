@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Bait" format=3]
+
+[ext_resource type="Script" path="res://fishing/fish/fish_data.gd" id="1_6kon1"]
+[ext_resource type="Texture2D" path="res://items/events/icons/ghostly_bait.png" id="2_iqwoq"]
+[ext_resource type="Resource" path="res://items/rarities/rare.tres" id="3_2ulv0"]
+[ext_resource type="Script" path="res://items/rarity.gd" id="4_p1q3d"]
+[ext_resource type="Script" path="res://fishing/bait/bait.gd" id="5_wykwm"]
+
+[resource]
+script = ExtResource("5_wykwm")
+rarityBoost = Dictionary[ExtResource("4_p1q3d"), float]({
+ExtResource("3_2ulv0"): 1.5
+})
+kind = 4
+displayName = "Ghostly Bait"
+icon = ExtResource("2_iqwoq")
+rarity = ExtResource("3_2ulv0")
+description = "Faintly see-through. Sea creatures love it."
+maxStack = 99

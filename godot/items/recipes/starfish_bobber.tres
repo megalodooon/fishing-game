@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="BaitRecipe" format=3]
+
+[ext_resource type="Resource" path="res://items/materials/starfish.tres" id="1_wdouo"]
+[ext_resource type="Resource" path="res://items/materials/rope.tres" id="2_oxp5x"]
+[ext_resource type="Resource" path="res://fishing/tacklebox/tackle/starfish_bobber.tres" id="3_rt47r"]
+[ext_resource type="Script" path="res://fishing/bait/bait_recipe.gd" id="4_e6gv6"]
+
+[resource]
+script = ExtResource("4_e6gv6")
+output = ExtResource("3_rt47r")
+amount = 1
+ingredients = Array[Resource]([ExtResource("1_wdouo"), ExtResource("2_oxp5x")])
+counts = Array[int]([2, 1])
+xp = 48.0
+station = &"workbench"
+category = "Tackle"
+requiredSkill = &"fishing"
+requiredLevel = 6

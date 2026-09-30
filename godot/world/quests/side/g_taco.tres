@@ -1,0 +1,35 @@
+[gd_resource type="Resource" script_class="Quest" format=3 uid="uid://cnq63foqph5hy"]
+
+[ext_resource type="Script" uid="uid://t660ehs2ybui" path="res://world/location.gd" id="8_exvbp"]
+[ext_resource type="Script" uid="uid://b1p7iyi658nm7" path="res://world/quests/quest.gd" id="e1"]
+[ext_resource type="Script" uid="uid://depkark34l17n" path="res://world/quests/quest_goal.gd" id="e2"]
+[ext_resource type="Resource" path="res://fishing/fish/species/sardine.tres" id="e3"]
+[ext_resource type="Resource" path="res://items/materials/sweetcorn.tres" id="e4"]
+[ext_resource type="Resource" uid="uid://b248ynipyh1t" path="res://world/quests/story/q_market.tres" id="e5"]
+[ext_resource type="Resource" path="res://items/snacks/fish_taco.tres" id="e6"]
+[ext_resource type="Script" uid="uid://ftrpy1hit5em" path="res://items/item.gd" id="e7"]
+
+[sub_resource type="Resource" id="s1"]
+script = ExtResource("e2")
+kind = 2
+target = ExtResource("e3")
+amount = 5
+
+[sub_resource type="Resource" id="s2"]
+script = ExtResource("e2")
+kind = 2
+target = ExtResource("e4")
+amount = 3
+
+[resource]
+script = ExtResource("e1")
+title = "Taco Tuesday"
+giver = "Gus the Fishmonger"
+description = "Gus is making tacos. Bring five Sardines and three Sweetcorn."
+goals = Array[ExtResource("e2")]([SubResource("s1"), SubResource("s2")])
+requires = Array[ExtResource("e1")]([ExtResource("e5")])
+rewardCoins = 100
+rewardItems = Array[ExtResource("e7")]([ExtResource("e6")])
+rewardAmounts = Array[int]([3])
+requiredSkill = &"cooking"
+requiredLevel = 3

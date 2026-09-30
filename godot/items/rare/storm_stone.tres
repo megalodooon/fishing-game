@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Item" format=3]
+
+[ext_resource type="Texture2D" path="res://items/rare/icons/storm_stone.png" id="1_eje8g"]
+[ext_resource type="Resource" path="res://items/rarities/legendary.tres" id="2_8qg2w"]
+[ext_resource type="Script" path="res://items/item.gd" id="3_7btaw"]
+
+[resource]
+script = ExtResource("3_7btaw")
+displayName = "Storm Stone"
+category = "Reforge Stone"
+icon = ExtResource("1_eje8g")
+rarity = ExtResource("2_8qg2w")
+description = "Bring it to an anvil: it gives a rod the Stormborn reforge."
+maxStack = 20
+sellPrice = 800

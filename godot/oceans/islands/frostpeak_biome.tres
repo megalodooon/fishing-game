@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="Biome" format=3]
+
+[ext_resource type="Script" path="res://fishing/creatures/sea_creature.gd" id="1_aqpsq"]
+[ext_resource type="Resource" path="res://items/materials/frost_lichen.tres" id="9_mxhsd"]
+[ext_resource type="Resource" path="res://items/materials/frost_crystal.tres" id="10_yidhr"]
+[ext_resource type="Resource" path="res://items/materials/barnacle.tres" id="11_phd8o"]
+[ext_resource type="Script" path="res://oceans/biome.gd" id="e1"]
+[ext_resource type="Script" path="res://fishing/fish/fish_data.gd" id="e2"]
+[ext_resource type="Resource" path="res://fishing/fish/species/frostpeak/icefin_minnow.tres" id="e3"]
+[ext_resource type="Resource" path="res://fishing/fish/species/frostpeak/snow_trout.tres" id="e4"]
+[ext_resource type="Resource" path="res://fishing/fish/species/frostpeak/crystal_smelt.tres" id="e5"]
+[ext_resource type="Resource" path="res://fishing/fish/species/frostpeak/glacier_burbot.tres" id="e6"]
+[ext_resource type="Resource" path="res://fishing/fish/species/frostpeak/aurora_sturgeon.tres" id="e7"]
+[ext_resource type="Resource" path="res://items/materials/seaweed.tres" id="e8"]
+[ext_resource type="Script" path="res://items/item.gd" id="e9"]
+
+[resource]
+script = ExtResource("e1")
+displayName = "Frostpeak"
+description = "Holes cut through thick ice."
+region = "Far North"
+fish = Array[ExtResource("e2")]([ExtResource("e3"), ExtResource("e4"), ExtResource("e5"), ExtResource("e6"), ExtResource("e7")])
+tier = 2
+junkChance = 0.02
+junk = Array[ExtResource("e9")]([ExtResource("e8")])
+forage = Array[ExtResource("e9")]([ExtResource("9_mxhsd"), ExtResource("10_yidhr"), ExtResource("11_phd8o")])

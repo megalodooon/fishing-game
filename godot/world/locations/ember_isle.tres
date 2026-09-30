@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="Location" format=3 uid="uid://dpdcgbxsadtr7"]
+
+[ext_resource type="Script" uid="uid://t660ehs2ybui" path="res://world/location.gd" id="e1"]
+[ext_resource type="Texture2D" uid="uid://o645petwt12l" path="res://world/map/icons/ember_isle.png" id="e2"]
+[ext_resource type="Resource" uid="uid://c5kcnydpk8ihc" path="res://oceans/islands/ember_biome.tres" id="e3"]
+
+[resource]
+script = ExtResource("e1")
+displayName = "Ember Isle"
+description = "Black sand and a hot spring. There's an inn with rooms to rent, and a smith."
+kind = 1
+scene = "res://world/islands/ember_isle/ember_isle.tscn"
+mapPosition = Vector2(362, 14)
+mapIcon = ExtResource("e2")
+chartTint = Color(0.45, 0.2, 0.14, 0.45)
+biome = ExtResource("e3")
+weatherChances = PackedFloat32Array(0.5, 0.3, 0.2)
+startsUnlocked = false
+requiredHull = 2
+requiredSkill = &"sailing"
+requiredLevel = 12
+coinCost = 1500

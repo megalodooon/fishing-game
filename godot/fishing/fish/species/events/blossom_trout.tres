@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="FishData" format=3]
+
+[ext_resource type="Texture2D" path="res://fishing/fish/assets/events/blossom_trout.png" id="1_cep7w"]
+[ext_resource type="Resource" path="res://items/rarities/common.tres" id="2_nfn4c"]
+[ext_resource type="Script" path="res://fishing/fish/requirements/fish_requirement.gd" id="3_psbal"]
+[ext_resource type="Script" path="res://fishing/fish/fish_data.gd" id="4_pjhxa"]
+
+[resource]
+script = ExtResource("4_pjhxa")
+displayName = "Blossom Trout"
+icon = ExtResource("1_cep7w")
+rarity = ExtResource("2_nfn4c")
+description = "Its spots turn pink in spring. Nobody knows why."
+weightRange = Vector2(0.5, 2)
+basePrice = 20
+heldSize = 0.64

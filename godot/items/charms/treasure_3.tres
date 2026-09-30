@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="Charm" format=3]
+
+[ext_resource type="Texture2D" path="res://items/charms/icons/treasure_3.png" id="1_1yamw"]
+[ext_resource type="Resource" path="res://items/rarities/rare.tres" id="2_g3eys"]
+[ext_resource type="Script" path="res://items/charms/charm.gd" id="3_pnxyr"]
+
+[resource]
+script = ExtResource("3_pnxyr")
+stats = Dictionary[StringName, float]({
+&"treasure": 1.5
+})
+family = "treasure"
+tier = 3
+displayName = "Treasure Artifact"
+icon = ExtResource("1_1yamw")
+rarity = ExtResource("2_g3eys")
+description = "Part of the Treasure line. Upgrade it at a bench to make it stronger."
+sellPrice = 360

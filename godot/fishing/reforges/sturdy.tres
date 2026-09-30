@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Reforge" format=3]
+
+[ext_resource type="Script" path="res://fishing/reforges/reforge.gd" id="1_v7iyw"]
+
+[resource]
+script = ExtResource("1_v7iyw")
+prefix = "Sturdy"
+weight = 4.0
+kind = 3
+control = 0.1
+reelSpeed = 1.05
+displayName = "Sturdy"

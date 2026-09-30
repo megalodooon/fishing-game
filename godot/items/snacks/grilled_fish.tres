@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Snack" format=3]
+
+[ext_resource type="Script" path="res://items/snacks/snack.gd" id="1_script"]
+[ext_resource type="Texture2D" path="res://items/snacks/icons/grilled_fish.png" id="2_icon"]
+[ext_resource type="Resource" path="res://items/rarities/common.tres" id="3_rarity"]
+
+[resource]
+script = ExtResource("1_script")
+energy = 30
+hint = "Click while holding it to eat"
+maxStack = 20
+sellPrice = 12
+displayName = "Grilled Fish"
+icon = ExtResource("2_icon")
+rarity = ExtResource("3_rarity")
+description = "Simple and filling."

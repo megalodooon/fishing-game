@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="BaitRecipe" format=3]
+
+[ext_resource type="Resource" path="res://items/materials/cotton.tres" id="1_cyiw0"]
+[ext_resource type="Resource" path="res://items/enchanted/enchanted_cotton.tres" id="2_n0a2l"]
+[ext_resource type="Script" path="res://fishing/bait/bait_recipe.gd" id="3_bav8o"]
+
+[resource]
+script = ExtResource("3_bav8o")
+output = ExtResource("2_n0a2l")
+amount = 1
+ingredients = Array[Resource]([ExtResource("1_cyiw0")])
+counts = Array[int]([32])
+requiredFlag = "collection/cotton/2"
+xp = 12.0
+category = "Materials"

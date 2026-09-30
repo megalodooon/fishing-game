@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="Charm" format=3]
+
+[ext_resource type="Texture2D" path="res://items/charms/icons/anchor_2.png" id="1_5xtw5"]
+[ext_resource type="Resource" path="res://items/rarities/uncommon.tres" id="2_d8f0r"]
+[ext_resource type="Script" path="res://items/charms/charm.gd" id="3_w4u1a"]
+
+[resource]
+script = ExtResource("3_w4u1a")
+stats = Dictionary[StringName, float]({
+&"weight": 6.0
+})
+family = "anchor"
+tier = 2
+displayName = "Anchor Ring"
+icon = ExtResource("1_5xtw5")
+rarity = ExtResource("2_d8f0r")
+description = "Part of the Anchor line. Upgrade it at a bench to make it stronger."
+sellPrice = 160

@@ -1,0 +1,114 @@
+[gd_resource type="Resource" script_class="ShopStock" format=3]
+
+[ext_resource type="Script" path="res://world/village/shop/shop_stock.gd" id="1_stock"]
+[ext_resource type="Script" path="res://world/village/shop/shop_offer.gd" id="2_offer"]
+[ext_resource type="Resource" path="res://fishing/rods/bamboo_rod.tres" id="i1"]
+[ext_resource type="Resource" path="res://fishing/tacklebox/samples/cork_bobber.tres" id="i2"]
+[ext_resource type="Resource" path="res://fishing/tacklebox/samples/braided_line.tres" id="i3"]
+[ext_resource type="Resource" path="res://fishing/tacklebox/samples/barbed_hook.tres" id="i4"]
+[ext_resource type="Resource" path="res://fishing/bait/worm_bait.tres" id="i5"]
+[ext_resource type="Resource" path="res://fishing/bait/shrimp_bait.tres" id="i6"]
+[ext_resource type="Resource" path="res://fishing/rods/fiberglass_rod.tres" id="i7"]
+[ext_resource type="Resource" path="res://fishing/tacklebox/market/feather_bobber.tres" id="i8"]
+[ext_resource type="Resource" path="res://fishing/tacklebox/samples/neon_line.tres" id="i9"]
+[ext_resource type="Resource" path="res://fishing/tacklebox/samples/lucky_hook.tres" id="i10"]
+[ext_resource type="Resource" path="res://fishing/bait/squid_bait.tres" id="i11"]
+[ext_resource type="Resource" path="res://fishing/rods/carbon_rod.tres" id="i12"]
+[ext_resource type="Resource" path="res://fishing/tacklebox/samples/fish_finder.tres" id="i13"]
+[ext_resource type="Resource" path="res://fishing/tacklebox/samples/reel_motor.tres" id="i14"]
+[ext_resource type="Resource" path="res://fishing/tacklebox/market/golden_hook.tres" id="i15"]
+[ext_resource type="Resource" path="res://fishing/tacklebox/tackle/sonar_buoy.tres" id="i16"]
+
+[sub_resource type="Resource" id="o1"]
+script = ExtResource("2_offer")
+item = ExtResource("i1")
+
+[sub_resource type="Resource" id="o2"]
+script = ExtResource("2_offer")
+item = ExtResource("i2")
+
+[sub_resource type="Resource" id="o3"]
+script = ExtResource("2_offer")
+item = ExtResource("i3")
+
+[sub_resource type="Resource" id="o4"]
+script = ExtResource("2_offer")
+item = ExtResource("i4")
+
+[sub_resource type="Resource" id="o5"]
+script = ExtResource("2_offer")
+item = ExtResource("i5")
+amount = 10
+
+[sub_resource type="Resource" id="o6"]
+script = ExtResource("2_offer")
+item = ExtResource("i6")
+amount = 10
+requiredSkill = &"fishing"
+requiredLevel = 3
+
+[sub_resource type="Resource" id="o7"]
+script = ExtResource("2_offer")
+item = ExtResource("i7")
+requiredSkill = &"fishing"
+requiredLevel = 6
+
+[sub_resource type="Resource" id="o8"]
+script = ExtResource("2_offer")
+item = ExtResource("i8")
+requiredSkill = &"fishing"
+requiredLevel = 5
+
+[sub_resource type="Resource" id="o9"]
+script = ExtResource("2_offer")
+item = ExtResource("i9")
+requiredSkill = &"fishing"
+requiredLevel = 5
+
+[sub_resource type="Resource" id="o10"]
+script = ExtResource("2_offer")
+item = ExtResource("i10")
+requiredSkill = &"fishing"
+requiredLevel = 5
+
+[sub_resource type="Resource" id="o11"]
+script = ExtResource("2_offer")
+item = ExtResource("i11")
+amount = 5
+requiredSkill = &"fishing"
+requiredLevel = 8
+
+[sub_resource type="Resource" id="o12"]
+script = ExtResource("2_offer")
+item = ExtResource("i12")
+requiredSkill = &"fishing"
+requiredLevel = 12
+
+[sub_resource type="Resource" id="o13"]
+script = ExtResource("2_offer")
+item = ExtResource("i13")
+requiredSkill = &"fishing"
+requiredLevel = 12
+
+[sub_resource type="Resource" id="o14"]
+script = ExtResource("2_offer")
+item = ExtResource("i14")
+requiredSkill = &"fishing"
+requiredLevel = 12
+
+[sub_resource type="Resource" id="o15"]
+script = ExtResource("2_offer")
+item = ExtResource("i15")
+requiredSkill = &"fishing"
+requiredLevel = 12
+
+[sub_resource type="Resource" id="o16"]
+script = ExtResource("2_offer")
+item = ExtResource("i16")
+requiredSkill = &"fishing"
+requiredLevel = 20
+
+[resource]
+script = ExtResource("1_stock")
+shopName = "The Tackle Shop"
+offers = Array[ExtResource("2_offer")]([SubResource("o1"), SubResource("o2"), SubResource("o3"), SubResource("o4"), SubResource("o5"), SubResource("o6"), SubResource("o7"), SubResource("o8"), SubResource("o9"), SubResource("o10"), SubResource("o11"), SubResource("o12"), SubResource("o13"), SubResource("o14"), SubResource("o15"), SubResource("o16")])

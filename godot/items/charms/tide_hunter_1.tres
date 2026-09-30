@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="Charm" format=3]
+
+[ext_resource type="Texture2D" path="res://items/charms/icons/tide_hunter_1.png" id="1_nnu3y"]
+[ext_resource type="Resource" path="res://items/rarities/common.tres" id="2_0ykq4"]
+[ext_resource type="Script" path="res://items/charms/charm.gd" id="3_xy25b"]
+
+[resource]
+script = ExtResource("3_xy25b")
+stats = Dictionary[StringName, float]({
+&"seaCreature": 0.5
+})
+family = "tide_hunter"
+displayName = "Tide Hunter Charm"
+icon = ExtResource("1_nnu3y")
+rarity = ExtResource("2_0ykq4")
+description = "Part of the Tide Hunter line. Upgrade it at a bench to make it stronger."
+sellPrice = 40

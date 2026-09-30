@@ -1,0 +1,67 @@
+[gd_resource type="Resource" script_class="GameEvent" format=3]
+
+[ext_resource type="Script" path="res://fishing/creatures/sea_creature.gd" id="1_6geuh"]
+[ext_resource type="Resource" path="res://fishing/creatures/phantom_squid.tres" id="2_wxdw8"]
+[ext_resource type="Script" path="res://items/item.gd" id="3_ta1d4"]
+[ext_resource type="Resource" path="res://items/events/candy_corn.tres" id="4_rwlaw"]
+[ext_resource type="Resource" path="res://items/events/ghost_candy.tres" id="5_51n1g"]
+[ext_resource type="Texture2D" path="res://world/events/icons/spooky_tide.png" id="6_w5yep"]
+[ext_resource type="Resource" path="res://fishing/fish/species/events/spooky_biome.tres" id="7_lfsa7"]
+[ext_resource type="Texture2D" path="res://items/events/icons/candy_corn.png" id="8_hjcn0"]
+[ext_resource type="Script" path="res://world/events/game_event.gd" id="9_1fo2g"]
+[ext_resource type="Script" path="res://world/village/shop/shop_offer.gd" id="10_iqgmc"]
+[ext_resource type="Resource" path="res://items/events/spooky_bobber.tres" id="11_xobgx"]
+[ext_resource type="Resource" path="res://items/events/witch_charm.tres" id="12_0mkta"]
+[ext_resource type="Resource" path="res://items/events/pumpkin_latte.tres" id="13_wkk0o"]
+[ext_resource type="Resource" path="res://items/events/ghostly_bait.tres" id="14_g16c4"]
+
+[sub_resource type="Resource" id="Resource_cjrhw"]
+script = ExtResource("10_iqgmc")
+item = ExtResource("11_xobgx")
+price = 60
+currency = ExtResource("4_rwlaw")
+
+[sub_resource type="Resource" id="Resource_xf7i0"]
+script = ExtResource("10_iqgmc")
+item = ExtResource("12_0mkta")
+price = 10
+currency = ExtResource("5_51n1g")
+
+[sub_resource type="Resource" id="Resource_b8bv3"]
+script = ExtResource("10_iqgmc")
+item = ExtResource("13_wkk0o")
+price = 8
+currency = ExtResource("4_rwlaw")
+
+[sub_resource type="Resource" id="Resource_epwjd"]
+script = ExtResource("10_iqgmc")
+item = ExtResource("14_g16c4")
+amount = 5
+price = 20
+currency = ExtResource("4_rwlaw")
+
+[sub_resource type="Resource" id="Resource_rw31d"]
+script = ExtResource("10_iqgmc")
+item = ExtResource("5_51n1g")
+price = 50
+currency = ExtResource("4_rwlaw")
+
+[resource]
+script = ExtResource("9_1fo2g")
+displayName = "Spooky Tide"
+description = "Mist rolls in, candy washes up, and strange things bite. Catch the Spooky fish and beat the Phantom Squid, then spend your candy at Auntie Moss's cauldron."
+icon = ExtResource("6_w5yep")
+color = Color(1, 0.55, 0.2, 1)
+season = 2
+page = ExtResource("7_lfsa7")
+fishChance = 0.18
+drops = Array[ExtResource("3_ta1d4")]([ExtResource("4_rwlaw"), ExtResource("5_51n1g")])
+dropChances = PackedFloat32Array(0.3, 0.03)
+creatures = Array[ExtResource("1_6geuh")]([ExtResource("2_wxdw8")])
+pickup = ExtResource("4_rwlaw")
+pickupArt = ExtResource("8_hjcn0")
+host = "moss"
+shopTitle = "Moss's Spooky Cauldron"
+shop = Array[ExtResource("10_iqgmc")]([SubResource("Resource_cjrhw"), SubResource("Resource_xf7i0"), SubResource("Resource_b8bv3"), SubResource("Resource_epwjd"), SubResource("Resource_rw31d")])
+startText = "The mist is in! Candy's washing up on every island, heh."
+endText = "The mist lifts. The Spooky fish go back to wherever they came from."

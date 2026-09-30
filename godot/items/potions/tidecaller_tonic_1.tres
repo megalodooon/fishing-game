@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="Snack" format=3]
+
+[ext_resource type="Texture2D" path="res://items/potions/icons/tidecaller_tonic_1.png" id="1_grxw5"]
+[ext_resource type="Resource" path="res://items/rarities/uncommon.tres" id="2_qeeh6"]
+[ext_resource type="Script" path="res://items/snacks/snack.gd" id="3_gv42u"]
+
+[resource]
+script = ExtResource("3_gv42u")
+energy = 5.0
+buffStat = "seaCreature"
+buffAmount = 1.03
+buffHours = 3.0
+displayName = "Tidecaller Tonic I"
+category = "Potion"
+icon = ExtResource("1_grxw5")
+rarity = ExtResource("2_qeeh6")
+description = "Brewed at a cauldron. Drink it for a few hours of sea creature chance."
+hint = "Click while holding it to drink"
+maxStack = 10
+sellPrice = 44

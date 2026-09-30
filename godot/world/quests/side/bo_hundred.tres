@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="Quest" format=3 uid="uid://bygykwmlqkor2"]
+
+[ext_resource type="Script" uid="uid://ftrpy1hit5em" path="res://items/item.gd" id="4_w5kxg"]
+[ext_resource type="Script" uid="uid://t660ehs2ybui" path="res://world/location.gd" id="5_aho52"]
+[ext_resource type="Script" uid="uid://b1p7iyi658nm7" path="res://world/quests/quest.gd" id="e1"]
+[ext_resource type="Script" uid="uid://depkark34l17n" path="res://world/quests/quest_goal.gd" id="e2"]
+[ext_resource type="Resource" uid="uid://dv8yyxb8g3ao1" path="res://world/quests/side/bo_walkies.tres" id="e3"]
+
+[sub_resource type="Resource" id="s1"]
+script = ExtResource("e2")
+kind = 10
+flag = "fish_caught"
+amount = 1000
+text = "Catch 1,000 fish"
+
+[resource]
+script = ExtResource("e1")
+title = "A Thousand Casts"
+giver = "Bo"
+description = "Catch a thousand fish in total."
+goals = Array[ExtResource("e2")]([SubResource("s1")])
+requires = Array[ExtResource("e1")]([ExtResource("e3")])
+rewardCoins = 3000

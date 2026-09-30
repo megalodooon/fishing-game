@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="RareDrop" format=3]
+
+[ext_resource type="Script" path="res://oceans/biome.gd" id="1_d28wo"]
+[ext_resource type="Resource" path="res://oceans/cold/cold_biome.tres" id="2_0jrlg"]
+[ext_resource type="Resource" path="res://oceans/kelp/kelp_biome.tres" id="3_umy1w"]
+[ext_resource type="Resource" path="res://oceans/islands/frostpeak_biome.tres" id="4_2cqwq"]
+[ext_resource type="Resource" path="res://items/rare/frozen_relic.tres" id="5_mfmvt"]
+[ext_resource type="Script" path="res://items/rare_drops/rare_drop.gd" id="6_p2qu7"]
+
+[resource]
+script = ExtResource("6_p2qu7")
+item = ExtResource("5_mfmvt")
+chance = 0.00125
+biomes = Array[ExtResource("1_d28wo")]([ExtResource("2_0jrlg"), ExtResource("3_umy1w"), ExtResource("4_2cqwq")])
+minFishing = 12

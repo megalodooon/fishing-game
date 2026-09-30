@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="SeaCreature" format=3]
+
+[ext_resource type="Script" path="res://items/item.gd" id="1_13hgf"]
+[ext_resource type="Resource" path="res://items/events/festive_gift.tres" id="2_abbw4"]
+[ext_resource type="Resource" path="res://items/events/wrapped_gift.tres" id="3_y6tta"]
+[ext_resource type="Resource" path="res://items/events/snowflake.tres" id="4_1e0o8"]
+[ext_resource type="Texture2D" path="res://fishing/fish/assets/events/frosty_minnow.png" id="5_al8pe"]
+[ext_resource type="Resource" path="res://items/rarities/rare.tres" id="6_dcrwe"]
+[ext_resource type="Script" path="res://fishing/fish/requirements/fish_requirement.gd" id="7_nul5b"]
+[ext_resource type="Script" path="res://fishing/creatures/sea_creature.gd" id="8_8gtpb"]
+
+[resource]
+script = ExtResource("8_8gtpb")
+displayName = "Grumpy Yeti Crab"
+description = "Furry, grumpy and guarding a pile of stolen presents."
+icon = ExtResource("5_al8pe")
+rarity = ExtResource("6_dcrwe")
+minFishing = 3
+announce = "A Grumpy Yeti Crab wants its presents back!"
+difficulty = 0.45
+toughness = 1.1
+style = &"frost"
+coins = Vector2i(80, 200)
+xp = 100.0
+drops = Array[ExtResource("1_13hgf")]([ExtResource("2_abbw4"), ExtResource("3_y6tta"), ExtResource("4_1e0o8")])
+dropChances = PackedFloat32Array(0.6, 1, 1)
+dropAmounts = Array[Vector2i]([Vector2i(1, 1), Vector2i(2, 4), Vector2i(3, 6)])

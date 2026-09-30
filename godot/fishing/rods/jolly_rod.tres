@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="RodItem" format=3]
+
+[ext_resource type="Script" path="res://fishing/tacklebox/tackle.gd" id="1_ttaf4"]
+[ext_resource type="PackedScene" path="res://fishing/rods/starter_rod.tscn" id="2_tqstv"]
+[ext_resource type="Texture2D" path="res://items/events/icons/jolly_rod.png" id="3_excla"]
+[ext_resource type="Resource" path="res://items/rarities/legendary.tres" id="4_f86uy"]
+[ext_resource type="Script" path="res://fishing/rods/rod_item.gd" id="5_0j1ml"]
+[ext_resource type="Resource" path="res://fishing/tacklebox/tackle/basic_bobber.tres" id="6_bvntd"]
+[ext_resource type="Resource" path="res://fishing/tacklebox/tackle/basic_line.tres" id="7_7fqpa"]
+[ext_resource type="Resource" path="res://fishing/tacklebox/tackle/basic_hook.tres" id="8_rgh4n"]
+
+[sub_resource type="Resource" id="Resource_5pcx1"]
+script = ExtResource("1_ttaf4")
+kind = 3
+biteSpeed = 1.25
+control = 0.2
+spotSize = 1.1
+displayName = "Jolly Rod"
+
+[resource]
+script = ExtResource("5_0j1ml")
+slots = Array[int]([0, 1, 1, 2, 3, 4, 4])
+tackle = Array[ExtResource("1_ttaf4")]([ExtResource("6_bvntd"), ExtResource("7_7fqpa"), null, ExtResource("8_rgh4n"), null, null, null])
+builtIn = SubResource("Resource_5pcx1")
+rodTint = Color(1, 0.7, 0.7, 1)
+displayName = "Jolly Rod"
+icon = ExtResource("3_excla")
+rarity = ExtResource("4_f86uy")
+description = "Striped like a candy cane, strong as an anchor. Two lines and two baits."
+heldScene = ExtResource("2_tqstv")
+discardable = false
+hint = "T to customize"

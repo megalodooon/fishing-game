@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="BaitRecipe" format=3]
+
+[ext_resource type="Resource" path="res://items/charms/scholar_2.tres" id="1_bydfa"]
+[ext_resource type="Resource" path="res://items/enchanted/enchanted_palm_frond.tres" id="2_cs0ii"]
+[ext_resource type="Resource" path="res://items/materials/pearl_dust.tres" id="3_eo7s1"]
+[ext_resource type="Resource" path="res://items/charms/scholar_3.tres" id="4_qjpw3"]
+[ext_resource type="Script" path="res://fishing/bait/bait_recipe.gd" id="5_08ww0"]
+
+[resource]
+script = ExtResource("5_08ww0")
+output = ExtResource("4_qjpw3")
+amount = 1
+ingredients = Array[Resource]([ExtResource("1_bydfa"), ExtResource("2_cs0ii"), ExtResource("3_eo7s1")])
+counts = Array[int]([1, 8, 3])
+xp = 90.0
+station = &"forge"
+category = "Charms"
+requiredSkill = &"crafting"
+requiredLevel = 16

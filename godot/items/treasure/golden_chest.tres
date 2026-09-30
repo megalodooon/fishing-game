@@ -1,0 +1,33 @@
+[gd_resource type="Resource" script_class="TreasureChest" format=3]
+
+[ext_resource type="Resource" path="res://items/materials/pearl_dust.tres" id="12_s3t0l"]
+[ext_resource type="Resource" path="res://items/materials/starfish.tres" id="13_ya14e"]
+[ext_resource type="Resource" path="res://items/enchanted/enchanted_sea_salt.tres" id="14_8qdg5"]
+[ext_resource type="Resource" path="res://items/materials/treated_plank.tres" id="15_a2bld"]
+[ext_resource type="Script" path="res://items/treasure/treasure_chest.gd" id="e1"]
+[ext_resource type="Script" path="res://items/item.gd" id="e2"]
+[ext_resource type="Resource" path="res://items/materials/coral_shard.tres" id="e3"]
+[ext_resource type="Resource" path="res://items/materials/iron_scrap.tres" id="e4"]
+[ext_resource type="Resource" path="res://items/materials/frost_crystal.tres" id="e5"]
+[ext_resource type="Resource" path="res://items/materials/obsidian_shard.tres" id="e6"]
+[ext_resource type="Resource" path="res://fishing/bait/glow_bait.tres" id="e7"]
+[ext_resource type="Resource" path="res://items/charms/golden_scale.tres" id="e8"]
+[ext_resource type="Resource" path="res://items/charms/twin_hook_charm.tres" id="e9"]
+[ext_resource type="Resource" path="res://items/charms/pearl_earring.tres" id="e10"]
+[ext_resource type="Resource" path="res://items/charms/compass_charm.tres" id="e11"]
+[ext_resource type="Texture2D" path="res://items/treasure/icons/golden_chest.png" id="e12"]
+[ext_resource type="Resource" path="res://items/rarities/rare.tres" id="e13"]
+
+[resource]
+script = ExtResource("e1")
+coins = Vector2i(150, 500)
+rolls = Vector2i(2, 4)
+loot = Array[ExtResource("e2")]([ExtResource("e3"), ExtResource("e4"), ExtResource("e5"), ExtResource("e6"), ExtResource("e7"), ExtResource("e8"), ExtResource("e9"), ExtResource("e10"), ExtResource("e11"), ExtResource("12_s3t0l"), ExtResource("13_ya14e"), ExtResource("14_8qdg5"), ExtResource("15_a2bld")])
+lootWeights = PackedFloat32Array(3, 3, 1, 1, 2, 0.5, 0.3, 0.3, 0.3, 1, 1, 0.5, 1)
+lootAmounts = Array[Vector2i]([Vector2i(2, 4), Vector2i(3, 6), Vector2i(1, 2), Vector2i(1, 2), Vector2i(2, 3), Vector2i(1, 1), Vector2i(1, 1), Vector2i(1, 1), Vector2i(1, 1), Vector2i(1, 3), Vector2i(1, 2), Vector2i(1, 1), Vector2i(1, 3)])
+displayName = "Golden Chest"
+icon = ExtResource("e12")
+rarity = ExtResource("e13")
+description = "It gleams even underwater."
+hint = "Click while holding it to open"
+maxStack = 20

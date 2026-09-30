@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Item" format=3]
+
+[ext_resource type="Texture2D" path="res://items/enchanted/icons/enchanted_frost_crystal.png" id="1_0m2n2"]
+[ext_resource type="Resource" path="res://items/rarities/legendary.tres" id="2_3q5ap"]
+[ext_resource type="Script" path="res://items/item.gd" id="3_r3c5j"]
+
+[resource]
+script = ExtResource("3_r3c5j")
+displayName = "Enchanted Frost Crystal"
+category = "Enchanted Material"
+icon = ExtResource("1_0m2n2")
+rarity = ExtResource("2_3q5ap")
+description = "32 Frost Crystal pressed into one. Better recipes ask for these."
+maxStack = 99
+sellPrice = 1584

@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Item" format=3]
+
+[ext_resource type="Texture2D" path="res://items/enchanted/icons/enchanted_palm_frond.png" id="1_mvyu5"]
+[ext_resource type="Resource" path="res://items/rarities/uncommon.tres" id="2_numo6"]
+[ext_resource type="Script" path="res://items/item.gd" id="3_bye2n"]
+
+[resource]
+script = ExtResource("3_bye2n")
+displayName = "Enchanted Palm Frond"
+category = "Enchanted Material"
+icon = ExtResource("1_mvyu5")
+rarity = ExtResource("2_numo6")
+description = "32 Palm Frond pressed into one. Better recipes ask for these."
+maxStack = 99
+sellPrice = 106

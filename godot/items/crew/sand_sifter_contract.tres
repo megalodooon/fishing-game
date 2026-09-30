@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="CrewContract" format=3]
+
+[ext_resource type="Resource" path="res://world/crew/members/sand_sifter.tres" id="1_s51es"]
+[ext_resource type="Texture2D" path="res://items/crew/icons/sand_sifter.png" id="2_8qlog"]
+[ext_resource type="Resource" path="res://items/rarities/uncommon.tres" id="3_v5eiq"]
+[ext_resource type="Script" path="res://world/crew/crew_contract.gd" id="4_rr57v"]
+
+[resource]
+script = ExtResource("4_rr57v")
+crew = ExtResource("1_s51es")
+displayName = "Sand Sifter Contract"
+icon = ExtResource("2_8qlog")
+rarity = ExtResource("3_v5eiq")
+description = "Hire a sand sifter at the crew board by your house. Sifts the finest sand, for glass."

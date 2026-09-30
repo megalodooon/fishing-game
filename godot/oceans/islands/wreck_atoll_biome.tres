@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="Biome" format=3]
+
+[ext_resource type="Script" path="res://fishing/creatures/sea_creature.gd" id="1_130hm"]
+[ext_resource type="Script" path="res://oceans/biome.gd" id="1_biome"]
+[ext_resource type="Script" path="res://fishing/fish/fish_data.gd" id="1_data"]
+[ext_resource type="Script" path="res://items/item.gd" id="10_jfrs7"]
+[ext_resource type="Resource" path="res://items/materials/barnacle.tres" id="11_0a0lf"]
+[ext_resource type="Resource" path="res://items/materials/starfish.tres" id="12_igkvq"]
+[ext_resource type="Resource" path="res://items/materials/palm_frond.tres" id="13_kvgsv"]
+[ext_resource type="Resource" path="res://items/materials/beach_sand.tres" id="14_nibeg"]
+[ext_resource type="Resource" path="res://fishing/fish/species/anchovy.tres" id="f_2"]
+[ext_resource type="Resource" path="res://fishing/fish/species/mackerel.tres" id="f_3"]
+[ext_resource type="Resource" path="res://fishing/fish/species/flounder.tres" id="f_4"]
+[ext_resource type="Resource" path="res://fishing/fish/species/red_snapper.tres" id="f_5"]
+[ext_resource type="Resource" path="res://fishing/fish/species/placeholder/yellowfin_tuna.tres" id="f_6"]
+[ext_resource type="Resource" path="res://fishing/fish/species/placeholder/swordfish.tres" id="f_7"]
+[ext_resource type="Resource" path="res://fishing/fish/species/islands/rustfin_grouper.tres" id="f_8"]
+
+[resource]
+script = ExtResource("1_biome")
+displayName = "Wreck Atoll"
+description = "Warm shallows around a sunken ship, with tide pools on the reef."
+region = "Sunny Seas"
+fish = Array[ExtResource("1_data")]([ExtResource("f_2"), ExtResource("f_3"), ExtResource("f_4"), ExtResource("f_5"), ExtResource("f_6"), ExtResource("f_7"), ExtResource("f_8")])
+forage = Array[ExtResource("10_jfrs7")]([ExtResource("11_0a0lf"), ExtResource("12_igkvq"), ExtResource("13_kvgsv"), ExtResource("14_nibeg")])

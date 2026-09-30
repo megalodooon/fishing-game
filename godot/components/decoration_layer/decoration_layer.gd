@@ -16,18 +16,24 @@ const AREA : Vector2i = Vector2i(192, 108)
 var columns : int
 var rows : int
 var firstColumn : int = 0
+# One tile set per set of decorations, shared by every layer that uses it.
+static var tileSets : Dictionary = {}
 #------------------------#
 
 
 func _ready() -> void:
-	tile_set = TileSet.new()
-	tile_set.tile_size = cellSize
-	for texture in decorations:
-		var source : TileSetAtlasSource = TileSetAtlasSource.new()
-		source.texture = texture
-		source.texture_region_size = Vector2i(texture.get_size())
-		source.create_tile(Vector2i.ZERO)
-		tile_set.add_source(source)
+	var key : Array = [cellSize] + decorations
+	if not tileSets.has(key):
+		var tiles : TileSet = TileSet.new()
+		tiles.tile_size = cellSize
+		for texture in decorations:
+			var source : TileSetAtlasSource = TileSetAtlasSource.new()
+			source.texture = texture
+			source.texture_region_size = Vector2i(texture.get_size())
+			source.create_tile(Vector2i.ZERO)
+			tiles.add_source(source)
+		tileSets[key] = tiles
+	tile_set = tileSets[key]
 	columns = ceili(AREA.x / float(cellSize.x)) + 1
 	rows = ceili(AREA.y / float(cellSize.y))
 	for x in columns:

@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Seed" format=3]
+
+[ext_resource type="Resource" path="res://items/materials/sea_kale.tres" id="1_hm212"]
+[ext_resource type="Texture2D" path="res://world/village/farm/icons/sea_kale_seeds.png" id="2_7oucu"]
+[ext_resource type="Resource" path="res://items/rarities/common.tres" id="3_qtlvb"]
+[ext_resource type="Script" path="res://world/village/farm/seed.gd" id="4_dlptf"]
+
+[resource]
+script = ExtResource("4_dlptf")
+crop = ExtResource("1_hm212")
+days = 3
+harvest = 2
+leafColor = Color(0.38607842, 0.72156864, 0.35117647, 1)
+displayName = "Sea Kale Seeds"
+icon = ExtResource("2_7oucu")
+rarity = ExtResource("3_qtlvb")
+description = "Plant it on a farm plot. Grows into Sea Kale in 3 days."
+maxStack = 99
+buyPrice = 6

@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Snack" format=3]
+
+[ext_resource type="Script" path="res://items/snacks/snack.gd" id="e1"]
+[ext_resource type="Texture2D" path="res://items/snacks/icons/honey_cake.png" id="e2"]
+[ext_resource type="Resource" path="res://items/rarities/uncommon.tres" id="e3"]
+
+[resource]
+script = ExtResource("e1")
+displayName = "Honey Cake"
+icon = ExtResource("e2")
+rarity = ExtResource("e3")
+description = "Sticky, sweet and good for patience."
+energy = 55
+buffStat = "biteSpeed"
+buffAmount = 1.1
+buffHours = 4.0
+hint = "Click while holding it to eat"
+maxStack = 20
+sellPrice = 40

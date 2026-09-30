@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="Charm" format=3]
+
+[ext_resource type="Texture2D" path="res://items/charms/icons/gatherer_1.png" id="1_q5s8y"]
+[ext_resource type="Resource" path="res://items/rarities/common.tres" id="2_clslh"]
+[ext_resource type="Script" path="res://items/charms/charm.gd" id="3_p6vt8"]
+
+[resource]
+script = ExtResource("3_p6vt8")
+stats = Dictionary[StringName, float]({
+&"forageBonus": 10.0
+})
+family = "gatherer"
+displayName = "Gatherer's Charm"
+icon = ExtResource("1_q5s8y")
+rarity = ExtResource("2_clslh")
+description = "Part of the Gatherer line. Upgrade it at a bench to make it stronger."
+sellPrice = 40

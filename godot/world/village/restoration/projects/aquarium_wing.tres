@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Project" format=3]
+
+[ext_resource type="Script" path="res://world/village/restoration/project.gd" id="e1"]
+[ext_resource type="Texture2D" path="res://world/islands/props/greenhouse.png" id="e2"]
+[ext_resource type="Resource" path="res://items/materials/coral_shard.tres" id="e3"]
+[ext_resource type="Resource" path="res://items/materials/iron_scrap.tres" id="e4"]
+[ext_resource type="Script" path="res://items/item.gd" id="e5"]
+[ext_resource type="Resource" path="res://world/village/restoration/projects/tournament_hall.tres" id="e6"]
+
+[resource]
+script = ExtResource("e1")
+displayName = "Aquarium West Wing"
+description = "Half the aquarium is still boarded up."
+icon = ExtResource("e2")
+coins = 6000
+items = Array[ExtResource("e5")]([ExtResource("e3"), ExtResource("e4")])
+amounts = Array[int]([20, 10])
+unlockText = "Four new aquarium tanks"
+requires = Array[ExtResource("e1")]([ExtResource("e6")])

@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="BaitRecipe" format=3]
+
+[ext_resource type="Resource" path="res://items/charms/angler_1.tres" id="1_pw7rl"]
+[ext_resource type="Resource" path="res://items/enchanted/enchanted_sea_shell.tres" id="2_seact"]
+[ext_resource type="Resource" path="res://items/materials/iron_ingot.tres" id="3_xkotp"]
+[ext_resource type="Resource" path="res://items/charms/angler_2.tres" id="4_q2tp6"]
+[ext_resource type="Script" path="res://fishing/bait/bait_recipe.gd" id="5_jcw1a"]
+
+[resource]
+script = ExtResource("5_jcw1a")
+output = ExtResource("4_q2tp6")
+amount = 1
+ingredients = Array[Resource]([ExtResource("1_pw7rl"), ExtResource("2_seact"), ExtResource("3_xkotp")])
+counts = Array[int]([1, 2, 2])
+xp = 60.0
+station = &"workbench"
+category = "Charms"
+requiredSkill = &"fishing"
+requiredLevel = 10

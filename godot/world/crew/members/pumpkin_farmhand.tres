@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="CrewMember" format=3]
+
+[ext_resource type="Resource" path="res://items/enchanted/enchanted_pumpkin.tres" id="1_ckmw6"]
+[ext_resource type="Texture2D" path="res://items/materials/icons/pumpkin.png" id="2_p80hp"]
+[ext_resource type="Resource" path="res://items/materials/pumpkin.tres" id="3_lm3pw"]
+[ext_resource type="Script" path="res://world/crew/crew_member.gd" id="4_di2f4"]
+
+[resource]
+script = ExtResource("4_di2f4")
+displayName = "Pumpkin Farmhand"
+description = "Grows pumpkins the size of boats."
+icon = ExtResource("2_p80hp")
+product = ExtResource("3_lm3pw")
+enchanted = ExtResource("1_ckmw6")
+hours = 2.0

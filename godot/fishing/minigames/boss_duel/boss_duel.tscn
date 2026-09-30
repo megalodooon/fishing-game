@@ -1,0 +1,8 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://fishing/minigames/boss_duel/boss_duel.gd" id="1_game"]
+
+[node name="BossDuel" type="Node2D"]
+script = ExtResource("1_game")
+size = Vector2(84, 52)
+hint = "Dodge the attacks, click the fish while it's worn out"

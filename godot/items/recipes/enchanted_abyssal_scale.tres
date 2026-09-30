@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="BaitRecipe" format=3]
+
+[ext_resource type="Resource" path="res://items/materials/abyssal_scale.tres" id="1_6dq5k"]
+[ext_resource type="Resource" path="res://items/enchanted/enchanted_abyssal_scale.tres" id="2_raw57"]
+[ext_resource type="Script" path="res://fishing/bait/bait_recipe.gd" id="3_6p878"]
+
+[resource]
+script = ExtResource("3_6p878")
+output = ExtResource("2_raw57")
+amount = 1
+ingredients = Array[Resource]([ExtResource("1_6dq5k")])
+counts = Array[int]([16])
+requiredFlag = "collection/abyssal_scale/2"
+xp = 12.0
+category = "Materials"

@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="Snack" format=3]
+
+[ext_resource type="Texture2D" path="res://items/potions/icons/anglers_brew_3.png" id="1_ctxdk"]
+[ext_resource type="Resource" path="res://items/rarities/rare.tres" id="2_qmdb7"]
+[ext_resource type="Script" path="res://items/snacks/snack.gd" id="3_oncrw"]
+
+[resource]
+script = ExtResource("3_oncrw")
+energy = 5.0
+buffStat = "biteSpeed"
+buffAmount = 1.3
+buffHours = 5.0
+displayName = "Angler's Brew III"
+category = "Potion"
+icon = ExtResource("1_ctxdk")
+rarity = ExtResource("2_qmdb7")
+description = "Brewed at a cauldron. Drink it for a few hours of fishing speed."
+hint = "Click while holding it to drink"
+maxStack = 10
+sellPrice = 128

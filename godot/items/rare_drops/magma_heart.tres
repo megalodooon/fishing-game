@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="RareDrop" format=3]
+
+[ext_resource type="Script" path="res://oceans/biome.gd" id="1_vw173"]
+[ext_resource type="Resource" path="res://oceans/volcanic/volcanic_biome.tres" id="2_c2r1x"]
+[ext_resource type="Resource" path="res://oceans/islands/ember_biome.tres" id="3_brbjy"]
+[ext_resource type="Resource" path="res://items/rare/magma_heart.tres" id="4_ak6w3"]
+[ext_resource type="Script" path="res://items/rare_drops/rare_drop.gd" id="5_ejej1"]
+
+[resource]
+script = ExtResource("5_ejej1")
+item = ExtResource("4_ak6w3")
+chance = 0.00125
+biomes = Array[ExtResource("1_vw173")]([ExtResource("2_c2r1x"), ExtResource("3_brbjy")])
+minFishing = 15

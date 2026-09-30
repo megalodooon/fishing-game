@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="CrewContract" format=3]
+
+[ext_resource type="Resource" path="res://world/crew/members/frond_cutter.tres" id="1_7y2sn"]
+[ext_resource type="Texture2D" path="res://items/crew/icons/frond_cutter.png" id="2_n5kdh"]
+[ext_resource type="Resource" path="res://items/rarities/uncommon.tres" id="3_15oqx"]
+[ext_resource type="Script" path="res://world/crew/crew_contract.gd" id="4_c0c5s"]
+
+[resource]
+script = ExtResource("4_c0c5s")
+crew = ExtResource("1_7y2sn")
+displayName = "Frond Cutter Contract"
+icon = ExtResource("2_n5kdh")
+rarity = ExtResource("3_15oqx")
+description = "Hire a frond cutter at the crew board by your house. Climbs palms so you don't have to."

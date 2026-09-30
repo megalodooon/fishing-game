@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="BaitRecipe" format=3]
+
+[ext_resource type="Resource" path="res://items/materials/storm_glass.tres" id="1_3ktnp"]
+[ext_resource type="Resource" path="res://items/enchanted/enchanted_cotton.tres" id="2_nvyrq"]
+[ext_resource type="Resource" path="res://fishing/tacklebox/tackle/storm_glass_line.tres" id="3_yb7he"]
+[ext_resource type="Script" path="res://fishing/bait/bait_recipe.gd" id="4_vcybp"]
+
+[resource]
+script = ExtResource("4_vcybp")
+output = ExtResource("3_yb7he")
+amount = 1
+ingredients = Array[Resource]([ExtResource("1_3ktnp"), ExtResource("2_nvyrq")])
+counts = Array[int]([6, 1])
+xp = 90.0
+station = &"forge"
+category = "Tackle"
+requiredSkill = &"fishing"
+requiredLevel = 20

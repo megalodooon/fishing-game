@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="BaitRecipe" format=3]
+
+[ext_resource type="Resource" path="res://items/charms/voyager_2.tres" id="1_tcgis"]
+[ext_resource type="Resource" path="res://items/enchanted/enchanted_driftwood_plank.tres" id="2_oitdu"]
+[ext_resource type="Resource" path="res://items/materials/pearl_dust.tres" id="3_s1gx3"]
+[ext_resource type="Resource" path="res://items/charms/voyager_3.tres" id="4_o4hwi"]
+[ext_resource type="Script" path="res://fishing/bait/bait_recipe.gd" id="5_6swem"]
+
+[resource]
+script = ExtResource("5_6swem")
+output = ExtResource("4_o4hwi")
+amount = 1
+ingredients = Array[Resource]([ExtResource("1_tcgis"), ExtResource("2_oitdu"), ExtResource("3_s1gx3")])
+counts = Array[int]([1, 8, 3])
+xp = 90.0
+station = &"forge"
+category = "Charms"
+requiredSkill = &"sailing"
+requiredLevel = 18

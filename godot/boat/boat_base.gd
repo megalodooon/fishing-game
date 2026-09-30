@@ -21,6 +21,8 @@ const HOLE_MARGIN : float = 1.0
 @export var occluders : Array[Sprite2D] = []
 @export_range(0.0, 1.0) var occluderFade : float = 0.3
 @export var occluderFadeTime : float = 0.25
+# The deck's walls, which keep the player aboard out at sea.
+@export var walls : CollisionPolygon2D
 
 var upgrades : Array[BoatUpgrade] = []
 var speed : float = 0.0
@@ -36,12 +38,14 @@ var usedRects : Dictionary = {}
 var fadeTween : Tween
 var appliedMotion : float = -1.0
 var opaqueTexels : Variant = null
+# Tied up at an island's pier: held still, the anchor and speed keys do nothing.
+var docked : bool = false
 #------------------------#
 
 
 func _ready() -> void:
-	speed = cruiseSpeed
-	targetSpeed = cruiseSpeed
+	speed = 0.0 if docked else cruiseSpeed
+	targetSpeed = speed
 	if visuals:
 		for sprite : Sprite2D in visuals.find_children("*", "Sprite2D", true, false):
 			if sprite.texture and not sprite is BoatWaterline:
@@ -115,7 +119,7 @@ func find_opaque_texels() -> Rect2:
 	return Rect2(best)
 
 func _process(delta : float) -> void:
-	var throttle : float = Input.get_axis("slow_down", "speed_up")
+	var throttle : float = 0.0 if docked else Input.get_axis("slow_down", "speed_up")
 	if throttle != 0.0:
 		if speedTween:
 			speedTween.kill()
@@ -134,7 +138,7 @@ func _process(delta : float) -> void:
 		item.visible = motion > 0.0
 
 func _unhandled_input(event : InputEvent) -> void:
-	if event.is_action_pressed("anchor"):
+	if event.is_action_pressed("anchor") and not docked:
 		if is_zero_approx(targetSpeed):
 			change_speed(resumeSpeed if resumeSpeed > 0.0 else cruiseSpeed, startTime)
 		else:
@@ -150,6 +154,29 @@ func change_speed(target : float, duration : float = -1.0) -> Tween:
 	speedTween = create_tween().set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
 	speedTween.tween_property(self, "speed", targetSpeed, duration)
 	return speedTween
+
+# Leaving an island sets sail at cruise speed.
+func set_docked(value : bool) -> void:
+	if value == docked:
+		return
+	docked = value
+	if docked:
+		if speedTween:
+			speedTween.kill()
+		speed = 0.0
+		targetSpeed = 0.0
+	elif is_node_ready():
+		change_speed(cruiseSpeed, startTime)
+
+# Tied up out of sight while the player walks an island: not drawn, not
+# processed and out of the physics world, so nothing is spent on it.
+func stow(away : bool) -> void:
+	visible = not away
+	process_mode = PROCESS_MODE_DISABLED if away else PROCESS_MODE_INHERIT
+
+# Inside the deck's walls.
+func on_deck(point : Vector2) -> bool:
+	return walls != null and Geometry2D.is_point_in_polygon(walls.to_local(point), walls.polygon)
 
 func stop(duration : float = -1.0) -> Tween:
 	return change_speed(0.0, stopTime if duration < 0.0 else duration)

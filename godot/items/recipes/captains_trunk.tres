@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="BaitRecipe" format=3]
+
+[ext_resource type="Resource" path="res://items/materials/obsidian_shard.tres" id="1_da55d"]
+[ext_resource type="Resource" path="res://items/materials/frost_crystal.tres" id="2_t86eq"]
+[ext_resource type="Resource" path="res://items/materials/driftwood_plank.tres" id="3_njpnm"]
+[ext_resource type="Resource" path="res://items/tools/captains_trunk.tres" id="4_1jo2f"]
+[ext_resource type="Script" path="res://fishing/bait/bait_recipe.gd" id="5_1cvyj"]
+
+[resource]
+script = ExtResource("5_1cvyj")
+output = ExtResource("4_1jo2f")
+amount = 1
+ingredients = Array[Resource]([ExtResource("1_da55d"), ExtResource("2_t86eq"), ExtResource("3_njpnm")])
+counts = Array[int]([10, 10, 30])
+xp = 150.0
+station = &"forge"
+requiredSkill = &"sailing"
+requiredLevel = 18

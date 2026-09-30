@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="BaitRecipe" format=3]
+
+[ext_resource type="Resource" path="res://items/materials/iron_scrap.tres" id="1_0j0ae"]
+[ext_resource type="Resource" path="res://items/enchanted/enchanted_iron_scrap.tres" id="2_ehivb"]
+[ext_resource type="Script" path="res://fishing/bait/bait_recipe.gd" id="3_pq8df"]
+
+[resource]
+script = ExtResource("3_pq8df")
+output = ExtResource("2_ehivb")
+amount = 1
+ingredients = Array[Resource]([ExtResource("1_0j0ae")])
+counts = Array[int]([32])
+requiredFlag = "collection/iron_scrap/2"
+xp = 12.0
+category = "Materials"

@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="Seed" format=3]
+
+[ext_resource type="Resource" path="res://items/materials/starfruit.tres" id="1_p5oub"]
+[ext_resource type="Texture2D" path="res://world/village/farm/icons/starfruit_seeds.png" id="2_0yu25"]
+[ext_resource type="Resource" path="res://items/rarities/rare.tres" id="3_v18f5"]
+[ext_resource type="Script" path="res://world/village/farm/seed.gd" id="4_05ofv"]
+
+[resource]
+script = ExtResource("4_05ofv")
+crop = ExtResource("1_p5oub")
+days = 5
+leafColor = Color(0.64960784, 0.80627453, 0.31039217, 1)
+displayName = "Starfruit Seeds"
+icon = ExtResource("2_0yu25")
+rarity = ExtResource("3_v18f5")
+description = "Plant it on a farm plot. Grows into Starfruit in 5 days."
+maxStack = 99
+buyPrice = 84

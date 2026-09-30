@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="Quest" format=3 uid="uid://cedn6157dkiyy"]
+
+[ext_resource type="Script" uid="uid://t660ehs2ybui" path="res://world/location.gd" id="7_rf4ra"]
+[ext_resource type="Script" uid="uid://b1p7iyi658nm7" path="res://world/quests/quest.gd" id="e1"]
+[ext_resource type="Script" uid="uid://depkark34l17n" path="res://world/quests/quest_goal.gd" id="e2"]
+[ext_resource type="Resource" uid="uid://b0vyent5sro5b" path="res://fishing/fish/species/volcanic/phoenix_koi.tres" id="e3"]
+[ext_resource type="Resource" uid="uid://3c3md21iba8e" path="res://world/quests/story/q_forge.tres" id="e4"]
+[ext_resource type="Resource" path="res://items/key/tide_pearl_ember.tres" id="e5"]
+[ext_resource type="Script" uid="uid://ftrpy1hit5em" path="res://items/item.gd" id="e6"]
+
+[sub_resource type="Resource" id="s1"]
+script = ExtResource("e2")
+target = ExtResource("e3")
+
+[resource]
+script = ExtResource("e1")
+title = "The Ember Tide"
+giver = "Smith Brann"
+description = "The Phoenix Koi guards the Ember Tide. It rises at night for ember bait."
+story = true
+goals = Array[ExtResource("e2")]([SubResource("s1")])
+startScene = "q_phoenix_start"
+endScene = "q_phoenix_end"
+requires = Array[ExtResource("e1")]([ExtResource("e4")])
+rewardCoins = 2500
+rewardItems = Array[ExtResource("e6")]([ExtResource("e5")])
+rewardAmounts = Array[int]([1])

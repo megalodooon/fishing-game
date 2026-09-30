@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Item" format=3]
+
+[ext_resource type="Texture2D" path="res://items/events/icons/candy_corn.png" id="1_h6fs0"]
+[ext_resource type="Resource" path="res://items/rarities/common.tres" id="2_uhcpk"]
+[ext_resource type="Script" path="res://items/item.gd" id="3_03nkw"]
+
+[resource]
+script = ExtResource("3_03nkw")
+displayName = "Candy Corn"
+category = "Festival"
+icon = ExtResource("1_h6fs0")
+rarity = ExtResource("2_uhcpk")
+description = "Nobody knows who drops it in the sea. Auntie Moss takes it as payment."
+maxStack = 999
+sellPrice = 2

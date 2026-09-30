@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Item" format=3]
+
+[ext_resource type="Texture2D" path="res://items/enchanted/icons/enchanted_wild_berries.png" id="1_7jxwj"]
+[ext_resource type="Resource" path="res://items/rarities/uncommon.tres" id="2_m6y5n"]
+[ext_resource type="Script" path="res://items/item.gd" id="3_rrij6"]
+
+[resource]
+script = ExtResource("3_rrij6")
+displayName = "Enchanted Wild Berries"
+category = "Enchanted Material"
+icon = ExtResource("1_7jxwj")
+rarity = ExtResource("2_m6y5n")
+description = "32 Wild Berries pressed into one. Better recipes ask for these."
+maxStack = 99
+sellPrice = 141

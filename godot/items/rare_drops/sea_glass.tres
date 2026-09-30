@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="RareDrop" format=3]
+
+[ext_resource type="Script" path="res://oceans/biome.gd" id="1_m8y8f"]
+[ext_resource type="Resource" path="res://items/rare/sea_glass.tres" id="2_3yuff"]
+[ext_resource type="Script" path="res://items/rare_drops/rare_drop.gd" id="3_12vs0"]
+
+[resource]
+script = ExtResource("3_12vs0")
+item = ExtResource("2_3yuff")
+chance = 0.025

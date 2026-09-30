@@ -16,17 +16,18 @@ const EMPTY : StringName = &"empty"
 @export var ui : InventoryUI
 # Drawn faintly in empty slots, in Tackle.Kind order.
 @export var kindIcons : Array[Texture2D] = []
+@export var skin : MenuSkin
 
 @export_group("Layout")
 @export var maxWidth : int = 188
 @export var edge : int = 2
-@export var padding : int = 3
+@export var padding : int = 5
 @export var ringWidth : int = 84
 @export var rodScale : float = 2.0
 @export var pickerSize : Vector2 = Vector2(110, 80)
 
 @export_group("Colors")
-@export var ringColor : Color = Color(0.55, 0.68, 0.82, 0.35)
+@export var ringColor : Color = Color(0.7, 0.95, 0.85, 0.35)
 @export var betterColor : Color = Color(0.56, 0.93, 0.44)
 @export var worseColor : Color = Color(0.95, 0.38, 0.34)
 @export var shadeColor : Color = Color(0.02, 0.04, 0.08, 0.6)
@@ -53,6 +54,7 @@ var slotRects : Array[Rect2] = []
 var base : Array = []
 var preview : Array = []
 var tipTitle : String = ""
+var tipSub : String = ""
 var tipColor : Color = Color.WHITE
 var tipLines : PackedStringArray = PackedStringArray()
 var tipSize : Vector2 = Vector2.ZERO
@@ -65,6 +67,8 @@ func _ready() -> void:
 	set_anchors_preset(PRESET_TOP_LEFT)
 	inventory = player.inventory
 	box = player.tacklebox
+	if not skin:
+		skin = load("res://ui/skins/themes/tin.tres") as MenuSkin
 	parts = make_list(false)
 	parts.chosen.connect(choose_part)
 	parts.pointed.connect(point_part)
@@ -97,6 +101,7 @@ func _ready() -> void:
 func make_list(popup : bool) -> ListMenu:
 	var list : ListMenu = ListMenu.new()
 	list.ui = ui
+	list.skin = skin
 	list.framed = true
 	list.slide = Vector2(0.0, 6.0) if popup else Vector2.ZERO
 	add_child(list)
@@ -117,9 +122,8 @@ func _process(_delta : float) -> void:
 	parts.modulate = Color(0.55, 0.55, 0.55) if rodPicker.shown else Color.WHITE
 
 func _unhandled_input(event : InputEvent) -> void:
-	if event.is_action_pressed("tacklebox"):
-		toggle()
-	elif shown and event.is_action_pressed("ui_cancel"):
+	if shown and event.is_action_pressed("ui_cancel"):
+		get_viewport().set_input_as_handled()
 		if rodPicker.shown:
 			rodPicker.close_menu()
 		else:
@@ -131,6 +135,16 @@ func _has_point(point : Vector2) -> bool:
 func _notification(what : int) -> void:
 	if what == NOTIFICATION_MOUSE_EXIT:
 		hover(Vector2i(Zone.NONE, -1))
+
+func hub_open() -> void:
+	if not shown:
+		toggle()
+
+func hub_close() -> void:
+	close()
+
+func hub_shown() -> bool:
+	return shown
 
 func toggle() -> void:
 	if shown:
@@ -182,7 +196,7 @@ func fill_parts() -> void:
 		for part in box.parts_of(kind):
 			var owned : int = box.count(part)
 			var spare : int = box.free_count(part, inventory)
-			if owned == 0:
+			if not box.knows(part):
 				list.append({"value": part, "icon": part.icon, "tint": Color(0.0, 0.0, 0.0, 0.6), "text": "???", "search": "", "dim": true, "known": false, "order": order, "spare": -1})
 			else:
 				var usable : bool = spare > 0 or part == here
@@ -212,7 +226,8 @@ func is_locked() -> bool:
 
 func layout() -> void:
 	var width : float = minf(size.x - edge * 2.0, maxWidth)
-	panelRect = Rect2(floorf((size.x - width) * 0.5), edge, width, size.y - edge * 2.0)
+	var top : float = MenuHub.top_of(get_tree(), edge) if is_inside_tree() else float(edge)
+	panelRect = Rect2(floorf((size.x - width) * 0.5), top, width, size.y - top - edge)
 	var inner : Rect2 = panelRect.grow(-padding)
 	var s : float = ui.slotSize
 	rodRect = Rect2(inner.position, Vector2(s, s))
@@ -228,8 +243,8 @@ func layout() -> void:
 		for i in rod.slots.size():
 			var point : Vector2 = center + Vector2.from_angle(-PI * 0.5 + TAU * i / rod.slots.size()) * radius
 			slotRects.append(Rect2((point - Vector2.ONE * s * 0.5).round(), Vector2.ONE * s))
-	var right : Rect2 = Rect2(left.end.x + 4.0, bodyTop, inner.end.x - left.end.x - 4.0, left.size.y)
-	var statsHeight : float = FishingRod.STAT_NAMES.size() * (ui.statSize + 1.0)
+	var right : Rect2 = Rect2(left.end.x + 4.0, bodyTop, inner.end.x - left.end.x - 4.0, left.size.y - 1.0)
+	var statsHeight : float = FishingRod.STAT_NAMES.size() * (ui.statSize + 1.0) + 1.0
 	statsRect = Rect2(right.position.x, right.end.y - statsHeight, right.size.x, statsHeight)
 	parts.place(Rect2(right.position, Vector2(right.size.x, right.size.y - statsHeight - 3.0)))
 	rodPicker.place(Rect2(((size - pickerSize) * 0.5).floor(), pickerSize))
@@ -326,7 +341,7 @@ func hover(at : Vector2i, force : bool = false) -> void:
 			if part:
 				var lines : PackedStringArray = part.details()
 				lines.append_array(["Required", ""] if rod.is_required(index) else ["Right-click", "remove"])
-				set_tip(part.displayName, part.title_color(), lines)
+				set_tip(part.displayName, part.title_color(), lines, part.tag())
 			else:
 				set_tip("Empty %s slot" % Tackle.KIND_NAMES[rod.slots[index]].to_lower(), ui.textColor, PackedStringArray(["Click to pick a part", ""]))
 
@@ -338,12 +353,12 @@ func point_part(value : Variant) -> void:
 	if not part:
 		set_tip("Empty", ui.textColor, PackedStringArray(["Take the part off", ""]))
 		preview = trial(null)
-	elif box.count(part) == 0:
+	elif not box.knows(part):
 		set_tip("???", ui.textColor, PackedStringArray(["Not found yet", ""]))
 	else:
 		var lines : PackedStringArray = part.details()
 		lines.append_array(["Owned", "%d" % box.count(part), "Free", "%d" % box.free_count(part, inventory)])
-		set_tip(part.displayName, part.title_color(), lines)
+		set_tip(part.displayName, part.title_color(), lines, part.tag())
 		preview = trial(part)
 	tipLeftOf = parts.home.x
 	queue_redraw()
@@ -352,13 +367,14 @@ func point_rod(value : Variant) -> void:
 	clear_tip()
 	var item : RodItem = inventory.items[value] as RodItem if value != null else null
 	if item:
-		set_tip(item.displayName, item.title_color(), item.details())
+		set_tip(item.displayName, item.title_color(), item.details(), item.tag())
 
-func set_tip(title : String, color : Color, lines : PackedStringArray) -> void:
+func set_tip(title : String, color : Color, lines : PackedStringArray, subtitle : String = "") -> void:
+	tipSub = subtitle
 	tipTitle = title
 	tipColor = color
 	tipLines = lines
-	tipSize = ui.tip_size(title, lines)
+	tipSize = ui.tip_size(title, lines, subtitle)
 	tipLayer.queue_redraw()
 
 func clear_tip() -> void:
@@ -381,10 +397,11 @@ func trial(part : Tackle) -> Array:
 
 func _draw() -> void:
 	var font : Font = ui.font
-	draw_rect(panelRect, ui.frameColor)
-	draw_rect(panelRect.grow(-1.0), ui.panelColor)
-	draw_frame(closeRect, ui.hoverColor if zone == Zone.CLOSE else ui.frameColor)
-	draw_cross(closeRect.grow(-3.5), ui.textColor)
+	draw_rect(Rect2(panelRect.position + Vector2(2.0, 2.0), panelRect.size), Color(0.0, 0.0, 0.0, 0.3))
+	UiKit.box(self, skin.frame, panelRect)
+	UiKit.box(self, skin.well, Rect2(statsRect.position - Vector2(2.0, 2.0), statsRect.size + Vector2(4.0, 3.0)))
+	UiKit.box(self, skin.tabHover if zone == Zone.CLOSE else skin.tab, closeRect)
+	draw_cross(closeRect.grow(-3.5), skin.text)
 	var baseline : float = rodRect.position.y + roundf((ui.slotSize + font.get_ascent(ui.titleSize)) * 0.5)
 	if not rod:
 		draw_string(font, Vector2(rodRect.position.x, baseline), "No rods to customize", HORIZONTAL_ALIGNMENT_LEFT, -1, ui.titleSize, ui.dimColor)
@@ -444,11 +461,12 @@ func draw_tip() -> void:
 	var pointer : Vector2 = get_local_mouse_position()
 	if tipLeftOf >= 0.0:
 		pointer = Vector2(tipLeftOf - tipSize.x - 7.0, pointer.y - 4.0)
-	ui.paint_tip(tipLayer, pointer, tipTitle, tipColor, tipLines, tipSize)
+	ui.paint_tip(tipLayer, pointer, tipTitle, tipColor, tipLines, tipSize, tipSub)
 
 func draw_frame(area : Rect2, color : Color) -> void:
 	draw_rect(area, color)
-	draw_rect(area.grow(-1.0), ui.slotColor)
+	draw_rect(area.grow(-1.0), Color(0.08, 0.18, 0.15))
+	draw_rect(Rect2(area.position.x + 1.0, area.position.y + 1.0, area.size.x - 2.0, 1.0), Color(0.0, 0.0, 0.0, 0.25))
 
 func draw_cross(area : Rect2, color : Color) -> void:
 	draw_line(area.position, area.end, color, 1.0)

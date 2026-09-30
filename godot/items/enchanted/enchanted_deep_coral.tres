@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Item" format=3]
+
+[ext_resource type="Texture2D" path="res://items/enchanted/icons/enchanted_deep_coral.png" id="1_1rxb4"]
+[ext_resource type="Resource" path="res://items/rarities/legendary.tres" id="2_n3mbm"]
+[ext_resource type="Script" path="res://items/item.gd" id="3_dkj00"]
+
+[resource]
+script = ExtResource("3_dkj00")
+displayName = "Enchanted Deep Coral"
+category = "Enchanted Material"
+icon = ExtResource("1_1rxb4")
+rarity = ExtResource("2_n3mbm")
+description = "16 Deep Coral pressed into one. Better recipes ask for these."
+maxStack = 99
+sellPrice = 1056

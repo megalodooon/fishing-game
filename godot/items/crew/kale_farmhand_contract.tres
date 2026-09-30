@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="CrewContract" format=3]
+
+[ext_resource type="Resource" path="res://world/crew/members/kale_farmhand.tres" id="1_3nmxy"]
+[ext_resource type="Texture2D" path="res://items/crew/icons/kale_farmhand.png" id="2_e6a31"]
+[ext_resource type="Resource" path="res://items/rarities/uncommon.tres" id="3_xkb77"]
+[ext_resource type="Script" path="res://world/crew/crew_contract.gd" id="4_1ybgs"]
+
+[resource]
+script = ExtResource("4_1ybgs")
+crew = ExtResource("1_3nmxy")
+displayName = "Kale Farmhand Contract"
+icon = ExtResource("2_e6a31")
+rarity = ExtResource("3_xkb77")
+description = "Hire a kale farmhand at the crew board by your house. Really, really likes kale."

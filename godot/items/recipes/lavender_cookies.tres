@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="BaitRecipe" format=3]
+
+[ext_resource type="Resource" path="res://items/materials/lavender.tres" id="1_h8058"]
+[ext_resource type="Resource" path="res://items/materials/honey.tres" id="2_k4bal"]
+[ext_resource type="Resource" path="res://items/materials/sweetcorn.tres" id="3_1gfxv"]
+[ext_resource type="Resource" path="res://items/snacks/lavender_cookies.tres" id="4_tuvn6"]
+[ext_resource type="Script" path="res://fishing/bait/bait_recipe.gd" id="5_yl1oa"]
+
+[resource]
+script = ExtResource("5_yl1oa")
+output = ExtResource("4_tuvn6")
+amount = 1
+ingredients = Array[Resource]([ExtResource("1_h8058"), ExtResource("2_k4bal"), ExtResource("3_1gfxv")])
+counts = Array[int]([2, 1, 1])
+xp = 22.0
+station = &"kitchen"
+category = "Food"
+requiredSkill = &"cooking"
+requiredLevel = 7

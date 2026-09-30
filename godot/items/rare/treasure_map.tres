@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="TreasureChest" format=3]
+
+[ext_resource type="Texture2D" path="res://items/rare/icons/treasure_map.png" id="1_2if2f"]
+[ext_resource type="Script" path="res://items/item.gd" id="2_guwan"]
+[ext_resource type="Resource" path="res://items/rare/pirate_doubloon.tres" id="3_abf03"]
+[ext_resource type="Resource" path="res://items/rare/lucky_stone.tres" id="4_8wd6q"]
+[ext_resource type="Resource" path="res://items/treasure/golden_chest.tres" id="5_0kt38"]
+[ext_resource type="Resource" path="res://items/rare/sea_glass.tres" id="6_beiet"]
+[ext_resource type="Resource" path="res://items/rarities/legendary.tres" id="7_nvfq5"]
+[ext_resource type="Script" path="res://items/treasure/treasure_chest.gd" id="8_51x0r"]
+
+[resource]
+script = ExtResource("8_51x0r")
+coins = Vector2i(800, 2500)
+rolls = Vector2i(2, 3)
+loot = Array[ExtResource("2_guwan")]([ExtResource("3_abf03"), ExtResource("4_8wd6q"), ExtResource("5_0kt38"), ExtResource("6_beiet")])
+lootWeights = PackedFloat32Array(3, 1, 2, 3)
+lootAmounts = Array[Vector2i]([Vector2i(1, 3), Vector2i(1, 1), Vector2i(1, 1), Vector2i(3, 6)])
+displayName = "Treasure Map"
+category = "Treasure"
+icon = ExtResource("1_2if2f")
+rarity = ExtResource("7_nvfq5")
+description = "X marks the spot. Open it to dig up what the pirates buried."
+hint = "Click to open"
+maxStack = 99

@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Item" format=3]
+
+[ext_resource type="Texture2D" path="res://items/materials/icons/ember_ash.png" id="1_nfhnl"]
+[ext_resource type="Resource" path="res://items/rarities/uncommon.tres" id="2_hi15q"]
+[ext_resource type="Script" path="res://items/item.gd" id="3_5360s"]
+
+[resource]
+script = ExtResource("3_5360s")
+displayName = "Ember Ash"
+category = "Forage"
+icon = ExtResource("1_nfhnl")
+rarity = ExtResource("2_hi15q")
+description = "Still warm. It glows when you blow on it."
+maxStack = 99
+sellPrice = 14

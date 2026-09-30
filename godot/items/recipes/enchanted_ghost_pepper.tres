@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="BaitRecipe" format=3]
+
+[ext_resource type="Resource" path="res://items/materials/ghost_pepper.tres" id="1_t5dib"]
+[ext_resource type="Resource" path="res://items/enchanted/enchanted_ghost_pepper.tres" id="2_q7vtr"]
+[ext_resource type="Script" path="res://fishing/bait/bait_recipe.gd" id="3_5g5nq"]
+
+[resource]
+script = ExtResource("3_5g5nq")
+output = ExtResource("2_q7vtr")
+amount = 1
+ingredients = Array[Resource]([ExtResource("1_t5dib")])
+counts = Array[int]([32])
+requiredFlag = "collection/ghost_pepper/2"
+xp = 12.0
+category = "Materials"

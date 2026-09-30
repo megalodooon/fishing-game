@@ -1,0 +1,33 @@
+[gd_resource type="Resource" script_class="Biome" format=3 uid="uid://dxl08vpl22ypd"]
+
+[ext_resource type="Resource" path="res://items/materials/starfish.tres" id="19_b2xyu"]
+[ext_resource type="Script" path="res://oceans/biome.gd" id="e1"]
+[ext_resource type="Script" path="res://fishing/fish/fish_data.gd" id="e2"]
+[ext_resource type="Resource" path="res://fishing/fish/species/reef/clownfish.tres" id="e3"]
+[ext_resource type="Resource" path="res://fishing/fish/species/reef/blue_tang.tres" id="e4"]
+[ext_resource type="Resource" path="res://fishing/fish/species/reef/parrotfish.tres" id="e5"]
+[ext_resource type="Resource" path="res://fishing/fish/species/reef/butterflyfish.tres" id="e6"]
+[ext_resource type="Resource" path="res://fishing/fish/species/reef/moorish_idol.tres" id="e7"]
+[ext_resource type="Resource" path="res://fishing/fish/species/reef/rain_goby.tres" id="e8"]
+[ext_resource type="Resource" path="res://fishing/fish/species/reef/lionfish.tres" id="e9"]
+[ext_resource type="Resource" path="res://fishing/fish/species/reef/reef_shark.tres" id="e10"]
+[ext_resource type="Resource" path="res://fishing/fish/species/reef/napoleon_wrasse.tres" id="e11"]
+[ext_resource type="Resource" path="res://fishing/fish/species/reef/coral_emperor.tres" id="e12"]
+[ext_resource type="Resource" path="res://fishing/creatures/moray_menace.tres" id="e13"]
+[ext_resource type="Resource" path="res://fishing/creatures/reef_shark_brute.tres" id="e14"]
+[ext_resource type="Script" path="res://fishing/creatures/sea_creature.gd" id="e15"]
+[ext_resource type="Resource" path="res://items/materials/coral_shard.tres" id="e16"]
+[ext_resource type="Resource" path="res://items/materials/seaweed.tres" id="e17"]
+[ext_resource type="Resource" path="res://items/materials/broken_bottle.tres" id="e18"]
+[ext_resource type="Script" path="res://items/item.gd" id="e19"]
+
+[resource]
+script = ExtResource("e1")
+displayName = "Coral Reef"
+description = "Warm, clear water over a rainbow of coral."
+region = "Sunny Seas"
+fish = Array[ExtResource("e2")]([ExtResource("e3"), ExtResource("e4"), ExtResource("e5"), ExtResource("e6"), ExtResource("e7"), ExtResource("e8"), ExtResource("e9"), ExtResource("e10"), ExtResource("e11"), ExtResource("e12")])
+creatures = Array[ExtResource("e15")]([ExtResource("e13"), ExtResource("e14")])
+tier = 1
+junkChance = 0.08
+junk = Array[ExtResource("e19")]([ExtResource("e16"), ExtResource("e17"), ExtResource("e18"), ExtResource("19_b2xyu")])

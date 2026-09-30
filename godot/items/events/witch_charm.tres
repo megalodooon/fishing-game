@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Charm" format=3]
+
+[ext_resource type="Texture2D" path="res://items/events/icons/witch_charm.png" id="1_uh6a7"]
+[ext_resource type="Resource" path="res://items/rarities/legendary.tres" id="2_s5ce0"]
+[ext_resource type="Script" path="res://items/charms/charm.gd" id="3_pcoc1"]
+
+[resource]
+script = ExtResource("3_pcoc1")
+stats = Dictionary[StringName, float]({
+&"damage": 15.0,
+&"seaCreature": 3.0
+})
+displayName = "Witch's Charm"
+icon = ExtResource("1_uh6a7")
+rarity = ExtResource("2_s5ce0")
+description = "Auntie Moss swears it's harmless. Sea creatures disagree."

@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="Biome" format=3]
+
+[ext_resource type="Script" path="res://fishing/creatures/sea_creature.gd" id="1_lwgnp"]
+[ext_resource type="Resource" path="res://items/materials/pearl_oyster.tres" id="9_aui25"]
+[ext_resource type="Resource" path="res://items/materials/starfish.tres" id="10_flme0"]
+[ext_resource type="Resource" path="res://items/materials/palm_frond.tres" id="11_rngur"]
+[ext_resource type="Resource" path="res://items/materials/beach_sand.tres" id="12_tor2e"]
+[ext_resource type="Script" path="res://oceans/biome.gd" id="e1"]
+[ext_resource type="Script" path="res://fishing/fish/fish_data.gd" id="e2"]
+[ext_resource type="Resource" path="res://fishing/fish/species/lagoon/pearl_goby.tres" id="e3"]
+[ext_resource type="Resource" path="res://fishing/fish/species/lagoon/lagoon_wrasse.tres" id="e4"]
+[ext_resource type="Resource" path="res://fishing/fish/species/lagoon/oyster_toadfish.tres" id="e5"]
+[ext_resource type="Resource" path="res://fishing/fish/species/lagoon/moon_angelfish.tres" id="e6"]
+[ext_resource type="Resource" path="res://fishing/fish/species/lagoon/pearl_queen.tres" id="e7"]
+[ext_resource type="Resource" path="res://items/materials/sea_shell.tres" id="e8"]
+[ext_resource type="Script" path="res://items/item.gd" id="e9"]
+
+[resource]
+script = ExtResource("e1")
+displayName = "Pearl Lagoon"
+description = "Clear, still water over white sand."
+region = "Sunny Seas"
+fish = Array[ExtResource("e2")]([ExtResource("e3"), ExtResource("e4"), ExtResource("e5"), ExtResource("e6"), ExtResource("e7")])
+tier = 1
+junk = Array[ExtResource("e9")]([ExtResource("e8")])
+forage = Array[ExtResource("e9")]([ExtResource("9_aui25"), ExtResource("10_flme0"), ExtResource("11_rngur"), ExtResource("12_tor2e")])

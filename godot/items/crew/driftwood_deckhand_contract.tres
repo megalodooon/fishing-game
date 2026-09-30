@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="CrewContract" format=3]
+
+[ext_resource type="Resource" path="res://world/crew/members/driftwood_deckhand.tres" id="1_1p5uq"]
+[ext_resource type="Texture2D" path="res://items/crew/icons/driftwood_deckhand.png" id="2_xhtoi"]
+[ext_resource type="Resource" path="res://items/rarities/uncommon.tres" id="3_apmh2"]
+[ext_resource type="Script" path="res://world/crew/crew_contract.gd" id="4_b4hy7"]
+
+[resource]
+script = ExtResource("4_b4hy7")
+crew = ExtResource("1_1p5uq")
+displayName = "Driftwood Deckhand Contract"
+icon = ExtResource("2_xhtoi")
+rarity = ExtResource("3_apmh2")
+description = "Hire a driftwood deckhand at the crew board by your house. Combs the beach for driftwood."

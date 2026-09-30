@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Seed" format=3]
+
+[ext_resource type="Resource" path="res://items/materials/lavender.tres" id="1_fhuh8"]
+[ext_resource type="Texture2D" path="res://world/village/farm/icons/lavender_seeds.png" id="2_j8sex"]
+[ext_resource type="Resource" path="res://items/rarities/uncommon.tres" id="3_af0yq"]
+[ext_resource type="Script" path="res://world/village/farm/seed.gd" id="4_bv0js"]
+
+[resource]
+script = ExtResource("4_bv0js")
+crop = ExtResource("1_fhuh8")
+days = 3
+harvest = 2
+leafColor = Color(0.5115686, 0.6462745, 0.5613725, 1)
+displayName = "Lavender Seeds"
+icon = ExtResource("2_j8sex")
+rarity = ExtResource("3_af0yq")
+description = "Plant it on a farm plot. Grows into Lavender in 3 days."
+maxStack = 99
+buyPrice = 11

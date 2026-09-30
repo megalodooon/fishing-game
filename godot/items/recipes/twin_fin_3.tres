@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="BaitRecipe" format=3]
+
+[ext_resource type="Resource" path="res://items/charms/twin_fin_2.tres" id="1_egfeh"]
+[ext_resource type="Resource" path="res://items/enchanted/enchanted_fish_scales.tres" id="2_vtfx5"]
+[ext_resource type="Resource" path="res://items/materials/pearl_dust.tres" id="3_l5jvl"]
+[ext_resource type="Resource" path="res://items/charms/twin_fin_3.tres" id="4_1e4gr"]
+[ext_resource type="Script" path="res://fishing/bait/bait_recipe.gd" id="5_tn3st"]
+
+[resource]
+script = ExtResource("5_tn3st")
+output = ExtResource("4_1e4gr")
+amount = 1
+ingredients = Array[Resource]([ExtResource("1_egfeh"), ExtResource("2_vtfx5"), ExtResource("3_l5jvl")])
+counts = Array[int]([1, 8, 3])
+xp = 90.0
+station = &"forge"
+category = "Charms"
+requiredSkill = &"fishing"
+requiredLevel = 26

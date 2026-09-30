@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Item" format=3]
+
+[ext_resource type="Texture2D" path="res://items/materials/icons/palm_frond.png" id="1_kk4qp"]
+[ext_resource type="Resource" path="res://items/rarities/common.tres" id="2_mfwef"]
+[ext_resource type="Script" path="res://items/item.gd" id="3_svvie"]
+
+[resource]
+script = ExtResource("3_svvie")
+displayName = "Palm Frond"
+category = "Forage"
+icon = ExtResource("1_kk4qp")
+rarity = ExtResource("2_mfwef")
+description = "Tough, long leaves. Twisted, they make good rope."
+maxStack = 99
+sellPrice = 3

@@ -31,15 +31,13 @@ func _ready() -> void:
 		if holder:
 			set_icon_scale(holder.heldItemScale)
 
+# From the shared icon cache, which reads the icon's file instead of the GPU.
 func measure_icon() -> void:
-	var image : Image = iconSprite.texture.get_image() if iconSprite.texture else null
-	if not image:
+	if not iconSprite.texture or not IconOutline.outline(iconSprite.texture):
 		return
-	if image.is_compressed():
-		image.decompress()
-	var used : Rect2 = Rect2(image.get_used_rect())
+	var used : Rect2 = IconOutline.used_rect(iconSprite.texture)
 	visibleSize = used.size
-	visibleCenter = used.get_center() - Vector2(image.get_size()) * 0.5
+	visibleCenter = used.get_center() - iconSprite.texture.get_size() * 0.5
 
 # The size of the icon's visible pixels as drawn in the hand.
 func held_extent() -> Vector2:

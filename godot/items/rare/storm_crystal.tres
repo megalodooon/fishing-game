@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Item" format=3]
+
+[ext_resource type="Texture2D" path="res://items/rare/icons/storm_crystal.png" id="1_f7cko"]
+[ext_resource type="Resource" path="res://items/rarities/legendary.tres" id="2_2mcql"]
+[ext_resource type="Script" path="res://items/item.gd" id="3_yw81d"]
+
+[resource]
+script = ExtResource("3_yw81d")
+displayName = "Storm Crystal"
+category = "Rare Catch"
+icon = ExtResource("1_f7cko")
+rarity = ExtResource("2_2mcql")
+description = "Lightning, caught in glass. A piece of the Storm Tide."
+maxStack = 10
+sellPrice = 1200

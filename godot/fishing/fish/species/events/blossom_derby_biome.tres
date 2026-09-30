@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="Biome" format=3]
+
+[ext_resource type="Script" path="res://fishing/creatures/sea_creature.gd" id="1_f2pf8"]
+[ext_resource type="Script" path="res://fishing/fish/fish_data.gd" id="2_ru2au"]
+[ext_resource type="Resource" path="res://fishing/fish/species/events/petal_minnow.tres" id="3_h7rh1"]
+[ext_resource type="Resource" path="res://fishing/fish/species/events/blossom_trout.tres" id="4_tarnm"]
+[ext_resource type="Resource" path="res://fishing/fish/species/events/cherry_carp.tres" id="5_ceidh"]
+[ext_resource type="Resource" path="res://fishing/fish/species/events/sakura_salmon.tres" id="6_oaoqf"]
+[ext_resource type="Resource" path="res://fishing/fish/species/events/spring_sovereign.tres" id="7_mnaqa"]
+[ext_resource type="Script" path="res://items/item.gd" id="8_gp1tw"]
+[ext_resource type="Script" path="res://oceans/biome.gd" id="9_7acvr"]
+
+[resource]
+script = ExtResource("9_7acvr")
+displayName = "Blossom Derby"
+description = "Festival fish of spring. They only bite during the Blossom Derby."
+region = "Festivals"
+fish = Array[ExtResource("2_ru2au")]([ExtResource("3_h7rh1"), ExtResource("4_tarnm"), ExtResource("5_ceidh"), ExtResource("6_oaoqf"), ExtResource("7_mnaqa")])
+tier = 1
+junkChance = 0.0

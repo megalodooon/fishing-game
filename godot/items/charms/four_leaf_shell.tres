@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="Charm" format=3]
+
+[ext_resource type="Script" path="res://items/charms/charm.gd" id="e1"]
+[ext_resource type="Texture2D" path="res://items/charms/icons/four_leaf_shell.png" id="e2"]
+[ext_resource type="Resource" path="res://items/rarities/legendary.tres" id="e3"]
+
+[resource]
+script = ExtResource("e1")
+stats = Dictionary[StringName, float]({
+&"luck": 6.0,
+&"treasure": 1.0
+})
+displayName = "Four-Leaf Shell"
+icon = ExtResource("e2")
+rarity = ExtResource("e3")
+description = "A shell shaped like a clover. Absurdly lucky."
+sellPrice = 350

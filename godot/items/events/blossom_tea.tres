@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="Snack" format=3]
+
+[ext_resource type="Texture2D" path="res://items/events/icons/blossom_tea.png" id="1_fbn17"]
+[ext_resource type="Resource" path="res://items/rarities/uncommon.tres" id="2_oba35"]
+[ext_resource type="Script" path="res://items/snacks/snack.gd" id="3_wvy35"]
+
+[resource]
+script = ExtResource("3_wvy35")
+energy = 25.0
+buffStat = "biteSpeed"
+buffAmount = 1.15
+displayName = "Blossom Tea"
+icon = ExtResource("1_fbn17")
+rarity = ExtResource("2_oba35")
+description = "Sweet and floral. Fish seem to bite sooner after a cup."
+maxStack = 20
+sellPrice = 15

@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="RodItem" format=3]
+
+[ext_resource type="Script" path="res://fishing/tacklebox/tackle.gd" id="1_1rnvv"]
+[ext_resource type="PackedScene" path="res://fishing/rods/starter_rod.tscn" id="2_3xcrx"]
+[ext_resource type="Texture2D" path="res://fishing/rods/icons/stormcaller_rod.png" id="3_5jgno"]
+[ext_resource type="Resource" path="res://items/rarities/legendary.tres" id="4_he0ff"]
+[ext_resource type="Script" path="res://fishing/rods/rod_item.gd" id="5_1ejlb"]
+[ext_resource type="Resource" path="res://fishing/tacklebox/tackle/basic_bobber.tres" id="6_ihm87"]
+[ext_resource type="Resource" path="res://fishing/tacklebox/tackle/basic_line.tres" id="7_sl24k"]
+[ext_resource type="Resource" path="res://fishing/tacklebox/tackle/basic_hook.tres" id="8_0pc1j"]
+
+[sub_resource type="Resource" id="Resource_lb4o2"]
+script = ExtResource("1_1rnvv")
+kind = 3
+biteSpeed = 1.3
+hookWindowBonus = 0.3
+control = 0.2
+displayName = "Stormcaller Rod"
+
+[resource]
+script = ExtResource("5_1ejlb")
+slots = Array[int]([0, 1, 1, 2, 3, 3, 4])
+tackle = Array[ExtResource("1_1rnvv")]([ExtResource("6_ihm87"), ExtResource("7_sl24k"), null, ExtResource("8_0pc1j"), null, null, null])
+builtIn = SubResource("Resource_lb4o2")
+rodTint = Color(0.65882355, 0.54901963, 1, 1)
+displayName = "Stormcaller Rod"
+icon = ExtResource("3_5jgno")
+rarity = ExtResource("4_he0ff")
+description = "A crafted rod. T to customize it."
+heldScene = ExtResource("2_3xcrx")
+discardable = false
+hint = "T to customize"

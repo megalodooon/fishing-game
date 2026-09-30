@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="CrewMember" format=3]
+
+[ext_resource type="Resource" path="res://items/enchanted/enchanted_swamp_moss.tres" id="1_75cu3"]
+[ext_resource type="Texture2D" path="res://items/materials/icons/swamp_moss.png" id="2_clusr"]
+[ext_resource type="Resource" path="res://items/materials/swamp_moss.tres" id="3_jpfn4"]
+[ext_resource type="Script" path="res://world/crew/crew_member.gd" id="4_tbqx8"]
+
+[resource]
+script = ExtResource("4_tbqx8")
+displayName = "Moss Gatherer"
+description = "Doesn't mind wet boots."
+icon = ExtResource("2_clusr")
+product = ExtResource("3_jpfn4")
+enchanted = ExtResource("1_75cu3")
+hours = 0.8

@@ -1,0 +1,8 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://fishing/minigames/bullet_hell/bullet_hell.gd" id="1_game"]
+
+[node name="BulletHell" type="Node2D"]
+script = ExtResource("1_game")
+size = Vector2(84, 52)
+hint = "Dodge with the mouse, grab the green knots to reel it in"

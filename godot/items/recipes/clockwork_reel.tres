@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="BaitRecipe" format=3]
+
+[ext_resource type="Resource" path="res://items/materials/scrap_wire.tres" id="1_5jhme"]
+[ext_resource type="Resource" path="res://items/materials/iron_ingot.tres" id="2_y6vr6"]
+[ext_resource type="Resource" path="res://items/materials/storm_core.tres" id="3_obgca"]
+[ext_resource type="Resource" path="res://fishing/tacklebox/tackle/clockwork_reel.tres" id="4_7dcbj"]
+[ext_resource type="Script" path="res://fishing/bait/bait_recipe.gd" id="5_52eda"]
+
+[resource]
+script = ExtResource("5_52eda")
+output = ExtResource("4_7dcbj")
+amount = 1
+ingredients = Array[Resource]([ExtResource("1_5jhme"), ExtResource("2_y6vr6"), ExtResource("3_obgca")])
+counts = Array[int]([16, 6, 1])
+xp = 90.0
+station = &"forge"
+category = "Tackle"
+requiredSkill = &"fishing"
+requiredLevel = 20

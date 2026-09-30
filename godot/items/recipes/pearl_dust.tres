@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="BaitRecipe" format=3]
+
+[ext_resource type="Resource" path="res://items/materials/pearl_oyster.tres" id="1_ngmek"]
+[ext_resource type="Resource" path="res://items/materials/pearl_dust.tres" id="2_ou6yx"]
+[ext_resource type="Script" path="res://fishing/bait/bait_recipe.gd" id="3_8tn70"]
+
+[resource]
+script = ExtResource("3_8tn70")
+output = ExtResource("2_ou6yx")
+amount = 1
+ingredients = Array[Resource]([ExtResource("1_ngmek")])
+counts = Array[int]([2])
+xp = 6.0
+category = "Materials"

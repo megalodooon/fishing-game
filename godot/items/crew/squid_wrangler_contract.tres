@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="CrewContract" format=3]
+
+[ext_resource type="Resource" path="res://world/crew/members/squid_wrangler.tres" id="1_6b34w"]
+[ext_resource type="Texture2D" path="res://items/crew/icons/squid_wrangler.png" id="2_3tyrc"]
+[ext_resource type="Resource" path="res://items/rarities/uncommon.tres" id="3_7vnho"]
+[ext_resource type="Script" path="res://world/crew/crew_contract.gd" id="4_myjj3"]
+
+[resource]
+script = ExtResource("4_myjj3")
+crew = ExtResource("1_6b34w")
+displayName = "Squid Wrangler Contract"
+icon = ExtResource("2_3tyrc")
+rarity = ExtResource("3_7vnho")
+description = "Hire a squid wrangler at the crew board by your house. Squids don't like them. The feeling is mutual."

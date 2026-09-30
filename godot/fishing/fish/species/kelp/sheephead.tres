@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="FishData" format=3]
+
+[ext_resource type="Script" path="res://fishing/fish/fish_data.gd" id="e1"]
+[ext_resource type="Texture2D" path="res://fishing/fish/assets/kelp/sheephead.png" id="e2"]
+[ext_resource type="Resource" path="res://items/rarities/uncommon.tres" id="e3"]
+
+[resource]
+script = ExtResource("e1")
+displayName = "Sheephead"
+icon = ExtResource("e2")
+rarity = ExtResource("e3")
+description = "Crunches urchins with human-like teeth."
+weightRange = Vector2(1.0, 8.0)
+basePrice = 48
+heldSize = 1.1
+hours = Vector2(0.0, 24.0)

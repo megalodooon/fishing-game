@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="Bait" format=3]
+
+[ext_resource type="Script" path="res://fishing/fish/fish_data.gd" id="1_442vo"]
+[ext_resource type="Texture2D" path="res://fishing/bait/icons/berry_bait.png" id="2_xwhom"]
+[ext_resource type="Resource" path="res://items/rarities/common.tres" id="3_jgjkd"]
+[ext_resource type="Script" path="res://items/rarity.gd" id="4_sj5m1"]
+[ext_resource type="Resource" path="res://items/rarities/uncommon.tres" id="5_wqqnp"]
+[ext_resource type="Script" path="res://fishing/bait/bait.gd" id="6_2iqxs"]
+
+[resource]
+script = ExtResource("6_2iqxs")
+rarityBoost = Dictionary[ExtResource("4_sj5m1"), float]({
+ExtResource("5_wqqnp"): 1.4
+})
+kind = 4
+displayName = "Berry Bait"
+icon = ExtResource("2_xwhom")
+rarity = ExtResource("3_jgjkd")
+description = "Goes in a rod's bait slot."
+maxStack = 99

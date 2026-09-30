@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="Quest" format=3 uid="uid://dcvy4ywlrhkvc"]
+
+[ext_resource type="Script" uid="uid://ftrpy1hit5em" path="res://items/item.gd" id="4_sx7um"]
+[ext_resource type="Script" uid="uid://t660ehs2ybui" path="res://world/location.gd" id="5_fk3bo"]
+[ext_resource type="Script" uid="uid://b1p7iyi658nm7" path="res://world/quests/quest.gd" id="e1"]
+[ext_resource type="Script" uid="uid://depkark34l17n" path="res://world/quests/quest_goal.gd" id="e2"]
+[ext_resource type="Resource" uid="uid://8klb8vpylieh" path="res://world/quests/story/q_rex.tres" id="e3"]
+
+[sub_resource type="Resource" id="s1"]
+script = ExtResource("e2")
+kind = 4
+flag = "project/boatyard"
+text = "Restore the Boatyard"
+
+[sub_resource type="Resource" id="s2"]
+script = ExtResource("e2")
+kind = 9
+flag = "hull"
+
+[resource]
+script = ExtResource("e1")
+title = "Marina's Boatyard"
+giver = "Marina"
+description = "Marina can upgrade your boat if the boatyard gets fixed. Restore it, then build a Patched Hull."
+story = true
+goals = Array[ExtResource("e2")]([SubResource("s1"), SubResource("s2")])
+startScene = "q_boatyard_start"
+endScene = "q_boatyard_end"
+requires = Array[ExtResource("e1")]([ExtResource("e3")])
+rewardCoins = 300

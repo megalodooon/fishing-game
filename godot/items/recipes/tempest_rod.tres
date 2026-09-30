@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="BaitRecipe" format=3]
+
+[ext_resource type="Script" path="res://fishing/bait/bait_recipe.gd" id="e1"]
+[ext_resource type="Resource" path="res://fishing/rods/tempest_rod.tres" id="e2"]
+[ext_resource type="Resource" path="res://items/materials/storm_essence.tres" id="e3"]
+[ext_resource type="Resource" path="res://items/materials/obsidian_shard.tres" id="e4"]
+
+[resource]
+script = ExtResource("e1")
+output = ExtResource("e2")
+amount = 1
+ingredients = Array[Resource]([ExtResource("e3"), ExtResource("e4")])
+counts = Array[int]([10, 10])
+requiredFlag = "collection/storm_essence/2"
+lockedText = "Collect 3 Storm Essence to learn it."
+xp = 80.0
+station = &"forge"

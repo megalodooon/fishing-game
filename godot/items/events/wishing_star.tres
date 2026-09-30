@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="Snack" format=3]
+
+[ext_resource type="Texture2D" path="res://items/events/icons/wishing_star.png" id="1_hmojs"]
+[ext_resource type="Resource" path="res://items/rarities/rare.tres" id="2_ckoet"]
+[ext_resource type="Script" path="res://items/snacks/snack.gd" id="3_5u18j"]
+
+[resource]
+script = ExtResource("3_5u18j")
+energy = 60.0
+buffStat = "luck"
+buffAmount = 1.3
+buffHours = 3.0
+displayName = "Wishing Star"
+icon = ExtResource("1_hmojs")
+rarity = ExtResource("2_ckoet")
+description = "Make a wish and eat it. Tastes like sparkling honey."
+maxStack = 20
+sellPrice = 30

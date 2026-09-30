@@ -100,6 +100,8 @@ const SHADER_PARAMETERS : Array[String] = [
 @export var boat : Boat
 @export var fallbackSpeed : float = 10.0
 @export var decorationLayers : Array[DecorationLayer] = []
+# The moment still water (see make_still) is frozen at.
+@export var stillTime : float = 2.0
 
 var scroll : Vector2 = Vector2.ZERO
 var fieldsMaterial : ShaderMaterial = ShaderMaterial.new()
@@ -111,8 +113,16 @@ var cellsBViewport : SubViewport
 var waterTexture : Texture2D
 var bands : CanvasClip
 var bandRects : Array[Rect2] = []
-var uniformNames : Dictionary = {}
+# Per shader, the uniforms it declares. Shared, as reading them is slow.
+static var uniformNames : Dictionary = {}
+# The passes still water shares, and the water using them now.
+static var sharedPasses : Array[SubViewport] = []
+static var sharedOwner : Ocean
 var fieldsLayout : Array = []
+var still : bool = false
+# Frames the passes of still water keep rendering after it's shown, so they
+# are ready whichever order the viewports are drawn in.
+var stillFrames : int = 0
 #------------------------#
 
 
@@ -123,9 +133,8 @@ func _ready() -> void:
 	cellsAMaterial.shader = preload("res://shaders/caustic_cells.gdshader")
 	cellsBMaterial.shader = cellsAMaterial.shader
 	cellsBMaterial.set_shader_parameter("speed_scale", 1.3)
-	fieldsViewport = create_pass(fieldsMaterial)
-	cellsAViewport = create_pass(cellsAMaterial)
-	cellsBViewport = create_pass(cellsBMaterial)
+	if Engine.is_editor_hint():
+		create_passes()
 	for parameter in SHADER_PARAMETERS:
 		update_shader(parameter, get(parameter))
 	if sprite and sprite.texture and not Engine.is_editor_hint():
@@ -133,11 +142,94 @@ func _ready() -> void:
 		sprite.texture = null
 		bands = CanvasClip.new(sprite)
 
+# Islands have water in several rooms and only show one at a time. Hidden
+# water stops updating and rendering its passes.
+func _notification(what : int) -> void:
+	if what == NOTIFICATION_VISIBILITY_CHANGED and not Engine.is_editor_hint() and is_node_ready():
+		refresh_passes()
+
+# The passes are made the first time the water is shown or updated. Still
+# water borrows one shared set instead, as only one island room shows at a
+# time, so rooms and islands don't each make their own.
+func create_passes() -> void:
+	if fieldsViewport:
+		return
+	if still and not Engine.is_editor_hint():
+		borrow_shared_passes()
+	else:
+		fieldsViewport = create_pass(fieldsMaterial)
+		cellsAViewport = create_pass(cellsAMaterial)
+		cellsBViewport = create_pass(cellsBMaterial)
+	fieldsLayout = []
+
+func borrow_shared_passes() -> void:
+	if sharedPasses.is_empty():
+		var holder : Node = Node.new()
+		holder.name = "SharedWaterPasses"
+		get_tree().root.add_child(holder)
+		for i in 3:
+			sharedPasses.append(create_pass(null, holder))
+	if is_instance_valid(sharedOwner) and sharedOwner != self:
+		sharedOwner.release_shared_passes()
+	sharedOwner = self
+	fieldsViewport = sharedPasses[0]
+	cellsAViewport = sharedPasses[1]
+	cellsBViewport = sharedPasses[2]
+	for pair in [[fieldsViewport, fieldsMaterial], [cellsAViewport, cellsAMaterial], [cellsBViewport, cellsBMaterial]]:
+		(pair[0].get_child(0) as ColorRect).material = pair[1]
+
+# Another room's water took the shared passes; this one borrows them back
+# when it's shown again.
+func release_shared_passes() -> void:
+	fieldsViewport = null
+	cellsAViewport = null
+	cellsBViewport = null
+	fieldsLayout = []
+
+func refresh_passes() -> void:
+	var shown : bool = is_visible_in_tree()
+	stillFrames = 3 if still and shown else 0
+	set_process(shown)
+	if shown and still:
+		create_passes()
+		update_fields()
+	for viewport in [fieldsViewport, cellsAViewport, cellsBViewport]:
+		if viewport:
+			viewport.render_target_update_mode = SubViewport.UPDATE_ALWAYS if shown else SubViewport.UPDATE_DISABLED
+
+# Holds the water still, for places the boat doesn't sail through (island
+# rooms): no scrolling, the waves and caustics frozen at stillTime and the
+# passes rendered just after it's shown (the island calls refresh_passes).
+# The water and the seabed are only drawn where cover (the room's land)
+# leaves them showing.
+func make_still(cover : Sprite2D) -> void:
+	still = true
+	for target in [sprite.material if sprite else null, fieldsMaterial, cellsAMaterial, cellsBMaterial]:
+		if target is ShaderMaterial:
+			target.set_shader_parameter("still", true)
+			target.set_shader_parameter("still_time", stillTime)
+	if sprite and waterTexture:
+		var rects : Array[Rect2] = CanvasClip.uncovered_rects(sprite, water_rect(), cover)
+		bands = CanvasClip.new(sprite, rects.size())
+		bandRects = rects
+		bands.record(rects, draw_band)
+	if ground:
+		ground.draw_only(CanvasClip.uncovered_rects(ground, Rect2(Vector2.ZERO, ground.size), cover))
+
 static func current_biome(tree : SceneTree) -> Biome:
 	var ocean : Ocean = tree.get_first_node_in_group(GROUP) as Ocean
 	return ocean.biome if ocean else null
 
 func _process(delta : float) -> void:
+	if still:
+		# Nothing moves: the passes render a few frames after being shown, then stop.
+		stillFrames -= 1
+		if stillFrames <= 0:
+			for viewport in [fieldsViewport, cellsAViewport, cellsBViewport]:
+				if viewport:
+					viewport.render_target_update_mode = SubViewport.UPDATE_DISABLED
+			set_process(false)
+		return
 	var distance : float = (boat.speed if boat and not Engine.is_editor_hint() else fallbackSpeed) * delta
 	if ground:
 		ground.scroll(distance)
@@ -169,8 +261,9 @@ func draw_band(item : RID) -> void:
 	RenderingServer.canvas_item_add_texture_rect_region(item, water_rect(), waterTexture.get_rid(), Rect2(Vector2.ZERO, waterTexture.get_size()), Color(1, 1, 1), false, false)
 
 func update_fields() -> void:
-	if not sprite or not water_texture() or not fieldsViewport:
+	if not sprite or not water_texture():
 		return
+	create_passes()
 	var margin : int = ceili(absf(wave_strength)) + 2
 	var texels : Vector2i = Vector2i(water_texture().get_size()) + Vector2i(margin, margin) * 2 + Vector2i.ONE
 	var origin : Vector2 = (sprite.global_position + scroll).floor() - Vector2(margin, margin)
@@ -198,7 +291,7 @@ func update_cells(viewport : SubViewport, cellsMaterial : ShaderMaterial, layer 
 	RenderingServer.material_set_param(rid, "cells_" + layer, viewport.get_texture().get_rid())
 	RenderingServer.material_set_param(rid, "cells_%s_origin" % layer, start)
 
-func create_pass(passMaterial : ShaderMaterial) -> SubViewport:
+func create_pass(passMaterial : ShaderMaterial, parent : Node = null) -> SubViewport:
 	var viewport : SubViewport = SubViewport.new()
 	var canvas : ColorRect = ColorRect.new()
 	canvas.material = passMaterial
@@ -206,7 +299,10 @@ func create_pass(passMaterial : ShaderMaterial) -> SubViewport:
 	viewport.use_hdr_2d = true
 	viewport.render_target_update_mode = SubViewport.UPDATE_ALWAYS
 	viewport.add_child(canvas)
-	add_child(viewport, false, Node.INTERNAL_MODE_FRONT)
+	if parent:
+		parent.add_child(viewport)
+	else:
+		add_child(viewport, false, Node.INTERNAL_MODE_FRONT)
 	return viewport
 
 func resize_pass(viewport : SubViewport, texels : Vector2i) -> void:

@@ -1,0 +1,31 @@
+[gd_resource type="Resource" script_class="RodItem" format=3]
+
+[ext_resource type="Script" path="res://fishing/tacklebox/tackle.gd" id="1_2xfla"]
+[ext_resource type="PackedScene" path="res://fishing/rods/starter_rod.tscn" id="2_xuesn"]
+[ext_resource type="Texture2D" path="res://fishing/rods/icons/ironbound_rod.png" id="3_cma2n"]
+[ext_resource type="Resource" path="res://items/rarities/rare.tres" id="4_tvpag"]
+[ext_resource type="Script" path="res://fishing/rods/rod_item.gd" id="5_oak0g"]
+[ext_resource type="Resource" path="res://fishing/tacklebox/tackle/basic_bobber.tres" id="6_uaemg"]
+[ext_resource type="Resource" path="res://fishing/tacklebox/tackle/basic_line.tres" id="7_4idy2"]
+[ext_resource type="Resource" path="res://fishing/tacklebox/tackle/basic_hook.tres" id="8_03ogg"]
+
+[sub_resource type="Resource" id="Resource_i3ib3"]
+script = ExtResource("1_2xfla")
+kind = 3
+control = 0.15
+reelSpeed = 1.2
+displayName = "Ironbound Rod"
+
+[resource]
+script = ExtResource("5_oak0g")
+slots = Array[int]([0, 1, 2, 3, 4])
+tackle = Array[ExtResource("1_2xfla")]([ExtResource("6_uaemg"), ExtResource("7_4idy2"), ExtResource("8_03ogg"), null, null])
+builtIn = SubResource("Resource_i3ib3")
+rodTint = Color(0.65882355, 0.6745098, 0.72156864, 1)
+displayName = "Ironbound Rod"
+icon = ExtResource("3_cma2n")
+rarity = ExtResource("4_tvpag")
+description = "A crafted rod. T to customize it."
+heldScene = ExtResource("2_xuesn")
+discardable = false
+hint = "T to customize"

@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="FishData" format=3 uid="uid://fxuxiwmr2fjy"]
+
+[ext_resource type="Script" uid="uid://bevdmlyak68oo" path="res://fishing/fish/fish_data.gd" id="1_fish"]
+[ext_resource type="Texture2D" uid="uid://b4de4nkiam4ew" path="res://fishing/fish/assets/weather/drizzle_minnow.png" id="2_icon"]
+[ext_resource type="Resource" path="res://items/rarities/uncommon.tres" id="3_rarity"]
+[ext_resource type="Script" uid="uid://dupq0iwgv25f6" path="res://fishing/fish/requirements/fish_requirement.gd" id="s_req"]
+[ext_resource type="Script" uid="uid://c3d1apon1mdqw" path="res://fishing/fish/requirements/weather_requirement.gd" id="s_w"]
+
+[sub_resource type="Resource" id="Req_1"]
+script = ExtResource("s_w")
+
+[resource]
+script = ExtResource("1_fish")
+displayName = "Drizzle Minnow"
+icon = ExtResource("2_icon")
+rarity = ExtResource("3_rarity")
+description = "Dances just under the surface while it rains."
+weightRange = Vector2(0.05, 0.2)
+basePrice = 30
+heldSize = 0.7
+requirements = Array[ExtResource("s_req")]([SubResource("Req_1")])

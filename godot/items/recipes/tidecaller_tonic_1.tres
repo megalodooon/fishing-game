@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="BaitRecipe" format=3]
+
+[ext_resource type="Resource" path="res://items/materials/glass_bottle.tres" id="1_ea2wi"]
+[ext_resource type="Resource" path="res://items/materials/ink_sac.tres" id="2_vkou7"]
+[ext_resource type="Resource" path="res://items/materials/swamp_moss.tres" id="3_2exaj"]
+[ext_resource type="Resource" path="res://items/potions/tidecaller_tonic_1.tres" id="4_mdqvk"]
+[ext_resource type="Script" path="res://fishing/bait/bait_recipe.gd" id="5_u5qsy"]
+
+[resource]
+script = ExtResource("5_u5qsy")
+output = ExtResource("4_mdqvk")
+amount = 1
+ingredients = Array[Resource]([ExtResource("1_ea2wi"), ExtResource("2_vkou7"), ExtResource("3_2exaj")])
+counts = Array[int]([1, 2, 3])
+xp = 22.0
+station = &"cauldron"
+category = "Potions"
+requiredSkill = &"alchemy"
+requiredLevel = 4

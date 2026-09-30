@@ -1,5 +1,6 @@
 [gd_resource type="Resource" script_class="Tackle" format=3]
 
+[ext_resource type="Resource" path="res://items/rarities/common.tres" id="tier_common"]
 [ext_resource type="Script" path="res://fishing/tacklebox/tackle.gd" id="1_tackle"]
 [ext_resource type="Texture2D" path="res://fishing/tacklebox/icons/hook.png" id="2_icon"]
 [ext_resource type="Resource" path="res://items/rarities/uncommon.tres" id="r_rarity"]
@@ -9,8 +10,9 @@ script = ExtResource("1_tackle")
 kind = 2
 displayName = "Barbed Hook"
 icon = ExtResource("2_icon")
-rarity = ExtResource("r_rarity")
+rarity = ExtResource("tier_common")
 discardable = false
 tint = Color(1, 0.62, 0.62, 1)
-hookWindowBonus = 0.4
-control = 0.1
+hookWindowBonus = 0.25
+control = 0.06
+buyPrice = 150

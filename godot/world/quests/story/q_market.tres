@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="Quest" format=3 uid="uid://b248ynipyh1t"]
+
+[ext_resource type="Script" uid="uid://ftrpy1hit5em" path="res://items/item.gd" id="4_ub4sl"]
+[ext_resource type="Script" uid="uid://b1p7iyi658nm7" path="res://world/quests/quest.gd" id="e1"]
+[ext_resource type="Script" uid="uid://depkark34l17n" path="res://world/quests/quest_goal.gd" id="e2"]
+[ext_resource type="Resource" uid="uid://c0evstgp34yv4" path="res://world/quests/story/q_rod.tres" id="e3"]
+[ext_resource type="Resource" path="res://world/locations/meadow_isle.tres" id="e4"]
+[ext_resource type="Script" uid="uid://t660ehs2ybui" path="res://world/location.gd" id="e5"]
+
+[sub_resource type="Resource" id="s1"]
+script = ExtResource("e2")
+kind = 1
+amount = 150
+
+[resource]
+script = ExtResource("e1")
+title = "Fresh Off the Boat"
+giver = "Gus the Fishmonger"
+description = "Gus buys fish at the Fishmonger in the square. Sell him 150 coins' worth."
+story = true
+goals = Array[ExtResource("e2")]([SubResource("s1")])
+startScene = "q_market_start"
+endScene = "q_market_end"
+requires = Array[ExtResource("e1")]([ExtResource("e3")])
+rewardCoins = 50
+unlocks = Array[ExtResource("e5")]([ExtResource("e4")])

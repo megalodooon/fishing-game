@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="PetData" format=3]
+
+[ext_resource type="Script" path="res://world/village/pets/pet_data.gd" id="1_pet"]
+[ext_resource type="Texture2D" path="res://world/village/pets/art/otter.png" id="2_art"]
+[ext_resource type="Script" path="res://items/rarity.gd" id="3_rarity_script"]
+
+[resource]
+script = ExtResource("1_pet")
+displayName = "Otter"
+description = "Loves the water and cheers you on. Casting feels easier with it around."
+sprite = ExtResource("2_art")
+flies = false
+glows = false
+price = 1200
+castEnergy = 0.8
+walkSpeed = 1.05

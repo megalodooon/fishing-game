@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Reforge" format=3]
+
+[ext_resource type="Script" path="res://fishing/reforges/reforge.gd" id="1_1n5io"]
+[ext_resource type="Resource" path="res://items/rare/storm_stone.tres" id="2_8yr6l"]
+
+[resource]
+script = ExtResource("1_1n5io")
+prefix = "Stormborn"
+weight = 0.0
+stone = ExtResource("2_8yr6l")
+kind = 3
+biteSpeed = 1.18
+hookWindowBonus = 0.2
+reelSpeed = 1.3
+displayName = "Stormborn"

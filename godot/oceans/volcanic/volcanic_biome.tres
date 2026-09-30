@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="Biome" format=3 uid="uid://bypp8chnnxtf1"]
+
+[ext_resource type="Resource" path="res://items/materials/pumice.tres" id="17_i58uq"]
+[ext_resource type="Resource" path="res://items/materials/ember_ash.tres" id="18_mtvpk"]
+[ext_resource type="Script" path="res://oceans/biome.gd" id="e1"]
+[ext_resource type="Script" path="res://fishing/fish/fish_data.gd" id="e2"]
+[ext_resource type="Resource" path="res://fishing/fish/species/volcanic/ember_tetra.tres" id="e3"]
+[ext_resource type="Resource" path="res://fishing/fish/species/volcanic/ash_cod.tres" id="e4"]
+[ext_resource type="Resource" path="res://fishing/fish/species/volcanic/magma_snapper.tres" id="e5"]
+[ext_resource type="Resource" path="res://fishing/fish/species/volcanic/obsidian_eel.tres" id="e6"]
+[ext_resource type="Resource" path="res://fishing/fish/species/volcanic/sulfur_puffer.tres" id="e7"]
+[ext_resource type="Resource" path="res://fishing/fish/species/volcanic/flame_angel.tres" id="e8"]
+[ext_resource type="Resource" path="res://fishing/fish/species/volcanic/steam_ray.tres" id="e9"]
+[ext_resource type="Resource" path="res://fishing/fish/species/volcanic/inferno_marlin.tres" id="e10"]
+[ext_resource type="Resource" path="res://fishing/fish/species/volcanic/phoenix_koi.tres" id="e11"]
+[ext_resource type="Resource" path="res://fishing/creatures/magma_crab.tres" id="e12"]
+[ext_resource type="Resource" path="res://fishing/creatures/cinder_serpent.tres" id="e13"]
+[ext_resource type="Script" path="res://fishing/creatures/sea_creature.gd" id="e14"]
+[ext_resource type="Resource" path="res://items/materials/obsidian_shard.tres" id="e15"]
+[ext_resource type="Resource" path="res://items/materials/iron_scrap.tres" id="e16"]
+[ext_resource type="Script" path="res://items/item.gd" id="e17"]
+
+[resource]
+script = ExtResource("e1")
+displayName = "Volcanic Ocean"
+description = "The sea steams around an underwater volcano. Only tough fish live here."
+region = "Fire Isles"
+fish = Array[ExtResource("e2")]([ExtResource("e3"), ExtResource("e4"), ExtResource("e5"), ExtResource("e6"), ExtResource("e7"), ExtResource("e8"), ExtResource("e9"), ExtResource("e10"), ExtResource("e11")])
+creatures = Array[ExtResource("e14")]([ExtResource("e12"), ExtResource("e13")])
+tier = 3
+junkChance = 0.08
+junk = Array[ExtResource("e17")]([ExtResource("e15"), ExtResource("e16"), ExtResource("17_i58uq"), ExtResource("18_mtvpk")])

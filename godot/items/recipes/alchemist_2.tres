@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="BaitRecipe" format=3]
+
+[ext_resource type="Resource" path="res://items/charms/alchemist_1.tres" id="1_6vhrp"]
+[ext_resource type="Resource" path="res://items/enchanted/enchanted_swamp_moss.tres" id="2_5m1lr"]
+[ext_resource type="Resource" path="res://items/materials/iron_ingot.tres" id="3_yx3m8"]
+[ext_resource type="Resource" path="res://items/charms/alchemist_2.tres" id="4_ml03q"]
+[ext_resource type="Script" path="res://fishing/bait/bait_recipe.gd" id="5_m1dav"]
+
+[resource]
+script = ExtResource("5_m1dav")
+output = ExtResource("4_ml03q")
+amount = 1
+ingredients = Array[Resource]([ExtResource("1_6vhrp"), ExtResource("2_5m1lr"), ExtResource("3_yx3m8")])
+counts = Array[int]([1, 2, 2])
+xp = 60.0
+station = &"workbench"
+category = "Charms"
+requiredSkill = &"alchemy"
+requiredLevel = 10

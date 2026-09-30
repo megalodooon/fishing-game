@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Item" format=3]
+
+[ext_resource type="Texture2D" path="res://items/materials/icons/gull_feather.png" id="1_dv8dh"]
+[ext_resource type="Resource" path="res://items/rarities/uncommon.tres" id="2_pq0we"]
+[ext_resource type="Script" path="res://items/item.gd" id="3_7hcfq"]
+
+[resource]
+script = ExtResource("3_7hcfq")
+displayName = "Gull Feather"
+category = "Forage"
+icon = ExtResource("1_dv8dh")
+rarity = ExtResource("2_pq0we")
+description = "Light as anything. Floats forever."
+maxStack = 99
+sellPrice = 10

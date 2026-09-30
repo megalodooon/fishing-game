@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="BaitRecipe" format=3]
+
+[ext_resource type="Resource" path="res://items/materials/sea_kale.tres" id="1_ouye1"]
+[ext_resource type="Resource" path="res://items/materials/rope.tres" id="2_kldkj"]
+[ext_resource type="Resource" path="res://items/crew/kale_farmhand_contract.tres" id="3_k7n4q"]
+[ext_resource type="Script" path="res://fishing/bait/bait_recipe.gd" id="4_fo6vp"]
+
+[resource]
+script = ExtResource("4_fo6vp")
+output = ExtResource("3_k7n4q")
+amount = 1
+ingredients = Array[Resource]([ExtResource("1_ouye1"), ExtResource("2_kldkj")])
+counts = Array[int]([24, 2])
+requiredFlag = "collection/sea_kale/1"
+xp = 25.0
+station = &"workbench"
+category = "Crew"

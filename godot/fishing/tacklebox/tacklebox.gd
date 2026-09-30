@@ -4,6 +4,9 @@ class_name Tacklebox
 # The collection of rod parts, kept as a count per part and never thrown away.
 # A part on a rod uses up one copy until it comes off again.
 
+# Parts came in, from a shop, a crafter or a reward.
+signal gained(part : Tackle, amount : int)
+
 #------------------------#
 # Every part in the game, in the order the tacklebox lists them. Parts not
 # owned yet show up as unknown.
@@ -20,6 +23,27 @@ func count(part : Tackle) -> int:
 
 func add(part : Tackle, amount : int = 1) -> void:
 	owned[part] = count(part) + amount
+	emit_changed()
+	gained.emit(part, amount)
+
+# Owned at some point, even if every copy got used up since.
+func knows(part : Tackle) -> bool:
+	return owned.has(part)
+
+# Uses up one copy of a part that runs out, like bait. Once the last one is
+# gone it comes off the rods.
+func use_up(part : Tackle, inventory : Inventory) -> void:
+	owned[part] = maxi(count(part) - 1, 0)
+	var extra : int = used(part, inventory) - count(part)
+	for item in inventory.items:
+		if extra <= 0:
+			break
+		if item is RodItem:
+			var rod : RodItem = item
+			for slot in rod.tackle.size():
+				if extra > 0 and rod.tackle[slot] == part:
+					rod.set_tackle(slot, null)
+					extra -= 1
 	emit_changed()
 
 func used(part : Tackle, inventory : Inventory) -> int:

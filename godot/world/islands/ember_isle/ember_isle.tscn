@@ -1,0 +1,502 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://world/island/island.gd" id="1_island"]
+[ext_resource type="Script" path="res://world/island/island_room.gd" id="2_room"]
+[ext_resource type="PackedScene" uid="uid://dw4byakruepaa" path="res://oceans/basic/basic_ocean.tscn" id="3_ocean"]
+[ext_resource type="Resource" path="res://oceans/islands/ember_biome.tres" id="4_biome"]
+[ext_resource type="Texture2D" path="res://world/islands/ember_isle/land/landing.png" id="5_landing"]
+[ext_resource type="Texture2D" path="res://world/islands/ember_isle/land/springs.png" id="6_springs"]
+[ext_resource type="Texture2D" path="res://world/islands/props/forge.png" id="7_forge"]
+[ext_resource type="Texture2D" path="res://world/islands/props/inn.png" id="8_inn"]
+[ext_resource type="Texture2D" path="res://world/islands/props/pet_stall.png" id="9_stall"]
+[ext_resource type="Texture2D" path="res://world/islands/props/hot_spring.png" id="10_spring"]
+[ext_resource type="Texture2D" path="res://world/islands/props/lava_rock.png" id="11_rock"]
+[ext_resource type="Texture2D" path="res://world/islands/props/merchant_cart.png" id="12_cart"]
+[ext_resource type="Texture2D" path="res://world/village/props/sign.png" id="13_sign"]
+[ext_resource type="Script" path="res://world/village/building.gd" id="15_building"]
+[ext_resource type="Script" path="res://world/village/shop/shop.gd" id="16_shop"]
+[ext_resource type="Script" path="res://world/village/shop/shop_offer.gd" id="17_offer"]
+[ext_resource type="Script" path="res://world/quests/quest_board.gd" id="18_board"]
+[ext_resource type="Script" path="res://world/quests/quest.gd" id="19_quest"]
+[ext_resource type="Script" path="res://world/village/pets/pet_shop.gd" id="20_pet_shop"]
+[ext_resource type="Script" path="res://world/village/pets/pet_data.gd" id="21_pet_script"]
+[ext_resource type="Script" path="res://world/interact/secret.gd" id="22_secret"]
+[ext_resource type="PackedScene" path="res://fishing/fishing_spots/fishing_spot.tscn" id="23_spot"]
+[ext_resource type="Script" path="res://world/village/bed.gd" id="24_bed"]
+[ext_resource type="Resource" path="res://world/village/pets/ember_salamander.tres" id="29_salamander"]
+[ext_resource type="Texture2D" path="res://world/portraits/smith.png" id="30_smith"]
+[ext_resource type="Texture2D" path="res://world/portraits/innkeeper.png" id="31_innkeeper"]
+[ext_resource type="Texture2D" path="res://world/portraits/merchant.png" id="32_merchant"]
+[ext_resource type="Resource" path="res://fishing/rods/magma_rod.tres" id="33_magma"]
+[ext_resource type="Resource" path="res://fishing/tacklebox/tackle/obsidian_hook.tres" id="34_obsidian"]
+[ext_resource type="Resource" path="res://fishing/tacklebox/tackle/heatproof_line.tres" id="35_heatproof"]
+[ext_resource type="Resource" path="res://fishing/bait/ember_bait.tres" id="36_ember"]
+[ext_resource type="Resource" path="res://fishing/tacklebox/tackle/sonar_buoy.tres" id="37_sonar"]
+[ext_resource type="Resource" path="res://items/snacks/hot_cocoa.tres" id="38_cocoa"]
+[ext_resource type="Resource" path="res://items/snacks/grilled_fish.tres" id="39_grilled"]
+[ext_resource type="Resource" path="res://items/snacks/lava_cake.tres" id="40_cake"]
+[ext_resource type="Resource" path="res://items/snacks/island_coffee.tres" id="41_coffee"]
+[ext_resource type="Resource" path="res://items/snacks/chili_bowl.tres" id="42_chili"]
+[ext_resource type="Resource" path="res://fishing/tacklebox/tackle/storm_bobber.tres" id="43_storm_bobber"]
+[ext_resource type="Resource" path="res://fishing/bait/squid_bait.tres" id="44_squid"]
+[ext_resource type="Resource" path="res://items/snacks/lucky_sushi.tres" id="45_sushi"]
+
+[ext_resource type="Script" path="res://world/npc/npc.gd" id="m_e1"]
+[ext_resource type="Script" path="res://world/quests/quest.gd" id="m_e2"]
+[ext_resource type="Resource" path="res://world/quests/story/q_ember.tres" id="m_e3"]
+[ext_resource type="Resource" path="res://world/quests/story/q_forge.tres" id="m_e4"]
+[ext_resource type="Resource" path="res://world/quests/story/q_phoenix.tres" id="m_e5"]
+[ext_resource type="Resource" path="res://world/quests/side/b_hot.tres" id="m_e6"]
+[ext_resource type="Resource" path="res://world/quests/side/b_eels.tres" id="m_e7"]
+[ext_resource type="Resource" path="res://world/quests/side/b_crabs.tres" id="m_e8"]
+[ext_resource type="Texture2D" path="res://world/npcs/brann.png" id="m_e9"]
+[ext_resource type="Resource" path="res://world/quests/side/ma_supper.tres" id="m_e10"]
+[ext_resource type="Resource" path="res://world/quests/side/ma_chef.tres" id="m_e11"]
+[ext_resource type="Texture2D" path="res://world/npcs/mara.png" id="m_e12"]
+[ext_resource type="Script" path="res://world/interact/secret.gd" id="m_e13"]
+[ext_resource type="Script" path="res://items/item.gd" id="m_e14"]
+[ext_resource type="Resource" path="res://items/key/logbook_page_11.tres" id="m_e15"]
+[ext_resource type="Script" path="res://world/traps/trap_spot.gd" id="m_e16"]
+[ext_resource type="Resource" path="res://oceans/islands/ember_biome.tres" id="m_e17"]
+[ext_resource type="Resource" path="res://items/materials/obsidian_shard.tres" id="m_e18"]
+[ext_resource type="Resource" path="res://items/materials/crab_shell.tres" id="m_e19"]
+[ext_resource type="Script" path="res://world/village/bait_crafter.gd" id="fx_crafter"]
+[ext_resource type="Script" path="res://fishing/reforges/reforge_anvil.gd" id="fx_anvil"]
+
+[sub_resource type="RectangleShape2D" id="Rect_forge"]
+size = Vector2(32, 6)
+
+[sub_resource type="RectangleShape2D" id="Rect_inn"]
+size = Vector2(36, 8)
+
+[sub_resource type="RectangleShape2D" id="Rect_stall"]
+size = Vector2(22, 5)
+
+[sub_resource type="RectangleShape2D" id="Rect_spring"]
+size = Vector2(20, 6)
+
+[sub_resource type="RectangleShape2D" id="Rect_rock"]
+size = Vector2(10, 4)
+
+[sub_resource type="RectangleShape2D" id="Rect_cart"]
+size = Vector2(20, 5)
+
+[sub_resource type="Resource" id="Offer_f1"]
+script = ExtResource("17_offer")
+item = ExtResource("33_magma")
+price = 6000
+
+[sub_resource type="Resource" id="Offer_f2"]
+script = ExtResource("17_offer")
+item = ExtResource("34_obsidian")
+price = 1800
+
+[sub_resource type="Resource" id="Offer_f3"]
+script = ExtResource("17_offer")
+item = ExtResource("35_heatproof")
+price = 900
+
+[sub_resource type="Resource" id="Offer_f4"]
+script = ExtResource("17_offer")
+item = ExtResource("36_ember")
+amount = 4
+price = 200
+
+[sub_resource type="Resource" id="Offer_f5"]
+script = ExtResource("17_offer")
+item = ExtResource("37_sonar")
+price = 1300
+
+[sub_resource type="Resource" id="Offer_i1"]
+script = ExtResource("17_offer")
+item = ExtResource("38_cocoa")
+price = 15
+
+[sub_resource type="Resource" id="Offer_i2"]
+script = ExtResource("17_offer")
+item = ExtResource("39_grilled")
+price = 30
+
+[sub_resource type="Resource" id="Offer_i3"]
+script = ExtResource("17_offer")
+item = ExtResource("40_cake")
+price = 110
+dailyStock = 2
+
+[sub_resource type="Resource" id="Offer_i4"]
+script = ExtResource("17_offer")
+item = ExtResource("41_coffee")
+price = 45
+
+[sub_resource type="Resource" id="Offer_i5"]
+script = ExtResource("17_offer")
+item = ExtResource("42_chili")
+price = 70
+dailyStock = 3
+
+[sub_resource type="Resource" id="Offer_w1"]
+script = ExtResource("17_offer")
+item = ExtResource("43_storm_bobber")
+price = 900
+dailyStock = 1
+
+[sub_resource type="Resource" id="Offer_w2"]
+script = ExtResource("17_offer")
+item = ExtResource("44_squid")
+amount = 4
+price = 150
+
+[sub_resource type="Resource" id="Offer_w3"]
+script = ExtResource("17_offer")
+item = ExtResource("45_sushi")
+price = 90
+dailyStock = 2
+
+[sub_resource type="RectangleShape2D" id="m_s1"]
+size = Vector2(6.0, 3.0)
+
+[sub_resource type="RectangleShape2D" id="m_s2"]
+size = Vector2(6.0, 3.0)
+
+[node name="EmberIsle" type="Node2D"]
+y_sort_enabled = true
+script = ExtResource("1_island")
+
+[node name="Landing" type="Node2D" parent="." node_paths=PackedStringArray("land")]
+y_sort_enabled = true
+script = ExtResource("2_room")
+land = [NodePath("Land")]
+
+[node name="Water" parent="Landing" instance=ExtResource("3_ocean")]
+biome = ExtResource("4_biome")
+
+[node name="Land" type="Sprite2D" parent="Landing"]
+z_index = -1
+texture = ExtResource("5_landing")
+centered = false
+
+[node name="Forge" type="Node2D" parent="Landing"]
+position = Vector2(112, 34)
+script = ExtResource("15_building")
+displayName = "Smith's Forge"
+
+[node name="Art" type="Sprite2D" parent="Landing/Forge"]
+texture = ExtResource("7_forge")
+centered = false
+offset = Vector2(-18, -30)
+
+[node name="Body" type="StaticBody2D" parent="Landing/Forge"]
+
+[node name="Shape" type="CollisionShape2D" parent="Landing/Forge/Body"]
+position = Vector2(0, -3)
+shape = SubResource("Rect_forge")
+
+[node name="Door" type="Node2D" parent="Landing/Forge"]
+position = Vector2(0, 2)
+script = ExtResource("16_shop")
+offers = Array[ExtResource("17_offer")]([SubResource("Offer_f1"), SubResource("Offer_f2"), SubResource("Offer_f3"), SubResource("Offer_f4"), SubResource("Offer_f5")])
+buyRate = 0.0
+greeting = "Tools that don't melt."
+title = "Smith's Forge"
+portrait = ExtResource("30_smith")
+prompt = "Forge"
+reach = 12.0
+
+[node name="Merchant" type="Node2D" parent="Landing"]
+position = Vector2(123, 94)
+script = ExtResource("15_building")
+displayName = "Wandering Merchant"
+visitChance = 0.3
+
+[node name="Art" type="Sprite2D" parent="Landing/Merchant"]
+texture = ExtResource("12_cart")
+centered = false
+offset = Vector2(-12, -20)
+
+[node name="Body" type="StaticBody2D" parent="Landing/Merchant"]
+
+[node name="Shape" type="CollisionShape2D" parent="Landing/Merchant/Body"]
+position = Vector2(0, -3)
+shape = SubResource("Rect_cart")
+
+[node name="Cart" type="Node2D" parent="Landing/Merchant"]
+position = Vector2(0, 2)
+script = ExtResource("16_shop")
+offers = Array[ExtResource("17_offer")]([SubResource("Offer_w1"), SubResource("Offer_w2"), SubResource("Offer_w3")])
+buyRate = 1.2
+buysGoods = false
+greeting = "Pays 120% for fish! Only here some days."
+title = "Wandering Merchant"
+portrait = ExtResource("32_merchant")
+prompt = "Merchant"
+reach = 12.0
+promptOffset = Vector2(0, -22)
+
+[node name="Springs" type="Node2D" parent="." node_paths=PackedStringArray("land")]
+position = Vector2(192, 0)
+y_sort_enabled = true
+script = ExtResource("2_room")
+land = [NodePath("Land")]
+
+[node name="Water" parent="Springs" instance=ExtResource("3_ocean")]
+biome = ExtResource("4_biome")
+
+[node name="Land" type="Sprite2D" parent="Springs"]
+z_index = -1
+texture = ExtResource("6_springs")
+centered = false
+
+[node name="Inn" type="Node2D" parent="Springs"]
+position = Vector2(60, 38)
+script = ExtResource("15_building")
+displayName = "Ember Inn"
+
+[node name="Art" type="Sprite2D" parent="Springs/Inn"]
+texture = ExtResource("8_inn")
+centered = false
+offset = Vector2(-20, -32)
+
+[node name="Body" type="StaticBody2D" parent="Springs/Inn"]
+
+[node name="Shape" type="CollisionShape2D" parent="Springs/Inn/Body"]
+position = Vector2(0, -4)
+shape = SubResource("Rect_inn")
+
+[node name="Door" type="Node2D" parent="Springs/Inn"]
+position = Vector2(0, 2)
+script = ExtResource("16_shop")
+offers = Array[ExtResource("17_offer")]([SubResource("Offer_i1"), SubResource("Offer_i2"), SubResource("Offer_i3"), SubResource("Offer_i4"), SubResource("Offer_i5")])
+buyRate = 0.9
+greeting = "Warm food all night. Rooms at the side door."
+title = "Ember Inn"
+portrait = ExtResource("31_innkeeper")
+prompt = "Inn"
+reach = 10.0
+
+[node name="Room" type="Node2D" parent="Springs/Inn"]
+position = Vector2(24, 0)
+script = ExtResource("24_bed")
+rentCost = 300
+rentText = "Your room at the Ember Inn. Sleep here any night, close to the Volcanic Ocean."
+prompt = "Sleep"
+reach = 9.0
+
+[node name="Sign" type="Sprite2D" parent="Springs/Inn/Room"]
+texture = ExtResource("13_sign")
+centered = false
+offset = Vector2(-5, -12)
+
+[node name="HotSpring" type="Node2D" parent="Springs"]
+position = Vector2(108, 70)
+
+[node name="Art" type="Sprite2D" parent="Springs/HotSpring"]
+texture = ExtResource("10_spring")
+centered = false
+offset = Vector2(-12, -12)
+
+[node name="Body" type="StaticBody2D" parent="Springs/HotSpring"]
+
+[node name="Shape" type="CollisionShape2D" parent="Springs/HotSpring/Body"]
+position = Vector2(0, -4)
+shape = SubResource("Rect_spring")
+
+[node name="Pond" parent="Springs/HotSpring" instance=ExtResource("23_spot")]
+z_index = 1
+position = Vector2(0, -3)
+radius = 7.0
+biome = ExtResource("4_biome")
+id = &"hot_spring"
+permanent = true
+biteDelayScale = 1.5
+squash = 0.45
+ringInterval = 1.4
+ringColor = Color(1, 0.9, 0.8, 0.7)
+
+[node name="SpringSign" type="Node2D" parent="Springs"]
+position = Vector2(90, 90)
+script = ExtResource("22_secret")
+flag = "spring_sign"
+title = "Hot spring"
+message = "\"No bathing between midnight and 4:00. That's when the Salamander Koi basks here.\""
+repeatable = true
+concealed = false
+prompt = "Read"
+reach = 10.0
+
+[node name="Art" type="Sprite2D" parent="Springs/SpringSign"]
+texture = ExtResource("13_sign")
+centered = false
+offset = Vector2(-5, -12)
+
+[node name="SmithNotes" type="Node2D" parent="Springs"]
+position = Vector2(20, 92)
+script = ExtResource("22_secret")
+flag = "smith_notes"
+title = "Smith's notes"
+message = "\"Phoenix Koi: Volcanic Ocean, 20:00 to midnight, ember bait. Ember bait: 2 chili and 1 ash cod at the village bait crafter.\""
+repeatable = true
+concealed = false
+prompt = "Read"
+reach = 10.0
+
+[node name="Art" type="Sprite2D" parent="Springs/SmithNotes"]
+texture = ExtResource("13_sign")
+centered = false
+offset = Vector2(-5, -12)
+
+[node name="Stash" type="Node2D" parent="Springs"]
+position = Vector2(148, 26)
+script = ExtResource("22_secret")
+flag = "ember_stash"
+title = "Obsidian stash"
+message = "Someone hid a pouch between the black rocks."
+coins = 250
+prompt = "Search"
+reach = 8.0
+
+[node name="PetStall" type="Node2D" parent="Springs"]
+position = Vector2(136, 94)
+script = ExtResource("15_building")
+displayName = "Salamander Den"
+
+[node name="Art" type="Sprite2D" parent="Springs/PetStall"]
+texture = ExtResource("9_stall")
+centered = false
+offset = Vector2(-13, -22)
+
+[node name="Body" type="StaticBody2D" parent="Springs/PetStall"]
+
+[node name="Shape" type="CollisionShape2D" parent="Springs/PetStall/Body"]
+position = Vector2(0, -3)
+shape = SubResource("Rect_stall")
+
+[node name="Door" type="Node2D" parent="Springs/PetStall"]
+position = Vector2(0, 2)
+script = ExtResource("20_pet_shop")
+pets = Array[ExtResource("21_pet_script")]([ExtResource("29_salamander")])
+title = "Salamander Den"
+prompt = "Pets"
+reach = 12.0
+
+[node name="Rock" type="Sprite2D" parent="Springs"]
+position = Vector2(150, 56)
+texture = ExtResource("11_rock")
+centered = false
+offset = Vector2(-6, -9)
+
+[node name="Body" type="StaticBody2D" parent="Springs/Rock"]
+
+[node name="Shape" type="CollisionShape2D" parent="Springs/Rock/Body"]
+position = Vector2(0, -2)
+shape = SubResource("Rect_rock")
+
+[node name="Npc_Brann" type="Node2D" parent="Landing" node_paths=PackedStringArray("art", "shop", "service")]
+position = Vector2(104, 64)
+script = ExtResource("m_e1")
+id = "brann"
+greeting = "Hmph. Customers."
+shop = NodePath("Anvil")
+shopLabel = "Reforge"
+service = NodePath("Forge")
+serviceLabel = "Forge"
+reach = 12.0
+promptOffset = Vector2(0, -24)
+art = NodePath("Art")
+quests = Array[ExtResource("m_e2")]([ExtResource("m_e3"), ExtResource("m_e4"), ExtResource("m_e5"), ExtResource("m_e6"), ExtResource("m_e7"), ExtResource("m_e8")])
+
+[node name="Art" type="Sprite2D" parent="Landing/Npc_Brann"]
+texture = ExtResource("m_e9")
+centered = false
+offset = Vector2(-6, -20)
+
+[node name="Body" type="StaticBody2D" parent="Landing/Npc_Brann"]
+
+[node name="Shape" type="CollisionShape2D" parent="Landing/Npc_Brann/Body"]
+position = Vector2(0, -1)
+shape = SubResource("m_s1")
+
+[node name="Forge" type="Node2D" parent="Landing/Npc_Brann"]
+script = ExtResource("fx_crafter")
+station = &"forge"
+title = "Brann's Forge"
+listed = false
+
+[node name="Anvil" type="Node2D" parent="Landing/Npc_Brann"]
+script = ExtResource("fx_anvil")
+title = "Brann's Anvil"
+listed = false
+
+[node name="Npc_Mara" type="Node2D" parent="Springs" node_paths=PackedStringArray("art")]
+position = Vector2(28.0, 50.0)
+script = ExtResource("m_e1")
+id = "mara"
+greeting = "Welcome to the Ember Inn!"
+reach = 12.0
+promptOffset = Vector2(0, -24)
+art = NodePath("Art")
+quests = Array[ExtResource("m_e2")]([ExtResource("m_e10"), ExtResource("m_e11")])
+
+[node name="Art" type="Sprite2D" parent="Springs/Npc_Mara"]
+texture = ExtResource("m_e12")
+centered = false
+offset = Vector2(-6, -20)
+
+[node name="Body" type="StaticBody2D" parent="Springs/Npc_Mara"]
+
+[node name="Shape" type="CollisionShape2D" parent="Springs/Npc_Mara/Body"]
+position = Vector2(0, -1)
+shape = SubResource("m_s2")
+
+[node name="Pearl1" type="Node2D" parent="Landing"]
+position = Vector2(138, 100)
+script = ExtResource("m_e13")
+flag = "pearl_ember_isle_1"
+title = "A lost pearl!"
+message = "Opal on Pearl Lagoon collects these."
+prompt = "Pick up"
+reach = 7.0
+
+[node name="Pearl2" type="Node2D" parent="Springs"]
+position = Vector2(10.0, 14.0)
+script = ExtResource("m_e13")
+flag = "pearl_ember_isle_2"
+title = "A lost pearl!"
+message = "Opal on Pearl Lagoon collects these."
+prompt = "Pick up"
+reach = 7.0
+
+[node name="Pearl3" type="Node2D" parent="Springs"]
+position = Vector2(120.0, 104.0)
+script = ExtResource("m_e13")
+flag = "pearl_ember_isle_3"
+title = "A lost pearl!"
+message = "Opal on Pearl Lagoon collects these."
+prompt = "Pick up"
+reach = 7.0
+
+[node name="Pearl4" type="Node2D" parent="Springs"]
+position = Vector2(160.0, 70.0)
+script = ExtResource("m_e13")
+flag = "pearl_ember_isle_4"
+title = "A lost pearl!"
+message = "Opal on Pearl Lagoon collects these."
+prompt = "Pick up"
+reach = 7.0
+
+[node name="Page11" type="Node2D" parent="Springs"]
+position = Vector2(100.0, 30.0)
+script = ExtResource("m_e13")
+flag = "logbook_11"
+title = "A logbook page!"
+message = "Singed at the edges, but readable."
+items = Array[ExtResource("m_e14")]([ExtResource("m_e15")])
+prompt = "Search"
+reach = 8.0
+
+[node name="Trap" type="Node2D" parent="Landing"]
+position = Vector2(112, 100)
+script = ExtResource("m_e16")
+biome = ExtResource("m_e17")
+reach = 9.0
+promptOffset = Vector2(0, -8)
+extras = Array[ExtResource("m_e14")]([ExtResource("m_e18"), ExtResource("m_e19")])

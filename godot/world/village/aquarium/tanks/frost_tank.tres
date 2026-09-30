@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="AquariumTank" format=3]
+
+[ext_resource type="Script" path="res://world/village/aquarium/aquarium_tank.gd" id="e1"]
+[ext_resource type="Script" path="res://fishing/fish/fish_data.gd" id="e2"]
+[ext_resource type="Resource" path="res://fishing/fish/species/frost/arctic_char.tres" id="e3"]
+[ext_resource type="Resource" path="res://fishing/fish/species/frost/ice_cod.tres" id="e4"]
+[ext_resource type="Resource" path="res://fishing/fish/species/frost/tundra_salmon.tres" id="e5"]
+[ext_resource type="Resource" path="res://fishing/fish/species/frostpeak/snow_trout.tres" id="e6"]
+[ext_resource type="Resource" path="res://fishing/fish/species/frostpeak/crystal_smelt.tres" id="e7"]
+[ext_resource type="Resource" path="res://fishing/fish/species/frost/frost_pike.tres" id="e8"]
+[ext_resource type="Texture2D" path="res://world/village/aquarium/icons/frost_tank.png" id="e9"]
+
+[resource]
+script = ExtResource("e1")
+displayName = "Frost Tank"
+description = "Fish from the frozen north."
+icon = ExtResource("e9")
+fish = Array[ExtResource("e2")]([ExtResource("e3"), ExtResource("e4"), ExtResource("e5"), ExtResource("e6"), ExtResource("e7"), ExtResource("e8")])
+rewardCoins = 2500
+requiredFlag = "project/aquarium_wing"

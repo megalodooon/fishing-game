@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Item" format=3]
+
+[ext_resource type="Texture2D" path="res://items/enchanted/icons/enchanted_sea_grapes.png" id="1_vmqcb"]
+[ext_resource type="Resource" path="res://items/rarities/uncommon.tres" id="2_17awh"]
+[ext_resource type="Script" path="res://items/item.gd" id="3_68dyn"]
+
+[resource]
+script = ExtResource("3_68dyn")
+displayName = "Enchanted Sea Grapes"
+category = "Enchanted Material"
+icon = ExtResource("1_vmqcb")
+rarity = ExtResource("2_17awh")
+description = "32 Sea Grapes pressed into one. Better recipes ask for these."
+maxStack = 99
+sellPrice = 211

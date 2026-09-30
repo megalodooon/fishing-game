@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="Quest" format=3 uid="uid://ypykf32rivi8"]
+
+[ext_resource type="Script" uid="uid://t660ehs2ybui" path="res://world/location.gd" id="7_8uvha"]
+[ext_resource type="Script" uid="uid://b1p7iyi658nm7" path="res://world/quests/quest.gd" id="e1"]
+[ext_resource type="Script" uid="uid://depkark34l17n" path="res://world/quests/quest_goal.gd" id="e2"]
+[ext_resource type="Resource" uid="uid://swrsas6ofstt" path="res://fishing/fish/species/abyss/leviathan.tres" id="e3"]
+[ext_resource type="Resource" uid="uid://dfdbstd3bh46i" path="res://world/quests/story/q_seal.tres" id="e4"]
+[ext_resource type="Resource" uid="uid://br4vvuvcgptj0" path="res://fishing/rods/abyssal_rod.tres" id="e5"]
+[ext_resource type="Script" uid="uid://ftrpy1hit5em" path="res://items/item.gd" id="e6"]
+
+[sub_resource type="Resource" id="s1"]
+script = ExtResource("e2")
+target = ExtResource("e3")
+
+[resource]
+script = ExtResource("e1")
+title = "The Leviathan"
+giver = "Grandpa Finn"
+description = "The Leviathan sleeps in the Abyssal Trench. Grandpa never landed it. You will."
+story = true
+goals = Array[ExtResource("e2")]([SubResource("s1")])
+startScene = "q_leviathan_start"
+endScene = "q_leviathan_end"
+requires = Array[ExtResource("e1")]([ExtResource("e4")])
+rewardCoins = 10000
+rewardItems = Array[ExtResource("e6")]([ExtResource("e5")])
+rewardAmounts = Array[int]([1])

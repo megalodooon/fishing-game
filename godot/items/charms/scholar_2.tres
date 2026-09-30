@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="Charm" format=3]
+
+[ext_resource type="Texture2D" path="res://items/charms/icons/scholar_2.png" id="1_a2nlj"]
+[ext_resource type="Resource" path="res://items/rarities/uncommon.tres" id="2_hy81r"]
+[ext_resource type="Script" path="res://items/charms/charm.gd" id="3_wtkaf"]
+
+[resource]
+script = ExtResource("3_wtkaf")
+stats = Dictionary[StringName, float]({
+&"xpBonus": 6.0
+})
+family = "scholar"
+tier = 2
+displayName = "Scholar's Ring"
+icon = ExtResource("1_a2nlj")
+rarity = ExtResource("2_hy81r")
+description = "Part of the Scholar line. Upgrade it at a bench to make it stronger."
+sellPrice = 160

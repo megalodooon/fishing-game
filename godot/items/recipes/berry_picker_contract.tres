@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="BaitRecipe" format=3]
+
+[ext_resource type="Resource" path="res://items/materials/wild_berries.tres" id="1_xl6dp"]
+[ext_resource type="Resource" path="res://items/materials/rope.tres" id="2_kreh8"]
+[ext_resource type="Resource" path="res://items/crew/berry_picker_contract.tres" id="3_u8ogn"]
+[ext_resource type="Script" path="res://fishing/bait/bait_recipe.gd" id="4_qccyw"]
+
+[resource]
+script = ExtResource("4_qccyw")
+output = ExtResource("3_u8ogn")
+amount = 1
+ingredients = Array[Resource]([ExtResource("1_xl6dp"), ExtResource("2_kreh8")])
+counts = Array[int]([24, 2])
+requiredFlag = "collection/wild_berries/1"
+xp = 25.0
+station = &"workbench"
+category = "Crew"

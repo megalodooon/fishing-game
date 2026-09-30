@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="BaitRecipe" format=3]
+
+[ext_resource type="Resource" path="res://items/charms/merchant_1.tres" id="1_8tcmu"]
+[ext_resource type="Resource" path="res://items/enchanted/enchanted_sea_salt.tres" id="2_rprpt"]
+[ext_resource type="Resource" path="res://items/materials/iron_ingot.tres" id="3_ax3tt"]
+[ext_resource type="Resource" path="res://items/charms/merchant_2.tres" id="4_q0jxv"]
+[ext_resource type="Script" path="res://fishing/bait/bait_recipe.gd" id="5_m8v4h"]
+
+[resource]
+script = ExtResource("5_m8v4h")
+output = ExtResource("4_q0jxv")
+amount = 1
+ingredients = Array[Resource]([ExtResource("1_8tcmu"), ExtResource("2_rprpt"), ExtResource("3_ax3tt")])
+counts = Array[int]([1, 2, 2])
+xp = 60.0
+station = &"workbench"
+category = "Charms"
+requiredSkill = &"trading"
+requiredLevel = 12

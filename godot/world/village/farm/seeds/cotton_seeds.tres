@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Seed" format=3]
+
+[ext_resource type="Resource" path="res://items/materials/cotton.tres" id="1_anfe4"]
+[ext_resource type="Texture2D" path="res://world/village/farm/icons/cotton_seeds.png" id="2_wt8q7"]
+[ext_resource type="Resource" path="res://items/rarities/uncommon.tres" id="3_0rtk7"]
+[ext_resource type="Script" path="res://world/village/farm/seed.gd" id="4_8frye"]
+
+[resource]
+script = ExtResource("4_8frye")
+crop = ExtResource("1_anfe4")
+days = 3
+harvest = 2
+leafColor = Color(0.6590196, 0.8690196, 0.5990196, 1)
+displayName = "Cotton Seeds"
+icon = ExtResource("2_wt8q7")
+rarity = ExtResource("3_0rtk7")
+description = "Plant it on a farm plot. Grows into Cotton in 3 days."
+maxStack = 99
+buyPrice = 10

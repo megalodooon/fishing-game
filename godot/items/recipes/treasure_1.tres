@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="BaitRecipe" format=3]
+
+[ext_resource type="Resource" path="res://items/materials/gull_feather.tres" id="1_1ynw4"]
+[ext_resource type="Resource" path="res://items/materials/rope.tres" id="2_w8xgu"]
+[ext_resource type="Resource" path="res://items/charms/treasure_1.tres" id="3_0fa63"]
+[ext_resource type="Script" path="res://fishing/bait/bait_recipe.gd" id="4_rvndf"]
+
+[resource]
+script = ExtResource("4_rvndf")
+output = ExtResource("3_0fa63")
+amount = 1
+ingredients = Array[Resource]([ExtResource("1_1ynw4"), ExtResource("2_w8xgu")])
+counts = Array[int]([16, 1])
+xp = 30.0
+station = &"workbench"
+category = "Charms"
+requiredSkill = &"fishing"
+requiredLevel = 6

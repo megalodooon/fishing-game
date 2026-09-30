@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="Seed" format=3]
+
+[ext_resource type="Script" path="res://world/village/farm/seed.gd" id="1_seed"]
+[ext_resource type="Texture2D" path="res://world/village/farm/icons/wormroot_seeds.png" id="2_icon"]
+[ext_resource type="Resource" path="res://items/rarities/common.tres" id="3_rarity"]
+[ext_resource type="Resource" path="res://items/materials/wormroot.tres" id="4_crop"]
+
+[resource]
+script = ExtResource("1_seed")
+crop = ExtResource("4_crop")
+days = 2
+harvest = 2
+leafColor = Color(0.5, 0.8, 0.4, 1)
+displayName = "Wormroot Seeds"
+icon = ExtResource("2_icon")
+rarity = ExtResource("3_rarity")
+description = "Grows into wormroot, the base of most bait."
+hint = "Hold it and click the farm soil"
+maxStack = 99
+sellPrice = 2
+buyPrice = 5

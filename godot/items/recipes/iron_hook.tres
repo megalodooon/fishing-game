@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="BaitRecipe" format=3]
+
+[ext_resource type="Resource" path="res://items/materials/iron_ingot.tres" id="1_20x77"]
+[ext_resource type="Resource" path="res://fishing/tacklebox/tackle/iron_hook.tres" id="2_cxsnr"]
+[ext_resource type="Script" path="res://fishing/bait/bait_recipe.gd" id="3_3yjcb"]
+
+[resource]
+script = ExtResource("3_3yjcb")
+output = ExtResource("2_cxsnr")
+amount = 1
+ingredients = Array[Resource]([ExtResource("1_20x77")])
+counts = Array[int]([2])
+xp = 51.0
+station = &"workbench"
+category = "Tackle"
+requiredSkill = &"fishing"
+requiredLevel = 7

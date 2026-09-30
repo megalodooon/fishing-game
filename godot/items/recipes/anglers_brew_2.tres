@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="BaitRecipe" format=3]
+
+[ext_resource type="Resource" path="res://items/materials/glass_bottle.tres" id="1_hotmd"]
+[ext_resource type="Resource" path="res://items/enchanted/enchanted_seaweed.tres" id="2_8sfxf"]
+[ext_resource type="Resource" path="res://items/materials/glowcap.tres" id="3_f8qpg"]
+[ext_resource type="Resource" path="res://items/potions/anglers_brew_2.tres" id="4_pbksm"]
+[ext_resource type="Script" path="res://fishing/bait/bait_recipe.gd" id="5_fr212"]
+
+[resource]
+script = ExtResource("5_fr212")
+output = ExtResource("4_pbksm")
+amount = 1
+ingredients = Array[Resource]([ExtResource("1_hotmd"), ExtResource("2_8sfxf"), ExtResource("3_f8qpg")])
+counts = Array[int]([1, 1, 2])
+xp = 34.0
+station = &"cauldron"
+category = "Potions"
+requiredSkill = &"alchemy"
+requiredLevel = 8

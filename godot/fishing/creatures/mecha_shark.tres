@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="SeaCreature" format=3]
+
+[ext_resource type="Script" path="res://fishing/creatures/sea_creature.gd" id="e1"]
+[ext_resource type="Texture2D" path="res://fishing/creatures/art/mecha_shark.png" id="e2"]
+[ext_resource type="Resource" path="res://items/rarities/legendary.tres" id="e3"]
+[ext_resource type="PackedScene" path="res://fishing/minigames/boss_duel/boss_duel.tscn" id="e4"]
+[ext_resource type="Resource" path="res://items/materials/iron_scrap.tres" id="e5"]
+[ext_resource type="Resource" path="res://items/materials/deepnet_chip.tres" id="e6"]
+[ext_resource type="Script" path="res://items/item.gd" id="e7"]
+
+[resource]
+script = ExtResource("e1")
+displayName = "Mecha-Shark"
+description = "A robot shark guarding Deepnet's rig. Who builds these?"
+icon = ExtResource("e2")
+rarity = ExtResource("e3")
+minFishing = 20
+announce = "Deepnet's MECHA-SHARK powers up!"
+fight = ExtResource("e4")
+difficulty = 0.6
+toughness = 1.5
+style = &"sludge"
+coins = Vector2i(500, 900)
+xp = 400.0
+drops = Array[ExtResource("e7")]([ExtResource("e5"), ExtResource("e6")])
+dropChances = PackedFloat32Array(1.0, 1.0)
+dropAmounts = Array[Vector2i]([Vector2i(4, 8), Vector2i(1, 1)])

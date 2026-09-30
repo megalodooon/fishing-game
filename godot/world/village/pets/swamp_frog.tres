@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="PetData" format=3]
+
+[ext_resource type="Script" path="res://world/village/pets/pet_data.gd" id="e1"]
+[ext_resource type="Texture2D" path="res://world/village/pets/art/swamp_frog.png" id="e2"]
+
+[resource]
+script = ExtResource("e1")
+displayName = "Swamp Frog"
+description = "Croaks the fish closer. Very croaky."
+sprite = ExtResource("e2")
+flies = false
+glows = false
+price = 1500
+biteSpeed = 1.12

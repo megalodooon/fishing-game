@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="Quest" format=3]
+
+[ext_resource type="Script" path="res://world/quests/quest.gd" id="e1"]
+[ext_resource type="Script" path="res://world/quests/quest_goal.gd" id="e2"]
+[ext_resource type="Resource" path="res://fishing/creatures/frost_wyrm.tres" id="e3"]
+[ext_resource type="Resource" path="res://world/quests/story/q_ice.tres" id="e4"]
+
+[sub_resource type="Resource" id="s1"]
+script = ExtResource("e2")
+kind = 7
+target = ExtResource("e3")
+amount = 3
+
+[resource]
+script = ExtResource("e1")
+title = "Frost Wyrm"
+giver = "Yuki"
+description = "Beat three Frost Wyrms."
+goals = Array[ExtResource("e2")]([SubResource("s1")])
+requires = Array[ExtResource("e1")]([ExtResource("e4")])
+rewardCoins = 2000

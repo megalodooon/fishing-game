@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="Seed" format=3]
+
+[ext_resource type="Script" path="res://world/village/farm/seed.gd" id="1_script"]
+[ext_resource type="Texture2D" path="res://world/village/farm/icons/pumpkin_seeds.png" id="2_icon"]
+[ext_resource type="Resource" path="res://items/rarities/common.tres" id="3_rarity"]
+[ext_resource type="Resource" path="res://items/materials/pumpkin.tres" id="4_crop"]
+
+[resource]
+script = ExtResource("1_script")
+crop = ExtResource("4_crop")
+days = 5
+harvest = 1
+leafColor = Color(0.45, 0.65, 0.25, 1)
+hint = "Hold it and click the farm soil"
+maxStack = 99
+sellPrice = 10
+displayName = "Pumpkin Seeds"
+icon = ExtResource("2_icon")
+rarity = ExtResource("3_rarity")
+description = "Slow to grow, sells well."
+buyPrice = 20

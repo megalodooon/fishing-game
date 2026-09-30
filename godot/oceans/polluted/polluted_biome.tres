@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="Biome" format=3 uid="uid://crn8sd2gusrce"]
+
+[ext_resource type="Resource" path="res://items/materials/scrap_wire.tres" id="18_7x16x"]
+[ext_resource type="Script" path="res://oceans/biome.gd" id="e1"]
+[ext_resource type="Script" path="res://fishing/fish/fish_data.gd" id="e2"]
+[ext_resource type="Resource" path="res://fishing/fish/species/anchovy.tres" id="e3"]
+[ext_resource type="Resource" path="res://fishing/fish/species/sea_bass.tres" id="e4"]
+[ext_resource type="Resource" path="res://fishing/fish/species/red_snapper.tres" id="e5"]
+[ext_resource type="Resource" path="res://fishing/fish/species/placeholder/pufferfish.tres" id="e6"]
+[ext_resource type="Resource" path="res://fishing/fish/species/placeholder/swordfish.tres" id="e7"]
+[ext_resource type="Resource" path="res://fishing/fish/species/placeholder/golden_grouper.tres" id="e8"]
+[ext_resource type="Resource" path="res://fishing/fish/species/weather/smog_carp.tres" id="e9"]
+[ext_resource type="Resource" path="res://fishing/creatures/sludge_serpent.tres" id="e10"]
+[ext_resource type="Resource" path="res://fishing/creatures/trash_golem.tres" id="e11"]
+[ext_resource type="Script" path="res://fishing/creatures/sea_creature.gd" id="e12"]
+[ext_resource type="Resource" path="res://items/materials/oily_sludge.tres" id="e13"]
+[ext_resource type="Resource" path="res://items/materials/tin_can.tres" id="e14"]
+[ext_resource type="Resource" path="res://items/materials/old_boot.tres" id="e15"]
+[ext_resource type="Resource" path="res://items/materials/broken_bottle.tres" id="e16"]
+[ext_resource type="Resource" path="res://items/materials/iron_scrap.tres" id="e17"]
+[ext_resource type="Script" path="res://items/item.gd" id="e18"]
+
+[resource]
+script = ExtResource("e1")
+displayName = "Polluted Ocean"
+description = "Murky green water full of junk. Placeholder fish for now."
+region = "Sunny Seas"
+fish = Array[ExtResource("e2")]([ExtResource("e3"), ExtResource("e4"), ExtResource("e5"), ExtResource("e6"), ExtResource("e7"), ExtResource("e8"), ExtResource("e9")])
+creatures = Array[ExtResource("e12")]([ExtResource("e10"), ExtResource("e11")])
+tier = 1
+junkChance = 0.25
+junk = Array[ExtResource("e18")]([ExtResource("e13"), ExtResource("e14"), ExtResource("e15"), ExtResource("e16"), ExtResource("e17"), ExtResource("18_7x16x")])

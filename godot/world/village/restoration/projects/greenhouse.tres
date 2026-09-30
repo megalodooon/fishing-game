@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="Project" format=3]
+
+[ext_resource type="Script" path="res://world/village/restoration/project.gd" id="e1"]
+[ext_resource type="Texture2D" path="res://world/islands/props/greenhouse.png" id="e2"]
+[ext_resource type="Resource" path="res://items/materials/driftwood_plank.tres" id="e3"]
+[ext_resource type="Resource" path="res://items/materials/iron_scrap.tres" id="e4"]
+[ext_resource type="Resource" path="res://items/materials/broken_bottle.tres" id="e5"]
+[ext_resource type="Script" path="res://items/item.gd" id="e6"]
+[ext_resource type="Resource" path="res://world/village/restoration/projects/workbench.tres" id="e7"]
+
+[resource]
+script = ExtResource("e1")
+displayName = "Meadow Greenhouse"
+description = "Tilly's grandmother's greenhouse. The glass is gone."
+icon = ExtResource("e2")
+coins = 5000
+items = Array[ExtResource("e6")]([ExtResource("e3"), ExtResource("e4"), ExtResource("e5")])
+amounts = Array[int]([30, 10, 15])
+unlockText = "A greenhouse plot on Meadow Isle. +10% extra harvest"
+requires = Array[ExtResource("e1")]([ExtResource("e7")])
+requiredSkill = &"farming"
+requiredLevel = 5

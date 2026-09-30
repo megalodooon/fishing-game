@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="Charm" format=3]
+
+[ext_resource type="Texture2D" path="res://items/charms/icons/fortune_2.png" id="1_kyf81"]
+[ext_resource type="Resource" path="res://items/rarities/uncommon.tres" id="2_yl8lk"]
+[ext_resource type="Script" path="res://items/charms/charm.gd" id="3_l3xca"]
+
+[resource]
+script = ExtResource("3_l3xca")
+stats = Dictionary[StringName, float]({
+&"luck": 4.0
+})
+family = "fortune"
+tier = 2
+displayName = "Fortune Ring"
+icon = ExtResource("1_kyf81")
+rarity = ExtResource("2_yl8lk")
+description = "Part of the Fortune line. Upgrade it at a bench to make it stronger."
+sellPrice = 160

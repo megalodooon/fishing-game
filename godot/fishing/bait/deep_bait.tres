@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="Bait" format=3]
+
+[ext_resource type="Script" path="res://fishing/fish/fish_data.gd" id="1_ygvvu"]
+[ext_resource type="Texture2D" path="res://fishing/bait/icons/deep_bait.png" id="2_owekh"]
+[ext_resource type="Resource" path="res://items/rarities/legendary.tres" id="3_umfy5"]
+[ext_resource type="Script" path="res://items/rarity.gd" id="4_fimmh"]
+[ext_resource type="Resource" path="res://items/rarities/trophy.tres" id="5_tjwvx"]
+[ext_resource type="Script" path="res://fishing/bait/bait.gd" id="6_q0vem"]
+
+[resource]
+script = ExtResource("6_q0vem")
+rarityBoost = Dictionary[ExtResource("4_fimmh"), float]({
+ExtResource("3_umfy5"): 2.0,
+ExtResource("5_tjwvx"): 1.5
+})
+kind = 4
+displayName = "Deep Bait"
+icon = ExtResource("2_owekh")
+rarity = ExtResource("3_umfy5")
+description = "Goes in a rod's bait slot."
+maxStack = 99

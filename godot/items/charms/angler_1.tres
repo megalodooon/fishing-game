@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="Charm" format=3]
+
+[ext_resource type="Texture2D" path="res://items/charms/icons/angler_1.png" id="1_gd36a"]
+[ext_resource type="Resource" path="res://items/rarities/common.tres" id="2_akd1d"]
+[ext_resource type="Script" path="res://items/charms/charm.gd" id="3_jjlru"]
+
+[resource]
+script = ExtResource("3_jjlru")
+stats = Dictionary[StringName, float]({
+&"biteSpeed": 3.0
+})
+family = "angler"
+displayName = "Angler's Charm"
+icon = ExtResource("1_gd36a")
+rarity = ExtResource("2_akd1d")
+description = "Part of the Angler line. Upgrade it at a bench to make it stronger."
+sellPrice = 40

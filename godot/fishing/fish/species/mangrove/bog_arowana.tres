@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="FishData" format=3]
+
+[ext_resource type="Script" path="res://fishing/fish/fish_data.gd" id="e1"]
+[ext_resource type="Texture2D" path="res://fishing/fish/assets/mangrove/bog_arowana.png" id="e2"]
+[ext_resource type="Resource" path="res://items/rarities/legendary.tres" id="e3"]
+
+[resource]
+script = ExtResource("e1")
+displayName = "Bog Arowana"
+icon = ExtResource("e2")
+rarity = ExtResource("e3")
+description = "Leaps from the water to snatch insects. The locals call it the dragon fish."
+weightRange = Vector2(3.0, 10.0)
+basePrice = 520
+heldSize = 1.3
+hours = Vector2(0.0, 24.0)

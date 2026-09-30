@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="BaitRecipe" format=3]
+
+[ext_resource type="Resource" path="res://items/materials/ghost_pepper.tres" id="1_dfyla"]
+[ext_resource type="Resource" path="res://items/materials/chili_pepper.tres" id="2_i7ros"]
+[ext_resource type="Resource" path="res://items/rarities/common.tres" id="3_1737g"]
+[ext_resource type="Resource" path="res://items/snacks/ghost_chili.tres" id="4_mm6cg"]
+[ext_resource type="Script" path="res://fishing/bait/bait_recipe.gd" id="5_i5gdf"]
+
+[resource]
+script = ExtResource("5_i5gdf")
+output = ExtResource("4_mm6cg")
+amount = 1
+ingredients = Array[Resource]([ExtResource("1_dfyla"), ExtResource("2_i7ros"), ExtResource("3_1737g")])
+counts = Array[int]([2, 2, 1])
+xp = 32.0
+station = &"kitchen"
+category = "Food"
+requiredSkill = &"cooking"
+requiredLevel = 12

@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="Bait" format=3]
+
+[ext_resource type="Script" path="res://fishing/bait/bait.gd" id="1_script"]
+[ext_resource type="Texture2D" path="res://fishing/bait/icons/ember_bait.png" id="2_icon"]
+[ext_resource type="Resource" path="res://items/rarities/rare.tres" id="3_rarity"]
+[ext_resource type="Script" path="res://items/rarity.gd" id="4_rs"]
+[ext_resource type="Script" path="res://fishing/fish/fish_data.gd" id="5_fs"]
+[ext_resource type="Resource" path="res://items/rarities/rare.tres" id="r_rare"]
+[ext_resource type="Resource" path="res://fishing/fish/species/volcanic/magma_snapper.tres" id="f_1"]
+[ext_resource type="Resource" path="res://fishing/fish/species/volcanic/flame_angel.tres" id="f_2"]
+[ext_resource type="Resource" path="res://fishing/fish/species/volcanic/inferno_marlin.tres" id="f_3"]
+
+[resource]
+script = ExtResource("1_script")
+rarityBoost = Dictionary[ExtResource("4_rs"), float]({
+ExtResource("r_rare"): 1.2
+})
+fishBoost = Dictionary[ExtResource("5_fs"), float]({
+ExtResource("f_1"): 1.5,
+ExtResource("f_2"): 1.5,
+ExtResource("f_3"): 1.5
+})
+kind = 4
+discardable = false
+displayName = "Ember Bait"
+icon = ExtResource("2_icon")
+rarity = ExtResource("3_rarity")
+description = "Smoulders even underwater. Fire fish follow it."

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="BaitRecipe" format=3]
+
+[ext_resource type="Script" path="res://fishing/bait/bait_recipe.gd" id="1_recipe"]
+[ext_resource type="Resource" path="res://fishing/bait/corn_bait.tres" id="2_bait"]
+[ext_resource type="Resource" path="res://items/materials/sweetcorn.tres" id="i_1"]
+[resource]
+script = ExtResource("1_recipe")
+bait = ExtResource("2_bait")
+amount = 5
+ingredients = Array[Resource]([ExtResource("i_1")])
+counts = Array[int]([2])

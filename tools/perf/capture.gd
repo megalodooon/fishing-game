@@ -78,7 +78,7 @@ func run() -> void:
 	var rod : FishingRod = player.heldItem as FishingRod
 	aim = Vector2(40.0, 90.0)
 	await step_to(82)
-	rod.launch(Vector2(40.0, 90.0))
+	rod.launch(Vector2(40.0, 90.0), Vector2(40.0, 90.0))
 	await step_to(88)
 	await capture("cast_flight")
 	await step_to(94)

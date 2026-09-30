@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="BaitRecipe" format=3]
+
+[ext_resource type="Resource" path="res://items/charms/treasure_1.tres" id="1_1irhf"]
+[ext_resource type="Resource" path="res://items/enchanted/enchanted_gull_feather.tres" id="2_cw5i2"]
+[ext_resource type="Resource" path="res://items/materials/iron_ingot.tres" id="3_vnrcc"]
+[ext_resource type="Resource" path="res://items/charms/treasure_2.tres" id="4_7yml2"]
+[ext_resource type="Script" path="res://fishing/bait/bait_recipe.gd" id="5_nvpoc"]
+
+[resource]
+script = ExtResource("5_nvpoc")
+output = ExtResource("4_7yml2")
+amount = 1
+ingredients = Array[Resource]([ExtResource("1_1irhf"), ExtResource("2_cw5i2"), ExtResource("3_vnrcc")])
+counts = Array[int]([1, 2, 2])
+xp = 60.0
+station = &"workbench"
+category = "Charms"
+requiredSkill = &"fishing"
+requiredLevel = 12

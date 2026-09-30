@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Project" format=3]
+
+[ext_resource type="Script" path="res://world/village/restoration/project.gd" id="e1"]
+[ext_resource type="Texture2D" path="res://world/islands/props/fountain.png" id="e2"]
+[ext_resource type="Resource" path="res://items/materials/coral_shard.tres" id="e3"]
+[ext_resource type="Resource" path="res://items/materials/obsidian_shard.tres" id="e4"]
+[ext_resource type="Script" path="res://items/item.gd" id="e5"]
+[ext_resource type="Resource" path="res://world/village/restoration/projects/market_hall.tres" id="e6"]
+
+[resource]
+script = ExtResource("e1")
+displayName = "Harbor Fountain"
+description = "It used to have a bronze fish on top. Someone stole it."
+icon = ExtResource("e2")
+coins = 20000
+items = Array[ExtResource("e5")]([ExtResource("e3"), ExtResource("e4")])
+amounts = Array[int]([25, 10])
+unlockText = "The village's pride. +3% luck, +3% sell price"
+requires = Array[ExtResource("e1")]([ExtResource("e6")])

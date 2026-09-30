@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Reforge" format=3]
+
+[ext_resource type="Script" path="res://fishing/reforges/reforge.gd" id="1_wjw0w"]
+[ext_resource type="Resource" path="res://items/rare/abyss_stone.tres" id="2_mxku1"]
+
+[resource]
+script = ExtResource("1_wjw0w")
+prefix = "Abyssal"
+weight = 0.0
+stone = ExtResource("2_mxku1")
+kind = 3
+rangeBonus = 10.0
+control = 0.22
+spotTime = 1.3
+displayName = "Abyssal"

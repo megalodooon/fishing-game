@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="BaitRecipe" format=3]
+
+[ext_resource type="Script" path="res://fishing/bait/bait_recipe.gd" id="e1"]
+[ext_resource type="Resource" path="res://fishing/tacklebox/tackle/frost_bobber.tres" id="e2"]
+[ext_resource type="Resource" path="res://items/materials/frost_crystal.tres" id="e3"]
+
+[resource]
+script = ExtResource("e1")
+output = ExtResource("e2")
+amount = 1
+ingredients = Array[Resource]([ExtResource("e3")])
+counts = Array[int]([6])
+requiredFlag = "collection/frost_crystal/1"
+lockedText = "Find a Frost Crystal to learn it."
+xp = 30.0
+station = &"workbench"

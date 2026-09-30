@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="PetData" format=3]
+
+[ext_resource type="Script" path="res://world/village/pets/pet_data.gd" id="1_pet"]
+[ext_resource type="Texture2D" path="res://world/village/pets/art/lantern_jelly.png" id="2_art"]
+[ext_resource type="Script" path="res://items/rarity.gd" id="3_rarity_script"]
+[ext_resource type="Resource" path="res://items/rarities/legendary.tres" id="r_legendary"]
+[ext_resource type="Resource" path="res://items/rarities/trophy.tres" id="r_trophy"]
+[resource]
+script = ExtResource("1_pet")
+displayName = "Lantern Jelly"
+description = "A little jellyfish that floats in the air and glows at night. Legends swim toward its light."
+sprite = ExtResource("2_art")
+flies = true
+glows = true
+price = 2500
+walkSpeed = 1.1
+rarityBoost = Dictionary[ExtResource("3_rarity_script"), float]({
+ExtResource("r_legendary"): 1.35,
+ExtResource("r_trophy"): 1.2
+})

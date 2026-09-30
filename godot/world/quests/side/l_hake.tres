@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="Quest" format=3]
+
+[ext_resource type="Script" path="res://world/quests/quest.gd" id="e1"]
+[ext_resource type="Script" path="res://world/quests/quest_goal.gd" id="e2"]
+[ext_resource type="Resource" path="res://fishing/fish/species/stormwatch/beacon_hake.tres" id="e3"]
+[ext_resource type="Resource" path="res://world/quests/story/q_stormwatch.tres" id="e4"]
+
+[sub_resource type="Resource" id="s1"]
+script = ExtResource("e2")
+kind = 0
+target = ExtResource("e3")
+amount = 3
+
+[resource]
+script = ExtResource("e1")
+title = "Night Lights"
+giver = "Luma"
+description = "Catch three Beacon Hake by the lighthouse at night."
+goals = Array[ExtResource("e2")]([SubResource("s1")])
+requires = Array[ExtResource("e1")]([ExtResource("e4")])
+rewardCoins = 1500

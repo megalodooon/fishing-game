@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="BaitRecipe" format=3]
+
+[ext_resource type="Resource" path="res://items/materials/driftwood_plank.tres" id="1_x3gqo"]
+[ext_resource type="Resource" path="res://items/materials/fish_oil.tres" id="2_ytjip"]
+[ext_resource type="Resource" path="res://items/materials/treated_plank.tres" id="3_42fcc"]
+[ext_resource type="Script" path="res://fishing/bait/bait_recipe.gd" id="4_xnh7p"]
+
+[resource]
+script = ExtResource("4_xnh7p")
+output = ExtResource("3_42fcc")
+amount = 1
+ingredients = Array[Resource]([ExtResource("1_x3gqo"), ExtResource("2_ytjip")])
+counts = Array[int]([3, 1])
+xp = 6.0
+station = &"workbench"
+category = "Materials"
+requiredSkill = &"crafting"
+requiredLevel = 3

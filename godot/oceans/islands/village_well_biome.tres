@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Biome" format=3]
+
+[ext_resource type="Script" path="res://oceans/biome.gd" id="1_biome"]
+[ext_resource type="Script" path="res://fishing/fish/fish_data.gd" id="1_data"]
+[ext_resource type="Resource" path="res://oceans/islands/village_biome.tres" id="1_page"]
+[ext_resource type="Resource" path="res://fishing/fish/species/islands/well_minnow.tres" id="f_2"]
+[ext_resource type="Resource" path="res://fishing/fish/species/islands/cave_loach.tres" id="f_3"]
+[ext_resource type="Resource" path="res://fishing/fish/species/islands/ghost_catfish.tres" id="f_4"]
+[ext_resource type="Resource" path="res://fishing/fish/species/islands/wishing_koi.tres" id="f_5"]
+
+[resource]
+script = ExtResource("1_biome")
+displayName = "Village Well"
+description = "Deep, cold and dark. The fish down here take their time."
+fish = Array[ExtResource("1_data")]([ExtResource("f_2"), ExtResource("f_3"), ExtResource("f_4"), ExtResource("f_5")])
+page = ExtResource("1_page")

@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="FishData" format=3]
+
+[ext_resource type="Script" path="res://fishing/fish/fish_data.gd" id="e1"]
+[ext_resource type="Texture2D" path="res://fishing/fish/assets/mangrove/mudskipper.png" id="e2"]
+[ext_resource type="Resource" path="res://items/rarities/common.tres" id="e3"]
+
+[resource]
+script = ExtResource("e1")
+displayName = "Mudskipper"
+icon = ExtResource("e2")
+rarity = ExtResource("e3")
+description = "Walks on mud. Questionable life choices."
+weightRange = Vector2(0.05000000074506, 0.20000000298023)
+basePrice = 6
+heldSize = 0.7
+hours = Vector2(0.0, 24.0)

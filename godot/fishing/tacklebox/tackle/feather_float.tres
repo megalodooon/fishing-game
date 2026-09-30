@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Tackle" format=3]
+
+[ext_resource type="Texture2D" path="res://fishing/tacklebox/icons/feather_float.png" id="1_m6u8a"]
+[ext_resource type="Resource" path="res://items/rarities/uncommon.tres" id="2_5b7gy"]
+[ext_resource type="Script" path="res://fishing/tacklebox/tackle.gd" id="3_7kh5y"]
+
+[resource]
+script = ExtResource("3_7kh5y")
+tint = Color(0.972549, 0.972549, 0.972549, 1)
+rangeBonus = 6.0
+spotSize = 1.2
+displayName = "Feather Float"
+icon = ExtResource("1_m6u8a")
+rarity = ExtResource("2_5b7gy")
+description = "A crafted rod part."
+discardable = false

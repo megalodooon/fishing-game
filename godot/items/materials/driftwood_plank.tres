@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Item" format=3]
+
+[ext_resource type="Script" path="res://items/item.gd" id="e1"]
+[ext_resource type="Texture2D" path="res://items/materials/icons/driftwood_plank.png" id="e2"]
+[ext_resource type="Resource" path="res://items/rarities/common.tres" id="e3"]
+
+[resource]
+script = ExtResource("e1")
+displayName = "Driftwood Plank"
+icon = ExtResource("e2")
+rarity = ExtResource("e3")
+description = "Salvaged wood. Boats, buildings and pots all need some."
+category = "Material"
+maxStack = 99
+sellPrice = 4
+buyPrice = 6

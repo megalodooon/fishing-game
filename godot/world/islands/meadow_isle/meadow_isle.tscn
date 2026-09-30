@@ -1,0 +1,493 @@
+[gd_scene format=3]
+
+[ext_resource type="Resource" path="res://world/village/shop/stock/tilly_seeds.tres" id="i_tilly_stock"]
+[ext_resource type="Script" path="res://world/island/island.gd" id="i_e1"]
+[ext_resource type="Script" path="res://world/island/island_room.gd" id="i_e2"]
+[ext_resource type="Resource" path="res://oceans/islands/meadow_biome.tres" id="i_e3"]
+[ext_resource type="PackedScene" path="res://oceans/basic/basic_ocean.tscn" id="i_e4"]
+[ext_resource type="Texture2D" path="res://world/islands/meadow_isle/land/landing.png" id="i_e5"]
+[ext_resource type="Script" path="res://world/npc/npc.gd" id="i_e6"]
+[ext_resource type="Script" path="res://world/quests/quest.gd" id="i_e7"]
+[ext_resource type="Resource" path="res://world/quests/story/q_meadow.tres" id="i_e8"]
+[ext_resource type="Resource" path="res://world/quests/side/t_corn.tres" id="i_e9"]
+[ext_resource type="Resource" path="res://world/quests/side/t_sun.tres" id="i_e10"]
+[ext_resource type="Resource" path="res://world/quests/side/t_harvest.tres" id="i_e11"]
+[ext_resource type="Resource" path="res://world/quests/side/t_melon.tres" id="i_e12"]
+[ext_resource type="Resource" path="res://world/quests/side/t_koi.tres" id="i_e13"]
+[ext_resource type="Resource" path="res://world/quests/side/p_greenhouse.tres" id="i_e14"]
+[ext_resource type="Texture2D" path="res://world/npcs/tilly.png" id="i_e15"]
+[ext_resource type="Script" path="res://world/village/shop/shop_offer.gd" id="i_e16"]
+[ext_resource type="Resource" path="res://world/village/farm/seeds/wormroot_seeds.tres" id="i_e17"]
+[ext_resource type="Resource" path="res://world/village/farm/seeds/sweetcorn_seeds.tres" id="i_e18"]
+[ext_resource type="Resource" path="res://world/village/farm/seeds/sunflower_seeds.tres" id="i_e19"]
+[ext_resource type="Resource" path="res://world/village/farm/seeds/pumpkin_seeds.tres" id="i_e20"]
+[ext_resource type="Resource" path="res://world/village/farm/seeds/moonmelon_seeds.tres" id="i_e21"]
+[ext_resource type="Resource" path="res://items/materials/honey.tres" id="i_e22"]
+[ext_resource type="Resource" path="res://fishing/bait/honey_bait.tres" id="i_e23"]
+[ext_resource type="Resource" path="res://items/charms/farmers_almanac.tres" id="i_e24"]
+[ext_resource type="Script" path="res://world/village/shop/shop.gd" id="i_e25"]
+[ext_resource type="Texture2D" path="res://world/islands/props/scarecrow.png" id="i_e26"]
+[ext_resource type="Texture2D" path="res://world/islands/props/flowers.png" id="i_e27"]
+[ext_resource type="Texture2D" path="res://world/islands/props/beehive.png" id="i_e28"]
+[ext_resource type="Script" path="res://world/interact/secret.gd" id="i_e29"]
+[ext_resource type="Texture2D" path="res://world/village/props/sign.png" id="i_e30"]
+[ext_resource type="Texture2D" path="res://world/islands/meadow_isle/land/fields.png" id="i_e31"]
+[ext_resource type="Script" path="res://world/village/farm/farm_plot.gd" id="i_e32"]
+[ext_resource type="Texture2D" path="res://world/islands/props/windmill.png" id="i_e33"]
+[ext_resource type="Texture2D" path="res://world/islands/props/fence.png" id="i_e34"]
+[ext_resource type="Script" path="res://world/village/building.gd" id="i_e35"]
+[ext_resource type="Texture2D" path="res://world/islands/props/greenhouse.png" id="i_e36"]
+[ext_resource type="Texture2D" path="res://world/islands/meadow_isle/land/orchard.png" id="i_e37"]
+[ext_resource type="Texture2D" path="res://world/islands/props/lily_pads.png" id="i_e38"]
+[ext_resource type="PackedScene" path="res://fishing/fishing_spots/fishing_spot.tscn" id="i_e39"]
+[ext_resource type="Texture2D" path="res://world/islands/props/pine.png" id="i_e40"]
+[ext_resource type="Texture2D" path="res://world/islands/props/palm.png" id="i_e41"]
+[ext_resource type="Texture2D" path="res://world/islands/props/reeds.png" id="i_e42"]
+[ext_resource type="Script" path="res://world/traps/trap_spot.gd" id="i_e43"]
+[ext_resource type="Script" path="res://items/item.gd" id="i_e44"]
+[ext_resource type="Resource" path="res://items/materials/seaweed.tres" id="i_e45"]
+
+[sub_resource type="RectangleShape2D" id="i_s1"]
+size = Vector2(6.0, 3.0)
+
+[sub_resource type="Resource" id="i_s2"]
+script = ExtResource("i_e16")
+item = ExtResource("i_e17")
+amount = 3
+price = 12
+
+[sub_resource type="Resource" id="i_s3"]
+script = ExtResource("i_e16")
+item = ExtResource("i_e18")
+amount = 3
+price = 20
+
+[sub_resource type="Resource" id="i_s4"]
+script = ExtResource("i_e16")
+item = ExtResource("i_e19")
+amount = 3
+price = 18
+
+[sub_resource type="Resource" id="i_s5"]
+script = ExtResource("i_e16")
+item = ExtResource("i_e20")
+amount = 2
+price = 40
+
+[sub_resource type="Resource" id="i_s6"]
+script = ExtResource("i_e16")
+item = ExtResource("i_e21")
+amount = 1
+price = 180
+dailyStock = 2
+requiredFlag = "quest/t_harvest"
+lockedText = "After Harvest Festival."
+
+[sub_resource type="Resource" id="i_s7"]
+script = ExtResource("i_e16")
+item = ExtResource("i_e22")
+amount = 1
+price = 45
+dailyStock = 5
+
+[sub_resource type="Resource" id="i_s8"]
+script = ExtResource("i_e16")
+item = ExtResource("i_e23")
+amount = 5
+price = 60
+
+[sub_resource type="Resource" id="i_s9"]
+script = ExtResource("i_e16")
+item = ExtResource("i_e24")
+amount = 1
+price = 900
+requiredFlag = "quest/t_sun"
+lockedText = "After Sunflower Fields."
+
+[sub_resource type="RectangleShape2D" id="i_s10"]
+size = Vector2(4.0, 3.0)
+
+[sub_resource type="RectangleShape2D" id="i_s11"]
+size = Vector2(6.0, 3.0)
+
+[sub_resource type="RectangleShape2D" id="i_s12"]
+size = Vector2(10.0, 4.0)
+
+[sub_resource type="RectangleShape2D" id="i_s13"]
+size = Vector2(6.0, 3.0)
+
+[sub_resource type="RectangleShape2D" id="i_s14"]
+size = Vector2(6.0, 3.0)
+
+[sub_resource type="RectangleShape2D" id="i_s15"]
+size = Vector2(30.0, 5.0)
+
+[sub_resource type="RectangleShape2D" id="i_s16"]
+size = Vector2(4.0, 3.0)
+
+[sub_resource type="RectangleShape2D" id="i_s17"]
+size = Vector2(4.0, 3.0)
+
+[sub_resource type="RectangleShape2D" id="i_s18"]
+size = Vector2(4.0, 3.0)
+
+[sub_resource type="RectangleShape2D" id="i_s19"]
+size = Vector2(4.0, 3.0)
+
+[sub_resource type="RectangleShape2D" id="i_s20"]
+size = Vector2(4.0, 3.0)
+
+[node name="MeadowIsle" type="Node2D"]
+y_sort_enabled = true
+script = ExtResource("i_e1")
+
+[node name="Landing" type="Node2D" parent="." node_paths=PackedStringArray("land")]
+position = Vector2(0.0, 0.0)
+y_sort_enabled = true
+script = ExtResource("i_e2")
+land = [NodePath("Land")]
+
+[node name="Water" parent="Landing" instance=ExtResource("i_e4")]
+biome = ExtResource("i_e3")
+
+[node name="Land" type="Sprite2D" parent="Landing"]
+z_index = -1
+texture = ExtResource("i_e5")
+centered = false
+
+[node name="Npc_Tilly" type="Node2D" parent="Landing" node_paths=PackedStringArray("art", "shop")]
+position = Vector2(119, 62)
+script = ExtResource("i_e6")
+id = "tilly"
+greeting = "Welcome to the farm!"
+reach = 12.0
+promptOffset = Vector2(0, -24)
+art = NodePath("Art")
+quests = Array[ExtResource("i_e7")]([ExtResource("i_e8"), ExtResource("i_e9"), ExtResource("i_e10"), ExtResource("i_e11"), ExtResource("i_e12"), ExtResource("i_e13"), ExtResource("i_e14")])
+shop = NodePath("Stall")
+shopLabel = "Seeds"
+
+[node name="Art" type="Sprite2D" parent="Landing/Npc_Tilly"]
+texture = ExtResource("i_e15")
+centered = false
+offset = Vector2(-6, -20)
+
+[node name="Body" type="StaticBody2D" parent="Landing/Npc_Tilly"]
+
+[node name="Shape" type="CollisionShape2D" parent="Landing/Npc_Tilly/Body"]
+position = Vector2(0, -1)
+shape = SubResource("i_s1")
+
+[node name="Stall" type="Node2D" parent="Landing/Npc_Tilly"]
+position = Vector2(0, 2)
+script = ExtResource("i_e25")
+offers = Array[ExtResource("i_e16")]([])
+stock = ExtResource("i_tilly_stock")
+title = "Tilly's Seed Stall"
+listed = false
+buyRate = 0.9
+buysFish = false
+greeting = "Fresh seeds, honey from the hives"
+
+[node name="Scarecrow" type="Sprite2D" parent="Landing"]
+position = Vector2(89, 30)
+texture = ExtResource("i_e26")
+centered = false
+offset = Vector2(-6.0, -18.0)
+
+[node name="Body" type="StaticBody2D" parent="Landing/Scarecrow"]
+
+[node name="Shape" type="CollisionShape2D" parent="Landing/Scarecrow/Body"]
+position = Vector2(0.0, -1.5)
+shape = SubResource("i_s10")
+
+[node name="Flowers" type="Sprite2D" parent="Landing"]
+position = Vector2(108, 92)
+texture = ExtResource("i_e27")
+centered = false
+offset = Vector2(-6.0, -6.0)
+
+[node name="Hive" type="Sprite2D" parent="Landing"]
+position = Vector2(135, 40)
+texture = ExtResource("i_e28")
+centered = false
+offset = Vector2(-6.0, -14.0)
+
+[node name="Body" type="StaticBody2D" parent="Landing/Hive"]
+
+[node name="Shape" type="CollisionShape2D" parent="Landing/Hive/Body"]
+position = Vector2(0.0, -1.5)
+shape = SubResource("i_s11")
+
+[node name="Pearl1" type="Node2D" parent="Landing"]
+position = Vector2(138, 100)
+script = ExtResource("i_e29")
+flag = "pearl_meadow_isle_1"
+title = "A lost pearl!"
+message = "Opal on Pearl Lagoon collects these."
+prompt = "Pick up"
+reach = 7.0
+
+[node name="MeadowSign" type="Node2D" parent="Landing"]
+position = Vector2(89, 52)
+script = ExtResource("i_e29")
+flag = "meadowsign"
+title = "Meadow Isle"
+message = "Tilly's farm. Plant seeds by clicking the soil with them. Crops grow by themselves, no watering needed."
+repeatable = true
+concealed = false
+prompt = "Read"
+reach = 10.0
+
+[node name="Art" type="Sprite2D" parent="Landing/MeadowSign"]
+texture = ExtResource("i_e30")
+centered = false
+offset = Vector2(-5, -12)
+
+[node name="Fields" type="Node2D" parent="." node_paths=PackedStringArray("land")]
+position = Vector2(192.0, 0.0)
+y_sort_enabled = true
+script = ExtResource("i_e2")
+land = [NodePath("Land")]
+
+[node name="Water" parent="Fields" instance=ExtResource("i_e4")]
+biome = ExtResource("i_e3")
+
+[node name="Land" type="Sprite2D" parent="Fields"]
+z_index = -1
+texture = ExtResource("i_e31")
+centered = false
+
+[node name="PlotA" type="Node2D" parent="Fields"]
+z_index = -1
+position = Vector2(12.0, 14.0)
+script = ExtResource("i_e32")
+id = "meadow_a"
+columns = 5
+rows = 3
+
+[node name="PlotB" type="Node2D" parent="Fields"]
+z_index = -1
+position = Vector2(12.0, 72.0)
+script = ExtResource("i_e32")
+id = "meadow_b"
+columns = 5
+rows = 3
+
+[node name="PlotC" type="Node2D" parent="Fields"]
+z_index = -1
+position = Vector2(120.0, 80.0)
+script = ExtResource("i_e32")
+id = "meadow_c"
+columns = 4
+rows = 2
+
+[node name="Windmill" type="Sprite2D" parent="Fields"]
+position = Vector2(140.0, 40.0)
+texture = ExtResource("i_e33")
+centered = false
+offset = Vector2(-12.0, -34.0)
+
+[node name="Body" type="StaticBody2D" parent="Fields/Windmill"]
+
+[node name="Shape" type="CollisionShape2D" parent="Fields/Windmill/Body"]
+position = Vector2(0.0, -2.0)
+shape = SubResource("i_s12")
+
+[node name="Hive1" type="Sprite2D" parent="Fields"]
+position = Vector2(70.0, 30.0)
+texture = ExtResource("i_e28")
+centered = false
+offset = Vector2(-6.0, -14.0)
+
+[node name="Body" type="StaticBody2D" parent="Fields/Hive1"]
+
+[node name="Shape" type="CollisionShape2D" parent="Fields/Hive1/Body"]
+position = Vector2(0.0, -1.5)
+shape = SubResource("i_s13")
+
+[node name="Hive2" type="Sprite2D" parent="Fields"]
+position = Vector2(80.0, 34.0)
+texture = ExtResource("i_e28")
+centered = false
+offset = Vector2(-6.0, -14.0)
+
+[node name="Body" type="StaticBody2D" parent="Fields/Hive2"]
+
+[node name="Shape" type="CollisionShape2D" parent="Fields/Hive2/Body"]
+position = Vector2(0.0, -1.5)
+shape = SubResource("i_s14")
+
+[node name="Fence" type="Sprite2D" parent="Fields"]
+position = Vector2(26.0, 44.0)
+texture = ExtResource("i_e34")
+centered = false
+offset = Vector2(-12.0, -8.0)
+
+[node name="Pearl2" type="Node2D" parent="Fields"]
+position = Vector2(150.0, 12.0)
+script = ExtResource("i_e29")
+flag = "pearl_meadow_isle_2"
+title = "A lost pearl!"
+message = "Opal on Pearl Lagoon collects these."
+prompt = "Pick up"
+reach = 7.0
+
+[node name="Pearl3" type="Node2D" parent="Fields"]
+position = Vector2(8.0, 100.0)
+script = ExtResource("i_e29")
+flag = "pearl_meadow_isle_3"
+title = "A lost pearl!"
+message = "Opal on Pearl Lagoon collects these."
+prompt = "Pick up"
+reach = 7.0
+
+[node name="Greenhouse" type="Node2D" parent="Fields"]
+position = Vector2(72.0, 98.0)
+script = ExtResource("i_e35")
+displayName = "Greenhouse"
+requiredFlag = "project/greenhouse"
+
+[node name="Art" type="Sprite2D" parent="Fields/Greenhouse"]
+texture = ExtResource("i_e36")
+centered = false
+offset = Vector2(-18.0, -26.0)
+
+[node name="Body" type="StaticBody2D" parent="Fields/Greenhouse"]
+
+[node name="Shape" type="CollisionShape2D" parent="Fields/Greenhouse/Body"]
+position = Vector2(0.0, -3.5)
+shape = SubResource("i_s15")
+
+[node name="Plot" type="Node2D" parent="Fields/Greenhouse"]
+z_index = -1
+position = Vector2(-40.0, -22.0)
+script = ExtResource("i_e32")
+id = "greenhouse"
+columns = 3
+rows = 1
+
+[node name="Orchard" type="Node2D" parent="." node_paths=PackedStringArray("land")]
+position = Vector2(384.0, 0.0)
+y_sort_enabled = true
+script = ExtResource("i_e2")
+land = [NodePath("Land")]
+
+[node name="Water" parent="Orchard" instance=ExtResource("i_e4")]
+biome = ExtResource("i_e3")
+
+[node name="Land" type="Sprite2D" parent="Orchard"]
+z_index = -1
+texture = ExtResource("i_e37")
+centered = false
+
+[node name="LilyPond" type="Node2D" parent="Orchard"]
+position = Vector2(40.0, 40.0)
+
+[node name="Art" type="Sprite2D" parent="Orchard/LilyPond"]
+texture = ExtResource("i_e38")
+centered = false
+offset = Vector2(-6.0, -6.0)
+
+[node name="Pond" parent="Orchard/LilyPond" instance=ExtResource("i_e39")]
+z_index = 1
+position = Vector2(0, -4)
+radius = 7.0
+biome = ExtResource("i_e3")
+id = &"meadow_pond"
+permanent = true
+biteDelayScale = 1.5
+squash = 0.45
+ringInterval = 1.4
+
+[node name="Tree0" type="Sprite2D" parent="Orchard"]
+position = Vector2(20.0, 20.0)
+texture = ExtResource("i_e40")
+centered = false
+offset = Vector2(-6.0, -18.0)
+
+[node name="Body" type="StaticBody2D" parent="Orchard/Tree0"]
+
+[node name="Shape" type="CollisionShape2D" parent="Orchard/Tree0/Body"]
+position = Vector2(0.0, -1.5)
+shape = SubResource("i_s16")
+
+[node name="Tree1" type="Sprite2D" parent="Orchard"]
+position = Vector2(44.0, 80.0)
+texture = ExtResource("i_e41")
+centered = false
+offset = Vector2(-10.0, -28.0)
+
+[node name="Body" type="StaticBody2D" parent="Orchard/Tree1"]
+
+[node name="Shape" type="CollisionShape2D" parent="Orchard/Tree1/Body"]
+position = Vector2(0.0, -1.5)
+shape = SubResource("i_s17")
+
+[node name="Tree2" type="Sprite2D" parent="Orchard"]
+position = Vector2(68.0, 20.0)
+texture = ExtResource("i_e40")
+centered = false
+offset = Vector2(-6.0, -18.0)
+
+[node name="Body" type="StaticBody2D" parent="Orchard/Tree2"]
+
+[node name="Shape" type="CollisionShape2D" parent="Orchard/Tree2/Body"]
+position = Vector2(0.0, -1.5)
+shape = SubResource("i_s18")
+
+[node name="Tree3" type="Sprite2D" parent="Orchard"]
+position = Vector2(92.0, 80.0)
+texture = ExtResource("i_e41")
+centered = false
+offset = Vector2(-10.0, -28.0)
+
+[node name="Body" type="StaticBody2D" parent="Orchard/Tree3"]
+
+[node name="Shape" type="CollisionShape2D" parent="Orchard/Tree3/Body"]
+position = Vector2(0.0, -1.5)
+shape = SubResource("i_s19")
+
+[node name="Tree4" type="Sprite2D" parent="Orchard"]
+position = Vector2(116.0, 20.0)
+texture = ExtResource("i_e40")
+centered = false
+offset = Vector2(-6.0, -18.0)
+
+[node name="Body" type="StaticBody2D" parent="Orchard/Tree4"]
+
+[node name="Shape" type="CollisionShape2D" parent="Orchard/Tree4/Body"]
+position = Vector2(0.0, -1.5)
+shape = SubResource("i_s20")
+
+[node name="Reeds" type="Sprite2D" parent="Orchard"]
+position = Vector2(52.0, 50.0)
+texture = ExtResource("i_e42")
+centered = false
+offset = Vector2(-5.0, -12.0)
+
+[node name="Trap" type="Node2D" parent="Orchard"]
+position = Vector2(140.0, 30.0)
+script = ExtResource("i_e43")
+biome = ExtResource("i_e3")
+reach = 9.0
+promptOffset = Vector2(0, -8)
+extras = Array[ExtResource("i_e44")]([ExtResource("i_e45")])
+
+[node name="Pearl4" type="Node2D" parent="Orchard"]
+position = Vector2(110.0, 96.0)
+script = ExtResource("i_e29")
+flag = "pearl_meadow_isle_4"
+title = "A lost pearl!"
+message = "Opal on Pearl Lagoon collects these."
+prompt = "Pick up"
+reach = 7.0
+
+[node name="Pearl5" type="Node2D" parent="Orchard"]
+position = Vector2(30.0, 60.0)
+script = ExtResource("i_e29")
+flag = "pearl_meadow_isle_5"
+title = "A lost pearl!"
+message = "Opal on Pearl Lagoon collects these."
+prompt = "Pick up"
+reach = 7.0

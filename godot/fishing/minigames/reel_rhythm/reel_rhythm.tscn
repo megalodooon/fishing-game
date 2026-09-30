@@ -1,0 +1,8 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://fishing/minigames/reel_rhythm/reel_rhythm.gd" id="1_game"]
+
+[node name="ReelRhythm" type="Node2D"]
+script = ExtResource("1_game")
+size = Vector2(72, 18)
+hint = "Click as each tug crosses the green ring"

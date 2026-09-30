@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="TreasureChest" format=3]
+
+[ext_resource type="Resource" path="res://items/materials/sea_salt.tres" id="10_dcyu0"]
+[ext_resource type="Resource" path="res://items/materials/palm_frond.tres" id="11_3lkod"]
+[ext_resource type="Resource" path="res://items/materials/rope.tres" id="12_pngfh"]
+[ext_resource type="Resource" path="res://items/materials/barnacle.tres" id="13_pn48k"]
+[ext_resource type="Script" path="res://items/treasure/treasure_chest.gd" id="e1"]
+[ext_resource type="Script" path="res://items/item.gd" id="e2"]
+[ext_resource type="Resource" path="res://items/materials/driftwood_plank.tres" id="e3"]
+[ext_resource type="Resource" path="res://items/materials/seaweed.tres" id="e4"]
+[ext_resource type="Resource" path="res://items/materials/sea_shell.tres" id="e5"]
+[ext_resource type="Resource" path="res://items/materials/kelp_fiber.tres" id="e6"]
+[ext_resource type="Resource" path="res://fishing/bait/worm_bait.tres" id="e7"]
+[ext_resource type="Resource" path="res://items/materials/glowcap.tres" id="e8"]
+[ext_resource type="Resource" path="res://items/materials/broken_bottle.tres" id="e9"]
+[ext_resource type="Texture2D" path="res://items/treasure/icons/driftwood_crate.png" id="e10"]
+[ext_resource type="Resource" path="res://items/rarities/common.tres" id="e11"]
+
+[resource]
+script = ExtResource("e1")
+loot = Array[ExtResource("e2")]([ExtResource("e3"), ExtResource("e4"), ExtResource("e5"), ExtResource("e6"), ExtResource("e7"), ExtResource("e8"), ExtResource("e9"), ExtResource("10_dcyu0"), ExtResource("11_3lkod"), ExtResource("12_pngfh"), ExtResource("13_pn48k")])
+lootWeights = PackedFloat32Array(5, 3, 3, 2, 2, 1, 2, 2, 2, 1, 1.5)
+lootAmounts = Array[Vector2i]([Vector2i(1, 3), Vector2i(1, 2), Vector2i(1, 2), Vector2i(1, 2), Vector2i(3, 5), Vector2i(1, 1), Vector2i(1, 2), Vector2i(3, 6), Vector2i(3, 6), Vector2i(1, 2), Vector2i(2, 5)])
+displayName = "Driftwood Crate"
+icon = ExtResource("e10")
+rarity = ExtResource("e11")
+description = "Waterlogged, but something rattles inside."
+hint = "Click while holding it to open"
+maxStack = 20

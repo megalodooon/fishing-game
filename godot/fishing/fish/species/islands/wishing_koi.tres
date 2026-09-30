@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="FishData" format=3 uid="uid://dm62sqg7201v4"]
+
+[ext_resource type="Texture2D" uid="uid://bo3knitk0lrom" path="res://fishing/fish/assets/islands/wishing_koi.png" id="2_icon"]
+[ext_resource type="Resource" path="res://items/rarities/trophy.tres" id="3_rarity"]
+[ext_resource type="Script" uid="uid://dupq0iwgv25f6" path="res://fishing/fish/requirements/fish_requirement.gd" id="5_req"]
+[ext_resource type="Script" uid="uid://dfxpra0epuniy" path="res://fishing/fish/requirements/caught_requirement.gd" id="6_caught"]
+[ext_resource type="Script" uid="uid://bevdmlyak68oo" path="res://fishing/fish/fish_data.gd" id="7_data"]
+[ext_resource type="Resource" path="res://fishing/fish/species/islands/well_minnow.tres" id="8_a"]
+[ext_resource type="Resource" path="res://fishing/fish/species/islands/cave_loach.tres" id="9_b"]
+[ext_resource type="Resource" path="res://fishing/fish/species/islands/ghost_catfish.tres" id="10_c"]
+
+[sub_resource type="Resource" id="Req_caught"]
+script = ExtResource("6_caught")
+fish = Array[ExtResource("7_data")]([ExtResource("8_a"), ExtResource("9_b"), ExtResource("10_c")])
+
+[resource]
+script = ExtResource("7_data")
+displayName = "Wishing Koi"
+icon = ExtResource("2_icon")
+rarity = ExtResource("3_rarity")
+description = "They say it grants a wish to whoever lands it. It only shows itself to someone who knows every fish in the well."
+weightRange = Vector2(2, 6)
+basePrice = 600
+heldSize = 1.1
+requirements = Array[ExtResource("5_req")]([SubResource("Req_caught")])
+chance = 4.0

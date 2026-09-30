@@ -1,0 +1,65 @@
+[gd_resource type="Resource" script_class="GameEvent" format=3]
+
+[ext_resource type="Script" path="res://fishing/creatures/sea_creature.gd" id="1_e7qh8"]
+[ext_resource type="Script" path="res://items/item.gd" id="2_unthd"]
+[ext_resource type="Resource" path="res://items/events/blossom_petals.tres" id="3_2205d"]
+[ext_resource type="Texture2D" path="res://world/events/icons/blossom_derby.png" id="4_uiwdb"]
+[ext_resource type="Resource" path="res://fishing/fish/species/events/blossom_derby_biome.tres" id="5_b85xh"]
+[ext_resource type="Texture2D" path="res://items/events/icons/blossom_petals.png" id="6_2qv1i"]
+[ext_resource type="Script" path="res://world/events/game_event.gd" id="7_7mgye"]
+[ext_resource type="Script" path="res://world/village/shop/shop_offer.gd" id="8_re2vt"]
+[ext_resource type="Resource" path="res://items/events/petal_bobber.tres" id="9_nj2re"]
+[ext_resource type="Resource" path="res://items/events/blossom_charm.tres" id="10_f7htp"]
+[ext_resource type="Resource" path="res://items/events/blossom_tea.tres" id="11_jf8l3"]
+[ext_resource type="Resource" path="res://items/events/rainbow_bait.tres" id="12_bs5me"]
+[ext_resource type="Resource" path="res://items/events/blossom_seeds.tres" id="13_ge8y1"]
+
+[sub_resource type="Resource" id="Resource_32utr"]
+script = ExtResource("8_re2vt")
+item = ExtResource("9_nj2re")
+price = 40
+currency = ExtResource("3_2205d")
+
+[sub_resource type="Resource" id="Resource_4tkor"]
+script = ExtResource("8_re2vt")
+item = ExtResource("10_f7htp")
+price = 80
+currency = ExtResource("3_2205d")
+
+[sub_resource type="Resource" id="Resource_lblw5"]
+script = ExtResource("8_re2vt")
+item = ExtResource("11_jf8l3")
+price = 6
+currency = ExtResource("3_2205d")
+
+[sub_resource type="Resource" id="Resource_1ov87"]
+script = ExtResource("8_re2vt")
+item = ExtResource("12_bs5me")
+amount = 5
+price = 20
+currency = ExtResource("3_2205d")
+
+[sub_resource type="Resource" id="Resource_hwvk5"]
+script = ExtResource("8_re2vt")
+item = ExtResource("13_ge8y1")
+amount = 3
+price = 12
+currency = ExtResource("3_2205d")
+
+[resource]
+script = ExtResource("7_7mgye")
+displayName = "Blossom Derby"
+description = "Petals drift over every island and the spring fish come up to play. Collect petals, catch the Derby fish, and trade at Tilly's stall."
+icon = ExtResource("4_uiwdb")
+color = Color(0.96, 0.6, 0.75, 1)
+page = ExtResource("5_b85xh")
+fishChance = 0.18
+drops = Array[ExtResource("2_unthd")]([ExtResource("3_2205d")])
+dropChances = PackedFloat32Array(0.25)
+pickup = ExtResource("3_2205d")
+pickupArt = ExtResource("6_2qv1i")
+host = "tilly"
+shopTitle = "Tilly's Derby Stall"
+shop = Array[ExtResource("8_re2vt")]([SubResource("Resource_32utr"), SubResource("Resource_4tkor"), SubResource("Resource_lblw5"), SubResource("Resource_1ov87"), SubResource("Resource_hwvk5")])
+startText = "Petals are falling! Pick them up on every island, and the Derby fish are biting."
+endText = "The last petals have fallen. The Derby fish swim off until next spring."

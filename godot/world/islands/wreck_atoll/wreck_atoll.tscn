@@ -1,0 +1,270 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://world/island/island.gd" id="1_island"]
+[ext_resource type="Script" path="res://world/island/island_room.gd" id="2_room"]
+[ext_resource type="PackedScene" uid="uid://dw4byakruepaa" path="res://oceans/basic/basic_ocean.tscn" id="3_ocean"]
+[ext_resource type="Resource" path="res://oceans/islands/wreck_atoll_biome.tres" id="4_biome"]
+[ext_resource type="Texture2D" path="res://world/islands/wreck_atoll/land/landing.png" id="5_landing"]
+[ext_resource type="Texture2D" path="res://world/islands/wreck_atoll/land/tide_pools.png" id="6_pools_land"]
+[ext_resource type="Texture2D" path="res://world/islands/props/palm.png" id="7_palm"]
+[ext_resource type="Texture2D" path="res://world/islands/props/rock.png" id="8_rock"]
+[ext_resource type="Texture2D" path="res://world/islands/props/shipwreck.png" id="9_wreck"]
+[ext_resource type="Texture2D" path="res://world/islands/props/tide_pool.png" id="10_pool"]
+[ext_resource type="Script" path="res://world/interact/secret.gd" id="11_secret"]
+[ext_resource type="Resource" path="res://items/materials/rust_flakes.tres" id="12_rust"]
+[ext_resource type="Script" path="res://items/item.gd" id="13_item_script"]
+[ext_resource type="Texture2D" path="res://world/village/props/chest.png" id="14_chest"]
+[ext_resource type="Texture2D" path="res://world/village/props/sign.png" id="15_sign"]
+[ext_resource type="PackedScene" path="res://fishing/fishing_spots/fishing_spot.tscn" id="16_spot"]
+
+[ext_resource type="Script" path="res://world/npc/npc.gd" id="w_e1"]
+[ext_resource type="Script" path="res://world/quests/quest.gd" id="w_e2"]
+[ext_resource type="Resource" path="res://world/quests/story/q_kraken.tres" id="w_e3"]
+[ext_resource type="Resource" path="res://world/quests/story/q_treasure.tres" id="w_e4"]
+[ext_resource type="Resource" path="res://world/quests/story/q_storm_kraken.tres" id="w_e5"]
+[ext_resource type="Resource" path="res://world/quests/side/gr_x.tres" id="w_e6"]
+[ext_resource type="Resource" path="res://world/quests/side/gr_hoard.tres" id="w_e7"]
+[ext_resource type="Resource" path="res://world/quests/side/gr_sharks.tres" id="w_e8"]
+[ext_resource type="Resource" path="res://world/quests/side/gr_guild.tres" id="w_e9"]
+[ext_resource type="Resource" path="res://world/quests/side/gr_crab.tres" id="w_e10"]
+[ext_resource type="Resource" path="res://world/quests/side/k_creatures.tres" id="w_e11"]
+[ext_resource type="Texture2D" path="res://world/npcs/grim.png" id="w_e12"]
+[ext_resource type="Script" path="res://world/interact/secret.gd" id="w_e13"]
+[ext_resource type="Script" path="res://items/item.gd" id="w_e14"]
+[ext_resource type="Resource" path="res://items/key/logbook_page_12.tres" id="w_e15"]
+[ext_resource type="Script" path="res://world/traps/trap_spot.gd" id="w_e16"]
+[ext_resource type="Resource" path="res://oceans/islands/wreck_atoll_biome.tres" id="w_e17"]
+[ext_resource type="Resource" path="res://items/materials/iron_scrap.tres" id="w_e18"]
+[ext_resource type="Resource" path="res://items/materials/crab_shell.tres" id="w_e19"]
+[sub_resource type="RectangleShape2D" id="Rect_trunk"]
+size = Vector2(4, 3)
+
+[sub_resource type="RectangleShape2D" id="Rect_rock"]
+size = Vector2(10, 4)
+
+[sub_resource type="RectangleShape2D" id="Rect_wreck"]
+size = Vector2(40, 8)
+
+[sub_resource type="RectangleShape2D" id="Rect_pool"]
+size = Vector2(20, 6)
+
+[sub_resource type="RectangleShape2D" id="w_s1"]
+size = Vector2(6.0, 3.0)
+
+[node name="WreckAtoll" type="Node2D"]
+y_sort_enabled = true
+script = ExtResource("1_island")
+
+[node name="Landing" type="Node2D" parent="." node_paths=PackedStringArray("land")]
+y_sort_enabled = true
+script = ExtResource("2_room")
+land = [NodePath("Land")]
+
+[node name="Water" parent="Landing" instance=ExtResource("3_ocean")]
+biome = ExtResource("4_biome")
+
+[node name="Land" type="Sprite2D" parent="Landing"]
+z_index = -1
+texture = ExtResource("5_landing")
+centered = false
+
+[node name="Wreck" type="Sprite2D" parent="Landing"]
+position = Vector2(100, 30)
+texture = ExtResource("9_wreck")
+centered = false
+offset = Vector2(-23, -24)
+
+[node name="Body" type="StaticBody2D" parent="Landing/Wreck"]
+
+[node name="Shape" type="CollisionShape2D" parent="Landing/Wreck/Body"]
+position = Vector2(0, -4)
+shape = SubResource("Rect_wreck")
+
+[node name="Crate" type="Node2D" parent="Landing"]
+position = Vector2(104, 72)
+script = ExtResource("11_secret")
+flag = "wreck_crate"
+title = "Wreck crate"
+message = "Flakes of rust off the hull. Mix one with any common fish at the bait crafter for rust bait."
+items = Array[ExtResource("13_item_script")]([ExtResource("12_rust")])
+amounts = Array[int]([3])
+prompt = "Search"
+reach = 10.0
+
+[node name="Palm" type="Sprite2D" parent="Landing"]
+position = Vector2(131, 96)
+texture = ExtResource("7_palm")
+centered = false
+offset = Vector2(-10, -28)
+
+[node name="Body" type="StaticBody2D" parent="Landing/Palm"]
+
+[node name="Shape" type="CollisionShape2D" parent="Landing/Palm/Body"]
+position = Vector2(0, -1.5)
+shape = SubResource("Rect_trunk")
+
+[node name="TidePools" type="Node2D" parent="." node_paths=PackedStringArray("land")]
+position = Vector2(192, 0)
+y_sort_enabled = true
+script = ExtResource("2_room")
+land = [NodePath("Land")]
+
+[node name="Water" parent="TidePools" instance=ExtResource("3_ocean")]
+biome = ExtResource("4_biome")
+
+[node name="Land" type="Sprite2D" parent="TidePools"]
+z_index = -1
+texture = ExtResource("6_pools_land")
+centered = false
+
+[node name="TidePool" type="Node2D" parent="TidePools"]
+position = Vector2(100, 56)
+
+[node name="Art" type="Sprite2D" parent="TidePools/TidePool"]
+texture = ExtResource("10_pool")
+centered = false
+offset = Vector2(-12, -14)
+
+[node name="Body" type="StaticBody2D" parent="TidePools/TidePool"]
+
+[node name="Shape" type="CollisionShape2D" parent="TidePools/TidePool/Body"]
+position = Vector2(0, -6)
+shape = SubResource("Rect_pool")
+
+[node name="Pond" parent="TidePools/TidePool" instance=ExtResource("16_spot")]
+z_index = 1
+position = Vector2(0, -7)
+radius = 7.0
+biome = ExtResource("4_biome")
+id = &"tide_pool"
+permanent = true
+biteDelayScale = 1.5
+squash = 0.45
+ringInterval = 1.4
+ringColor = Color(0.8, 0.95, 1, 0.7)
+
+[node name="Log" type="Node2D" parent="TidePools"]
+position = Vector2(56, 38)
+script = ExtResource("11_secret")
+flag = "wreck_log"
+title = "Captain's log"
+message = "\"The rustfin grouper feeds only on Fridays, only in this tide pool, and only on rust bait.\""
+repeatable = true
+concealed = false
+prompt = "Read"
+reach = 10.0
+
+[node name="Art" type="Sprite2D" parent="TidePools/Log"]
+texture = ExtResource("15_sign")
+centered = false
+offset = Vector2(-5, -12)
+
+[node name="Rock" type="Sprite2D" parent="TidePools"]
+position = Vector2(132, 30)
+texture = ExtResource("8_rock")
+centered = false
+offset = Vector2(-6, -9)
+
+[node name="Body" type="StaticBody2D" parent="TidePools/Rock"]
+
+[node name="Shape" type="CollisionShape2D" parent="TidePools/Rock/Body"]
+position = Vector2(0, -2)
+shape = SubResource("Rect_rock")
+
+[node name="Rock2" type="Sprite2D" parent="TidePools"]
+position = Vector2(118, 86)
+texture = ExtResource("8_rock")
+centered = false
+offset = Vector2(-6, -9)
+flip_h = true
+
+[node name="Body" type="StaticBody2D" parent="TidePools/Rock2"]
+
+[node name="Shape" type="CollisionShape2D" parent="TidePools/Rock2/Body"]
+position = Vector2(0, -2)
+shape = SubResource("Rect_rock")
+
+[node name="Coins" type="Node2D" parent="TidePools"]
+position = Vector2(140, 62)
+script = ExtResource("11_secret")
+flag = "wreck_coins"
+title = "Pirate coins?"
+message = "A handful of old coins wedged between the rocks."
+coins = 50
+prompt = "Search"
+reach = 8.0
+
+[node name="Npc_Grim" type="Node2D" parent="Landing" node_paths=PackedStringArray("art")]
+position = Vector2(112, 88)
+script = ExtResource("w_e1")
+id = "grim"
+greeting = "Arr. Treasure's out there."
+reach = 12.0
+promptOffset = Vector2(0, -24)
+art = NodePath("Art")
+quests = Array[ExtResource("w_e2")]([ExtResource("w_e3"), ExtResource("w_e4"), ExtResource("w_e5"), ExtResource("w_e6"), ExtResource("w_e7"), ExtResource("w_e8"), ExtResource("w_e9"), ExtResource("w_e10"), ExtResource("w_e11")])
+
+[node name="Art" type="Sprite2D" parent="Landing/Npc_Grim"]
+texture = ExtResource("w_e12")
+centered = false
+offset = Vector2(-6, -20)
+
+[node name="Body" type="StaticBody2D" parent="Landing/Npc_Grim"]
+
+[node name="Shape" type="CollisionShape2D" parent="Landing/Npc_Grim/Body"]
+position = Vector2(0, -1)
+shape = SubResource("w_s1")
+
+[node name="Pearl1" type="Node2D" parent="Landing"]
+position = Vector2(138, 12)
+script = ExtResource("w_e13")
+flag = "pearl_wreck_atoll_1"
+title = "A lost pearl!"
+message = "Opal on Pearl Lagoon collects these."
+prompt = "Pick up"
+reach = 7.0
+
+[node name="Pearl2" type="Node2D" parent="TidePools"]
+position = Vector2(20.0, 90.0)
+script = ExtResource("w_e13")
+flag = "pearl_wreck_atoll_2"
+title = "A lost pearl!"
+message = "Opal on Pearl Lagoon collects these."
+prompt = "Pick up"
+reach = 7.0
+
+[node name="Pearl3" type="Node2D" parent="TidePools"]
+position = Vector2(150.0, 40.0)
+script = ExtResource("w_e13")
+flag = "pearl_wreck_atoll_3"
+title = "A lost pearl!"
+message = "Opal on Pearl Lagoon collects these."
+prompt = "Pick up"
+reach = 7.0
+
+[node name="Pearl4" type="Node2D" parent="TidePools"]
+position = Vector2(60.0, 14.0)
+script = ExtResource("w_e13")
+flag = "pearl_wreck_atoll_4"
+title = "A lost pearl!"
+message = "Opal on Pearl Lagoon collects these."
+prompt = "Pick up"
+reach = 7.0
+
+[node name="Page12" type="Node2D" parent="TidePools"]
+position = Vector2(100.0, 90.0)
+script = ExtResource("w_e13")
+flag = "logbook_12"
+title = "A logbook page!"
+message = "Rolled up in a bottle between the rocks."
+items = Array[ExtResource("w_e14")]([ExtResource("w_e15")])
+prompt = "Search"
+reach = 8.0
+
+[node name="Trap" type="Node2D" parent="Landing"]
+position = Vector2(112, 20)
+script = ExtResource("w_e16")
+biome = ExtResource("w_e17")
+reach = 9.0
+promptOffset = Vector2(0, -8)
+extras = Array[ExtResource("w_e14")]([ExtResource("w_e18"), ExtResource("w_e19")])

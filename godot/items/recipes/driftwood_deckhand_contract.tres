@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="BaitRecipe" format=3]
+
+[ext_resource type="Resource" path="res://items/materials/driftwood_plank.tres" id="1_4cnrt"]
+[ext_resource type="Resource" path="res://items/materials/rope.tres" id="2_ia1d0"]
+[ext_resource type="Resource" path="res://items/crew/driftwood_deckhand_contract.tres" id="3_pmqln"]
+[ext_resource type="Script" path="res://fishing/bait/bait_recipe.gd" id="4_yapt4"]
+
+[resource]
+script = ExtResource("4_yapt4")
+output = ExtResource("3_pmqln")
+amount = 1
+ingredients = Array[Resource]([ExtResource("1_4cnrt"), ExtResource("2_ia1d0")])
+counts = Array[int]([24, 2])
+requiredFlag = "collection/driftwood_plank/1"
+xp = 25.0
+station = &"workbench"
+category = "Crew"

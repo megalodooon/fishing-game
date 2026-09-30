@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="BagUpgrade" format=3]
+
+[ext_resource type="Texture2D" path="res://items/tools/icons/pouch_stitching_1.png" id="1_yxafu"]
+[ext_resource type="Resource" path="res://items/rarities/uncommon.tres" id="2_v7h1q"]
+[ext_resource type="Script" path="res://items/tools/bag_upgrade.gd" id="3_imb0m"]
+
+[resource]
+script = ExtResource("3_imb0m")
+slots = 2
+pouch = true
+displayName = "Pouch Stitching I"
+icon = ExtResource("1_yxafu")
+rarity = ExtResource("2_v7h1q")
+description = "Stitch it into the charm pouch for more room."

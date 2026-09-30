@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Item" format=3]
+
+[ext_resource type="Texture2D" path="res://items/materials/icons/lavender.png" id="1_4b848"]
+[ext_resource type="Resource" path="res://items/rarities/uncommon.tres" id="2_o0pbh"]
+[ext_resource type="Script" path="res://items/item.gd" id="3_ex0m8"]
+
+[resource]
+script = ExtResource("3_ex0m8")
+displayName = "Lavender"
+category = "Crop"
+icon = ExtResource("1_4b848")
+rarity = ExtResource("2_o0pbh")
+description = "Grown on the farm. Good for cooking and brewing."
+maxStack = 99
+sellPrice = 18

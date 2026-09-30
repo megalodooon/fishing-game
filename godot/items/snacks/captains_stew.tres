@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Snack" format=3]
+
+[ext_resource type="Texture2D" path="res://items/snacks/icons/captains_stew.png" id="1_a5ffu"]
+[ext_resource type="Resource" path="res://items/rarities/legendary.tres" id="2_j4stf"]
+[ext_resource type="Script" path="res://items/snacks/snack.gd" id="3_xoufk"]
+
+[resource]
+script = ExtResource("3_xoufk")
+energy = 90.0
+buffStat = "doubleCatch"
+buffAmount = 1.05
+buffHours = 6.0
+displayName = "Captain's Stew"
+icon = ExtResource("1_a5ffu")
+rarity = ExtResource("2_j4stf")
+description = "Cooked at a kitchen."
+hint = "Click while holding it to eat"
+maxStack = 20
+sellPrice = 260

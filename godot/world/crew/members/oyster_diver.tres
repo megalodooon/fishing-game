@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="CrewMember" format=3]
+
+[ext_resource type="Resource" path="res://items/enchanted/enchanted_pearl_oyster.tres" id="1_y0qm7"]
+[ext_resource type="Texture2D" path="res://items/materials/icons/pearl_oyster.png" id="2_7kox5"]
+[ext_resource type="Resource" path="res://items/materials/pearl_oyster.tres" id="3_3iv1e"]
+[ext_resource type="Script" path="res://world/crew/crew_member.gd" id="4_6mc8j"]
+
+[resource]
+script = ExtResource("4_6mc8j")
+displayName = "Oyster Diver"
+description = "Holds their breath for five whole minutes."
+icon = ExtResource("2_7kox5")
+product = ExtResource("3_3iv1e")
+enchanted = ExtResource("1_y0qm7")
+hours = 2.0

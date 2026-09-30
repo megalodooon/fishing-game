@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="PetData" format=3]
+
+[ext_resource type="Script" path="res://world/village/pets/pet_data.gd" id="e1"]
+[ext_resource type="Texture2D" path="res://world/village/pets/art/pearl_seahorse.png" id="e2"]
+
+[resource]
+script = ExtResource("e1")
+displayName = "Pearl Seahorse"
+description = "Floats in its own little bubble. Shiny fish follow it."
+sprite = ExtResource("e2")
+flies = true
+glows = true
+price = 3500
+bonuses = Dictionary[StringName, float]({
+&"variantLuck": 15.0
+})

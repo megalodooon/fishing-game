@@ -1,0 +1,76 @@
+[gd_resource type="Resource" script_class="GameEvent" format=3]
+
+[ext_resource type="Script" path="res://fishing/creatures/sea_creature.gd" id="1_1bs5q"]
+[ext_resource type="Resource" path="res://fishing/creatures/grumpy_yeti_crab.tres" id="2_1lgs1"]
+[ext_resource type="Script" path="res://items/item.gd" id="3_0fp4h"]
+[ext_resource type="Resource" path="res://items/events/wrapped_gift.tres" id="4_gmxts"]
+[ext_resource type="Resource" path="res://items/events/festive_gift.tres" id="5_ndf7a"]
+[ext_resource type="Resource" path="res://items/events/grand_gift.tres" id="6_evrc3"]
+[ext_resource type="Texture2D" path="res://world/events/icons/gift_tide.png" id="7_debka"]
+[ext_resource type="Resource" path="res://fishing/fish/species/events/gift_tide_biome.tres" id="8_xmkkk"]
+[ext_resource type="Texture2D" path="res://items/events/icons/wrapped_gift.png" id="9_ac7x3"]
+[ext_resource type="Script" path="res://world/events/game_event.gd" id="10_klq0o"]
+[ext_resource type="Script" path="res://world/village/shop/shop_offer.gd" id="11_e5oe1"]
+[ext_resource type="Resource" path="res://items/events/snowflake_bobber.tres" id="12_w8yx8"]
+[ext_resource type="Resource" path="res://items/events/tinsel_bait.tres" id="13_ylnrv"]
+[ext_resource type="Resource" path="res://items/events/yule_log.tres" id="14_fwabh"]
+[ext_resource type="Resource" path="res://items/events/holly_charm.tres" id="15_2855m"]
+[ext_resource type="Resource" path="res://fishing/rods/jolly_rod.tres" id="16_fxf53"]
+
+[sub_resource type="Resource" id="Resource_akpf1"]
+script = ExtResource("11_e5oe1")
+item = ExtResource("12_w8yx8")
+price = 25
+currency = ExtResource("4_gmxts")
+
+[sub_resource type="Resource" id="Resource_e0dgn"]
+script = ExtResource("11_e5oe1")
+item = ExtResource("13_ylnrv")
+amount = 5
+price = 3
+currency = ExtResource("4_gmxts")
+
+[sub_resource type="Resource" id="Resource_3oin1"]
+script = ExtResource("11_e5oe1")
+item = ExtResource("14_fwabh")
+price = 4
+currency = ExtResource("4_gmxts")
+
+[sub_resource type="Resource" id="Resource_t0dip"]
+script = ExtResource("11_e5oe1")
+item = ExtResource("15_2855m")
+price = 12
+currency = ExtResource("5_ndf7a")
+
+[sub_resource type="Resource" id="Resource_5n6ws"]
+script = ExtResource("11_e5oe1")
+item = ExtResource("16_fxf53")
+price = 40
+currency = ExtResource("5_ndf7a")
+
+[sub_resource type="Resource" id="Resource_10nk7"]
+script = ExtResource("11_e5oe1")
+item = ExtResource("5_ndf7a")
+price = 10
+currency = ExtResource("4_gmxts")
+
+[resource]
+script = ExtResource("10_klq0o")
+displayName = "Gift Tide"
+description = "A whole week of winter wonders! Presents lie all over the islands and come up with your catch. Open them for surprises, or save them for Wally's Workshop on the village square."
+icon = ExtResource("7_debka")
+color = Color(0.9, 0.28, 0.32, 1)
+season = 3
+days = Vector2i(1, 7)
+page = ExtResource("8_xmkkk")
+drops = Array[ExtResource("3_0fp4h")]([ExtResource("4_gmxts"), ExtResource("5_ndf7a"), ExtResource("6_evrc3")])
+dropChances = PackedFloat32Array(0.12, 0.02, 0.003)
+creatures = Array[ExtResource("1_1bs5q")]([ExtResource("2_1lgs1")])
+pickup = ExtResource("4_gmxts")
+pickupsPerRoom = 3
+pickupArt = ExtResource("9_ac7x3")
+host = "wally"
+shopTitle = "Wally's Workshop"
+shop = Array[ExtResource("11_e5oe1")]([SubResource("Resource_akpf1"), SubResource("Resource_e0dgn"), SubResource("Resource_3oin1"), SubResource("Resource_t0dip"), SubResource("Resource_5n6ws"), SubResource("Resource_10nk7")])
+startText = "Presents everywhere! Check every island, and don't forget Wally's Workshop in the square."
+endText = "The Gift Tide is over. Wally waves goodbye until next winter."

@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="BaitRecipe" format=3]
+
+[ext_resource type="Resource" path="res://items/materials/serpent_scale.tres" id="1_3ak6h"]
+[ext_resource type="Resource" path="res://items/enchanted/enchanted_serpent_scale.tres" id="2_jt1mr"]
+[ext_resource type="Script" path="res://fishing/bait/bait_recipe.gd" id="3_sq5e7"]
+
+[resource]
+script = ExtResource("3_sq5e7")
+output = ExtResource("2_jt1mr")
+amount = 1
+ingredients = Array[Resource]([ExtResource("1_3ak6h")])
+counts = Array[int]([32])
+requiredFlag = "collection/serpent_scale/2"
+xp = 12.0
+category = "Materials"

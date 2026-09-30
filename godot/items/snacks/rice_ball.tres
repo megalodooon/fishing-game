@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Snack" format=3]
+
+[ext_resource type="Script" path="res://items/snacks/snack.gd" id="e1"]
+[ext_resource type="Texture2D" path="res://items/snacks/icons/rice_ball.png" id="e2"]
+[ext_resource type="Resource" path="res://items/rarities/common.tres" id="e3"]
+
+[resource]
+script = ExtResource("e1")
+displayName = "Rice Ball"
+icon = ExtResource("e2")
+rarity = ExtResource("e3")
+description = "Easy to carry, easy to eat."
+energy = 30
+hint = "Click while holding it to eat"
+maxStack = 20
+sellPrice = 15

@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="Biome" format=3]
+
+[ext_resource type="Resource" path="res://items/materials/swamp_moss.tres" id="18_gldl4"]
+[ext_resource type="Script" path="res://oceans/biome.gd" id="e1"]
+[ext_resource type="Script" path="res://fishing/fish/fish_data.gd" id="e2"]
+[ext_resource type="Resource" path="res://fishing/fish/species/kelp/kelp_bass.tres" id="e3"]
+[ext_resource type="Resource" path="res://fishing/fish/species/kelp/garibaldi.tres" id="e4"]
+[ext_resource type="Resource" path="res://fishing/fish/species/kelp/sheephead.tres" id="e5"]
+[ext_resource type="Resource" path="res://fishing/fish/species/kelp/kelp_greenling.tres" id="e6"]
+[ext_resource type="Resource" path="res://fishing/fish/species/kelp/opaleye.tres" id="e7"]
+[ext_resource type="Resource" path="res://fishing/fish/species/kelp/giant_sea_bass.tres" id="e8"]
+[ext_resource type="Resource" path="res://fishing/fish/species/kelp/wolf_eel.tres" id="e9"]
+[ext_resource type="Resource" path="res://fishing/fish/species/kelp/kelp_kingfish.tres" id="e10"]
+[ext_resource type="Resource" path="res://fishing/fish/species/kelp/forest_monarch.tres" id="e11"]
+[ext_resource type="Resource" path="res://fishing/creatures/urchin_swarm.tres" id="e12"]
+[ext_resource type="Resource" path="res://fishing/creatures/kelp_kraken.tres" id="e13"]
+[ext_resource type="Script" path="res://fishing/creatures/sea_creature.gd" id="e14"]
+[ext_resource type="Resource" path="res://items/materials/kelp_fiber.tres" id="e15"]
+[ext_resource type="Resource" path="res://items/materials/seaweed.tres" id="e16"]
+[ext_resource type="Resource" path="res://items/materials/sea_shell.tres" id="e17"]
+[ext_resource type="Script" path="res://items/item.gd" id="e18"]
+
+[resource]
+script = ExtResource("e1")
+displayName = "Kelp Forest"
+description = "Towering kelp sways in green light."
+region = "Far North"
+fish = Array[ExtResource("e2")]([ExtResource("e3"), ExtResource("e4"), ExtResource("e5"), ExtResource("e6"), ExtResource("e7"), ExtResource("e8"), ExtResource("e9"), ExtResource("e10"), ExtResource("e11")])
+creatures = Array[ExtResource("e14")]([ExtResource("e12"), ExtResource("e13")])
+tier = 2
+junkChance = 0.08
+junk = Array[ExtResource("e18")]([ExtResource("e15"), ExtResource("e16"), ExtResource("e17"), ExtResource("18_gldl4")])

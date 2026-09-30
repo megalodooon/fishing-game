@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="BaitRecipe" format=3]
+
+[ext_resource type="Resource" path="res://fishing/bait/berry_bait.tres" id="1_c0js1"]
+[ext_resource type="Resource" path="res://items/materials/wild_berries.tres" id="2_vxlnu"]
+[ext_resource type="Script" path="res://fishing/bait/bait_recipe.gd" id="3_i66ea"]
+
+[resource]
+script = ExtResource("3_i66ea")
+bait = ExtResource("1_c0js1")
+amount = 10
+ingredients = Array[Resource]([ExtResource("2_vxlnu")])
+counts = Array[int]([4])
+xp = 6.0
+category = "Bait"
+requiredSkill = &"fishing"
+requiredLevel = 2

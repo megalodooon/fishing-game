@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="CrewMember" format=3]
+
+[ext_resource type="Resource" path="res://items/enchanted/enchanted_sea_salt.tres" id="1_jgxku"]
+[ext_resource type="Texture2D" path="res://items/materials/icons/sea_salt.png" id="2_qu73i"]
+[ext_resource type="Resource" path="res://items/materials/sea_salt.tres" id="3_fxhkn"]
+[ext_resource type="Script" path="res://world/crew/crew_member.gd" id="4_ssy5m"]
+
+[resource]
+script = ExtResource("4_ssy5m")
+displayName = "Salt Raker"
+description = "Rakes salt from the drying pans."
+icon = ExtResource("2_qu73i")
+product = ExtResource("3_fxhkn")
+enchanted = ExtResource("1_jgxku")
+hours = 0.6

@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Item" format=3]
+
+[ext_resource type="Texture2D" path="res://items/rare/icons/abyssal_pearl.png" id="1_8db1s"]
+[ext_resource type="Resource" path="res://items/rarities/legendary.tres" id="2_mc8k4"]
+[ext_resource type="Script" path="res://items/item.gd" id="3_syjve"]
+
+[resource]
+script = ExtResource("3_syjve")
+displayName = "Abyssal Pearl"
+category = "Rare Catch"
+icon = ExtResource("1_8db1s")
+rarity = ExtResource("2_mc8k4")
+description = "Black as the trench it came from. A piece of the Moon Tide."
+maxStack = 10
+sellPrice = 1500

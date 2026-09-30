@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="FishData" format=3]
+
+[ext_resource type="Texture2D" path="res://fishing/fish/assets/events/cherry_carp.png" id="1_6dvv2"]
+[ext_resource type="Resource" path="res://items/rarities/uncommon.tres" id="2_4euvo"]
+[ext_resource type="Script" path="res://fishing/fish/requirements/fish_requirement.gd" id="3_dhslk"]
+[ext_resource type="Script" path="res://fishing/fish/fish_data.gd" id="4_bjb13"]
+
+[resource]
+script = ExtResource("4_bjb13")
+displayName = "Cherry Carp"
+icon = ExtResource("1_6dvv2")
+rarity = ExtResource("2_4euvo")
+description = "Bright red and very proud of it."
+weightRange = Vector2(1, 4)
+basePrice = 45
+heldSize = 0.6799999999999999

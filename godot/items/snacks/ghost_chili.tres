@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="Snack" format=3]
+
+[ext_resource type="Texture2D" path="res://items/snacks/icons/ghost_chili.png" id="1_3ywoo"]
+[ext_resource type="Resource" path="res://items/rarities/rare.tres" id="2_v10nm"]
+[ext_resource type="Script" path="res://items/snacks/snack.gd" id="3_77qqa"]
+
+[resource]
+script = ExtResource("3_77qqa")
+energy = 50.0
+buffStat = "seaCreature"
+buffAmount = 1.04
+displayName = "Ghost Pepper Chili"
+icon = ExtResource("1_3ywoo")
+rarity = ExtResource("2_v10nm")
+description = "Cooked at a kitchen."
+hint = "Click while holding it to eat"
+maxStack = 20
+sellPrice = 90

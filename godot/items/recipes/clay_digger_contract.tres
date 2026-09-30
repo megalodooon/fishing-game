@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="BaitRecipe" format=3]
+
+[ext_resource type="Resource" path="res://items/materials/clay.tres" id="1_xw8st"]
+[ext_resource type="Resource" path="res://items/materials/rope.tres" id="2_0lo7o"]
+[ext_resource type="Resource" path="res://items/crew/clay_digger_contract.tres" id="3_57tw4"]
+[ext_resource type="Script" path="res://fishing/bait/bait_recipe.gd" id="4_h7wxi"]
+
+[resource]
+script = ExtResource("4_h7wxi")
+output = ExtResource("3_57tw4")
+amount = 1
+ingredients = Array[Resource]([ExtResource("1_xw8st"), ExtResource("2_0lo7o")])
+counts = Array[int]([24, 2])
+requiredFlag = "collection/clay/1"
+xp = 25.0
+station = &"workbench"
+category = "Crew"

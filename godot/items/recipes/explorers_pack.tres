@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="BaitRecipe" format=3]
+
+[ext_resource type="Resource" path="res://items/materials/iron_scrap.tres" id="1_j2wc1"]
+[ext_resource type="Resource" path="res://items/materials/kelp_fiber.tres" id="2_0hp0y"]
+[ext_resource type="Resource" path="res://items/tools/explorers_pack.tres" id="3_h4kc4"]
+[ext_resource type="Script" path="res://fishing/bait/bait_recipe.gd" id="4_v6fyp"]
+
+[resource]
+script = ExtResource("4_v6fyp")
+output = ExtResource("3_h4kc4")
+amount = 1
+ingredients = Array[Resource]([ExtResource("1_j2wc1"), ExtResource("2_0hp0y")])
+counts = Array[int]([10, 15])
+xp = 60.0
+station = &"workbench"
+requiredSkill = &"sailing"
+requiredLevel = 8

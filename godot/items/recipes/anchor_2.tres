@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="BaitRecipe" format=3]
+
+[ext_resource type="Resource" path="res://items/charms/anchor_1.tres" id="1_0savk"]
+[ext_resource type="Resource" path="res://items/enchanted/enchanted_iron_scrap.tres" id="2_3ol6q"]
+[ext_resource type="Resource" path="res://items/materials/iron_ingot.tres" id="3_4x30l"]
+[ext_resource type="Resource" path="res://items/charms/anchor_2.tres" id="4_6g38l"]
+[ext_resource type="Script" path="res://fishing/bait/bait_recipe.gd" id="5_t3ynn"]
+
+[resource]
+script = ExtResource("5_t3ynn")
+output = ExtResource("4_6g38l")
+amount = 1
+ingredients = Array[Resource]([ExtResource("1_0savk"), ExtResource("2_3ol6q"), ExtResource("3_4x30l")])
+counts = Array[int]([1, 2, 2])
+xp = 60.0
+station = &"workbench"
+category = "Charms"
+requiredSkill = &"fishing"
+requiredLevel = 12

@@ -1,0 +1,269 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://world/island/island.gd" id="i_e1"]
+[ext_resource type="Script" path="res://world/island/island_room.gd" id="i_e2"]
+[ext_resource type="Resource" path="res://oceans/islands/rig_biome.tres" id="i_e3"]
+[ext_resource type="PackedScene" path="res://oceans/basic/basic_ocean.tscn" id="i_e4"]
+[ext_resource type="Texture2D" path="res://world/islands/deepnet_rig/land/landing.png" id="i_e5"]
+[ext_resource type="Texture2D" path="res://world/islands/props/rig_tower.png" id="i_e6"]
+[ext_resource type="Texture2D" path="res://world/islands/props/deepnet_sign.png" id="i_e7"]
+[ext_resource type="Script" path="res://world/npc/npc.gd" id="i_e8"]
+[ext_resource type="Script" path="res://world/quests/quest.gd" id="i_e9"]
+[ext_resource type="Resource" path="res://world/quests/story/q_rig.tres" id="i_e10"]
+[ext_resource type="Resource" path="res://world/quests/story/q_mecha.tres" id="i_e11"]
+[ext_resource type="Resource" path="res://world/quests/story/q_logs.tres" id="i_e12"]
+[ext_resource type="Resource" path="res://world/quests/side/r_rematch.tres" id="i_e13"]
+[ext_resource type="Texture2D" path="res://world/npcs/rex.png" id="i_e14"]
+[ext_resource type="Script" path="res://world/interact/secret.gd" id="i_e15"]
+[ext_resource type="Texture2D" path="res://world/islands/deepnet_rig/land/deck.png" id="i_e16"]
+[ext_resource type="Script" path="res://world/village/building.gd" id="i_e17"]
+[ext_resource type="Texture2D" path="res://world/islands/props/rig_office.png" id="i_e18"]
+[ext_resource type="Script" path="res://items/item.gd" id="i_e19"]
+[ext_resource type="Resource" path="res://items/key/rig_logs.tres" id="i_e20"]
+[ext_resource type="Texture2D" path="res://world/islands/props/crate.png" id="i_e21"]
+[ext_resource type="Texture2D" path="res://world/islands/props/barrel.png" id="i_e22"]
+[ext_resource type="Script" path="res://world/traps/trap_spot.gd" id="i_e23"]
+[ext_resource type="Resource" path="res://items/materials/iron_scrap.tres" id="i_e24"]
+[ext_resource type="Resource" path="res://items/materials/oily_sludge.tres" id="i_e25"]
+
+[sub_resource type="RectangleShape2D" id="i_s1"]
+size = Vector2(20.0, 5.0)
+
+[sub_resource type="RectangleShape2D" id="i_s2"]
+size = Vector2(14.0, 3.0)
+
+[sub_resource type="RectangleShape2D" id="i_s3"]
+size = Vector2(6.0, 3.0)
+
+[sub_resource type="RectangleShape2D" id="i_s4"]
+size = Vector2(30.0, 5.0)
+
+[sub_resource type="RectangleShape2D" id="i_s5"]
+size = Vector2(12.0, 4.0)
+
+[sub_resource type="RectangleShape2D" id="i_s6"]
+size = Vector2(12.0, 4.0)
+
+[sub_resource type="RectangleShape2D" id="i_s7"]
+size = Vector2(12.0, 4.0)
+
+[sub_resource type="RectangleShape2D" id="i_s8"]
+size = Vector2(12.0, 4.0)
+
+[sub_resource type="RectangleShape2D" id="i_s9"]
+size = Vector2(8.0, 3.0)
+
+[sub_resource type="RectangleShape2D" id="i_s10"]
+size = Vector2(8.0, 3.0)
+
+[node name="DeepnetRig" type="Node2D"]
+y_sort_enabled = true
+script = ExtResource("i_e1")
+
+[node name="Landing" type="Node2D" parent="." node_paths=PackedStringArray("land")]
+position = Vector2(0.0, 0.0)
+y_sort_enabled = true
+script = ExtResource("i_e2")
+land = [NodePath("Land")]
+
+[node name="Water" parent="Landing" instance=ExtResource("i_e4")]
+biome = ExtResource("i_e3")
+
+[node name="Land" type="Sprite2D" parent="Landing"]
+z_index = -1
+texture = ExtResource("i_e5")
+centered = false
+
+[node name="Tower" type="Sprite2D" parent="Landing"]
+position = Vector2(127, 40)
+texture = ExtResource("i_e6")
+centered = false
+offset = Vector2(-12.0, -40.0)
+
+[node name="Body" type="StaticBody2D" parent="Landing/Tower"]
+
+[node name="Shape" type="CollisionShape2D" parent="Landing/Tower/Body"]
+position = Vector2(0.0, -2.5)
+shape = SubResource("i_s1")
+
+[node name="Sign" type="Sprite2D" parent="Landing"]
+position = Vector2(93, 90)
+texture = ExtResource("i_e7")
+centered = false
+offset = Vector2(-9.0, -14.0)
+
+[node name="Body" type="StaticBody2D" parent="Landing/Sign"]
+
+[node name="Shape" type="CollisionShape2D" parent="Landing/Sign/Body"]
+position = Vector2(0.0, -1.5)
+shape = SubResource("i_s2")
+
+[node name="Npc_Rex" type="Node2D" parent="Landing" node_paths=PackedStringArray("art")]
+position = Vector2(100, 66)
+script = ExtResource("i_e8")
+id = "rex"
+greeting = "Keep your voice down."
+reach = 12.0
+promptOffset = Vector2(0, -24)
+art = NodePath("Art")
+quests = Array[ExtResource("i_e9")]([ExtResource("i_e10"), ExtResource("i_e11"), ExtResource("i_e12"), ExtResource("i_e13")])
+appearFlag = "quest/q_truth"
+
+[node name="Art" type="Sprite2D" parent="Landing/Npc_Rex"]
+texture = ExtResource("i_e14")
+centered = false
+offset = Vector2(-6, -20)
+
+[node name="Body" type="StaticBody2D" parent="Landing/Npc_Rex"]
+
+[node name="Shape" type="CollisionShape2D" parent="Landing/Npc_Rex/Body"]
+position = Vector2(0, -1)
+shape = SubResource("i_s3")
+
+[node name="Pearl1" type="Node2D" parent="Landing"]
+position = Vector2(142, 100)
+script = ExtResource("i_e15")
+flag = "pearl_deepnet_rig_1"
+title = "A lost pearl!"
+message = "Opal on Pearl Lagoon collects these."
+prompt = "Pick up"
+reach = 7.0
+
+[node name="Deck" type="Node2D" parent="." node_paths=PackedStringArray("land")]
+position = Vector2(192.0, 0.0)
+y_sort_enabled = true
+script = ExtResource("i_e2")
+land = [NodePath("Land")]
+
+[node name="Water" parent="Deck" instance=ExtResource("i_e4")]
+biome = ExtResource("i_e3")
+
+[node name="Land" type="Sprite2D" parent="Deck"]
+z_index = -1
+texture = ExtResource("i_e16")
+centered = false
+
+[node name="Office" type="Node2D" parent="Deck"]
+position = Vector2(60.0, 40.0)
+script = ExtResource("i_e17")
+displayName = "Rig Office"
+
+[node name="Art" type="Sprite2D" parent="Deck/Office"]
+texture = ExtResource("i_e18")
+centered = false
+offset = Vector2(-17.0, -28.0)
+
+[node name="Body" type="StaticBody2D" parent="Deck/Office"]
+
+[node name="Shape" type="CollisionShape2D" parent="Deck/Office/Body"]
+position = Vector2(0.0, -3.5)
+shape = SubResource("i_s4")
+
+[node name="Logs" type="Node2D" parent="Deck/Office"]
+position = Vector2(0.0, 3.0)
+script = ExtResource("i_e15")
+flag = "rig_logs"
+title = "The rig logs!"
+message = "\"Night of the storm. Weather drill at 400%. Cannot shut down. F. Marsh boarded the rig demanding we stop.\""
+items = Array[ExtResource("i_e19")]([ExtResource("i_e20")])
+concealed = false
+prompt = "Search the desk"
+reach = 10.0
+
+[node name="Crate0" type="Sprite2D" parent="Deck"]
+position = Vector2(110.0, 30.0)
+texture = ExtResource("i_e21")
+centered = false
+offset = Vector2(-7.0, -12.0)
+
+[node name="Body" type="StaticBody2D" parent="Deck/Crate0"]
+
+[node name="Shape" type="CollisionShape2D" parent="Deck/Crate0/Body"]
+position = Vector2(0.0, -2.0)
+shape = SubResource("i_s5")
+
+[node name="Crate1" type="Sprite2D" parent="Deck"]
+position = Vector2(128.0, 30.0)
+texture = ExtResource("i_e21")
+centered = false
+offset = Vector2(-7.0, -12.0)
+
+[node name="Body" type="StaticBody2D" parent="Deck/Crate1"]
+
+[node name="Shape" type="CollisionShape2D" parent="Deck/Crate1/Body"]
+position = Vector2(0.0, -2.0)
+shape = SubResource("i_s6")
+
+[node name="Crate2" type="Sprite2D" parent="Deck"]
+position = Vector2(110.0, 80.0)
+texture = ExtResource("i_e21")
+centered = false
+offset = Vector2(-7.0, -12.0)
+
+[node name="Body" type="StaticBody2D" parent="Deck/Crate2"]
+
+[node name="Shape" type="CollisionShape2D" parent="Deck/Crate2/Body"]
+position = Vector2(0.0, -2.0)
+shape = SubResource("i_s7")
+
+[node name="Crate3" type="Sprite2D" parent="Deck"]
+position = Vector2(128.0, 80.0)
+texture = ExtResource("i_e21")
+centered = false
+offset = Vector2(-7.0, -12.0)
+
+[node name="Body" type="StaticBody2D" parent="Deck/Crate3"]
+
+[node name="Shape" type="CollisionShape2D" parent="Deck/Crate3/Body"]
+position = Vector2(0.0, -2.0)
+shape = SubResource("i_s8")
+
+[node name="Barrel1" type="Sprite2D" parent="Deck"]
+position = Vector2(30.0, 90.0)
+texture = ExtResource("i_e22")
+centered = false
+offset = Vector2(-5.0, -12.0)
+
+[node name="Body" type="StaticBody2D" parent="Deck/Barrel1"]
+
+[node name="Shape" type="CollisionShape2D" parent="Deck/Barrel1/Body"]
+position = Vector2(0.0, -1.5)
+shape = SubResource("i_s9")
+
+[node name="Barrel2" type="Sprite2D" parent="Deck"]
+position = Vector2(42.0, 92.0)
+texture = ExtResource("i_e22")
+centered = false
+offset = Vector2(-5.0, -12.0)
+
+[node name="Body" type="StaticBody2D" parent="Deck/Barrel2"]
+
+[node name="Shape" type="CollisionShape2D" parent="Deck/Barrel2/Body"]
+position = Vector2(0.0, -1.5)
+shape = SubResource("i_s10")
+
+[node name="Trap" type="Node2D" parent="Deck"]
+position = Vector2(140.0, 60.0)
+script = ExtResource("i_e23")
+biome = ExtResource("i_e3")
+reach = 9.0
+promptOffset = Vector2(0, -8)
+extras = Array[ExtResource("i_e19")]([ExtResource("i_e24"), ExtResource("i_e25")])
+
+[node name="Pearl2" type="Node2D" parent="Deck"]
+position = Vector2(150.0, 100.0)
+script = ExtResource("i_e15")
+flag = "pearl_deepnet_rig_2"
+title = "A lost pearl!"
+message = "Opal on Pearl Lagoon collects these."
+prompt = "Pick up"
+reach = 7.0
+
+[node name="Pearl3" type="Node2D" parent="Deck"]
+position = Vector2(10.0, 14.0)
+script = ExtResource("i_e15")
+flag = "pearl_deepnet_rig_3"
+title = "A lost pearl!"
+message = "Opal on Pearl Lagoon collects these."
+prompt = "Pick up"
+reach = 7.0

@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Snack" format=3]
+
+[ext_resource type="Texture2D" path="res://items/potions/icons/scholars_potion_2.png" id="1_e11kw"]
+[ext_resource type="Resource" path="res://items/rarities/rare.tres" id="2_h2yv1"]
+[ext_resource type="Script" path="res://items/snacks/snack.gd" id="3_0wia0"]
+
+[resource]
+script = ExtResource("3_0wia0")
+energy = 5.0
+buffStat = "xpBonus"
+buffAmount = 1.2
+displayName = "Scholar's Potion II"
+category = "Potion"
+icon = ExtResource("1_e11kw")
+rarity = ExtResource("2_h2yv1")
+description = "Brewed at a cauldron. Drink it for a few hours of skill xp."
+hint = "Click while holding it to drink"
+maxStack = 10
+sellPrice = 92

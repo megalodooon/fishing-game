@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="BaitRecipe" format=3]
+
+[ext_resource type="Resource" path="res://fishing/bait/feather_lure.tres" id="1_dptld"]
+[ext_resource type="Resource" path="res://items/materials/gull_feather.tres" id="2_7mnrg"]
+[ext_resource type="Resource" path="res://items/materials/glowcap.tres" id="3_ch5ea"]
+[ext_resource type="Script" path="res://fishing/bait/bait_recipe.gd" id="4_6lyow"]
+
+[resource]
+script = ExtResource("4_6lyow")
+bait = ExtResource("1_dptld")
+amount = 6
+ingredients = Array[Resource]([ExtResource("2_7mnrg"), ExtResource("3_ch5ea")])
+counts = Array[int]([2, 1])
+xp = 6.0
+category = "Bait"
+requiredSkill = &"fishing"
+requiredLevel = 10

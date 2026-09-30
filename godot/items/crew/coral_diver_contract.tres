@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="CrewContract" format=3]
+
+[ext_resource type="Resource" path="res://world/crew/members/coral_diver.tres" id="1_oinhc"]
+[ext_resource type="Texture2D" path="res://items/crew/icons/coral_diver.png" id="2_o2j4r"]
+[ext_resource type="Resource" path="res://items/rarities/uncommon.tres" id="3_arc0d"]
+[ext_resource type="Script" path="res://world/crew/crew_contract.gd" id="4_i5auh"]
+
+[resource]
+script = ExtResource("4_i5auh")
+crew = ExtResource("1_oinhc")
+displayName = "Coral Diver Contract"
+icon = ExtResource("2_o2j4r")
+rarity = ExtResource("3_arc0d")
+description = "Hire a coral diver at the crew board by your house. Brings back coral from the reef."

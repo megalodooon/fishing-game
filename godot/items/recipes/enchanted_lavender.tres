@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="BaitRecipe" format=3]
+
+[ext_resource type="Resource" path="res://items/materials/lavender.tres" id="1_biysf"]
+[ext_resource type="Resource" path="res://items/enchanted/enchanted_lavender.tres" id="2_kvd34"]
+[ext_resource type="Script" path="res://fishing/bait/bait_recipe.gd" id="3_8uj0q"]
+
+[resource]
+script = ExtResource("3_8uj0q")
+output = ExtResource("2_kvd34")
+amount = 1
+ingredients = Array[Resource]([ExtResource("1_biysf")])
+counts = Array[int]([32])
+requiredFlag = "collection/lavender/2"
+xp = 12.0
+category = "Materials"

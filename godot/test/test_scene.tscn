@@ -29,12 +29,79 @@
 [ext_resource type="Texture2D" path="res://ui/clock/icons/dusk.png" id="28_dusk"]
 [ext_resource type="Texture2D" path="res://ui/clock/icons/night.png" id="29_night"]
 [ext_resource type="Texture2D" path="res://ui/energy/bolt.png" id="30_bolt"]
+[ext_resource type="Script" path="res://world/world.gd" id="31_world"]
+[ext_resource type="Script" path="res://world/map/world_map_ui.gd" id="32_map"]
+[ext_resource type="Material" path="res://world/map/chart_water.tres" id="33_sea"]
+[ext_resource type="Texture2D" path="res://world/map/icons/boat.png" id="34_map_boat"]
+[ext_resource type="Texture2D" path="res://world/map/icons/player.png" id="35_map_player"]
+[ext_resource type="Texture2D" path="res://world/map/icons/lock.png" id="36_lock"]
+[ext_resource type="Texture2D" path="res://world/map/icons/coin.png" id="37_coin"]
+[ext_resource type="Texture2D" path="res://fishing/tacklebox/icons/bait.png" id="38_bait"]
+[ext_resource type="Script" path="res://world/interact/counter_ui.gd" id="39_counter"]
+[ext_resource type="Script" path="res://world/village/pets/pet_follower.gd" id="40_pet"]
+[ext_resource type="Script" path="res://dev/dev_menu.gd" id="41_dev"]
+[ext_resource type="Script" path="res://ui/hub/menu_hub.gd" id="h_hub"]
+[ext_resource type="Texture2D" path="res://ui/hub/icons/check.png" id="h_check"]
+[ext_resource type="Script" path="res://world/events/event_director.gd" id="h_events"]
+[ext_resource type="Script" path="res://items/recipes/recipe_book_ui.gd" id="h_recipe_book"]
+[ext_resource type="Script" path="res://world/collections/collections_ui.gd" id="h_collections_ui"]
+[ext_resource type="Script" path="res://world/events/calendar_ui.gd" id="h_calendar_ui"]
+[ext_resource type="Texture2D" path="res://ui/hub/icons/skills.png" id="h_skills"]
+[ext_resource type="Texture2D" path="res://ui/hub/icons/recipes.png" id="h_recipes"]
+[ext_resource type="Texture2D" path="res://ui/hub/icons/collections.png" id="h_collections"]
+[ext_resource type="Texture2D" path="res://ui/hub/icons/calendar.png" id="h_calendar"]
+[ext_resource type="Texture2D" path="res://ui/hub/icons/charms.png" id="h_charms"]
+[ext_resource type="Script" path="res://items/charms/charm_pouch_ui.gd" id="h_charms_ui"]
+
+[ext_resource type="Script" path="res://world/weather/weather.gd" id="n_weather"]
+[ext_resource type="Script" path="res://ui/hud/status_hud.gd" id="n_status"]
+[ext_resource type="Script" path="res://ui/pause/pause_menu.gd" id="n_pause"]
+[ext_resource type="Script" path="res://world/village/pets/pets_ui.gd" id="n_pets"]
+[ext_resource type="Script" path="res://world/quests/quest_log.gd" id="n_log"]
+[ext_resource type="Script" path="res://ui/profile/profile_ui.gd" id="n_profile"]
+[ext_resource type="Script" path="res://ui/dialogue/dialogue_ui.gd" id="n_dialogue"]
+[ext_resource type="Script" path="res://story/story_director.gd" id="n_director"]
+[ext_resource type="Script" path="res://world/tournament/tournament.gd" id="n_tournament"]
+[ext_resource type="Resource" path="res://world/quests/story/q_rod.tres" id="n_first"]
+[ext_resource type="Texture2D" path="res://ui/pause/icons/profile.png" id="n_i9"]
+[ext_resource type="Texture2D" path="res://ui/pause/icons/save.png" id="n_i10"]
+[ext_resource type="Script" path="res://world/village/pets/pet_data.gd" id="n_pet_script"]
+[ext_resource type="Texture2D" path="res://world/weather/icons/clear.png" id="n_w1"]
+[ext_resource type="Texture2D" path="res://world/weather/icons/rain.png" id="n_w2"]
+[ext_resource type="Texture2D" path="res://world/weather/icons/fog.png" id="n_w3"]
+[ext_resource type="Texture2D" path="res://ui/pause/icons/bag.png" id="n_i1"]
+[ext_resource type="Texture2D" path="res://ui/pause/icons/tacklebox.png" id="n_i2"]
+[ext_resource type="Texture2D" path="res://ui/pause/icons/journal.png" id="n_i3"]
+[ext_resource type="Texture2D" path="res://ui/pause/icons/map.png" id="n_i4"]
+[ext_resource type="Texture2D" path="res://ui/pause/icons/quests.png" id="n_i5"]
+[ext_resource type="Texture2D" path="res://ui/pause/icons/pets.png" id="n_i6"]
+[ext_resource type="Texture2D" path="res://ui/pause/icons/settings.png" id="n_i7"]
+[ext_resource type="Texture2D" path="res://ui/pause/icons/leave.png" id="n_i8"]
+[ext_resource type="Resource" path="res://world/village/pets/harbor_cat.tres" id="n_p1"]
+[ext_resource type="Resource" path="res://world/village/pets/otter.tres" id="n_p2"]
+[ext_resource type="Resource" path="res://world/village/pets/seagull.tres" id="n_p3"]
+[ext_resource type="Resource" path="res://world/village/pets/lantern_jelly.tres" id="n_p4"]
+[ext_resource type="Resource" path="res://world/village/pets/hermit_crab.tres" id="n_p5"]
+[ext_resource type="Resource" path="res://world/village/pets/ember_salamander.tres" id="n_p6"]
+[ext_resource type="Resource" path="res://world/village/pets/baby_penguin.tres" id="n_p7"]
+[ext_resource type="Resource" path="res://world/village/pets/swamp_frog.tres" id="n_p8"]
+[ext_resource type="Resource" path="res://world/village/pets/storm_petrel.tres" id="n_p9"]
+[ext_resource type="Resource" path="res://world/village/pets/pearl_seahorse.tres" id="n_p10"]
 
 [node name="TestScene" type="Node2D" unique_id=733697435]
 y_sort_enabled = true
 
-[node name="BasicOcean" parent="." unique_id=548284199 node_paths=PackedStringArray("boat") instance=ExtResource("1_lr5j1")]
+[node name="World" type="Node2D" parent="." node_paths=PackedStringArray("place", "boat", "player", "spawner", "camera")]
+y_sort_enabled = true
+script = ExtResource("31_world")
+place = NodePath("BasicOcean")
 boat = NodePath("../BasicBoat")
+player = NodePath("../Player")
+spawner = NodePath("../FishingSpotSpawner")
+camera = NodePath("../Camera")
+
+[node name="BasicOcean" parent="World" unique_id=548284199 node_paths=PackedStringArray("boat") instance=ExtResource("1_lr5j1")]
+boat = NodePath("../../BasicBoat")
 
 [node name="BasicBoat" parent="." unique_id=545784032 instance=ExtResource("2_56kpk")]
 position = Vector2(100, 43)
@@ -50,12 +117,50 @@ position = Vector2(74, 46)
 boat = NodePath("../BasicBoat")
 minigameScreen = NodePath("../MinigameLayer/MinigameScreen")
 
+[node name="Pet" type="Node2D" parent="Player" node_paths=PackedStringArray("player")]
+show_behind_parent = true
+script = ExtResource("40_pet")
+player = NodePath("..")
+
+[node name="Camera" type="Camera2D" parent="."]
+anchor_mode = 0
+
 [node name="DayNightCycle" parent="." instance=ExtResource("6_cycle")]
+
+[node name="Weather" type="Node" parent="." node_paths=PackedStringArray("cycle", "player", "notices")]
+script = ExtResource("n_weather")
+cycle = NodePath("../DayNightCycle")
+player = NodePath("../Player")
+notices = NodePath("../Hud/Notices")
+icons = Array[Texture2D]([ExtResource("n_w1"), ExtResource("n_w2"), ExtResource("n_w3")])
+
+[node name="Events" type="Node" parent="." node_paths=PackedStringArray("player", "cycle", "world", "notices")]
+script = ExtResource("h_events")
+player = NodePath("../Player")
+cycle = NodePath("../DayNightCycle")
+world = NodePath("../World")
+notices = NodePath("../Hud/Notices")
+
+[node name="Tournament" type="Node" parent="." node_paths=PackedStringArray("player", "cycle", "notices")]
+script = ExtResource("n_tournament")
+player = NodePath("../Player")
+cycle = NodePath("../DayNightCycle")
+notices = NodePath("../Hud/Notices")
+
+[node name="StoryDirector" type="Node" parent="." node_paths=PackedStringArray("player", "dialogue")]
+script = ExtResource("n_director")
+player = NodePath("../Player")
+dialogue = NodePath("../Hud/Dialogue")
+firstQuest = ExtResource("n_first")
+
+[node name="QuestLog" type="Node2D" parent="."]
+script = ExtResource("n_log")
+title = "Quest Log"
 
 [node name="Hud" type="CanvasLayer" parent="."]
 layer = 20
 
-[node name="PeriodIcon" type="Control" parent="Hud" node_paths=PackedStringArray("cycle")]
+[node name="PeriodIcon" type="Control" parent="Hud" node_paths=PackedStringArray("cycle", "ui")]
 layout_mode = 3
 anchors_preset = 0
 offset_left = 2.0
@@ -64,21 +169,46 @@ offset_right = 15.0
 offset_bottom = 14.0
 script = ExtResource("21_period")
 cycle = NodePath("../../DayNightCycle")
+ui = NodePath("../Inventory")
 icons = Array[Texture2D]([ExtResource("24_late"), ExtResource("25_bedtime"), ExtResource("26_dawn"), ExtResource("27_day"), ExtResource("28_dusk"), ExtResource("29_night")])
 starts = PackedFloat32Array(0, 2, 5, 8, 17, 20)
 
-[node name="Clock" type="Label" parent="Hud" node_paths=PackedStringArray("cycle", "sleep")]
-offset_left = 16.0
-offset_top = 1.0
-offset_right = 56.0
-offset_bottom = 12.0
-theme_override_font_sizes/font_size = 8
+[node name="Clock" type="Label" parent="Hud" node_paths=PackedStringArray("cycle", "sleep", "dayLabel", "ui")]
+offset_left = 17.0
+offset_top = 2.0
+offset_right = 44.0
+offset_bottom = 8.0
 theme_override_colors/font_outline_color = Color(0.04, 0.1, 0.16, 1)
 theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("9_font")
+theme_override_font_sizes/font_size = 5
 text = "00:00"
 script = ExtResource("7_clock")
 cycle = NodePath("../../DayNightCycle")
 sleep = NodePath("../../SleepSchedule")
+dayLabel = NodePath("../Day")
+ui = NodePath("../Inventory")
+
+[node name="Day" type="Label" parent="Hud"]
+offset_left = 17.0
+offset_top = 9.0
+offset_right = 44.0
+offset_bottom = 14.0
+theme_override_colors/font_color = Color(0.78, 0.85, 0.94, 1)
+theme_override_colors/font_outline_color = Color(0.04, 0.1, 0.16, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("9_font")
+theme_override_font_sizes/font_size = 3
+text = "Mon 1"
+
+[node name="Status" type="Control" parent="Hud" node_paths=PackedStringArray("player", "ui", "weather", "cycle")]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("n_status")
+player = NodePath("../../Player")
+ui = NodePath("../Inventory")
+weather = NodePath("../../Weather")
+cycle = NodePath("../../DayNightCycle")
 
 [node name="Inventory" type="Control" parent="Hud" node_paths=PackedStringArray("player")]
 layout_mode = 3
@@ -108,7 +238,7 @@ anchors_preset = 0
 script = ExtResource("14_tacklebox")
 player = NodePath("../../Player")
 ui = NodePath("../Inventory")
-kindIcons = Array[Texture2D]([ExtResource("15_bobber"), ExtResource("16_line"), ExtResource("17_hook"), ExtResource("18_tech")])
+kindIcons = Array[Texture2D]([ExtResource("15_bobber"), ExtResource("16_line"), ExtResource("17_hook"), ExtResource("18_tech"), ExtResource("38_bait")])
 
 [node name="Journal" type="Control" parent="Hud" node_paths=PackedStringArray("player", "ui", "tacklebox")]
 layout_mode = 3
@@ -118,10 +248,131 @@ player = NodePath("../../Player")
 ui = NodePath("../Inventory")
 tacklebox = NodePath("../Tacklebox")
 
+[node name="Recipes" type="Control" parent="Hud" node_paths=PackedStringArray("player", "ui")]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("h_recipe_book")
+player = NodePath("../../Player")
+ui = NodePath("../Inventory")
+
+[node name="Counter" type="Control" parent="Hud" node_paths=PackedStringArray("player", "ui", "menus")]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("39_counter")
+player = NodePath("../../Player")
+ui = NodePath("../Inventory")
+menus = [NodePath("../Inventory"), NodePath("../Tacklebox"), NodePath("../Journal"), NodePath("../Pets")]
+coinIcon = ExtResource("37_coin")
+
+[node name="WorldMap" type="Control" parent="Hud" node_paths=PackedStringArray("player", "ui", "world", "cycle", "sleep", "notices", "menus", "covered")]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("32_map")
+player = NodePath("../../Player")
+ui = NodePath("../Inventory")
+world = NodePath("../../World")
+cycle = NodePath("../../DayNightCycle")
+sleep = NodePath("../../SleepSchedule")
+notices = NodePath("../Notices")
+menus = [NodePath("../Inventory"), NodePath("../Tacklebox"), NodePath("../Journal"), NodePath("../Counter"), NodePath("../Pets")]
+covered = [NodePath("../../World"), NodePath("../../BasicBoat"), NodePath("../../FishingSpotSpawner"), NodePath("../../Player"), NodePath("../../DayNightCycle"), NodePath("../../Weather")]
+water = ExtResource("33_sea")
+boatIcon = ExtResource("34_map_boat")
+playerIcon = ExtResource("35_map_player")
+lockIcon = ExtResource("36_lock")
+coinIcon = ExtResource("37_coin")
+energyIcon = ExtResource("30_bolt")
+
+[node name="Pets" type="Control" parent="Hud" node_paths=PackedStringArray("player", "ui", "menus")]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("n_pets")
+player = NodePath("../../Player")
+ui = NodePath("../Inventory")
+catalog = Array[ExtResource("n_pet_script")]([ExtResource("n_p1"), ExtResource("n_p2"), ExtResource("n_p3"), ExtResource("n_p4"), ExtResource("n_p5"), ExtResource("n_p6"), ExtResource("n_p7"), ExtResource("n_p8"), ExtResource("n_p9"), ExtResource("n_p10")])
+coinIcon = ExtResource("37_coin")
+menus = [NodePath("../Inventory"), NodePath("../Tacklebox"), NodePath("../Journal"), NodePath("../Counter")]
+
+[node name="Profile" type="Control" parent="Hud" node_paths=PackedStringArray("player", "ui", "menus")]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("n_profile")
+player = NodePath("../../Player")
+ui = NodePath("../Inventory")
+menus = [NodePath("../Inventory"), NodePath("../Tacklebox"), NodePath("../Journal"), NodePath("../Counter"), NodePath("../Pets")]
+
+[node name="Collections" type="Control" parent="Hud" node_paths=PackedStringArray("player", "ui")]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("h_collections_ui")
+player = NodePath("../../Player")
+ui = NodePath("../Inventory")
+
+[node name="Charms" type="Control" parent="Hud" node_paths=PackedStringArray("player", "ui")]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("h_charms_ui")
+player = NodePath("../../Player")
+ui = NodePath("../Inventory")
+
+[node name="Calendar" type="Control" parent="Hud" node_paths=PackedStringArray("player", "ui")]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("h_calendar_ui")
+player = NodePath("../../Player")
+ui = NodePath("../Inventory")
+
+[node name="Hub" type="Control" parent="Hud" node_paths=PackedStringArray("player", "ui", "menus")]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("h_hub")
+player = NodePath("../../Player")
+ui = NodePath("../Inventory")
+menus = [NodePath("../Inventory"), NodePath("../Tacklebox"), NodePath("../Journal"), NodePath("../Recipes"), NodePath("../Profile"), NodePath("../Charms"), NodePath("../Collections"), NodePath("../../QuestLog"), NodePath("../Calendar"), NodePath("../Pets"), NodePath("../WorldMap")]
+titles = PackedStringArray("Bag", "Tacklebox", "Journal", "Recipes", "Skills", "Charms", "Collections", "Quests", "Calendar", "Pets", "Sea Chart")
+icons = Array[Texture2D]([ExtResource("n_i1"), ExtResource("n_i2"), ExtResource("n_i3"), ExtResource("h_recipes"), ExtResource("h_skills"), ExtResource("h_charms"), ExtResource("h_collections"), ExtResource("n_i5"), ExtResource("h_calendar"), ExtResource("n_i6"), ExtResource("n_i4")])
+actions = Array[StringName]([&"backpack", &"tacklebox", &"journal", &"recipes", &"profile", &"charms", &"collections", &"quests", &"calendar", &"pets", &"map"])
+
 [node name="Notices" type="Control" parent="Hud" node_paths=PackedStringArray("ui")]
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("23_notices")
+ui = NodePath("../Inventory")
+
+[node name="DevMenu" type="Control" parent="Hud" node_paths=PackedStringArray("player", "ui", "world", "cycle", "notices")]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("41_dev")
+player = NodePath("../../Player")
+ui = NodePath("../Inventory")
+world = NodePath("../../World")
+cycle = NodePath("../../DayNightCycle")
+notices = NodePath("../Notices")
+
+[node name="Pause" type="Control" parent="Hud" node_paths=PackedStringArray("player", "ui", "tacklebox", "journal", "map", "questLog", "pets", "profile", "weather", "cycle", "statusHud", "menus")]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("n_pause")
+player = NodePath("../../Player")
+ui = NodePath("../Inventory")
+tacklebox = NodePath("../Tacklebox")
+journal = NodePath("../Journal")
+map = NodePath("../WorldMap")
+questLog = NodePath("../../QuestLog")
+pets = NodePath("../Pets")
+profile = NodePath("../Profile")
+weather = NodePath("../../Weather")
+cycle = NodePath("../../DayNightCycle")
+statusHud = NodePath("../Status")
+menus = [NodePath("../Tacklebox"), NodePath("../Journal"), NodePath("../Counter"), NodePath("../WorldMap"), NodePath("../Pets"), NodePath("../Profile"), NodePath("../DevMenu"), NodePath("../Dialogue")]
+icons = Array[Texture2D]([ExtResource("h_check"), ExtResource("h_skills"), ExtResource("n_i4"), ExtResource("n_i7"), ExtResource("n_i10"), ExtResource("n_i8")])
+coinIcon = ExtResource("37_coin")
+
+[node name="Dialogue" type="Control" parent="Hud" node_paths=PackedStringArray("player", "ui")]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("n_dialogue")
+player = NodePath("../../Player")
 ui = NodePath("../Inventory")
 
 [node name="SleepSchedule" type="CanvasLayer" parent="." node_paths=PackedStringArray("cycle", "player", "ui", "notices", "menus")]
@@ -131,15 +382,16 @@ cycle = NodePath("../DayNightCycle")
 player = NodePath("../Player")
 ui = NodePath("../Hud/Inventory")
 notices = NodePath("../Hud/Notices")
-menus = [NodePath("../Hud/Inventory"), NodePath("../Hud/Tacklebox"), NodePath("../Hud/Journal")]
+menus = [NodePath("../Hud/Inventory"), NodePath("../Hud/Tacklebox"), NodePath("../Hud/Journal"), NodePath("../Hud/WorldMap"), NodePath("../Hud/Counter"), NodePath("../Hud/Pets")]
 sleepyIcon = ExtResource("24_late")
 urgentIcon = ExtResource("25_bedtime")
 
 [node name="MinigameLayer" type="CanvasLayer" parent="."]
 layer = 25
 
-[node name="MinigameScreen" type="Control" parent="MinigameLayer"]
+[node name="MinigameScreen" type="Control" parent="MinigameLayer" node_paths=PackedStringArray("covered")]
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("13_screen")
 font = ExtResource("9_font")
+covered = [NodePath("../../World"), NodePath("../../BasicBoat"), NodePath("../../FishingSpotSpawner"), NodePath("../../Player"), NodePath("../../DayNightCycle"), NodePath("../../Weather")]

@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="Snack" format=3]
+
+[ext_resource type="Script" path="res://items/snacks/snack.gd" id="1_script"]
+[ext_resource type="Texture2D" path="res://items/snacks/icons/island_coffee.png" id="2_icon"]
+[ext_resource type="Resource" path="res://items/rarities/uncommon.tres" id="3_rarity"]
+
+[resource]
+script = ExtResource("1_script")
+energy = 35
+buffStat = "biteSpeed"
+buffAmount = 1.1
+buffHours = 3.0
+hint = "Click while holding it to eat"
+maxStack = 20
+sellPrice = 20
+displayName = "Island Coffee"
+icon = ExtResource("2_icon")
+rarity = ExtResource("3_rarity")
+description = "Strong enough to wake the fish too."
+buyPrice = 45

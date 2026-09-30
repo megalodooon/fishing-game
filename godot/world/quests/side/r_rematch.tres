@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="Quest" format=3]
+
+[ext_resource type="Script" path="res://world/quests/quest.gd" id="e1"]
+[ext_resource type="Script" path="res://world/quests/quest_goal.gd" id="e2"]
+[ext_resource type="Resource" path="res://world/quests/story/q_rig.tres" id="e3"]
+
+[sub_resource type="Resource" id="s1"]
+script = ExtResource("e2")
+kind = 10
+flag = "tournament_wins"
+amount = 5
+text = "Win 5 tournaments"
+
+[resource]
+script = ExtResource("e1")
+title = "Rematch"
+giver = "Rex Marlow"
+description = "Win five tournaments."
+goals = Array[ExtResource("e2")]([SubResource("s1")])
+requires = Array[ExtResource("e1")]([ExtResource("e3")])
+rewardCoins = 3000

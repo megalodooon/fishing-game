@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Readable" format=3]
+
+[ext_resource type="Script" path="res://items/key/readable.gd" id="e1"]
+[ext_resource type="Texture2D" path="res://items/key/icons/rig_logs.png" id="e2"]
+[ext_resource type="Resource" path="res://items/rarities/legendary.tres" id="e3"]
+
+[resource]
+script = ExtResource("e1")
+scene = "rig_logs"
+displayName = "Rig Logs"
+icon = ExtResource("e2")
+rarity = ExtResource("e3")
+description = "Deepnet's records from the night of the Great Storm."
+category = "Key Item"
+hint = "Click while holding it to read"
+discardable = false

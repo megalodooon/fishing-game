@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="SeaCreature" format=3]
+
+[ext_resource type="Script" path="res://fishing/creatures/sea_creature.gd" id="e1"]
+[ext_resource type="Texture2D" path="res://fishing/creatures/art/thunder_squid.png" id="e2"]
+[ext_resource type="Resource" path="res://items/rarities/legendary.tres" id="e3"]
+[ext_resource type="PackedScene" path="res://fishing/minigames/bullet_hell/bullet_hell.tscn" id="e4"]
+[ext_resource type="Resource" path="res://items/materials/storm_essence.tres" id="e5"]
+[ext_resource type="Resource" path="res://items/materials/ink_sac.tres" id="e6"]
+[ext_resource type="Script" path="res://items/item.gd" id="e7"]
+
+[resource]
+script = ExtResource("e1")
+displayName = "Thunder Squid"
+description = "Its arms crackle with lightning."
+icon = ExtResource("e2")
+rarity = ExtResource("e3")
+minFishing = 27
+announce = "A Thunder Squid lights up the waves!"
+fight = ExtResource("e4")
+difficulty = 0.7
+toughness = 1.4
+style = &"storm"
+coins = Vector2i(700, 1400)
+xp = 480.0
+drops = Array[ExtResource("e7")]([ExtResource("e5"), ExtResource("e6")])
+dropChances = PackedFloat32Array(0.8, 1.0)
+dropAmounts = Array[Vector2i]([Vector2i(1, 2), Vector2i(2, 4)])

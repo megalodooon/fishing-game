@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Item" format=3]
+
+[ext_resource type="Texture2D" path="res://items/enchanted/icons/enchanted_rust_flakes.png" id="1_vs6ir"]
+[ext_resource type="Resource" path="res://items/rarities/rare.tres" id="2_b6o2s"]
+[ext_resource type="Script" path="res://items/item.gd" id="3_65t7k"]
+
+[resource]
+script = ExtResource("3_65t7k")
+displayName = "Enchanted Rust Flakes"
+category = "Enchanted Material"
+icon = ExtResource("1_vs6ir")
+rarity = ExtResource("2_b6o2s")
+description = "32 Rust Flakes pressed into one. Better recipes ask for these."
+maxStack = 99
+sellPrice = 422

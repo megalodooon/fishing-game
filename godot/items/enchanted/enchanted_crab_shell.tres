@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Item" format=3]
+
+[ext_resource type="Texture2D" path="res://items/enchanted/icons/enchanted_crab_shell.png" id="1_fbfr0"]
+[ext_resource type="Resource" path="res://items/rarities/uncommon.tres" id="2_w5jpl"]
+[ext_resource type="Script" path="res://items/item.gd" id="3_plujc"]
+
+[resource]
+script = ExtResource("3_plujc")
+displayName = "Enchanted Crab Shell"
+category = "Enchanted Material"
+icon = ExtResource("1_fbfr0")
+rarity = ExtResource("2_w5jpl")
+description = "32 Crab Shell pressed into one. Better recipes ask for these."
+maxStack = 99
+sellPrice = 352

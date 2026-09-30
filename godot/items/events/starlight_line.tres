@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="Tackle" format=3]
+
+[ext_resource type="Texture2D" path="res://items/events/icons/starlight_line.png" id="1_na58d"]
+[ext_resource type="Resource" path="res://items/rarities/rare.tres" id="2_q1d6o"]
+[ext_resource type="Script" path="res://fishing/tacklebox/tackle.gd" id="3_g6joj"]
+
+[resource]
+script = ExtResource("3_g6joj")
+kind = 1
+tint = Color(0.55, 0.65, 1, 1)
+lineColor = Color(0.7, 0.8, 1, 1)
+control = 0.1
+reelSpeed = 1.25
+displayName = "Starlight Line"
+icon = ExtResource("1_na58d")
+rarity = ExtResource("2_q1d6o")
+description = "Spun from starlight. Reels in fast and holds steady."

@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="PetData" format=3]
+
+[ext_resource type="Script" path="res://world/village/pets/pet_data.gd" id="1_pet"]
+[ext_resource type="Texture2D" path="res://world/village/pets/art/seagull.png" id="2_art"]
+[ext_resource type="Script" path="res://items/rarity.gd" id="3_rarity_script"]
+[ext_resource type="Resource" path="res://items/rarities/rare.tres" id="r_rare"]
+[resource]
+script = ExtResource("1_pet")
+displayName = "Seagull"
+description = "Spots shiny fish from high up and points them out."
+sprite = ExtResource("2_art")
+flies = true
+glows = false
+price = 1500
+rarityBoost = Dictionary[ExtResource("3_rarity_script"), float]({
+ExtResource("r_rare"): 1.3
+})

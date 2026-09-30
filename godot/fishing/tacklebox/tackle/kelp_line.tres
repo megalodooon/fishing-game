@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="Tackle" format=3]
+
+[ext_resource type="Script" path="res://fishing/tacklebox/tackle.gd" id="e1"]
+[ext_resource type="Texture2D" path="res://fishing/tacklebox/icons/line.png" id="e2"]
+[ext_resource type="Resource" path="res://items/rarities/uncommon.tres" id="e3"]
+
+[resource]
+script = ExtResource("e1")
+kind = 1
+displayName = "Kelp Line"
+icon = ExtResource("e2")
+rarity = ExtResource("e3")
+description = "Woven kelp fiber. Surprisingly strong."
+discardable = false
+lineColor = Color(0.4, 0.7, 0.35, 1)
+reelSpeed = 1.15
+rangeBonus = 3.0

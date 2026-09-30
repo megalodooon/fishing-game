@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="FishData" format=3 uid="uid://vy80kwxwq87g"]
+
+[ext_resource type="Script" uid="uid://bevdmlyak68oo" path="res://fishing/fish/fish_data.gd" id="1_fish"]
+[ext_resource type="Texture2D" uid="uid://bqmkxagi5qdwk" path="res://fishing/fish/assets/islands/lantern_eel.png" id="2_icon"]
+[ext_resource type="Resource" path="res://items/rarities/trophy.tres" id="3_rarity"]
+[ext_resource type="Script" uid="uid://dupq0iwgv25f6" path="res://fishing/fish/requirements/fish_requirement.gd" id="4_req"]
+[ext_resource type="Script" uid="uid://b3bmwcwg3hf7i" path="res://fishing/fish/requirements/bait_requirement.gd" id="5_bait_req"]
+[ext_resource type="Script" uid="uid://ddca2l75wof8n" path="res://fishing/fish/requirements/cast_requirement.gd" id="6_cast_req"]
+[ext_resource type="Resource" path="res://fishing/bait/glow_bait.tres" id="7_glow"]
+
+[sub_resource type="Resource" id="Req_bait"]
+script = ExtResource("5_bait_req")
+bait = ExtResource("7_glow")
+
+[sub_resource type="Resource" id="Req_cast"]
+script = ExtResource("6_cast_req")
+
+[resource]
+script = ExtResource("1_fish")
+displayName = "Lantern Eel"
+icon = ExtResource("2_icon")
+rarity = ExtResource("3_rarity")
+description = "A deep-water eel with a glowing lure on its chin. It used to follow the lighthouse beam."
+weightRange = Vector2(3, 9)
+basePrice = 750
+heldSize = 1.2
+hours = Vector2(0, 2)
+requirements = Array[ExtResource("4_req")]([SubResource("Req_bait"), SubResource("Req_cast")])
+chance = 12.0

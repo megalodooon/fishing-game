@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="BaitRecipe" format=3]
+
+[ext_resource type="Resource" path="res://items/charms/fortune_3.tres" id="1_nu6om"]
+[ext_resource type="Resource" path="res://items/enchanted/enchanted_starfish.tres" id="2_yjif8"]
+[ext_resource type="Resource" path="res://items/rare/abyssal_pearl.tres" id="3_mmc8o"]
+[ext_resource type="Resource" path="res://items/charms/fortune_4.tres" id="4_g5vai"]
+[ext_resource type="Script" path="res://fishing/bait/bait_recipe.gd" id="5_v3o1s"]
+
+[resource]
+script = ExtResource("5_v3o1s")
+output = ExtResource("4_g5vai")
+amount = 1
+ingredients = Array[Resource]([ExtResource("1_nu6om"), ExtResource("2_yjif8"), ExtResource("3_mmc8o")])
+counts = Array[int]([1, 24, 1])
+xp = 120.0
+station = &"forge"
+category = "Charms"
+requiredSkill = &"fishing"
+requiredLevel = 32

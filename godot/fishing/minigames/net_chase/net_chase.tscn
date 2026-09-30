@@ -1,0 +1,8 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://fishing/minigames/net_chase/net_chase.gd" id="1_game"]
+
+[node name="NetChase" type="Node2D"]
+script = ExtResource("1_game")
+size = Vector2(64, 38)
+hint = "Keep the net on the fish with the mouse"

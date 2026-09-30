@@ -7,11 +7,11 @@ var items : Array[RID] = []
 #------------------------#
 
 
-func _init(parent : CanvasItem, count : int = 4) -> void:
+func _init(parent : CanvasItem, count : int = 4, useParentMaterial : bool = true) -> void:
 	for i in count:
 		var item : RID = RenderingServer.canvas_item_create()
 		RenderingServer.canvas_item_set_parent(item, parent.get_canvas_item())
-		RenderingServer.canvas_item_set_use_parent_material(item, true)
+		RenderingServer.canvas_item_set_use_parent_material(item, useParentMaterial)
 		items.append(item)
 
 func _notification(what : int) -> void:
@@ -75,6 +75,94 @@ static func inner_rect(xform : Transform2D, rect : Rect2) -> Rect2:
 	if inner.x <= 0.0 or inner.y <= 0.0:
 		return Rect2()
 	return Rect2(center - inner, inner * 2.0)
+
+# Grid the uncovered rects snap to, in pixels.
+const COVER_BLOCK : int = 4
+# Per cover texture, the rects its opaque pixels leave open (see open_rects).
+static var coverCache : Dictionary = {}
+
+# The parts of area (in item's local pixels) that the cover sprite's fully
+# opaque pixels don't hide, as a few rects. What's under the cover never
+# shows, so drawing item only inside them gives the same picture. Works when
+# the cover sits unscaled and unrotated exactly over the area (an island
+# room's land over its water); otherwise it's the whole area.
+static func uncovered_rects(item : CanvasItem, area : Rect2, cover : Sprite2D) -> Array[Rect2]:
+	var whole : Array[Rect2] = [area]
+	if not cover or not cover.texture or cover.region_enabled or cover.flip_h or cover.flip_v or cover.centered:
+		return whole
+	var relative : Transform2D = item.get_global_transform().affine_inverse() * cover.get_global_transform()
+	if relative.x != Vector2.RIGHT or relative.y != Vector2.DOWN or relative.origin + cover.offset != area.position or cover.texture.get_size() != area.size:
+		return whole
+	var open : Variant = open_rects(cover.texture)
+	if open == null:
+		return whole
+	var rects : Array[Rect2] = []
+	for rect in open:
+		rects.append(Rect2(rect.position + area.position, rect.size))
+	return rects
+
+# The texture's pixels that aren't fully opaque, grown by one pixel to spare
+# and snapped out to a grid of COVER_BLOCK, as rows of runs merged into rects.
+# Null when the texture's pixels can't be read.
+static func open_rects(texture : Texture2D) -> Variant:
+	if not coverCache.has(texture):
+		Preloader.hand_over()
+	if not coverCache.has(texture):
+		coverCache[texture] = find_open_rects(texture)
+	return coverCache[texture]
+
+# What open_rects gives, worked out without the cache. Safe on any thread
+# when the texture is a PNG file (the Preloader does it for the island land).
+static func find_open_rects(texture : Texture2D) -> Variant:
+	var source : Image = null
+	var path : String = texture.resource_path
+	if path.ends_with(".png") and FileAccess.file_exists(path):
+		source = Image.new()
+		if source.load_png_from_buffer(FileAccess.get_file_as_bytes(path)) != OK:
+			source = null
+	if not source:
+		source = texture.get_image()
+	var size : Vector2i = Vector2i(texture.get_size())
+	if not source or source.get_size() != size or size.x % COVER_BLOCK != 0 or size.y % COVER_BLOCK != 0:
+		return null
+	if source.is_compressed():
+		source.decompress()
+	# Fully opaque pixels only, then one pixel less all round.
+	var solid : BitMap = BitMap.new()
+	solid.create_from_image_alpha(source, 254.5 / 255.0)
+	solid.grow_mask(-1, Rect2i(Vector2i.ZERO, size))
+	# Averaged down to one value per block: 255 only where the whole block is solid.
+	var blocks : Image = solid.convert_to_image()
+	var level : int = COVER_BLOCK
+	while level > 1:
+		blocks.shrink_x2()
+		level = level >> 1
+	@warning_ignore("integer_division")
+	var columns : int = size.x / COVER_BLOCK
+	@warning_ignore("integer_division")
+	var rows : int = size.y / COVER_BLOCK
+	var data : PackedByteArray = blocks.get_data()
+	var rects : Array[Rect2] = []
+	var running : Dictionary = {}
+	for row in rows:
+		var next : Dictionary = {}
+		var start : int = -1
+		for column in columns + 1:
+			var covered : bool = column == columns or data[row * columns + column] == 255
+			if not covered and start < 0:
+				start = column
+			elif covered and start >= 0:
+				var run : Vector2i = Vector2i(start, column)
+				if running.has(run):
+					var index : int = running[run]
+					rects[index].size.y += COVER_BLOCK
+					next[run] = index
+				else:
+					rects.append(Rect2(start * COVER_BLOCK, row * COVER_BLOCK, (column - start) * COVER_BLOCK, COVER_BLOCK))
+					next[run] = rects.size() - 1
+				start = -1
+		running = next
+	return rects
 
 static func band_rects(outer : Rect2, hole : Rect2) -> Array[Rect2]:
 	var start : Vector2 = hole.position.ceil()

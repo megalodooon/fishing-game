@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="FishData" format=3]
+
+[ext_resource type="Texture2D" path="res://fishing/fish/assets/events/ghost_carp.png" id="1_bledn"]
+[ext_resource type="Resource" path="res://items/rarities/common.tres" id="2_c4ovp"]
+[ext_resource type="Script" path="res://fishing/fish/requirements/fish_requirement.gd" id="3_ualyy"]
+[ext_resource type="Script" path="res://fishing/fish/fish_data.gd" id="4_mbmvq"]
+
+[resource]
+script = ExtResource("4_mbmvq")
+displayName = "Ghost Carp"
+icon = ExtResource("1_bledn")
+rarity = ExtResource("2_c4ovp")
+description = "You can see right through it. Mostly."
+weightRange = Vector2(0.5, 3)
+basePrice = 18
+heldSize = 0.6599999999999999

@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="BaitRecipe" format=3]
+
+[ext_resource type="Resource" path="res://items/materials/shark_tooth.tres" id="1_10wkn"]
+[ext_resource type="Resource" path="res://items/enchanted/enchanted_shark_tooth.tres" id="2_agviy"]
+[ext_resource type="Script" path="res://fishing/bait/bait_recipe.gd" id="3_v4i3f"]
+
+[resource]
+script = ExtResource("3_v4i3f")
+output = ExtResource("2_agviy")
+amount = 1
+ingredients = Array[Resource]([ExtResource("1_10wkn")])
+counts = Array[int]([32])
+requiredFlag = "collection/shark_tooth/2"
+xp = 12.0
+category = "Materials"

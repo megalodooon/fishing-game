@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="Charm" format=3]
+
+[ext_resource type="Texture2D" path="res://items/charms/icons/treasure_2.png" id="1_brwtf"]
+[ext_resource type="Resource" path="res://items/rarities/uncommon.tres" id="2_0qc3n"]
+[ext_resource type="Script" path="res://items/charms/charm.gd" id="3_unxkd"]
+
+[resource]
+script = ExtResource("3_unxkd")
+stats = Dictionary[StringName, float]({
+&"treasure": 1.0
+})
+family = "treasure"
+tier = 2
+displayName = "Treasure Ring"
+icon = ExtResource("1_brwtf")
+rarity = ExtResource("2_0qc3n")
+description = "Part of the Treasure line. Upgrade it at a bench to make it stronger."
+sellPrice = 160

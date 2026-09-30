@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="BaitRecipe" format=3]
+
+[ext_resource type="Resource" path="res://items/materials/clay.tres" id="1_gdisd"]
+[ext_resource type="Resource" path="res://items/materials/rope.tres" id="2_l0r4r"]
+[ext_resource type="Resource" path="res://items/charms/foreman_1.tres" id="3_vf1uf"]
+[ext_resource type="Script" path="res://fishing/bait/bait_recipe.gd" id="4_50pvj"]
+
+[resource]
+script = ExtResource("4_50pvj")
+output = ExtResource("3_vf1uf")
+amount = 1
+ingredients = Array[Resource]([ExtResource("1_gdisd"), ExtResource("2_l0r4r")])
+counts = Array[int]([16, 1])
+xp = 30.0
+station = &"workbench"
+category = "Charms"
+requiredSkill = &"trading"
+requiredLevel = 6

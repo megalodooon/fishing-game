@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Item" format=3]
+
+[ext_resource type="Texture2D" path="res://items/materials/icons/swamp_moss.png" id="1_ylngu"]
+[ext_resource type="Resource" path="res://items/rarities/common.tres" id="2_ra64j"]
+[ext_resource type="Script" path="res://items/item.gd" id="3_bo6h0"]
+
+[resource]
+script = ExtResource("3_bo6h0")
+displayName = "Swamp Moss"
+category = "Forage"
+icon = ExtResource("1_ylngu")
+rarity = ExtResource("2_ra64j")
+description = "Soggy green moss. Auntie Moss's favorite."
+maxStack = 99
+sellPrice = 4

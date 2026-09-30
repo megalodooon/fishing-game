@@ -1,25 +1,43 @@
-[gd_resource type="Resource" script_class="Biome" format=3]
+[gd_resource type="Resource" script_class="Biome" format=3 uid="uid://kfmjqqcpst47"]
 
-[ext_resource type="Script" path="res://oceans/biome.gd" id="1_biome"]
-[ext_resource type="Script" path="res://fishing/fish/fish_data.gd" id="17_data"]
-[ext_resource type="Resource" path="res://fishing/fish/species/sardine.tres" id="2_fish"]
-[ext_resource type="Resource" path="res://fishing/fish/species/anchovy.tres" id="3_fish"]
-[ext_resource type="Resource" path="res://fishing/fish/species/mackerel.tres" id="4_fish"]
-[ext_resource type="Resource" path="res://fishing/fish/species/sea_bass.tres" id="5_fish"]
-[ext_resource type="Resource" path="res://fishing/fish/species/red_snapper.tres" id="6_fish"]
-[ext_resource type="Resource" path="res://fishing/fish/species/flounder.tres" id="7_fish"]
-[ext_resource type="Resource" path="res://fishing/fish/species/placeholder/pufferfish.tres" id="8_fish"]
-[ext_resource type="Resource" path="res://fishing/fish/species/placeholder/barracuda.tres" id="9_fish"]
-[ext_resource type="Resource" path="res://fishing/fish/species/placeholder/yellowfin_tuna.tres" id="10_fish"]
-[ext_resource type="Resource" path="res://fishing/fish/species/placeholder/swordfish.tres" id="11_fish"]
-[ext_resource type="Resource" path="res://fishing/fish/species/placeholder/moonfish.tres" id="12_fish"]
-[ext_resource type="Resource" path="res://fishing/fish/species/placeholder/marlin.tres" id="13_fish"]
-[ext_resource type="Resource" path="res://fishing/fish/species/placeholder/golden_grouper.tres" id="14_fish"]
-[ext_resource type="Resource" path="res://fishing/fish/species/placeholder/oarfish.tres" id="15_fish"]
-[ext_resource type="Resource" path="res://fishing/fish/species/placeholder/king_bass.tres" id="16_fish"]
+[ext_resource type="Resource" path="res://items/materials/sea_salt.tres" id="29_twel4"]
+[ext_resource type="Resource" path="res://items/materials/palm_frond.tres" id="30_u4hem"]
+[ext_resource type="Script" path="res://oceans/biome.gd" id="e1"]
+[ext_resource type="Script" path="res://fishing/fish/fish_data.gd" id="e2"]
+[ext_resource type="Resource" path="res://fishing/fish/species/sardine.tres" id="e3"]
+[ext_resource type="Resource" path="res://fishing/fish/species/anchovy.tres" id="e4"]
+[ext_resource type="Resource" path="res://fishing/fish/species/mackerel.tres" id="e5"]
+[ext_resource type="Resource" path="res://fishing/fish/species/sea_bass.tres" id="e6"]
+[ext_resource type="Resource" path="res://fishing/fish/species/red_snapper.tres" id="e7"]
+[ext_resource type="Resource" path="res://fishing/fish/species/flounder.tres" id="e8"]
+[ext_resource type="Resource" path="res://fishing/fish/species/placeholder/pufferfish.tres" id="e9"]
+[ext_resource type="Resource" path="res://fishing/fish/species/placeholder/barracuda.tres" id="e10"]
+[ext_resource type="Resource" path="res://fishing/fish/species/placeholder/yellowfin_tuna.tres" id="e11"]
+[ext_resource type="Resource" path="res://fishing/fish/species/placeholder/swordfish.tres" id="e12"]
+[ext_resource type="Resource" path="res://fishing/fish/species/placeholder/moonfish.tres" id="e13"]
+[ext_resource type="Resource" path="res://fishing/fish/species/placeholder/marlin.tres" id="e14"]
+[ext_resource type="Resource" path="res://fishing/fish/species/placeholder/golden_grouper.tres" id="e15"]
+[ext_resource type="Resource" path="res://fishing/fish/species/placeholder/oarfish.tres" id="e16"]
+[ext_resource type="Resource" path="res://fishing/fish/species/placeholder/king_bass.tres" id="e17"]
+[ext_resource type="Resource" path="res://fishing/fish/species/weather/drizzle_minnow.tres" id="e18"]
+[ext_resource type="Resource" path="res://fishing/fish/species/weather/mist_herring.tres" id="e19"]
+[ext_resource type="Resource" path="res://fishing/fish/species/bay/drift_jelly_eel.tres" id="e20"]
+[ext_resource type="Resource" path="res://fishing/creatures/giant_crab.tres" id="e21"]
+[ext_resource type="Resource" path="res://fishing/creatures/bay_serpent.tres" id="e22"]
+[ext_resource type="Script" path="res://fishing/creatures/sea_creature.gd" id="e23"]
+[ext_resource type="Resource" path="res://items/materials/old_boot.tres" id="e24"]
+[ext_resource type="Resource" path="res://items/materials/tin_can.tres" id="e25"]
+[ext_resource type="Resource" path="res://items/materials/seaweed.tres" id="e26"]
+[ext_resource type="Resource" path="res://items/materials/driftwood_plank.tres" id="e27"]
+[ext_resource type="Resource" path="res://items/materials/broken_bottle.tres" id="e28"]
+[ext_resource type="Script" path="res://items/item.gd" id="e29"]
 
 [resource]
-script = ExtResource("1_biome")
-displayName = "Basic Ocean"
+script = ExtResource("e1")
+displayName = "Bramble Bay"
 description = "Calm open water close to shore."
-fish = Array[ExtResource("17_data")]([ExtResource("2_fish"), ExtResource("3_fish"), ExtResource("4_fish"), ExtResource("5_fish"), ExtResource("6_fish"), ExtResource("7_fish"), ExtResource("8_fish"), ExtResource("9_fish"), ExtResource("10_fish"), ExtResource("11_fish"), ExtResource("12_fish"), ExtResource("13_fish"), ExtResource("14_fish"), ExtResource("15_fish"), ExtResource("16_fish")])
+region = "Home Waters"
+fish = Array[ExtResource("e2")]([ExtResource("e3"), ExtResource("e4"), ExtResource("e5"), ExtResource("e6"), ExtResource("e7"), ExtResource("e8"), ExtResource("e9"), ExtResource("e10"), ExtResource("e11"), ExtResource("e12"), ExtResource("e13"), ExtResource("e14"), ExtResource("e15"), ExtResource("e16"), ExtResource("e17"), ExtResource("e18"), ExtResource("e19"), ExtResource("e20")])
+creatures = Array[ExtResource("e23")]([ExtResource("e21"), ExtResource("e22")])
+junkChance = 0.08
+junk = Array[ExtResource("e29")]([ExtResource("e24"), ExtResource("e25"), ExtResource("e26"), ExtResource("e27"), ExtResource("e28"), ExtResource("29_twel4"), ExtResource("30_u4hem")])

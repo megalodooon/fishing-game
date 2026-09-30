@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="Location" format=3]
+
+[ext_resource type="Script" path="res://world/location.gd" id="e1"]
+[ext_resource type="Texture2D" path="res://world/map/icons/kelp_forest.png" id="e2"]
+[ext_resource type="Resource" path="res://oceans/kelp/kelp_biome.tres" id="e3"]
+
+[resource]
+script = ExtResource("e1")
+displayName = "Kelp Forest"
+description = "Towering kelp in green light. The Kelp Kraken lives here."
+kind = 0
+scene = "res://oceans/kelp/kelp_ocean.tscn"
+mapPosition = Vector2(306, 73)
+chartTint = Color(0.1, 0.36, 0.3, 0.65)
+mapIcon = ExtResource("e2")
+biome = ExtResource("e3")
+weatherChances = PackedFloat32Array(0.55, 0.2, 0.25)
+startsUnlocked = false
+coinCost = 800
+requiredHull = 2
+requiredSkill = &"fishing"
+requiredLevel = 12

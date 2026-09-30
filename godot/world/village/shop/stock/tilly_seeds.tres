@@ -1,0 +1,170 @@
+[gd_resource type="Resource" script_class="ShopStock" format=3]
+
+[ext_resource type="Script" path="res://world/village/shop/shop_offer.gd" id="1_cchkl"]
+[ext_resource type="Resource" path="res://world/village/farm/seeds/wormroot_seeds.tres" id="2_liwu1"]
+[ext_resource type="Resource" path="res://world/village/farm/seeds/sunflower_seeds.tres" id="3_7x8px"]
+[ext_resource type="Resource" path="res://world/village/farm/seeds/sweetcorn_seeds.tres" id="4_aje4n"]
+[ext_resource type="Resource" path="res://world/village/farm/seeds/sand_carrot_seeds.tres" id="5_gxbic"]
+[ext_resource type="Resource" path="res://world/village/farm/seeds/sea_kale_seeds.tres" id="6_grh5b"]
+[ext_resource type="Resource" path="res://world/village/farm/seeds/pumpkin_seeds.tres" id="7_t38ep"]
+[ext_resource type="Resource" path="res://world/village/farm/seeds/marsh_rice_seedlings.tres" id="8_swpe8"]
+[ext_resource type="Resource" path="res://world/village/farm/seeds/tea_seeds.tres" id="9_47vo5"]
+[ext_resource type="Resource" path="res://world/village/farm/seeds/sea_grape_cuttings.tres" id="10_quhht"]
+[ext_resource type="Resource" path="res://world/village/farm/seeds/cotton_seeds.tres" id="11_cd5m4"]
+[ext_resource type="Resource" path="res://world/village/farm/seeds/chili_seeds.tres" id="12_ymk5l"]
+[ext_resource type="Resource" path="res://world/village/farm/seeds/glowcap_spores.tres" id="13_bb2hf"]
+[ext_resource type="Resource" path="res://world/village/farm/seeds/lavender_seeds.tres" id="14_fw55h"]
+[ext_resource type="Resource" path="res://world/village/farm/seeds/frostberry_seeds.tres" id="15_47cgy"]
+[ext_resource type="Resource" path="res://world/village/farm/seeds/squash_seeds.tres" id="16_2sk3p"]
+[ext_resource type="Resource" path="res://world/village/farm/seeds/moonmelon_seeds.tres" id="17_8ueop"]
+[ext_resource type="Resource" path="res://world/village/farm/seeds/ghost_pepper_seeds.tres" id="18_mkmgs"]
+[ext_resource type="Resource" path="res://world/village/farm/seeds/starfruit_seeds.tres" id="19_8jwjj"]
+[ext_resource type="Script" path="res://world/village/shop/shop_stock.gd" id="20_1438x"]
+
+[ext_resource type="Resource" path="res://items/materials/honey.tres" id="x_honey"]
+[ext_resource type="Resource" path="res://fishing/bait/honey_bait.tres" id="x_honey_bait"]
+[ext_resource type="Resource" path="res://items/charms/farmers_almanac.tres" id="x_almanac"]
+
+[sub_resource type="Resource" id="Resource_3o80h"]
+script = ExtResource("1_cchkl")
+item = ExtResource("2_liwu1")
+amount = 3
+
+[sub_resource type="Resource" id="Resource_7lwyr"]
+script = ExtResource("1_cchkl")
+item = ExtResource("3_7x8px")
+amount = 3
+
+[sub_resource type="Resource" id="Resource_bj1ac"]
+script = ExtResource("1_cchkl")
+item = ExtResource("4_aje4n")
+amount = 3
+
+[sub_resource type="Resource" id="Resource_vov4e"]
+script = ExtResource("1_cchkl")
+item = ExtResource("5_gxbic")
+amount = 3
+
+[sub_resource type="Resource" id="Resource_0fvwe"]
+script = ExtResource("1_cchkl")
+item = ExtResource("6_grh5b")
+amount = 3
+requiredSkill = &"farming"
+requiredLevel = 2
+
+[sub_resource type="Resource" id="Resource_os8t0"]
+script = ExtResource("1_cchkl")
+item = ExtResource("7_t38ep")
+amount = 3
+requiredSkill = &"farming"
+requiredLevel = 3
+
+[sub_resource type="Resource" id="Resource_t3a10"]
+script = ExtResource("1_cchkl")
+item = ExtResource("8_swpe8")
+amount = 3
+requiredSkill = &"farming"
+requiredLevel = 3
+
+[sub_resource type="Resource" id="Resource_v8nkk"]
+script = ExtResource("1_cchkl")
+item = ExtResource("9_47vo5")
+amount = 3
+requiredSkill = &"farming"
+requiredLevel = 4
+
+[sub_resource type="Resource" id="Resource_ait10"]
+script = ExtResource("1_cchkl")
+item = ExtResource("10_quhht")
+amount = 3
+requiredSkill = &"farming"
+requiredLevel = 4
+
+[sub_resource type="Resource" id="Resource_nxw21"]
+script = ExtResource("1_cchkl")
+item = ExtResource("11_cd5m4")
+amount = 3
+requiredSkill = &"farming"
+requiredLevel = 5
+
+[sub_resource type="Resource" id="Resource_e7pep"]
+script = ExtResource("1_cchkl")
+item = ExtResource("12_ymk5l")
+amount = 3
+requiredSkill = &"farming"
+requiredLevel = 5
+
+[sub_resource type="Resource" id="Resource_mjueb"]
+script = ExtResource("1_cchkl")
+item = ExtResource("13_bb2hf")
+amount = 3
+requiredSkill = &"farming"
+requiredLevel = 6
+
+[sub_resource type="Resource" id="Resource_alixq"]
+script = ExtResource("1_cchkl")
+item = ExtResource("14_fw55h")
+amount = 3
+requiredSkill = &"farming"
+requiredLevel = 7
+
+[sub_resource type="Resource" id="Resource_y0ewe"]
+script = ExtResource("1_cchkl")
+item = ExtResource("15_47cgy")
+amount = 3
+requiredSkill = &"farming"
+requiredLevel = 8
+
+[sub_resource type="Resource" id="Resource_h8015"]
+script = ExtResource("1_cchkl")
+item = ExtResource("16_2sk3p")
+amount = 3
+requiredSkill = &"farming"
+requiredLevel = 9
+
+[sub_resource type="Resource" id="Resource_j3nt7"]
+script = ExtResource("1_cchkl")
+item = ExtResource("17_8ueop")
+amount = 3
+requiredSkill = &"farming"
+requiredLevel = 10
+
+[sub_resource type="Resource" id="Resource_x8q18"]
+script = ExtResource("1_cchkl")
+item = ExtResource("18_mkmgs")
+amount = 3
+requiredSkill = &"farming"
+requiredLevel = 12
+
+[sub_resource type="Resource" id="Resource_0y2ux"]
+script = ExtResource("1_cchkl")
+item = ExtResource("19_8jwjj")
+amount = 3
+requiredSkill = &"farming"
+requiredLevel = 15
+
+[sub_resource type="Resource" id="x_s1"]
+script = ExtResource("1_cchkl")
+item = ExtResource("x_honey")
+amount = 1
+price = 45
+dailyStock = 5
+
+[sub_resource type="Resource" id="x_s2"]
+script = ExtResource("1_cchkl")
+item = ExtResource("x_honey_bait")
+amount = 5
+price = 60
+
+[sub_resource type="Resource" id="x_s3"]
+script = ExtResource("1_cchkl")
+item = ExtResource("x_almanac")
+amount = 1
+price = 900
+requiredFlag = "quest/t_sun"
+lockedText = "After Sunflower Fields."
+
+[resource]
+script = ExtResource("20_1438x")
+shopName = "Tilly's seed stall"
+offers = Array[ExtResource("1_cchkl")]([SubResource("Resource_3o80h"), SubResource("Resource_7lwyr"), SubResource("Resource_bj1ac"), SubResource("Resource_vov4e"), SubResource("Resource_0fvwe"), SubResource("Resource_os8t0"), SubResource("Resource_t3a10"), SubResource("Resource_v8nkk"), SubResource("Resource_ait10"), SubResource("Resource_nxw21"), SubResource("Resource_e7pep"), SubResource("Resource_mjueb"), SubResource("Resource_alixq"), SubResource("Resource_y0ewe"), SubResource("Resource_h8015"), SubResource("Resource_j3nt7"), SubResource("Resource_x8q18"), SubResource("Resource_0y2ux"), SubResource("x_s1"), SubResource("x_s2"), SubResource("x_s3")])

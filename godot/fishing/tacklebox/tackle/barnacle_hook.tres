@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Tackle" format=3]
+
+[ext_resource type="Texture2D" path="res://fishing/tacklebox/icons/barnacle_hook.png" id="1_fn4al"]
+[ext_resource type="Resource" path="res://items/rarities/common.tres" id="2_t25ii"]
+[ext_resource type="Script" path="res://fishing/tacklebox/tackle.gd" id="3_uaslx"]
+
+[resource]
+script = ExtResource("3_uaslx")
+kind = 2
+hookWindowBonus = 0.2
+control = 0.05
+displayName = "Barnacle Hook"
+icon = ExtResource("1_fn4al")
+rarity = ExtResource("2_t25ii")
+description = "A crafted rod part."
+discardable = false

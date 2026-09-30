@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="CrabPot" format=3]
+
+[ext_resource type="Script" path="res://items/traps/crab_pot.gd" id="e1"]
+[ext_resource type="Texture2D" path="res://items/traps/icons/iron_crab_pot.png" id="e2"]
+[ext_resource type="Resource" path="res://items/rarities/uncommon.tres" id="e3"]
+
+[resource]
+script = ExtResource("e1")
+perDay = 3
+capacity = 10
+luck = 1.25
+displayName = "Iron Crab Pot"
+icon = ExtResource("e2")
+rarity = ExtResource("e3")
+description = "A crab pot. Set it at a trap spot and it catches fish while you're away."
+maxStack = 10
+sellPrice = 80

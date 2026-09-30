@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="FishData" format=3]
+
+[ext_resource type="Script" path="res://fishing/fish/fish_data.gd" id="e1"]
+[ext_resource type="Texture2D" path="res://fishing/fish/assets/frost/ice_cod.png" id="e2"]
+[ext_resource type="Resource" path="res://items/rarities/common.tres" id="e3"]
+
+[resource]
+script = ExtResource("e1")
+displayName = "Ice Cod"
+icon = ExtResource("e2")
+rarity = ExtResource("e3")
+description = "Its blood has antifreeze in it. Truly."
+weightRange = Vector2(1.0, 6.0)
+basePrice = 16
+heldSize = 1.0
+hours = Vector2(0.0, 24.0)

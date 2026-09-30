@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="TreasureChest" format=3]
+
+[ext_resource type="Texture2D" path="res://items/events/icons/wrapped_gift.png" id="1_uatm0"]
+[ext_resource type="Script" path="res://items/item.gd" id="2_bds15"]
+[ext_resource type="Resource" path="res://items/events/candy_cane.tres" id="3_iappl"]
+[ext_resource type="Resource" path="res://items/events/snowflake.tres" id="4_a1qm0"]
+[ext_resource type="Resource" path="res://items/snacks/hot_cocoa.tres" id="5_0i3u2"]
+[ext_resource type="Resource" path="res://items/materials/iron_scrap.tres" id="6_xilx2"]
+[ext_resource type="Resource" path="res://items/materials/driftwood_plank.tres" id="7_0wp4y"]
+[ext_resource type="Resource" path="res://items/events/festive_gift.tres" id="8_yqeph"]
+[ext_resource type="Resource" path="res://items/rarities/uncommon.tres" id="9_bkyq2"]
+[ext_resource type="Script" path="res://items/treasure/treasure_chest.gd" id="10_4tksu"]
+
+[resource]
+script = ExtResource("10_4tksu")
+coins = Vector2i(20, 60)
+rolls = Vector2i(1, 1)
+loot = Array[ExtResource("2_bds15")]([ExtResource("3_iappl"), ExtResource("4_a1qm0"), ExtResource("5_0i3u2"), ExtResource("6_xilx2"), ExtResource("7_0wp4y"), ExtResource("8_yqeph")])
+lootWeights = PackedFloat32Array(4, 3, 2, 2, 2, 0.6)
+lootAmounts = Array[Vector2i]([Vector2i(1, 3), Vector2i(1, 2), Vector2i(1, 1), Vector2i(2, 4), Vector2i(3, 6), Vector2i(1, 1)])
+displayName = "Wrapped Gift"
+category = "Gift"
+icon = ExtResource("1_uatm0")
+rarity = ExtResource("9_bkyq2")
+description = "Open it for a surprise, or save it: Wally's Workshop takes gifts as payment."
+hint = "Click to open"
+maxStack = 99

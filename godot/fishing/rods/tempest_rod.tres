@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="RodItem" format=3 uid="uid://bh8rl5h3wy6e6"]
+
+[ext_resource type="Script" uid="uid://ogpan3u26jeb" path="res://fishing/rods/rod_item.gd" id="e1"]
+[ext_resource type="Script" uid="uid://bnc56btgk6rqi" path="res://fishing/tacklebox/tackle.gd" id="e2"]
+[ext_resource type="Resource" path="res://fishing/tacklebox/tackle/basic_bobber.tres" id="e3"]
+[ext_resource type="Resource" path="res://fishing/tacklebox/tackle/basic_line.tres" id="e4"]
+[ext_resource type="Resource" path="res://fishing/tacklebox/tackle/basic_hook.tres" id="e5"]
+[ext_resource type="Texture2D" uid="uid://8dfr5njxso38" path="res://fishing/rods/icons/tempest_rod.png" id="e6"]
+[ext_resource type="Resource" path="res://items/rarities/legendary.tres" id="e7"]
+[ext_resource type="PackedScene" path="res://fishing/rods/starter_rod.tscn" id="e8"]
+
+[sub_resource type="Resource" id="s1"]
+script = ExtResource("e2")
+kind = 3
+biteSpeed = 1.3
+control = 0.25
+reelSpeed = 1.2
+displayName = "Tempest Rod"
+
+[resource]
+script = ExtResource("e1")
+slots = Array[int]([0, 1, 1, 2, 3, 3, 4])
+tackle = Array[ExtResource("e2")]([ExtResource("e3"), ExtResource("e4"), null, ExtResource("e5"), null, null, null])
+builtIn = SubResource("s1")
+rodTint = Color(0.8, 0.75, 1, 1)
+displayName = "Tempest Rod"
+icon = ExtResource("e6")
+rarity = ExtResource("e7")
+description = "Charged with storm essence. It hums."
+heldScene = ExtResource("e8")
+discardable = false
+hint = "T to customize"

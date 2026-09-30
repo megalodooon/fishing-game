@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="Tackle" format=3]
+
+[ext_resource type="Script" path="res://fishing/tacklebox/tackle.gd" id="1_script"]
+[ext_resource type="Texture2D" path="res://fishing/tacklebox/icons/line.png" id="2_icon"]
+[ext_resource type="Resource" path="res://items/rarities/rare.tres" id="3_rarity"]
+
+[resource]
+script = ExtResource("1_script")
+kind = 1
+discardable = false
+lineColor = Color(1, 0.55, 0.25, 1)
+reelSpeed = 1.25
+rangeBonus = 4.0
+displayName = "Heatproof Line"
+icon = ExtResource("2_icon")
+rarity = ExtResource("3_rarity")
+description = "Won't melt, won't snap."

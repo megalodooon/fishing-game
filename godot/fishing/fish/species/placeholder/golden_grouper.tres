@@ -1,7 +1,8 @@
-[gd_resource type="Resource" script_class="FishData" format=3]
+[gd_resource type="Resource" script_class="FishData" format=3 uid="uid://bllslvpfpnr0i"]
 
-[ext_resource type="Script" path="res://fishing/fish/fish_data.gd" id="1_fish"]
-[ext_resource type="Texture2D" path="res://fishing/fish/assets/red_snapper.png" id="2_icon"]
+[ext_resource type="Script" uid="uid://bevdmlyak68oo" path="res://fishing/fish/fish_data.gd" id="1_fish"]
+[ext_resource type="Texture2D" uid="uid://hbvlxlkybv4v" path="res://fishing/fish/assets/bay/golden_grouper.png" id="2_icon"]
+[ext_resource type="Script" uid="uid://dupq0iwgv25f6" path="res://fishing/fish/requirements/fish_requirement.gd" id="3_8xakm"]
 [ext_resource type="Resource" path="res://items/rarities/trophy.tres" id="3_rarity"]
 
 [resource]
@@ -13,3 +14,4 @@ description = "Said to bring luck to whoever lands one."
 weightRange = Vector2(15, 50)
 basePrice = 500
 heldSize = 1.25
+style = &"reef"

@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="BaitRecipe" format=3]
+
+[ext_resource type="Resource" path="res://items/materials/glass_bottle.tres" id="1_2n7c4"]
+[ext_resource type="Resource" path="res://items/enchanted/enchanted_tea_leaves.tres" id="2_8by3m"]
+[ext_resource type="Resource" path="res://items/materials/frost_lichen.tres" id="3_vofux"]
+[ext_resource type="Resource" path="res://items/potions/scholars_potion_2.tres" id="4_ullyu"]
+[ext_resource type="Script" path="res://fishing/bait/bait_recipe.gd" id="5_ns8px"]
+
+[resource]
+script = ExtResource("5_ns8px")
+output = ExtResource("4_ullyu")
+amount = 1
+ingredients = Array[Resource]([ExtResource("1_2n7c4"), ExtResource("2_8by3m"), ExtResource("3_vofux")])
+counts = Array[int]([1, 1, 3])
+xp = 46.0
+station = &"cauldron"
+category = "Potions"
+requiredSkill = &"alchemy"
+requiredLevel = 12

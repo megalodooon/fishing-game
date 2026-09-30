@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="FishData" format=3 uid="uid://cqo6620xsfvwy"]
+
+[ext_resource type="Script" uid="uid://bevdmlyak68oo" path="res://fishing/fish/fish_data.gd" id="e1"]
+[ext_resource type="Texture2D" uid="uid://b3n6p81e86jrl" path="res://fishing/fish/assets/champion/crown_fish.png" id="e2"]
+[ext_resource type="Resource" path="res://items/rarities/trophy.tres" id="e3"]
+[ext_resource type="Script" uid="uid://ddca2l75wof8n" path="res://fishing/fish/requirements/cast_requirement.gd" id="e4"]
+[ext_resource type="Script" uid="uid://dupq0iwgv25f6" path="res://fishing/fish/requirements/fish_requirement.gd" id="e5"]
+
+[sub_resource type="Resource" id="s1"]
+script = ExtResource("e4")
+
+[resource]
+script = ExtResource("e1")
+displayName = "Crown Fish"
+icon = ExtResource("e2")
+rarity = ExtResource("e3")
+description = "Only a champion's perfect cast lands one."
+weightRange = Vector2(5, 15)
+basePrice = 4500
+heldSize = 1.5
+requirements = Array[ExtResource("e5")]([SubResource("s1")])
+chance = 8.0

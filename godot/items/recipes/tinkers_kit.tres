@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="BaitRecipe" format=3]
+
+[ext_resource type="Resource" path="res://items/materials/iron_scrap.tres" id="1_8kn7h"]
+[ext_resource type="Resource" path="res://items/materials/driftwood_plank.tres" id="2_afu3p"]
+[ext_resource type="Resource" path="res://items/tools/tinkers_kit.tres" id="3_x5rnv"]
+[ext_resource type="Script" path="res://fishing/bait/bait_recipe.gd" id="4_n2qh2"]
+
+[resource]
+script = ExtResource("4_n2qh2")
+output = ExtResource("3_x5rnv")
+amount = 1
+ingredients = Array[Resource]([ExtResource("1_8kn7h"), ExtResource("2_afu3p")])
+counts = Array[int]([15, 20])
+xp = 60.0
+station = &"workbench"
+requiredSkill = &"trading"
+requiredLevel = 6

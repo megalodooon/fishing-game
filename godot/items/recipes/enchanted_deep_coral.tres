@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="BaitRecipe" format=3]
+
+[ext_resource type="Resource" path="res://items/materials/deep_coral.tres" id="1_kaqsm"]
+[ext_resource type="Resource" path="res://items/enchanted/enchanted_deep_coral.tres" id="2_slxih"]
+[ext_resource type="Script" path="res://fishing/bait/bait_recipe.gd" id="3_85kfn"]
+
+[resource]
+script = ExtResource("3_85kfn")
+output = ExtResource("2_slxih")
+amount = 1
+ingredients = Array[Resource]([ExtResource("1_kaqsm")])
+counts = Array[int]([16])
+requiredFlag = "collection/deep_coral/2"
+xp = 12.0
+category = "Materials"

@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="Charm" format=3]
+
+[ext_resource type="Texture2D" path="res://items/charms/icons/scholar_1.png" id="1_blxxf"]
+[ext_resource type="Resource" path="res://items/rarities/common.tres" id="2_5wo8n"]
+[ext_resource type="Script" path="res://items/charms/charm.gd" id="3_mtt32"]
+
+[resource]
+script = ExtResource("3_mtt32")
+stats = Dictionary[StringName, float]({
+&"xpBonus": 3.0
+})
+family = "scholar"
+displayName = "Scholar's Charm"
+icon = ExtResource("1_blxxf")
+rarity = ExtResource("2_5wo8n")
+description = "Part of the Scholar line. Upgrade it at a bench to make it stronger."
+sellPrice = 40

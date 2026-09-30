@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="FishData" format=3]
+
+[ext_resource type="Texture2D" path="res://fishing/fish/assets/events/vampire_squid.png" id="1_2j22a"]
+[ext_resource type="Resource" path="res://items/rarities/rare.tres" id="2_73fhl"]
+[ext_resource type="Script" path="res://fishing/fish/requirements/fish_requirement.gd" id="3_61i5e"]
+[ext_resource type="Script" path="res://fishing/fish/fish_data.gd" id="4_gmrdr"]
+
+[resource]
+script = ExtResource("4_gmrdr")
+displayName = "Vampire Squid"
+icon = ExtResource("1_2j22a")
+rarity = ExtResource("2_73fhl")
+description = "Only bites at night. Of course."
+weightRange = Vector2(2, 9)
+basePrice = 150
+heldSize = 0.78
+hours = Vector2(19, 5)

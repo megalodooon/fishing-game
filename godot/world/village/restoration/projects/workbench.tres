@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Project" format=3]
+
+[ext_resource type="Script" path="res://world/village/restoration/project.gd" id="e1"]
+[ext_resource type="Texture2D" path="res://world/islands/props/workbench.png" id="e2"]
+[ext_resource type="Resource" path="res://items/materials/driftwood_plank.tres" id="e3"]
+[ext_resource type="Script" path="res://items/item.gd" id="e4"]
+
+[resource]
+script = ExtResource("e1")
+displayName = "Tinker's Workbench"
+description = "The old workbench behind the square. Needs new boards."
+icon = ExtResource("e2")
+coins = 300
+items = Array[ExtResource("e4")]([ExtResource("e3")])
+amounts = Array[int]([10])
+unlockText = "Crafting: crab pots, charms, rods and tackle"

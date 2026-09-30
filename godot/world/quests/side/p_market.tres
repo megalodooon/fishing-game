@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="Quest" format=3 uid="uid://bwwp6nby5g7x"]
+
+[ext_resource type="Script" uid="uid://ftrpy1hit5em" path="res://items/item.gd" id="4_yqgwe"]
+[ext_resource type="Script" uid="uid://t660ehs2ybui" path="res://world/location.gd" id="5_ks4wq"]
+[ext_resource type="Script" uid="uid://b1p7iyi658nm7" path="res://world/quests/quest.gd" id="e1"]
+[ext_resource type="Script" uid="uid://depkark34l17n" path="res://world/quests/quest_goal.gd" id="e2"]
+[ext_resource type="Resource" uid="uid://cg24c3em5cabq" path="res://world/quests/story/q_win_cup.tres" id="e3"]
+
+[sub_resource type="Resource" id="s1"]
+script = ExtResource("e2")
+kind = 4
+flag = "project/market_hall"
+text = "Restore the Market Hall"
+
+[resource]
+script = ExtResource("e1")
+title = "The Market Hall"
+giver = "Harbor Master Pip"
+description = "Restore the old market hall in the square."
+goals = Array[ExtResource("e2")]([SubResource("s1")])
+requires = Array[ExtResource("e1")]([ExtResource("e3")])
+rewardCoins = 800

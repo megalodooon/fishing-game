@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="PetData" format=3]
+
+[ext_resource type="Script" path="res://world/village/pets/pet_data.gd" id="e1"]
+[ext_resource type="Texture2D" path="res://world/village/pets/art/baby_penguin.png" id="e2"]
+
+[resource]
+script = ExtResource("e1")
+displayName = "Baby Penguin"
+description = "Waddles along and spots sea creatures from afar."
+sprite = ExtResource("e2")
+flies = false
+glows = false
+price = 2200
+bonuses = Dictionary[StringName, float]({
+&"seaCreature": 0.8
+})
+walkSpeed = 1.05

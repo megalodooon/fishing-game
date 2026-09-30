@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Item" format=3]
+
+[ext_resource type="Texture2D" path="res://items/rare/icons/magma_heart.png" id="1_tfxqm"]
+[ext_resource type="Resource" path="res://items/rarities/legendary.tres" id="2_7fekx"]
+[ext_resource type="Script" path="res://items/item.gd" id="3_6yesj"]
+
+[resource]
+script = ExtResource("3_6yesj")
+displayName = "Magma Heart"
+category = "Rare Catch"
+icon = ExtResource("1_tfxqm")
+rarity = ExtResource("2_7fekx")
+description = "Still beating, somehow. A piece of the Ember Tide."
+maxStack = 10
+sellPrice = 1200

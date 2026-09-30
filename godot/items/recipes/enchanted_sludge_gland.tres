@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="BaitRecipe" format=3]
+
+[ext_resource type="Resource" path="res://items/materials/sludge_gland.tres" id="1_kvebr"]
+[ext_resource type="Resource" path="res://items/enchanted/enchanted_sludge_gland.tres" id="2_75pt2"]
+[ext_resource type="Script" path="res://fishing/bait/bait_recipe.gd" id="3_kw5tl"]
+
+[resource]
+script = ExtResource("3_kw5tl")
+output = ExtResource("2_75pt2")
+amount = 1
+ingredients = Array[Resource]([ExtResource("1_kvebr")])
+counts = Array[int]([32])
+requiredFlag = "collection/sludge_gland/2"
+xp = 12.0
+category = "Materials"

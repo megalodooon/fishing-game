@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="Snack" format=3]
+
+[ext_resource type="Texture2D" path="res://items/events/icons/pumpkin_latte.png" id="1_8j1q6"]
+[ext_resource type="Resource" path="res://items/rarities/uncommon.tres" id="2_udjr7"]
+[ext_resource type="Script" path="res://items/snacks/snack.gd" id="3_c8o4t"]
+
+[resource]
+script = ExtResource("3_c8o4t")
+energy = 45.0
+buffStat = "castEnergy"
+buffAmount = 0.75
+displayName = "Pumpkin Spice Latte"
+icon = ExtResource("1_8j1q6")
+rarity = ExtResource("2_udjr7")
+description = "Tastes like autumn. Keeps you up past bedtime."
+maxStack = 20
+sellPrice = 18

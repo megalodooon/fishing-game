@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="SeaCreature" format=3]
+
+[ext_resource type="Script" path="res://fishing/creatures/sea_creature.gd" id="e1"]
+[ext_resource type="Texture2D" path="res://fishing/creatures/art/bone_shark.png" id="e2"]
+[ext_resource type="Resource" path="res://items/rarities/trophy.tres" id="e3"]
+[ext_resource type="PackedScene" path="res://fishing/minigames/boss_duel/boss_duel.tscn" id="e4"]
+[ext_resource type="Resource" path="res://items/materials/abyssal_scale.tres" id="e5"]
+[ext_resource type="Resource" path="res://items/materials/shark_tooth.tres" id="e6"]
+[ext_resource type="Script" path="res://items/item.gd" id="e7"]
+
+[resource]
+script = ExtResource("e1")
+displayName = "Bone Shark"
+description = "Nothing but bones, and still hungry."
+icon = ExtResource("e2")
+rarity = ExtResource("e3")
+minFishing = 35
+announce = "A BONE SHARK rises from the dark!"
+fight = ExtResource("e4")
+difficulty = 0.85
+toughness = 2.0
+style = &"ghost"
+coins = Vector2i(2000, 4000)
+xp = 1100.0
+drops = Array[ExtResource("e7")]([ExtResource("e5"), ExtResource("e6")])
+dropChances = PackedFloat32Array(1.0, 1.0)
+dropAmounts = Array[Vector2i]([Vector2i(2, 3), Vector2i(2, 4)])

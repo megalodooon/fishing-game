@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="Quest" format=3 uid="uid://csmp5x5xluw82"]
+
+[ext_resource type="Script" uid="uid://ftrpy1hit5em" path="res://items/item.gd" id="6_53b1u"]
+[ext_resource type="Script" uid="uid://t660ehs2ybui" path="res://world/location.gd" id="7_nnf3d"]
+[ext_resource type="Script" uid="uid://b1p7iyi658nm7" path="res://world/quests/quest.gd" id="e1"]
+[ext_resource type="Script" uid="uid://depkark34l17n" path="res://world/quests/quest_goal.gd" id="e2"]
+[ext_resource type="Resource" path="res://items/key/rig_logs.tres" id="e3"]
+[ext_resource type="Resource" path="res://items/materials/deepnet_chip.tres" id="e4"]
+[ext_resource type="Resource" uid="uid://7hd3yr5lgem4" path="res://world/quests/story/q_rig.tres" id="e5"]
+
+[sub_resource type="Resource" id="s1"]
+script = ExtResource("e2")
+kind = 2
+target = ExtResource("e3")
+
+[sub_resource type="Resource" id="s2"]
+script = ExtResource("e2")
+kind = 2
+target = ExtResource("e4")
+amount = 3
+
+[resource]
+script = ExtResource("e1")
+title = "The Rig Logs"
+giver = "Rex Marlow"
+description = "Somewhere on the rig are the logs from the night of the Great Storm. Find them."
+story = true
+goals = Array[ExtResource("e2")]([SubResource("s1"), SubResource("s2")])
+startScene = "q_logs_start"
+endScene = "q_logs_end"
+requires = Array[ExtResource("e1")]([ExtResource("e5")])
+rewardCoins = 3000

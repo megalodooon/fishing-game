@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="PetData" format=3]
+
+[ext_resource type="Script" path="res://world/village/pets/pet_data.gd" id="1_pet"]
+[ext_resource type="Texture2D" path="res://world/village/pets/art/hermit_crab.png" id="2_art"]
+
+[resource]
+script = ExtResource("1_pet")
+displayName = "Hermit Crab"
+description = "Carries its house and cheers on every cast. Casting takes less out of you."
+sprite = ExtResource("2_art")
+price = 800
+castEnergy = 0.85
+walkSpeed = 0.95

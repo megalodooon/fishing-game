@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="BaitRecipe" format=3]
+
+[ext_resource type="Resource" path="res://items/materials/palm_frond.tres" id="1_yq8lr"]
+[ext_resource type="Resource" path="res://items/materials/rope.tres" id="2_4ybjm"]
+[ext_resource type="Resource" path="res://items/crew/frond_cutter_contract.tres" id="3_37cpr"]
+[ext_resource type="Script" path="res://fishing/bait/bait_recipe.gd" id="4_xvnod"]
+
+[resource]
+script = ExtResource("4_xvnod")
+output = ExtResource("3_37cpr")
+amount = 1
+ingredients = Array[Resource]([ExtResource("1_yq8lr"), ExtResource("2_4ybjm")])
+counts = Array[int]([24, 2])
+requiredFlag = "collection/palm_frond/1"
+xp = 25.0
+station = &"workbench"
+category = "Crew"

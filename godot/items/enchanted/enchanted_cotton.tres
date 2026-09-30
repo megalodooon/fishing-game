@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Item" format=3]
+
+[ext_resource type="Texture2D" path="res://items/enchanted/icons/enchanted_cotton.png" id="1_0rs8w"]
+[ext_resource type="Resource" path="res://items/rarities/rare.tres" id="2_rev4m"]
+[ext_resource type="Script" path="res://items/item.gd" id="3_p0i6m"]
+
+[resource]
+script = ExtResource("3_p0i6m")
+displayName = "Enchanted Cotton"
+category = "Enchanted Material"
+icon = ExtResource("1_0rs8w")
+rarity = ExtResource("2_rev4m")
+description = "32 Cotton pressed into one. Better recipes ask for these."
+maxStack = 99
+sellPrice = 563

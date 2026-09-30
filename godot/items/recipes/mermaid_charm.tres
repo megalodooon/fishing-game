@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="BaitRecipe" format=3]
+
+[ext_resource type="Resource" path="res://items/rare/mermaids_comb.tres" id="1_8hdoh"]
+[ext_resource type="Resource" path="res://items/rare/sea_glass.tres" id="2_1dnu1"]
+[ext_resource type="Resource" path="res://items/materials/sea_shell.tres" id="3_siqpc"]
+[ext_resource type="Resource" path="res://items/rare/mermaid_charm.tres" id="4_lwc35"]
+[ext_resource type="Script" path="res://fishing/bait/bait_recipe.gd" id="5_yksn0"]
+
+[resource]
+script = ExtResource("5_yksn0")
+output = ExtResource("4_lwc35")
+amount = 1
+ingredients = Array[Resource]([ExtResource("1_8hdoh"), ExtResource("2_1dnu1"), ExtResource("3_siqpc")])
+counts = Array[int]([1, 10, 20])
+xp = 200.0
+station = &"workbench"
+requiredSkill = &"fishing"
+requiredLevel = 16

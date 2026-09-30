@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Item" format=3]
+
+[ext_resource type="Texture2D" path="res://items/enchanted/icons/enchanted_storm_essence.png" id="1_ss5aj"]
+[ext_resource type="Resource" path="res://items/rarities/trophy.tres" id="2_8oh4i"]
+[ext_resource type="Script" path="res://items/item.gd" id="3_b4hyk"]
+
+[resource]
+script = ExtResource("3_b4hyk")
+displayName = "Enchanted Storm Essence"
+category = "Enchanted Material"
+icon = ExtResource("1_ss5aj")
+rarity = ExtResource("2_8oh4i")
+description = "16 Storm Essence pressed into one. Better recipes ask for these."
+maxStack = 99
+sellPrice = 2112

@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="SeaCreature" format=3]
+
+[ext_resource type="Script" path="res://fishing/creatures/sea_creature.gd" id="e1"]
+[ext_resource type="Texture2D" path="res://fishing/creatures/art/great_white.png" id="e2"]
+[ext_resource type="Resource" path="res://items/rarities/legendary.tres" id="e3"]
+[ext_resource type="PackedScene" path="res://fishing/minigames/boss_duel/boss_duel.tscn" id="e4"]
+[ext_resource type="Resource" path="res://items/materials/shark_tooth.tres" id="e5"]
+[ext_resource type="Script" path="res://items/item.gd" id="e6"]
+
+[resource]
+script = ExtResource("e1")
+displayName = "Great White"
+description = "The ocean's most famous predator."
+icon = ExtResource("e2")
+rarity = ExtResource("e3")
+minFishing = 28
+announce = "A Great White circles the boat!"
+fight = ExtResource("e4")
+difficulty = 0.72
+toughness = 1.6
+style = &"reef"
+coins = Vector2i(800, 1600)
+xp = 520.0
+drops = Array[ExtResource("e6")]([ExtResource("e5")])
+dropChances = PackedFloat32Array(1.0)
+dropAmounts = Array[Vector2i]([Vector2i(2, 4)])

@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="FishData" format=3]
+
+[ext_resource type="Script" path="res://fishing/fish/fish_data.gd" id="e1"]
+[ext_resource type="Texture2D" path="res://fishing/fish/assets/expanse/opah.png" id="e2"]
+[ext_resource type="Resource" path="res://items/rarities/uncommon.tres" id="e3"]
+
+[resource]
+script = ExtResource("e1")
+displayName = "Opah"
+icon = ExtResource("e2")
+rarity = ExtResource("e3")
+description = "The only warm-blooded fish. It still looks cold."
+weightRange = Vector2(20.0, 60.0)
+basePrice = 95
+heldSize = 1.3
+hours = Vector2(0.0, 24.0)

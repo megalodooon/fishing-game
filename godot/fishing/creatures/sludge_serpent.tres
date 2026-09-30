@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="SeaCreature" format=3]
+
+[ext_resource type="Script" path="res://fishing/creatures/sea_creature.gd" id="e1"]
+[ext_resource type="Texture2D" path="res://fishing/creatures/art/sludge_serpent.png" id="e2"]
+[ext_resource type="Resource" path="res://items/rarities/uncommon.tres" id="e3"]
+[ext_resource type="PackedScene" path="res://fishing/minigames/bullet_hell/bullet_hell.tscn" id="e4"]
+[ext_resource type="Resource" path="res://items/materials/sludge_gland.tres" id="e5"]
+[ext_resource type="Resource" path="res://items/materials/serpent_scale.tres" id="e6"]
+[ext_resource type="Resource" path="res://items/materials/oily_sludge.tres" id="e7"]
+[ext_resource type="Script" path="res://items/item.gd" id="e8"]
+
+[resource]
+script = ExtResource("e1")
+displayName = "Sludge Serpent"
+description = "Made mean by Deepnet's waste."
+icon = ExtResource("e2")
+rarity = ExtResource("e3")
+minFishing = 5
+announce = "A Sludge Serpent bursts out of the muck!"
+fight = ExtResource("e4")
+difficulty = 0.35
+toughness = 0.9
+style = &"sludge"
+coins = Vector2i(50, 120)
+xp = 70.0
+drops = Array[ExtResource("e8")]([ExtResource("e5"), ExtResource("e6"), ExtResource("e7")])
+dropChances = PackedFloat32Array(1.0, 0.4, 0.6)
+dropAmounts = Array[Vector2i]([Vector2i(1, 3), Vector2i(1, 1), Vector2i(1, 2)])

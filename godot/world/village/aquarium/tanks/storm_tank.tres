@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="AquariumTank" format=3]
+
+[ext_resource type="Script" path="res://world/village/aquarium/aquarium_tank.gd" id="e1"]
+[ext_resource type="Script" path="res://fishing/fish/fish_data.gd" id="e2"]
+[ext_resource type="Resource" path="res://fishing/fish/species/storm/squall_sardine.tres" id="e3"]
+[ext_resource type="Resource" path="res://fishing/fish/species/storm/gale_mackerel.tres" id="e4"]
+[ext_resource type="Resource" path="res://fishing/fish/species/storm/thunder_tuna.tres" id="e5"]
+[ext_resource type="Resource" path="res://fishing/fish/species/storm/static_eel.tres" id="e6"]
+[ext_resource type="Resource" path="res://fishing/fish/species/storm/stormscale_snapper.tres" id="e7"]
+[ext_resource type="Resource" path="res://fishing/fish/species/storm/lightning_barracuda.tres" id="e8"]
+[ext_resource type="Texture2D" path="res://world/village/aquarium/icons/storm_tank.png" id="e9"]
+
+[resource]
+script = ExtResource("e1")
+displayName = "Storm Tank"
+description = "Fish that crackle with the storm."
+icon = ExtResource("e9")
+fish = Array[ExtResource("e2")]([ExtResource("e3"), ExtResource("e4"), ExtResource("e5"), ExtResource("e6"), ExtResource("e7"), ExtResource("e8")])
+rewardCoins = 4000
+requiredFlag = "project/aquarium_wing"

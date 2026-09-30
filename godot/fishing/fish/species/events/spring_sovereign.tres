@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="FishData" format=3]
+
+[ext_resource type="Texture2D" path="res://fishing/fish/assets/events/spring_sovereign.png" id="1_42vcb"]
+[ext_resource type="Resource" path="res://items/rarities/legendary.tres" id="2_6df6n"]
+[ext_resource type="Script" path="res://fishing/fish/requirements/fish_requirement.gd" id="3_2b06b"]
+[ext_resource type="Script" path="res://fishing/fish/fish_data.gd" id="4_g57oa"]
+
+[resource]
+script = ExtResource("4_g57oa")
+displayName = "Spring Sovereign"
+icon = ExtResource("1_42vcb")
+rarity = ExtResource("2_6df6n")
+description = "Crowned in green and gold. It rises at dawn to greet the new season."
+weightRange = Vector2(10, 30)
+basePrice = 600
+heldSize = 1.2
+hours = Vector2(5, 9)

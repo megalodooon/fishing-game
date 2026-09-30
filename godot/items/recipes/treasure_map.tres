@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="BaitRecipe" format=3]
+
+[ext_resource type="Resource" path="res://items/rare/old_map_fragment.tres" id="1_5j37y"]
+[ext_resource type="Resource" path="res://items/rare/treasure_map.tres" id="2_kw0ub"]
+[ext_resource type="Script" path="res://fishing/bait/bait_recipe.gd" id="3_45csr"]
+
+[resource]
+script = ExtResource("3_45csr")
+output = ExtResource("2_kw0ub")
+amount = 1
+ingredients = Array[Resource]([ExtResource("1_5j37y")])
+counts = Array[int]([5])
+xp = 40.0
+station = &"workbench"

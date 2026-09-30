@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="FishData" format=3]
+
+[ext_resource type="Script" path="res://fishing/fish/fish_data.gd" id="e1"]
+[ext_resource type="Texture2D" path="res://fishing/fish/assets/storm/thunder_tuna.png" id="e2"]
+[ext_resource type="Resource" path="res://items/rarities/uncommon.tres" id="e3"]
+
+[resource]
+script = ExtResource("e1")
+displayName = "Thunder Tuna"
+icon = ExtResource("e2")
+rarity = ExtResource("e3")
+description = "Its tail beats like thunder when hooked."
+weightRange = Vector2(10.0, 50.0)
+basePrice = 75
+heldSize = 1.3
+hours = Vector2(0.0, 24.0)

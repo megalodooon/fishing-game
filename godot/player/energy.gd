@@ -17,6 +17,8 @@ func is_empty() -> bool:
 	return value <= 0.0
 
 func spend(amount : float) -> void:
+	if Dev.infiniteEnergy:
+		return
 	value = maxf(value - amount, 0.0)
 	emit_changed()
 

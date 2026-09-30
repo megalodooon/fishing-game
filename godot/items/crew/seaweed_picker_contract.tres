@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="CrewContract" format=3]
+
+[ext_resource type="Resource" path="res://world/crew/members/seaweed_picker.tres" id="1_nnfyn"]
+[ext_resource type="Texture2D" path="res://items/crew/icons/seaweed_picker.png" id="2_bsdx4"]
+[ext_resource type="Resource" path="res://items/rarities/uncommon.tres" id="3_djubu"]
+[ext_resource type="Script" path="res://world/crew/crew_contract.gd" id="4_1uv0y"]
+
+[resource]
+script = ExtResource("4_1uv0y")
+crew = ExtResource("1_nnfyn")
+displayName = "Seaweed Picker Contract"
+icon = ExtResource("2_bsdx4")
+rarity = ExtResource("3_djubu")
+description = "Hire a seaweed picker at the crew board by your house. Pulls seaweed off the rocks at low tide."

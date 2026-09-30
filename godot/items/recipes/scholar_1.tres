@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="BaitRecipe" format=3]
+
+[ext_resource type="Resource" path="res://items/materials/palm_frond.tres" id="1_kmr6q"]
+[ext_resource type="Resource" path="res://items/materials/rope.tres" id="2_qsawf"]
+[ext_resource type="Resource" path="res://items/charms/scholar_1.tres" id="3_sb244"]
+[ext_resource type="Script" path="res://fishing/bait/bait_recipe.gd" id="4_v63hg"]
+
+[resource]
+script = ExtResource("4_v63hg")
+output = ExtResource("3_sb244")
+amount = 1
+ingredients = Array[Resource]([ExtResource("1_kmr6q"), ExtResource("2_qsawf")])
+counts = Array[int]([16, 1])
+xp = 30.0
+station = &"workbench"
+category = "Charms"
+requiredSkill = &"crafting"
+requiredLevel = 3

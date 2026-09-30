@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Item" format=3]
+
+[ext_resource type="Texture2D" path="res://items/materials/icons/storm_glass.png" id="1_3xvr0"]
+[ext_resource type="Resource" path="res://items/rarities/uncommon.tres" id="2_gfcj5"]
+[ext_resource type="Script" path="res://items/item.gd" id="3_c7r42"]
+
+[resource]
+script = ExtResource("3_c7r42")
+displayName = "Storm Glass"
+category = "Forage"
+icon = ExtResource("1_3xvr0")
+rarity = ExtResource("2_gfcj5")
+description = "Sand struck by lightning. It hums in storms."
+maxStack = 99
+sellPrice = 30

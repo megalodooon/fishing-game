@@ -1,0 +1,33 @@
+[gd_resource type="Resource" script_class="FishData" format=3 uid="uid://chkmw14tu8seh"]
+
+[ext_resource type="Script" uid="uid://bevdmlyak68oo" path="res://fishing/fish/fish_data.gd" id="1_fish"]
+[ext_resource type="Texture2D" uid="uid://bh7xb348gmfqe" path="res://fishing/fish/assets/driftwood/mistral_ray.png" id="2_icon"]
+[ext_resource type="Resource" path="res://items/rarities/trophy.tres" id="3_rarity"]
+[ext_resource type="Script" uid="uid://ddca2l75wof8n" path="res://fishing/fish/requirements/cast_requirement.gd" id="s_c"]
+[ext_resource type="Script" uid="uid://dupq0iwgv25f6" path="res://fishing/fish/requirements/fish_requirement.gd" id="s_req"]
+[ext_resource type="Script" uid="uid://dcv55o5epuv8a" path="res://fishing/fish/requirements/spot_requirement.gd" id="s_s"]
+[ext_resource type="Script" uid="uid://c3d1apon1mdqw" path="res://fishing/fish/requirements/weather_requirement.gd" id="s_w"]
+
+[sub_resource type="Resource" id="Req_1"]
+script = ExtResource("s_w")
+weather = 2
+
+[sub_resource type="Resource" id="Req_2"]
+script = ExtResource("s_c")
+
+[sub_resource type="Resource" id="Req_3"]
+script = ExtResource("s_s")
+spotId = &"lagoon"
+spotName = "the lagoon"
+
+[resource]
+script = ExtResource("1_fish")
+displayName = "Mistral Ray"
+icon = ExtResource("2_icon")
+rarity = ExtResource("3_rarity")
+description = "Glides through the lagoon under fog. Needs a perfect cast."
+weightRange = Vector2(5, 20)
+basePrice = 1800
+heldSize = 1.4
+requirements = Array[ExtResource("s_req")]([SubResource("Req_1"), SubResource("Req_2"), SubResource("Req_3")])
+chance = 10.0

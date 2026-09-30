@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="BaitRecipe" format=3]
+
+[ext_resource type="Resource" path="res://items/materials/beach_sand.tres" id="1_ivdxh"]
+[ext_resource type="Resource" path="res://items/enchanted/enchanted_beach_sand.tres" id="2_0wdq7"]
+[ext_resource type="Script" path="res://fishing/bait/bait_recipe.gd" id="3_oma8m"]
+
+[resource]
+script = ExtResource("3_oma8m")
+output = ExtResource("2_0wdq7")
+amount = 1
+ingredients = Array[Resource]([ExtResource("1_ivdxh")])
+counts = Array[int]([32])
+requiredFlag = "collection/beach_sand/2"
+xp = 12.0
+category = "Materials"

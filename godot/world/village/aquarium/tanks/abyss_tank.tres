@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="AquariumTank" format=3]
+
+[ext_resource type="Script" path="res://world/village/aquarium/aquarium_tank.gd" id="e1"]
+[ext_resource type="Script" path="res://fishing/fish/fish_data.gd" id="e2"]
+[ext_resource type="Resource" path="res://fishing/fish/species/abyss/lanternfish.tres" id="e3"]
+[ext_resource type="Resource" path="res://fishing/fish/species/abyss/gulper_eel.tres" id="e4"]
+[ext_resource type="Resource" path="res://fishing/fish/species/abyss/vampire_squid.tres" id="e5"]
+[ext_resource type="Resource" path="res://fishing/fish/species/abyss/barreleye.tres" id="e6"]
+[ext_resource type="Resource" path="res://fishing/fish/species/abyss/anglerfish.tres" id="e7"]
+[ext_resource type="Texture2D" path="res://world/village/aquarium/icons/abyss_tank.png" id="e8"]
+
+[resource]
+script = ExtResource("e1")
+displayName = "Abyss Tank"
+description = "A dark tank for the deepest fish."
+icon = ExtResource("e8")
+fish = Array[ExtResource("e2")]([ExtResource("e3"), ExtResource("e4"), ExtResource("e5"), ExtResource("e6"), ExtResource("e7")])
+rewardCoins = 8000
+requiredFlag = "project/aquarium_wing"

@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="Biome" format=3]
+
+[ext_resource type="Script" path="res://oceans/biome.gd" id="1_biome"]
+[ext_resource type="Script" path="res://fishing/fish/fish_data.gd" id="1_data"]
+[ext_resource type="Script" path="res://fishing/creatures/sea_creature.gd" id="1_k01rc"]
+[ext_resource type="Script" path="res://items/item.gd" id="11_y2jrd"]
+[ext_resource type="Resource" path="res://items/materials/gull_feather.tres" id="12_3fgc5"]
+[ext_resource type="Resource" path="res://items/materials/palm_frond.tres" id="13_o85do"]
+[ext_resource type="Resource" path="res://items/materials/wild_berries.tres" id="14_ug1d1"]
+[ext_resource type="Resource" path="res://items/materials/barnacle.tres" id="15_3hu8m"]
+[ext_resource type="Resource" path="res://fishing/fish/species/sardine.tres" id="f_2"]
+[ext_resource type="Resource" path="res://fishing/fish/species/mackerel.tres" id="f_3"]
+[ext_resource type="Resource" path="res://fishing/fish/species/sea_bass.tres" id="f_4"]
+[ext_resource type="Resource" path="res://fishing/fish/species/red_snapper.tres" id="f_5"]
+[ext_resource type="Resource" path="res://fishing/fish/species/placeholder/pufferfish.tres" id="f_6"]
+[ext_resource type="Resource" path="res://fishing/fish/species/placeholder/barracuda.tres" id="f_7"]
+[ext_resource type="Resource" path="res://fishing/fish/species/placeholder/moonfish.tres" id="f_8"]
+[ext_resource type="Resource" path="res://fishing/fish/species/islands/lantern_eel.tres" id="f_9"]
+
+[resource]
+script = ExtResource("1_biome")
+displayName = "Lantern Key"
+description = "Clear water around the old lighthouse."
+region = "Home Waters"
+fish = Array[ExtResource("1_data")]([ExtResource("f_2"), ExtResource("f_3"), ExtResource("f_4"), ExtResource("f_5"), ExtResource("f_6"), ExtResource("f_7"), ExtResource("f_8"), ExtResource("f_9")])
+forage = Array[ExtResource("11_y2jrd")]([ExtResource("12_3fgc5"), ExtResource("13_o85do"), ExtResource("14_ug1d1"), ExtResource("15_3hu8m")])

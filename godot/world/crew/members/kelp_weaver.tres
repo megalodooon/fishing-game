@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="CrewMember" format=3]
+
+[ext_resource type="Resource" path="res://items/enchanted/enchanted_kelp_fiber.tres" id="1_lx8bu"]
+[ext_resource type="Texture2D" path="res://items/materials/icons/kelp_fiber.png" id="2_q058p"]
+[ext_resource type="Resource" path="res://items/materials/kelp_fiber.tres" id="3_0mcys"]
+[ext_resource type="Script" path="res://world/crew/crew_member.gd" id="4_ebn77"]
+
+[resource]
+script = ExtResource("4_ebn77")
+displayName = "Kelp Weaver"
+description = "Spins kelp into fiber by the fire."
+icon = ExtResource("2_q058p")
+product = ExtResource("3_0mcys")
+enchanted = ExtResource("1_lx8bu")
+hours = 0.8

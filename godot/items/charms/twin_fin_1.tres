@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="Charm" format=3]
+
+[ext_resource type="Texture2D" path="res://items/charms/icons/twin_fin_1.png" id="1_2x73f"]
+[ext_resource type="Resource" path="res://items/rarities/common.tres" id="2_nmc31"]
+[ext_resource type="Script" path="res://items/charms/charm.gd" id="3_i2spu"]
+
+[resource]
+script = ExtResource("3_i2spu")
+stats = Dictionary[StringName, float]({
+&"doubleCatch": 1.0
+})
+family = "twin_fin"
+displayName = "Twin Fin Charm"
+icon = ExtResource("1_2x73f")
+rarity = ExtResource("2_nmc31")
+description = "Part of the Twin Fin line. Upgrade it at a bench to make it stronger."
+sellPrice = 40

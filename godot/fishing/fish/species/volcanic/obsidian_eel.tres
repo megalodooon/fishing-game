@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="FishData" format=3]
+
+[ext_resource type="Script" path="res://fishing/fish/fish_data.gd" id="1_fish"]
+[ext_resource type="Texture2D" path="res://fishing/fish/assets/volcanic/obsidian_eel.png" id="2_icon"]
+[ext_resource type="Resource" path="res://items/rarities/uncommon.tres" id="3_rarity"]
+
+[resource]
+script = ExtResource("1_fish")
+displayName = "Obsidian Eel"
+icon = ExtResource("2_icon")
+rarity = ExtResource("3_rarity")
+description = "Glassy black and sharp-edged. Hunts at night."
+weightRange = Vector2(2.0, 6.0)
+basePrice = 70
+heldSize = 1.0
+hours = Vector2(18.0, 6.0)

@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="Seed" format=3]
+
+[ext_resource type="Script" path="res://world/village/farm/seed.gd" id="e1"]
+[ext_resource type="Texture2D" path="res://world/village/farm/icons/marsh_rice_seedlings.png" id="e2"]
+[ext_resource type="Resource" path="res://items/rarities/common.tres" id="e3"]
+[ext_resource type="Resource" path="res://items/materials/marsh_rice.tres" id="e4"]
+
+[resource]
+script = ExtResource("e1")
+displayName = "Marsh Rice Seedlings"
+icon = ExtResource("e2")
+rarity = ExtResource("e3")
+description = "Rice, the staple of mangrove cooking."
+crop = ExtResource("e4")
+days = 3
+harvest = 4
+leafColor = Color(0.5, 0.7, 0.3, 1)
+hint = "Hold it and click the farm soil"
+maxStack = 99
+sellPrice = 3

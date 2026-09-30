@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Item" format=3]
+
+[ext_resource type="Texture2D" path="res://items/enchanted/icons/enchanted_storm_glass.png" id="1_ehixe"]
+[ext_resource type="Resource" path="res://items/rarities/rare.tres" id="2_16t8u"]
+[ext_resource type="Script" path="res://items/item.gd" id="3_5ukay"]
+
+[resource]
+script = ExtResource("3_5ukay")
+displayName = "Enchanted Storm Glass"
+category = "Enchanted Material"
+icon = ExtResource("1_ehixe")
+rarity = ExtResource("2_16t8u")
+description = "32 Storm Glass pressed into one. Better recipes ask for these."
+maxStack = 99
+sellPrice = 1056

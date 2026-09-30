@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="CrewContract" format=3]
+
+[ext_resource type="Resource" path="res://world/crew/members/obsidian_miner.tres" id="1_wxprv"]
+[ext_resource type="Texture2D" path="res://items/crew/icons/obsidian_miner.png" id="2_jt0j5"]
+[ext_resource type="Resource" path="res://items/rarities/uncommon.tres" id="3_op7cr"]
+[ext_resource type="Script" path="res://world/crew/crew_contract.gd" id="4_ejqnd"]
+
+[resource]
+script = ExtResource("4_ejqnd")
+crew = ExtResource("1_wxprv")
+displayName = "Obsidian Miner Contract"
+icon = ExtResource("2_jt0j5")
+rarity = ExtResource("3_op7cr")
+description = "Hire a obsidian miner at the crew board by your house. Works the cooled lava by the volcano."

@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="BaitRecipe" format=3]
+
+[ext_resource type="Resource" path="res://items/materials/tea_leaves.tres" id="1_rs2bv"]
+[ext_resource type="Resource" path="res://items/enchanted/enchanted_tea_leaves.tres" id="2_ejc2i"]
+[ext_resource type="Script" path="res://fishing/bait/bait_recipe.gd" id="3_ewyq7"]
+
+[resource]
+script = ExtResource("3_ewyq7")
+output = ExtResource("2_ejc2i")
+amount = 1
+ingredients = Array[Resource]([ExtResource("1_rs2bv")])
+counts = Array[int]([32])
+requiredFlag = "collection/tea_leaves/2"
+xp = 12.0
+category = "Materials"

@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Item" format=3]
+
+[ext_resource type="Texture2D" path="res://items/rare/icons/old_map_fragment.png" id="1_3bynr"]
+[ext_resource type="Resource" path="res://items/rarities/rare.tres" id="2_wa7h7"]
+[ext_resource type="Script" path="res://items/item.gd" id="3_76dss"]
+
+[resource]
+script = ExtResource("3_76dss")
+displayName = "Old Map Fragment"
+category = "Rare Catch"
+icon = ExtResource("1_3bynr")
+rarity = ExtResource("2_wa7h7")
+description = "A torn corner of a pirate map. Five of them would make a whole one."
+maxStack = 20
+sellPrice = 90

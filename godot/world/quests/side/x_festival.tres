@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="Quest" format=3]
+
+[ext_resource type="Script" path="res://world/quests/quest.gd" id="e1"]
+[ext_resource type="Script" path="res://world/quests/quest_goal.gd" id="e2"]
+[ext_resource type="Script" path="res://items/item.gd" id="e5"]
+[ext_resource type="Resource" path="res://items/events/wrapped_gift.tres" id="e4"]
+
+[sub_resource type="Resource" id="s1"]
+script = ExtResource("e2")
+kind = 10
+flag = "pickups"
+amount = 10
+text = "Pick up 10 festival things"
+
+[resource]
+script = ExtResource("e1")
+title = "Festival Spirit"
+giver = "Harbor Master Pip"
+description = "Pick up ten things during a festival. The calendar (C) says when the next one is."
+goals = Array[ExtResource("e2")]([SubResource("s1")])
+startScene = "q_festival_start"
+endScene = "q_festival_end"
+rewardCoins = 500
+rewardItems = Array[ExtResource("e5")]([ExtResource("e4")])
+rewardAmounts = Array[int]([2])
+requiredSkill = &"fishing"
+requiredLevel = 5

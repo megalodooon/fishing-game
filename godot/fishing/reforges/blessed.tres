@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Reforge" format=3]
+
+[ext_resource type="Script" path="res://fishing/reforges/reforge.gd" id="1_84ccg"]
+[ext_resource type="Resource" path="res://items/rare/lucky_stone.tres" id="2_rb7v4"]
+
+[resource]
+script = ExtResource("1_84ccg")
+prefix = "Blessed"
+weight = 0.0
+stone = ExtResource("2_rb7v4")
+kind = 3
+biteSpeed = 1.12
+control = 0.12
+spotSize = 1.15
+displayName = "Blessed"

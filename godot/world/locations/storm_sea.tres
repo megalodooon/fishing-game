@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="Location" format=3]
+
+[ext_resource type="Script" path="res://world/location.gd" id="e1"]
+[ext_resource type="Texture2D" path="res://world/map/icons/storm_sea.png" id="e2"]
+[ext_resource type="Resource" path="res://oceans/storm/storm_biome.tres" id="e3"]
+
+[resource]
+script = ExtResource("e1")
+displayName = "Storm Sea"
+description = "It never quite stops raining here. Sailors fear the Storm Kraken."
+kind = 0
+scene = "res://oceans/storm/storm_ocean.tscn"
+mapPosition = Vector2(462, 73)
+chartTint = Color(0.2, 0.24, 0.32, 0.8)
+mapIcon = ExtResource("e2")
+biome = ExtResource("e3")
+weatherChances = PackedFloat32Array(0.15, 0.75, 0.1)
+startsUnlocked = false
+coinCost = 4000
+requiredHull = 3
+requiredSkill = &"fishing"
+requiredLevel = 20

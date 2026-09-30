@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="BaitRecipe" format=3]
+
+[ext_resource type="Resource" path="res://items/materials/obsidian_shard.tres" id="1_f6gnk"]
+[ext_resource type="Resource" path="res://items/enchanted/enchanted_obsidian_shard.tres" id="2_guihc"]
+[ext_resource type="Script" path="res://fishing/bait/bait_recipe.gd" id="3_3pe7q"]
+
+[resource]
+script = ExtResource("3_3pe7q")
+output = ExtResource("2_guihc")
+amount = 1
+ingredients = Array[Resource]([ExtResource("1_f6gnk")])
+counts = Array[int]([32])
+requiredFlag = "collection/obsidian_shard/2"
+xp = 12.0
+category = "Materials"

@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Charm" format=3]
+
+[ext_resource type="Script" path="res://items/charms/charm.gd" id="e1"]
+[ext_resource type="Texture2D" path="res://items/charms/icons/hunters_mark.png" id="e2"]
+[ext_resource type="Resource" path="res://items/rarities/rare.tres" id="e3"]
+
+[resource]
+script = ExtResource("e1")
+stats = Dictionary[StringName, float]({
+&"damage": 20.0
+})
+displayName = "Hunter's Mark"
+icon = ExtResource("e2")
+rarity = ExtResource("e3")
+description = "Captain Grim's old tattoo pattern, on a coin."
+sellPrice = 150

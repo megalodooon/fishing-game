@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="BaitRecipe" format=3]
+
+[ext_resource type="Resource" path="res://items/materials/chili_pepper.tres" id="1_5pxf5"]
+[ext_resource type="Resource" path="res://items/enchanted/enchanted_chili_pepper.tres" id="2_m5myr"]
+[ext_resource type="Script" path="res://fishing/bait/bait_recipe.gd" id="3_l3f2j"]
+
+[resource]
+script = ExtResource("3_l3f2j")
+output = ExtResource("2_m5myr")
+amount = 1
+ingredients = Array[Resource]([ExtResource("1_5pxf5")])
+counts = Array[int]([32])
+requiredFlag = "collection/chili_pepper/2"
+xp = 12.0
+category = "Materials"

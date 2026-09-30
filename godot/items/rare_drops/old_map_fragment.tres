@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="RareDrop" format=3]
+
+[ext_resource type="Script" path="res://oceans/biome.gd" id="1_7gcgk"]
+[ext_resource type="Resource" path="res://oceans/basic/basic_biome.tres" id="2_yaxg3"]
+[ext_resource type="Resource" path="res://oceans/islands/village_biome.tres" id="3_58c08"]
+[ext_resource type="Resource" path="res://oceans/islands/meadow_biome.tres" id="4_uh400"]
+[ext_resource type="Resource" path="res://oceans/islands/lantern_key_biome.tres" id="5_58cdl"]
+[ext_resource type="Resource" path="res://oceans/islands/driftwood_biome.tres" id="6_wteth"]
+[ext_resource type="Resource" path="res://oceans/islands/mangrove_biome.tres" id="7_35hle"]
+[ext_resource type="Resource" path="res://oceans/reef/reef_biome.tres" id="8_i5ga3"]
+[ext_resource type="Resource" path="res://oceans/islands/lagoon_biome.tres" id="9_kgtsn"]
+[ext_resource type="Resource" path="res://oceans/islands/wreck_atoll_biome.tres" id="10_11fsx"]
+[ext_resource type="Resource" path="res://oceans/polluted/polluted_biome.tres" id="11_c2345"]
+[ext_resource type="Resource" path="res://items/rare/old_map_fragment.tres" id="12_re1bf"]
+[ext_resource type="Script" path="res://items/rare_drops/rare_drop.gd" id="13_qxiee"]
+
+[resource]
+script = ExtResource("13_qxiee")
+item = ExtResource("12_re1bf")
+chance = 0.004
+biomes = Array[ExtResource("1_7gcgk")]([ExtResource("2_yaxg3"), ExtResource("3_58c08"), ExtResource("4_uh400"), ExtResource("5_58cdl"), ExtResource("6_wteth"), ExtResource("7_35hle"), ExtResource("8_i5ga3"), ExtResource("9_kgtsn"), ExtResource("10_11fsx"), ExtResource("11_c2345")])
+minFishing = 3

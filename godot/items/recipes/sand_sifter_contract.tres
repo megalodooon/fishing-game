@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="BaitRecipe" format=3]
+
+[ext_resource type="Resource" path="res://items/materials/beach_sand.tres" id="1_4uunx"]
+[ext_resource type="Resource" path="res://items/materials/rope.tres" id="2_8b63p"]
+[ext_resource type="Resource" path="res://items/crew/sand_sifter_contract.tres" id="3_v7qx6"]
+[ext_resource type="Script" path="res://fishing/bait/bait_recipe.gd" id="4_8sdce"]
+
+[resource]
+script = ExtResource("4_8sdce")
+output = ExtResource("3_v7qx6")
+amount = 1
+ingredients = Array[Resource]([ExtResource("1_4uunx"), ExtResource("2_8b63p")])
+counts = Array[int]([24, 2])
+requiredFlag = "collection/beach_sand/1"
+xp = 25.0
+station = &"workbench"
+category = "Crew"

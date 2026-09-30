@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="AquariumTank" format=3]
+
+[ext_resource type="Script" path="res://world/village/aquarium/aquarium_tank.gd" id="e1"]
+[ext_resource type="Script" path="res://fishing/fish/fish_data.gd" id="e2"]
+[ext_resource type="Resource" path="res://fishing/fish/species/reef/clownfish.tres" id="e3"]
+[ext_resource type="Resource" path="res://fishing/fish/species/reef/blue_tang.tres" id="e4"]
+[ext_resource type="Resource" path="res://fishing/fish/species/reef/parrotfish.tres" id="e5"]
+[ext_resource type="Resource" path="res://fishing/fish/species/reef/butterflyfish.tres" id="e6"]
+[ext_resource type="Resource" path="res://fishing/fish/species/reef/moorish_idol.tres" id="e7"]
+[ext_resource type="Resource" path="res://fishing/fish/species/reef/lionfish.tres" id="e8"]
+[ext_resource type="Texture2D" path="res://world/village/aquarium/icons/reef_tank.png" id="e9"]
+
+[resource]
+script = ExtResource("e1")
+displayName = "Reef Tank"
+description = "Color from the Coral Reef."
+icon = ExtResource("e9")
+fish = Array[ExtResource("e2")]([ExtResource("e3"), ExtResource("e4"), ExtResource("e5"), ExtResource("e6"), ExtResource("e7"), ExtResource("e8")])
+rewardCoins = 1500
+requiredFlag = "project/aquarium_wing"

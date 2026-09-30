@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="Biome" format=3]
+
+[ext_resource type="Resource" path="res://items/materials/deep_coral.tres" id="17_qttay"]
+[ext_resource type="Resource" path="res://items/materials/gull_feather.tres" id="18_lbuvq"]
+[ext_resource type="Script" path="res://oceans/biome.gd" id="e1"]
+[ext_resource type="Script" path="res://fishing/fish/fish_data.gd" id="e2"]
+[ext_resource type="Resource" path="res://fishing/fish/species/expanse/flying_fish.tres" id="e3"]
+[ext_resource type="Resource" path="res://fishing/fish/species/expanse/skipjack.tres" id="e4"]
+[ext_resource type="Resource" path="res://fishing/fish/species/expanse/mahi_mahi.tres" id="e5"]
+[ext_resource type="Resource" path="res://fishing/fish/species/expanse/opah.tres" id="e6"]
+[ext_resource type="Resource" path="res://fishing/fish/species/expanse/bluefin_tuna.tres" id="e7"]
+[ext_resource type="Resource" path="res://fishing/fish/species/expanse/sailfish.tres" id="e8"]
+[ext_resource type="Resource" path="res://fishing/fish/species/expanse/ocean_sunfish.tres" id="e9"]
+[ext_resource type="Resource" path="res://fishing/fish/species/expanse/blue_marlin.tres" id="e10"]
+[ext_resource type="Resource" path="res://fishing/fish/species/expanse/whale_shark.tres" id="e11"]
+[ext_resource type="Resource" path="res://fishing/creatures/great_white.tres" id="e12"]
+[ext_resource type="Resource" path="res://fishing/creatures/sea_dragon.tres" id="e13"]
+[ext_resource type="Script" path="res://fishing/creatures/sea_creature.gd" id="e14"]
+[ext_resource type="Resource" path="res://items/materials/driftwood_plank.tres" id="e15"]
+[ext_resource type="Resource" path="res://items/materials/sea_shell.tres" id="e16"]
+[ext_resource type="Script" path="res://items/item.gd" id="e17"]
+
+[resource]
+script = ExtResource("e1")
+displayName = "Blue Expanse"
+description = "Open ocean, deep blue, nothing in sight."
+region = "The Deep"
+fish = Array[ExtResource("e2")]([ExtResource("e3"), ExtResource("e4"), ExtResource("e5"), ExtResource("e6"), ExtResource("e7"), ExtResource("e8"), ExtResource("e9"), ExtResource("e10"), ExtResource("e11")])
+creatures = Array[ExtResource("e14")]([ExtResource("e12"), ExtResource("e13")])
+tier = 4
+junkChance = 0.08
+junk = Array[ExtResource("e17")]([ExtResource("e15"), ExtResource("e16"), ExtResource("17_qttay"), ExtResource("18_lbuvq")])

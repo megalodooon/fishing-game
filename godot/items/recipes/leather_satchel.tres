@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="BaitRecipe" format=3]
+
+[ext_resource type="Resource" path="res://items/materials/old_boot.tres" id="1_wfejq"]
+[ext_resource type="Resource" path="res://items/materials/seaweed.tres" id="2_wbhps"]
+[ext_resource type="Resource" path="res://items/tools/leather_satchel.tres" id="3_ug5hq"]
+[ext_resource type="Script" path="res://fishing/bait/bait_recipe.gd" id="4_s5c3x"]
+
+[resource]
+script = ExtResource("4_s5c3x")
+output = ExtResource("3_ug5hq")
+amount = 1
+ingredients = Array[Resource]([ExtResource("1_wfejq"), ExtResource("2_wbhps")])
+counts = Array[int]([6, 10])
+xp = 30.0
+station = &"workbench"
+requiredSkill = &"fishing"
+requiredLevel = 3

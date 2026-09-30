@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="FishData" format=3]
+
+[ext_resource type="Texture2D" path="res://fishing/fish/assets/events/bone_fish.png" id="1_j6q2y"]
+[ext_resource type="Resource" path="res://items/rarities/uncommon.tres" id="2_n2bqb"]
+[ext_resource type="Script" path="res://fishing/fish/requirements/fish_requirement.gd" id="3_do1qq"]
+[ext_resource type="Script" path="res://fishing/fish/fish_data.gd" id="4_wgndc"]
+
+[resource]
+script = ExtResource("4_wgndc")
+displayName = "Bone Fish"
+icon = ExtResource("1_j6q2y")
+rarity = ExtResource("2_n2bqb")
+description = "All bones and bad attitude."
+weightRange = Vector2(1, 4)
+basePrice = 50
+heldSize = 0.6799999999999999

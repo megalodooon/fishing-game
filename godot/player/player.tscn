@@ -48,6 +48,123 @@
 [ext_resource type="Resource" path="res://fishing/fish/species/placeholder/marlin.tres" id="46_marlin"]
 [ext_resource type="Script" path="res://fishing/fish/fish_data.gd" id="47_data"]
 [ext_resource type="Script" path="res://player/energy.gd" id="48_energy"]
+[ext_resource type="Script" path="res://player/wallet.gd" id="49_wallet"]
+[ext_resource type="Script" path="res://world/atlas.gd" id="50_atlas"]
+[ext_resource type="Script" path="res://world/location.gd" id="51_location"]
+[ext_resource type="Resource" path="res://world/locations/village.tres" id="52_village"]
+[ext_resource type="Resource" path="res://world/locations/basic_ocean.tres" id="53_basic_place"]
+[ext_resource type="Resource" path="res://world/locations/polluted_ocean.tres" id="54_polluted_place"]
+[ext_resource type="Resource" path="res://world/locations/cold_ocean.tres" id="55_cold_place"]
+[ext_resource type="Resource" path="res://oceans/cold/cold_biome.tres" id="56_cold"]
+[ext_resource type="Resource" path="res://oceans/polluted/polluted_biome.tres" id="57_polluted"]
+[ext_resource type="Script" path="res://player/progress.gd" id="58_progress"]
+[ext_resource type="Resource" path="res://oceans/islands/village_biome.tres" id="59_shore"]
+[ext_resource type="Resource" path="res://oceans/islands/lantern_key_biome.tres" id="61_lantern"]
+[ext_resource type="Resource" path="res://oceans/islands/wreck_atoll_biome.tres" id="62_wreck"]
+[ext_resource type="Resource" path="res://world/locations/lantern_key.tres" id="63_lantern_place"]
+[ext_resource type="Resource" path="res://world/locations/wreck_atoll.tres" id="64_wreck_place"]
+[ext_resource type="Resource" path="res://fishing/bait/worm_bait.tres" id="65_worm_bait"]
+[ext_resource type="Resource" path="res://fishing/bait/chum_bait.tres" id="66_chum_bait"]
+[ext_resource type="Resource" path="res://fishing/bait/corn_bait.tres" id="67_corn_bait"]
+[ext_resource type="Resource" path="res://fishing/bait/glow_bait.tres" id="68_glow_bait"]
+[ext_resource type="Resource" path="res://fishing/bait/rust_bait.tres" id="69_rust_bait"]
+[ext_resource type="Resource" path="res://fishing/tacklebox/market/golden_hook.tres" id="70_golden"]
+[ext_resource type="Resource" path="res://fishing/tacklebox/market/feather_bobber.tres" id="71_feather"]
+
+[ext_resource type="Resource" path="res://oceans/reef/reef_biome.tres" id="n_b1"]
+[ext_resource type="Resource" path="res://oceans/volcanic/volcanic_biome.tres" id="n_b2"]
+[ext_resource type="Resource" path="res://oceans/abyss/abyss_biome.tres" id="n_b3"]
+[ext_resource type="Resource" path="res://oceans/islands/driftwood_biome.tres" id="n_b4"]
+[ext_resource type="Resource" path="res://oceans/islands/ember_biome.tres" id="n_b5"]
+[ext_resource type="Resource" path="res://world/locations/driftwood_cay.tres" id="n_l1"]
+[ext_resource type="Resource" path="res://world/locations/coral_reef.tres" id="n_l2"]
+[ext_resource type="Resource" path="res://world/locations/ember_isle.tres" id="n_l3"]
+[ext_resource type="Resource" path="res://world/locations/volcanic_ocean.tres" id="n_l4"]
+[ext_resource type="Resource" path="res://world/locations/abyssal_trench.tres" id="n_l5"]
+[ext_resource type="Resource" path="res://fishing/tacklebox/tackle/coral_bobber.tres" id="n_t1"]
+[ext_resource type="Resource" path="res://fishing/tacklebox/tackle/storm_bobber.tres" id="n_t2"]
+[ext_resource type="Resource" path="res://fishing/tacklebox/tackle/heatproof_line.tres" id="n_t3"]
+[ext_resource type="Resource" path="res://fishing/tacklebox/tackle/obsidian_hook.tres" id="n_t4"]
+[ext_resource type="Resource" path="res://fishing/tacklebox/tackle/sonar_buoy.tres" id="n_t5"]
+[ext_resource type="Resource" path="res://fishing/bait/shrimp_bait.tres" id="n_t6"]
+[ext_resource type="Resource" path="res://fishing/bait/squid_bait.tres" id="n_t7"]
+[ext_resource type="Resource" path="res://fishing/bait/storm_lure.tres" id="n_t8"]
+[ext_resource type="Resource" path="res://fishing/bait/ember_bait.tres" id="n_t9"]
+[ext_resource type="PackedScene" path="res://fishing/minigames/net_chase/net_chase.tscn" id="n_g1"]
+[ext_resource type="PackedScene" path="res://fishing/minigames/strike_rings/strike_rings.tscn" id="n_g2"]
+[ext_resource type="Script" path="res://items/rarity.gd" id="n_rs"]
+[ext_resource type="Resource" path="res://items/rarities/common.tres" id="n_r1"]
+[ext_resource type="Resource" path="res://items/rarities/uncommon.tres" id="n_r2"]
+[ext_resource type="Resource" path="res://items/rarities/rare.tres" id="n_r3"]
+[ext_resource type="Resource" path="res://items/rarities/legendary.tres" id="n_r4"]
+[ext_resource type="Resource" path="res://items/rarities/trophy.tres" id="n_r5"]
+[ext_resource type="Resource" path="res://world/locations/village.tres" id="z_l1"]
+[ext_resource type="Resource" path="res://world/locations/basic_ocean.tres" id="z_l2"]
+[ext_resource type="Resource" path="res://world/locations/meadow_isle.tres" id="z_l3"]
+[ext_resource type="Resource" path="res://world/locations/driftwood_cay.tres" id="z_l4"]
+[ext_resource type="Resource" path="res://world/locations/lantern_key.tres" id="z_l5"]
+[ext_resource type="Resource" path="res://world/locations/mangrove_hollow.tres" id="z_l6"]
+[ext_resource type="Resource" path="res://world/locations/polluted_ocean.tres" id="z_l7"]
+[ext_resource type="Resource" path="res://world/locations/pearl_lagoon.tres" id="z_l8"]
+[ext_resource type="Resource" path="res://world/locations/coral_reef.tres" id="z_l9"]
+[ext_resource type="Resource" path="res://world/locations/wreck_atoll.tres" id="z_l10"]
+[ext_resource type="Resource" path="res://world/locations/cold_ocean.tres" id="z_l11"]
+[ext_resource type="Resource" path="res://world/locations/kelp_forest.tres" id="z_l12"]
+[ext_resource type="Resource" path="res://world/locations/frostpeak.tres" id="z_l13"]
+[ext_resource type="Resource" path="res://world/locations/ember_isle.tres" id="z_l14"]
+[ext_resource type="Resource" path="res://world/locations/volcanic_ocean.tres" id="z_l15"]
+[ext_resource type="Resource" path="res://world/locations/stormwatch.tres" id="z_l16"]
+[ext_resource type="Resource" path="res://world/locations/storm_sea.tres" id="z_l17"]
+[ext_resource type="Resource" path="res://world/locations/deepnet_rig.tres" id="z_l18"]
+[ext_resource type="Resource" path="res://world/locations/tidal_shrine.tres" id="z_l19"]
+[ext_resource type="Resource" path="res://world/locations/abyssal_trench.tres" id="z_l20"]
+[ext_resource type="Resource" path="res://world/locations/blue_expanse.tres" id="z_l21"]
+[ext_resource type="Resource" path="res://world/locations/champion_atoll.tres" id="z_l22"]
+[ext_resource type="Resource" path="res://oceans/basic/basic_biome.tres" id="z_b1"]
+[ext_resource type="Resource" path="res://oceans/islands/village_biome.tres" id="z_b2"]
+[ext_resource type="Resource" path="res://oceans/islands/meadow_biome.tres" id="z_b3"]
+[ext_resource type="Resource" path="res://oceans/islands/driftwood_biome.tres" id="z_b4"]
+[ext_resource type="Resource" path="res://oceans/islands/lantern_key_biome.tres" id="z_b5"]
+[ext_resource type="Resource" path="res://oceans/islands/mangrove_biome.tres" id="z_b6"]
+[ext_resource type="Resource" path="res://oceans/polluted/polluted_biome.tres" id="z_b7"]
+[ext_resource type="Resource" path="res://oceans/islands/lagoon_biome.tres" id="z_b8"]
+[ext_resource type="Resource" path="res://oceans/reef/reef_biome.tres" id="z_b9"]
+[ext_resource type="Resource" path="res://oceans/islands/wreck_atoll_biome.tres" id="z_b10"]
+[ext_resource type="Resource" path="res://oceans/cold/cold_biome.tres" id="z_b11"]
+[ext_resource type="Resource" path="res://oceans/kelp/kelp_biome.tres" id="z_b12"]
+[ext_resource type="Resource" path="res://oceans/islands/frostpeak_biome.tres" id="z_b13"]
+[ext_resource type="Resource" path="res://oceans/islands/ember_biome.tres" id="z_b14"]
+[ext_resource type="Resource" path="res://oceans/volcanic/volcanic_biome.tres" id="z_b15"]
+[ext_resource type="Resource" path="res://oceans/islands/stormwatch_biome.tres" id="z_b16"]
+[ext_resource type="Resource" path="res://oceans/storm/storm_biome.tres" id="z_b17"]
+[ext_resource type="Resource" path="res://oceans/islands/rig_biome.tres" id="z_b18"]
+[ext_resource type="Resource" path="res://oceans/islands/shrine_biome.tres" id="z_b19"]
+[ext_resource type="Resource" path="res://oceans/abyss/abyss_biome.tres" id="z_b20"]
+[ext_resource type="Resource" path="res://oceans/expanse/expanse_biome.tres" id="z_b21"]
+[ext_resource type="Resource" path="res://oceans/islands/champion_biome.tres" id="z_b22"]
+[ext_resource type="Resource" path="res://fishing/tacklebox/tackle/driftwood_bobber.tres" id="z_t1"]
+[ext_resource type="Resource" path="res://fishing/tacklebox/tackle/glow_bobber.tres" id="z_t2"]
+[ext_resource type="Resource" path="res://fishing/tacklebox/tackle/frost_bobber.tres" id="z_t3"]
+[ext_resource type="Resource" path="res://fishing/tacklebox/tackle/tempest_bobber.tres" id="z_t4"]
+[ext_resource type="Resource" path="res://fishing/tacklebox/tackle/kelp_line.tres" id="z_t5"]
+[ext_resource type="Resource" path="res://fishing/tacklebox/tackle/frost_line.tres" id="z_t6"]
+[ext_resource type="Resource" path="res://fishing/tacklebox/tackle/storm_line.tres" id="z_t7"]
+[ext_resource type="Resource" path="res://fishing/tacklebox/tackle/champion_line.tres" id="z_t8"]
+[ext_resource type="Resource" path="res://fishing/tacklebox/tackle/bone_hook.tres" id="z_t9"]
+[ext_resource type="Resource" path="res://fishing/tacklebox/tackle/reef_hook.tres" id="z_t10"]
+[ext_resource type="Resource" path="res://fishing/tacklebox/tackle/abyss_hook.tres" id="z_t11"]
+[ext_resource type="Resource" path="res://fishing/tacklebox/tackle/bait_bucket.tres" id="z_t12"]
+[ext_resource type="Resource" path="res://fishing/tacklebox/tackle/tide_compass.tres" id="z_t13"]
+[ext_resource type="Resource" path="res://fishing/tacklebox/tackle/weather_vane.tres" id="z_t14"]
+[ext_resource type="Resource" path="res://fishing/bait/honey_bait.tres" id="z_t15"]
+[ext_resource type="Resource" path="res://fishing/bait/firefly_bait.tres" id="z_t16"]
+[ext_resource type="Resource" path="res://fishing/bait/ice_bait.tres" id="z_t17"]
+[ext_resource type="Resource" path="res://fishing/bait/kelp_bait.tres" id="z_t18"]
+[ext_resource type="Resource" path="res://fishing/bait/moon_bait.tres" id="z_t19"]
+[ext_resource type="PackedScene" path="res://fishing/minigames/bullet_hell/bullet_hell.tscn" id="z_g1"]
+[ext_resource type="PackedScene" path="res://fishing/minigames/boss_duel/boss_duel.tscn" id="z_g2"]
+[ext_resource type="PackedScene" path="res://fishing/minigames/reel_rhythm/reel_rhythm.tscn" id="z_g3"]
+[ext_resource type="PackedScene" path="res://fishing/minigames/lure_dance/lure_dance.tscn" id="z_g4"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_shadow"]
 shader = ExtResource("14_clip")
@@ -57,46 +174,42 @@ shader_parameter/floor_count = 0
 [sub_resource type="Resource" id="Resource_inventory"]
 resource_local_to_scene = true
 script = ExtResource("6_inventory")
-items = Array[ExtResource("18_item")]([ExtResource("19_rod"), ExtResource("24_box_item"), ExtResource("39_journal_item"), null, null, ExtResource("25_pro_rod")])
+items = Array[ExtResource("18_item")]([ExtResource("19_rod"), ExtResource("24_box_item"), ExtResource("39_journal_item")])
 
 [sub_resource type="Resource" id="Resource_tacklebox"]
 resource_local_to_scene = true
 script = ExtResource("26_box")
-catalog = Array[ExtResource("27_tackle")]([ExtResource("28_bobber"), ExtResource("31_cork"), ExtResource("29_line"), ExtResource("32_braided"), ExtResource("37_neon"), ExtResource("30_hook"), ExtResource("33_barbed"), ExtResource("34_lucky"), ExtResource("35_finder"), ExtResource("36_motor")])
+catalog = Array[ExtResource("27_tackle")]([ExtResource("28_bobber"), ExtResource("31_cork"), ExtResource("29_line"), ExtResource("32_braided"), ExtResource("37_neon"), ExtResource("30_hook"), ExtResource("33_barbed"), ExtResource("34_lucky"), ExtResource("35_finder"), ExtResource("36_motor"), ExtResource("65_worm_bait"), ExtResource("66_chum_bait"), ExtResource("67_corn_bait"), ExtResource("68_glow_bait"), ExtResource("69_rust_bait"), ExtResource("70_golden"), ExtResource("71_feather"), ExtResource("n_t1"), ExtResource("n_t2"), ExtResource("n_t3"), ExtResource("n_t4"), ExtResource("n_t5"), ExtResource("n_t6"), ExtResource("n_t7"), ExtResource("n_t8"), ExtResource("n_t9"), ExtResource("z_t1"), ExtResource("z_t2"), ExtResource("z_t3"), ExtResource("z_t4"), ExtResource("z_t5"), ExtResource("z_t6"), ExtResource("z_t7"), ExtResource("z_t8"), ExtResource("z_t9"), ExtResource("z_t10"), ExtResource("z_t11"), ExtResource("z_t12"), ExtResource("z_t13"), ExtResource("z_t14"), ExtResource("z_t15"), ExtResource("z_t16"), ExtResource("z_t17"), ExtResource("z_t18"), ExtResource("z_t19")])
 owned = {
-ExtResource("28_bobber"): 2,
-ExtResource("29_line"): 3,
-ExtResource("30_hook"): 2,
-ExtResource("31_cork"): 1,
-ExtResource("32_braided"): 2,
-ExtResource("37_neon"): 1,
-ExtResource("33_barbed"): 1,
-ExtResource("35_finder"): 1,
-ExtResource("36_motor"): 1
+ExtResource("28_bobber"): 1,
+ExtResource("29_line"): 1,
+ExtResource("30_hook"): 1,
+ExtResource("65_worm_bait"): 5
 }
 
 [sub_resource type="Resource" id="Resource_journal"]
 resource_local_to_scene = true
 script = ExtResource("38_journal")
-biomes = Array[ExtResource("40_biome")]([ExtResource("41_basic")])
-caught = Dictionary[ExtResource("47_data"), int]({
-ExtResource("42_sardine"): 4,
-ExtResource("43_anchovy"): 2,
-ExtResource("44_flounder"): 1,
-ExtResource("45_barracuda"): 1,
-ExtResource("46_marlin"): 1
-})
-heaviest = Dictionary[ExtResource("47_data"), float]({
-ExtResource("42_sardine"): 0.17,
-ExtResource("43_anchovy"): 0.05,
-ExtResource("44_flounder"): 2.31,
-ExtResource("45_barracuda"): 6.8,
-ExtResource("46_marlin"): 92.4
-})
+biomes = Array[ExtResource("40_biome")]([ExtResource("z_b1"), ExtResource("z_b2"), ExtResource("z_b3"), ExtResource("z_b4"), ExtResource("z_b5"), ExtResource("z_b6"), ExtResource("z_b7"), ExtResource("z_b8"), ExtResource("z_b9"), ExtResource("z_b10"), ExtResource("z_b11"), ExtResource("z_b12"), ExtResource("z_b13"), ExtResource("z_b14"), ExtResource("z_b15"), ExtResource("z_b16"), ExtResource("z_b17"), ExtResource("z_b18"), ExtResource("z_b19"), ExtResource("z_b20"), ExtResource("z_b21"), ExtResource("z_b22")])
 
 [sub_resource type="Resource" id="Resource_energy"]
 resource_local_to_scene = true
 script = ExtResource("48_energy")
+
+[sub_resource type="Resource" id="Resource_wallet"]
+resource_local_to_scene = true
+script = ExtResource("49_wallet")
+coins = 50
+
+[sub_resource type="Resource" id="Resource_atlas"]
+resource_local_to_scene = true
+script = ExtResource("50_atlas")
+locations = Array[ExtResource("51_location")]([ExtResource("z_l1"), ExtResource("z_l2"), ExtResource("z_l3"), ExtResource("z_l4"), ExtResource("z_l5"), ExtResource("z_l6"), ExtResource("z_l7"), ExtResource("z_l8"), ExtResource("z_l9"), ExtResource("z_l10"), ExtResource("z_l11"), ExtResource("z_l12"), ExtResource("z_l13"), ExtResource("z_l14"), ExtResource("z_l15"), ExtResource("z_l16"), ExtResource("z_l17"), ExtResource("z_l18"), ExtResource("z_l19"), ExtResource("z_l20"), ExtResource("z_l21"), ExtResource("z_l22")])
+current = ExtResource("53_basic_place")
+
+[sub_resource type="Resource" id="Resource_progress"]
+resource_local_to_scene = true
+script = ExtResource("58_progress")
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vkqoe"]
 radius = 4.1231055
@@ -171,6 +284,9 @@ inventory = SubResource("Resource_inventory")
 tacklebox = SubResource("Resource_tacklebox")
 journal = SubResource("Resource_journal")
 energy = SubResource("Resource_energy")
+wallet = SubResource("Resource_wallet")
+atlas = SubResource("Resource_atlas")
+progress = SubResource("Resource_progress")
 heldIconScene = ExtResource("20_icon")
 
 [node name="Shadow" type="Sprite2D" parent="." unique_id=1318463946]
@@ -230,7 +346,20 @@ script = ExtResource("12_reel")
 [node name="Catch" type="Node" parent="HandStateMachine"]
 unique_name_in_owner = true
 script = ExtResource("15_catch")
-minigames = Array[PackedScene]([ExtResource("21_reel_bar"), ExtResource("22_needle"), ExtResource("23_tension")])
+minigames = Array[PackedScene]([ExtResource("21_reel_bar"), ExtResource("22_needle"), ExtResource("23_tension"), ExtResource("z_g3"), ExtResource("z_g4")])
+bossMinigames = Array[PackedScene]([ExtResource("z_g1"), ExtResource("z_g2")])
+bossChance = Dictionary[ExtResource("n_rs"), float]({
+ExtResource("n_r4"): 0.3,
+ExtResource("n_r5"): 1.0
+})
+rareMinigames = Array[PackedScene]([ExtResource("n_g1"), ExtResource("n_g2")])
+rareGameChance = Dictionary[ExtResource("n_rs"), float]({
+ExtResource("n_r1"): 0.08,
+ExtResource("n_r2"): 0.2,
+ExtResource("n_r3"): 0.55,
+ExtResource("n_r4"): 0.75,
+ExtResource("n_r5"): 0.85
+})
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=2015660693]
 libraries/ = SubResource("AnimationLibrary_boad6")
@@ -285,3 +414,14 @@ font = ExtResource("17_font")
 fontSize = 4
 outlineWidth = 0.5
 rise = 2.0
+
+[node name="Prompt" type="Node2D" parent="Callouts"]
+unique_name_in_owner = true
+visible = false
+script = ExtResource("16_callout")
+font = ExtResource("17_font")
+fontSize = 4
+outlineWidth = 0.5
+rise = 1.0
+bob = 0.4
+bobSpeed = 4.0

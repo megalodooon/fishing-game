@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="Snack" format=3]
+
+[ext_resource type="Texture2D" path="res://items/snacks/icons/island_tea.png" id="1_m4tn5"]
+[ext_resource type="Resource" path="res://items/rarities/common.tres" id="2_2e3yq"]
+[ext_resource type="Script" path="res://items/snacks/snack.gd" id="3_0igq7"]
+
+[resource]
+script = ExtResource("3_0igq7")
+buffStat = "xpBonus"
+buffAmount = 1.05
+buffHours = 2.0
+displayName = "Island Tea"
+icon = ExtResource("1_m4tn5")
+rarity = ExtResource("2_2e3yq")
+description = "Cooked at a kitchen."
+hint = "Click while holding it to eat"
+maxStack = 20
+sellPrice = 12

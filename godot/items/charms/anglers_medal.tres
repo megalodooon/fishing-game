@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Charm" format=3]
+
+[ext_resource type="Script" path="res://items/charms/charm.gd" id="e1"]
+[ext_resource type="Texture2D" path="res://items/charms/icons/anglers_medal.png" id="e2"]
+[ext_resource type="Resource" path="res://items/rarities/uncommon.tres" id="e3"]
+
+[resource]
+script = ExtResource("e1")
+stats = Dictionary[StringName, float]({
+&"xpBonus": 5.0
+})
+displayName = "Angler's Medal"
+icon = ExtResource("e2")
+rarity = ExtResource("e3")
+description = "For excellence in fishing. Teaches you a little extra."
+sellPrice = 50

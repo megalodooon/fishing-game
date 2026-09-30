@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="CrewMember" format=3]
+
+[ext_resource type="Resource" path="res://items/enchanted/enchanted_driftwood_plank.tres" id="1_vku1u"]
+[ext_resource type="Texture2D" path="res://items/materials/icons/driftwood_plank.png" id="2_0lopy"]
+[ext_resource type="Resource" path="res://items/materials/driftwood_plank.tres" id="3_fpw0w"]
+[ext_resource type="Script" path="res://world/crew/crew_member.gd" id="4_3bqxo"]
+
+[resource]
+script = ExtResource("4_3bqxo")
+displayName = "Driftwood Deckhand"
+description = "Combs the beach for driftwood."
+icon = ExtResource("2_0lopy")
+product = ExtResource("3_fpw0w")
+enchanted = ExtResource("1_vku1u")
+hours = 0.5

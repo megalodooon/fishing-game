@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Tackle" format=3]
+
+[ext_resource type="Texture2D" path="res://items/events/icons/snowflake_bobber.png" id="1_3leio"]
+[ext_resource type="Resource" path="res://items/rarities/rare.tres" id="2_ij58c"]
+[ext_resource type="Script" path="res://fishing/tacklebox/tackle.gd" id="3_gp45j"]
+
+[resource]
+script = ExtResource("3_gp45j")
+tint = Color(0.75, 0.9, 1, 1)
+biteSpeed = 1.15
+spotSize = 1.25
+spotTime = 1.15
+displayName = "Snowflake Bobber"
+icon = ExtResource("1_3leio")
+rarity = ExtResource("2_ij58c")
+description = "Spins like a snowflake on the water."

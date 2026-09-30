@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="CrewContract" format=3]
+
+[ext_resource type="Resource" path="res://world/crew/members/kelp_weaver.tres" id="1_86u8p"]
+[ext_resource type="Texture2D" path="res://items/crew/icons/kelp_weaver.png" id="2_pechl"]
+[ext_resource type="Resource" path="res://items/rarities/uncommon.tres" id="3_goaj7"]
+[ext_resource type="Script" path="res://world/crew/crew_contract.gd" id="4_2ayei"]
+
+[resource]
+script = ExtResource("4_2ayei")
+crew = ExtResource("1_86u8p")
+displayName = "Kelp Weaver Contract"
+icon = ExtResource("2_pechl")
+rarity = ExtResource("3_goaj7")
+description = "Hire a kelp weaver at the crew board by your house. Spins kelp into fiber by the fire."

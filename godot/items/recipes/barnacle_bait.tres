@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="BaitRecipe" format=3]
+
+[ext_resource type="Resource" path="res://fishing/bait/barnacle_bait.tres" id="1_13l7a"]
+[ext_resource type="Resource" path="res://items/materials/barnacle.tres" id="2_et4ef"]
+[ext_resource type="Script" path="res://fishing/bait/bait_recipe.gd" id="3_2rvss"]
+
+[resource]
+script = ExtResource("3_2rvss")
+bait = ExtResource("1_13l7a")
+amount = 10
+ingredients = Array[Resource]([ExtResource("2_et4ef")])
+counts = Array[int]([3])
+xp = 6.0
+category = "Bait"
+requiredLevel = 1

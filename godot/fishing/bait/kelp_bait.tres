@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="Bait" format=3]
+
+[ext_resource type="Script" path="res://fishing/bait/bait.gd" id="e1"]
+[ext_resource type="Script" path="res://items/rarity.gd" id="e2"]
+[ext_resource type="Script" path="res://fishing/fish/fish_data.gd" id="e3"]
+[ext_resource type="Resource" path="res://items/rarities/uncommon.tres" id="e4"]
+[ext_resource type="Resource" path="res://fishing/fish/species/kelp/sheephead.tres" id="e5"]
+[ext_resource type="Resource" path="res://fishing/fish/species/kelp/giant_sea_bass.tres" id="e6"]
+[ext_resource type="Texture2D" path="res://fishing/bait/icons/kelp_bait.png" id="e7"]
+[ext_resource type="Resource" path="res://items/rarities/common.tres" id="e8"]
+
+[resource]
+script = ExtResource("e1")
+rarityBoost = Dictionary[ExtResource("e2"), float]({
+ExtResource("e4"): 1.4
+})
+fishBoost = Dictionary[ExtResource("e3"), float]({
+ExtResource("e5"): 1.6,
+ExtResource("e6"): 1.5
+})
+kind = 4
+displayName = "Kelp Bait"
+icon = ExtResource("e7")
+rarity = ExtResource("e8")
+description = "Kelp fish can't say no."
+discardable = false

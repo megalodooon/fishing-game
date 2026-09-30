@@ -1,0 +1,260 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://world/island/island.gd" id="i_e1"]
+[ext_resource type="Script" path="res://world/island/island_room.gd" id="i_e2"]
+[ext_resource type="Resource" path="res://oceans/islands/stormwatch_biome.tres" id="i_e3"]
+[ext_resource type="PackedScene" path="res://oceans/basic/basic_ocean.tscn" id="i_e4"]
+[ext_resource type="Texture2D" path="res://world/islands/stormwatch/land/landing.png" id="i_e5"]
+[ext_resource type="Script" path="res://world/village/building.gd" id="i_e6"]
+[ext_resource type="Texture2D" path="res://world/islands/props/weather_station.png" id="i_e7"]
+[ext_resource type="Script" path="res://world/weather/weather_station.gd" id="i_e8"]
+[ext_resource type="Texture2D" path="res://world/islands/props/weather_vane.png" id="i_e9"]
+[ext_resource type="Script" path="res://world/interact/secret.gd" id="i_e10"]
+[ext_resource type="Texture2D" path="res://world/islands/stormwatch/land/cliffs.png" id="i_e11"]
+[ext_resource type="Texture2D" path="res://world/islands/props/boulder.png" id="i_e12"]
+[ext_resource type="Texture2D" path="res://world/islands/props/pet_stall.png" id="i_e13"]
+[ext_resource type="Script" path="res://world/village/pets/pet_shop.gd" id="i_e14"]
+[ext_resource type="Script" path="res://world/village/pets/pet_data.gd" id="i_e15"]
+[ext_resource type="Resource" path="res://world/village/pets/storm_petrel.tres" id="i_e16"]
+[ext_resource type="Script" path="res://world/traps/trap_spot.gd" id="i_e17"]
+[ext_resource type="Script" path="res://items/item.gd" id="i_e18"]
+[ext_resource type="Resource" path="res://items/materials/driftwood_plank.tres" id="i_e19"]
+[ext_resource type="Resource" path="res://items/materials/crab_shell.tres" id="i_e20"]
+[ext_resource type="Texture2D" path="res://world/village/props/sign.png" id="i_e21"]
+
+[sub_resource type="RectangleShape2D" id="i_s1"]
+size = Vector2(24.0, 5.0)
+
+[sub_resource type="RectangleShape2D" id="i_s2"]
+size = Vector2(3.0, 3.0)
+
+[sub_resource type="RectangleShape2D" id="i_s3"]
+size = Vector2(12.0, 4.0)
+
+[sub_resource type="RectangleShape2D" id="i_s4"]
+size = Vector2(12.0, 4.0)
+
+[sub_resource type="RectangleShape2D" id="i_s5"]
+size = Vector2(12.0, 4.0)
+
+[sub_resource type="RectangleShape2D" id="i_s6"]
+size = Vector2(12.0, 4.0)
+
+[sub_resource type="RectangleShape2D" id="i_s7"]
+size = Vector2(12.0, 4.0)
+
+[sub_resource type="RectangleShape2D" id="i_s8"]
+size = Vector2(22.0, 5.0)
+
+[node name="Stormwatch" type="Node2D"]
+y_sort_enabled = true
+script = ExtResource("i_e1")
+
+[node name="Landing" type="Node2D" parent="." node_paths=PackedStringArray("land")]
+position = Vector2(0.0, 0.0)
+y_sort_enabled = true
+script = ExtResource("i_e2")
+land = [NodePath("Land")]
+
+[node name="Water" parent="Landing" instance=ExtResource("i_e4")]
+biome = ExtResource("i_e3")
+
+[node name="Land" type="Sprite2D" parent="Landing"]
+z_index = -1
+texture = ExtResource("i_e5")
+centered = false
+
+[node name="Station" type="Node2D" parent="Landing"]
+position = Vector2(119, 42)
+script = ExtResource("i_e6")
+displayName = "Weather Station"
+unlockFlag = "project/weather_station"
+unlockHint = "Restore it at the village restoration board."
+
+[node name="Art" type="Sprite2D" parent="Landing/Station"]
+texture = ExtResource("i_e7")
+centered = false
+offset = Vector2(-15.0, -34.0)
+
+[node name="Body" type="StaticBody2D" parent="Landing/Station"]
+
+[node name="Shape" type="CollisionShape2D" parent="Landing/Station/Body"]
+position = Vector2(0.0, -3.5)
+shape = SubResource("i_s1")
+
+[node name="Desk" type="Node2D" parent="Landing/Station"]
+position = Vector2(0, 2)
+script = ExtResource("i_e8")
+title = "Weather Station"
+prompt = "Weather Station"
+reach = 12.0
+
+[node name="Vane" type="Sprite2D" parent="Landing"]
+position = Vector2(93, 80)
+texture = ExtResource("i_e9")
+centered = false
+offset = Vector2(-6.0, -20.0)
+
+[node name="Body" type="StaticBody2D" parent="Landing/Vane"]
+
+[node name="Shape" type="CollisionShape2D" parent="Landing/Vane/Body"]
+position = Vector2(0.0, -1.5)
+shape = SubResource("i_s2")
+
+[node name="Pearl1" type="Node2D" parent="Landing"]
+position = Vector2(138, 100)
+script = ExtResource("i_e10")
+flag = "pearl_stormwatch_1"
+title = "A lost pearl!"
+message = "Opal on Pearl Lagoon collects these."
+prompt = "Pick up"
+reach = 7.0
+
+[node name="Cliffs" type="Node2D" parent="." node_paths=PackedStringArray("land")]
+position = Vector2(192.0, 0.0)
+y_sort_enabled = true
+script = ExtResource("i_e2")
+land = [NodePath("Land")]
+
+[node name="Water" parent="Cliffs" instance=ExtResource("i_e4")]
+biome = ExtResource("i_e3")
+
+[node name="Land" type="Sprite2D" parent="Cliffs"]
+z_index = -1
+texture = ExtResource("i_e11")
+centered = false
+
+[node name="Boulder0" type="Sprite2D" parent="Cliffs"]
+position = Vector2(20.0, 24.0)
+texture = ExtResource("i_e12")
+centered = false
+offset = Vector2(-8.0, -12.0)
+
+[node name="Body" type="StaticBody2D" parent="Cliffs/Boulder0"]
+
+[node name="Shape" type="CollisionShape2D" parent="Cliffs/Boulder0/Body"]
+position = Vector2(0.0, -2.0)
+shape = SubResource("i_s3")
+
+[node name="Boulder1" type="Sprite2D" parent="Cliffs"]
+position = Vector2(50.0, 88.0)
+texture = ExtResource("i_e12")
+centered = false
+offset = Vector2(-8.0, -12.0)
+
+[node name="Body" type="StaticBody2D" parent="Cliffs/Boulder1"]
+
+[node name="Shape" type="CollisionShape2D" parent="Cliffs/Boulder1/Body"]
+position = Vector2(0.0, -2.0)
+shape = SubResource("i_s4")
+
+[node name="Boulder2" type="Sprite2D" parent="Cliffs"]
+position = Vector2(80.0, 24.0)
+texture = ExtResource("i_e12")
+centered = false
+offset = Vector2(-8.0, -12.0)
+
+[node name="Body" type="StaticBody2D" parent="Cliffs/Boulder2"]
+
+[node name="Shape" type="CollisionShape2D" parent="Cliffs/Boulder2/Body"]
+position = Vector2(0.0, -2.0)
+shape = SubResource("i_s5")
+
+[node name="Boulder3" type="Sprite2D" parent="Cliffs"]
+position = Vector2(110.0, 88.0)
+texture = ExtResource("i_e12")
+centered = false
+offset = Vector2(-8.0, -12.0)
+
+[node name="Body" type="StaticBody2D" parent="Cliffs/Boulder3"]
+
+[node name="Shape" type="CollisionShape2D" parent="Cliffs/Boulder3/Body"]
+position = Vector2(0.0, -2.0)
+shape = SubResource("i_s6")
+
+[node name="Boulder4" type="Sprite2D" parent="Cliffs"]
+position = Vector2(140.0, 24.0)
+texture = ExtResource("i_e12")
+centered = false
+offset = Vector2(-8.0, -12.0)
+
+[node name="Body" type="StaticBody2D" parent="Cliffs/Boulder4"]
+
+[node name="Shape" type="CollisionShape2D" parent="Cliffs/Boulder4/Body"]
+position = Vector2(0.0, -2.0)
+shape = SubResource("i_s7")
+
+[node name="PetrelNest" type="Node2D" parent="Cliffs"]
+position = Vector2(90.0, 60.0)
+script = ExtResource("i_e6")
+displayName = "Petrel Nest"
+
+[node name="Art" type="Sprite2D" parent="Cliffs/PetrelNest"]
+texture = ExtResource("i_e13")
+centered = false
+offset = Vector2(-13.0, -22.0)
+
+[node name="Body" type="StaticBody2D" parent="Cliffs/PetrelNest"]
+
+[node name="Shape" type="CollisionShape2D" parent="Cliffs/PetrelNest/Body"]
+position = Vector2(0.0, -3.5)
+shape = SubResource("i_s8")
+
+[node name="Door" type="Node2D" parent="Cliffs/PetrelNest"]
+position = Vector2(0, 2)
+script = ExtResource("i_e14")
+pets = Array[ExtResource("i_e15")]([ExtResource("i_e16")])
+title = "Petrel Nest"
+prompt = "Pets"
+reach = 12.0
+
+[node name="Trap" type="Node2D" parent="Cliffs"]
+position = Vector2(140.0, 90.0)
+script = ExtResource("i_e17")
+biome = ExtResource("i_e3")
+reach = 9.0
+promptOffset = Vector2(0, -8)
+extras = Array[ExtResource("i_e18")]([ExtResource("i_e19"), ExtResource("i_e20")])
+
+[node name="Pearl2" type="Node2D" parent="Cliffs"]
+position = Vector2(10.0, 60.0)
+script = ExtResource("i_e10")
+flag = "pearl_stormwatch_2"
+title = "A lost pearl!"
+message = "Opal on Pearl Lagoon collects these."
+prompt = "Pick up"
+reach = 7.0
+
+[node name="Pearl3" type="Node2D" parent="Cliffs"]
+position = Vector2(130.0, 14.0)
+script = ExtResource("i_e10")
+flag = "pearl_stormwatch_3"
+title = "A lost pearl!"
+message = "Opal on Pearl Lagoon collects these."
+prompt = "Pick up"
+reach = 7.0
+
+[node name="Pearl4" type="Node2D" parent="Cliffs"]
+position = Vector2(60.0, 100.0)
+script = ExtResource("i_e10")
+flag = "pearl_stormwatch_4"
+title = "A lost pearl!"
+message = "Opal on Pearl Lagoon collects these."
+prompt = "Pick up"
+reach = 7.0
+
+[node name="StormSign" type="Node2D" parent="Cliffs"]
+position = Vector2(40.0, 60.0)
+script = ExtResource("i_e10")
+flag = "stormsign"
+title = "Old warning"
+message = "\"The Tempest Ray rides the rain. A perfect cast, or nothing.\""
+repeatable = true
+concealed = false
+prompt = "Read"
+reach = 10.0
+
+[node name="Art" type="Sprite2D" parent="Cliffs/StormSign"]
+texture = ExtResource("i_e21")
+centered = false
+offset = Vector2(-5, -12)

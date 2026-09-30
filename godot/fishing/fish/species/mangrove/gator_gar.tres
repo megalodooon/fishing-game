@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="FishData" format=3 uid="uid://ck1x5wrv38ys2"]
+
+[ext_resource type="Script" uid="uid://bevdmlyak68oo" path="res://fishing/fish/fish_data.gd" id="e1"]
+[ext_resource type="Texture2D" uid="uid://dd37gv2dp70mh" path="res://fishing/fish/assets/mangrove/gator_gar.png" id="e2"]
+[ext_resource type="Resource" path="res://items/rarities/trophy.tres" id="e3"]
+[ext_resource type="Script" uid="uid://b3bmwcwg3hf7i" path="res://fishing/fish/requirements/bait_requirement.gd" id="e4"]
+[ext_resource type="Resource" path="res://fishing/bait/firefly_bait.tres" id="e5"]
+[ext_resource type="Script" uid="uid://ddca2l75wof8n" path="res://fishing/fish/requirements/cast_requirement.gd" id="e6"]
+[ext_resource type="Script" uid="uid://dupq0iwgv25f6" path="res://fishing/fish/requirements/fish_requirement.gd" id="e7"]
+
+[sub_resource type="Resource" id="s1"]
+script = ExtResource("e4")
+bait = ExtResource("e5")
+
+[sub_resource type="Resource" id="s2"]
+script = ExtResource("e6")
+minScore = 4
+
+[resource]
+script = ExtResource("e1")
+displayName = "Grandfather Gator Gar"
+icon = ExtResource("e2")
+rarity = ExtResource("e3")
+description = "Older than the village. Hunts at night, drawn by firefly bait."
+weightRange = Vector2(40, 140)
+basePrice = 2400
+heldSize = 1.7
+hours = Vector2(21, 3)
+requirements = Array[ExtResource("e7")]([SubResource("s1"), SubResource("s2")])
+chance = 9.0

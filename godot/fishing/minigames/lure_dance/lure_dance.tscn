@@ -1,0 +1,8 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://fishing/minigames/lure_dance/lure_dance.gd" id="1_game"]
+
+[node name="LureDance" type="Node2D"]
+script = ExtResource("1_game")
+size = Vector2(44, 30)
+hint = "Watch where the fish goes, then click the same spots"

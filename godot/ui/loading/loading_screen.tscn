@@ -1,9 +1,16 @@
 [gd_scene format=3]
 
 [ext_resource type="Script" path="res://ui/loading/loading_screen.gd" id="1_loading"]
+[ext_resource type="Material" path="res://world/map/chart_water.tres" id="2_chart"]
+[ext_resource type="Shader" path="res://components/sleep/sleep_overlay.gdshader" id="3_sleep"]
+[ext_resource type="PackedScene" path="res://fishing/rods/starter_rod.tscn" id="4_rod"]
+[ext_resource type="PackedScene" path="res://fishing/rods/bobbers/basic_bobber.tscn" id="5_bobber"]
 
 [node name="LoadingScreen" type="Node"]
 script = ExtResource("1_loading")
+warmMaterials = Array[Material]([ExtResource("2_chart")])
+warmShaders = Array[Shader]([ExtResource("3_sleep")])
+warmScenes = Array[PackedScene]([ExtResource("4_rod"), ExtResource("5_bobber")])
 
 [node name="Layer" type="CanvasLayer" parent="."]
 layer = 100

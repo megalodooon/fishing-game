@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="Biome" format=3]
+
+[ext_resource type="Script" path="res://fishing/creatures/sea_creature.gd" id="1_xi8mw"]
+[ext_resource type="Script" path="res://fishing/fish/fish_data.gd" id="2_hvdn0"]
+[ext_resource type="Resource" path="res://fishing/fish/species/events/comet_minnow.tres" id="3_rovkn"]
+[ext_resource type="Resource" path="res://fishing/fish/species/events/starry_flounder.tres" id="4_tn0fv"]
+[ext_resource type="Resource" path="res://fishing/fish/species/events/moonbeam_eel.tres" id="5_ef3b6"]
+[ext_resource type="Resource" path="res://fishing/fish/species/events/nebula_ray.tres" id="6_mon0e"]
+[ext_resource type="Resource" path="res://fishing/fish/species/events/meteor_marlin.tres" id="7_0nck8"]
+[ext_resource type="Script" path="res://items/item.gd" id="8_87t1p"]
+[ext_resource type="Script" path="res://oceans/biome.gd" id="9_3un8l"]
+
+[resource]
+script = ExtResource("9_3un8l")
+displayName = "Starfall Night"
+description = "Festival fish of summer nights. They only bite during Starfall Night."
+region = "Festivals"
+fish = Array[ExtResource("2_hvdn0")]([ExtResource("3_rovkn"), ExtResource("4_tn0fv"), ExtResource("5_ef3b6"), ExtResource("6_mon0e"), ExtResource("7_0nck8")])
+tier = 1
+junkChance = 0.0

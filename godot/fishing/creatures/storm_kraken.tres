@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="SeaCreature" format=3]
+
+[ext_resource type="Script" path="res://fishing/creatures/sea_creature.gd" id="e1"]
+[ext_resource type="Texture2D" path="res://fishing/creatures/art/storm_kraken.png" id="e2"]
+[ext_resource type="Resource" path="res://items/rarities/trophy.tres" id="e3"]
+[ext_resource type="PackedScene" path="res://fishing/minigames/boss_duel/boss_duel.tscn" id="e4"]
+[ext_resource type="Resource" path="res://items/materials/storm_essence.tres" id="e5"]
+[ext_resource type="Resource" path="res://items/materials/kraken_tentacle.tres" id="e6"]
+[ext_resource type="Script" path="res://items/item.gd" id="e7"]
+
+[resource]
+script = ExtResource("e1")
+displayName = "Storm Kraken"
+description = "The legend sailors whisper about in bad weather."
+icon = ExtResource("e2")
+rarity = ExtResource("e3")
+minFishing = 32
+announce = "The STORM KRAKEN rises from the deep!"
+fight = ExtResource("e4")
+difficulty = 0.8
+toughness = 2.0
+style = &"storm"
+coins = Vector2i(1500, 3000)
+xp = 900.0
+drops = Array[ExtResource("e7")]([ExtResource("e5"), ExtResource("e6")])
+dropChances = PackedFloat32Array(1.0, 1.0)
+dropAmounts = Array[Vector2i]([Vector2i(2, 4), Vector2i(1, 2)])

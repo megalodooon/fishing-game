@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="BaitRecipe" format=3]
+
+[ext_resource type="Resource" path="res://items/materials/seaweed.tres" id="1_77oxt"]
+[ext_resource type="Resource" path="res://items/enchanted/enchanted_seaweed.tres" id="2_wajbu"]
+[ext_resource type="Script" path="res://fishing/bait/bait_recipe.gd" id="3_mo42f"]
+
+[resource]
+script = ExtResource("3_mo42f")
+output = ExtResource("2_wajbu")
+amount = 1
+ingredients = Array[Resource]([ExtResource("1_77oxt")])
+counts = Array[int]([32])
+requiredFlag = "collection/seaweed/2"
+xp = 12.0
+category = "Materials"

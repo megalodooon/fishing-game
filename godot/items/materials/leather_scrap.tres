@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Item" format=3]
+
+[ext_resource type="Texture2D" path="res://items/materials/icons/leather_scrap.png" id="1_37sde"]
+[ext_resource type="Resource" path="res://items/rarities/common.tres" id="2_rxtdo"]
+[ext_resource type="Script" path="res://items/item.gd" id="3_ipgl5"]
+
+[resource]
+script = ExtResource("3_ipgl5")
+displayName = "Leather Scrap"
+category = "Refined"
+icon = ExtResource("1_37sde")
+rarity = ExtResource("2_rxtdo")
+description = "Made in the recipe book."
+maxStack = 99
+sellPrice = 10

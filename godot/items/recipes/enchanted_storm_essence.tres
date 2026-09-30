@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="BaitRecipe" format=3]
+
+[ext_resource type="Resource" path="res://items/materials/storm_essence.tres" id="1_bu7yi"]
+[ext_resource type="Resource" path="res://items/enchanted/enchanted_storm_essence.tres" id="2_fkm4k"]
+[ext_resource type="Script" path="res://fishing/bait/bait_recipe.gd" id="3_e1fyn"]
+
+[resource]
+script = ExtResource("3_e1fyn")
+output = ExtResource("2_fkm4k")
+amount = 1
+ingredients = Array[Resource]([ExtResource("1_bu7yi")])
+counts = Array[int]([16])
+requiredFlag = "collection/storm_essence/2"
+xp = 12.0
+category = "Materials"

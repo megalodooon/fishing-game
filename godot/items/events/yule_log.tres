@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="Snack" format=3]
+
+[ext_resource type="Texture2D" path="res://items/events/icons/yule_log.png" id="1_qgkw0"]
+[ext_resource type="Resource" path="res://items/rarities/rare.tres" id="2_pu72i"]
+[ext_resource type="Script" path="res://items/snacks/snack.gd" id="3_rt68i"]
+
+[resource]
+script = ExtResource("3_rt68i")
+energy = 50.0
+buffStat = "luck"
+buffAmount = 1.25
+buffHours = 5.0
+displayName = "Yule Log"
+icon = ExtResource("1_qgkw0")
+rarity = ExtResource("2_pu72i")
+description = "Chocolate cake shaped like a log. Keeps you warm and lucky."
+maxStack = 20
+sellPrice = 30

@@ -1,0 +1,389 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://world/island/island.gd" id="i_e1"]
+[ext_resource type="Script" path="res://world/island/island_room.gd" id="i_e2"]
+[ext_resource type="Resource" path="res://oceans/islands/frostpeak_biome.tres" id="i_e3"]
+[ext_resource type="PackedScene" path="res://oceans/basic/basic_ocean.tscn" id="i_e4"]
+[ext_resource type="Texture2D" path="res://world/islands/frostpeak/land/landing.png" id="i_e5"]
+[ext_resource type="Texture2D" path="res://world/islands/props/igloo.png" id="i_e6"]
+[ext_resource type="Script" path="res://world/npc/npc.gd" id="i_e7"]
+[ext_resource type="Script" path="res://world/quests/quest.gd" id="i_e8"]
+[ext_resource type="Resource" path="res://world/quests/story/q_frostpeak.tres" id="i_e9"]
+[ext_resource type="Resource" path="res://world/quests/story/q_ice.tres" id="i_e10"]
+[ext_resource type="Resource" path="res://world/quests/story/q_aurora.tres" id="i_e11"]
+[ext_resource type="Resource" path="res://world/quests/side/y_berries.tres" id="i_e12"]
+[ext_resource type="Resource" path="res://world/quests/side/y_burbot.tres" id="i_e13"]
+[ext_resource type="Resource" path="res://world/quests/side/y_wyrm.tres" id="i_e14"]
+[ext_resource type="Texture2D" path="res://world/npcs/yuki.png" id="i_e15"]
+[ext_resource type="Texture2D" path="res://world/islands/props/snow_pine.png" id="i_e16"]
+[ext_resource type="Script" path="res://world/interact/secret.gd" id="i_e17"]
+[ext_resource type="Texture2D" path="res://world/islands/frostpeak/land/icefield.png" id="i_e18"]
+[ext_resource type="Texture2D" path="res://world/islands/props/ice_hole.png" id="i_e19"]
+[ext_resource type="PackedScene" path="res://fishing/fishing_spots/fishing_spot.tscn" id="i_e20"]
+[ext_resource type="Script" path="res://world/village/building.gd" id="i_e21"]
+[ext_resource type="Texture2D" path="res://world/islands/props/frost_lodge.png" id="i_e22"]
+[ext_resource type="Script" path="res://world/village/shop/shop_offer.gd" id="i_e23"]
+[ext_resource type="Resource" path="res://items/snacks/hot_cocoa.tres" id="i_e24"]
+[ext_resource type="Resource" path="res://fishing/bait/ice_bait.tres" id="i_e25"]
+[ext_resource type="Resource" path="res://world/village/farm/seeds/frostberry_seeds.tres" id="i_e26"]
+[ext_resource type="Resource" path="res://items/snacks/frostberry_tart.tres" id="i_e27"]
+[ext_resource type="Resource" path="res://fishing/tacklebox/tackle/frost_bobber.tres" id="i_e28"]
+[ext_resource type="Script" path="res://world/village/shop/shop.gd" id="i_e29"]
+[ext_resource type="Texture2D" path="res://world/islands/props/pet_stall.png" id="i_e30"]
+[ext_resource type="Script" path="res://world/village/pets/pet_shop.gd" id="i_e31"]
+[ext_resource type="Script" path="res://world/village/pets/pet_data.gd" id="i_e32"]
+[ext_resource type="Resource" path="res://world/village/pets/baby_penguin.tres" id="i_e33"]
+[ext_resource type="Texture2D" path="res://world/islands/props/snowman.png" id="i_e34"]
+[ext_resource type="Texture2D" path="res://world/village/props/sign.png" id="i_e35"]
+
+[sub_resource type="RectangleShape2D" id="i_s1"]
+size = Vector2(22.0, 5.0)
+
+[sub_resource type="RectangleShape2D" id="i_s2"]
+size = Vector2(6.0, 3.0)
+
+[sub_resource type="RectangleShape2D" id="i_s3"]
+size = Vector2(4.0, 3.0)
+
+[sub_resource type="RectangleShape2D" id="i_s4"]
+size = Vector2(30.0, 5.0)
+
+[sub_resource type="Resource" id="i_s5"]
+script = ExtResource("i_e23")
+item = ExtResource("i_e24")
+amount = 1
+price = 18
+
+[sub_resource type="Resource" id="i_s6"]
+script = ExtResource("i_e23")
+item = ExtResource("i_e25")
+amount = 5
+price = 120
+
+[sub_resource type="Resource" id="i_s7"]
+script = ExtResource("i_e23")
+item = ExtResource("i_e26")
+amount = 3
+price = 45
+
+[sub_resource type="Resource" id="i_s8"]
+script = ExtResource("i_e23")
+item = ExtResource("i_e27")
+amount = 1
+price = 140
+dailyStock = 2
+
+[sub_resource type="Resource" id="i_s9"]
+script = ExtResource("i_e23")
+item = ExtResource("i_e28")
+amount = 1
+price = 1800
+dailyStock = 1
+
+[sub_resource type="RectangleShape2D" id="i_s10"]
+size = Vector2(22.0, 5.0)
+
+[sub_resource type="RectangleShape2D" id="i_s11"]
+size = Vector2(6.0, 3.0)
+
+[sub_resource type="RectangleShape2D" id="i_s12"]
+size = Vector2(4.0, 3.0)
+
+[sub_resource type="RectangleShape2D" id="i_s13"]
+size = Vector2(4.0, 3.0)
+
+[sub_resource type="RectangleShape2D" id="i_s14"]
+size = Vector2(4.0, 3.0)
+
+[node name="Frostpeak" type="Node2D"]
+y_sort_enabled = true
+script = ExtResource("i_e1")
+
+[node name="Landing" type="Node2D" parent="." node_paths=PackedStringArray("land")]
+position = Vector2(0.0, 0.0)
+y_sort_enabled = true
+script = ExtResource("i_e2")
+land = [NodePath("Land")]
+
+[node name="Water" parent="Landing" instance=ExtResource("i_e4")]
+biome = ExtResource("i_e3")
+
+[node name="Land" type="Sprite2D" parent="Landing"]
+z_index = -1
+texture = ExtResource("i_e5")
+centered = false
+
+[node name="Igloo" type="Sprite2D" parent="Landing"]
+position = Vector2(119, 40)
+texture = ExtResource("i_e6")
+centered = false
+offset = Vector2(-13.0, -16.0)
+
+[node name="Body" type="StaticBody2D" parent="Landing/Igloo"]
+
+[node name="Shape" type="CollisionShape2D" parent="Landing/Igloo/Body"]
+position = Vector2(0.0, -2.5)
+shape = SubResource("i_s1")
+
+[node name="Npc_Yuki" type="Node2D" parent="Landing" node_paths=PackedStringArray("art")]
+position = Vector2(100, 66)
+script = ExtResource("i_e7")
+id = "yuki"
+greeting = "Brr. You get used to it."
+reach = 12.0
+promptOffset = Vector2(0, -24)
+art = NodePath("Art")
+quests = Array[ExtResource("i_e8")]([ExtResource("i_e9"), ExtResource("i_e10"), ExtResource("i_e11"), ExtResource("i_e12"), ExtResource("i_e13"), ExtResource("i_e14")])
+
+[node name="Art" type="Sprite2D" parent="Landing/Npc_Yuki"]
+texture = ExtResource("i_e15")
+centered = false
+offset = Vector2(-6, -20)
+
+[node name="Body" type="StaticBody2D" parent="Landing/Npc_Yuki"]
+
+[node name="Shape" type="CollisionShape2D" parent="Landing/Npc_Yuki/Body"]
+position = Vector2(0, -1)
+shape = SubResource("i_s2")
+
+[node name="Pine" type="Sprite2D" parent="Landing"]
+position = Vector2(135, 96)
+texture = ExtResource("i_e16")
+centered = false
+offset = Vector2(-6.0, -18.0)
+
+[node name="Body" type="StaticBody2D" parent="Landing/Pine"]
+
+[node name="Shape" type="CollisionShape2D" parent="Landing/Pine/Body"]
+position = Vector2(0.0, -1.5)
+shape = SubResource("i_s3")
+
+[node name="Pearl1" type="Node2D" parent="Landing"]
+position = Vector2(138, 16)
+script = ExtResource("i_e17")
+flag = "pearl_frostpeak_1"
+title = "A lost pearl!"
+message = "Opal on Pearl Lagoon collects these."
+prompt = "Pick up"
+reach = 7.0
+
+[node name="Icefield" type="Node2D" parent="." node_paths=PackedStringArray("land")]
+position = Vector2(192.0, 0.0)
+y_sort_enabled = true
+script = ExtResource("i_e2")
+land = [NodePath("Land")]
+
+[node name="Water" parent="Icefield" instance=ExtResource("i_e4")]
+biome = ExtResource("i_e3")
+
+[node name="Land" type="Sprite2D" parent="Icefield"]
+z_index = -1
+texture = ExtResource("i_e18")
+centered = false
+
+[node name="Hole1" type="Node2D" parent="Icefield"]
+position = Vector2(40.0, 40.0)
+
+[node name="Art" type="Sprite2D" parent="Icefield/Hole1"]
+texture = ExtResource("i_e19")
+centered = false
+offset = Vector2(-8.0, -8.0)
+
+[node name="Pond" parent="Icefield/Hole1" instance=ExtResource("i_e20")]
+z_index = 1
+position = Vector2(0, -4)
+radius = 5.0
+biome = ExtResource("i_e3")
+id = &"ice_hole_1"
+permanent = true
+biteDelayScale = 1.5
+squash = 0.45
+ringInterval = 1.4
+
+[node name="Hole2" type="Node2D" parent="Icefield"]
+position = Vector2(80.0, 86.0)
+
+[node name="Art" type="Sprite2D" parent="Icefield/Hole2"]
+texture = ExtResource("i_e19")
+centered = false
+offset = Vector2(-8.0, -8.0)
+
+[node name="Pond" parent="Icefield/Hole2" instance=ExtResource("i_e20")]
+z_index = 1
+position = Vector2(0, -4)
+radius = 5.0
+biome = ExtResource("i_e3")
+id = &"ice_hole_2"
+permanent = true
+biteDelayScale = 1.5
+squash = 0.45
+ringInterval = 1.4
+
+[node name="Hole3" type="Node2D" parent="Icefield"]
+position = Vector2(140.0, 36.0)
+
+[node name="Art" type="Sprite2D" parent="Icefield/Hole3"]
+texture = ExtResource("i_e19")
+centered = false
+offset = Vector2(-8.0, -8.0)
+
+[node name="Pond" parent="Icefield/Hole3" instance=ExtResource("i_e20")]
+z_index = 1
+position = Vector2(0, -4)
+radius = 5.0
+biome = ExtResource("i_e3")
+id = &"ice_hole_3"
+permanent = true
+biteDelayScale = 1.5
+squash = 0.45
+ringInterval = 1.4
+
+[node name="Lodge" type="Node2D" parent="Icefield"]
+position = Vector2(130.0, 100.0)
+script = ExtResource("i_e21")
+displayName = "Frost Lodge"
+
+[node name="Art" type="Sprite2D" parent="Icefield/Lodge"]
+texture = ExtResource("i_e22")
+centered = false
+offset = Vector2(-18.0, -28.0)
+
+[node name="Body" type="StaticBody2D" parent="Icefield/Lodge"]
+
+[node name="Shape" type="CollisionShape2D" parent="Icefield/Lodge/Body"]
+position = Vector2(0.0, -3.5)
+shape = SubResource("i_s4")
+
+[node name="Door" type="Node2D" parent="Icefield/Lodge"]
+position = Vector2(0, 2)
+script = ExtResource("i_e29")
+offers = Array[ExtResource("i_e23")]([SubResource("i_s5"), SubResource("i_s6"), SubResource("i_s7"), SubResource("i_s8"), SubResource("i_s9")])
+title = "Frost Lodge"
+buyRate = 1.1
+greeting = "Warm drinks, cold bait"
+prompt = "Lodge"
+reach = 12.0
+
+[node name="PenguinStall" type="Node2D" parent="Icefield"]
+position = Vector2(24.0, 96.0)
+script = ExtResource("i_e21")
+displayName = "Penguin Pen"
+
+[node name="Art" type="Sprite2D" parent="Icefield/PenguinStall"]
+texture = ExtResource("i_e30")
+centered = false
+offset = Vector2(-13.0, -22.0)
+
+[node name="Body" type="StaticBody2D" parent="Icefield/PenguinStall"]
+
+[node name="Shape" type="CollisionShape2D" parent="Icefield/PenguinStall/Body"]
+position = Vector2(0.0, -3.5)
+shape = SubResource("i_s10")
+
+[node name="Door" type="Node2D" parent="Icefield/PenguinStall"]
+position = Vector2(0, 2)
+script = ExtResource("i_e31")
+pets = Array[ExtResource("i_e32")]([ExtResource("i_e33")])
+title = "Penguin Pen"
+prompt = "Pets"
+reach = 12.0
+
+[node name="Snowman" type="Sprite2D" parent="Icefield"]
+position = Vector2(100.0, 30.0)
+texture = ExtResource("i_e34")
+centered = false
+offset = Vector2(-5.0, -14.0)
+
+[node name="Body" type="StaticBody2D" parent="Icefield/Snowman"]
+
+[node name="Shape" type="CollisionShape2D" parent="Icefield/Snowman/Body"]
+position = Vector2(0.0, -1.5)
+shape = SubResource("i_s11")
+
+[node name="Pine0" type="Sprite2D" parent="Icefield"]
+position = Vector2(14.0, 16.0)
+texture = ExtResource("i_e16")
+centered = false
+offset = Vector2(-6.0, -18.0)
+
+[node name="Body" type="StaticBody2D" parent="Icefield/Pine0"]
+
+[node name="Shape" type="CollisionShape2D" parent="Icefield/Pine0/Body"]
+position = Vector2(0.0, -1.5)
+shape = SubResource("i_s12")
+
+[node name="Pine1" type="Sprite2D" parent="Icefield"]
+position = Vector2(74.0, 16.0)
+texture = ExtResource("i_e16")
+centered = false
+offset = Vector2(-6.0, -18.0)
+
+[node name="Body" type="StaticBody2D" parent="Icefield/Pine1"]
+
+[node name="Shape" type="CollisionShape2D" parent="Icefield/Pine1/Body"]
+position = Vector2(0.0, -1.5)
+shape = SubResource("i_s13")
+
+[node name="Pine2" type="Sprite2D" parent="Icefield"]
+position = Vector2(134.0, 16.0)
+texture = ExtResource("i_e16")
+centered = false
+offset = Vector2(-6.0, -18.0)
+
+[node name="Body" type="StaticBody2D" parent="Icefield/Pine2"]
+
+[node name="Shape" type="CollisionShape2D" parent="Icefield/Pine2/Body"]
+position = Vector2(0.0, -1.5)
+shape = SubResource("i_s14")
+
+[node name="Pearl2" type="Node2D" parent="Icefield"]
+position = Vector2(60.0, 60.0)
+script = ExtResource("i_e17")
+flag = "pearl_frostpeak_2"
+title = "A lost pearl!"
+message = "Opal on Pearl Lagoon collects these."
+prompt = "Pick up"
+reach = 7.0
+
+[node name="Pearl3" type="Node2D" parent="Icefield"]
+position = Vector2(160.0, 70.0)
+script = ExtResource("i_e17")
+flag = "pearl_frostpeak_3"
+title = "A lost pearl!"
+message = "Opal on Pearl Lagoon collects these."
+prompt = "Pick up"
+reach = 7.0
+
+[node name="Pearl4" type="Node2D" parent="Icefield"]
+position = Vector2(8.0, 50.0)
+script = ExtResource("i_e17")
+flag = "pearl_frostpeak_4"
+title = "A lost pearl!"
+message = "Opal on Pearl Lagoon collects these."
+prompt = "Pick up"
+reach = 7.0
+
+[node name="Pearl5" type="Node2D" parent="Icefield"]
+position = Vector2(110.0, 12.0)
+script = ExtResource("i_e17")
+flag = "pearl_frostpeak_5"
+title = "A lost pearl!"
+message = "Opal on Pearl Lagoon collects these."
+prompt = "Pick up"
+reach = 7.0
+
+[node name="IceSign" type="Node2D" parent="Icefield"]
+position = Vector2(60.0, 20.0)
+script = ExtResource("i_e17")
+flag = "icesign"
+title = "Yuki's rules"
+message = "\"Ice holes are ponds: cast right in. The Aurora Sturgeon only comes on clear nights, for ice bait.\""
+repeatable = true
+concealed = false
+prompt = "Read"
+reach = 10.0
+
+[node name="Art" type="Sprite2D" parent="Icefield/IceSign"]
+texture = ExtResource("i_e35")
+centered = false
+offset = Vector2(-5, -12)

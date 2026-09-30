@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="Tackle" format=3]
+
+[ext_resource type="Script" path="res://fishing/tacklebox/tackle.gd" id="1_script"]
+[ext_resource type="Texture2D" path="res://fishing/tacklebox/icons/hook.png" id="2_icon"]
+[ext_resource type="Resource" path="res://items/rarities/legendary.tres" id="3_rarity"]
+
+[resource]
+script = ExtResource("1_script")
+kind = 2
+discardable = false
+tint = Color(0.55, 0.4, 0.8, 1)
+control = 0.3
+hookWindowBonus = 0.3
+displayName = "Obsidian Hook"
+icon = ExtResource("2_icon")
+rarity = ExtResource("3_rarity")
+description = "Razor sharp volcanic glass. Nothing slips off."

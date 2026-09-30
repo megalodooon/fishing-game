@@ -1,0 +1,449 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://world/island/island.gd" id="1_island"]
+[ext_resource type="Script" path="res://world/island/island_room.gd" id="2_room"]
+[ext_resource type="PackedScene" uid="uid://dw4byakruepaa" path="res://oceans/basic/basic_ocean.tscn" id="3_ocean"]
+[ext_resource type="Resource" path="res://oceans/islands/driftwood_biome.tres" id="4_biome"]
+[ext_resource type="Texture2D" path="res://world/islands/driftwood_cay/land/landing.png" id="5_landing"]
+[ext_resource type="Texture2D" path="res://world/islands/driftwood_cay/land/lagoon.png" id="6_lagoon"]
+[ext_resource type="Texture2D" path="res://world/islands/props/hermit_hut.png" id="7_hut"]
+[ext_resource type="Texture2D" path="res://world/islands/props/merchant_cart.png" id="8_cart"]
+[ext_resource type="Texture2D" path="res://world/islands/props/pet_stall.png" id="9_stall"]
+[ext_resource type="Texture2D" path="res://world/islands/props/tide_pool.png" id="10_pool"]
+[ext_resource type="Texture2D" path="res://world/islands/props/palm.png" id="11_palm"]
+[ext_resource type="Texture2D" path="res://world/islands/props/pine.png" id="12_pine"]
+[ext_resource type="Texture2D" path="res://world/village/props/sign.png" id="13_sign"]
+[ext_resource type="Texture2D" path="res://world/village/props/chest.png" id="14_chest"]
+[ext_resource type="Script" path="res://world/village/building.gd" id="15_building"]
+[ext_resource type="Script" path="res://world/village/shop/shop.gd" id="16_shop"]
+[ext_resource type="Script" path="res://world/village/shop/shop_offer.gd" id="17_offer"]
+[ext_resource type="Script" path="res://world/quests/quest_board.gd" id="18_board"]
+[ext_resource type="Script" path="res://world/quests/quest.gd" id="19_quest"]
+[ext_resource type="Script" path="res://world/village/pets/pet_shop.gd" id="20_pet_shop"]
+[ext_resource type="Script" path="res://world/village/pets/pet_data.gd" id="21_pet_script"]
+[ext_resource type="Script" path="res://world/interact/secret.gd" id="22_secret"]
+[ext_resource type="PackedScene" path="res://fishing/fishing_spots/fishing_spot.tscn" id="23_spot"]
+[ext_resource type="Resource" path="res://world/village/pets/hermit_crab.tres" id="27_crab"]
+[ext_resource type="Texture2D" path="res://world/portraits/hermit.png" id="28_hermit"]
+[ext_resource type="Texture2D" path="res://world/portraits/merchant.png" id="29_merchant"]
+[ext_resource type="Resource" path="res://fishing/bait/shrimp_bait.tres" id="30_shrimp"]
+[ext_resource type="Resource" path="res://fishing/bait/storm_lure.tres" id="31_storm"]
+[ext_resource type="Resource" path="res://world/village/farm/seeds/sea_grape_cuttings.tres" id="32_grape_seeds"]
+[ext_resource type="Resource" path="res://world/village/farm/seeds/chili_seeds.tres" id="33_chili_seeds"]
+[ext_resource type="Resource" path="res://fishing/tacklebox/tackle/coral_bobber.tres" id="34_coral"]
+[ext_resource type="Resource" path="res://fishing/rods/bamboo_rod.tres" id="35_bamboo"]
+[ext_resource type="Resource" path="res://items/snacks/island_coffee.tres" id="36_coffee"]
+[ext_resource type="Resource" path="res://fishing/tacklebox/tackle/storm_bobber.tres" id="37_storm_bobber"]
+[ext_resource type="Resource" path="res://items/snacks/lucky_sushi.tres" id="38_sushi"]
+[ext_resource type="Resource" path="res://fishing/bait/squid_bait.tres" id="39_squid"]
+[ext_resource type="Resource" path="res://fishing/bait/glow_bait.tres" id="40_glow"]
+[ext_resource type="Resource" path="res://items/snacks/grilled_fish.tres" id="41_grilled"]
+
+[ext_resource type="Script" path="res://world/npc/npc.gd" id="d_e1"]
+[ext_resource type="Script" path="res://world/quests/quest.gd" id="d_e2"]
+[ext_resource type="Resource" path="res://world/quests/story/q_hermit.tres" id="d_e3"]
+[ext_resource type="Resource" path="res://world/quests/story/q_weather.tres" id="d_e4"]
+[ext_resource type="Resource" path="res://world/quests/story/q_pots.tres" id="d_e5"]
+[ext_resource type="Resource" path="res://world/quests/story/q_four_tides.tres" id="d_e6"]
+[ext_resource type="Resource" path="res://world/quests/story/q_truth.tres" id="d_e7"]
+[ext_resource type="Resource" path="res://world/quests/story/q_shrine.tres" id="d_e8"]
+[ext_resource type="Resource" path="res://world/quests/story/q_moonscale.tres" id="d_e9"]
+[ext_resource type="Resource" path="res://world/quests/story/q_seal.tres" id="d_e10"]
+[ext_resource type="Resource" path="res://world/quests/side/s_rain.tres" id="d_e11"]
+[ext_resource type="Resource" path="res://world/quests/side/s_herring.tres" id="d_e12"]
+[ext_resource type="Resource" path="res://world/quests/side/s_grapes.tres" id="d_e13"]
+[ext_resource type="Resource" path="res://world/quests/side/s_ray.tres" id="d_e14"]
+[ext_resource type="Texture2D" path="res://world/npcs/silas.png" id="d_e15"]
+[ext_resource type="Resource" path="res://world/quests/story/q_expanse.tres" id="d_e16"]
+[ext_resource type="Resource" path="res://world/quests/story/q_leviathan.tres" id="d_e17"]
+[ext_resource type="Texture2D" path="res://world/npcs/finn.png" id="d_e18"]
+[ext_resource type="Script" path="res://world/interact/secret.gd" id="d_e19"]
+[ext_resource type="Script" path="res://world/traps/trap_spot.gd" id="d_e20"]
+[ext_resource type="Resource" path="res://oceans/islands/driftwood_biome.tres" id="d_e21"]
+[ext_resource type="Script" path="res://items/item.gd" id="d_e22"]
+[ext_resource type="Resource" path="res://items/materials/driftwood_plank.tres" id="d_e23"]
+[ext_resource type="Resource" path="res://items/materials/crab_shell.tres" id="d_e24"]
+[ext_resource type="Resource" path="res://items/key/logbook_page_9.tres" id="d_e25"]
+[sub_resource type="RectangleShape2D" id="Rect_hut"]
+size = Vector2(26, 6)
+
+[sub_resource type="RectangleShape2D" id="Rect_cart"]
+size = Vector2(20, 5)
+
+[sub_resource type="RectangleShape2D" id="Rect_stall"]
+size = Vector2(22, 5)
+
+[sub_resource type="RectangleShape2D" id="Rect_pool"]
+size = Vector2(20, 6)
+
+[sub_resource type="RectangleShape2D" id="Rect_trunk"]
+size = Vector2(4, 3)
+
+[sub_resource type="Resource" id="Offer_h1"]
+script = ExtResource("17_offer")
+item = ExtResource("30_shrimp")
+amount = 5
+price = 40
+
+[sub_resource type="Resource" id="Offer_h2"]
+script = ExtResource("17_offer")
+item = ExtResource("31_storm")
+amount = 3
+price = 120
+
+[sub_resource type="Resource" id="Offer_h3"]
+script = ExtResource("17_offer")
+item = ExtResource("32_grape_seeds")
+amount = 3
+price = 15
+
+[sub_resource type="Resource" id="Offer_h4"]
+script = ExtResource("17_offer")
+item = ExtResource("33_chili_seeds")
+amount = 3
+price = 24
+
+[sub_resource type="Resource" id="Offer_h5"]
+script = ExtResource("17_offer")
+item = ExtResource("34_coral")
+price = 350
+
+[sub_resource type="Resource" id="Offer_h6"]
+script = ExtResource("17_offer")
+item = ExtResource("35_bamboo")
+price = 300
+
+[sub_resource type="Resource" id="Offer_h7"]
+script = ExtResource("17_offer")
+item = ExtResource("41_grilled")
+price = 25
+
+[sub_resource type="Resource" id="Offer_w1"]
+script = ExtResource("17_offer")
+item = ExtResource("36_coffee")
+price = 40
+
+[sub_resource type="Resource" id="Offer_w2"]
+script = ExtResource("17_offer")
+item = ExtResource("37_storm_bobber")
+price = 900
+dailyStock = 1
+
+[sub_resource type="Resource" id="Offer_w3"]
+script = ExtResource("17_offer")
+item = ExtResource("38_sushi")
+price = 90
+dailyStock = 2
+
+[sub_resource type="Resource" id="Offer_w4"]
+script = ExtResource("17_offer")
+item = ExtResource("39_squid")
+amount = 4
+price = 150
+
+[sub_resource type="Resource" id="Offer_w5"]
+script = ExtResource("17_offer")
+item = ExtResource("40_glow")
+amount = 3
+price = 90
+
+[sub_resource type="RectangleShape2D" id="d_s1"]
+size = Vector2(6.0, 3.0)
+
+[sub_resource type="RectangleShape2D" id="d_s2"]
+size = Vector2(6.0, 3.0)
+
+[node name="DriftwoodCay" type="Node2D"]
+y_sort_enabled = true
+script = ExtResource("1_island")
+
+[node name="Landing" type="Node2D" parent="." node_paths=PackedStringArray("land")]
+y_sort_enabled = true
+script = ExtResource("2_room")
+land = [NodePath("Land")]
+
+[node name="Water" parent="Landing" instance=ExtResource("3_ocean")]
+biome = ExtResource("4_biome")
+
+[node name="Land" type="Sprite2D" parent="Landing"]
+z_index = -1
+texture = ExtResource("5_landing")
+centered = false
+
+[node name="HermitHut" type="Node2D" parent="Landing"]
+position = Vector2(116, 34)
+script = ExtResource("15_building")
+displayName = "Hermit's Hut"
+
+[node name="Art" type="Sprite2D" parent="Landing/HermitHut"]
+texture = ExtResource("7_hut")
+centered = false
+offset = Vector2(-15, -24)
+
+[node name="Body" type="StaticBody2D" parent="Landing/HermitHut"]
+
+[node name="Shape" type="CollisionShape2D" parent="Landing/HermitHut/Body"]
+position = Vector2(0, -3)
+shape = SubResource("Rect_hut")
+
+[node name="Door" type="Node2D" parent="Landing/HermitHut"]
+position = Vector2(0, 2)
+script = ExtResource("16_shop")
+offers = Array[ExtResource("17_offer")]([SubResource("Offer_h1"), SubResource("Offer_h2"), SubResource("Offer_h3"), SubResource("Offer_h4"), SubResource("Offer_h5"), SubResource("Offer_h6"), SubResource("Offer_h7")])
+buyRate = 0.8
+greeting = "Bait, seeds and odds and ends. Buys fish cheap."
+title = "Hermit's Bait Hut"
+portrait = ExtResource("28_hermit")
+prompt = "Bait Hut"
+reach = 12.0
+
+[node name="Merchant" type="Node2D" parent="Landing"]
+position = Vector2(119, 88)
+script = ExtResource("15_building")
+displayName = "Wandering Merchant"
+visitChance = 0.4
+
+[node name="Art" type="Sprite2D" parent="Landing/Merchant"]
+texture = ExtResource("8_cart")
+centered = false
+offset = Vector2(-12, -20)
+
+[node name="Body" type="StaticBody2D" parent="Landing/Merchant"]
+
+[node name="Shape" type="CollisionShape2D" parent="Landing/Merchant/Body"]
+position = Vector2(0, -3)
+shape = SubResource("Rect_cart")
+
+[node name="Cart" type="Node2D" parent="Landing/Merchant"]
+position = Vector2(0, 2)
+script = ExtResource("16_shop")
+offers = Array[ExtResource("17_offer")]([SubResource("Offer_w1"), SubResource("Offer_w2"), SubResource("Offer_w3"), SubResource("Offer_w4"), SubResource("Offer_w5")])
+buyRate = 1.2
+buysGoods = false
+greeting = "Pays 120% for fish! Only here some days."
+title = "Wandering Merchant"
+portrait = ExtResource("29_merchant")
+prompt = "Merchant"
+reach = 12.0
+promptOffset = Vector2(0, -22)
+
+[node name="Lagoon" type="Node2D" parent="." node_paths=PackedStringArray("land")]
+position = Vector2(192, 0)
+y_sort_enabled = true
+script = ExtResource("2_room")
+land = [NodePath("Land")]
+
+[node name="Water" parent="Lagoon" instance=ExtResource("3_ocean")]
+biome = ExtResource("4_biome")
+
+[node name="Land" type="Sprite2D" parent="Lagoon"]
+z_index = -1
+texture = ExtResource("6_lagoon")
+centered = false
+
+[node name="Pool" type="Node2D" parent="Lagoon"]
+position = Vector2(100, 60)
+
+[node name="Art" type="Sprite2D" parent="Lagoon/Pool"]
+texture = ExtResource("10_pool")
+centered = false
+offset = Vector2(-12, -14)
+
+[node name="Body" type="StaticBody2D" parent="Lagoon/Pool"]
+
+[node name="Shape" type="CollisionShape2D" parent="Lagoon/Pool/Body"]
+position = Vector2(0, -6)
+shape = SubResource("Rect_pool")
+
+[node name="Pond" parent="Lagoon/Pool" instance=ExtResource("23_spot")]
+z_index = 1
+position = Vector2(0, -7)
+radius = 7.0
+biome = ExtResource("4_biome")
+id = &"lagoon"
+permanent = true
+biteDelayScale = 1.5
+squash = 0.45
+ringInterval = 1.4
+ringColor = Color(0.8, 1, 0.95, 0.7)
+
+[node name="PetStall" type="Node2D" parent="Lagoon"]
+position = Vector2(132, 90)
+script = ExtResource("15_building")
+displayName = "Crab Corner"
+
+[node name="Art" type="Sprite2D" parent="Lagoon/PetStall"]
+texture = ExtResource("9_stall")
+centered = false
+offset = Vector2(-13, -22)
+
+[node name="Body" type="StaticBody2D" parent="Lagoon/PetStall"]
+
+[node name="Shape" type="CollisionShape2D" parent="Lagoon/PetStall/Body"]
+position = Vector2(0, -3)
+shape = SubResource("Rect_stall")
+
+[node name="Door" type="Node2D" parent="Lagoon/PetStall"]
+position = Vector2(0, 2)
+script = ExtResource("20_pet_shop")
+pets = Array[ExtResource("21_pet_script")]([ExtResource("27_crab")])
+title = "Crab Corner"
+prompt = "Pets"
+reach = 12.0
+
+[node name="Diary" type="Node2D" parent="Lagoon"]
+position = Vector2(72, 28)
+script = ExtResource("22_secret")
+flag = "driftwood_diary"
+title = "Hermit's diary"
+message = "\"The Mistral Ray glides into the lagoon only under fog, and only rises to a perfect cast.\""
+repeatable = true
+concealed = false
+prompt = "Read"
+reach = 10.0
+
+[node name="Art" type="Sprite2D" parent="Lagoon/Diary"]
+texture = ExtResource("13_sign")
+centered = false
+offset = Vector2(-5, -12)
+
+[node name="OldChart" type="Node2D" parent="Lagoon"]
+position = Vector2(22, 18)
+script = ExtResource("22_secret")
+flag = "old_chart"
+title = "An old sea chart!"
+message = "Water-stained, but it marks a trench far to the east. Unlock the Abyssal Trench on your sea chart."
+prompt = "Dig"
+reach = 8.0
+
+[node name="Bottle" type="Node2D" parent="Lagoon"]
+position = Vector2(142, 40)
+script = ExtResource("22_secret")
+flag = "driftwood_bottle"
+title = "Message in a bottle"
+message = "\"If found, keep the coins. Buy yourself some squid bait.\""
+coins = 120
+prompt = "Pick up"
+reach = 8.0
+
+[node name="Pine" type="Sprite2D" parent="Lagoon"]
+position = Vector2(20, 60)
+texture = ExtResource("12_pine")
+centered = false
+offset = Vector2(-6, -18)
+
+[node name="Body" type="StaticBody2D" parent="Lagoon/Pine"]
+
+[node name="Shape" type="CollisionShape2D" parent="Lagoon/Pine/Body"]
+position = Vector2(0, -1.5)
+shape = SubResource("Rect_trunk")
+
+[node name="Palm" type="Sprite2D" parent="Lagoon"]
+position = Vector2(150, 70)
+texture = ExtResource("11_palm")
+centered = false
+offset = Vector2(-10, -28)
+
+[node name="Body" type="StaticBody2D" parent="Lagoon/Palm"]
+
+[node name="Shape" type="CollisionShape2D" parent="Lagoon/Palm/Body"]
+position = Vector2(0, -1.5)
+shape = SubResource("Rect_trunk")
+
+[node name="Npc_Silas" type="Node2D" parent="Lagoon" node_paths=PackedStringArray("art")]
+position = Vector2(44.0, 72.0)
+script = ExtResource("d_e1")
+id = "silas"
+greeting = "Mm. Sit a while."
+reach = 12.0
+promptOffset = Vector2(0, -24)
+art = NodePath("Art")
+quests = Array[ExtResource("d_e2")]([ExtResource("d_e3"), ExtResource("d_e4"), ExtResource("d_e5"), ExtResource("d_e6"), ExtResource("d_e7"), ExtResource("d_e8"), ExtResource("d_e9"), ExtResource("d_e10"), ExtResource("d_e11"), ExtResource("d_e12"), ExtResource("d_e13"), ExtResource("d_e14")])
+leaveFlag = "quest/q_seal"
+
+[node name="Art" type="Sprite2D" parent="Lagoon/Npc_Silas"]
+texture = ExtResource("d_e15")
+centered = false
+offset = Vector2(-6, -20)
+
+[node name="Body" type="StaticBody2D" parent="Lagoon/Npc_Silas"]
+
+[node name="Shape" type="CollisionShape2D" parent="Lagoon/Npc_Silas/Body"]
+position = Vector2(0, -1)
+shape = SubResource("d_s1")
+
+[node name="Npc_Finn" type="Node2D" parent="Lagoon" node_paths=PackedStringArray("art")]
+position = Vector2(44.0, 72.0)
+script = ExtResource("d_e1")
+id = "finn"
+greeting = "Kid! Look at you."
+reach = 12.0
+promptOffset = Vector2(0, -24)
+art = NodePath("Art")
+quests = Array[ExtResource("d_e2")]([ExtResource("d_e16"), ExtResource("d_e17")])
+appearFlag = "quest/q_seal"
+
+[node name="Art" type="Sprite2D" parent="Lagoon/Npc_Finn"]
+texture = ExtResource("d_e18")
+centered = false
+offset = Vector2(-6, -20)
+
+[node name="Body" type="StaticBody2D" parent="Lagoon/Npc_Finn"]
+
+[node name="Shape" type="CollisionShape2D" parent="Lagoon/Npc_Finn/Body"]
+position = Vector2(0, -1)
+shape = SubResource("d_s2")
+
+[node name="Pearl1" type="Node2D" parent="Landing"]
+position = Vector2(138, 12)
+script = ExtResource("d_e19")
+flag = "pearl_driftwood_cay_1"
+title = "A lost pearl!"
+message = "Opal on Pearl Lagoon collects these."
+prompt = "Pick up"
+reach = 7.0
+
+[node name="Pearl2" type="Node2D" parent="Lagoon"]
+position = Vector2(130.0, 100.0)
+script = ExtResource("d_e19")
+flag = "pearl_driftwood_cay_2"
+title = "A lost pearl!"
+message = "Opal on Pearl Lagoon collects these."
+prompt = "Pick up"
+reach = 7.0
+
+[node name="Pearl3" type="Node2D" parent="Lagoon"]
+position = Vector2(8.0, 40.0)
+script = ExtResource("d_e19")
+flag = "pearl_driftwood_cay_3"
+title = "A lost pearl!"
+message = "Opal on Pearl Lagoon collects these."
+prompt = "Pick up"
+reach = 7.0
+
+[node name="Pearl4" type="Node2D" parent="Lagoon"]
+position = Vector2(96.0, 16.0)
+script = ExtResource("d_e19")
+flag = "pearl_driftwood_cay_4"
+title = "A lost pearl!"
+message = "Opal on Pearl Lagoon collects these."
+prompt = "Pick up"
+reach = 7.0
+
+[node name="Trap" type="Node2D" parent="Landing"]
+position = Vector2(108, 20)
+script = ExtResource("d_e20")
+biome = ExtResource("d_e21")
+reach = 9.0
+promptOffset = Vector2(0, -8)
+extras = Array[ExtResource("d_e22")]([ExtResource("d_e23"), ExtResource("d_e24")])
+
+[node name="Page9" type="Node2D" parent="Lagoon"]
+position = Vector2(12.0, 12.0)
+script = ExtResource("d_e19")
+flag = "logbook_9"
+title = "A logbook page!"
+message = "Wedged in the hut's floorboards."
+items = Array[ExtResource("d_e22")]([ExtResource("d_e25")])
+prompt = "Search"
+reach = 8.0

@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="Biome" format=3]
+
+[ext_resource type="Script" path="res://fishing/creatures/sea_creature.gd" id="1_p1grj"]
+[ext_resource type="Resource" path="res://items/materials/deep_coral.tres" id="9_ekkoc"]
+[ext_resource type="Resource" path="res://items/materials/starfish.tres" id="10_gqxkq"]
+[ext_resource type="Resource" path="res://items/materials/sea_salt.tres" id="11_17ax8"]
+[ext_resource type="Resource" path="res://items/materials/palm_frond.tres" id="12_3e3ev"]
+[ext_resource type="Script" path="res://oceans/biome.gd" id="e1"]
+[ext_resource type="Script" path="res://fishing/fish/fish_data.gd" id="e2"]
+[ext_resource type="Resource" path="res://fishing/fish/species/champion/champion_goby.tres" id="e3"]
+[ext_resource type="Resource" path="res://fishing/fish/species/champion/victory_snapper.tres" id="e4"]
+[ext_resource type="Resource" path="res://fishing/fish/species/champion/golden_trevally.tres" id="e5"]
+[ext_resource type="Resource" path="res://fishing/fish/species/champion/crown_fish.tres" id="e6"]
+[ext_resource type="Resource" path="res://fishing/fish/species/expanse/skipjack.tres" id="e7"]
+[ext_resource type="Resource" path="res://items/materials/sea_shell.tres" id="e8"]
+[ext_resource type="Script" path="res://items/item.gd" id="e9"]
+
+[resource]
+script = ExtResource("e1")
+displayName = "Champion Atoll"
+description = "Warm shallows around the championship arena."
+region = "The Deep"
+fish = Array[ExtResource("e2")]([ExtResource("e3"), ExtResource("e4"), ExtResource("e5"), ExtResource("e6"), ExtResource("e7")])
+tier = 4
+junkChance = 0.03
+junk = Array[ExtResource("e9")]([ExtResource("e8")])
+forage = Array[ExtResource("e9")]([ExtResource("9_ekkoc"), ExtResource("10_gqxkq"), ExtResource("11_17ax8"), ExtResource("12_3e3ev")])

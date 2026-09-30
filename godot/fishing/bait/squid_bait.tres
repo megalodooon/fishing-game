@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="Bait" format=3]
+
+[ext_resource type="Script" path="res://fishing/bait/bait.gd" id="1_script"]
+[ext_resource type="Texture2D" path="res://fishing/bait/icons/squid_bait.png" id="2_icon"]
+[ext_resource type="Resource" path="res://items/rarities/uncommon.tres" id="3_rarity"]
+[ext_resource type="Script" path="res://items/rarity.gd" id="4_rs"]
+[ext_resource type="Script" path="res://fishing/fish/fish_data.gd" id="5_fs"]
+[ext_resource type="Resource" path="res://items/rarities/rare.tres" id="r_rare"]
+[ext_resource type="Resource" path="res://items/rarities/legendary.tres" id="r_legendary"]
+
+[resource]
+script = ExtResource("1_script")
+rarityBoost = Dictionary[ExtResource("4_rs"), float]({
+ExtResource("r_rare"): 1.6,
+ExtResource("r_legendary"): 1.4
+})
+fishBoost = Dictionary[ExtResource("5_fs"), float]({
+
+})
+kind = 4
+discardable = false
+displayName = "Squid Bait"
+icon = ExtResource("2_icon")
+rarity = ExtResource("3_rarity")
+description = "Big fish want big bait. The Leviathan is said to love it."
+buyPrice = 35

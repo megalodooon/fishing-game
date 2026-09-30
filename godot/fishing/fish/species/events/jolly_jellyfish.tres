@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="FishData" format=3]
+
+[ext_resource type="Texture2D" path="res://fishing/fish/assets/events/jolly_jellyfish.png" id="1_hae02"]
+[ext_resource type="Resource" path="res://items/rarities/rare.tres" id="2_h5vmf"]
+[ext_resource type="Script" path="res://fishing/fish/requirements/fish_requirement.gd" id="3_tcwx5"]
+[ext_resource type="Script" path="res://fishing/fish/fish_data.gd" id="4_j6x5k"]
+
+[resource]
+script = ExtResource("4_j6x5k")
+displayName = "Jolly Jellyfish"
+icon = ExtResource("1_hae02")
+rarity = ExtResource("2_h5vmf")
+description = "Blinks red and green. Surprisingly cheerful for a jellyfish."
+weightRange = Vector2(0.5, 4)
+basePrice = 170
+heldSize = 0.6799999999999999

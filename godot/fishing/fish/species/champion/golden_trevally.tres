@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="FishData" format=3]
+
+[ext_resource type="Script" path="res://fishing/fish/fish_data.gd" id="e1"]
+[ext_resource type="Texture2D" path="res://fishing/fish/assets/champion/golden_trevally.png" id="e2"]
+[ext_resource type="Resource" path="res://items/rarities/rare.tres" id="e3"]
+
+[resource]
+script = ExtResource("e1")
+displayName = "Golden Trevally"
+icon = ExtResource("e2")
+rarity = ExtResource("e3")
+description = "Shines like the championship trophy."
+weightRange = Vector2(3.0, 15.0)
+basePrice = 340
+heldSize = 1.2
+hours = Vector2(0.0, 24.0)

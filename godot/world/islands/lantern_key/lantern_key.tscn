@@ -1,0 +1,247 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://world/island/island.gd" id="1_island"]
+[ext_resource type="Script" path="res://world/island/island_room.gd" id="2_room"]
+[ext_resource type="PackedScene" uid="uid://dw4byakruepaa" path="res://oceans/basic/basic_ocean.tscn" id="3_ocean"]
+[ext_resource type="Resource" path="res://oceans/islands/lantern_key_biome.tres" id="4_biome"]
+[ext_resource type="Texture2D" path="res://world/islands/lantern_key/land/landing.png" id="5_landing"]
+[ext_resource type="Texture2D" path="res://world/islands/lantern_key/land/lighthouse.png" id="6_lighthouse_land"]
+[ext_resource type="Texture2D" path="res://world/islands/props/palm.png" id="7_palm"]
+[ext_resource type="Texture2D" path="res://world/islands/props/rock.png" id="8_rock"]
+[ext_resource type="Texture2D" path="res://world/islands/props/lighthouse.png" id="9_lighthouse"]
+[ext_resource type="Script" path="res://world/interact/secret.gd" id="10_secret"]
+[ext_resource type="Resource" path="res://items/materials/glow_worm.tres" id="11_glow_worm"]
+[ext_resource type="Script" path="res://items/item.gd" id="12_item_script"]
+[ext_resource type="Texture2D" path="res://world/village/props/chest.png" id="13_chest"]
+
+[ext_resource type="Script" path="res://world/npc/npc.gd" id="l_e1"]
+[ext_resource type="Script" path="res://world/quests/quest.gd" id="l_e2"]
+[ext_resource type="Resource" path="res://world/quests/story/q_storm_warning.tres" id="l_e3"]
+[ext_resource type="Resource" path="res://world/quests/story/q_stormwatch.tres" id="l_e4"]
+[ext_resource type="Resource" path="res://world/quests/story/q_station.tres" id="l_e5"]
+[ext_resource type="Resource" path="res://world/quests/story/q_tempest.tres" id="l_e6"]
+[ext_resource type="Resource" path="res://world/quests/side/l_hake.tres" id="l_e7"]
+[ext_resource type="Resource" path="res://world/quests/side/l_eel.tres" id="l_e8"]
+[ext_resource type="Resource" path="res://world/quests/side/p_lighthouse.tres" id="l_e9"]
+[ext_resource type="Texture2D" path="res://world/npcs/luma.png" id="l_e10"]
+[ext_resource type="Script" path="res://world/interact/secret.gd" id="l_e11"]
+[ext_resource type="Script" path="res://world/traps/trap_spot.gd" id="l_e12"]
+[ext_resource type="Resource" path="res://oceans/islands/lantern_key_biome.tres" id="l_e13"]
+[ext_resource type="Script" path="res://items/item.gd" id="l_e14"]
+[ext_resource type="Resource" path="res://items/materials/crab_shell.tres" id="l_e15"]
+[ext_resource type="Resource" path="res://items/materials/glowcap.tres" id="l_e16"]
+[sub_resource type="RectangleShape2D" id="Rect_trunk"]
+size = Vector2(4, 3)
+
+[sub_resource type="RectangleShape2D" id="Rect_rock"]
+size = Vector2(10, 4)
+
+[sub_resource type="RectangleShape2D" id="Rect_tower"]
+size = Vector2(16, 6)
+
+[sub_resource type="RectangleShape2D" id="l_s1"]
+size = Vector2(6.0, 3.0)
+
+[node name="LanternKey" type="Node2D"]
+y_sort_enabled = true
+script = ExtResource("1_island")
+
+[node name="Landing" type="Node2D" parent="." node_paths=PackedStringArray("land")]
+y_sort_enabled = true
+script = ExtResource("2_room")
+land = [NodePath("Land")]
+
+[node name="Water" parent="Landing" instance=ExtResource("3_ocean")]
+biome = ExtResource("4_biome")
+
+[node name="Land" type="Sprite2D" parent="Landing"]
+z_index = -1
+texture = ExtResource("5_landing")
+centered = false
+
+[node name="Palm" type="Sprite2D" parent="Landing"]
+position = Vector2(127, 36)
+texture = ExtResource("7_palm")
+centered = false
+offset = Vector2(-10, -28)
+
+[node name="Body" type="StaticBody2D" parent="Landing/Palm"]
+
+[node name="Shape" type="CollisionShape2D" parent="Landing/Palm/Body"]
+position = Vector2(0, -1.5)
+shape = SubResource("Rect_trunk")
+
+[node name="Palm2" type="Sprite2D" parent="Landing"]
+position = Vector2(138, 84)
+texture = ExtResource("7_palm")
+centered = false
+offset = Vector2(-10, -28)
+flip_h = true
+
+[node name="Body" type="StaticBody2D" parent="Landing/Palm2"]
+
+[node name="Shape" type="CollisionShape2D" parent="Landing/Palm2/Body"]
+position = Vector2(0, -1.5)
+shape = SubResource("Rect_trunk")
+
+[node name="Rock" type="Sprite2D" parent="Landing"]
+position = Vector2(97, 80)
+texture = ExtResource("8_rock")
+centered = false
+offset = Vector2(-6, -9)
+
+[node name="Body" type="StaticBody2D" parent="Landing/Rock"]
+
+[node name="Shape" type="CollisionShape2D" parent="Landing/Rock/Body"]
+position = Vector2(0, -2)
+shape = SubResource("Rect_rock")
+
+[node name="Coin" type="Node2D" parent="Landing"]
+position = Vector2(108, 24)
+script = ExtResource("10_secret")
+flag = "lantern_key_coin"
+title = "Something shiny"
+message = "An old coin washed up on the beach."
+coins = 20
+prompt = "Dig"
+reach = 8.0
+
+[node name="Lighthouse" type="Node2D" parent="." node_paths=PackedStringArray("land")]
+position = Vector2(192, 0)
+y_sort_enabled = true
+script = ExtResource("2_room")
+land = [NodePath("Land")]
+
+[node name="Water" parent="Lighthouse" instance=ExtResource("3_ocean")]
+biome = ExtResource("4_biome")
+
+[node name="Land" type="Sprite2D" parent="Lighthouse"]
+z_index = -1
+texture = ExtResource("6_lighthouse_land")
+centered = false
+
+[node name="Tower" type="Sprite2D" parent="Lighthouse"]
+position = Vector2(96, 58)
+texture = ExtResource("9_lighthouse")
+centered = false
+offset = Vector2(-10, -42)
+
+[node name="Body" type="StaticBody2D" parent="Lighthouse/Tower"]
+
+[node name="Shape" type="CollisionShape2D" parent="Lighthouse/Tower/Body"]
+position = Vector2(0, -3)
+shape = SubResource("Rect_tower")
+
+[node name="Log" type="Node2D" parent="Lighthouse"]
+position = Vector2(96, 60)
+script = ExtResource("10_secret")
+flag = "lantern_key_log"
+title = "Keeper's log"
+message = "\"Past midnight and before two, the lantern eel follows glowing bait up from the deep. It only takes a perfect cast.\" Glow bait: one glowcap and one glow worm."
+repeatable = true
+concealed = false
+prompt = "Read"
+reach = 10.0
+promptOffset = Vector2(0, -20)
+
+[node name="Stash" type="Node2D" parent="Lighthouse"]
+position = Vector2(118, 36)
+script = ExtResource("10_secret")
+flag = "lantern_key_stash"
+title = "The keeper's stash"
+message = "Glow worms in a jar. The bait crafter can use these."
+items = Array[ExtResource("12_item_script")]([ExtResource("11_glow_worm")])
+amounts = Array[int]([3])
+coins = 40
+prompt = "Search"
+reach = 8.0
+
+[node name="Palm" type="Sprite2D" parent="Lighthouse"]
+position = Vector2(30, 74)
+texture = ExtResource("7_palm")
+centered = false
+offset = Vector2(-10, -28)
+
+[node name="Body" type="StaticBody2D" parent="Lighthouse/Palm"]
+
+[node name="Shape" type="CollisionShape2D" parent="Lighthouse/Palm/Body"]
+position = Vector2(0, -1.5)
+shape = SubResource("Rect_trunk")
+
+[node name="Palm2" type="Sprite2D" parent="Lighthouse"]
+position = Vector2(58, 30)
+texture = ExtResource("7_palm")
+centered = false
+offset = Vector2(-10, -28)
+flip_h = true
+
+[node name="Body" type="StaticBody2D" parent="Lighthouse/Palm2"]
+
+[node name="Shape" type="CollisionShape2D" parent="Lighthouse/Palm2/Body"]
+position = Vector2(0, -1.5)
+shape = SubResource("Rect_trunk")
+
+[node name="Npc_Luma" type="Node2D" parent="Landing" node_paths=PackedStringArray("art")]
+position = Vector2(112, 66)
+script = ExtResource("l_e1")
+id = "luma"
+greeting = "The light's been out too long."
+reach = 12.0
+promptOffset = Vector2(0, -24)
+art = NodePath("Art")
+quests = Array[ExtResource("l_e2")]([ExtResource("l_e3"), ExtResource("l_e4"), ExtResource("l_e5"), ExtResource("l_e6"), ExtResource("l_e7"), ExtResource("l_e8"), ExtResource("l_e9")])
+
+[node name="Art" type="Sprite2D" parent="Landing/Npc_Luma"]
+texture = ExtResource("l_e10")
+centered = false
+offset = Vector2(-6, -20)
+
+[node name="Body" type="StaticBody2D" parent="Landing/Npc_Luma"]
+
+[node name="Shape" type="CollisionShape2D" parent="Landing/Npc_Luma/Body"]
+position = Vector2(0, -1)
+shape = SubResource("l_s1")
+
+[node name="Pearl1" type="Node2D" parent="Landing"]
+position = Vector2(138, 14)
+script = ExtResource("l_e11")
+flag = "pearl_lantern_key_1"
+title = "A lost pearl!"
+message = "Opal on Pearl Lagoon collects these."
+prompt = "Pick up"
+reach = 7.0
+
+[node name="Pearl2" type="Node2D" parent="Lighthouse"]
+position = Vector2(10.0, 100.0)
+script = ExtResource("l_e11")
+flag = "pearl_lantern_key_2"
+title = "A lost pearl!"
+message = "Opal on Pearl Lagoon collects these."
+prompt = "Pick up"
+reach = 7.0
+
+[node name="Pearl3" type="Node2D" parent="Lighthouse"]
+position = Vector2(150.0, 20.0)
+script = ExtResource("l_e11")
+flag = "pearl_lantern_key_3"
+title = "A lost pearl!"
+message = "Opal on Pearl Lagoon collects these."
+prompt = "Pick up"
+reach = 7.0
+
+[node name="Pearl4" type="Node2D" parent="Lighthouse"]
+position = Vector2(90.0, 96.0)
+script = ExtResource("l_e11")
+flag = "pearl_lantern_key_4"
+title = "A lost pearl!"
+message = "Opal on Pearl Lagoon collects these."
+prompt = "Pick up"
+reach = 7.0
+
+[node name="Trap" type="Node2D" parent="Landing"]
+position = Vector2(112, 96)
+script = ExtResource("l_e12")
+biome = ExtResource("l_e13")
+reach = 9.0
+promptOffset = Vector2(0, -8)
+extras = Array[ExtResource("l_e14")]([ExtResource("l_e15"), ExtResource("l_e16")])

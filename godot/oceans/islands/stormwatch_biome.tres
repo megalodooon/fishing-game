@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="Biome" format=3]
+
+[ext_resource type="Script" path="res://fishing/creatures/sea_creature.gd" id="1_p1u7m"]
+[ext_resource type="Resource" path="res://items/materials/storm_glass.tres" id="8_k21x0"]
+[ext_resource type="Resource" path="res://items/materials/gull_feather.tres" id="9_006e0"]
+[ext_resource type="Resource" path="res://items/materials/barnacle.tres" id="10_o1cuq"]
+[ext_resource type="Script" path="res://oceans/biome.gd" id="e1"]
+[ext_resource type="Script" path="res://fishing/fish/fish_data.gd" id="e2"]
+[ext_resource type="Resource" path="res://fishing/fish/species/stormwatch/lighthouse_blenny.tres" id="e3"]
+[ext_resource type="Resource" path="res://fishing/fish/species/stormwatch/cliff_rockfish.tres" id="e4"]
+[ext_resource type="Resource" path="res://fishing/fish/species/stormwatch/beacon_hake.tres" id="e5"]
+[ext_resource type="Resource" path="res://fishing/fish/species/storm/gale_mackerel.tres" id="e6"]
+[ext_resource type="Resource" path="res://items/materials/driftwood_plank.tres" id="e7"]
+[ext_resource type="Script" path="res://items/item.gd" id="e8"]
+
+[resource]
+script = ExtResource("e1")
+displayName = "Stormwatch"
+description = "Cold, churning water under the cliffs."
+region = "Storm Belt"
+fish = Array[ExtResource("e2")]([ExtResource("e3"), ExtResource("e4"), ExtResource("e5"), ExtResource("e6")])
+tier = 3
+junkChance = 0.05
+junk = Array[ExtResource("e8")]([ExtResource("e7")])
+forage = Array[ExtResource("e8")]([ExtResource("8_k21x0"), ExtResource("9_006e0"), ExtResource("10_o1cuq")])

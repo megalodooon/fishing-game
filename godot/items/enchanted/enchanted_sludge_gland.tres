@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Item" format=3]
+
+[ext_resource type="Texture2D" path="res://items/enchanted/icons/enchanted_sludge_gland.png" id="1_7jws4"]
+[ext_resource type="Resource" path="res://items/rarities/rare.tres" id="2_mciom"]
+[ext_resource type="Script" path="res://items/item.gd" id="3_akl61"]
+
+[resource]
+script = ExtResource("3_akl61")
+displayName = "Enchanted Sludge Gland"
+category = "Enchanted Material"
+icon = ExtResource("1_7jws4")
+rarity = ExtResource("2_mciom")
+description = "32 Sludge Gland pressed into one. Better recipes ask for these."
+maxStack = 99
+sellPrice = 704

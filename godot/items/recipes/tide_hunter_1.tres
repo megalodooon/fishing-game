@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="BaitRecipe" format=3]
+
+[ext_resource type="Resource" path="res://items/materials/shark_tooth.tres" id="1_v6642"]
+[ext_resource type="Resource" path="res://items/materials/rope.tres" id="2_lfc05"]
+[ext_resource type="Resource" path="res://items/charms/tide_hunter_1.tres" id="3_adj3o"]
+[ext_resource type="Script" path="res://fishing/bait/bait_recipe.gd" id="4_cspn3"]
+
+[resource]
+script = ExtResource("4_cspn3")
+output = ExtResource("3_adj3o")
+amount = 1
+ingredients = Array[Resource]([ExtResource("1_v6642"), ExtResource("2_lfc05")])
+counts = Array[int]([16, 1])
+xp = 30.0
+station = &"workbench"
+category = "Charms"
+requiredSkill = &"hunting"
+requiredLevel = 3

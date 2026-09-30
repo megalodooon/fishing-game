@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="BaitRecipe" format=3]
+
+[ext_resource type="Resource" path="res://items/materials/kelp_fiber.tres" id="1_rxnb6"]
+[ext_resource type="Resource" path="res://items/materials/rope.tres" id="2_hkvmm"]
+[ext_resource type="Resource" path="res://items/crew/kelp_weaver_contract.tres" id="3_rn86t"]
+[ext_resource type="Script" path="res://fishing/bait/bait_recipe.gd" id="4_sj4qo"]
+
+[resource]
+script = ExtResource("4_sj4qo")
+output = ExtResource("3_rn86t")
+amount = 1
+ingredients = Array[Resource]([ExtResource("1_rxnb6"), ExtResource("2_hkvmm")])
+counts = Array[int]([24, 2])
+requiredFlag = "collection/kelp_fiber/1"
+xp = 25.0
+station = &"workbench"
+category = "Crew"

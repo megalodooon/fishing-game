@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Snack" format=3]
+
+[ext_resource type="Texture2D" path="res://items/snacks/icons/crew_rations.png" id="1_2cggy"]
+[ext_resource type="Resource" path="res://items/rarities/uncommon.tres" id="2_cyuxb"]
+[ext_resource type="Script" path="res://items/snacks/snack.gd" id="3_nj6uc"]
+
+[resource]
+script = ExtResource("3_nj6uc")
+energy = 30.0
+buffStat = "crewSpeed"
+buffAmount = 1.25
+buffHours = 12.0
+displayName = "Crew Rations"
+icon = ExtResource("1_2cggy")
+rarity = ExtResource("2_cyuxb")
+description = "Cooked at a kitchen."
+hint = "Click while holding it to eat"
+maxStack = 20
+sellPrice = 40

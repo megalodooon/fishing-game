@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="Location" format=3 uid="uid://b50fnxubytijs"]
+
+[ext_resource type="Script" uid="uid://t660ehs2ybui" path="res://world/location.gd" id="e1"]
+[ext_resource type="Texture2D" uid="uid://byd28en8ol7hg" path="res://world/map/icons/polluted_ocean.png" id="e2"]
+[ext_resource type="Resource" uid="uid://crn8sd2gusrce" path="res://oceans/polluted/polluted_biome.tres" id="e3"]
+
+[resource]
+script = ExtResource("e1")
+displayName = "Polluted Ocean"
+description = "Deepnet's dumping ground. The fish here are angry, and so is everything else."
+scene = "res://oceans/polluted/polluted_ocean.tscn"
+mapPosition = Vector2(182, 44)
+mapIcon = ExtResource("e2")
+chartTint = Color(0.2, 0.3, 0.16, 0.85)
+biome = ExtResource("e3")
+weatherChances = PackedFloat32Array(0.4, 0.2, 0.4)
+startsUnlocked = false
+coinCost = 300
+requiredSkill = &"fishing"
+requiredLevel = 6
+requiredHull = 0

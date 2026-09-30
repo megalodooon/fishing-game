@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="BaitRecipe" format=3]
+
+[ext_resource type="Resource" path="res://items/materials/gull_feather.tres" id="1_htdk4"]
+[ext_resource type="Resource" path="res://items/materials/rope.tres" id="2_3ap8u"]
+[ext_resource type="Resource" path="res://fishing/tacklebox/tackle/feather_float.tres" id="3_87q1p"]
+[ext_resource type="Script" path="res://fishing/bait/bait_recipe.gd" id="4_mkfqd"]
+
+[resource]
+script = ExtResource("4_mkfqd")
+output = ExtResource("3_87q1p")
+amount = 1
+ingredients = Array[Resource]([ExtResource("1_htdk4"), ExtResource("2_3ap8u")])
+counts = Array[int]([4, 1])
+xp = 42.0
+station = &"workbench"
+category = "Tackle"
+requiredSkill = &"fishing"
+requiredLevel = 4

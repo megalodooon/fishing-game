@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="Project" format=3]
+
+[ext_resource type="Script" path="res://world/village/restoration/project.gd" id="e1"]
+[ext_resource type="Texture2D" path="res://world/islands/props/weather_station.png" id="e2"]
+[ext_resource type="Resource" path="res://items/materials/storm_essence.tres" id="e3"]
+[ext_resource type="Resource" path="res://items/materials/iron_scrap.tres" id="e4"]
+[ext_resource type="Script" path="res://items/item.gd" id="e5"]
+[ext_resource type="Resource" path="res://world/village/restoration/projects/lighthouse_lamp.tres" id="e6"]
+
+[resource]
+script = ExtResource("e1")
+displayName = "Weather Station"
+description = "The old station could read storms days ahead. Maybe more."
+icon = ExtResource("e2")
+coins = 15000
+items = Array[ExtResource("e5")]([ExtResource("e3"), ExtResource("e4")])
+amounts = Array[int]([8, 20])
+unlockText = "Order tomorrow's weather at Stormwatch"
+requires = Array[ExtResource("e1")]([ExtResource("e6")])
+requiredSkill = &"sailing"
+requiredLevel = 12

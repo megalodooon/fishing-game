@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="CrewMember" format=3]
+
+[ext_resource type="Resource" path="res://items/enchanted/enchanted_sea_kale.tres" id="1_uxgqw"]
+[ext_resource type="Texture2D" path="res://items/materials/icons/sea_kale.png" id="2_cokgm"]
+[ext_resource type="Resource" path="res://items/materials/sea_kale.tres" id="3_1ip48"]
+[ext_resource type="Script" path="res://world/crew/crew_member.gd" id="4_17xef"]
+
+[resource]
+script = ExtResource("4_17xef")
+displayName = "Kale Farmhand"
+description = "Really, really likes kale."
+icon = ExtResource("2_cokgm")
+product = ExtResource("3_1ip48")
+enchanted = ExtResource("1_uxgqw")

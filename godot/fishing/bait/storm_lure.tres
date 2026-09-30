@@ -1,0 +1,35 @@
+[gd_resource type="Resource" script_class="Bait" format=3]
+
+[ext_resource type="Script" path="res://fishing/bait/bait.gd" id="1_script"]
+[ext_resource type="Texture2D" path="res://fishing/bait/icons/storm_lure.png" id="2_icon"]
+[ext_resource type="Resource" path="res://items/rarities/uncommon.tres" id="3_rarity"]
+[ext_resource type="Script" path="res://items/rarity.gd" id="4_rs"]
+[ext_resource type="Script" path="res://fishing/fish/fish_data.gd" id="5_fs"]
+[ext_resource type="Resource" path="res://fishing/fish/species/reef/rain_goby.tres" id="f_1"]
+[ext_resource type="Resource" path="res://fishing/fish/species/weather/drizzle_minnow.tres" id="f_2"]
+[ext_resource type="Resource" path="res://fishing/fish/species/weather/sleet_salmon.tres" id="f_3"]
+[ext_resource type="Resource" path="res://fishing/fish/species/volcanic/steam_ray.tres" id="f_4"]
+[ext_resource type="Resource" path="res://fishing/fish/species/weather/mist_herring.tres" id="f_5"]
+[ext_resource type="Resource" path="res://fishing/fish/species/weather/smog_carp.tres" id="f_6"]
+[ext_resource type="Resource" path="res://fishing/fish/species/abyss/anglerfish.tres" id="f_7"]
+
+[resource]
+script = ExtResource("1_script")
+rarityBoost = Dictionary[ExtResource("4_rs"), float]({
+
+})
+fishBoost = Dictionary[ExtResource("5_fs"), float]({
+ExtResource("f_1"): 2.5,
+ExtResource("f_2"): 2.5,
+ExtResource("f_3"): 2.5,
+ExtResource("f_4"): 2.5,
+ExtResource("f_5"): 2.5,
+ExtResource("f_6"): 2.5,
+ExtResource("f_7"): 2.5
+})
+kind = 4
+discardable = false
+displayName = "Storm Lure"
+icon = ExtResource("2_icon")
+rarity = ExtResource("3_rarity")
+description = "Rattles like thunder. Rain and fog fish come running."

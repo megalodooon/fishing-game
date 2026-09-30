@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="BaitRecipe" format=3]
+
+[ext_resource type="Resource" path="res://items/charms/chef_1.tres" id="1_vwrse"]
+[ext_resource type="Resource" path="res://items/enchanted/enchanted_honey.tres" id="2_r3amw"]
+[ext_resource type="Resource" path="res://items/materials/iron_ingot.tres" id="3_s187f"]
+[ext_resource type="Resource" path="res://items/charms/chef_2.tres" id="4_l112v"]
+[ext_resource type="Script" path="res://fishing/bait/bait_recipe.gd" id="5_u7xxq"]
+
+[resource]
+script = ExtResource("5_u7xxq")
+output = ExtResource("4_l112v")
+amount = 1
+ingredients = Array[Resource]([ExtResource("1_vwrse"), ExtResource("2_r3amw"), ExtResource("3_s187f")])
+counts = Array[int]([1, 2, 2])
+xp = 60.0
+station = &"workbench"
+category = "Charms"
+requiredSkill = &"cooking"
+requiredLevel = 10

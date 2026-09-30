@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="Location" format=3 uid="uid://c4nvdm75n37il"]
+
+[ext_resource type="Script" uid="uid://t660ehs2ybui" path="res://world/location.gd" id="e1"]
+[ext_resource type="Texture2D" uid="uid://ce06mw45fw26r" path="res://world/map/icons/coral_reef.png" id="e2"]
+[ext_resource type="Resource" uid="uid://dxl08vpl22ypd" path="res://oceans/reef/reef_biome.tres" id="e3"]
+
+[resource]
+script = ExtResource("e1")
+displayName = "Coral Reef"
+description = "Warm, clear water full of color. Rain brings out the gobies."
+scene = "res://oceans/reef/reef_ocean.tscn"
+mapPosition = Vector2(226, 73)
+mapIcon = ExtResource("e2")
+chartTint = Color(0.2, 0.7, 0.72, 0.6)
+biome = ExtResource("e3")
+weatherChances = PackedFloat32Array(0.6, 0.3, 0.1)
+startsUnlocked = false
+coinCost = 300
+requiredSkill = &"fishing"
+requiredLevel = 7
+requiredHull = 1

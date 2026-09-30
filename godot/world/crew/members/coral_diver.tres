@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="CrewMember" format=3]
+
+[ext_resource type="Resource" path="res://items/enchanted/enchanted_coral_shard.tres" id="1_vj6pt"]
+[ext_resource type="Texture2D" path="res://items/materials/icons/coral_shard.png" id="2_ljr2f"]
+[ext_resource type="Resource" path="res://items/materials/coral_shard.tres" id="3_npfhb"]
+[ext_resource type="Script" path="res://world/crew/crew_member.gd" id="4_w0eyk"]
+
+[resource]
+script = ExtResource("4_w0eyk")
+displayName = "Coral Diver"
+description = "Brings back coral from the reef."
+icon = ExtResource("2_ljr2f")
+product = ExtResource("3_npfhb")
+enchanted = ExtResource("1_vj6pt")
+hours = 1.2

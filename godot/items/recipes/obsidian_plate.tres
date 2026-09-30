@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="BaitRecipe" format=3]
+
+[ext_resource type="Resource" path="res://items/materials/obsidian_shard.tres" id="1_3xqvn"]
+[ext_resource type="Resource" path="res://items/materials/iron_ingot.tres" id="2_bqos2"]
+[ext_resource type="Resource" path="res://items/materials/obsidian_plate.tres" id="3_un01w"]
+[ext_resource type="Script" path="res://fishing/bait/bait_recipe.gd" id="4_66sxe"]
+
+[resource]
+script = ExtResource("4_66sxe")
+output = ExtResource("3_un01w")
+amount = 1
+ingredients = Array[Resource]([ExtResource("1_3xqvn"), ExtResource("2_bqos2")])
+counts = Array[int]([4, 1])
+xp = 6.0
+station = &"forge"
+category = "Materials"
+requiredSkill = &"crafting"
+requiredLevel = 12

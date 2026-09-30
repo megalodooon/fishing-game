@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="Snack" format=3]
+
+[ext_resource type="Script" path="res://items/snacks/snack.gd" id="1_snack"]
+[ext_resource type="Texture2D" path="res://items/snacks/icons/fish_taco.png" id="2_icon"]
+[ext_resource type="Resource" path="res://items/rarities/uncommon.tres" id="3_rarity"]
+
+[resource]
+script = ExtResource("1_snack")
+energy = 50
+displayName = "Fish Taco"
+icon = ExtResource("2_icon")
+rarity = ExtResource("3_rarity")
+description = "Fresh from the Sunday market grill."
+hint = "Click while holding it to eat"
+maxStack = 20
+sellPrice = 15
+buyPrice = 35

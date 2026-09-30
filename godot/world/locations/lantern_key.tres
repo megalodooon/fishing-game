@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="Location" format=3 uid="uid://okk0my37kk6f"]
+
+[ext_resource type="Resource" path="res://oceans/islands/lantern_key_biome.tres" id="loc_biome"]
+[ext_resource type="Script" uid="uid://t660ehs2ybui" path="res://world/location.gd" id="e1"]
+[ext_resource type="Texture2D" uid="uid://bo4f64vg6autm" path="res://world/map/icons/lantern_key.png" id="e2"]
+
+[resource]
+script = ExtResource("e1")
+displayName = "Lantern Key"
+description = "A lighthouse on a rock. Luma keeps watch over the storms from here."
+kind = 1
+scene = "res://world/islands/lantern_key/lantern_key.tscn"
+mapPosition = Vector2(104, 44)
+mapIcon = ExtResource("e2")
+weatherChances = null
+startsUnlocked = false
+coinCost = 150
+requiredSkill = &"sailing"
+requiredLevel = 2
+requiredHull = 0
+biome = ExtResource("loc_biome")

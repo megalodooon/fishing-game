@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="Biome" format=3 uid="uid://ptaq6jcj0v84"]
+
+[ext_resource type="Script" path="res://fishing/creatures/sea_creature.gd" id="1_3k2ml"]
+[ext_resource type="Script" path="res://oceans/biome.gd" id="1_biome"]
+[ext_resource type="Script" path="res://fishing/fish/fish_data.gd" id="1_data"]
+[ext_resource type="Script" path="res://items/item.gd" id="13_ag0dw"]
+[ext_resource type="Resource" path="res://items/materials/sea_salt.tres" id="14_88ryt"]
+[ext_resource type="Resource" path="res://items/materials/beach_sand.tres" id="15_yx6e8"]
+[ext_resource type="Resource" path="res://items/materials/barnacle.tres" id="16_gi2or"]
+[ext_resource type="Resource" path="res://items/materials/gull_feather.tres" id="17_dy1jc"]
+[ext_resource type="Resource" path="res://fishing/fish/species/sardine.tres" id="f_2"]
+[ext_resource type="Resource" path="res://fishing/fish/species/anchovy.tres" id="f_3"]
+[ext_resource type="Resource" path="res://fishing/fish/species/islands/harbor_goby.tres" id="f_4"]
+[ext_resource type="Resource" path="res://fishing/fish/species/flounder.tres" id="f_5"]
+[ext_resource type="Resource" path="res://fishing/fish/species/islands/dock_perch.tres" id="f_6"]
+[ext_resource type="Resource" path="res://fishing/fish/species/islands/silver_eel.tres" id="f_7"]
+[ext_resource type="Resource" path="res://fishing/fish/species/islands/well_minnow.tres" id="f_8"]
+[ext_resource type="Resource" path="res://fishing/fish/species/islands/cave_loach.tres" id="f_9"]
+[ext_resource type="Resource" path="res://fishing/fish/species/islands/ghost_catfish.tres" id="f_10"]
+[ext_resource type="Resource" path="res://fishing/fish/species/islands/wishing_koi.tres" id="f_11"]
+
+[resource]
+script = ExtResource("1_biome")
+displayName = "Village"
+description = "The calm water around the village, and whatever lives down the old well."
+region = "Home Waters"
+fish = Array[ExtResource("1_data")]([ExtResource("f_2"), ExtResource("f_3"), ExtResource("f_4"), ExtResource("f_5"), ExtResource("f_6"), ExtResource("f_7"), ExtResource("f_8"), ExtResource("f_9"), ExtResource("f_10"), ExtResource("f_11")])
+forage = Array[ExtResource("13_ag0dw")]([ExtResource("14_88ryt"), ExtResource("15_yx6e8"), ExtResource("16_gi2or"), ExtResource("17_dy1jc")])

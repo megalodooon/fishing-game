@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Snack" format=3]
+
+[ext_resource type="Texture2D" path="res://items/potions/icons/keen_eye_potion.png" id="1_47ld5"]
+[ext_resource type="Resource" path="res://items/rarities/legendary.tres" id="2_hir6u"]
+[ext_resource type="Script" path="res://items/snacks/snack.gd" id="3_agn4e"]
+
+[resource]
+script = ExtResource("3_agn4e")
+energy = 5.0
+buffStat = "rareFind"
+buffAmount = 1.15
+displayName = "Keen Eye Potion"
+category = "Potion"
+icon = ExtResource("1_47ld5")
+rarity = ExtResource("2_hir6u")
+description = "Brewed at a cauldron. Drink it for a few hours of rare find."
+hint = "Click while holding it to drink"
+maxStack = 10
+sellPrice = 152

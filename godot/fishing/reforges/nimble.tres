@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Reforge" format=3]
+
+[ext_resource type="Script" path="res://fishing/reforges/reforge.gd" id="1_4mbsi"]
+
+[resource]
+script = ExtResource("1_4mbsi")
+prefix = "Nimble"
+weight = 3.0
+kind = 3
+castTimeBonus = -0.3
+reelSpeed = 1.1
+displayName = "Nimble"

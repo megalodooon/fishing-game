@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="CrewMember" format=3]
+
+[ext_resource type="Resource" path="res://items/enchanted/enchanted_storm_essence.tres" id="1_7x4ut"]
+[ext_resource type="Texture2D" path="res://items/materials/icons/storm_essence.png" id="2_b5let"]
+[ext_resource type="Resource" path="res://items/materials/storm_essence.tres" id="3_andsx"]
+[ext_resource type="Script" path="res://world/crew/crew_member.gd" id="4_fw8i7"]
+
+[resource]
+script = ExtResource("4_fw8i7")
+displayName = "Storm Chaser"
+description = "Runs toward the lightning."
+icon = ExtResource("2_b5let")
+product = ExtResource("3_andsx")
+enchanted = ExtResource("1_7x4ut")
+hours = 4.0

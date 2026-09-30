@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="PetData" format=3]
+
+[ext_resource type="Script" path="res://world/village/pets/pet_data.gd" id="1_pet"]
+[ext_resource type="Texture2D" path="res://world/village/pets/art/ember_salamander.png" id="2_art"]
+[ext_resource type="Script" path="res://items/rarity.gd" id="3_rarity_script"]
+[ext_resource type="Resource" path="res://items/rarities/rare.tres" id="r_rare"]
+[ext_resource type="Resource" path="res://items/rarities/legendary.tres" id="r_legendary"]
+
+[resource]
+script = ExtResource("1_pet")
+displayName = "Ember Salamander"
+description = "A little fire lizard from the hot spring. Glows at night and lures in rare fish."
+sprite = ExtResource("2_art")
+glows = true
+glowColor = Color(1, 0.6, 0.3, 1)
+price = 3000
+biteSpeed = 1.1
+rarityBoost = Dictionary[ExtResource("3_rarity_script"), float]({
+ExtResource("r_rare"): 1.2,
+ExtResource("r_legendary"): 1.4
+})

@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="Quest" format=3 uid="uid://dtwoe8rqg7ni"]
+
+[ext_resource type="Script" uid="uid://ftrpy1hit5em" path="res://items/item.gd" id="4_vji0w"]
+[ext_resource type="Script" uid="uid://b1p7iyi658nm7" path="res://world/quests/quest.gd" id="e1"]
+[ext_resource type="Script" uid="uid://depkark34l17n" path="res://world/quests/quest_goal.gd" id="e2"]
+[ext_resource type="Resource" uid="uid://pacqlg57fx82" path="res://world/quests/story/q_storm_warning.tres" id="e3"]
+[ext_resource type="Resource" path="res://world/locations/stormwatch.tres" id="e4"]
+[ext_resource type="Resource" path="res://world/locations/storm_sea.tres" id="e5"]
+[ext_resource type="Script" uid="uid://t660ehs2ybui" path="res://world/location.gd" id="e6"]
+
+[sub_resource type="Resource" id="s1"]
+script = ExtResource("e2")
+kind = 9
+flag = "hull"
+amount = 3
+
+[resource]
+script = ExtResource("e1")
+title = "Storm-Proof"
+giver = "Marina"
+description = "Nothing without an Iron Hull survives the Storm Sea. Build one."
+story = true
+goals = Array[ExtResource("e2")]([SubResource("s1")])
+startScene = "q_hull3_start"
+endScene = "q_hull3_end"
+requires = Array[ExtResource("e1")]([ExtResource("e3")])
+rewardCoins = 2000
+unlocks = Array[ExtResource("e6")]([ExtResource("e4"), ExtResource("e5")])

@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="BaitRecipe" format=3]
+
+[ext_resource type="Resource" path="res://items/enchanted/enchanted_kelp_fiber.tres" id="1_eud3v"]
+[ext_resource type="Resource" path="res://items/materials/rope.tres" id="2_wqexq"]
+[ext_resource type="Resource" path="res://fishing/rods/kelpwoven_rod.tres" id="3_8q3cl"]
+[ext_resource type="Script" path="res://fishing/bait/bait_recipe.gd" id="4_ttr62"]
+
+[resource]
+script = ExtResource("4_ttr62")
+output = ExtResource("3_8q3cl")
+amount = 1
+ingredients = Array[Resource]([ExtResource("1_eud3v"), ExtResource("2_wqexq")])
+counts = Array[int]([3, 8])
+xp = 150.0
+station = &"workbench"
+category = "Rods"
+requiredSkill = &"fishing"
+requiredLevel = 14

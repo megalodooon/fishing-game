@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="CrewMember" format=3]
+
+[ext_resource type="Resource" path="res://items/enchanted/enchanted_iron_scrap.tres" id="1_n5gly"]
+[ext_resource type="Texture2D" path="res://items/materials/icons/iron_scrap.png" id="2_x8ydy"]
+[ext_resource type="Resource" path="res://items/materials/iron_scrap.tres" id="3_rs48s"]
+[ext_resource type="Script" path="res://world/crew/crew_member.gd" id="4_m4ce0"]
+
+[resource]
+script = ExtResource("4_m4ce0")
+displayName = "Scrap Scavenger"
+description = "Knows every wreck on the coast."
+icon = ExtResource("2_x8ydy")
+product = ExtResource("3_rs48s")
+enchanted = ExtResource("1_n5gly")

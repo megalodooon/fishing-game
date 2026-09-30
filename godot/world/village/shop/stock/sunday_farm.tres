@@ -1,0 +1,40 @@
+[gd_resource type="Resource" script_class="ShopStock" format=3]
+
+[ext_resource type="Script" path="res://world/village/shop/shop_stock.gd" id="1_stock"]
+[ext_resource type="Script" path="res://world/village/shop/shop_offer.gd" id="2_offer"]
+[ext_resource type="Resource" path="res://items/snacks/sunday_pie.tres" id="i1"]
+[ext_resource type="Resource" path="res://items/snacks/fish_taco.tres" id="i2"]
+[ext_resource type="Resource" path="res://world/village/farm/seeds/moonmelon_seeds.tres" id="i3"]
+[ext_resource type="Resource" path="res://world/village/farm/seeds/frostberry_seeds.tres" id="i4"]
+[ext_resource type="Resource" path="res://world/village/farm/seeds/glowcap_spores.tres" id="i5"]
+
+[sub_resource type="Resource" id="o1"]
+script = ExtResource("2_offer")
+item = ExtResource("i1")
+
+[sub_resource type="Resource" id="o2"]
+script = ExtResource("2_offer")
+item = ExtResource("i2")
+
+[sub_resource type="Resource" id="o3"]
+script = ExtResource("2_offer")
+item = ExtResource("i3")
+requiredSkill = &"farming"
+requiredLevel = 10
+
+[sub_resource type="Resource" id="o4"]
+script = ExtResource("2_offer")
+item = ExtResource("i4")
+amount = 2
+requiredSkill = &"farming"
+requiredLevel = 8
+
+[sub_resource type="Resource" id="o5"]
+script = ExtResource("2_offer")
+item = ExtResource("i5")
+amount = 2
+
+[resource]
+script = ExtResource("1_stock")
+shopName = "The Farmer's Stall"
+offers = Array[ExtResource("2_offer")]([SubResource("o1"), SubResource("o2"), SubResource("o3"), SubResource("o4"), SubResource("o5")])

@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="Seed" format=3]
+
+[ext_resource type="Script" path="res://world/village/farm/seed.gd" id="1_script"]
+[ext_resource type="Texture2D" path="res://world/village/farm/icons/chili_seeds.png" id="2_icon"]
+[ext_resource type="Resource" path="res://items/rarities/common.tres" id="3_rarity"]
+[ext_resource type="Resource" path="res://items/materials/chili_pepper.tres" id="4_crop"]
+
+[resource]
+script = ExtResource("1_script")
+crop = ExtResource("4_crop")
+days = 3
+harvest = 2
+leafColor = Color(0.4, 0.7, 0.3, 1)
+hint = "Hold it and click the farm soil"
+maxStack = 99
+sellPrice = 4
+displayName = "Chili Seeds"
+icon = ExtResource("2_icon")
+rarity = ExtResource("3_rarity")
+description = "Grow hot peppers."
+buyPrice = 25

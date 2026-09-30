@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="RodItem" format=3]
+
+[ext_resource type="Script" path="res://fishing/rods/rod_item.gd" id="1_script"]
+[ext_resource type="Texture2D" path="res://fishing/rods/icons/magma_rod.png" id="2_icon"]
+[ext_resource type="Resource" path="res://items/rarities/legendary.tres" id="3_rarity"]
+[ext_resource type="PackedScene" path="res://fishing/rods/starter_rod.tscn" id="4_scene"]
+[ext_resource type="Script" path="res://fishing/tacklebox/tackle.gd" id="5_tackle"]
+[ext_resource type="Resource" path="res://fishing/tacklebox/tackle/basic_bobber.tres" id="6_bobber"]
+[ext_resource type="Resource" path="res://fishing/tacklebox/tackle/basic_line.tres" id="7_line"]
+[ext_resource type="Resource" path="res://fishing/tacklebox/tackle/basic_hook.tres" id="8_hook"]
+
+[sub_resource type="Resource" id="Built_in"]
+script = ExtResource("5_tackle")
+kind = 3
+displayName = "Magma Rod"
+control = 0.25
+biteSpeed = 1.25
+spotTime = 1.2
+
+[resource]
+script = ExtResource("1_script")
+slots = Array[int]([0, 1, 1, 2, 3, 3, 4])
+tackle = Array[ExtResource("5_tackle")]([ExtResource("6_bobber"), ExtResource("7_line"), null, ExtResource("8_hook"), null, null, null])
+builtIn = SubResource("Built_in")
+rodTint = Color(1, 0.5, 0.3, 1)
+heldScene = ExtResource("4_scene")
+discardable = false
+hint = "T to customize"
+displayName = "Magma Rod"
+icon = ExtResource("2_icon")
+rarity = ExtResource("3_rarity")
+description = "Forged on Ember Isle. Warm to the touch."

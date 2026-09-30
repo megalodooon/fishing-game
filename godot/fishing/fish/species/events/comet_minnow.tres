@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="FishData" format=3]
+
+[ext_resource type="Texture2D" path="res://fishing/fish/assets/events/comet_minnow.png" id="1_n0sxu"]
+[ext_resource type="Resource" path="res://items/rarities/common.tres" id="2_o4hlq"]
+[ext_resource type="Script" path="res://fishing/fish/requirements/fish_requirement.gd" id="3_o75ws"]
+[ext_resource type="Script" path="res://fishing/fish/fish_data.gd" id="4_icpx4"]
+
+[resource]
+script = ExtResource("4_icpx4")
+displayName = "Comet Minnow"
+icon = ExtResource("1_n0sxu")
+rarity = ExtResource("2_o4hlq")
+description = "Leaves a glowing trail. Easy to spot, hard to catch."
+weightRange = Vector2(0.05, 0.4)
+basePrice = 14
+heldSize = 0.6080000001192093
+hours = Vector2(20, 4)

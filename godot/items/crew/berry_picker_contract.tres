@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="CrewContract" format=3]
+
+[ext_resource type="Resource" path="res://world/crew/members/berry_picker.tres" id="1_12v7n"]
+[ext_resource type="Texture2D" path="res://items/crew/icons/berry_picker.png" id="2_0m8w4"]
+[ext_resource type="Resource" path="res://items/rarities/uncommon.tres" id="3_j5n2y"]
+[ext_resource type="Script" path="res://world/crew/crew_contract.gd" id="4_f4mog"]
+
+[resource]
+script = ExtResource("4_f4mog")
+crew = ExtResource("1_12v7n")
+displayName = "Berry Picker Contract"
+icon = ExtResource("2_0m8w4")
+rarity = ExtResource("3_j5n2y")
+description = "Hire a berry picker at the crew board by your house. Eats about half of what they pick."

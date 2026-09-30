@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="FishData" format=3 uid="uid://cdmsaspy6jm1u"]
+
+[ext_resource type="Script" uid="uid://bevdmlyak68oo" path="res://fishing/fish/fish_data.gd" id="1_fish"]
+[ext_resource type="Texture2D" uid="uid://0m1alwvwonpl" path="res://fishing/fish/assets/ember/spring_loach.png" id="2_icon"]
+[ext_resource type="Resource" path="res://items/rarities/uncommon.tres" id="3_rarity"]
+[ext_resource type="Script" uid="uid://dupq0iwgv25f6" path="res://fishing/fish/requirements/fish_requirement.gd" id="s_req"]
+[ext_resource type="Script" uid="uid://dcv55o5epuv8a" path="res://fishing/fish/requirements/spot_requirement.gd" id="s_s"]
+
+[sub_resource type="Resource" id="Req_1"]
+script = ExtResource("s_s")
+spotId = &"hot_spring"
+spotName = "the hot spring"
+
+[resource]
+script = ExtResource("1_fish")
+displayName = "Spring Loach"
+icon = ExtResource("2_icon")
+rarity = ExtResource("3_rarity")
+description = "Wriggles through the hot spring's pebbles."
+weightRange = Vector2(0.1, 0.4)
+basePrice = 50
+heldSize = 0.8
+requirements = Array[ExtResource("s_req")]([SubResource("Req_1")])

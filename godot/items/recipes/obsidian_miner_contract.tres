@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="BaitRecipe" format=3]
+
+[ext_resource type="Resource" path="res://items/materials/obsidian_shard.tres" id="1_027ep"]
+[ext_resource type="Resource" path="res://items/materials/rope.tres" id="2_8ebai"]
+[ext_resource type="Resource" path="res://items/crew/obsidian_miner_contract.tres" id="3_rb4us"]
+[ext_resource type="Script" path="res://fishing/bait/bait_recipe.gd" id="4_ws8om"]
+
+[resource]
+script = ExtResource("4_ws8om")
+output = ExtResource("3_rb4us")
+amount = 1
+ingredients = Array[Resource]([ExtResource("1_027ep"), ExtResource("2_8ebai")])
+counts = Array[int]([8, 2])
+requiredFlag = "collection/obsidian_shard/1"
+xp = 25.0
+station = &"workbench"
+category = "Crew"

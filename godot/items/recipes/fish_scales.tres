@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="BaitRecipe" format=3]
+
+[ext_resource type="Resource" path="res://items/rarities/uncommon.tres" id="1_bprux"]
+[ext_resource type="Resource" path="res://items/materials/fish_scales.tres" id="2_bltto"]
+[ext_resource type="Script" path="res://fishing/bait/bait_recipe.gd" id="3_4p2w1"]
+
+[resource]
+script = ExtResource("3_4p2w1")
+output = ExtResource("2_bltto")
+amount = 2
+ingredients = Array[Resource]([ExtResource("1_bprux")])
+counts = Array[int]([2])
+xp = 6.0
+category = "Materials"

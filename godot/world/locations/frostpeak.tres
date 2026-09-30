@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="Location" format=3]
+
+[ext_resource type="Script" path="res://world/location.gd" id="e1"]
+[ext_resource type="Texture2D" path="res://world/map/icons/frostpeak.png" id="e2"]
+[ext_resource type="Resource" path="res://oceans/islands/frostpeak_biome.tres" id="e3"]
+
+[resource]
+script = ExtResource("e1")
+displayName = "Frostpeak"
+description = "A frozen island. Yuki fishes through the ice."
+kind = 1
+scene = "res://world/islands/frostpeak/frostpeak.tscn"
+mapPosition = Vector2(334, 44)
+chartTint = Color(0.62, 0.82, 0.9, 0.6)
+mapIcon = ExtResource("e2")
+biome = ExtResource("e3")
+weatherChances = PackedFloat32Array(0.55, 0.1, 0.35)
+startsUnlocked = false
+coinCost = 1000
+requiredHull = 2
+requiredSkill = &"sailing"
+requiredLevel = 10

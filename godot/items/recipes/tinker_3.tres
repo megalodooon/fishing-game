@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="BaitRecipe" format=3]
+
+[ext_resource type="Resource" path="res://items/charms/tinker_2.tres" id="1_d1xdj"]
+[ext_resource type="Resource" path="res://items/enchanted/enchanted_scrap_wire.tres" id="2_veicd"]
+[ext_resource type="Resource" path="res://items/materials/pearl_dust.tres" id="3_o6txo"]
+[ext_resource type="Resource" path="res://items/charms/tinker_3.tres" id="4_68nd2"]
+[ext_resource type="Script" path="res://fishing/bait/bait_recipe.gd" id="5_0c44i"]
+
+[resource]
+script = ExtResource("5_0c44i")
+output = ExtResource("4_68nd2")
+amount = 1
+ingredients = Array[Resource]([ExtResource("1_d1xdj"), ExtResource("2_veicd"), ExtResource("3_o6txo")])
+counts = Array[int]([1, 8, 3])
+xp = 90.0
+station = &"forge"
+category = "Charms"
+requiredSkill = &"crafting"
+requiredLevel = 22

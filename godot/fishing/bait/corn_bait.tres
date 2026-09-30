@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="Bait" format=3]
+
+[ext_resource type="Script" path="res://fishing/bait/bait.gd" id="1_bait"]
+[ext_resource type="Texture2D" path="res://fishing/bait/icons/corn_bait.png" id="2_icon"]
+[ext_resource type="Resource" path="res://items/rarities/common.tres" id="3_rarity"]
+[ext_resource type="Script" path="res://items/rarity.gd" id="4_rarity_script"]
+[ext_resource type="Script" path="res://fishing/fish/fish_data.gd" id="5_fish_script"]
+[ext_resource type="Resource" path="res://fishing/fish/species/islands/dock_perch.tres" id="f_perch"]
+[ext_resource type="Resource" path="res://fishing/fish/species/islands/harbor_goby.tres" id="f_goby"]
+[ext_resource type="Resource" path="res://fishing/fish/species/sea_bass.tres" id="f_bass"]
+[resource]
+script = ExtResource("1_bait")
+rarityBoost = Dictionary[ExtResource("4_rarity_script"), float]({})
+fishBoost = Dictionary[ExtResource("5_fish_script"), float]({
+ExtResource("f_perch"): 3.0,
+ExtResource("f_goby"): 2.0,
+ExtResource("f_bass"): 2.0
+})
+kind = 4
+displayName = "Corn Bait"
+icon = ExtResource("2_icon")
+rarity = ExtResource("3_rarity")
+description = "Sweet corn paste. Perch, gobies and bass can't resist it."
+discardable = false
+buyPrice = 5

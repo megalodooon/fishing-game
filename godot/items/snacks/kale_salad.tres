@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Snack" format=3]
+
+[ext_resource type="Texture2D" path="res://items/snacks/icons/kale_salad.png" id="1_tqaju"]
+[ext_resource type="Resource" path="res://items/rarities/common.tres" id="2_oovj5"]
+[ext_resource type="Script" path="res://items/snacks/snack.gd" id="3_6gnqy"]
+
+[resource]
+script = ExtResource("3_6gnqy")
+energy = 25.0
+buffStat = "walkSpeed"
+buffAmount = 1.15
+buffHours = 3.0
+displayName = "Kale Salad"
+icon = ExtResource("1_tqaju")
+rarity = ExtResource("2_oovj5")
+description = "Cooked at a kitchen."
+hint = "Click while holding it to eat"
+maxStack = 20
+sellPrice = 15

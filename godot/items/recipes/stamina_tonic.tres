@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="BaitRecipe" format=3]
+
+[ext_resource type="Resource" path="res://items/materials/glass_bottle.tres" id="1_mrwem"]
+[ext_resource type="Resource" path="res://items/materials/sand_carrot.tres" id="2_m406i"]
+[ext_resource type="Resource" path="res://items/materials/honey.tres" id="3_xwshk"]
+[ext_resource type="Resource" path="res://items/potions/stamina_tonic.tres" id="4_p4vui"]
+[ext_resource type="Script" path="res://fishing/bait/bait_recipe.gd" id="5_788st"]
+
+[resource]
+script = ExtResource("5_788st")
+output = ExtResource("4_p4vui")
+amount = 1
+ingredients = Array[Resource]([ExtResource("1_mrwem"), ExtResource("2_m406i"), ExtResource("3_xwshk")])
+counts = Array[int]([1, 2, 1])
+xp = 19.0
+station = &"cauldron"
+category = "Potions"
+requiredSkill = &"alchemy"
+requiredLevel = 3

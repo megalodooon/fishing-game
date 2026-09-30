@@ -9,6 +9,9 @@ uniform float depth_contrast = 1.6;
 uniform float depth_speed = 0.01;
 uniform float caustic_coverage = 100.0;
 uniform float caustic_patch_size = 48.0;
+// Still water (islands) is frozen at still_time instead of moving with TIME.
+uniform bool still = false;
+uniform float still_time = 0.0;
 
 varying vec2 world_pos;
 
@@ -23,7 +26,7 @@ void vertex() {
 
 void fragment() {
 	vec2 q = world_pos / depth_scale;
-	float dt = TIME * depth_speed;
+	float dt = (still ? still_time : TIME) * depth_speed;
 	float depth = evolving_noise(q, dt) * 0.65 + evolving_noise(q * 2.3 + 5.1, dt * 1.3 + 0.5) * 0.35;
 	depth = clamp((depth - 0.5) * depth_contrast + 0.5, 0.0, 1.0);
 	float edge = (1.0 - caustic_coverage * 0.01) * 1.3 - 0.3;

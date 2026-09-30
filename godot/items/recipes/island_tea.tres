@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="BaitRecipe" format=3]
+
+[ext_resource type="Resource" path="res://items/materials/tea_leaves.tres" id="1_t068i"]
+[ext_resource type="Resource" path="res://items/snacks/island_tea.tres" id="2_1ymvb"]
+[ext_resource type="Script" path="res://fishing/bait/bait_recipe.gd" id="3_kdlw6"]
+
+[resource]
+script = ExtResource("3_kdlw6")
+output = ExtResource("2_1ymvb")
+amount = 1
+ingredients = Array[Resource]([ExtResource("1_t068i")])
+counts = Array[int]([2])
+xp = 12.0
+station = &"kitchen"
+category = "Food"
+requiredSkill = &"cooking"
+requiredLevel = 2

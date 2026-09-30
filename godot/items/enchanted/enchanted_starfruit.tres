@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Item" format=3]
+
+[ext_resource type="Texture2D" path="res://items/enchanted/icons/enchanted_starfruit.png" id="1_ic64s"]
+[ext_resource type="Resource" path="res://items/rarities/legendary.tres" id="2_qblqs"]
+[ext_resource type="Script" path="res://items/item.gd" id="3_dx3c7"]
+
+[resource]
+script = ExtResource("3_dx3c7")
+displayName = "Enchanted Starfruit"
+category = "Enchanted Material"
+icon = ExtResource("1_ic64s")
+rarity = ExtResource("2_qblqs")
+description = "16 Starfruit pressed into one. Better recipes ask for these."
+maxStack = 99
+sellPrice = 2464

@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="FishData" format=3 uid="uid://1sbcpy7yy4b3"]
+
+[ext_resource type="Script" uid="uid://bevdmlyak68oo" path="res://fishing/fish/fish_data.gd" id="e1"]
+[ext_resource type="Texture2D" uid="uid://ds0n74muhxxnk" path="res://fishing/fish/assets/expanse/whale_shark.png" id="e2"]
+[ext_resource type="Resource" path="res://items/rarities/trophy.tres" id="e3"]
+[ext_resource type="Script" uid="uid://c3d1apon1mdqw" path="res://fishing/fish/requirements/weather_requirement.gd" id="e4"]
+[ext_resource type="Script" uid="uid://ddca2l75wof8n" path="res://fishing/fish/requirements/cast_requirement.gd" id="e5"]
+[ext_resource type="Script" uid="uid://dupq0iwgv25f6" path="res://fishing/fish/requirements/fish_requirement.gd" id="e6"]
+
+[sub_resource type="Resource" id="s1"]
+script = ExtResource("e4")
+weather = 0
+
+[sub_resource type="Resource" id="s2"]
+script = ExtResource("e5")
+
+[resource]
+script = ExtResource("e1")
+displayName = "Whale Shark"
+icon = ExtResource("e2")
+rarity = ExtResource("e3")
+description = "The biggest fish in the world, gentle as a cloud."
+weightRange = Vector2(2000, 9000)
+basePrice = 5000
+heldSize = 2.0
+requirements = Array[ExtResource("e6")]([SubResource("s1"), SubResource("s2")])
+chance = 7.0

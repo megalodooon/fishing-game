@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Item" format=3]
+
+[ext_resource type="Texture2D" path="res://items/enchanted/icons/enchanted_frost_lichen.png" id="1_086op"]
+[ext_resource type="Resource" path="res://items/rarities/uncommon.tres" id="2_erkrc"]
+[ext_resource type="Script" path="res://items/item.gd" id="3_cqe5j"]
+
+[resource]
+script = ExtResource("3_cqe5j")
+displayName = "Enchanted Frost Lichen"
+category = "Enchanted Material"
+icon = ExtResource("1_086op")
+rarity = ExtResource("2_erkrc")
+description = "32 Frost Lichen pressed into one. Better recipes ask for these."
+maxStack = 99
+sellPrice = 282

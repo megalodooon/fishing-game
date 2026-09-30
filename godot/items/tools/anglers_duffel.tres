@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="BagUpgrade" format=3]
+
+[ext_resource type="Texture2D" path="res://items/tools/icons/anglers_duffel.png" id="1_b456s"]
+[ext_resource type="Resource" path="res://items/rarities/rare.tres" id="2_x8o4q"]
+[ext_resource type="Script" path="res://items/tools/bag_upgrade.gd" id="3_2l5sg"]
+
+[resource]
+script = ExtResource("3_2l5sg")
+slots = 4
+displayName = "Angler's Duffel"
+icon = ExtResource("1_b456s")
+rarity = ExtResource("2_x8o4q")
+description = "Sew it into the backpack for 4 more slots."

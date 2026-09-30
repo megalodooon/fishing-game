@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="BaitRecipe" format=3]
+
+[ext_resource type="Resource" path="res://items/materials/iron_scrap.tres" id="1_s8h42"]
+[ext_resource type="Resource" path="res://items/materials/iron_ingot.tres" id="2_hp2cd"]
+[ext_resource type="Script" path="res://fishing/bait/bait_recipe.gd" id="3_sydpx"]
+
+[resource]
+script = ExtResource("3_sydpx")
+output = ExtResource("2_hp2cd")
+amount = 1
+ingredients = Array[Resource]([ExtResource("1_s8h42")])
+counts = Array[int]([3])
+xp = 6.0
+station = &"workbench"
+category = "Materials"
+requiredSkill = &"crafting"
+requiredLevel = 2

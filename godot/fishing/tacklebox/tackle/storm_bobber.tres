@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="Tackle" format=3]
+
+[ext_resource type="Script" path="res://fishing/tacklebox/tackle.gd" id="1_script"]
+[ext_resource type="Texture2D" path="res://fishing/rods/bobbers/basic.png" id="2_icon"]
+[ext_resource type="Resource" path="res://items/rarities/rare.tres" id="3_rarity"]
+
+[resource]
+script = ExtResource("1_script")
+kind = 0
+discardable = false
+tint = Color(0.5, 0.65, 1, 1)
+biteSpeed = 1.2
+hookWindowBonus = 0.15
+displayName = "Storm Bobber"
+icon = ExtResource("2_icon")
+rarity = ExtResource("3_rarity")
+description = "Rides the waves in any weather."

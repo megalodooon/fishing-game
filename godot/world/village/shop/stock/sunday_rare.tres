@@ -1,0 +1,50 @@
+[gd_resource type="Resource" script_class="ShopStock" format=3]
+
+[ext_resource type="Script" path="res://world/village/shop/shop_stock.gd" id="1_stock"]
+[ext_resource type="Script" path="res://world/village/shop/shop_offer.gd" id="2_offer"]
+[ext_resource type="Resource" path="res://fishing/bait/glow_bait.tres" id="i1"]
+[ext_resource type="Resource" path="res://fishing/bait/rust_bait.tres" id="i2"]
+[ext_resource type="Resource" path="res://fishing/bait/squid_bait.tres" id="i3"]
+[ext_resource type="Resource" path="res://items/charms/lucky_clover.tres" id="i4"]
+[ext_resource type="Resource" path="res://items/charms/heavy_sinker.tres" id="i5"]
+[ext_resource type="Resource" path="res://items/rare/message_in_a_bottle.tres" id="i6"]
+
+[sub_resource type="Resource" id="o1"]
+script = ExtResource("2_offer")
+item = ExtResource("i1")
+amount = 5
+
+[sub_resource type="Resource" id="o2"]
+script = ExtResource("2_offer")
+item = ExtResource("i2")
+amount = 3
+
+[sub_resource type="Resource" id="o3"]
+script = ExtResource("2_offer")
+item = ExtResource("i3")
+amount = 5
+
+[sub_resource type="Resource" id="o4"]
+script = ExtResource("2_offer")
+item = ExtResource("i4")
+requiredSkill = &"fishing"
+requiredLevel = 8
+dailyStock = 1
+
+[sub_resource type="Resource" id="o5"]
+script = ExtResource("2_offer")
+item = ExtResource("i5")
+requiredSkill = &"fishing"
+requiredLevel = 10
+dailyStock = 1
+
+[sub_resource type="Resource" id="o6"]
+script = ExtResource("2_offer")
+item = ExtResource("i6")
+price = 900
+dailyStock = 1
+
+[resource]
+script = ExtResource("1_stock")
+shopName = "The Angler's Market"
+offers = Array[ExtResource("2_offer")]([SubResource("o1"), SubResource("o2"), SubResource("o3"), SubResource("o4"), SubResource("o5"), SubResource("o6")])

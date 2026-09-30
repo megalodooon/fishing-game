@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Item" format=3]
+
+[ext_resource type="Texture2D" path="res://items/enchanted/icons/enchanted_marsh_rice.png" id="1_ovw7w"]
+[ext_resource type="Resource" path="res://items/rarities/uncommon.tres" id="2_c1y3i"]
+[ext_resource type="Script" path="res://items/item.gd" id="3_2ay08"]
+
+[resource]
+script = ExtResource("3_2ay08")
+displayName = "Enchanted Marsh Rice"
+category = "Enchanted Material"
+icon = ExtResource("1_ovw7w")
+rarity = ExtResource("2_c1y3i")
+description = "32 Marsh Rice pressed into one. Better recipes ask for these."
+maxStack = 99
+sellPrice = 422

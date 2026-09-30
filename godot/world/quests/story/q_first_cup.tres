@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="Quest" format=3 uid="uid://ccpp2l6yi68b3"]
+
+[ext_resource type="Script" uid="uid://ftrpy1hit5em" path="res://items/item.gd" id="4_65t2c"]
+[ext_resource type="Script" uid="uid://t660ehs2ybui" path="res://world/location.gd" id="5_7at3l"]
+[ext_resource type="Script" uid="uid://b1p7iyi658nm7" path="res://world/quests/quest.gd" id="e1"]
+[ext_resource type="Script" uid="uid://depkark34l17n" path="res://world/quests/quest_goal.gd" id="e2"]
+[ext_resource type="Resource" uid="uid://cuv8q18cy2hg7" path="res://world/quests/story/q_hall.tres" id="e3"]
+
+[sub_resource type="Resource" id="s1"]
+script = ExtResource("e2")
+kind = 10
+flag = "tournaments"
+text = "Finish a tournament"
+
+[resource]
+script = ExtResource("e1")
+title = "The Village Cup"
+giver = "Commissioner Hale"
+description = "Enter a weekly tournament at the hall and see it through to the results."
+story = true
+goals = Array[ExtResource("e2")]([SubResource("s1")])
+startScene = "q_first_cup_start"
+endScene = "q_first_cup_end"
+requires = Array[ExtResource("e1")]([ExtResource("e3")])
+rewardCoins = 150

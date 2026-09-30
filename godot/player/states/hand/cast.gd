@@ -25,7 +25,7 @@ var elapsed : float = 0.0
 
 func enter() -> void:
 	if player.energy:
-		player.energy.spend(player.castEnergy)
+		player.energy.spend(player.castEnergy * player.boost(&"castEnergy"))
 	player.aimTarget = target
 	player.rooted = true
 	released = false

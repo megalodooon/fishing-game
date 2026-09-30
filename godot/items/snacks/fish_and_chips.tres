@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Snack" format=3]
+
+[ext_resource type="Texture2D" path="res://items/snacks/icons/fish_and_chips.png" id="1_44ver"]
+[ext_resource type="Resource" path="res://items/rarities/common.tres" id="2_pea1d"]
+[ext_resource type="Script" path="res://items/snacks/snack.gd" id="3_oborc"]
+
+[resource]
+script = ExtResource("3_oborc")
+energy = 45.0
+buffStat = "biteSpeed"
+buffAmount = 1.1
+buffHours = 3.0
+displayName = "Fish & Chips"
+icon = ExtResource("1_44ver")
+rarity = ExtResource("2_pea1d")
+description = "Cooked at a kitchen."
+hint = "Click while holding it to eat"
+maxStack = 20
+sellPrice = 25

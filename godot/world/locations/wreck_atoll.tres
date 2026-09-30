@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="Location" format=3 uid="uid://dsviapiujx7gs"]
+
+[ext_resource type="Resource" path="res://oceans/islands/wreck_atoll_biome.tres" id="loc_biome"]
+[ext_resource type="Script" uid="uid://t660ehs2ybui" path="res://world/location.gd" id="e1"]
+[ext_resource type="Texture2D" uid="uid://dr5f0kyr7n4wl" path="res://world/map/icons/wreck_atoll.png" id="e2"]
+
+[resource]
+script = ExtResource("e1")
+displayName = "Wreck Atoll"
+description = "A ring of sand around an old shipwreck. Captain Grim hunts treasure here."
+kind = 1
+scene = "res://world/islands/wreck_atoll/wreck_atoll.tscn"
+mapPosition = Vector2(258, 44)
+mapIcon = ExtResource("e2")
+chartTint = Color(0.14, 0.22, 0.3, 0.3)
+weatherChances = null
+startsUnlocked = false
+coinCost = 400
+requiredSkill = &"sailing"
+requiredLevel = 5
+requiredHull = 1
+biome = ExtResource("loc_biome")

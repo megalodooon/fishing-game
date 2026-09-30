@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="Quest" format=3 uid="uid://ckj52n1pxltjq"]
+
+[ext_resource type="Script" uid="uid://ftrpy1hit5em" path="res://items/item.gd" id="4_8l4jj"]
+[ext_resource type="Script" uid="uid://t660ehs2ybui" path="res://world/location.gd" id="5_y6pcl"]
+[ext_resource type="Script" uid="uid://b1p7iyi658nm7" path="res://world/quests/quest.gd" id="e1"]
+[ext_resource type="Script" uid="uid://depkark34l17n" path="res://world/quests/quest_goal.gd" id="e2"]
+[ext_resource type="Resource" uid="uid://drvnwfpseu4k" path="res://world/quests/story/q_expose.tres" id="e3"]
+
+[sub_resource type="Resource" id="s1"]
+script = ExtResource("e2")
+kind = 4
+flag = "project/fountain"
+text = "Restore the Harbor Fountain"
+
+[resource]
+script = ExtResource("e1")
+title = "The Harbor Fountain"
+giver = "Harbor Master Pip"
+description = "The fountain was the village's pride. Restore it."
+goals = Array[ExtResource("e2")]([SubResource("s1")])
+requires = Array[ExtResource("e1")]([ExtResource("e3")])
+rewardCoins = 2000

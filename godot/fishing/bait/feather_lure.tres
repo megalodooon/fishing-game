@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="Bait" format=3]
+
+[ext_resource type="Script" path="res://fishing/fish/fish_data.gd" id="1_4v6q2"]
+[ext_resource type="Texture2D" path="res://fishing/bait/icons/feather_lure.png" id="2_vtbwm"]
+[ext_resource type="Resource" path="res://items/rarities/rare.tres" id="3_563w8"]
+[ext_resource type="Script" path="res://items/rarity.gd" id="4_yjhv5"]
+[ext_resource type="Resource" path="res://items/rarities/legendary.tres" id="5_k1ec4"]
+[ext_resource type="Script" path="res://fishing/bait/bait.gd" id="6_ek1od"]
+
+[resource]
+script = ExtResource("6_ek1od")
+rarityBoost = Dictionary[ExtResource("4_yjhv5"), float]({
+ExtResource("3_563w8"): 1.6,
+ExtResource("5_k1ec4"): 1.2
+})
+kind = 4
+displayName = "Feather Lure"
+icon = ExtResource("2_vtbwm")
+rarity = ExtResource("3_563w8")
+description = "Goes in a rod's bait slot."
+maxStack = 99

@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Reforge" format=3]
+
+[ext_resource type="Script" path="res://fishing/reforges/reforge.gd" id="1_ohpva"]
+
+[resource]
+script = ExtResource("1_ohpva")
+prefix = "Keen"
+weight = 4.0
+kind = 3
+hookWindowBonus = 0.3
+control = 0.05
+displayName = "Keen"

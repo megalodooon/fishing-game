@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Charm" format=3]
+
+[ext_resource type="Texture2D" path="res://items/rare/icons/four_tides_amulet.png" id="1_8w2wb"]
+[ext_resource type="Resource" path="res://items/rarities/trophy.tres" id="2_cxbhi"]
+[ext_resource type="Script" path="res://items/charms/charm.gd" id="3_qx84f"]
+
+[resource]
+script = ExtResource("3_qx84f")
+stats = Dictionary[StringName, float]({
+&"luck": 10.0,
+&"rareFind": 15.0,
+&"seaCreature": 3.0,
+&"treasure": 2.0,
+&"xpBonus": 10.0
+})
+displayName = "Four Tides Amulet"
+icon = ExtResource("1_8w2wb")
+rarity = ExtResource("2_cxbhi")
+description = "A piece of every Tide, bound in gold. The sea itself is on your side."

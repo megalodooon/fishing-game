@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="Biome" format=3]
+
+[ext_resource type="Script" path="res://fishing/creatures/sea_creature.gd" id="1_pivto"]
+[ext_resource type="Script" path="res://items/item.gd" id="7_ph6kg"]
+[ext_resource type="Resource" path="res://items/materials/pearl_oyster.tres" id="8_tx3hm"]
+[ext_resource type="Resource" path="res://items/materials/storm_glass.tres" id="9_ntgsj"]
+[ext_resource type="Resource" path="res://items/materials/sea_salt.tres" id="10_5jmcl"]
+[ext_resource type="Script" path="res://oceans/biome.gd" id="e1"]
+[ext_resource type="Script" path="res://fishing/fish/fish_data.gd" id="e2"]
+[ext_resource type="Resource" path="res://fishing/fish/species/shrine/temple_guppy.tres" id="e3"]
+[ext_resource type="Resource" path="res://fishing/fish/species/shrine/shrine_carp.tres" id="e4"]
+[ext_resource type="Resource" path="res://fishing/fish/species/shrine/ancient_coelacanth.tres" id="e5"]
+[ext_resource type="Resource" path="res://fishing/fish/species/shrine/moonscale_coelacanth.tres" id="e6"]
+
+[resource]
+script = ExtResource("e1")
+displayName = "Tidal Shrine"
+description = "Still water in a stone basin where four tides meet."
+region = "Storm Belt"
+fish = Array[ExtResource("e2")]([ExtResource("e3"), ExtResource("e4"), ExtResource("e5"), ExtResource("e6")])
+tier = 3
+junkChance = 0.0
+forage = Array[ExtResource("7_ph6kg")]([ExtResource("8_tx3hm"), ExtResource("9_ntgsj"), ExtResource("10_5jmcl")])

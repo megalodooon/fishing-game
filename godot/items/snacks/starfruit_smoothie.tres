@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="Snack" format=3]
+
+[ext_resource type="Texture2D" path="res://items/snacks/icons/starfruit_smoothie.png" id="1_8nge3"]
+[ext_resource type="Resource" path="res://items/rarities/rare.tres" id="2_iuo1x"]
+[ext_resource type="Script" path="res://items/snacks/snack.gd" id="3_f8yux"]
+
+[resource]
+script = ExtResource("3_f8yux")
+energy = 50.0
+buffStat = "rareFind"
+buffAmount = 1.12
+displayName = "Starfruit Smoothie"
+icon = ExtResource("1_8nge3")
+rarity = ExtResource("2_iuo1x")
+description = "Cooked at a kitchen."
+hint = "Click while holding it to eat"
+maxStack = 20
+sellPrice = 180

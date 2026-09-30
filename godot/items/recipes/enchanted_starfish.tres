@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="BaitRecipe" format=3]
+
+[ext_resource type="Resource" path="res://items/materials/starfish.tres" id="1_wedqo"]
+[ext_resource type="Resource" path="res://items/enchanted/enchanted_starfish.tres" id="2_qda5o"]
+[ext_resource type="Script" path="res://fishing/bait/bait_recipe.gd" id="3_dwhsd"]
+
+[resource]
+script = ExtResource("3_dwhsd")
+output = ExtResource("2_qda5o")
+amount = 1
+ingredients = Array[Resource]([ExtResource("1_wedqo")])
+counts = Array[int]([32])
+requiredFlag = "collection/starfish/2"
+xp = 12.0
+category = "Materials"

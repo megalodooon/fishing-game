@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="RodItem" format=3 uid="uid://dyh7fmwgso5gv"]
+
+[ext_resource type="Script" uid="uid://ogpan3u26jeb" path="res://fishing/rods/rod_item.gd" id="1_script"]
+[ext_resource type="Texture2D" uid="uid://c327mfr56xkip" path="res://fishing/rods/icons/bamboo_rod.png" id="2_icon"]
+[ext_resource type="Resource" path="res://items/rarities/uncommon.tres" id="3_rarity"]
+[ext_resource type="PackedScene" path="res://fishing/rods/starter_rod.tscn" id="4_scene"]
+[ext_resource type="Script" uid="uid://bnc56btgk6rqi" path="res://fishing/tacklebox/tackle.gd" id="5_tackle"]
+[ext_resource type="Resource" path="res://fishing/tacklebox/tackle/basic_bobber.tres" id="6_bobber"]
+[ext_resource type="Resource" path="res://fishing/tacklebox/tackle/basic_line.tres" id="7_line"]
+[ext_resource type="Resource" path="res://fishing/tacklebox/tackle/basic_hook.tres" id="8_hook"]
+
+[sub_resource type="Resource" id="Built_in"]
+script = ExtResource("5_tackle")
+kind = 3
+biteSpeed = 1.1
+control = 0.08
+displayName = "Bamboo Rod"
+
+[resource]
+script = ExtResource("1_script")
+slots = Array[int]([0, 1, 2, 4])
+tackle = Array[ExtResource("5_tackle")]([ExtResource("6_bobber"), ExtResource("7_line"), ExtResource("8_hook"), null])
+builtIn = SubResource("Built_in")
+rodTint = Color(0.95, 0.85, 0.5, 1)
+displayName = "Bamboo Rod"
+icon = ExtResource("2_icon")
+rarity = ExtResource("3_rarity")
+description = "Light and springy. A real step up from the starter rod."
+heldScene = ExtResource("4_scene")
+discardable = false
+hint = "T to customize"
+buyPrice = 1200

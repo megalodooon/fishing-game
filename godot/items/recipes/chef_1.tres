@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="BaitRecipe" format=3]
+
+[ext_resource type="Resource" path="res://items/materials/honey.tres" id="1_840pa"]
+[ext_resource type="Resource" path="res://items/materials/rope.tres" id="2_u8nr7"]
+[ext_resource type="Resource" path="res://items/charms/chef_1.tres" id="3_1eoyh"]
+[ext_resource type="Script" path="res://fishing/bait/bait_recipe.gd" id="4_bjcio"]
+
+[resource]
+script = ExtResource("4_bjcio")
+output = ExtResource("3_1eoyh")
+amount = 1
+ingredients = Array[Resource]([ExtResource("1_840pa"), ExtResource("2_u8nr7")])
+counts = Array[int]([16, 1])
+xp = 30.0
+station = &"workbench"
+category = "Charms"
+requiredSkill = &"cooking"
+requiredLevel = 4

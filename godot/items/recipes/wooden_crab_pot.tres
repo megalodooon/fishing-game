@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="BaitRecipe" format=3]
+
+[ext_resource type="Script" path="res://fishing/bait/bait_recipe.gd" id="e1"]
+[ext_resource type="Resource" path="res://items/traps/wooden_crab_pot.tres" id="e2"]
+[ext_resource type="Resource" path="res://items/materials/driftwood_plank.tres" id="e3"]
+[ext_resource type="Resource" path="res://items/materials/seaweed.tres" id="e4"]
+
+[resource]
+script = ExtResource("e1")
+output = ExtResource("e2")
+amount = 1
+ingredients = Array[Resource]([ExtResource("e3"), ExtResource("e4")])
+counts = Array[int]([8, 3])
+xp = 10.0
+station = &"workbench"

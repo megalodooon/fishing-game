@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Item" format=3]
+
+[ext_resource type="Texture2D" path="res://items/materials/icons/clay.png" id="1_thoc5"]
+[ext_resource type="Resource" path="res://items/rarities/common.tres" id="2_sjim2"]
+[ext_resource type="Script" path="res://items/item.gd" id="3_upq8y"]
+
+[resource]
+script = ExtResource("3_upq8y")
+displayName = "River Clay"
+category = "Forage"
+icon = ExtResource("1_thoc5")
+rarity = ExtResource("2_sjim2")
+description = "Soft red clay from the island streams."
+maxStack = 99
+sellPrice = 3

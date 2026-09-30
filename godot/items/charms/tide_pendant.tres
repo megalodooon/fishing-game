@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="Charm" format=3]
+
+[ext_resource type="Script" path="res://items/charms/charm.gd" id="e1"]
+[ext_resource type="Texture2D" path="res://items/charms/icons/tide_pendant.png" id="e2"]
+[ext_resource type="Resource" path="res://items/rarities/trophy.tres" id="e3"]
+
+[resource]
+script = ExtResource("e1")
+stats = Dictionary[StringName, float]({
+&"luck": 8.0,
+&"seaCreature": 1.5,
+&"treasure": 1.0
+})
+displayName = "Tide Pendant"
+icon = ExtResource("e2")
+rarity = ExtResource("e3")
+description = "Holds all four tides. The sea listens to whoever wears it."
+sellPrice = 800

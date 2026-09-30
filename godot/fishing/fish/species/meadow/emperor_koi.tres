@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="FishData" format=3 uid="uid://dtrkbr0i1i5we"]
+
+[ext_resource type="Script" uid="uid://bevdmlyak68oo" path="res://fishing/fish/fish_data.gd" id="e1"]
+[ext_resource type="Texture2D" uid="uid://bila1np1noj8p" path="res://fishing/fish/assets/meadow/emperor_koi.png" id="e2"]
+[ext_resource type="Resource" path="res://items/rarities/trophy.tres" id="e3"]
+[ext_resource type="Script" uid="uid://b3bmwcwg3hf7i" path="res://fishing/fish/requirements/bait_requirement.gd" id="e4"]
+[ext_resource type="Resource" path="res://fishing/bait/honey_bait.tres" id="e5"]
+[ext_resource type="Script" uid="uid://dupq0iwgv25f6" path="res://fishing/fish/requirements/fish_requirement.gd" id="e6"]
+
+[sub_resource type="Resource" id="s1"]
+script = ExtResource("e4")
+bait = ExtResource("e5")
+
+[resource]
+script = ExtResource("e1")
+displayName = "Emperor Koi"
+icon = ExtResource("e2")
+rarity = ExtResource("e3")
+description = "White and red like a banner. Only rises for honey bait in the early morning."
+weightRange = Vector2(3, 9)
+basePrice = 1600
+heldSize = 1.2
+hours = Vector2(6, 9)
+requirements = Array[ExtResource("e6")]([SubResource("s1")])
+chance = 10.0

@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="Charm" format=3]
+
+[ext_resource type="Texture2D" path="res://items/charms/icons/seeker_4.png" id="1_u7p33"]
+[ext_resource type="Resource" path="res://items/rarities/legendary.tres" id="2_hb56l"]
+[ext_resource type="Script" path="res://items/charms/charm.gd" id="3_l15jg"]
+
+[resource]
+script = ExtResource("3_l15jg")
+stats = Dictionary[StringName, float]({
+&"rareFind": 15.0
+})
+family = "seeker"
+tier = 4
+displayName = "Seeker's Relic"
+icon = ExtResource("1_u7p33")
+rarity = ExtResource("2_hb56l")
+description = "Part of the Seeker line. Upgrade it at a bench to make it stronger."
+sellPrice = 640

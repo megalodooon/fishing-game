@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="BaitRecipe" format=3]
+
+[ext_resource type="Resource" path="res://items/materials/pumice.tres" id="1_jp3a5"]
+[ext_resource type="Resource" path="res://items/enchanted/enchanted_pumice.tres" id="2_72upd"]
+[ext_resource type="Script" path="res://fishing/bait/bait_recipe.gd" id="3_3aqp4"]
+
+[resource]
+script = ExtResource("3_3aqp4")
+output = ExtResource("2_72upd")
+amount = 1
+ingredients = Array[Resource]([ExtResource("1_jp3a5")])
+counts = Array[int]([32])
+requiredFlag = "collection/pumice/2"
+xp = 12.0
+category = "Materials"

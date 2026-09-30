@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="BaitRecipe" format=3]
+
+[ext_resource type="Resource" path="res://items/enchanted/enchanted_cotton.tres" id="1_883gu"]
+[ext_resource type="Resource" path="res://items/materials/pearl_dust.tres" id="2_ag8fq"]
+[ext_resource type="Resource" path="res://items/tools/pouch_stitching_3.tres" id="3_gd3uk"]
+[ext_resource type="Script" path="res://fishing/bait/bait_recipe.gd" id="4_lc3ct"]
+
+[resource]
+script = ExtResource("4_lc3ct")
+output = ExtResource("3_gd3uk")
+amount = 1
+ingredients = Array[Resource]([ExtResource("1_883gu"), ExtResource("2_ag8fq")])
+counts = Array[int]([8, 6])
+xp = 180.0
+station = &"workbench"
+category = "Tools"
+requiredSkill = &"crafting"
+requiredLevel = 22

@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="FishData" format=3]
+
+[ext_resource type="Script" path="res://fishing/fish/fish_data.gd" id="1_fish"]
+[ext_resource type="Texture2D" path="res://fishing/fish/assets/volcanic/magma_snapper.png" id="2_icon"]
+[ext_resource type="Resource" path="res://items/rarities/uncommon.tres" id="3_rarity"]
+
+[resource]
+script = ExtResource("1_fish")
+displayName = "Magma Snapper"
+icon = ExtResource("2_icon")
+rarity = ExtResource("3_rarity")
+description = "Its scales stay warm long after it leaves the water."
+weightRange = Vector2(1.0, 5.0)
+basePrice = 60
+heldSize = 1.1
+hours = Vector2(0.0, 24.0)

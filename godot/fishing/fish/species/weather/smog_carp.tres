@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="FishData" format=3 uid="uid://fcrk4hx5kbam"]
+
+[ext_resource type="Script" uid="uid://bevdmlyak68oo" path="res://fishing/fish/fish_data.gd" id="1_fish"]
+[ext_resource type="Texture2D" uid="uid://bu0g7ss8fcy4p" path="res://fishing/fish/assets/weather/smog_carp.png" id="2_icon"]
+[ext_resource type="Resource" path="res://items/rarities/uncommon.tres" id="3_rarity"]
+[ext_resource type="Script" uid="uid://dupq0iwgv25f6" path="res://fishing/fish/requirements/fish_requirement.gd" id="s_req"]
+[ext_resource type="Script" uid="uid://c3d1apon1mdqw" path="res://fishing/fish/requirements/weather_requirement.gd" id="s_w"]
+
+[sub_resource type="Resource" id="Req_1"]
+script = ExtResource("s_w")
+weather = 2
+
+[resource]
+script = ExtResource("1_fish")
+displayName = "Smog Carp"
+icon = ExtResource("2_icon")
+rarity = ExtResource("3_rarity")
+description = "Comes out of the murk when fog rolls over the polluted sea."
+weightRange = Vector2(1, 5)
+basePrice = 45
+requirements = Array[ExtResource("s_req")]([SubResource("Req_1")])

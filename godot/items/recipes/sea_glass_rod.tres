@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="BaitRecipe" format=3]
+
+[ext_resource type="Resource" path="res://items/materials/glass_pane.tres" id="1_enfrn"]
+[ext_resource type="Resource" path="res://items/rare/sea_glass.tres" id="2_a1ol5"]
+[ext_resource type="Resource" path="res://items/materials/rope.tres" id="3_8jaab"]
+[ext_resource type="Resource" path="res://fishing/rods/sea_glass_rod.tres" id="4_y54h0"]
+[ext_resource type="Script" path="res://fishing/bait/bait_recipe.gd" id="5_kk14o"]
+
+[resource]
+script = ExtResource("5_kk14o")
+output = ExtResource("4_y54h0")
+amount = 1
+ingredients = Array[Resource]([ExtResource("1_enfrn"), ExtResource("2_a1ol5"), ExtResource("3_8jaab")])
+counts = Array[int]([10, 8, 4])
+xp = 140.0
+station = &"workbench"
+category = "Rods"
+requiredSkill = &"fishing"
+requiredLevel = 12

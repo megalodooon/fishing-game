@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="CrewMember" format=3]
+
+[ext_resource type="Resource" path="res://items/enchanted/enchanted_abyssal_scale.tres" id="1_1h6lo"]
+[ext_resource type="Texture2D" path="res://items/materials/icons/abyssal_scale.png" id="2_st0wm"]
+[ext_resource type="Resource" path="res://items/materials/abyssal_scale.tres" id="3_aba03"]
+[ext_resource type="Script" path="res://world/crew/crew_member.gd" id="4_2vbx5"]
+
+[resource]
+script = ExtResource("4_2vbx5")
+displayName = "Abyss Diver"
+description = "Nobody knows how deep they go."
+icon = ExtResource("2_st0wm")
+product = ExtResource("3_aba03")
+enchanted = ExtResource("1_1h6lo")
+hours = 5.0

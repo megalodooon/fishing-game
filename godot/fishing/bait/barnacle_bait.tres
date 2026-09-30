@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="Bait" format=3]
+
+[ext_resource type="Script" path="res://fishing/fish/fish_data.gd" id="1_f102g"]
+[ext_resource type="Texture2D" path="res://fishing/bait/icons/barnacle_bait.png" id="2_jximf"]
+[ext_resource type="Resource" path="res://items/rarities/common.tres" id="3_dpu7v"]
+[ext_resource type="Script" path="res://items/rarity.gd" id="4_0poid"]
+[ext_resource type="Resource" path="res://items/rarities/uncommon.tres" id="5_b34v1"]
+[ext_resource type="Script" path="res://fishing/bait/bait.gd" id="6_jnsyi"]
+
+[resource]
+script = ExtResource("6_jnsyi")
+rarityBoost = Dictionary[ExtResource("4_0poid"), float]({
+ExtResource("3_dpu7v"): 1.2,
+ExtResource("5_b34v1"): 1.2
+})
+kind = 4
+displayName = "Barnacle Bait"
+icon = ExtResource("2_jximf")
+rarity = ExtResource("3_dpu7v")
+description = "Goes in a rod's bait slot."
+maxStack = 99

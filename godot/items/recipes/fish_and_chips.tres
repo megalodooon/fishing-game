@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="BaitRecipe" format=3]
+
+[ext_resource type="Resource" path="res://items/rarities/common.tres" id="1_fd3a4"]
+[ext_resource type="Resource" path="res://items/materials/sand_carrot.tres" id="2_ytcl7"]
+[ext_resource type="Resource" path="res://items/materials/fish_oil.tres" id="3_333xv"]
+[ext_resource type="Resource" path="res://items/snacks/fish_and_chips.tres" id="4_uwlt7"]
+[ext_resource type="Script" path="res://fishing/bait/bait_recipe.gd" id="5_g0mph"]
+
+[resource]
+script = ExtResource("5_g0mph")
+output = ExtResource("4_uwlt7")
+amount = 1
+ingredients = Array[Resource]([ExtResource("1_fd3a4"), ExtResource("2_ytcl7"), ExtResource("3_333xv")])
+counts = Array[int]([2, 2, 1])
+xp = 12.0
+station = &"kitchen"
+category = "Food"
+requiredSkill = &"cooking"
+requiredLevel = 2

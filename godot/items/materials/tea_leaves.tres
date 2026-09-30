@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Item" format=3]
+
+[ext_resource type="Texture2D" path="res://items/materials/icons/tea_leaves.png" id="1_62hxl"]
+[ext_resource type="Resource" path="res://items/rarities/uncommon.tres" id="2_2g1gn"]
+[ext_resource type="Script" path="res://items/item.gd" id="3_u4x2h"]
+
+[resource]
+script = ExtResource("3_u4x2h")
+displayName = "Tea Leaves"
+category = "Crop"
+icon = ExtResource("1_62hxl")
+rarity = ExtResource("2_2g1gn")
+description = "Grown on the farm. Good for cooking and brewing."
+maxStack = 99
+sellPrice = 14

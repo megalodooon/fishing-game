@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="CrewMember" format=3]
+
+[ext_resource type="Resource" path="res://items/enchanted/enchanted_obsidian_shard.tres" id="1_lxcdy"]
+[ext_resource type="Texture2D" path="res://items/materials/icons/obsidian_shard.png" id="2_nswpg"]
+[ext_resource type="Resource" path="res://items/materials/obsidian_shard.tres" id="3_eua1g"]
+[ext_resource type="Script" path="res://world/crew/crew_member.gd" id="4_glriq"]
+
+[resource]
+script = ExtResource("4_glriq")
+displayName = "Obsidian Miner"
+description = "Works the cooled lava by the volcano."
+icon = ExtResource("2_nswpg")
+product = ExtResource("3_eua1g")
+enchanted = ExtResource("1_lxcdy")
+hours = 2.5

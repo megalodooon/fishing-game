@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="BaitRecipe" format=3]
+
+[ext_resource type="Resource" path="res://items/materials/storm_glass.tres" id="1_5ve02"]
+[ext_resource type="Resource" path="res://items/materials/storm_essence.tres" id="2_rnbsq"]
+[ext_resource type="Resource" path="res://items/materials/storm_core.tres" id="3_xqs12"]
+[ext_resource type="Script" path="res://fishing/bait/bait_recipe.gd" id="4_om3jb"]
+
+[resource]
+script = ExtResource("4_om3jb")
+output = ExtResource("3_xqs12")
+amount = 1
+ingredients = Array[Resource]([ExtResource("1_5ve02"), ExtResource("2_rnbsq")])
+counts = Array[int]([4, 2])
+xp = 6.0
+station = &"forge"
+category = "Materials"
+requiredSkill = &"crafting"
+requiredLevel = 16

@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="Charm" format=3]
+
+[ext_resource type="Texture2D" path="res://items/events/icons/holly_charm.png" id="1_e1cw1"]
+[ext_resource type="Resource" path="res://items/rarities/legendary.tres" id="2_l1fmq"]
+[ext_resource type="Script" path="res://items/charms/charm.gd" id="3_ihd11"]
+
+[resource]
+script = ExtResource("3_ihd11")
+stats = Dictionary[StringName, float]({
+&"luck": 5.0,
+&"rareFind": 5.0,
+&"treasure": 1.5
+})
+displayName = "Holly Charm"
+icon = ExtResource("1_e1cw1")
+rarity = ExtResource("2_l1fmq")
+description = "Wally's own. Luck and treasure follow whoever carries it."

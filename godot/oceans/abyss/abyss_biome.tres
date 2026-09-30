@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="Biome" format=3 uid="uid://dcvvf0nyq3ltw"]
+
+[ext_resource type="Resource" path="res://items/materials/deep_coral.tres" id="14_uc1fx"]
+[ext_resource type="Script" path="res://oceans/biome.gd" id="e1"]
+[ext_resource type="Script" path="res://fishing/fish/fish_data.gd" id="e2"]
+[ext_resource type="Resource" path="res://fishing/fish/species/abyss/lanternfish.tres" id="e3"]
+[ext_resource type="Resource" path="res://fishing/fish/species/abyss/gulper_eel.tres" id="e4"]
+[ext_resource type="Resource" path="res://fishing/fish/species/abyss/vampire_squid.tres" id="e5"]
+[ext_resource type="Resource" path="res://fishing/fish/species/abyss/barreleye.tres" id="e6"]
+[ext_resource type="Resource" path="res://fishing/fish/species/abyss/anglerfish.tres" id="e7"]
+[ext_resource type="Resource" path="res://fishing/fish/species/abyss/ghost_shark.tres" id="e8"]
+[ext_resource type="Resource" path="res://fishing/fish/species/abyss/leviathan.tres" id="e9"]
+[ext_resource type="Resource" path="res://fishing/creatures/abyssal_angler.tres" id="e10"]
+[ext_resource type="Resource" path="res://fishing/creatures/bone_shark.tres" id="e11"]
+[ext_resource type="Script" path="res://fishing/creatures/sea_creature.gd" id="e12"]
+[ext_resource type="Resource" path="res://items/materials/iron_scrap.tres" id="e13"]
+[ext_resource type="Script" path="res://items/item.gd" id="e14"]
+
+[resource]
+script = ExtResource("e1")
+displayName = "Abyssal Trench"
+description = "A crack in the sea floor so deep the light gives up."
+region = "The Deep"
+fish = Array[ExtResource("e2")]([ExtResource("e3"), ExtResource("e4"), ExtResource("e5"), ExtResource("e6"), ExtResource("e7"), ExtResource("e8"), ExtResource("e9")])
+creatures = Array[ExtResource("e12")]([ExtResource("e10"), ExtResource("e11")])
+tier = 4
+junkChance = 0.08
+junk = Array[ExtResource("e14")]([ExtResource("e13"), ExtResource("14_uc1fx")])

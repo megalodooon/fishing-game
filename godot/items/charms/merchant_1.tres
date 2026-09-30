@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="Charm" format=3]
+
+[ext_resource type="Texture2D" path="res://items/charms/icons/merchant_1.png" id="1_56wih"]
+[ext_resource type="Resource" path="res://items/rarities/common.tres" id="2_k67qe"]
+[ext_resource type="Script" path="res://items/charms/charm.gd" id="3_j4k1c"]
+
+[resource]
+script = ExtResource("3_j4k1c")
+stats = Dictionary[StringName, float]({
+&"sellBonus": 2.0
+})
+family = "merchant"
+displayName = "Merchant's Charm"
+icon = ExtResource("1_56wih")
+rarity = ExtResource("2_k67qe")
+description = "Part of the Merchant line. Upgrade it at a bench to make it stronger."
+sellPrice = 40

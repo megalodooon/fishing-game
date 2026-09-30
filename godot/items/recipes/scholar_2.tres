@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="BaitRecipe" format=3]
+
+[ext_resource type="Resource" path="res://items/charms/scholar_1.tres" id="1_s5mof"]
+[ext_resource type="Resource" path="res://items/enchanted/enchanted_palm_frond.tres" id="2_pcdqc"]
+[ext_resource type="Resource" path="res://items/materials/iron_ingot.tres" id="3_dqe2n"]
+[ext_resource type="Resource" path="res://items/charms/scholar_2.tres" id="4_t51fx"]
+[ext_resource type="Script" path="res://fishing/bait/bait_recipe.gd" id="5_myxn8"]
+
+[resource]
+script = ExtResource("5_myxn8")
+output = ExtResource("4_t51fx")
+amount = 1
+ingredients = Array[Resource]([ExtResource("1_s5mof"), ExtResource("2_pcdqc"), ExtResource("3_dqe2n")])
+counts = Array[int]([1, 2, 2])
+xp = 60.0
+station = &"workbench"
+category = "Charms"
+requiredSkill = &"crafting"
+requiredLevel = 9

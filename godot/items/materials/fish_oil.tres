@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Item" format=3]
+
+[ext_resource type="Texture2D" path="res://items/materials/icons/fish_oil.png" id="1_lpy06"]
+[ext_resource type="Resource" path="res://items/rarities/common.tres" id="2_ydn1n"]
+[ext_resource type="Script" path="res://items/item.gd" id="3_un1ds"]
+
+[resource]
+script = ExtResource("3_un1ds")
+displayName = "Fish Oil"
+category = "Fish Product"
+icon = ExtResource("1_lpy06")
+rarity = ExtResource("2_ydn1n")
+description = "Made in the recipe book."
+maxStack = 99
+sellPrice = 15

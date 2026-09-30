@@ -1,0 +1,8 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://fishing/minigames/strike_rings/strike_rings.gd" id="1_game"]
+
+[node name="StrikeRings" type="Node2D"]
+script = ExtResource("1_game")
+size = Vector2(64, 38)
+hint = "Point at the fish, click as the ring meets it"

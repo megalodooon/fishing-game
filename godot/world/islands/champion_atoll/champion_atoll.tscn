@@ -1,0 +1,267 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://world/island/island.gd" id="i_e1"]
+[ext_resource type="Script" path="res://world/island/island_room.gd" id="i_e2"]
+[ext_resource type="Resource" path="res://oceans/islands/champion_biome.tres" id="i_e3"]
+[ext_resource type="PackedScene" path="res://oceans/basic/basic_ocean.tscn" id="i_e4"]
+[ext_resource type="Texture2D" path="res://world/islands/champion_atoll/land/landing.png" id="i_e5"]
+[ext_resource type="Texture2D" path="res://world/islands/props/flag.png" id="i_e6"]
+[ext_resource type="Texture2D" path="res://world/islands/props/trophy_statue.png" id="i_e7"]
+[ext_resource type="Script" path="res://world/interact/secret.gd" id="i_e8"]
+[ext_resource type="Texture2D" path="res://world/islands/champion_atoll/land/arena.png" id="i_e9"]
+[ext_resource type="Texture2D" path="res://world/islands/props/stadium.png" id="i_e10"]
+[ext_resource type="Script" path="res://world/village/building.gd" id="i_e11"]
+[ext_resource type="Texture2D" path="res://world/islands/props/champion_hall.png" id="i_e12"]
+[ext_resource type="Script" path="res://world/tournament/tournament_desk.gd" id="i_e13"]
+[ext_resource type="Script" path="res://world/village/shop/shop_offer.gd" id="i_e14"]
+[ext_resource type="Resource" path="res://items/charms/anglers_medal.tres" id="i_e15"]
+[ext_resource type="Resource" path="res://items/treasure/golden_chest.tres" id="i_e16"]
+[ext_resource type="Resource" path="res://fishing/bait/moon_bait.tres" id="i_e17"]
+[ext_resource type="Resource" path="res://items/charms/lucky_clover.tres" id="i_e18"]
+[ext_resource type="Resource" path="res://items/charms/twin_hook_charm.tres" id="i_e19"]
+[ext_resource type="Resource" path="res://fishing/tacklebox/tackle/champion_line.tres" id="i_e20"]
+[ext_resource type="Resource" path="res://items/treasure/ancient_coffer.tres" id="i_e21"]
+[ext_resource type="Resource" path="res://fishing/rods/champion_rod.tres" id="i_e22"]
+[ext_resource type="Script" path="res://world/npc/npc.gd" id="i_e23"]
+[ext_resource type="Texture2D" path="res://world/npcs/hale.png" id="i_e24"]
+
+[sub_resource type="RectangleShape2D" id="i_s1"]
+size = Vector2(8.0, 4.0)
+
+[sub_resource type="RectangleShape2D" id="i_s2"]
+size = Vector2(40.0, 6.0)
+
+[sub_resource type="RectangleShape2D" id="i_s3"]
+size = Vector2(40.0, 6.0)
+
+[sub_resource type="RectangleShape2D" id="i_s4"]
+size = Vector2(44.0, 6.0)
+
+[sub_resource type="Resource" id="i_s5"]
+script = ExtResource("i_e14")
+item = ExtResource("i_e15")
+amount = 1
+price = 3
+
+[sub_resource type="Resource" id="i_s6"]
+script = ExtResource("i_e14")
+item = ExtResource("i_e16")
+amount = 1
+price = 4
+
+[sub_resource type="Resource" id="i_s7"]
+script = ExtResource("i_e14")
+item = ExtResource("i_e17")
+amount = 3
+price = 5
+
+[sub_resource type="Resource" id="i_s8"]
+script = ExtResource("i_e14")
+item = ExtResource("i_e18")
+amount = 1
+price = 5
+
+[sub_resource type="Resource" id="i_s9"]
+script = ExtResource("i_e14")
+item = ExtResource("i_e19")
+amount = 1
+price = 10
+
+[sub_resource type="Resource" id="i_s10"]
+script = ExtResource("i_e14")
+item = ExtResource("i_e20")
+amount = 1
+price = 18
+
+[sub_resource type="Resource" id="i_s11"]
+script = ExtResource("i_e14")
+item = ExtResource("i_e21")
+amount = 1
+price = 15
+
+[sub_resource type="Resource" id="i_s12"]
+script = ExtResource("i_e14")
+item = ExtResource("i_e22")
+amount = 1
+price = 40
+requiredFlag = "league/3"
+lockedText = "Reach the Platinum League."
+
+[sub_resource type="RectangleShape2D" id="i_s13"]
+size = Vector2(6.0, 3.0)
+
+[sub_resource type="RectangleShape2D" id="i_s14"]
+size = Vector2(8.0, 4.0)
+
+[node name="ChampionAtoll" type="Node2D"]
+y_sort_enabled = true
+script = ExtResource("i_e1")
+
+[node name="Landing" type="Node2D" parent="." node_paths=PackedStringArray("land")]
+position = Vector2(0.0, 0.0)
+y_sort_enabled = true
+script = ExtResource("i_e2")
+land = [NodePath("Land")]
+
+[node name="Water" parent="Landing" instance=ExtResource("i_e4")]
+biome = ExtResource("i_e3")
+
+[node name="Land" type="Sprite2D" parent="Landing"]
+z_index = -1
+texture = ExtResource("i_e5")
+centered = false
+
+[node name="Flag1" type="Sprite2D" parent="Landing"]
+position = Vector2(97, 30)
+texture = ExtResource("i_e6")
+centered = false
+offset = Vector2(-5.0, -20.0)
+
+[node name="Flag2" type="Sprite2D" parent="Landing"]
+position = Vector2(97, 90)
+texture = ExtResource("i_e6")
+centered = false
+offset = Vector2(-5.0, -20.0)
+
+[node name="Statue" type="Sprite2D" parent="Landing"]
+position = Vector2(131, 64)
+texture = ExtResource("i_e7")
+centered = false
+offset = Vector2(-7.0, -24.0)
+
+[node name="Body" type="StaticBody2D" parent="Landing/Statue"]
+
+[node name="Shape" type="CollisionShape2D" parent="Landing/Statue/Body"]
+position = Vector2(0.0, -2.0)
+shape = SubResource("i_s1")
+
+[node name="Pearl1" type="Node2D" parent="Landing"]
+position = Vector2(138, 14)
+script = ExtResource("i_e8")
+flag = "pearl_champion_atoll_1"
+title = "A lost pearl!"
+message = "Opal on Pearl Lagoon collects these."
+prompt = "Pick up"
+reach = 7.0
+
+[node name="Arena" type="Node2D" parent="." node_paths=PackedStringArray("land")]
+position = Vector2(192.0, 0.0)
+y_sort_enabled = true
+script = ExtResource("i_e2")
+land = [NodePath("Land")]
+
+[node name="Water" parent="Arena" instance=ExtResource("i_e4")]
+biome = ExtResource("i_e3")
+
+[node name="Land" type="Sprite2D" parent="Arena"]
+z_index = -1
+texture = ExtResource("i_e9")
+centered = false
+
+[node name="StandsTop" type="Sprite2D" parent="Arena"]
+position = Vector2(70.0, 34.0)
+texture = ExtResource("i_e10")
+centered = false
+offset = Vector2(-20.0, -22.0)
+
+[node name="Body" type="StaticBody2D" parent="Arena/StandsTop"]
+
+[node name="Shape" type="CollisionShape2D" parent="Arena/StandsTop/Body"]
+position = Vector2(0.0, -3.0)
+shape = SubResource("i_s2")
+
+[node name="StandsBottom" type="Sprite2D" parent="Arena"]
+position = Vector2(70.0, 104.0)
+texture = ExtResource("i_e10")
+centered = false
+offset = Vector2(-20.0, -22.0)
+
+[node name="Body" type="StaticBody2D" parent="Arena/StandsBottom"]
+
+[node name="Shape" type="CollisionShape2D" parent="Arena/StandsBottom/Body"]
+position = Vector2(0.0, -3.0)
+shape = SubResource("i_s3")
+
+[node name="Hall" type="Node2D" parent="Arena"]
+position = Vector2(140.0, 50.0)
+script = ExtResource("i_e11")
+displayName = "Champion Hall"
+
+[node name="Art" type="Sprite2D" parent="Arena/Hall"]
+texture = ExtResource("i_e12")
+centered = false
+offset = Vector2(-24.0, -36.0)
+
+[node name="Body" type="StaticBody2D" parent="Arena/Hall"]
+
+[node name="Shape" type="CollisionShape2D" parent="Arena/Hall/Body"]
+position = Vector2(0.0, -4.0)
+shape = SubResource("i_s4")
+
+[node name="Desk" type="Node2D" parent="Arena/Hall"]
+position = Vector2(0, 2)
+script = ExtResource("i_e13")
+prizes = Array[ExtResource("i_e14")]([SubResource("i_s5"), SubResource("i_s6"), SubResource("i_s7"), SubResource("i_s8"), SubResource("i_s9"), SubResource("i_s10"), SubResource("i_s11"), SubResource("i_s12")])
+title = "Champion Hall"
+prompt = "Tournament desk"
+reach = 12.0
+
+[node name="Npc_Hale" type="Node2D" parent="Arena" node_paths=PackedStringArray("art")]
+position = Vector2(120.0, 72.0)
+script = ExtResource("i_e23")
+id = "hale"
+greeting = "The best anglers in the world compete here."
+reach = 12.0
+promptOffset = Vector2(0, -24)
+art = NodePath("Art")
+appearFlag = "league/4"
+
+[node name="Art" type="Sprite2D" parent="Arena/Npc_Hale"]
+texture = ExtResource("i_e24")
+centered = false
+offset = Vector2(-6, -20)
+
+[node name="Body" type="StaticBody2D" parent="Arena/Npc_Hale"]
+
+[node name="Shape" type="CollisionShape2D" parent="Arena/Npc_Hale/Body"]
+position = Vector2(0, -1)
+shape = SubResource("i_s13")
+
+[node name="Statue" type="Sprite2D" parent="Arena"]
+position = Vector2(20.0, 60.0)
+texture = ExtResource("i_e7")
+centered = false
+offset = Vector2(-7.0, -24.0)
+
+[node name="Body" type="StaticBody2D" parent="Arena/Statue"]
+
+[node name="Shape" type="CollisionShape2D" parent="Arena/Statue/Body"]
+position = Vector2(0.0, -2.0)
+shape = SubResource("i_s14")
+
+[node name="Pearl2" type="Node2D" parent="Arena"]
+position = Vector2(10.0, 100.0)
+script = ExtResource("i_e8")
+flag = "pearl_champion_atoll_2"
+title = "A lost pearl!"
+message = "Opal on Pearl Lagoon collects these."
+prompt = "Pick up"
+reach = 7.0
+
+[node name="Pearl3" type="Node2D" parent="Arena"]
+position = Vector2(160.0, 96.0)
+script = ExtResource("i_e8")
+flag = "pearl_champion_atoll_3"
+title = "A lost pearl!"
+message = "Opal on Pearl Lagoon collects these."
+prompt = "Pick up"
+reach = 7.0
+
+[node name="Pearl4" type="Node2D" parent="Arena"]
+position = Vector2(100.0, 14.0)
+script = ExtResource("i_e8")
+flag = "pearl_champion_atoll_4"
+title = "A lost pearl!"
+message = "Opal on Pearl Lagoon collects these."
+prompt = "Pick up"
+reach = 7.0

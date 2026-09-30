@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Item" format=3]
+
+[ext_resource type="Texture2D" path="res://items/materials/icons/abyss_lens.png" id="1_kxf7c"]
+[ext_resource type="Resource" path="res://items/rarities/legendary.tres" id="2_fsgye"]
+[ext_resource type="Script" path="res://items/item.gd" id="3_7hups"]
+
+[resource]
+script = ExtResource("3_7hups")
+displayName = "Abyssal Lens"
+category = "Refined"
+icon = ExtResource("1_kxf7c")
+rarity = ExtResource("2_fsgye")
+description = "Made in the recipe book."
+maxStack = 99
+sellPrice = 600

@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="Snack" format=3]
+
+[ext_resource type="Texture2D" path="res://items/potions/icons/twin_tonic.png" id="1_aaqs7"]
+[ext_resource type="Resource" path="res://items/rarities/rare.tres" id="2_txijc"]
+[ext_resource type="Script" path="res://items/snacks/snack.gd" id="3_r6bqy"]
+
+[resource]
+script = ExtResource("3_r6bqy")
+energy = 5.0
+buffStat = "doubleCatch"
+buffAmount = 1.05
+buffHours = 3.0
+displayName = "Twin Tonic"
+category = "Potion"
+icon = ExtResource("1_aaqs7")
+rarity = ExtResource("2_txijc")
+description = "Brewed at a cauldron. Drink it for a few hours of double catch."
+hint = "Click while holding it to drink"
+maxStack = 10
+sellPrice = 116

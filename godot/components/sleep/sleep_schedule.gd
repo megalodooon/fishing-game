@@ -5,9 +5,13 @@ class_name SleepSchedule
 # only lateRest of it, and at passOutHour the player collapses and wakes with
 # passOutRest. Either way the next morning starts at wakeHour. Notices warn
 # before each cutoff, the screen edges darken and the eyes start to droop as
-# it gets late. Sleeping is on the sleep key for now, until there's a bed.
+# it gets late. The bed in the village house is the only place to sleep.
 
 signal slept(share : float)
+# The new day has begun behind closed eyes, before the summary shows.
+signal slept_night
+
+const GROUP : StringName = &"sleep_schedules"
 
 #------------------------#
 @export var cycle : DayNightCycle
@@ -16,7 +20,7 @@ signal slept(share : float)
 @export var notices : NoticeBoard
 # Closed when falling asleep.
 @export var menus : Array[Control] = []
-@export var sleepKeyText : String = "["
+@export var bedText : String = "Head to a bed: at home in the village, or a room you rent."
 
 @export_group("Rules")
 @export_range(0.0, 24.0, 0.25) var wakeHour : float = 7.0
@@ -70,6 +74,7 @@ var summaryShare : float = 1.0
 
 
 func _ready() -> void:
+	add_to_group(GROUP)
 	process_mode = PROCESS_MODE_ALWAYS
 	var back : CanvasLayer = CanvasLayer.new()
 	back.layer = 12
@@ -119,15 +124,21 @@ func drowsiness() -> float:
 func hour_text(hour : float) -> String:
 	return "%d:%02d" % [floori(fposmod(hour, 24.0)), roundi(fmod(hour, 1.0) * 60.0)]
 
-func _unhandled_input(event : InputEvent) -> void:
-	if sleeping or not event.is_action_pressed("sleep"):
-		return
+static func find(tree : SceneTree) -> SleepSchedule:
+	return tree.get_first_node_in_group(GROUP) as SleepSchedule
+
+# What the bed does. Returns whether the player went to sleep.
+func try_sleep() -> bool:
+	if sleeping:
+		return false
 	if not since(earliestSleepHour):
 		notices.post("Not tired yet", "You can go to sleep after %s." % hour_text(earliestSleepHour), infoColor, sleepyIcon)
 	elif player.handStates.currentState is PlayerHandIdleState:
 		go_to_sleep()
+		return true
 	else:
 		notices.post("Not now", "Reel in before going to sleep.", sleepyColor, sleepyIcon)
+	return false
 
 func _input(_event : InputEvent) -> void:
 	if sleeping:
@@ -184,7 +195,7 @@ func check_warnings() -> void:
 	lastAwake = awake
 	match latest:
 		0:
-			notices.post("It's late", "Sleep before %s to wake up rested. Press %s to sleep." % [hour_text(fullRestHour), sleepKeyText], infoColor, sleepyIcon)
+			notices.post("It's late", "Sleep before %s to wake up rested. %s" % [hour_text(fullRestHour), bedText], infoColor, sleepyIcon)
 		1:
 			notices.post("Getting sleepy", "Go to bed before %s for full energy." % hour_text(fullRestHour), sleepyColor, sleepyIcon)
 		2:
@@ -195,7 +206,7 @@ func check_warnings() -> void:
 func check_energy() -> void:
 	var empty : bool = player.energy.is_empty()
 	if empty and not wasEmpty and not sleeping:
-		notices.post("Exhausted", "Too tired to fish. Press %s to sleep." % sleepKeyText, urgentColor, sleepyIcon)
+		notices.post("Exhausted", "Too tired to fish. %s" % bedText, urgentColor, sleepyIcon)
 	wasEmpty = empty
 
 # Closes the eyes, skips to the next morning with the energy the bedtime
@@ -225,12 +236,17 @@ func go_to_sleep(passedOut : bool = false) -> void:
 	get_tree().paused = true
 	notices.clear()
 	player.wake_reset()
-	if cycle.time >= wakeHour:
-		cycle.day += 1
+	var nextDay : bool = cycle.time >= wakeHour
 	cycle.set_time(wakeHour)
+	if nextDay:
+		cycle.set_day(cycle.day + 1)
 	lastAwake = 0.0
+	player.refresh_energy_max()
 	player.energy.refill(share)
-	summaryTitle = "Day %d" % cycle.day
+	player.progress.count("days")
+	slept_night.emit()
+	var saved : bool = SaveGame.save_game(get_tree())
+	summaryTitle = "%s, day %d" % [cycle.weekday_name(), cycle.day]
 	summaryShare = share
 	if passedOut:
 		summaryLine = "You passed out!"
@@ -241,6 +257,8 @@ func go_to_sleep(passedOut : bool = false) -> void:
 	else:
 		summaryLine = "You slept well."
 		summaryColor = goodColor
+	if saved:
+		summaryLine += " Game saved."
 	summaryFill = 0.0
 	var shown : Tween = create_tween().set_parallel()
 	shown.tween_method(set_summary.bind(true), 0.0, 1.0, 0.4)

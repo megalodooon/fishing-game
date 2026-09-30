@@ -1,0 +1,31 @@
+[gd_resource type="Resource" script_class="RodItem" format=3 uid="uid://2ovq7xgem7ww"]
+
+[ext_resource type="Script" uid="uid://ogpan3u26jeb" path="res://fishing/rods/rod_item.gd" id="e1"]
+[ext_resource type="Script" uid="uid://bnc56btgk6rqi" path="res://fishing/tacklebox/tackle.gd" id="e2"]
+[ext_resource type="Resource" path="res://fishing/tacklebox/tackle/basic_bobber.tres" id="e3"]
+[ext_resource type="Resource" path="res://fishing/tacklebox/tackle/basic_line.tres" id="e4"]
+[ext_resource type="Resource" path="res://fishing/tacklebox/tackle/basic_hook.tres" id="e5"]
+[ext_resource type="Texture2D" uid="uid://pao4gj52xyi8" path="res://fishing/rods/icons/driftwood_rod.png" id="e6"]
+[ext_resource type="Resource" path="res://items/rarities/uncommon.tres" id="e7"]
+[ext_resource type="PackedScene" path="res://fishing/rods/starter_rod.tscn" id="e8"]
+
+[sub_resource type="Resource" id="s1"]
+script = ExtResource("e2")
+kind = 3
+biteSpeed = 1.05
+control = 0.06
+displayName = "Driftwood Rod"
+
+[resource]
+script = ExtResource("e1")
+slots = Array[int]([0, 1, 2, 4])
+tackle = Array[ExtResource("e2")]([ExtResource("e3"), ExtResource("e4"), ExtResource("e5"), null])
+builtIn = SubResource("s1")
+rodTint = Color(0.85, 0.65, 0.4, 1)
+displayName = "Driftwood Rod"
+icon = ExtResource("e6")
+rarity = ExtResource("e7")
+description = "Made from salvaged planks. Better than it looks."
+heldScene = ExtResource("e8")
+discardable = false
+hint = "T to customize"

@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="Charm" format=3]
+
+[ext_resource type="Texture2D" path="res://items/charms/icons/scholar_4.png" id="1_yq8iy"]
+[ext_resource type="Resource" path="res://items/rarities/legendary.tres" id="2_2a60m"]
+[ext_resource type="Script" path="res://items/charms/charm.gd" id="3_ybaqj"]
+
+[resource]
+script = ExtResource("3_ybaqj")
+stats = Dictionary[StringName, float]({
+&"xpBonus": 15.0
+})
+family = "scholar"
+tier = 4
+displayName = "Scholar's Relic"
+icon = ExtResource("1_yq8iy")
+rarity = ExtResource("2_2a60m")
+description = "Part of the Scholar line. Upgrade it at a bench to make it stronger."
+sellPrice = 640

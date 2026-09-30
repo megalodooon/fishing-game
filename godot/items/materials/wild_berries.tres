@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Item" format=3]
+
+[ext_resource type="Texture2D" path="res://items/materials/icons/wild_berries.png" id="1_ju3og"]
+[ext_resource type="Resource" path="res://items/rarities/common.tres" id="2_c5844"]
+[ext_resource type="Script" path="res://items/item.gd" id="3_fso5g"]
+
+[resource]
+script = ExtResource("3_fso5g")
+displayName = "Wild Berries"
+category = "Forage"
+icon = ExtResource("1_ju3og")
+rarity = ExtResource("2_c5844")
+description = "Sweet and sour. Birds and fish both love them."
+maxStack = 99
+sellPrice = 4

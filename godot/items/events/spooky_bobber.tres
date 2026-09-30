@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Tackle" format=3]
+
+[ext_resource type="Texture2D" path="res://items/events/icons/spooky_bobber.png" id="1_ecqik"]
+[ext_resource type="Resource" path="res://items/rarities/rare.tres" id="2_4se2s"]
+[ext_resource type="Script" path="res://fishing/tacklebox/tackle.gd" id="3_lc8a0"]
+
+[resource]
+script = ExtResource("3_lc8a0")
+tint = Color(0.91, 0.46, 0.11, 1)
+biteSpeed = 1.2
+spotTime = 1.15
+displayName = "Spooky Bobber"
+icon = ExtResource("1_ecqik")
+rarity = ExtResource("2_4se2s")
+description = "A tiny jack-o'-lantern. Fish can't look away."

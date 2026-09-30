@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Item" format=3]
+
+[ext_resource type="Texture2D" path="res://items/materials/icons/winter_squash.png" id="1_v6v7g"]
+[ext_resource type="Resource" path="res://items/rarities/uncommon.tres" id="2_tq1yu"]
+[ext_resource type="Script" path="res://items/item.gd" id="3_x1k5c"]
+
+[resource]
+script = ExtResource("3_x1k5c")
+displayName = "Winter Squash"
+category = "Crop"
+icon = ExtResource("1_v6v7g")
+rarity = ExtResource("2_tq1yu")
+description = "Grown on the farm. Good for cooking and brewing."
+maxStack = 99
+sellPrice = 50

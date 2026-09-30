@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="BaitRecipe" format=3]
+
+[ext_resource type="Resource" path="res://items/charms/tide_hunter_1.tres" id="1_mc68s"]
+[ext_resource type="Resource" path="res://items/enchanted/enchanted_shark_tooth.tres" id="2_v3vl5"]
+[ext_resource type="Resource" path="res://items/materials/iron_ingot.tres" id="3_l48ur"]
+[ext_resource type="Resource" path="res://items/charms/tide_hunter_2.tres" id="4_jignd"]
+[ext_resource type="Script" path="res://fishing/bait/bait_recipe.gd" id="5_xtwr6"]
+
+[resource]
+script = ExtResource("5_xtwr6")
+output = ExtResource("4_jignd")
+amount = 1
+ingredients = Array[Resource]([ExtResource("1_mc68s"), ExtResource("2_v3vl5"), ExtResource("3_l48ur")])
+counts = Array[int]([1, 2, 2])
+xp = 60.0
+station = &"workbench"
+category = "Charms"
+requiredSkill = &"hunting"
+requiredLevel = 8

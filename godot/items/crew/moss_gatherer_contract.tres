@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="CrewContract" format=3]
+
+[ext_resource type="Resource" path="res://world/crew/members/moss_gatherer.tres" id="1_wjs2p"]
+[ext_resource type="Texture2D" path="res://items/crew/icons/moss_gatherer.png" id="2_4dvd7"]
+[ext_resource type="Resource" path="res://items/rarities/uncommon.tres" id="3_ien55"]
+[ext_resource type="Script" path="res://world/crew/crew_contract.gd" id="4_h64mw"]
+
+[resource]
+script = ExtResource("4_h64mw")
+crew = ExtResource("1_wjs2p")
+displayName = "Moss Gatherer Contract"
+icon = ExtResource("2_4dvd7")
+rarity = ExtResource("3_ien55")
+description = "Hire a moss gatherer at the crew board by your house. Doesn't mind wet boots."

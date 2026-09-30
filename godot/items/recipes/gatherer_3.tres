@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="BaitRecipe" format=3]
+
+[ext_resource type="Resource" path="res://items/charms/gatherer_2.tres" id="1_s4d67"]
+[ext_resource type="Resource" path="res://items/enchanted/enchanted_mangrove_root.tres" id="2_s76mg"]
+[ext_resource type="Resource" path="res://items/materials/pearl_dust.tres" id="3_k3jp0"]
+[ext_resource type="Resource" path="res://items/charms/gatherer_3.tres" id="4_e80x4"]
+[ext_resource type="Script" path="res://fishing/bait/bait_recipe.gd" id="5_3i82l"]
+
+[resource]
+script = ExtResource("5_3i82l")
+output = ExtResource("4_e80x4")
+amount = 1
+ingredients = Array[Resource]([ExtResource("1_s4d67"), ExtResource("2_s76mg"), ExtResource("3_k3jp0")])
+counts = Array[int]([1, 8, 3])
+xp = 90.0
+station = &"forge"
+category = "Charms"
+requiredSkill = &"foraging"
+requiredLevel = 20

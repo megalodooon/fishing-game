@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Reforge" format=3]
+
+[ext_resource type="Script" path="res://fishing/reforges/reforge.gd" id="1_j4n5n"]
+
+[resource]
+script = ExtResource("1_j4n5n")
+prefix = "Far-Reaching"
+weight = 3.0
+kind = 3
+rangeBonus = 8.0
+displayName = "Far-Reaching"

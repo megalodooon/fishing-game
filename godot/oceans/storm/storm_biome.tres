@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="Biome" format=3]
+
+[ext_resource type="Resource" path="res://items/materials/storm_glass.tres" id="16_n0tnq"]
+[ext_resource type="Script" path="res://oceans/biome.gd" id="e1"]
+[ext_resource type="Script" path="res://fishing/fish/fish_data.gd" id="e2"]
+[ext_resource type="Resource" path="res://fishing/fish/species/storm/squall_sardine.tres" id="e3"]
+[ext_resource type="Resource" path="res://fishing/fish/species/storm/gale_mackerel.tres" id="e4"]
+[ext_resource type="Resource" path="res://fishing/fish/species/storm/thunder_tuna.tres" id="e5"]
+[ext_resource type="Resource" path="res://fishing/fish/species/storm/static_eel.tres" id="e6"]
+[ext_resource type="Resource" path="res://fishing/fish/species/storm/stormscale_snapper.tres" id="e7"]
+[ext_resource type="Resource" path="res://fishing/fish/species/storm/lightning_barracuda.tres" id="e8"]
+[ext_resource type="Resource" path="res://fishing/fish/species/storm/hurricane_swordfish.tres" id="e9"]
+[ext_resource type="Resource" path="res://fishing/fish/species/storm/tempest_ray.tres" id="e10"]
+[ext_resource type="Resource" path="res://fishing/creatures/thunder_squid.tres" id="e11"]
+[ext_resource type="Resource" path="res://fishing/creatures/storm_kraken.tres" id="e12"]
+[ext_resource type="Script" path="res://fishing/creatures/sea_creature.gd" id="e13"]
+[ext_resource type="Resource" path="res://items/materials/driftwood_plank.tres" id="e14"]
+[ext_resource type="Resource" path="res://items/materials/iron_scrap.tres" id="e15"]
+[ext_resource type="Script" path="res://items/item.gd" id="e16"]
+
+[resource]
+script = ExtResource("e1")
+displayName = "Storm Sea"
+description = "It never quite stops raining here."
+region = "Storm Belt"
+fish = Array[ExtResource("e2")]([ExtResource("e3"), ExtResource("e4"), ExtResource("e5"), ExtResource("e6"), ExtResource("e7"), ExtResource("e8"), ExtResource("e9"), ExtResource("e10")])
+creatures = Array[ExtResource("e13")]([ExtResource("e11"), ExtResource("e12")])
+tier = 3
+junkChance = 0.08
+junk = Array[ExtResource("e16")]([ExtResource("e14"), ExtResource("e15"), ExtResource("16_n0tnq")])

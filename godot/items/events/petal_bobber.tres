@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Tackle" format=3]
+
+[ext_resource type="Texture2D" path="res://items/events/icons/petal_bobber.png" id="1_mef0w"]
+[ext_resource type="Resource" path="res://items/rarities/uncommon.tres" id="2_5344x"]
+[ext_resource type="Script" path="res://fishing/tacklebox/tackle.gd" id="3_ytfoy"]
+
+[resource]
+script = ExtResource("3_ytfoy")
+tint = Color(0.96, 0.64, 0.75, 1)
+biteSpeed = 1.1
+spotSize = 1.2
+displayName = "Petal Bobber"
+icon = ExtResource("1_mef0w")
+rarity = ExtResource("2_5344x")
+description = "Floats like a petal. Fish never see it coming."

@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="Tackle" format=3]
+
+[ext_resource type="Script" path="res://fishing/tacklebox/tackle.gd" id="1_script"]
+[ext_resource type="Texture2D" path="res://fishing/rods/bobbers/basic.png" id="2_icon"]
+[ext_resource type="Resource" path="res://items/rarities/uncommon.tres" id="3_rarity"]
+
+[resource]
+script = ExtResource("1_script")
+kind = 0
+discardable = false
+tint = Color(1, 0.55, 0.5, 1)
+spotSize = 1.2
+biteSpeed = 1.1
+displayName = "Coral Bobber"
+icon = ExtResource("2_icon")
+rarity = ExtResource("3_rarity")
+description = "Pink as the reef. Fish come to look."

@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="BaitRecipe" format=3]
+
+[ext_resource type="Resource" path="res://items/materials/sand_carrot.tres" id="1_by3pj"]
+[ext_resource type="Resource" path="res://items/enchanted/enchanted_sand_carrot.tres" id="2_n588l"]
+[ext_resource type="Script" path="res://fishing/bait/bait_recipe.gd" id="3_otrxq"]
+
+[resource]
+script = ExtResource("3_otrxq")
+output = ExtResource("2_n588l")
+amount = 1
+ingredients = Array[Resource]([ExtResource("1_by3pj")])
+counts = Array[int]([32])
+requiredFlag = "collection/sand_carrot/2"
+xp = 12.0
+category = "Materials"

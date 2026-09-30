@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="Tackle" format=3]
+
+[ext_resource type="Texture2D" path="res://fishing/tacklebox/icons/storm_glass_line.png" id="1_nq68r"]
+[ext_resource type="Resource" path="res://items/rarities/legendary.tres" id="2_rqklv"]
+[ext_resource type="Script" path="res://fishing/tacklebox/tackle.gd" id="3_5mfbk"]
+
+[resource]
+script = ExtResource("3_5mfbk")
+kind = 1
+lineColor = Color(0.65882355, 0.54901963, 1, 1)
+rangeBonus = 12.0
+hookWindowBonus = 0.2
+reelSpeed = 1.4
+displayName = "Storm Glass Line"
+icon = ExtResource("1_nq68r")
+rarity = ExtResource("2_rqklv")
+description = "A crafted rod part."
+discardable = false

@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="BaitRecipe" format=3]
+
+[ext_resource type="Resource" path="res://items/materials/abyss_lens.tres" id="1_a4mek"]
+[ext_resource type="Resource" path="res://items/materials/obsidian_plate.tres" id="2_vf38k"]
+[ext_resource type="Resource" path="res://items/enchanted/enchanted_deep_coral.tres" id="3_414ye"]
+[ext_resource type="Resource" path="res://fishing/rods/tidebreaker_rod.tres" id="4_yywyl"]
+[ext_resource type="Script" path="res://fishing/bait/bait_recipe.gd" id="5_seape"]
+
+[resource]
+script = ExtResource("5_seape")
+output = ExtResource("4_yywyl")
+amount = 1
+ingredients = Array[Resource]([ExtResource("1_a4mek"), ExtResource("2_vf38k"), ExtResource("3_414ye")])
+counts = Array[int]([2, 4, 2])
+xp = 230.0
+station = &"forge"
+category = "Rods"
+requiredSkill = &"fishing"
+requiredLevel = 30

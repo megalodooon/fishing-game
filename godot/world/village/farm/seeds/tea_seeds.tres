@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Seed" format=3]
+
+[ext_resource type="Resource" path="res://items/materials/tea_leaves.tres" id="1_iwomv"]
+[ext_resource type="Texture2D" path="res://world/village/farm/icons/tea_seeds.png" id="2_p7chh"]
+[ext_resource type="Resource" path="res://items/rarities/uncommon.tres" id="3_i5425"]
+[ext_resource type="Script" path="res://world/village/farm/seed.gd" id="4_deq6l"]
+
+[resource]
+script = ExtResource("4_deq6l")
+crop = ExtResource("1_iwomv")
+days = 3
+harvest = 3
+leafColor = Color(0.3609804, 0.67137253, 0.3009804, 1)
+displayName = "Tea Seeds"
+icon = ExtResource("2_p7chh")
+rarity = ExtResource("3_i5425")
+description = "Plant it on a farm plot. Grows into Tea Leaves in 3 days."
+maxStack = 99
+buyPrice = 8

@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="Quest" format=3 uid="uid://cg24c3em5cabq"]
+
+[ext_resource type="Script" uid="uid://t660ehs2ybui" path="res://world/location.gd" id="6_sd8bf"]
+[ext_resource type="Script" uid="uid://b1p7iyi658nm7" path="res://world/quests/quest.gd" id="e1"]
+[ext_resource type="Script" uid="uid://depkark34l17n" path="res://world/quests/quest_goal.gd" id="e2"]
+[ext_resource type="Resource" uid="uid://ccpp2l6yi68b3" path="res://world/quests/story/q_first_cup.tres" id="e3"]
+[ext_resource type="Resource" path="res://items/charms/heavy_sinker.tres" id="e4"]
+[ext_resource type="Script" uid="uid://ftrpy1hit5em" path="res://items/item.gd" id="e5"]
+
+[sub_resource type="Resource" id="s1"]
+script = ExtResource("e2")
+kind = 4
+flag = "league/1"
+text = "Win the Village Cup"
+
+[resource]
+script = ExtResource("e1")
+title = "Beat Rex"
+giver = "Commissioner Hale"
+description = "Rex has won the Village Cup three years running. Win it and move up to the Silver League."
+story = true
+goals = Array[ExtResource("e2")]([SubResource("s1")])
+chapter = 3
+startScene = "q_win_cup_start"
+endScene = "q_win_cup_end"
+requires = Array[ExtResource("e1")]([ExtResource("e3")])
+rewardCoins = 500
+rewardItems = Array[ExtResource("e5")]([ExtResource("e4")])
+rewardAmounts = Array[int]([1])

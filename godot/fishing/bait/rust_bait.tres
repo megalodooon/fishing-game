@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="Bait" format=3]
+
+[ext_resource type="Script" path="res://fishing/bait/bait.gd" id="1_bait"]
+[ext_resource type="Texture2D" path="res://fishing/bait/icons/rust_bait.png" id="2_icon"]
+[ext_resource type="Resource" path="res://items/rarities/rare.tres" id="3_rarity"]
+[ext_resource type="Script" path="res://items/rarity.gd" id="4_rarity_script"]
+[ext_resource type="Script" path="res://fishing/fish/fish_data.gd" id="5_fish_script"]
+[ext_resource type="Resource" path="res://items/rarities/trophy.tres" id="r_trophy"]
+[resource]
+script = ExtResource("1_bait")
+rarityBoost = Dictionary[ExtResource("4_rarity_script"), float]({
+ExtResource("r_trophy"): 1.5
+})
+fishBoost = Dictionary[ExtResource("5_fish_script"), float]({})
+kind = 4
+displayName = "Rust Bait"
+icon = ExtResource("2_icon")
+rarity = ExtResource("3_rarity")
+description = "Tastes like an old anchor. Only one fish really wants it."
+discardable = false
+buyPrice = 45

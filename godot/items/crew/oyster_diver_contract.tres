@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="CrewContract" format=3]
+
+[ext_resource type="Resource" path="res://world/crew/members/oyster_diver.tres" id="1_tmay2"]
+[ext_resource type="Texture2D" path="res://items/crew/icons/oyster_diver.png" id="2_2kcw4"]
+[ext_resource type="Resource" path="res://items/rarities/uncommon.tres" id="3_cspmt"]
+[ext_resource type="Script" path="res://world/crew/crew_contract.gd" id="4_8gwdu"]
+
+[resource]
+script = ExtResource("4_8gwdu")
+crew = ExtResource("1_tmay2")
+displayName = "Oyster Diver Contract"
+icon = ExtResource("2_2kcw4")
+rarity = ExtResource("3_cspmt")
+description = "Hire a oyster diver at the crew board by your house. Holds their breath for five whole minutes."

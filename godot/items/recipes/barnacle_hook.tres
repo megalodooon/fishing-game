@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="BaitRecipe" format=3]
+
+[ext_resource type="Resource" path="res://items/materials/barnacle.tres" id="1_8hvwn"]
+[ext_resource type="Resource" path="res://fishing/tacklebox/tackle/barnacle_hook.tres" id="2_gd4w3"]
+[ext_resource type="Script" path="res://fishing/bait/bait_recipe.gd" id="3_2n5ts"]
+
+[resource]
+script = ExtResource("3_2n5ts")
+output = ExtResource("2_gd4w3")
+amount = 1
+ingredients = Array[Resource]([ExtResource("1_8hvwn")])
+counts = Array[int]([8])
+xp = 36.0
+station = &"workbench"
+category = "Tackle"
+requiredSkill = &"fishing"
+requiredLevel = 2

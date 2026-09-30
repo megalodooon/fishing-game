@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="FishData" format=3]
+
+[ext_resource type="Texture2D" path="res://fishing/fish/assets/events/yule_narwhal.png" id="1_g1gi4"]
+[ext_resource type="Resource" path="res://items/rarities/legendary.tres" id="2_1xawb"]
+[ext_resource type="Script" path="res://fishing/fish/requirements/fish_requirement.gd" id="3_vcxwn"]
+[ext_resource type="Script" path="res://fishing/fish/fish_data.gd" id="4_53hvt"]
+
+[resource]
+script = ExtResource("4_53hvt")
+displayName = "Great Yule Narwhal"
+icon = ExtResource("1_g1gi4")
+rarity = ExtResource("2_1xawb")
+description = "The sailors' legend of winter. Its horn is hung with ice like tinsel."
+weightRange = Vector2(40, 120)
+basePrice = 1200
+heldSize = 1.6
+hours = Vector2(17, 23)

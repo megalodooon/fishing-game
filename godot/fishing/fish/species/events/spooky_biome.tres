@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="Biome" format=3]
+
+[ext_resource type="Script" path="res://fishing/creatures/sea_creature.gd" id="1_b8ehb"]
+[ext_resource type="Script" path="res://fishing/fish/fish_data.gd" id="2_dcjbk"]
+[ext_resource type="Resource" path="res://fishing/fish/species/events/ghost_carp.tres" id="3_ubud7"]
+[ext_resource type="Resource" path="res://fishing/fish/species/events/pumpkin_puffer.tres" id="4_4fj2q"]
+[ext_resource type="Resource" path="res://fishing/fish/species/events/bone_fish.tres" id="5_ch2nd"]
+[ext_resource type="Resource" path="res://fishing/fish/species/events/vampire_squid.tres" id="6_er1ik"]
+[ext_resource type="Resource" path="res://fishing/fish/species/events/headless_hake.tres" id="7_7d8oa"]
+[ext_resource type="Script" path="res://items/item.gd" id="8_khvjj"]
+[ext_resource type="Script" path="res://oceans/biome.gd" id="9_jep04"]
+
+[resource]
+script = ExtResource("9_jep04")
+displayName = "Spooky Tide"
+description = "Festival fish of autumn. They only bite during the Spooky Tide."
+region = "Festivals"
+fish = Array[ExtResource("2_dcjbk")]([ExtResource("3_ubud7"), ExtResource("4_4fj2q"), ExtResource("5_ch2nd"), ExtResource("6_er1ik"), ExtResource("7_7d8oa")])
+tier = 1
+junkChance = 0.0

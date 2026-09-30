@@ -109,6 +109,8 @@ var targetAlpha : float = 0.0
 var targetShown : bool = false
 var time : float = 0.0
 var castScore : int = 0
+# Where the indicator sat when thrown. Every line scores its landing there.
+var scorePoint : Vector2
 var castSpot : FishingSpot:
 	get:
 		return castSpot if is_instance_valid(castSpot) else null
@@ -119,6 +121,8 @@ func _ready() -> void:
 	layout()
 	if Engine.is_editor_hint():
 		return
+	if item is RodItem:
+		sprite.self_modulate = (item as RodItem).rodTint
 	line.default_color = line_color()
 	target.draw.connect(draw_target)
 	spawn_bobber()
@@ -180,22 +184,21 @@ func all_in() -> bool:
 func line_targets(origin : Vector2, point : Vector2) -> PackedVector2Array:
 	var across : Vector2 = origin.direction_to(point).orthogonal() if origin.distance_squared_to(point) > 0.01 else Vector2.DOWN
 	var count : int = extras.size() + 1
+	var spread : float = 0.0 if FishingSpot.pond_at(get_tree(), point) else lineSpread
 	var targets : PackedVector2Array = PackedVector2Array()
 	for k in count:
-		targets.append(point + across * (k - (count - 1) * 0.5) * lineSpread)
+		targets.append(point + across * (k - (count - 1) * 0.5) * spread)
 	return targets
 
-func show_targets(origin : Vector2, point : Vector2) -> void:
-	var targets : PackedVector2Array = line_targets(origin, point)
-	var all : Array[FishingRod] = line_rods()
-	for k in all.size():
-		all[k].show_target(targets[k])
+# One indicator for the whole throw, at the aim point.
+func show_targets(_origin : Vector2, point : Vector2) -> void:
+	show_target(point)
 
 func launch_all(origin : Vector2, point : Vector2) -> void:
 	var targets : PackedVector2Array = line_targets(origin, point)
 	var all : Array[FishingRod] = line_rods()
 	for k in all.size():
-		all[k].launch(targets[k])
+		all[k].launch(targets[k], point)
 
 func layout() -> void:
 	if not is_node_ready() or not sprite.texture:
@@ -393,7 +396,7 @@ func update_visuals(delta : float) -> void:
 	bobber.place(Vector2(bob.x, bob.y), bob.z, inWater, holder.boat.speed if holder.boat else 0.0, appear)
 	line.z_index = 0 if mode == Mode.HOLD else 1
 	var inFront : bool = holder.boat != null and bob.y > holder.boat.global_position.y
-	bobber.z_index = (line.z_index if inFront else -1) if inWater else line.z_index + 1
+	bobber.z_index = (line.z_index if inFront or (castSpot and castSpot.permanent) else -1) if inWater else line.z_index + 1
 	var drawn : PackedVector2Array = PackedVector2Array()
 	drawn.resize(points.size())
 	for i in points.size():
@@ -457,6 +460,10 @@ func parts() -> Array[Tackle]:
 		for part in (item as RodItem).tackle:
 			if part:
 				list.append(part)
+		if (item as RodItem).builtIn:
+			list.append((item as RodItem).builtIn)
+		if (item as RodItem).reforge:
+			list.append((item as RodItem).reforge)
 	return list
 
 func tackle_sum(property : StringName) -> float:
@@ -511,7 +518,7 @@ func spot_lifetime_scale() -> float:
 	return spotLifetimeScale * tackle_product(&"spotTime")
 
 func bite_speed() -> float:
-	return maxf(tackle_product(&"biteSpeed"), 0.1)
+	return maxf(tackle_product(&"biteSpeed") * (holder.boost(&"biteSpeed") if holder else 1.0), 0.1)
 
 func bite_window() -> float:
 	return maxf(biteWindow + tackle_sum(&"hookWindowBonus"), 0.1)
@@ -524,7 +531,7 @@ func control() -> float:
 
 func bite_delay(score : int) -> float:
 	var delays : Vector2 = badBiteDelay.lerp(perfectBiteDelay, clampf((score - 1) / (FishingSpot.MAX_SCORE - 1.0), 0.0, 1.0))
-	return randf_range(delays.x, delays.y) / bite_speed()
+	return randf_range(delays.x, delays.y) / bite_speed() * (0.05 if Dev.instantBites else 1.0)
 
 func stat_values() -> PackedFloat32Array:
 	return PackedFloat32Array([cast_range(), charge_time(), bite_speed(), bite_window(), control(), reel_speed(), spot_size_scale(), spot_lifetime_scale()])
@@ -559,18 +566,32 @@ func stats() -> PackedStringArray:
 		lines.append_array(["Lines", "%d" % line_count()])
 	return lines
 
+# Casts go past the hull and the shore before the power spreads them over the
+# rest of the range. A pond on land (like a well) catches the cast whatever
+# the power, and casts that would come down on land don't go at all.
 func find_landing(origin : Vector2, toward : Vector2, power : float) -> Variant:
 	var direction : Vector2 = origin.direction_to(toward) if origin.distance_squared_to(toward) > 0.01 else Vector2.RIGHT
-	var boat : Boat = holder.boat if holder else null
+	var island : Island = Island.current(get_tree())
 	var edge : float = 0.0
-	if boat and boat.covers(origin):
-		while edge < 256.0 and boat.covers(origin + direction * edge):
+	if blocks_cast(origin, island):
+		while edge < 256.0 and blocks_cast(origin + direction * edge, island):
 			edge += 1.0
+		if island and edge <= cast_range():
+			var pond : FishingSpot = FishingSpot.pond_at(get_tree(), origin + direction * edge)
+			if pond:
+				return pond.global_position
 		edge += landingMargin
 	var near : float = maxf(minCastDistance, edge)
 	if near > cast_range():
 		return null
-	return origin + direction * lerpf(near, cast_range(), power)
+	var point : Vector2 = origin + direction * lerpf(near, cast_range(), power)
+	if island and (island.blocks_cast(point) or not island.room_at(point)):
+		return null
+	return point
+
+func blocks_cast(point : Vector2, island : Island) -> bool:
+	var boat : Boat = holder.boat if holder else null
+	return (boat != null and boat.visible and boat.covers(point)) or (island != null and island.blocks_cast(point))
 
 func show_target(point : Vector2) -> void:
 	if targetAlpha <= 0.0:
@@ -583,7 +604,8 @@ func hide_target() -> void:
 	for extra in extras:
 		extra.hide_target()
 
-func launch(point : Vector2) -> void:
+func launch(point : Vector2, indicator : Vector2) -> void:
+	scorePoint = indicator
 	var start : Vector3 = points[points.size() - 1]
 	var goal : Vector3 = Vector3(point.x, point.y, bobber.floatHeight)
 	var reach : float = clampf(Vector2(goal.x - start.x, goal.y - start.y).length() / cast_range(), 0.0, 1.0)
@@ -597,9 +619,8 @@ func launch(point : Vector2) -> void:
 	castScore = 0
 
 func score_cast() -> void:
-	var point : Vector2 = get_bobber_point()
-	castSpot = FishingSpot.find_at(get_tree(), point)
-	castScore = castSpot.score_at(point) if castSpot else 0
+	castSpot = FishingSpot.find_at(get_tree(), scorePoint)
+	castScore = castSpot.score_at(scorePoint) if castSpot else 0
 	landed.emit(castSpot, castScore)
 
 func reel() -> void:
@@ -614,7 +635,7 @@ func reel() -> void:
 # True when any line has floated too long or drifted off screen.
 func should_return() -> bool:
 	var screen : Rect2 = get_canvas_transform().affine_inverse() * get_viewport_rect()
-	if floatTime >= maxFloatTime or not screen.grow(offscreenMargin).has_point(bobber.get_attach()):
+	if floatTime >= maxFloatTime * (castSpot.biteDelayScale if castSpot else 1.0) or not screen.grow(offscreenMargin).has_point(bobber.get_attach()):
 		return true
 	for extra in extras:
 		if extra.should_return():

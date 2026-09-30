@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="BaitRecipe" format=3]
+
+[ext_resource type="Resource" path="res://items/materials/oily_sludge.tres" id="1_vdda3"]
+[ext_resource type="Resource" path="res://items/materials/fish_oil.tres" id="2_jnpr6"]
+[ext_resource type="Script" path="res://fishing/bait/bait_recipe.gd" id="3_a2jwe"]
+
+[resource]
+script = ExtResource("3_a2jwe")
+output = ExtResource("2_jnpr6")
+amount = 1
+ingredients = Array[Resource]([ExtResource("1_vdda3")])
+counts = Array[int]([4])
+xp = 3.0
+category = "Materials"

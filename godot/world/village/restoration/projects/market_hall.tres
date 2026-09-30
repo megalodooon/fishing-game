@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Project" format=3]
+
+[ext_resource type="Script" path="res://world/village/restoration/project.gd" id="e1"]
+[ext_resource type="Texture2D" path="res://world/islands/props/market_hall.png" id="e2"]
+[ext_resource type="Resource" path="res://items/materials/driftwood_plank.tres" id="e3"]
+[ext_resource type="Resource" path="res://items/materials/coral_shard.tres" id="e4"]
+[ext_resource type="Script" path="res://items/item.gd" id="e5"]
+[ext_resource type="Resource" path="res://world/village/restoration/projects/tournament_hall.tres" id="e6"]
+
+[resource]
+script = ExtResource("e1")
+displayName = "Market Hall"
+description = "The old covered market in the square."
+icon = ExtResource("e2")
+coins = 4000
+items = Array[ExtResource("e5")]([ExtResource("e3"), ExtResource("e4")])
+amounts = Array[int]([25, 10])
+unlockText = "A market open every day. +2% sell price"
+requires = Array[ExtResource("e1")]([ExtResource("e6")])

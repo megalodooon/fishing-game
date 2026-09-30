@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="Charm" format=3]
+
+[ext_resource type="Texture2D" path="res://items/charms/icons/alchemist_2.png" id="1_ke7of"]
+[ext_resource type="Resource" path="res://items/rarities/uncommon.tres" id="2_keke8"]
+[ext_resource type="Script" path="res://items/charms/charm.gd" id="3_5udtw"]
+
+[resource]
+script = ExtResource("3_5udtw")
+stats = Dictionary[StringName, float]({
+&"potionPower": 20.0
+})
+family = "alchemist"
+tier = 2
+displayName = "Alchemist's Ring"
+icon = ExtResource("1_ke7of")
+rarity = ExtResource("2_keke8")
+description = "Part of the Alchemist line. Upgrade it at a bench to make it stronger."
+sellPrice = 160

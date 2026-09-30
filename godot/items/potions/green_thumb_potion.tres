@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="Snack" format=3]
+
+[ext_resource type="Texture2D" path="res://items/potions/icons/green_thumb_potion.png" id="1_15ygq"]
+[ext_resource type="Resource" path="res://items/rarities/uncommon.tres" id="2_w2i6b"]
+[ext_resource type="Script" path="res://items/snacks/snack.gd" id="3_7jfvr"]
+
+[resource]
+script = ExtResource("3_7jfvr")
+energy = 5.0
+buffStat = "harvestBonus"
+buffAmount = 1.2
+buffHours = 6.0
+displayName = "Green Thumb Potion"
+category = "Potion"
+icon = ExtResource("1_15ygq")
+rarity = ExtResource("2_w2i6b")
+description = "Brewed at a cauldron. Drink it for a few hours of extra harvest."
+hint = "Click while holding it to drink"
+maxStack = 10
+sellPrice = 50

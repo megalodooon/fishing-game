@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="CrewContract" format=3]
+
+[ext_resource type="Resource" path="res://world/crew/members/clay_digger.tres" id="1_qh0h4"]
+[ext_resource type="Texture2D" path="res://items/crew/icons/clay_digger.png" id="2_omu8q"]
+[ext_resource type="Resource" path="res://items/rarities/uncommon.tres" id="3_xl1nj"]
+[ext_resource type="Script" path="res://world/crew/crew_contract.gd" id="4_go8vo"]
+
+[resource]
+script = ExtResource("4_go8vo")
+crew = ExtResource("1_qh0h4")
+displayName = "Clay Digger Contract"
+icon = ExtResource("2_omu8q")
+rarity = ExtResource("3_xl1nj")
+description = "Hire a clay digger at the crew board by your house. Digs the stream banks for red clay."

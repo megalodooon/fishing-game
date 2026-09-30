@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="FishData" format=3 uid="uid://wxx3pjm0rjnq"]
+
+[ext_resource type="Script" uid="uid://bevdmlyak68oo" path="res://fishing/fish/fish_data.gd" id="e1"]
+[ext_resource type="Texture2D" uid="uid://dew454e6lshps" path="res://fishing/fish/assets/lagoon/pearl_queen.png" id="e2"]
+[ext_resource type="Resource" path="res://items/rarities/trophy.tres" id="e3"]
+[ext_resource type="Script" uid="uid://bbi13q2gt1w7m" path="res://fishing/fish/requirements/weekday_requirement.gd" id="e4"]
+[ext_resource type="Script" uid="uid://ddca2l75wof8n" path="res://fishing/fish/requirements/cast_requirement.gd" id="e5"]
+[ext_resource type="Script" uid="uid://dupq0iwgv25f6" path="res://fishing/fish/requirements/fish_requirement.gd" id="e6"]
+
+[sub_resource type="Resource" id="s1"]
+script = ExtResource("e4")
+days = Array[int]([6])
+
+[sub_resource type="Resource" id="s2"]
+script = ExtResource("e5")
+
+[resource]
+script = ExtResource("e1")
+displayName = "Pearl Queen"
+icon = ExtResource("e2")
+rarity = ExtResource("e3")
+description = "Crowned in pearls. Holds court on Sundays for a perfect cast."
+weightRange = Vector2(2, 6)
+basePrice = 2200
+heldSize = 1.2
+requirements = Array[ExtResource("e6")]([SubResource("s1"), SubResource("s2")])
+chance = 10.0

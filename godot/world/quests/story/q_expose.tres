@@ -1,0 +1,35 @@
+[gd_resource type="Resource" script_class="Quest" format=3 uid="uid://drvnwfpseu4k"]
+
+[ext_resource type="Script" uid="uid://ftrpy1hit5em" path="res://items/item.gd" id="5_a61vk"]
+[ext_resource type="Script" uid="uid://b1p7iyi658nm7" path="res://world/quests/quest.gd" id="e1"]
+[ext_resource type="Script" uid="uid://depkark34l17n" path="res://world/quests/quest_goal.gd" id="e2"]
+[ext_resource type="Resource" uid="uid://csmp5x5xluw82" path="res://world/quests/story/q_logs.tres" id="e3"]
+[ext_resource type="Resource" uid="uid://bped4q8amhxro" path="res://world/quests/story/q_mecha.tres" id="e4"]
+[ext_resource type="Resource" path="res://world/locations/tidal_shrine.tres" id="e5"]
+[ext_resource type="Script" uid="uid://t660ehs2ybui" path="res://world/location.gd" id="e6"]
+
+[sub_resource type="Resource" id="s1"]
+script = ExtResource("e2")
+kind = 4
+flag = "quest/q_logs"
+text = "Recover the rig logs"
+
+[sub_resource type="Resource" id="s2"]
+script = ExtResource("e2")
+kind = 4
+flag = "quest/q_mecha"
+text = "Beat the Mecha-Shark"
+
+[resource]
+script = ExtResource("e1")
+title = "Exposed!"
+giver = "Harbor Master Pip"
+description = "Bring the evidence home. The whole village will hear what Deepnet did."
+story = true
+goals = Array[ExtResource("e2")]([SubResource("s1"), SubResource("s2")])
+chapter = 8
+startScene = "q_expose_start"
+endScene = "q_expose_end"
+requires = Array[ExtResource("e1")]([ExtResource("e3"), ExtResource("e4")])
+rewardCoins = 5000
+unlocks = Array[ExtResource("e6")]([ExtResource("e5")])

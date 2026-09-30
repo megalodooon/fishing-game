@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="Location" format=3 uid="uid://6rkrnvv3j7fs"]
+
+[ext_resource type="Script" uid="uid://t660ehs2ybui" path="res://world/location.gd" id="e1"]
+[ext_resource type="Texture2D" uid="uid://6f45minlnn5t" path="res://world/map/icons/abyssal_trench.png" id="e2"]
+[ext_resource type="Resource" uid="uid://dcvvf0nyq3ltw" path="res://oceans/abyss/abyss_biome.tres" id="e3"]
+
+[resource]
+script = ExtResource("e1")
+displayName = "Abyssal Trench"
+description = "A crack in the sea floor so deep the light gives up. The Leviathan sleeps here."
+scene = "res://oceans/abyss/abyss_ocean.tscn"
+mapPosition = Vector2(412, 44)
+mapIcon = ExtResource("e2")
+chartTint = Color(0.02, 0.04, 0.12, 0.85)
+biome = ExtResource("e3")
+weatherChances = PackedFloat32Array(0.3, 0.2, 0.5)
+startsUnlocked = false
+requiredFlag = "quest/q_seal"
+requiredText = "Break the seal at the Tidal Shrine"
+requiredHull = 4

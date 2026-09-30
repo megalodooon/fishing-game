@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="RodItem" format=3]
+
+[ext_resource type="Script" path="res://fishing/tacklebox/tackle.gd" id="1_tewfp"]
+[ext_resource type="PackedScene" path="res://fishing/rods/starter_rod.tscn" id="2_ewpol"]
+[ext_resource type="Texture2D" path="res://fishing/rods/icons/palmwood_rod.png" id="3_yrmdf"]
+[ext_resource type="Resource" path="res://items/rarities/uncommon.tres" id="4_laulc"]
+[ext_resource type="Script" path="res://fishing/rods/rod_item.gd" id="5_yy68d"]
+[ext_resource type="Resource" path="res://fishing/tacklebox/tackle/basic_bobber.tres" id="6_gwkhe"]
+[ext_resource type="Resource" path="res://fishing/tacklebox/tackle/basic_line.tres" id="7_uby7t"]
+[ext_resource type="Resource" path="res://fishing/tacklebox/tackle/basic_hook.tres" id="8_ptkbn"]
+
+[sub_resource type="Resource" id="Resource_ewrwh"]
+script = ExtResource("1_tewfp")
+kind = 3
+rangeBonus = 4.0
+biteSpeed = 1.08
+control = 0.05
+displayName = "Palmwood Rod"
+
+[resource]
+script = ExtResource("5_yy68d")
+slots = Array[int]([0, 1, 2, 4])
+tackle = Array[ExtResource("1_tewfp")]([ExtResource("6_gwkhe"), ExtResource("7_uby7t"), ExtResource("8_ptkbn"), null])
+builtIn = SubResource("Resource_ewrwh")
+rodTint = Color(0.84705883, 0.72156864, 0.47058824, 1)
+displayName = "Palmwood Rod"
+icon = ExtResource("3_yrmdf")
+rarity = ExtResource("4_laulc")
+description = "A crafted rod. T to customize it."
+heldScene = ExtResource("2_ewpol")
+discardable = false
+hint = "T to customize"

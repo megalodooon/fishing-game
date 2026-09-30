@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Snack" format=3]
+
+[ext_resource type="Texture2D" path="res://items/potions/icons/heavy_draught.png" id="1_lxjiq"]
+[ext_resource type="Resource" path="res://items/rarities/uncommon.tres" id="2_un8qe"]
+[ext_resource type="Script" path="res://items/snacks/snack.gd" id="3_jgof1"]
+
+[resource]
+script = ExtResource("3_jgof1")
+energy = 5.0
+buffStat = "weight"
+buffAmount = 1.15
+displayName = "Heavy Draught"
+category = "Potion"
+icon = ExtResource("1_lxjiq")
+rarity = ExtResource("2_un8qe")
+description = "Brewed at a cauldron. Drink it for a few hours of heavier fish."
+hint = "Click while holding it to drink"
+maxStack = 10
+sellPrice = 56

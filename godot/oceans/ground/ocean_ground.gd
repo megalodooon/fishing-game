@@ -55,6 +55,8 @@ var grassTexture : GradientTexture1D = GradientTexture1D.new()
 var viewport : SubViewport
 var canvas : ColorRect
 var display : Sprite2D
+# Set by draw_only, for a seabed mostly hidden under land.
+var clip : CanvasClip
 #------------------------#
 
 
@@ -102,6 +104,19 @@ func _process(_delta : float) -> void:
 
 func scroll(distance : float) -> void:
 	offset += distance
+
+# Draws the seabed only inside these rects (in this node's pixels), in place
+# of the display sprite, for still water where land hides the rest. The
+# seabed mustn't scroll after this.
+func draw_only(rects : Array[Rect2]) -> void:
+	if not display:
+		return
+	display.visible = false
+	clip = CanvasClip.new(self, rects.size(), false)
+	clip.record(rects, draw_seabed)
+
+func draw_seabed(item : RID) -> void:
+	RenderingServer.canvas_item_add_texture_rect_region(item, Rect2(Vector2.ZERO, size), viewport.get_texture().get_rid(), Rect2(offset - floorf(offset), 0.0, size.x, size.y), Color(1.0, 1.0, 1.0), false, false)
 
 func new_seed() -> void:
 	groundSeed = randi() % 10000

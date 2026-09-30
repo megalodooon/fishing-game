@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="BaitRecipe" format=3]
+
+[ext_resource type="Resource" path="res://items/materials/frost_lichen.tres" id="1_o60nb"]
+[ext_resource type="Resource" path="res://items/enchanted/enchanted_frost_lichen.tres" id="2_d0b6a"]
+[ext_resource type="Script" path="res://fishing/bait/bait_recipe.gd" id="3_d0ems"]
+
+[resource]
+script = ExtResource("3_d0ems")
+output = ExtResource("2_d0b6a")
+amount = 1
+ingredients = Array[Resource]([ExtResource("1_o60nb")])
+counts = Array[int]([32])
+requiredFlag = "collection/frost_lichen/2"
+xp = 12.0
+category = "Materials"

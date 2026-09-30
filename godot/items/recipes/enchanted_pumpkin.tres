@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="BaitRecipe" format=3]
+
+[ext_resource type="Resource" path="res://items/materials/pumpkin.tres" id="1_y2i7q"]
+[ext_resource type="Resource" path="res://items/enchanted/enchanted_pumpkin.tres" id="2_xaa4a"]
+[ext_resource type="Script" path="res://fishing/bait/bait_recipe.gd" id="3_d8yax"]
+
+[resource]
+script = ExtResource("3_d8yax")
+output = ExtResource("2_xaa4a")
+amount = 1
+ingredients = Array[Resource]([ExtResource("1_y2i7q")])
+counts = Array[int]([32])
+requiredFlag = "collection/pumpkin/2"
+xp = 12.0
+category = "Materials"

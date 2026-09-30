@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="BaitRecipe" format=3]
+
+[ext_resource type="Resource" path="res://items/materials/storm_core.tres" id="1_6n8w1"]
+[ext_resource type="Resource" path="res://items/enchanted/enchanted_storm_essence.tres" id="2_piqov"]
+[ext_resource type="Resource" path="res://items/materials/iron_ingot.tres" id="3_86h8b"]
+[ext_resource type="Resource" path="res://fishing/rods/stormcaller_rod.tres" id="4_wwwmi"]
+[ext_resource type="Script" path="res://fishing/bait/bait_recipe.gd" id="5_6wnc5"]
+
+[resource]
+script = ExtResource("5_6wnc5")
+output = ExtResource("4_wwwmi")
+amount = 1
+ingredients = Array[Resource]([ExtResource("1_6n8w1"), ExtResource("2_piqov"), ExtResource("3_86h8b")])
+counts = Array[int]([2, 2, 10])
+xp = 190.0
+station = &"forge"
+category = "Rods"
+requiredSkill = &"fishing"
+requiredLevel = 22

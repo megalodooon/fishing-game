@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="BaitRecipe" format=3]
+
+[ext_resource type="Resource" path="res://items/charms/seeker_1.tres" id="1_6qe2w"]
+[ext_resource type="Resource" path="res://items/enchanted/enchanted_pearl_oyster.tres" id="2_qqap2"]
+[ext_resource type="Resource" path="res://items/materials/iron_ingot.tres" id="3_lk5f5"]
+[ext_resource type="Resource" path="res://items/charms/seeker_2.tres" id="4_vw2ao"]
+[ext_resource type="Script" path="res://fishing/bait/bait_recipe.gd" id="5_3figl"]
+
+[resource]
+script = ExtResource("5_3figl")
+output = ExtResource("4_vw2ao")
+amount = 1
+ingredients = Array[Resource]([ExtResource("1_6qe2w"), ExtResource("2_qqap2"), ExtResource("3_lk5f5")])
+counts = Array[int]([1, 2, 2])
+xp = 60.0
+station = &"workbench"
+category = "Charms"
+requiredSkill = &"foraging"
+requiredLevel = 10

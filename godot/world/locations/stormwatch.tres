@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="Location" format=3]
+
+[ext_resource type="Script" path="res://world/location.gd" id="e1"]
+[ext_resource type="Texture2D" path="res://world/map/icons/stormwatch.png" id="e2"]
+[ext_resource type="Resource" path="res://oceans/islands/stormwatch_biome.tres" id="e3"]
+
+[resource]
+script = ExtResource("e1")
+displayName = "Stormwatch"
+description = "A lighthouse rock at the edge of the storm, with an old weather station."
+kind = 1
+scene = "res://world/islands/stormwatch/stormwatch.tscn"
+mapPosition = Vector2(440, 15)
+chartTint = Color(0.24, 0.28, 0.36, 0.45)
+mapIcon = ExtResource("e2")
+biome = ExtResource("e3")
+weatherChances = PackedFloat32Array(0.3, 0.55, 0.15)
+startsUnlocked = false
+coinCost = 3000
+requiredHull = 3
+requiredSkill = &"sailing"
+requiredLevel = 16

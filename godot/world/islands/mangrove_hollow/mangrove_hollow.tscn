@@ -1,0 +1,410 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://world/island/island.gd" id="i_e1"]
+[ext_resource type="Script" path="res://world/island/island_room.gd" id="i_e2"]
+[ext_resource type="Resource" path="res://oceans/islands/mangrove_biome.tres" id="i_e3"]
+[ext_resource type="PackedScene" path="res://oceans/basic/basic_ocean.tscn" id="i_e4"]
+[ext_resource type="Texture2D" path="res://world/islands/mangrove_hollow/land/landing.png" id="i_e5"]
+[ext_resource type="Script" path="res://world/village/building.gd" id="i_e6"]
+[ext_resource type="Texture2D" path="res://world/islands/props/swamp_hut.png" id="i_e7"]
+[ext_resource type="Script" path="res://world/npc/npc.gd" id="i_e8"]
+[ext_resource type="Script" path="res://world/quests/quest.gd" id="i_e9"]
+[ext_resource type="Resource" path="res://world/quests/story/q_moss.tres" id="i_e10"]
+[ext_resource type="Resource" path="res://world/quests/side/mo_stew.tres" id="i_e11"]
+[ext_resource type="Resource" path="res://world/quests/side/mo_fire.tres" id="i_e12"]
+[ext_resource type="Resource" path="res://world/quests/side/mo_gator.tres" id="i_e13"]
+[ext_resource type="Texture2D" path="res://world/npcs/moss.png" id="i_e14"]
+[ext_resource type="Script" path="res://world/village/bait_crafter.gd" id="i_e15"]
+[ext_resource type="Script" path="res://fishing/bait/bait_recipe.gd" id="i_e16"]
+[ext_resource type="Resource" path="res://fishing/bait/recipes/firefly_bait.tres" id="i_e17"]
+[ext_resource type="Resource" path="res://fishing/bait/recipes/glow_bait.tres" id="i_e18"]
+[ext_resource type="Resource" path="res://items/snacks/recipes/rice_ball.tres" id="i_e19"]
+[ext_resource type="Resource" path="res://items/snacks/recipes/seafood_paella.tres" id="i_e20"]
+[ext_resource type="Resource" path="res://items/snacks/recipes/ember_curry.tres" id="i_e21"]
+[ext_resource type="Script" path="res://world/village/shop/shop_offer.gd" id="i_e22"]
+[ext_resource type="Resource" path="res://world/village/farm/seeds/marsh_rice_seedlings.tres" id="i_e23"]
+[ext_resource type="Resource" path="res://items/materials/firefly_jar.tres" id="i_e24"]
+[ext_resource type="Resource" path="res://items/materials/glow_worm.tres" id="i_e25"]
+[ext_resource type="Resource" path="res://fishing/bait/firefly_bait.tres" id="i_e26"]
+[ext_resource type="Script" path="res://world/village/shop/shop.gd" id="i_e27"]
+[ext_resource type="Texture2D" path="res://world/islands/props/mangrove_tree.png" id="i_e28"]
+[ext_resource type="Texture2D" path="res://world/islands/props/cauldron.png" id="i_e29"]
+[ext_resource type="Script" path="res://world/interact/secret.gd" id="i_e30"]
+[ext_resource type="Texture2D" path="res://world/islands/mangrove_hollow/land/bayou.png" id="i_e31"]
+[ext_resource type="Texture2D" path="res://world/islands/props/reeds.png" id="i_e32"]
+[ext_resource type="Texture2D" path="res://world/islands/props/lily_pads.png" id="i_e33"]
+[ext_resource type="Script" path="res://world/traps/trap_spot.gd" id="i_e34"]
+[ext_resource type="Script" path="res://items/item.gd" id="i_e35"]
+[ext_resource type="Resource" path="res://items/materials/crab_shell.tres" id="i_e36"]
+[ext_resource type="Resource" path="res://items/materials/seaweed.tres" id="i_e37"]
+[ext_resource type="Texture2D" path="res://world/islands/props/pet_stall.png" id="i_e38"]
+[ext_resource type="Script" path="res://world/village/pets/pet_shop.gd" id="i_e39"]
+[ext_resource type="Script" path="res://world/village/pets/pet_data.gd" id="i_e40"]
+[ext_resource type="Resource" path="res://world/village/pets/swamp_frog.tres" id="i_e41"]
+[ext_resource type="Texture2D" path="res://world/village/props/sign.png" id="i_e42"]
+
+[sub_resource type="RectangleShape2D" id="i_s1"]
+size = Vector2(26.0, 5.0)
+
+[sub_resource type="RectangleShape2D" id="i_s2"]
+size = Vector2(6.0, 3.0)
+
+[sub_resource type="Resource" id="i_s3"]
+script = ExtResource("i_e22")
+item = ExtResource("i_e23")
+amount = 3
+price = 15
+
+[sub_resource type="Resource" id="i_s4"]
+script = ExtResource("i_e22")
+item = ExtResource("i_e24")
+amount = 1
+price = 40
+dailyStock = 4
+
+[sub_resource type="Resource" id="i_s5"]
+script = ExtResource("i_e22")
+item = ExtResource("i_e25")
+amount = 1
+price = 30
+dailyStock = 5
+
+[sub_resource type="Resource" id="i_s6"]
+script = ExtResource("i_e22")
+item = ExtResource("i_e26")
+amount = 4
+price = 90
+
+[sub_resource type="RectangleShape2D" id="i_s7"]
+size = Vector2(4.0, 3.0)
+
+[sub_resource type="RectangleShape2D" id="i_s8"]
+size = Vector2(8.0, 3.0)
+
+[sub_resource type="RectangleShape2D" id="i_s9"]
+size = Vector2(4.0, 3.0)
+
+[sub_resource type="RectangleShape2D" id="i_s10"]
+size = Vector2(4.0, 3.0)
+
+[sub_resource type="RectangleShape2D" id="i_s11"]
+size = Vector2(4.0, 3.0)
+
+[sub_resource type="RectangleShape2D" id="i_s12"]
+size = Vector2(4.0, 3.0)
+
+[sub_resource type="RectangleShape2D" id="i_s13"]
+size = Vector2(4.0, 3.0)
+
+[sub_resource type="RectangleShape2D" id="i_s14"]
+size = Vector2(4.0, 3.0)
+
+[sub_resource type="RectangleShape2D" id="i_s15"]
+size = Vector2(22.0, 5.0)
+
+[node name="MangroveHollow" type="Node2D"]
+y_sort_enabled = true
+script = ExtResource("i_e1")
+
+[node name="Landing" type="Node2D" parent="." node_paths=PackedStringArray("land")]
+position = Vector2(0.0, 0.0)
+y_sort_enabled = true
+script = ExtResource("i_e2")
+land = [NodePath("Land")]
+
+[node name="Water" parent="Landing" instance=ExtResource("i_e4")]
+biome = ExtResource("i_e3")
+
+[node name="Land" type="Sprite2D" parent="Landing"]
+z_index = -1
+texture = ExtResource("i_e5")
+centered = false
+
+[node name="Hut" type="Node2D" parent="Landing"]
+position = Vector2(119, 36)
+script = ExtResource("i_e6")
+displayName = "Auntie Moss's Hut"
+
+[node name="Art" type="Sprite2D" parent="Landing/Hut"]
+texture = ExtResource("i_e7")
+centered = false
+offset = Vector2(-15.0, -24.0)
+
+[node name="Body" type="StaticBody2D" parent="Landing/Hut"]
+
+[node name="Shape" type="CollisionShape2D" parent="Landing/Hut/Body"]
+position = Vector2(0.0, -3.5)
+shape = SubResource("i_s1")
+
+[node name="Npc_Moss" type="Node2D" parent="Landing" node_paths=PackedStringArray("art", "service", "shop")]
+position = Vector2(100, 66)
+script = ExtResource("i_e8")
+id = "moss"
+greeting = "Heh. Another visitor."
+reach = 12.0
+promptOffset = Vector2(0, -24)
+art = NodePath("Art")
+quests = Array[ExtResource("i_e9")]([ExtResource("i_e10"), ExtResource("i_e11"), ExtResource("i_e12"), ExtResource("i_e13")])
+service = NodePath("Cauldron")
+serviceLabel = "Cauldron"
+shop = NodePath("Stall")
+shopLabel = "Wares"
+
+[node name="Art" type="Sprite2D" parent="Landing/Npc_Moss"]
+texture = ExtResource("i_e14")
+centered = false
+offset = Vector2(-6, -20)
+
+[node name="Body" type="StaticBody2D" parent="Landing/Npc_Moss"]
+
+[node name="Shape" type="CollisionShape2D" parent="Landing/Npc_Moss/Body"]
+position = Vector2(0, -1)
+shape = SubResource("i_s2")
+
+[node name="Cauldron" type="Node2D" parent="Landing/Npc_Moss"]
+position = Vector2(0, 2)
+script = ExtResource("i_e15")
+recipes = Array[ExtResource("i_e16")]([ExtResource("i_e17"), ExtResource("i_e18"), ExtResource("i_e19"), ExtResource("i_e20"), ExtResource("i_e21")])
+note = "Bubbling, always bubbling"
+verb = "brew"
+station = &"cauldron"
+title = "Moss's Cauldron"
+listed = false
+
+[node name="Stall" type="Node2D" parent="Landing/Npc_Moss"]
+position = Vector2(0, 2)
+script = ExtResource("i_e27")
+offers = Array[ExtResource("i_e22")]([SubResource("i_s3"), SubResource("i_s4"), SubResource("i_s5"), SubResource("i_s6")])
+title = "Moss's Wares"
+listed = false
+buyRate = 0.85
+greeting = "Things for the swamp and things from it"
+
+[node name="Tree" type="Sprite2D" parent="Landing"]
+position = Vector2(131, 96)
+texture = ExtResource("i_e28")
+centered = false
+offset = Vector2(-11.0, -26.0)
+
+[node name="Body" type="StaticBody2D" parent="Landing/Tree"]
+
+[node name="Shape" type="CollisionShape2D" parent="Landing/Tree/Body"]
+position = Vector2(0.0, -1.5)
+shape = SubResource("i_s7")
+
+[node name="Cauldron" type="Sprite2D" parent="Landing"]
+position = Vector2(89, 88)
+texture = ExtResource("i_e29")
+centered = false
+offset = Vector2(-7.0, -12.0)
+
+[node name="Body" type="StaticBody2D" parent="Landing/Cauldron"]
+
+[node name="Shape" type="CollisionShape2D" parent="Landing/Cauldron/Body"]
+position = Vector2(0.0, -1.5)
+shape = SubResource("i_s8")
+
+[node name="Pearl1" type="Node2D" parent="Landing"]
+position = Vector2(138, 20)
+script = ExtResource("i_e30")
+flag = "pearl_mangrove_hollow_1"
+title = "A lost pearl!"
+message = "Opal on Pearl Lagoon collects these."
+prompt = "Pick up"
+reach = 7.0
+
+[node name="Bayou" type="Node2D" parent="." node_paths=PackedStringArray("land")]
+position = Vector2(192.0, 0.0)
+y_sort_enabled = true
+script = ExtResource("i_e2")
+land = [NodePath("Land")]
+
+[node name="Water" parent="Bayou" instance=ExtResource("i_e4")]
+biome = ExtResource("i_e3")
+
+[node name="Land" type="Sprite2D" parent="Bayou"]
+z_index = -1
+texture = ExtResource("i_e31")
+centered = false
+
+[node name="Tree0" type="Sprite2D" parent="Bayou"]
+position = Vector2(20.0, 30.0)
+texture = ExtResource("i_e28")
+centered = false
+offset = Vector2(-11.0, -26.0)
+
+[node name="Body" type="StaticBody2D" parent="Bayou/Tree0"]
+
+[node name="Shape" type="CollisionShape2D" parent="Bayou/Tree0/Body"]
+position = Vector2(0.0, -1.5)
+shape = SubResource("i_s9")
+
+[node name="Tree1" type="Sprite2D" parent="Bayou"]
+position = Vector2(70.0, 30.0)
+texture = ExtResource("i_e28")
+centered = false
+offset = Vector2(-11.0, -26.0)
+
+[node name="Body" type="StaticBody2D" parent="Bayou/Tree1"]
+
+[node name="Shape" type="CollisionShape2D" parent="Bayou/Tree1/Body"]
+position = Vector2(0.0, -1.5)
+shape = SubResource("i_s10")
+
+[node name="Tree2" type="Sprite2D" parent="Bayou"]
+position = Vector2(120.0, 30.0)
+texture = ExtResource("i_e28")
+centered = false
+offset = Vector2(-11.0, -26.0)
+
+[node name="Body" type="StaticBody2D" parent="Bayou/Tree2"]
+
+[node name="Shape" type="CollisionShape2D" parent="Bayou/Tree2/Body"]
+position = Vector2(0.0, -1.5)
+shape = SubResource("i_s11")
+
+[node name="Tree3" type="Sprite2D" parent="Bayou"]
+position = Vector2(20.0, 86.0)
+texture = ExtResource("i_e28")
+centered = false
+offset = Vector2(-11.0, -26.0)
+
+[node name="Body" type="StaticBody2D" parent="Bayou/Tree3"]
+
+[node name="Shape" type="CollisionShape2D" parent="Bayou/Tree3/Body"]
+position = Vector2(0.0, -1.5)
+shape = SubResource("i_s12")
+
+[node name="Tree4" type="Sprite2D" parent="Bayou"]
+position = Vector2(70.0, 86.0)
+texture = ExtResource("i_e28")
+centered = false
+offset = Vector2(-11.0, -26.0)
+
+[node name="Body" type="StaticBody2D" parent="Bayou/Tree4"]
+
+[node name="Shape" type="CollisionShape2D" parent="Bayou/Tree4/Body"]
+position = Vector2(0.0, -1.5)
+shape = SubResource("i_s13")
+
+[node name="Tree5" type="Sprite2D" parent="Bayou"]
+position = Vector2(120.0, 86.0)
+texture = ExtResource("i_e28")
+centered = false
+offset = Vector2(-11.0, -26.0)
+
+[node name="Body" type="StaticBody2D" parent="Bayou/Tree5"]
+
+[node name="Shape" type="CollisionShape2D" parent="Bayou/Tree5/Body"]
+position = Vector2(0.0, -1.5)
+shape = SubResource("i_s14")
+
+[node name="Reeds1" type="Sprite2D" parent="Bayou"]
+position = Vector2(110.0, 40.0)
+texture = ExtResource("i_e32")
+centered = false
+offset = Vector2(-5.0, -12.0)
+
+[node name="Reeds2" type="Sprite2D" parent="Bayou"]
+position = Vector2(90.0, 90.0)
+texture = ExtResource("i_e32")
+centered = false
+offset = Vector2(-5.0, -12.0)
+
+[node name="Lily" type="Sprite2D" parent="Bayou"]
+position = Vector2(60.0, 70.0)
+texture = ExtResource("i_e33")
+centered = false
+offset = Vector2(-6.0, -6.0)
+
+[node name="Trap1" type="Node2D" parent="Bayou"]
+position = Vector2(46.0, 52.0)
+script = ExtResource("i_e34")
+biome = ExtResource("i_e3")
+reach = 9.0
+promptOffset = Vector2(0, -8)
+extras = Array[ExtResource("i_e35")]([ExtResource("i_e36"), ExtResource("i_e37")])
+
+[node name="Trap2" type="Node2D" parent="Bayou"]
+position = Vector2(130.0, 60.0)
+script = ExtResource("i_e34")
+biome = ExtResource("i_e3")
+reach = 9.0
+promptOffset = Vector2(0, -8)
+extras = Array[ExtResource("i_e35")]([ExtResource("i_e36"), ExtResource("i_e24")])
+
+[node name="FrogStall" type="Node2D" parent="Bayou"]
+position = Vector2(140.0, 96.0)
+script = ExtResource("i_e6")
+displayName = "Frog Pond"
+
+[node name="Art" type="Sprite2D" parent="Bayou/FrogStall"]
+texture = ExtResource("i_e38")
+centered = false
+offset = Vector2(-13.0, -22.0)
+
+[node name="Body" type="StaticBody2D" parent="Bayou/FrogStall"]
+
+[node name="Shape" type="CollisionShape2D" parent="Bayou/FrogStall/Body"]
+position = Vector2(0.0, -3.5)
+shape = SubResource("i_s15")
+
+[node name="Door" type="Node2D" parent="Bayou/FrogStall"]
+position = Vector2(0, 2)
+script = ExtResource("i_e39")
+pets = Array[ExtResource("i_e40")]([ExtResource("i_e41")])
+title = "Frog Pond"
+prompt = "Pets"
+reach = 12.0
+
+[node name="Pearl2" type="Node2D" parent="Bayou"]
+position = Vector2(100.0, 14.0)
+script = ExtResource("i_e30")
+flag = "pearl_mangrove_hollow_2"
+title = "A lost pearl!"
+message = "Opal on Pearl Lagoon collects these."
+prompt = "Pick up"
+reach = 7.0
+
+[node name="Pearl3" type="Node2D" parent="Bayou"]
+position = Vector2(10.0, 96.0)
+script = ExtResource("i_e30")
+flag = "pearl_mangrove_hollow_3"
+title = "A lost pearl!"
+message = "Opal on Pearl Lagoon collects these."
+prompt = "Pick up"
+reach = 7.0
+
+[node name="Pearl4" type="Node2D" parent="Bayou"]
+position = Vector2(150.0, 30.0)
+script = ExtResource("i_e30")
+flag = "pearl_mangrove_hollow_4"
+title = "A lost pearl!"
+message = "Opal on Pearl Lagoon collects these."
+prompt = "Pick up"
+reach = 7.0
+
+[node name="Pearl5" type="Node2D" parent="Bayou"]
+position = Vector2(76.0, 104.0)
+script = ExtResource("i_e30")
+flag = "pearl_mangrove_hollow_5"
+title = "A lost pearl!"
+message = "Opal on Pearl Lagoon collects these."
+prompt = "Pick up"
+reach = 7.0
+
+[node name="BayouSign" type="Node2D" parent="Bayou"]
+position = Vector2(30.0, 80.0)
+script = ExtResource("i_e30")
+flag = "bayousign"
+title = "Swamp notes"
+message = "\"The Gator Gar hunts between nine at night and three. Firefly bait and a steady cast.\" - Moss"
+repeatable = true
+concealed = false
+prompt = "Read"
+reach = 10.0
+
+[node name="Art" type="Sprite2D" parent="Bayou/BayouSign"]
+texture = ExtResource("i_e42")
+centered = false
+offset = Vector2(-5, -12)

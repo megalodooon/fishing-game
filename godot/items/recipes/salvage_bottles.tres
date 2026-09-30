@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="BaitRecipe" format=3]
+
+[ext_resource type="Resource" path="res://items/materials/broken_bottle.tres" id="1_d8x2v"]
+[ext_resource type="Resource" path="res://items/rare/sea_glass.tres" id="2_u1yk4"]
+[ext_resource type="Script" path="res://fishing/bait/bait_recipe.gd" id="3_wqec1"]
+
+[resource]
+script = ExtResource("3_wqec1")
+output = ExtResource("2_u1yk4")
+amount = 1
+ingredients = Array[Resource]([ExtResource("1_d8x2v")])
+counts = Array[int]([3])
+xp = 3.0
+station = &"workbench"
+category = "Materials"

@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Item" format=3]
+
+[ext_resource type="Texture2D" path="res://items/enchanted/icons/enchanted_sea_kale.png" id="1_y4oc7"]
+[ext_resource type="Resource" path="res://items/rarities/uncommon.tres" id="2_qpron"]
+[ext_resource type="Script" path="res://items/item.gd" id="3_j6kky"]
+
+[resource]
+script = ExtResource("3_j6kky")
+displayName = "Enchanted Sea Kale"
+category = "Enchanted Material"
+icon = ExtResource("1_y4oc7")
+rarity = ExtResource("2_qpron")
+description = "32 Sea Kale pressed into one. Better recipes ask for these."
+maxStack = 99
+sellPrice = 352

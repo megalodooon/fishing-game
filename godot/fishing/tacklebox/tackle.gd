@@ -1,8 +1,8 @@
 extends Item
 class_name Tackle
 
-enum Kind { BOBBER, LINE, HOOK, TECH }
-const KIND_NAMES : PackedStringArray = ["Bobber", "Line", "Hook", "Tech"]
+enum Kind { BOBBER, LINE, HOOK, TECH, BAIT }
+const KIND_NAMES : PackedStringArray = ["Bobber", "Line", "Hook", "Tech", "Bait"]
 # Every rod needs one of each of these on at all times.
 const REQUIRED : Array[Kind] = [Kind.BOBBER, Kind.LINE, Kind.HOOK]
 
@@ -32,9 +32,7 @@ func icon_tint() -> Color:
 	return Color(lineColor, 1.0) if kind == Kind.LINE and lineColor.a > 0.0 else tint
 
 func details() -> PackedStringArray:
-	var lines : PackedStringArray = PackedStringArray([KIND_NAMES[kind], ""])
-	if rarity:
-		lines.append_array(["Rarity", rarity.displayName])
+	var lines : PackedStringArray = PackedStringArray()
 	mod(lines, "Range", rangeBonus, 0.0, "%+d" % roundi(rangeBonus))
 	mod(lines, "Cast time", castTimeBonus, 0.0, "%+.1fs" % castTimeBonus)
 	mod(lines, "Bite speed", biteSpeed, 1.0, "x%.2f" % biteSpeed)
@@ -48,3 +46,6 @@ func details() -> PackedStringArray:
 func mod(lines : PackedStringArray, label : String, value : float, neutral : float, text : String) -> void:
 	if not is_equal_approx(value, neutral):
 		lines.append_array([label, text])
+
+func default_type() -> String:
+	return KIND_NAMES[kind] if kind == Kind.BAIT else "Tackle: %s" % KIND_NAMES[kind]

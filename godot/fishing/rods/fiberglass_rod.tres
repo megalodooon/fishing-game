@@ -1,0 +1,33 @@
+[gd_resource type="Resource" script_class="RodItem" format=3 uid="uid://b7bgy20s6i6s3"]
+
+[ext_resource type="Script" uid="uid://ogpan3u26jeb" path="res://fishing/rods/rod_item.gd" id="1_script"]
+[ext_resource type="Texture2D" uid="uid://dtl6knfeth7b" path="res://fishing/rods/icons/fiberglass_rod.png" id="2_icon"]
+[ext_resource type="Resource" path="res://items/rarities/rare.tres" id="3_rarity"]
+[ext_resource type="PackedScene" path="res://fishing/rods/starter_rod.tscn" id="4_scene"]
+[ext_resource type="Script" uid="uid://bnc56btgk6rqi" path="res://fishing/tacklebox/tackle.gd" id="5_tackle"]
+[ext_resource type="Resource" path="res://fishing/tacklebox/tackle/basic_bobber.tres" id="6_bobber"]
+[ext_resource type="Resource" path="res://fishing/tacklebox/tackle/basic_line.tres" id="7_line"]
+[ext_resource type="Resource" path="res://fishing/tacklebox/tackle/basic_hook.tres" id="8_hook"]
+
+[sub_resource type="Resource" id="Built_in"]
+script = ExtResource("5_tackle")
+kind = 3
+rangeBonus = 6.0
+control = 0.12
+reelSpeed = 1.15
+displayName = "Fiberglass Rod"
+
+[resource]
+script = ExtResource("1_script")
+slots = Array[int]([0, 1, 2, 3, 4])
+tackle = Array[ExtResource("5_tackle")]([ExtResource("6_bobber"), ExtResource("7_line"), ExtResource("8_hook"), null, null])
+builtIn = SubResource("Built_in")
+rodTint = Color(0.6, 0.85, 1, 1)
+displayName = "Fiberglass Rod"
+icon = ExtResource("2_icon")
+rarity = ExtResource("3_rarity")
+description = "Casts far and has room for a gadget."
+heldScene = ExtResource("4_scene")
+discardable = false
+hint = "T to customize"
+buyPrice = 4500

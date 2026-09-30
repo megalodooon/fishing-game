@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="Seed" format=3]
+
+[ext_resource type="Script" path="res://world/village/farm/seed.gd" id="e1"]
+[ext_resource type="Texture2D" path="res://world/village/farm/icons/moonmelon_seeds.png" id="e2"]
+[ext_resource type="Resource" path="res://items/rarities/rare.tres" id="e3"]
+[ext_resource type="Resource" path="res://items/materials/moonmelon.tres" id="e4"]
+
+[resource]
+script = ExtResource("e1")
+displayName = "Moonmelon Seeds"
+icon = ExtResource("e2")
+rarity = ExtResource("e3")
+description = "Slow. Worth it."
+crop = ExtResource("e4")
+days = 8
+harvest = 1
+leafColor = Color(0.6, 0.7, 0.8, 1)
+hint = "Hold it and click the farm soil"
+maxStack = 99
+sellPrice = 30
+buyPrice = 60

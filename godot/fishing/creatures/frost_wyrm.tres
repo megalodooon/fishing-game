@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="SeaCreature" format=3]
+
+[ext_resource type="Script" path="res://fishing/creatures/sea_creature.gd" id="e1"]
+[ext_resource type="Texture2D" path="res://fishing/creatures/art/frost_wyrm.png" id="e2"]
+[ext_resource type="Resource" path="res://items/rarities/rare.tres" id="e3"]
+[ext_resource type="PackedScene" path="res://fishing/minigames/bullet_hell/bullet_hell.tscn" id="e4"]
+[ext_resource type="Resource" path="res://items/materials/frost_crystal.tres" id="e5"]
+[ext_resource type="Resource" path="res://items/materials/serpent_scale.tres" id="e6"]
+[ext_resource type="Script" path="res://items/item.gd" id="e7"]
+
+[resource]
+script = ExtResource("e1")
+displayName = "Frost Wyrm"
+description = "Breathes a mist that freezes the sea."
+icon = ExtResource("e2")
+rarity = ExtResource("e3")
+minFishing = 18
+announce = "A Frost Wyrm breaks through the ice!"
+fight = ExtResource("e4")
+difficulty = 0.55
+toughness = 1.1
+style = &"frost"
+coins = Vector2i(250, 500)
+xp = 260.0
+drops = Array[ExtResource("e7")]([ExtResource("e5"), ExtResource("e6")])
+dropChances = PackedFloat32Array(1.0, 0.6)
+dropAmounts = Array[Vector2i]([Vector2i(1, 3), Vector2i(1, 2)])

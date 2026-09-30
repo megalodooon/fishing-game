@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="Location" format=3 uid="uid://bm7wb8os7xdav"]
+
+[ext_resource type="Script" uid="uid://t660ehs2ybui" path="res://world/location.gd" id="e1"]
+[ext_resource type="Texture2D" uid="uid://6fi71a6b0ep7" path="res://world/map/icons/driftwood_cay.png" id="e2"]
+[ext_resource type="Resource" uid="uid://dkugbcubrvus5" path="res://oceans/islands/driftwood_biome.tres" id="e3"]
+
+[resource]
+script = ExtResource("e1")
+displayName = "Driftwood Cay"
+description = "A sleepy cay where an old hermit sells bait and tells stories."
+kind = 1
+scene = "res://world/islands/driftwood_cay/driftwood_cay.tscn"
+mapPosition = Vector2(148, 73)
+mapIcon = ExtResource("e2")
+biome = ExtResource("e3")
+weatherChances = PackedFloat32Array(0.45, 0.25, 0.3)
+startsUnlocked = false
+coinCost = 150
+requiredSkill = &"fishing"
+requiredLevel = 3
+requiredHull = 0

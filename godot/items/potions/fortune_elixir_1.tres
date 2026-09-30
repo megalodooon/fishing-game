@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="Snack" format=3]
+
+[ext_resource type="Texture2D" path="res://items/potions/icons/fortune_elixir_1.png" id="1_y23vc"]
+[ext_resource type="Resource" path="res://items/rarities/uncommon.tres" id="2_0ijba"]
+[ext_resource type="Script" path="res://items/snacks/snack.gd" id="3_jxlyo"]
+
+[resource]
+script = ExtResource("3_jxlyo")
+energy = 5.0
+buffStat = "luck"
+buffAmount = 1.15
+buffHours = 3.0
+displayName = "Fortune Elixir I"
+category = "Potion"
+icon = ExtResource("1_y23vc")
+rarity = ExtResource("2_0ijba")
+description = "Brewed at a cauldron. Drink it for a few hours of rare fish luck."
+hint = "Click while holding it to drink"
+maxStack = 10
+sellPrice = 62

@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="BaitRecipe" format=3]
+
+[ext_resource type="Resource" path="res://items/materials/wild_berries.tres" id="1_sq4pg"]
+[ext_resource type="Resource" path="res://items/enchanted/enchanted_wild_berries.tres" id="2_11jro"]
+[ext_resource type="Script" path="res://fishing/bait/bait_recipe.gd" id="3_bqtrg"]
+
+[resource]
+script = ExtResource("3_bqtrg")
+output = ExtResource("2_11jro")
+amount = 1
+ingredients = Array[Resource]([ExtResource("1_sq4pg")])
+counts = Array[int]([32])
+requiredFlag = "collection/wild_berries/2"
+xp = 12.0
+category = "Materials"

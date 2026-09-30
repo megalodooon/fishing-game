@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="BaitRecipe" format=3]
+
+[ext_resource type="Resource" path="res://items/materials/frostberry.tres" id="1_twmkf"]
+[ext_resource type="Resource" path="res://items/enchanted/enchanted_frostberry.tres" id="2_tapfn"]
+[ext_resource type="Script" path="res://fishing/bait/bait_recipe.gd" id="3_82iey"]
+
+[resource]
+script = ExtResource("3_82iey")
+output = ExtResource("2_tapfn")
+amount = 1
+ingredients = Array[Resource]([ExtResource("1_twmkf")])
+counts = Array[int]([32])
+requiredFlag = "collection/frostberry/2"
+xp = 12.0
+category = "Materials"

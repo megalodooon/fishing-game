@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="Biome" format=3]
+
+[ext_resource type="Script" path="res://fishing/creatures/sea_creature.gd" id="1_xikgm"]
+[ext_resource type="Script" path="res://fishing/fish/fish_data.gd" id="2_evqpk"]
+[ext_resource type="Resource" path="res://fishing/fish/species/events/frosty_minnow.tres" id="3_sj3dq"]
+[ext_resource type="Resource" path="res://fishing/fish/species/events/candy_cane_eel.tres" id="4_tc4c7"]
+[ext_resource type="Resource" path="res://fishing/fish/species/events/nutcracker_cod.tres" id="5_hgr2r"]
+[ext_resource type="Resource" path="res://fishing/fish/species/events/jolly_jellyfish.tres" id="6_opg4p"]
+[ext_resource type="Resource" path="res://fishing/fish/species/events/yule_narwhal.tres" id="7_yn6hc"]
+[ext_resource type="Script" path="res://items/item.gd" id="8_woch6"]
+[ext_resource type="Script" path="res://oceans/biome.gd" id="9_sta76"]
+
+[resource]
+script = ExtResource("9_sta76")
+displayName = "Gift Tide"
+description = "Festival fish of winter. They only bite during the Gift Tide."
+region = "Festivals"
+fish = Array[ExtResource("2_evqpk")]([ExtResource("3_sj3dq"), ExtResource("4_tc4c7"), ExtResource("5_hgr2r"), ExtResource("6_opg4p"), ExtResource("7_yn6hc")])
+tier = 1
+junkChance = 0.0

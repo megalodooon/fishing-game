@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="PetData" format=3]
+
+[ext_resource type="Script" path="res://world/village/pets/pet_data.gd" id="1_pet"]
+[ext_resource type="Texture2D" path="res://world/village/pets/art/harbor_cat.png" id="2_art"]
+[ext_resource type="Script" path="res://items/rarity.gd" id="3_rarity_script"]
+
+[resource]
+script = ExtResource("1_pet")
+displayName = "Harbor Cat"
+description = "Hangs around the pier hoping for scraps. Fish seem to hurry to the hook to get away from it."
+sprite = ExtResource("2_art")
+flies = false
+glows = false
+price = 800
+biteSpeed = 1.12

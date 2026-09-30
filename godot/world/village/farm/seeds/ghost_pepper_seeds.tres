@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Seed" format=3]
+
+[ext_resource type="Resource" path="res://items/materials/ghost_pepper.tres" id="1_6yc1l"]
+[ext_resource type="Texture2D" path="res://world/village/farm/icons/ghost_pepper_seeds.png" id="2_6ftg4"]
+[ext_resource type="Resource" path="res://items/rarities/rare.tres" id="3_nneeg"]
+[ext_resource type="Script" path="res://world/village/farm/seed.gd" id="4_0fp1a"]
+
+[resource]
+script = ExtResource("4_0fp1a")
+crop = ExtResource("1_6yc1l")
+days = 4
+harvest = 2
+leafColor = Color(0.63392156, 0.5960784, 0.32607844, 1)
+displayName = "Ghost Pepper Seeds"
+icon = ExtResource("2_6ftg4")
+rarity = ExtResource("3_nneeg")
+description = "Plant it on a farm plot. Grows into Ghost Pepper in 4 days."
+maxStack = 99
+buyPrice = 27

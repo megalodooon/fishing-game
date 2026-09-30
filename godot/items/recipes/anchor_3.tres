@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="BaitRecipe" format=3]
+
+[ext_resource type="Resource" path="res://items/charms/anchor_2.tres" id="1_anupv"]
+[ext_resource type="Resource" path="res://items/enchanted/enchanted_iron_scrap.tres" id="2_3vfuo"]
+[ext_resource type="Resource" path="res://items/materials/pearl_dust.tres" id="3_ad60m"]
+[ext_resource type="Resource" path="res://items/charms/anchor_3.tres" id="4_byted"]
+[ext_resource type="Script" path="res://fishing/bait/bait_recipe.gd" id="5_dt7nl"]
+
+[resource]
+script = ExtResource("5_dt7nl")
+output = ExtResource("4_byted")
+amount = 1
+ingredients = Array[Resource]([ExtResource("1_anupv"), ExtResource("2_3vfuo"), ExtResource("3_ad60m")])
+counts = Array[int]([1, 8, 3])
+xp = 90.0
+station = &"forge"
+category = "Charms"
+requiredSkill = &"fishing"
+requiredLevel = 20

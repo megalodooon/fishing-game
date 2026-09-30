@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="BaitRecipe" format=3]
+
+[ext_resource type="Resource" path="res://items/materials/gull_feather.tres" id="1_ps1ji"]
+[ext_resource type="Resource" path="res://items/enchanted/enchanted_gull_feather.tres" id="2_xmjum"]
+[ext_resource type="Script" path="res://fishing/bait/bait_recipe.gd" id="3_ros2h"]
+
+[resource]
+script = ExtResource("3_ros2h")
+output = ExtResource("2_xmjum")
+amount = 1
+ingredients = Array[Resource]([ExtResource("1_ps1ji")])
+counts = Array[int]([32])
+requiredFlag = "collection/gull_feather/2"
+xp = 12.0
+category = "Materials"

@@ -41,7 +41,20 @@ var gaveUp : bool = false
 var done : bool = false
 var time : float = 0.0
 var random : RandomNumberGenerator = RandomNumberGenerator.new()
+# Stands in for the mouse, for tests and bots.
+var pointerOverride : Variant = null
+# Set by the catch state before begin(), used by fights: the player's hearts,
+# a damage multiplier, the foe's attack style and how tough it is.
+var hearts : int = 3
+var power : float = 1.0
+var style : StringName = &""
+var toughness : float = 1.0
 #------------------------#
+
+
+# Where the mouse is over the game, in its own pixels.
+func pointer() -> Vector2:
+	return pointerOverride if pointerOverride != null else get_local_mouse_position()
 
 
 func begin(fishDifficulty : float, fishHeft : float, color : Color, icon : Texture2D = null) -> void:
@@ -74,6 +87,8 @@ func _physics_process(delta : float) -> void:
 	if not done:
 		time += delta
 		tick(delta)
+		if Dev.autoWin and time > 0.3:
+			finish(true)
 	queue_redraw()
 
 func finish(caught : bool) -> void:

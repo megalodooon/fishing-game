@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="CrewMember" format=3]
+
+[ext_resource type="Resource" path="res://items/enchanted/enchanted_beach_sand.tres" id="1_ifvqp"]
+[ext_resource type="Texture2D" path="res://items/materials/icons/beach_sand.png" id="2_7ayt0"]
+[ext_resource type="Resource" path="res://items/materials/beach_sand.tres" id="3_iomqx"]
+[ext_resource type="Script" path="res://world/crew/crew_member.gd" id="4_q6mof"]
+
+[resource]
+script = ExtResource("4_q6mof")
+displayName = "Sand Sifter"
+description = "Sifts the finest sand, for glass."
+icon = ExtResource("2_7ayt0")
+product = ExtResource("3_iomqx")
+enchanted = ExtResource("1_ifvqp")
+hours = 0.5

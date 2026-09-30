@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="BaitRecipe" format=3]
+
+[ext_resource type="Resource" path="res://items/charms/foreman_2.tres" id="1_igydv"]
+[ext_resource type="Resource" path="res://items/enchanted/enchanted_clay.tres" id="2_pkjrs"]
+[ext_resource type="Resource" path="res://items/materials/pearl_dust.tres" id="3_agaw8"]
+[ext_resource type="Resource" path="res://items/charms/foreman_3.tres" id="4_1xx8o"]
+[ext_resource type="Script" path="res://fishing/bait/bait_recipe.gd" id="5_kp07u"]
+
+[resource]
+script = ExtResource("5_kp07u")
+output = ExtResource("4_1xx8o")
+amount = 1
+ingredients = Array[Resource]([ExtResource("1_igydv"), ExtResource("2_pkjrs"), ExtResource("3_agaw8")])
+counts = Array[int]([1, 8, 3])
+xp = 90.0
+station = &"forge"
+category = "Charms"
+requiredSkill = &"trading"
+requiredLevel = 24

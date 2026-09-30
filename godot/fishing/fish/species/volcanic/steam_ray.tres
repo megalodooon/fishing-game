@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="FishData" format=3 uid="uid://cybg5rddu2vu4"]
+
+[ext_resource type="Script" uid="uid://bevdmlyak68oo" path="res://fishing/fish/fish_data.gd" id="1_fish"]
+[ext_resource type="Texture2D" uid="uid://bxh41ywbey78r" path="res://fishing/fish/assets/volcanic/steam_ray.png" id="2_icon"]
+[ext_resource type="Resource" path="res://items/rarities/rare.tres" id="3_rarity"]
+[ext_resource type="Script" uid="uid://dupq0iwgv25f6" path="res://fishing/fish/requirements/fish_requirement.gd" id="s_req"]
+[ext_resource type="Script" uid="uid://c3d1apon1mdqw" path="res://fishing/fish/requirements/weather_requirement.gd" id="s_w"]
+
+[sub_resource type="Resource" id="Req_1"]
+script = ExtResource("s_w")
+
+[resource]
+script = ExtResource("1_fish")
+displayName = "Steam Ray"
+icon = ExtResource("2_icon")
+rarity = ExtResource("3_rarity")
+description = "Glides up to the surface when rain hisses on the hot sea."
+weightRange = Vector2(3, 12)
+basePrice = 220
+heldSize = 1.2
+requirements = Array[ExtResource("s_req")]([SubResource("Req_1")])

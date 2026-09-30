@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="BaitRecipe" format=3]
+
+[ext_resource type="Resource" path="res://items/materials/glass_bottle.tres" id="1_e0dw5"]
+[ext_resource type="Resource" path="res://items/materials/deep_coral.tres" id="2_d587b"]
+[ext_resource type="Resource" path="res://items/materials/glowcap.tres" id="3_wnr3y"]
+[ext_resource type="Resource" path="res://items/potions/keen_eye_potion.tres" id="4_ii6tq"]
+[ext_resource type="Script" path="res://fishing/bait/bait_recipe.gd" id="5_8sxmv"]
+
+[resource]
+script = ExtResource("5_8sxmv")
+output = ExtResource("4_ii6tq")
+amount = 1
+ingredients = Array[Resource]([ExtResource("1_e0dw5"), ExtResource("2_d587b"), ExtResource("3_wnr3y")])
+counts = Array[int]([1, 1, 3])
+xp = 76.0
+station = &"cauldron"
+category = "Potions"
+requiredSkill = &"alchemy"
+requiredLevel = 22

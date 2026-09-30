@@ -569,3 +569,96 @@ I did not do them. They are yours to decide on:
   ripple nodes themselves to be drawn without rotation and at an integer
   scale, as they are now. Otherwise they fall back to one full rectangle,
   which is always correct.
+
+## Round 2: laggy spots, islands and the sea chart (2026-09-30)
+
+Same laptop and the same rule: nothing may look or play differently, except the one change you
+asked for (island water lies still). Checked with `tools/perf/capture2.gd`, 17 frames of today's
+game (sailing by day and night, rain, casting, the boat stopped, the bag, the sea chart, the
+village and an island). Against the build from before this round, 15/17 frames are pixel-identical;
+the other two are the island frames, where the water is now still. Seven sea chart frames with a
+route and a place card are 7/7 identical (`chart_shots.gd`).
+
+### The laggy spots (one-time freezes)
+
+Measured with `tools/perf/hitch.gd`, a scripted play session at the normal vsync-locked 60 fps
+that goes through the loading screen, opens every menu, catches fish, plays every minigame, sails
+to five places and walks every island room.
+
+| Moment | Before | After |
+|---|---|---|
+| Opening the profile / collection the first time | 833 ms | no slow frame |
+| Arriving at the village | 399 ms | ~30-50 ms |
+| Arriving at Meadow Isle, Ember Isle, the volcanic sea | 140-200 ms | ~30-50 ms |
+| Catching a fish | 124-149 ms | one ~30 ms frame |
+| Opening the sea chart the first time | 112 ms | ~30 ms |
+| Opening the journal the first time | 85 ms | no slow frame |
+| Opening a shop or counter the first time | 35-50 ms | no slow frame |
+| Worst frame in the whole session | 833 ms | 61 ms (the first frames after loading) |
+
+Arrivals now happen while the sea chart covers the screen, so they show as the chart's boat
+pausing for a couple of frames.
+
+What was behind them, and the fix for each:
+
+- **Loading from disk mid-game.** The collection catalog loaded ~450 files the first time anything
+  asked (935 ms), and every place's scene loaded when you arrived (the village alone 373 ms).
+  `Preloader` (`components/preload/`) now loads all content, every place's scene, the catalog's
+  lists and the island water masks on a background thread. It starts on the title screen, and the
+  loading screen waits for it. One thread loading in order was faster here than a threaded request
+  per file.
+- **Reading pictures back from the GPU.** Every menu built an outline for each icon the first time
+  it drew it, by reading the icon back from the GPU (`get_image()`), which waits a whole frame
+  while the game is rendering, and then running a slow per-pixel script loop. Held items did the
+  same read-back every time something was put in hand. `IconOutline` now builds the outlines from
+  the icons' PNG files (the export now includes `*.png`, 440 KB) on the preload thread, with a
+  byte loop that makes identical outlines (checked: 322/322 byte-identical) in half the time.
+- **The journal** rebuilt and re-sorted its list of all fish four times per catch (12-24 ms);
+  it's now built once (0.4 ms per catch).
+- **Island setup.** Each island room's water made three render passes and re-read its shaders'
+  settings. Passes are now made only when a room is shown, still water shares one set, shader
+  settings are read once, and the seabed decorations share their tile set. Setting up Meadow Isle:
+  25-57 ms to 12 ms.
+- **First-time shader and text costs.** The loading screen now draws the shaders that are first
+  used later (sea chart water, sleeping, the rod's line and bobber) and every letter at every menu
+  text size once, underneath itself.
+
+### Steady cost (GPU time per frame at 1080p, GeForce 940MX)
+
+| Scene | Before | After | Change |
+|---|---|---|---|
+| Sea chart open | 6.97 ms | 2.42 ms | **-65% (2.9x faster)** |
+| Meadow Isle (an island with water) | 2.65 ms | 1.41 ms | **-47% (1.9x faster)** |
+| At sea, day | 4.87 ms | 4.88 ms | unchanged (identical pixels) |
+
+- **Sea chart:** while it covers the whole screen, the world behind it isn't drawn (it keeps
+  running; only its drawing is switched off in the renderer, so nothing else changes).
+- **Islands:** the water around an island lies still (you asked for this: the boat isn't sailing
+  there). Being still, its passes render once when a room is shown instead of every frame, and the
+  water and seabed are only drawn where the land doesn't cover them. The rectangles come from the
+  land picture's fully opaque pixels, with a pixel to spare.
+- **Game logic:** skill levels are remembered per XP value (stat lookups every physics tick went
+  from 39 us to 5 us per skill), and the sea chart works out where its card goes only when
+  something it depends on changes.
+
+### What's left at sea
+
+At sea the GPU time is the same as before: the water shader (1.8 ms), the wake (1.05 ms), the
+ripples (0.93 ms) and the boat (0.62 ms) run for every screen pixel, and none of the exact tricks
+apply any more. Going further would mean drawing the smooth effects at a lower resolution, which
+changes how they look. That could be offered as an opt-in setting for very weak laptops, with the
+default left as it is.
+
+### New tools (in `tools/perf`)
+
+- `hitch.gd`: the scripted play session above; lists every frame over 20 ms and what was
+  happening.
+- `gpu2.gd`: GPU time per scenario (sea, rain at night, fishing, village, island, bag, sea chart),
+  with `breakdown` to hide each part in turn.
+- `cpu2.gd`: game logic per scenario without rendering.
+- `pacing.gd`: frame pacing and physics ticks per frame at vsync.
+- `capture2.gd`: the 17 deterministic frames for pixel checks.
+
+Benchmarks have to tell the game's settings they're fullscreen (`Settings.values.fullscreen`),
+because the game switches to a window on start, and they turn off GUI mouse input so the real
+cursor can't show tooltips in the frames.

@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="BaitRecipe" format=3]
+
+[ext_resource type="Resource" path="res://items/materials/wormroot.tres" id="1_ia3uq"]
+[ext_resource type="Resource" path="res://items/enchanted/enchanted_wormroot.tres" id="2_pecfy"]
+[ext_resource type="Script" path="res://fishing/bait/bait_recipe.gd" id="3_o8yf3"]
+
+[resource]
+script = ExtResource("3_o8yf3")
+output = ExtResource("2_pecfy")
+amount = 1
+ingredients = Array[Resource]([ExtResource("1_ia3uq")])
+counts = Array[int]([32])
+requiredFlag = "collection/wormroot/2"
+xp = 12.0
+category = "Materials"

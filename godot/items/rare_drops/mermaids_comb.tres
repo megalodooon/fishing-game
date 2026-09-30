@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="RareDrop" format=3]
+
+[ext_resource type="Script" path="res://oceans/biome.gd" id="1_p5f5o"]
+[ext_resource type="Resource" path="res://oceans/islands/lagoon_biome.tres" id="2_ju1qb"]
+[ext_resource type="Resource" path="res://oceans/reef/reef_biome.tres" id="3_ja475"]
+[ext_resource type="Resource" path="res://items/rare/mermaids_comb.tres" id="4_ctt8k"]
+[ext_resource type="Script" path="res://items/rare_drops/rare_drop.gd" id="5_gqqtu"]
+
+[resource]
+script = ExtResource("5_gqqtu")
+item = ExtResource("4_ctt8k")
+chance = 0.0008333333333333334
+biomes = Array[ExtResource("1_p5f5o")]([ExtResource("2_ju1qb"), ExtResource("3_ja475")])
+minFishing = 8

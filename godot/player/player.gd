@@ -1,6 +1,19 @@
 extends CharacterBody2D
 class_name Player
 
+const GROUP : StringName = &"players"
+
+# Skill XP was earned, and a skill went up a level (see Skills).
+@warning_ignore("unused_signal")
+signal xp_gained(skill : StringName, amount : float)
+@warning_ignore("unused_signal")
+signal skill_up(skill : StringName, level : int)
+# A fish was landed (tournaments listen).
+@warning_ignore("unused_signal")
+signal fish_caught(fish : Fish, biome : Biome)
+# Around the feet: all of these have to be on land (or deck) to stand there.
+const FEET : PackedVector2Array = [Vector2(-3.0, 3.0), Vector2(3.0, 3.0), Vector2(0.0, 0.5), Vector2(0.0, 5.5)]
+
 #------------------------#
 @onready var animationPlayer : AnimationPlayer = $AnimationPlayer
 @onready var sprite : Sprite2D = %Sprite
@@ -21,6 +34,11 @@ class_name Player
 @export var tacklebox : Tacklebox
 @export var journal : Journal
 @export var energy : Energy
+@export var wallet : Wallet
+# The sea chart: where the boat is and which places are unlocked.
+@export var atlas : Atlas
+# Secrets found, aquarium donations, the farm and so on.
+@export var progress : Progress
 # Energy used up by every cast.
 @export var castEnergy : float = 2.0
 @export var minigameScreen : MinigameScreen
@@ -55,6 +73,19 @@ var offHand : Sprite2D
 var heldSlot : int = -1
 var rooted : bool = false
 var asleep : bool = false
+# Looking at the sea chart or sailing across it: no walking around.
+var charting : bool = false
+# Held still for a moment, like while the screen fades to the next room or a
+# shop counter is open.
+var frozen : bool = false
+# The closest thing in reach that F would use.
+var interactTarget : Interactable
+var promptKey : Object
+var promptText : String = ""
+# The farm tile under the cursor, and what clicking it would do.
+var farmTarget : FarmPlot
+var farmTile : int = -1
+var farmText : String = ""
 var aimTarget : Variant = null
 var facing : float = 1.0
 var facingBlend : float = 1.0
@@ -74,9 +105,14 @@ var time : float = 0.0
 
 
 func _ready() -> void:
+	add_to_group(GROUP)
 	inventory.setup()
+	inventory.gained.connect(func(item : Item, amount : int) -> void: Collections.add(self, item, amount))
+	if progress:
+		progress.setup()
 	if tacklebox:
 		tacklebox.setup()
+		tacklebox.gained.connect(func(part : Tackle, amount : int) -> void: Collections.add(self, part, amount))
 	if journal:
 		journal.setup()
 	center_rest_position = center.position
@@ -86,6 +122,7 @@ func _ready() -> void:
 	last_global_position = global_position
 	if boat:
 		shadow.material.set_shader_parameter("occluders", boat.occluders.slice(0, 3).map(func(occluder : Sprite2D) -> Texture2D: return occluder.texture))
+	(%Prompt as Callout).warm_up("[]")
 	warm_up()
 
 func warm_up() -> void:
@@ -112,13 +149,22 @@ func _physics_process(delta: float) -> void:
 	update_hand(delta)
 	body.rotation = -lean * facingBlend
 
-func _process(_delta : float) -> void:
+static func find(tree : SceneTree) -> Player:
+	return tree.get_first_node_in_group(GROUP) as Player
+
+func _process(delta : float) -> void:
+	if progress:
+		progress.playtime += delta
 	update_shadow()
+	update_interaction()
 
 func update_shadow() -> void:
 	var points : PackedVector2Array = PackedVector2Array()
-	if boat and boat.deckFloor:
+	if boat and boat.deckFloor and not Island.current(get_tree()):
 		points = Boat.texel_transform(shadow) * boat.deckFloor.global_transform * boat.deckFloor.polygon
+	elif shadow.texture:
+		var size : Vector2 = shadow.texture.get_size()
+		points = PackedVector2Array([Vector2.ZERO, Vector2(size.x, 0.0), size, Vector2(0.0, size.y)])
 	var count : int = mini(points.size(), 16)
 	points.resize(16)
 	var axes : PackedVector4Array = PackedVector4Array()
@@ -136,6 +182,105 @@ func update_shadow() -> void:
 	RenderingServer.material_set_param(rid, "occluder_count", occluderCount)
 	RenderingServer.material_set_param(rid, "floor_points", points)
 	RenderingServer.material_set_param(rid, "floor_count", count)
+
+# Whether the player could stand here. On islands that means on land, out at
+# sea the boat's walls are all there is.
+func can_stand(at : Vector2) -> bool:
+	var island : Island = Island.current(get_tree())
+	if not island or not island.world:
+		return true
+	for foot in FEET:
+		if not island.walkable(at + foot):
+			return false
+	return true
+
+# Picks the closest thing in reach to use with F, and the farm tile under the
+# cursor, and shows the prompt for whichever applies (the cursor wins).
+func update_interaction() -> void:
+	var free : bool = handStates.currentState is PlayerHandIdleState and not asleep and not charting and not frozen
+	update_farm_hover(free)
+	var target : Interactable = null
+	if free:
+		var closest : float = INF
+		for node : Interactable in get_tree().get_nodes_in_group(Interactable.GROUP):
+			if not node.listed or not node.is_visible_in_tree() or not node.available(self):
+				continue
+			var distance : float = node.distance_to(global_position)
+			if distance <= node.reach and distance < closest:
+				closest = distance
+				target = node
+	interactTarget = target
+	var key : Object = null
+	var text : String = ""
+	var at : Vector2 = Vector2.ZERO
+	var color : Color = Color.WHITE
+	if farmTarget and not farmText.is_empty():
+		key = farmTarget
+		text = farmText
+		at = farmTarget.tile_center(farmTile) + Vector2(0.0, -7.0)
+		color = farmTarget.hoverColor if farmTarget.in_reach(self, farmTile) else farmTarget.farColor
+	elif target:
+		key = target
+		text = "[F] " + target.prompt_text(self)
+		at = target.prompt_point(self)
+		color = target.prompt_color(self)
+	var prompt : Callout = %Prompt
+	if key == promptKey and text == promptText:
+		if key:
+			prompt.anchor = at
+		return
+	promptKey = key
+	promptText = text
+	if key:
+		prompt.pop(at, text, Color(color, 1.0))
+	else:
+		prompt.dismiss()
+
+func update_farm_hover(free : bool) -> void:
+	var plot : FarmPlot = null
+	var tile : int = -1
+	if free:
+		var mouse : Vector2 = aimTarget if aimTarget != null else get_global_mouse_position()
+		for node : FarmPlot in get_tree().get_nodes_in_group(FarmPlot.GROUP):
+			var index : int = node.tile_at(mouse) if node.is_visible_in_tree() else -1
+			if index >= 0:
+				plot = node
+				tile = index
+				break
+	if is_instance_valid(farmTarget) and farmTarget != plot:
+		farmTarget.set_hover(-1, false)
+	farmTarget = plot
+	farmTile = tile
+	farmText = plot.hover_text(self, tile) if plot else ""
+	if plot:
+		plot.set_hover(tile, plot.in_reach(self, tile))
+
+# A click on the farm tile under the cursor. Returns whether it was used.
+func click_farm() -> bool:
+	return is_instance_valid(farmTarget) and farmTile >= 0 and farmTarget.click(self, farmTile)
+# One of the active pet's buff multipliers, 1 without a pet.
+func pet_stat(property : StringName) -> float:
+	var pet : PetData = progress.activePet if progress else null
+	return pet.stat(property, progress.pet_level(pet)) if pet else 1.0
+
+# A multiplier stat with everything helping out: pet, food, weather, skills,
+# charms, boat and pearls (see Stats). 1 changes nothing.
+func boost(property : StringName) -> float:
+	return Stats.of(self, property)
+
+func stat(property : StringName) -> float:
+	return Stats.of(self, property)
+
+# Boat cabins, pearls and charms can raise the maximum energy.
+func refresh_energy_max() -> void:
+	if energy:
+		energy.maximum = 100.0 + stat(&"energyMax")
+		energy.value = minf(energy.value, energy.maximum)
+		energy.emit_changed()
+
+# A short line over the head, like "+20 energy".
+func say(text : String, color : Color) -> void:
+	(%CatchText as Callout).pop(center.global_position + Vector2(0.0, -12.0), text, color, 1.2)
 
 func move_center(delta: float):
 	center.position -= global_position - last_global_position
@@ -226,6 +371,16 @@ func wake_reset() -> void:
 
 func held_data() -> Item:
 	return heldItem.item if heldItem else null
+
+# Like pressing the slot's number key: only while the hand is free.
+func pick_slot(slot : int) -> void:
+	if asleep:
+		return
+	if handStates.currentState is PlayerHandIdleState:
+		(handStates.currentState as PlayerHandIdleState).pick(slot)
+	elif handStates.currentState is PlayerSwitchState:
+		var switching : PlayerSwitchState = handStates.currentState
+		switching.choose(-1 if slot == switching.target() else slot)
 
 # The held slot stays put while the hand is busy with it.
 func can_move_slot(slot : int) -> bool:

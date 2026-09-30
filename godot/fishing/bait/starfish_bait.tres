@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="Bait" format=3]
+
+[ext_resource type="Script" path="res://fishing/fish/fish_data.gd" id="1_auovn"]
+[ext_resource type="Texture2D" path="res://fishing/bait/icons/starfish_bait.png" id="2_0f3wr"]
+[ext_resource type="Resource" path="res://items/rarities/uncommon.tres" id="3_ey5x7"]
+[ext_resource type="Script" path="res://items/rarity.gd" id="4_vassg"]
+[ext_resource type="Resource" path="res://items/rarities/rare.tres" id="5_ibevd"]
+[ext_resource type="Script" path="res://fishing/bait/bait.gd" id="6_j0d2s"]
+
+[resource]
+script = ExtResource("6_j0d2s")
+rarityBoost = Dictionary[ExtResource("4_vassg"), float]({
+ExtResource("5_ibevd"): 1.5
+})
+kind = 4
+displayName = "Starfish Bait"
+icon = ExtResource("2_0f3wr")
+rarity = ExtResource("3_ey5x7")
+description = "Goes in a rod's bait slot."
+maxStack = 99

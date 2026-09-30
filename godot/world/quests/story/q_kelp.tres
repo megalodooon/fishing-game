@@ -1,0 +1,31 @@
+[gd_resource type="Resource" script_class="Quest" format=3 uid="uid://cat8up0uvr1wl"]
+
+[ext_resource type="Script" uid="uid://ftrpy1hit5em" path="res://items/item.gd" id="6_d5afd"]
+[ext_resource type="Script" uid="uid://t660ehs2ybui" path="res://world/location.gd" id="7_tn2ri"]
+[ext_resource type="Script" uid="uid://b1p7iyi658nm7" path="res://world/quests/quest.gd" id="e1"]
+[ext_resource type="Script" uid="uid://depkark34l17n" path="res://world/quests/quest_goal.gd" id="e2"]
+[ext_resource type="Resource" path="res://world/locations/kelp_forest.tres" id="e3"]
+[ext_resource type="Resource" path="res://oceans/kelp/kelp_biome.tres" id="e4"]
+[ext_resource type="Resource" uid="uid://ccpe81vt2qmao" path="res://world/quests/story/q_hull2.tres" id="e5"]
+
+[sub_resource type="Resource" id="s1"]
+script = ExtResource("e2")
+kind = 3
+target = ExtResource("e3")
+
+[sub_resource type="Resource" id="s2"]
+script = ExtResource("e2")
+target = ExtResource("e4")
+amount = 10
+
+[resource]
+script = ExtResource("e1")
+title = "Into the Kelp"
+giver = "Marina"
+description = "Sail to the Kelp Forest and catch ten fish among the kelp."
+story = true
+goals = Array[ExtResource("e2")]([SubResource("s1"), SubResource("s2")])
+startScene = "q_kelp_start"
+endScene = "q_kelp_end"
+requires = Array[ExtResource("e1")]([ExtResource("e5")])
+rewardCoins = 600

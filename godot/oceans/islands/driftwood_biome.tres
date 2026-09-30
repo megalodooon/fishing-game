@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="Biome" format=3 uid="uid://dkugbcubrvus5"]
+
+[ext_resource type="Script" path="res://fishing/creatures/sea_creature.gd" id="1_p0cbb"]
+[ext_resource type="Resource" path="res://items/materials/palm_frond.tres" id="10_vvlmk"]
+[ext_resource type="Resource" path="res://items/materials/beach_sand.tres" id="11_tnqjp"]
+[ext_resource type="Resource" path="res://items/materials/sea_salt.tres" id="12_vqsi0"]
+[ext_resource type="Resource" path="res://items/materials/gull_feather.tres" id="13_740ls"]
+[ext_resource type="Script" path="res://oceans/biome.gd" id="e1"]
+[ext_resource type="Script" path="res://fishing/fish/fish_data.gd" id="e2"]
+[ext_resource type="Resource" path="res://fishing/fish/species/driftwood/driftwood_goby.tres" id="e3"]
+[ext_resource type="Resource" path="res://fishing/fish/species/driftwood/lagoon_perch.tres" id="e4"]
+[ext_resource type="Resource" path="res://fishing/fish/species/mackerel.tres" id="e5"]
+[ext_resource type="Resource" path="res://fishing/fish/species/flounder.tres" id="e6"]
+[ext_resource type="Resource" path="res://fishing/fish/species/driftwood/hermit_bream.tres" id="e7"]
+[ext_resource type="Resource" path="res://fishing/fish/species/driftwood/mistral_ray.tres" id="e8"]
+[ext_resource type="Resource" path="res://items/materials/driftwood_plank.tres" id="e9"]
+[ext_resource type="Resource" path="res://items/materials/seaweed.tres" id="e10"]
+[ext_resource type="Script" path="res://items/item.gd" id="e11"]
+
+[resource]
+script = ExtResource("e1")
+displayName = "Driftwood Cay"
+description = "A quiet cay with a lagoon behind the dunes."
+region = "Home Waters"
+fish = Array[ExtResource("e2")]([ExtResource("e3"), ExtResource("e4"), ExtResource("e5"), ExtResource("e6"), ExtResource("e7"), ExtResource("e8")])
+junkChance = 0.06
+junk = Array[ExtResource("e11")]([ExtResource("e9"), ExtResource("e10")])
+forage = Array[ExtResource("e11")]([ExtResource("10_vvlmk"), ExtResource("11_tnqjp"), ExtResource("12_vqsi0"), ExtResource("13_740ls")])

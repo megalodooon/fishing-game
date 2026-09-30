@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="BaitRecipe" format=3]
+
+[ext_resource type="Resource" path="res://items/materials/iron_scrap.tres" id="1_u2hhp"]
+[ext_resource type="Resource" path="res://items/materials/rope.tres" id="2_8l6eq"]
+[ext_resource type="Resource" path="res://items/crew/scrap_scavenger_contract.tres" id="3_hrumf"]
+[ext_resource type="Script" path="res://fishing/bait/bait_recipe.gd" id="4_vy86m"]
+
+[resource]
+script = ExtResource("4_vy86m")
+output = ExtResource("3_hrumf")
+amount = 1
+ingredients = Array[Resource]([ExtResource("1_u2hhp"), ExtResource("2_8l6eq")])
+counts = Array[int]([24, 2])
+requiredFlag = "collection/iron_scrap/1"
+xp = 25.0
+station = &"workbench"
+category = "Crew"

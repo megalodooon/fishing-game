@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="Seed" format=3]
+
+[ext_resource type="Resource" path="res://items/materials/winter_squash.tres" id="1_iwhiq"]
+[ext_resource type="Texture2D" path="res://world/village/farm/icons/squash_seeds.png" id="2_n01ql"]
+[ext_resource type="Resource" path="res://items/rarities/uncommon.tres" id="3_ck8ta"]
+[ext_resource type="Script" path="res://world/village/farm/seed.gd" id="4_3v7uv"]
+
+[resource]
+script = ExtResource("4_3v7uv")
+crop = ExtResource("1_iwhiq")
+days = 4
+leafColor = Color(0.63392156, 0.7309804, 0.27588236, 1)
+displayName = "Squash Seeds"
+icon = ExtResource("2_n01ql")
+rarity = ExtResource("3_ck8ta")
+description = "Plant it on a farm plot. Grows into Winter Squash in 4 days."
+maxStack = 99
+buyPrice = 30

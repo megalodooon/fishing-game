@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="CrewMember" format=3]
+
+[ext_resource type="Resource" path="res://items/enchanted/enchanted_palm_frond.tres" id="1_k8iqm"]
+[ext_resource type="Texture2D" path="res://items/materials/icons/palm_frond.png" id="2_y5vq6"]
+[ext_resource type="Resource" path="res://items/materials/palm_frond.tres" id="3_qgh72"]
+[ext_resource type="Script" path="res://world/crew/crew_member.gd" id="4_dygi7"]
+
+[resource]
+script = ExtResource("4_dygi7")
+displayName = "Frond Cutter"
+description = "Climbs palms so you don't have to."
+icon = ExtResource("2_y5vq6")
+product = ExtResource("3_qgh72")
+enchanted = ExtResource("1_k8iqm")
+hours = 0.6

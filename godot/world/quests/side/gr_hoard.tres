@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="Quest" format=3]
+
+[ext_resource type="Script" path="res://world/quests/quest.gd" id="e1"]
+[ext_resource type="Script" path="res://world/quests/quest_goal.gd" id="e2"]
+[ext_resource type="Resource" path="res://world/quests/story/q_treasure.tres" id="e3"]
+[ext_resource type="Resource" path="res://items/charms/four_leaf_shell.tres" id="e4"]
+[ext_resource type="Script" path="res://items/item.gd" id="e5"]
+
+[sub_resource type="Resource" id="s1"]
+script = ExtResource("e2")
+kind = 10
+flag = "treasure_opened"
+amount = 30
+text = "Open 30 treasure chests"
+
+[resource]
+script = ExtResource("e1")
+title = "Ancient Riches"
+giver = "Captain Grim"
+description = "Open thirty treasure chests."
+goals = Array[ExtResource("e2")]([SubResource("s1")])
+requires = Array[ExtResource("e1")]([ExtResource("e3")])
+rewardItems = Array[ExtResource("e5")]([ExtResource("e4")])
+rewardAmounts = Array[int]([1])

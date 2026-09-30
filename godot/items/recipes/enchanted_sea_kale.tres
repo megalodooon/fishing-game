@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="BaitRecipe" format=3]
+
+[ext_resource type="Resource" path="res://items/materials/sea_kale.tres" id="1_3hbgq"]
+[ext_resource type="Resource" path="res://items/enchanted/enchanted_sea_kale.tres" id="2_6uxss"]
+[ext_resource type="Script" path="res://fishing/bait/bait_recipe.gd" id="3_4r80t"]
+
+[resource]
+script = ExtResource("3_4r80t")
+output = ExtResource("2_6uxss")
+amount = 1
+ingredients = Array[Resource]([ExtResource("1_3hbgq")])
+counts = Array[int]([32])
+requiredFlag = "collection/sea_kale/2"
+xp = 12.0
+category = "Materials"

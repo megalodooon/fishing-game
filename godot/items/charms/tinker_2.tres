@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="Charm" format=3]
+
+[ext_resource type="Texture2D" path="res://items/charms/icons/tinker_2.png" id="1_im4ve"]
+[ext_resource type="Resource" path="res://items/rarities/uncommon.tres" id="2_grhu1"]
+[ext_resource type="Script" path="res://items/charms/charm.gd" id="3_5rk0v"]
+
+[resource]
+script = ExtResource("3_5rk0v")
+stats = Dictionary[StringName, float]({
+&"craftBonus": 4.0
+})
+family = "tinker"
+tier = 2
+displayName = "Tinker's Ring"
+icon = ExtResource("1_im4ve")
+rarity = ExtResource("2_grhu1")
+description = "Part of the Tinker line. Upgrade it at a bench to make it stronger."
+sellPrice = 160

@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="Seed" format=3]
+
+[ext_resource type="Resource" path="res://items/materials/sand_carrot.tres" id="1_3rqwl"]
+[ext_resource type="Texture2D" path="res://world/village/farm/icons/sand_carrot_seeds.png" id="2_2nu83"]
+[ext_resource type="Resource" path="res://items/rarities/common.tres" id="3_m7oec"]
+[ext_resource type="Script" path="res://world/village/farm/seed.gd" id="4_max5i"]
+
+[resource]
+script = ExtResource("4_max5i")
+crop = ExtResource("1_3rqwl")
+harvest = 2
+leafColor = Color(0.64960784, 0.6964706, 0.27588236, 1)
+displayName = "Sand Carrot Seeds"
+icon = ExtResource("2_2nu83")
+rarity = ExtResource("3_m7oec")
+description = "Plant it on a farm plot. Grows into Sand Carrot in 2 days."
+maxStack = 99
+buyPrice = 5

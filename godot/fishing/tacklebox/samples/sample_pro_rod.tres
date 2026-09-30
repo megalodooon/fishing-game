@@ -11,7 +11,7 @@
 
 [resource]
 script = ExtResource("1_rod")
-slots = Array[int]([0, 1, 1, 2, 3, 3])
+slots = Array[int]([0, 1, 1, 2, 3, 3, 4])
 tackle = Array[ExtResource("4_tackle")]([ExtResource("5_bobber"), ExtResource("6_line"), null, ExtResource("7_hook"), null, null])
 displayName = "Sample Pro Rod"
 icon = ExtResource("2_icon")

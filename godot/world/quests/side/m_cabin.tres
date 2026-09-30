@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="Quest" format=3 uid="uid://skgnphap23nl"]
+
+[ext_resource type="Script" uid="uid://ftrpy1hit5em" path="res://items/item.gd" id="4_drng3"]
+[ext_resource type="Script" uid="uid://t660ehs2ybui" path="res://world/location.gd" id="5_40fpf"]
+[ext_resource type="Script" uid="uid://b1p7iyi658nm7" path="res://world/quests/quest.gd" id="e1"]
+[ext_resource type="Script" uid="uid://depkark34l17n" path="res://world/quests/quest_goal.gd" id="e2"]
+[ext_resource type="Resource" uid="uid://ccpe81vt2qmao" path="res://world/quests/story/q_hull2.tres" id="e3"]
+
+[sub_resource type="Resource" id="s1"]
+script = ExtResource("e2")
+kind = 9
+flag = "cabin"
+
+[resource]
+script = ExtResource("e1")
+title = "Cabin Fever"
+giver = "Marina"
+description = "Build a bunk on board. Sleep wherever the night finds you."
+goals = Array[ExtResource("e2")]([SubResource("s1")])
+requires = Array[ExtResource("e1")]([ExtResource("e3")])
+rewardCoins = 2000

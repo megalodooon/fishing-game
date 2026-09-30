@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Snack" format=3]
+
+[ext_resource type="Texture2D" path="res://items/snacks/icons/squash_pie.png" id="1_h6s88"]
+[ext_resource type="Resource" path="res://items/rarities/uncommon.tres" id="2_irpjg"]
+[ext_resource type="Script" path="res://items/snacks/snack.gd" id="3_m3ua3"]
+
+[resource]
+script = ExtResource("3_m3ua3")
+energy = 55.0
+buffStat = "weight"
+buffAmount = 1.1
+buffHours = 5.0
+displayName = "Squash Pie"
+icon = ExtResource("1_h6s88")
+rarity = ExtResource("2_irpjg")
+description = "Cooked at a kitchen."
+hint = "Click while holding it to eat"
+maxStack = 20
+sellPrice = 60

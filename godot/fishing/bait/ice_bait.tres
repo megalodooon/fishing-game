@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="Bait" format=3]
+
+[ext_resource type="Script" path="res://fishing/bait/bait.gd" id="e1"]
+[ext_resource type="Script" path="res://items/rarity.gd" id="e2"]
+[ext_resource type="Script" path="res://fishing/fish/fish_data.gd" id="e3"]
+[ext_resource type="Resource" path="res://items/rarities/rare.tres" id="e4"]
+[ext_resource type="Resource" path="res://fishing/fish/species/frostpeak/snow_trout.tres" id="e5"]
+[ext_resource type="Resource" path="res://fishing/fish/species/frostpeak/crystal_smelt.tres" id="e6"]
+[ext_resource type="Resource" path="res://fishing/fish/species/frost/frost_pike.tres" id="e7"]
+[ext_resource type="Texture2D" path="res://fishing/bait/icons/ice_bait.png" id="e8"]
+[ext_resource type="Resource" path="res://items/rarities/uncommon.tres" id="e9"]
+
+[resource]
+script = ExtResource("e1")
+rarityBoost = Dictionary[ExtResource("e2"), float]({
+ExtResource("e4"): 1.2
+})
+fishBoost = Dictionary[ExtResource("e3"), float]({
+ExtResource("e5"): 1.8,
+ExtResource("e6"): 1.8,
+ExtResource("e7"): 1.6
+})
+kind = 4
+displayName = "Ice Bait"
+icon = ExtResource("e8")
+rarity = ExtResource("e9")
+description = "Chilled to the bone. Needed for the Aurora Sturgeon."
+discardable = false

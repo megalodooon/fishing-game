@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="Snack" format=3]
+
+[ext_resource type="Texture2D" path="res://items/snacks/icons/seaweed_wrap.png" id="1_33lxn"]
+[ext_resource type="Resource" path="res://items/rarities/common.tres" id="2_0rvg2"]
+[ext_resource type="Script" path="res://items/snacks/snack.gd" id="3_wbg7x"]
+
+[resource]
+script = ExtResource("3_wbg7x")
+energy = 30.0
+buffStat = "castEnergy"
+buffAmount = 0.85
+displayName = "Seaweed Wrap"
+icon = ExtResource("1_33lxn")
+rarity = ExtResource("2_0rvg2")
+description = "Cooked at a kitchen."
+hint = "Click while holding it to eat"
+maxStack = 20
+sellPrice = 18

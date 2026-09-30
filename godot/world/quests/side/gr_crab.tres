@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="Quest" format=3]
+
+[ext_resource type="Script" path="res://world/quests/quest.gd" id="e1"]
+[ext_resource type="Script" path="res://world/quests/quest_goal.gd" id="e2"]
+[ext_resource type="Resource" path="res://fishing/creatures/giant_crab.tres" id="e3"]
+[ext_resource type="Resource" path="res://world/quests/story/q_debt.tres" id="e4"]
+[ext_resource type="Resource" path="res://items/charms/crab_claw_charm.tres" id="e5"]
+[ext_resource type="Script" path="res://items/item.gd" id="e6"]
+
+[sub_resource type="Resource" id="s1"]
+script = ExtResource("e2")
+kind = 7
+target = ExtResource("e3")
+amount = 10
+
+[resource]
+script = ExtResource("e1")
+title = "Crabs Everywhere"
+giver = "Captain Grim"
+description = "Beat ten Giant Crabs."
+goals = Array[ExtResource("e2")]([SubResource("s1")])
+requires = Array[ExtResource("e1")]([ExtResource("e4")])
+rewardCoins = 400
+rewardItems = Array[ExtResource("e6")]([ExtResource("e5")])
+rewardAmounts = Array[int]([1])

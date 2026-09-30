@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="BaitRecipe" format=3]
+
+[ext_resource type="Resource" path="res://items/charms/tide_hunter_3.tres" id="1_p2hld"]
+[ext_resource type="Resource" path="res://items/enchanted/enchanted_shark_tooth.tres" id="2_6mab7"]
+[ext_resource type="Resource" path="res://items/rare/magma_heart.tres" id="3_y0uc7"]
+[ext_resource type="Resource" path="res://items/charms/tide_hunter_4.tres" id="4_olawi"]
+[ext_resource type="Script" path="res://fishing/bait/bait_recipe.gd" id="5_kgfo3"]
+
+[resource]
+script = ExtResource("5_kgfo3")
+output = ExtResource("4_olawi")
+amount = 1
+ingredients = Array[Resource]([ExtResource("1_p2hld"), ExtResource("2_6mab7"), ExtResource("3_y0uc7")])
+counts = Array[int]([1, 24, 1])
+xp = 120.0
+station = &"forge"
+category = "Charms"
+requiredSkill = &"hunting"
+requiredLevel = 25

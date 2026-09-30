@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="BaitRecipe" format=3]
+
+[ext_resource type="Resource" path="res://items/materials/serpent_scale.tres" id="1_7e0kg"]
+[ext_resource type="Resource" path="res://items/materials/kelp_fiber.tres" id="2_gf37l"]
+[ext_resource type="Resource" path="res://items/materials/shark_tooth.tres" id="3_8w3k0"]
+[ext_resource type="Resource" path="res://items/tools/anglers_duffel.tres" id="4_3ygas"]
+[ext_resource type="Script" path="res://fishing/bait/bait_recipe.gd" id="5_16mtp"]
+
+[resource]
+script = ExtResource("5_16mtp")
+output = ExtResource("4_3ygas")
+amount = 1
+ingredients = Array[Resource]([ExtResource("1_7e0kg"), ExtResource("2_gf37l"), ExtResource("3_8w3k0")])
+counts = Array[int]([5, 20, 5])
+xp = 90.0
+station = &"workbench"
+requiredSkill = &"hunting"
+requiredLevel = 10

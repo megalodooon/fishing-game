@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="BaitRecipe" format=3]
+
+[ext_resource type="Script" path="res://fishing/bait/bait_recipe.gd" id="e1"]
+[ext_resource type="Resource" path="res://items/charms/heavy_sinker.tres" id="e2"]
+[ext_resource type="Resource" path="res://items/materials/iron_scrap.tres" id="e3"]
+
+[resource]
+script = ExtResource("e1")
+output = ExtResource("e2")
+amount = 1
+ingredients = Array[Resource]([ExtResource("e3")])
+counts = Array[int]([10])
+requiredFlag = "collection/iron_scrap/2"
+lockedText = "Collect 15 Iron Scrap to learn it."
+xp = 20.0
+station = &"workbench"

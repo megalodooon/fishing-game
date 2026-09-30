@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="FishData" format=3]
+
+[ext_resource type="Texture2D" path="res://fishing/fish/assets/events/pumpkin_puffer.png" id="1_x0142"]
+[ext_resource type="Resource" path="res://items/rarities/uncommon.tres" id="2_tnb0c"]
+[ext_resource type="Script" path="res://fishing/fish/requirements/fish_requirement.gd" id="3_i3t7k"]
+[ext_resource type="Script" path="res://fishing/fish/fish_data.gd" id="4_dq8a2"]
+
+[resource]
+script = ExtResource("4_dq8a2")
+displayName = "Pumpkin Puffer"
+icon = ExtResource("1_x0142")
+rarity = ExtResource("2_tnb0c")
+description = "Puffs up into a perfect pumpkin when scared."
+weightRange = Vector2(0.5, 2.5)
+basePrice = 45
+heldSize = 0.65

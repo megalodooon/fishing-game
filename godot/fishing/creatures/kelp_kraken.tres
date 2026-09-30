@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="SeaCreature" format=3]
+
+[ext_resource type="Script" path="res://fishing/creatures/sea_creature.gd" id="e1"]
+[ext_resource type="Texture2D" path="res://fishing/creatures/art/kelp_kraken.png" id="e2"]
+[ext_resource type="Resource" path="res://items/rarities/legendary.tres" id="e3"]
+[ext_resource type="PackedScene" path="res://fishing/minigames/boss_duel/boss_duel.tscn" id="e4"]
+[ext_resource type="Resource" path="res://items/materials/ink_sac.tres" id="e5"]
+[ext_resource type="Resource" path="res://items/materials/kraken_tentacle.tres" id="e6"]
+[ext_resource type="Resource" path="res://items/materials/kelp_fiber.tres" id="e7"]
+[ext_resource type="Script" path="res://items/item.gd" id="e8"]
+
+[resource]
+script = ExtResource("e1")
+displayName = "Kelp Kraken"
+description = "Wraps its arms around boats that stay too long."
+icon = ExtResource("e2")
+rarity = ExtResource("e3")
+minFishing = 16
+announce = "The kelp parts. The Kelp Kraken wakes!"
+fight = ExtResource("e4")
+difficulty = 0.6
+toughness = 1.4
+style = &"reef"
+coins = Vector2i(400, 900)
+xp = 320.0
+drops = Array[ExtResource("e8")]([ExtResource("e5"), ExtResource("e6"), ExtResource("e7")])
+dropChances = PackedFloat32Array(1.0, 0.5, 1.0)
+dropAmounts = Array[Vector2i]([Vector2i(2, 4), Vector2i(1, 1), Vector2i(4, 8)])

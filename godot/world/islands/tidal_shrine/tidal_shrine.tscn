@@ -1,0 +1,257 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://world/island/island.gd" id="i_e1"]
+[ext_resource type="Script" path="res://world/island/island_room.gd" id="i_e2"]
+[ext_resource type="Resource" path="res://oceans/islands/shrine_biome.tres" id="i_e3"]
+[ext_resource type="PackedScene" path="res://oceans/basic/basic_ocean.tscn" id="i_e4"]
+[ext_resource type="Texture2D" path="res://world/islands/tidal_shrine/land/landing.png" id="i_e5"]
+[ext_resource type="Texture2D" path="res://world/islands/props/torii.png" id="i_e6"]
+[ext_resource type="Texture2D" path="res://world/islands/props/pillar.png" id="i_e7"]
+[ext_resource type="Script" path="res://world/interact/secret.gd" id="i_e8"]
+[ext_resource type="Texture2D" path="res://world/islands/tidal_shrine/land/sanctum.png" id="i_e9"]
+[ext_resource type="Texture2D" path="res://world/islands/props/tide_altar.png" id="i_e10"]
+[ext_resource type="Texture2D" path="res://world/islands/props/shrine_hall.png" id="i_e11"]
+[ext_resource type="Texture2D" path="res://world/islands/props/hot_spring.png" id="i_e12"]
+[ext_resource type="PackedScene" path="res://fishing/fishing_spots/fishing_spot.tscn" id="i_e13"]
+[ext_resource type="Script" path="res://items/item.gd" id="i_e14"]
+[ext_resource type="Resource" path="res://items/key/logbook_page_10.tres" id="i_e15"]
+[ext_resource type="Texture2D" path="res://world/village/props/sign.png" id="i_e16"]
+
+[sub_resource type="RectangleShape2D" id="i_s1"]
+size = Vector2(6.0, 3.0)
+
+[sub_resource type="RectangleShape2D" id="i_s2"]
+size = Vector2(6.0, 3.0)
+
+[sub_resource type="RectangleShape2D" id="i_s3"]
+size = Vector2(20.0, 5.0)
+
+[sub_resource type="RectangleShape2D" id="i_s4"]
+size = Vector2(32.0, 5.0)
+
+[sub_resource type="RectangleShape2D" id="i_s5"]
+size = Vector2(6.0, 3.0)
+
+[sub_resource type="RectangleShape2D" id="i_s6"]
+size = Vector2(6.0, 3.0)
+
+[sub_resource type="RectangleShape2D" id="i_s7"]
+size = Vector2(6.0, 3.0)
+
+[sub_resource type="RectangleShape2D" id="i_s8"]
+size = Vector2(6.0, 3.0)
+
+[node name="TidalShrine" type="Node2D"]
+y_sort_enabled = true
+script = ExtResource("i_e1")
+
+[node name="Landing" type="Node2D" parent="." node_paths=PackedStringArray("land")]
+position = Vector2(0.0, 0.0)
+y_sort_enabled = true
+script = ExtResource("i_e2")
+land = [NodePath("Land")]
+
+[node name="Water" parent="Landing" instance=ExtResource("i_e4")]
+biome = ExtResource("i_e3")
+
+[node name="Land" type="Sprite2D" parent="Landing"]
+z_index = -1
+texture = ExtResource("i_e5")
+centered = false
+
+[node name="Torii" type="Sprite2D" parent="Landing"]
+position = Vector2(119, 60)
+texture = ExtResource("i_e6")
+centered = false
+offset = Vector2(-13.0, -24.0)
+
+[node name="Pillar1" type="Sprite2D" parent="Landing"]
+position = Vector2(97, 30)
+texture = ExtResource("i_e7")
+centered = false
+offset = Vector2(-4.0, -20.0)
+
+[node name="Body" type="StaticBody2D" parent="Landing/Pillar1"]
+
+[node name="Shape" type="CollisionShape2D" parent="Landing/Pillar1/Body"]
+position = Vector2(0.0, -1.5)
+shape = SubResource("i_s1")
+
+[node name="Pillar2" type="Sprite2D" parent="Landing"]
+position = Vector2(97, 96)
+texture = ExtResource("i_e7")
+centered = false
+offset = Vector2(-4.0, -20.0)
+
+[node name="Body" type="StaticBody2D" parent="Landing/Pillar2"]
+
+[node name="Shape" type="CollisionShape2D" parent="Landing/Pillar2/Body"]
+position = Vector2(0.0, -1.5)
+shape = SubResource("i_s2")
+
+[node name="Pearl1" type="Node2D" parent="Landing"]
+position = Vector2(138, 20)
+script = ExtResource("i_e8")
+flag = "pearl_tidal_shrine_1"
+title = "A lost pearl!"
+message = "Opal on Pearl Lagoon collects these."
+prompt = "Pick up"
+reach = 7.0
+
+[node name="Sanctum" type="Node2D" parent="." node_paths=PackedStringArray("land")]
+position = Vector2(192.0, 0.0)
+y_sort_enabled = true
+script = ExtResource("i_e2")
+land = [NodePath("Land")]
+
+[node name="Water" parent="Sanctum" instance=ExtResource("i_e4")]
+biome = ExtResource("i_e3")
+
+[node name="Land" type="Sprite2D" parent="Sanctum"]
+z_index = -1
+texture = ExtResource("i_e9")
+centered = false
+
+[node name="Altar" type="Sprite2D" parent="Sanctum"]
+position = Vector2(60.0, 36.0)
+texture = ExtResource("i_e10")
+centered = false
+offset = Vector2(-11.0, -14.0)
+
+[node name="Body" type="StaticBody2D" parent="Sanctum/Altar"]
+
+[node name="Shape" type="CollisionShape2D" parent="Sanctum/Altar/Body"]
+position = Vector2(0.0, -2.5)
+shape = SubResource("i_s3")
+
+[node name="Hall" type="Sprite2D" parent="Sanctum"]
+position = Vector2(130.0, 98.0)
+texture = ExtResource("i_e11")
+centered = false
+offset = Vector2(-18.0, -28.0)
+
+[node name="Body" type="StaticBody2D" parent="Sanctum/Hall"]
+
+[node name="Shape" type="CollisionShape2D" parent="Sanctum/Hall/Body"]
+position = Vector2(0.0, -2.5)
+shape = SubResource("i_s4")
+
+[node name="Pillar0" type="Sprite2D" parent="Sanctum"]
+position = Vector2(20.0, 70.0)
+texture = ExtResource("i_e7")
+centered = false
+offset = Vector2(-4.0, -20.0)
+
+[node name="Body" type="StaticBody2D" parent="Sanctum/Pillar0"]
+
+[node name="Shape" type="CollisionShape2D" parent="Sanctum/Pillar0/Body"]
+position = Vector2(0.0, -1.5)
+shape = SubResource("i_s5")
+
+[node name="Pillar1" type="Sprite2D" parent="Sanctum"]
+position = Vector2(60.0, 20.0)
+texture = ExtResource("i_e7")
+centered = false
+offset = Vector2(-4.0, -20.0)
+
+[node name="Body" type="StaticBody2D" parent="Sanctum/Pillar1"]
+
+[node name="Shape" type="CollisionShape2D" parent="Sanctum/Pillar1/Body"]
+position = Vector2(0.0, -1.5)
+shape = SubResource("i_s6")
+
+[node name="Pillar2" type="Sprite2D" parent="Sanctum"]
+position = Vector2(100.0, 70.0)
+texture = ExtResource("i_e7")
+centered = false
+offset = Vector2(-4.0, -20.0)
+
+[node name="Body" type="StaticBody2D" parent="Sanctum/Pillar2"]
+
+[node name="Shape" type="CollisionShape2D" parent="Sanctum/Pillar2/Body"]
+position = Vector2(0.0, -1.5)
+shape = SubResource("i_s7")
+
+[node name="Pillar3" type="Sprite2D" parent="Sanctum"]
+position = Vector2(140.0, 20.0)
+texture = ExtResource("i_e7")
+centered = false
+offset = Vector2(-4.0, -20.0)
+
+[node name="Body" type="StaticBody2D" parent="Sanctum/Pillar3"]
+
+[node name="Shape" type="CollisionShape2D" parent="Sanctum/Pillar3/Body"]
+position = Vector2(0.0, -1.5)
+shape = SubResource("i_s8")
+
+[node name="Basin" type="Node2D" parent="Sanctum"]
+position = Vector2(60.0, 76.0)
+
+[node name="Art" type="Sprite2D" parent="Sanctum/Basin"]
+texture = ExtResource("i_e12")
+centered = false
+offset = Vector2(-12.0, -16.0)
+
+[node name="Pond" parent="Sanctum/Basin" instance=ExtResource("i_e13")]
+z_index = 1
+position = Vector2(0, -4)
+radius = 7.0
+biome = ExtResource("i_e3")
+id = &"shrine_pool"
+permanent = true
+biteDelayScale = 1.5
+squash = 0.45
+ringInterval = 1.4
+
+[node name="Page10" type="Node2D" parent="Sanctum"]
+position = Vector2(150.0, 30.0)
+script = ExtResource("i_e8")
+flag = "logbook_10"
+title = "A logbook page!"
+message = "Tucked under a loose stone."
+items = Array[ExtResource("i_e14")]([ExtResource("i_e15")])
+prompt = "Search"
+reach = 8.0
+
+[node name="Pearl2" type="Node2D" parent="Sanctum"]
+position = Vector2(10.0, 50.0)
+script = ExtResource("i_e8")
+flag = "pearl_tidal_shrine_2"
+title = "A lost pearl!"
+message = "Opal on Pearl Lagoon collects these."
+prompt = "Pick up"
+reach = 7.0
+
+[node name="Pearl3" type="Node2D" parent="Sanctum"]
+position = Vector2(100.0, 12.0)
+script = ExtResource("i_e8")
+flag = "pearl_tidal_shrine_3"
+title = "A lost pearl!"
+message = "Opal on Pearl Lagoon collects these."
+prompt = "Pick up"
+reach = 7.0
+
+[node name="Pearl4" type="Node2D" parent="Sanctum"]
+position = Vector2(160.0, 70.0)
+script = ExtResource("i_e8")
+flag = "pearl_tidal_shrine_4"
+title = "A lost pearl!"
+message = "Opal on Pearl Lagoon collects these."
+prompt = "Pick up"
+reach = 7.0
+
+[node name="ShrineSign" type="Node2D" parent="Sanctum"]
+position = Vector2(30.0, 50.0)
+script = ExtResource("i_e8")
+flag = "shrinesign"
+title = "Worn inscription"
+message = "\"Where the four tides meet, the moon rises from the basin at midnight. Bring it moonlight to eat.\""
+repeatable = true
+concealed = false
+prompt = "Read"
+reach = 10.0
+
+[node name="Art" type="Sprite2D" parent="Sanctum/ShrineSign"]
+texture = ExtResource("i_e16")
+centered = false
+offset = Vector2(-5, -12)

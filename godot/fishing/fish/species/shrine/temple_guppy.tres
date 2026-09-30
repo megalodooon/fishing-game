@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="FishData" format=3]
+
+[ext_resource type="Script" path="res://fishing/fish/fish_data.gd" id="e1"]
+[ext_resource type="Texture2D" path="res://fishing/fish/assets/shrine/temple_guppy.png" id="e2"]
+[ext_resource type="Resource" path="res://items/rarities/common.tres" id="e3"]
+
+[resource]
+script = ExtResource("e1")
+displayName = "Temple Guppy"
+icon = ExtResource("e2")
+rarity = ExtResource("e3")
+description = "Guards the shrine steps, bravely."
+weightRange = Vector2(0.01999999955297, 0.07999999821186)
+basePrice = 15
+heldSize = 0.6
+hours = Vector2(0.0, 24.0)

@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="BaitRecipe" format=3]
+
+[ext_resource type="Resource" path="res://items/materials/deep_coral.tres" id="1_u2yv5"]
+[ext_resource type="Resource" path="res://items/materials/obsidian_plate.tres" id="2_trgsd"]
+[ext_resource type="Resource" path="res://fishing/tacklebox/tackle/deep_coral_hook.tres" id="3_ckbir"]
+[ext_resource type="Script" path="res://fishing/bait/bait_recipe.gd" id="4_sxoig"]
+
+[resource]
+script = ExtResource("4_sxoig")
+output = ExtResource("3_ckbir")
+amount = 1
+ingredients = Array[Resource]([ExtResource("1_u2yv5"), ExtResource("2_trgsd")])
+counts = Array[int]([4, 1])
+xp = 102.0
+station = &"forge"
+category = "Tackle"
+requiredSkill = &"fishing"
+requiredLevel = 24

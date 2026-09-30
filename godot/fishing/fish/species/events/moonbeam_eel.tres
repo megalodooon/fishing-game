@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="FishData" format=3]
+
+[ext_resource type="Texture2D" path="res://fishing/fish/assets/events/moonbeam_eel.png" id="1_0lg83"]
+[ext_resource type="Resource" path="res://items/rarities/uncommon.tres" id="2_h7476"]
+[ext_resource type="Script" path="res://fishing/fish/requirements/fish_requirement.gd" id="3_ihroj"]
+[ext_resource type="Script" path="res://fishing/fish/fish_data.gd" id="4_668u0"]
+
+[resource]
+script = ExtResource("4_668u0")
+displayName = "Moonbeam Eel"
+icon = ExtResource("1_0lg83")
+rarity = ExtResource("2_h7476")
+description = "So pale it glows. Hates the sun."
+weightRange = Vector2(1, 5)
+basePrice = 55
+heldSize = 0.7
+hours = Vector2(20, 4)

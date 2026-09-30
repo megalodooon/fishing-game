@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="RodItem" format=3 uid="uid://d2miok4p8efto"]
+
+[ext_resource type="Script" uid="uid://ogpan3u26jeb" path="res://fishing/rods/rod_item.gd" id="e1"]
+[ext_resource type="Script" uid="uid://bnc56btgk6rqi" path="res://fishing/tacklebox/tackle.gd" id="e2"]
+[ext_resource type="Resource" path="res://fishing/tacklebox/tackle/basic_bobber.tres" id="e3"]
+[ext_resource type="Resource" path="res://fishing/tacklebox/tackle/basic_line.tres" id="e4"]
+[ext_resource type="Resource" path="res://fishing/tacklebox/tackle/basic_hook.tres" id="e5"]
+[ext_resource type="Texture2D" uid="uid://ch701nq3di4ua" path="res://fishing/rods/icons/coral_rod.png" id="e6"]
+[ext_resource type="Resource" path="res://items/rarities/rare.tres" id="e7"]
+[ext_resource type="PackedScene" path="res://fishing/rods/starter_rod.tscn" id="e8"]
+
+[sub_resource type="Resource" id="s1"]
+script = ExtResource("e2")
+kind = 3
+rangeBonus = 4.0
+control = 0.14
+spotSize = 1.1
+displayName = "Coral Rod"
+
+[resource]
+script = ExtResource("e1")
+slots = Array[int]([0, 1, 2, 3, 4])
+tackle = Array[ExtResource("e2")]([ExtResource("e3"), ExtResource("e4"), ExtResource("e5"), null, null])
+builtIn = SubResource("s1")
+rodTint = Color(1, 0.6, 0.7, 1)
+displayName = "Coral Rod"
+icon = ExtResource("e6")
+rarity = ExtResource("e7")
+description = "Grown, not made. Reef fish trust it."
+heldScene = ExtResource("e8")
+discardable = false
+hint = "T to customize"

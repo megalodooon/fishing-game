@@ -1,5 +1,6 @@
 [gd_resource type="Resource" script_class="Tackle" format=3]
 
+[ext_resource type="Resource" path="res://items/rarities/common.tres" id="tier_common"]
 [ext_resource type="Script" path="res://fishing/tacklebox/tackle.gd" id="1_tackle"]
 [ext_resource type="Texture2D" path="res://fishing/tacklebox/icons/line.png" id="2_icon"]
 [ext_resource type="Resource" path="res://items/rarities/uncommon.tres" id="r_rarity"]
@@ -9,8 +10,10 @@ script = ExtResource("1_tackle")
 kind = 1
 displayName = "Braided Line"
 icon = ExtResource("2_icon")
-rarity = ExtResource("r_rarity")
+rarity = ExtResource("tier_common")
 discardable = false
 lineColor = Color(1, 0.8, 0.3, 0.95)
-rangeBonus = 12.0
-castTimeBonus = 0.3
+rangeBonus = 8.0
+castTimeBonus = 0.0
+buyPrice = 150
+reelSpeed = 1.05

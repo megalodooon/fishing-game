@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="FishData" format=3]
+
+[ext_resource type="Texture2D" path="res://fishing/fish/assets/events/candy_cane_eel.png" id="1_pt46t"]
+[ext_resource type="Resource" path="res://items/rarities/uncommon.tres" id="2_stmn4"]
+[ext_resource type="Script" path="res://fishing/fish/requirements/fish_requirement.gd" id="3_ivw6r"]
+[ext_resource type="Script" path="res://fishing/fish/fish_data.gd" id="4_p0ipx"]
+
+[resource]
+script = ExtResource("4_p0ipx")
+displayName = "Candy Cane Eel"
+icon = ExtResource("1_pt46t")
+rarity = ExtResource("2_stmn4")
+description = "Red and white stripes, and it smells of peppermint."
+weightRange = Vector2(1, 5)
+basePrice = 50
+heldSize = 0.7

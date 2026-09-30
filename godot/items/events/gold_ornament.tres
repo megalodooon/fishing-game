@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Item" format=3]
+
+[ext_resource type="Texture2D" path="res://items/events/icons/gold_ornament.png" id="1_a4qmv"]
+[ext_resource type="Resource" path="res://items/rarities/rare.tres" id="2_gf6td"]
+[ext_resource type="Script" path="res://items/item.gd" id="3_1cu2b"]
+
+[resource]
+script = ExtResource("3_1cu2b")
+displayName = "Gold Ornament"
+category = "Festival"
+icon = ExtResource("1_a4qmv")
+rarity = ExtResource("2_gf6td")
+description = "Shiny, heavy and very festive. Worth a lot to the right collector."
+maxStack = 99
+sellPrice = 250

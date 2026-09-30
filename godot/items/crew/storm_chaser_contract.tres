@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="CrewContract" format=3]
+
+[ext_resource type="Resource" path="res://world/crew/members/storm_chaser.tres" id="1_ssrqe"]
+[ext_resource type="Texture2D" path="res://items/crew/icons/storm_chaser.png" id="2_tgdry"]
+[ext_resource type="Resource" path="res://items/rarities/uncommon.tres" id="3_8qfxr"]
+[ext_resource type="Script" path="res://world/crew/crew_contract.gd" id="4_cnhhv"]
+
+[resource]
+script = ExtResource("4_cnhhv")
+crew = ExtResource("1_ssrqe")
+displayName = "Storm Chaser Contract"
+icon = ExtResource("2_tgdry")
+rarity = ExtResource("3_8qfxr")
+description = "Hire a storm chaser at the crew board by your house. Runs toward the lightning."

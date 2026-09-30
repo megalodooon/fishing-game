@@ -1,0 +1,19 @@
+[gd_resource type="ShaderMaterial" format=3]
+
+[ext_resource type="Shader" path="res://world/map/chart_water.gdshader" id="1_shader"]
+
+[resource]
+shader = ExtResource("1_shader")
+shader_parameter/field_size = Vector2(1, 1)
+shader_parameter/origin = Vector2(0, 0)
+shader_parameter/wave_scale = 20.0
+shader_parameter/wave_strength = 0.8
+shader_parameter/wave_speed = 0.8
+shader_parameter/swell = 0.05
+shader_parameter/caustic_color = Color(0.8, 1, 1, 1)
+shader_parameter/caustic_amount = 1.2
+shader_parameter/caustic_cell_size = 9.0
+shader_parameter/caustic_sharpness = 3.5
+shader_parameter/grid_step = 48.0
+shader_parameter/grid_color = Color(0.9, 0.97, 1, 0.07)
+shader_parameter/vignette = 0.22

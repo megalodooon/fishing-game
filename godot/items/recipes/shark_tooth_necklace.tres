@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="BaitRecipe" format=3]
+
+[ext_resource type="Script" path="res://fishing/bait/bait_recipe.gd" id="e1"]
+[ext_resource type="Resource" path="res://items/charms/shark_tooth_necklace.tres" id="e2"]
+[ext_resource type="Resource" path="res://items/materials/shark_tooth.tres" id="e3"]
+[ext_resource type="Resource" path="res://items/materials/kelp_fiber.tres" id="e4"]
+
+[resource]
+script = ExtResource("e1")
+output = ExtResource("e2")
+amount = 1
+ingredients = Array[Resource]([ExtResource("e3"), ExtResource("e4")])
+counts = Array[int]([5, 5])
+requiredFlag = "collection/shark_tooth/2"
+lockedText = "Collect 5 Shark Teeth to learn it."
+xp = 40.0
+station = &"workbench"

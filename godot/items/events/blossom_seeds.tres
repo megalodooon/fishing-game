@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="Seed" format=3]
+
+[ext_resource type="Resource" path="res://items/events/cherry_blossom.tres" id="1_gkmkr"]
+[ext_resource type="Texture2D" path="res://items/events/icons/blossom_seeds.png" id="2_q4iw2"]
+[ext_resource type="Resource" path="res://items/rarities/uncommon.tres" id="3_01w6d"]
+[ext_resource type="Script" path="res://world/village/farm/seed.gd" id="4_sedae"]
+
+[resource]
+script = ExtResource("4_sedae")
+crop = ExtResource("1_gkmkr")
+days = 3
+harvest = 2
+leafColor = Color(0.96, 0.64, 0.75, 1)
+displayName = "Blossom Seeds"
+icon = ExtResource("2_q4iw2")
+rarity = ExtResource("3_01w6d")
+description = "Grows into a cherry blossom branch in three days."
+maxStack = 99

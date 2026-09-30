@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="BaitRecipe" format=3]
+
+[ext_resource type="Resource" path="res://items/materials/abyssal_scale.tres" id="1_cdomt"]
+[ext_resource type="Resource" path="res://items/materials/rope.tres" id="2_dymww"]
+[ext_resource type="Resource" path="res://items/crew/abyss_diver_contract.tres" id="3_gl5y7"]
+[ext_resource type="Script" path="res://fishing/bait/bait_recipe.gd" id="4_yyh8e"]
+
+[resource]
+script = ExtResource("4_yyh8e")
+output = ExtResource("3_gl5y7")
+amount = 1
+ingredients = Array[Resource]([ExtResource("1_cdomt"), ExtResource("2_dymww")])
+counts = Array[int]([8, 2])
+requiredFlag = "collection/abyssal_scale/1"
+xp = 25.0
+station = &"workbench"
+category = "Crew"

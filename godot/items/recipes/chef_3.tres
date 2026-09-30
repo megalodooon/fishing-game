@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="BaitRecipe" format=3]
+
+[ext_resource type="Resource" path="res://items/charms/chef_2.tres" id="1_vsuca"]
+[ext_resource type="Resource" path="res://items/enchanted/enchanted_honey.tres" id="2_wloah"]
+[ext_resource type="Resource" path="res://items/materials/pearl_dust.tres" id="3_8g4y8"]
+[ext_resource type="Resource" path="res://items/charms/chef_3.tres" id="4_gjh71"]
+[ext_resource type="Script" path="res://fishing/bait/bait_recipe.gd" id="5_cvpfa"]
+
+[resource]
+script = ExtResource("5_cvpfa")
+output = ExtResource("4_gjh71")
+amount = 1
+ingredients = Array[Resource]([ExtResource("1_vsuca"), ExtResource("2_wloah"), ExtResource("3_8g4y8")])
+counts = Array[int]([1, 8, 3])
+xp = 90.0
+station = &"forge"
+category = "Charms"
+requiredSkill = &"cooking"
+requiredLevel = 18

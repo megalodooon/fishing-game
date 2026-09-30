@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Item" format=3]
+
+[ext_resource type="Texture2D" path="res://items/enchanted/icons/enchanted_sea_shell.png" id="1_vmfw6"]
+[ext_resource type="Resource" path="res://items/rarities/uncommon.tres" id="2_c5t8k"]
+[ext_resource type="Script" path="res://items/item.gd" id="3_id6me"]
+
+[resource]
+script = ExtResource("3_id6me")
+displayName = "Enchanted Sea Shell"
+category = "Enchanted Material"
+icon = ExtResource("1_vmfw6")
+rarity = ExtResource("2_c5t8k")
+description = "32 Sea Shell pressed into one. Better recipes ask for these."
+maxStack = 99
+sellPrice = 211

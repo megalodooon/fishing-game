@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="Project" format=3]
+
+[ext_resource type="Script" path="res://world/village/restoration/project.gd" id="e1"]
+[ext_resource type="Texture2D" path="res://world/islands/props/stadium.png" id="e2"]
+[ext_resource type="Resource" path="res://items/materials/driftwood_plank.tres" id="e3"]
+[ext_resource type="Resource" path="res://items/materials/storm_essence.tres" id="e4"]
+[ext_resource type="Resource" path="res://items/materials/abyssal_scale.tres" id="e5"]
+[ext_resource type="Script" path="res://items/item.gd" id="e6"]
+[ext_resource type="Resource" path="res://world/village/restoration/projects/fountain.tres" id="e7"]
+
+[resource]
+script = ExtResource("e1")
+displayName = "Festival Stage"
+description = "For the biggest celebration Bramblewick has seen in years."
+icon = ExtResource("e2")
+coins = 30000
+items = Array[ExtResource("e6")]([ExtResource("e3"), ExtResource("e4"), ExtResource("e5")])
+amounts = Array[int]([60, 5, 5])
+unlockText = "The Harbor Festival returns. +5% skill XP"
+requires = Array[ExtResource("e1")]([ExtResource("e7")])

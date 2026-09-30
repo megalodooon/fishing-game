@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="BaitRecipe" format=3]
+
+[ext_resource type="Resource" path="res://fishing/bait/starfish_bait.tres" id="1_uy4qs"]
+[ext_resource type="Resource" path="res://items/materials/starfish.tres" id="2_j2q6j"]
+[ext_resource type="Resource" path="res://items/materials/fish_oil.tres" id="3_ck6ca"]
+[ext_resource type="Script" path="res://fishing/bait/bait_recipe.gd" id="4_nhheu"]
+
+[resource]
+script = ExtResource("4_nhheu")
+bait = ExtResource("1_uy4qs")
+amount = 8
+ingredients = Array[Resource]([ExtResource("2_j2q6j"), ExtResource("3_ck6ca")])
+counts = Array[int]([1, 1])
+xp = 6.0
+category = "Bait"
+requiredSkill = &"fishing"
+requiredLevel = 6

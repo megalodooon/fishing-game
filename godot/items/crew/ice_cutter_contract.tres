@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="CrewContract" format=3]
+
+[ext_resource type="Resource" path="res://world/crew/members/ice_cutter.tres" id="1_ui2bp"]
+[ext_resource type="Texture2D" path="res://items/crew/icons/ice_cutter.png" id="2_3em3e"]
+[ext_resource type="Resource" path="res://items/rarities/uncommon.tres" id="3_yy3yr"]
+[ext_resource type="Script" path="res://world/crew/crew_contract.gd" id="4_pxkyy"]
+
+[resource]
+script = ExtResource("4_pxkyy")
+crew = ExtResource("1_ui2bp")
+displayName = "Ice Cutter Contract"
+icon = ExtResource("2_3em3e")
+rarity = ExtResource("3_yy3yr")
+description = "Hire a ice cutter at the crew board by your house. Chips frost crystals from the glaciers."

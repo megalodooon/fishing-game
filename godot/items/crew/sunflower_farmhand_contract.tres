@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="CrewContract" format=3]
+
+[ext_resource type="Resource" path="res://world/crew/members/sunflower_farmhand.tres" id="1_i7u4f"]
+[ext_resource type="Texture2D" path="res://items/crew/icons/sunflower_farmhand.png" id="2_0e6xb"]
+[ext_resource type="Resource" path="res://items/rarities/uncommon.tres" id="3_4833k"]
+[ext_resource type="Script" path="res://world/crew/crew_contract.gd" id="4_cf8l4"]
+
+[resource]
+script = ExtResource("4_cf8l4")
+crew = ExtResource("1_i7u4f")
+displayName = "Sunflower Farmhand Contract"
+icon = ExtResource("2_0e6xb")
+rarity = ExtResource("3_4833k")
+description = "Hire a sunflower farmhand at the crew board by your house. Tends a patch of sunflowers for you."

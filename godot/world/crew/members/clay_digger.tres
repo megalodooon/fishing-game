@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="CrewMember" format=3]
+
+[ext_resource type="Resource" path="res://items/enchanted/enchanted_clay.tres" id="1_aldg5"]
+[ext_resource type="Texture2D" path="res://items/materials/icons/clay.png" id="2_p42u6"]
+[ext_resource type="Resource" path="res://items/materials/clay.tres" id="3_q0h65"]
+[ext_resource type="Script" path="res://world/crew/crew_member.gd" id="4_fkygf"]
+
+[resource]
+script = ExtResource("4_fkygf")
+displayName = "Clay Digger"
+description = "Digs the stream banks for red clay."
+icon = ExtResource("2_p42u6")
+product = ExtResource("3_q0h65")
+enchanted = ExtResource("1_aldg5")
+hours = 0.8

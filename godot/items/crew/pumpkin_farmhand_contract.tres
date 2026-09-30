@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="CrewContract" format=3]
+
+[ext_resource type="Resource" path="res://world/crew/members/pumpkin_farmhand.tres" id="1_2ggkw"]
+[ext_resource type="Texture2D" path="res://items/crew/icons/pumpkin_farmhand.png" id="2_bemb7"]
+[ext_resource type="Resource" path="res://items/rarities/uncommon.tres" id="3_swk8u"]
+[ext_resource type="Script" path="res://world/crew/crew_contract.gd" id="4_7iiqx"]
+
+[resource]
+script = ExtResource("4_7iiqx")
+crew = ExtResource("1_2ggkw")
+displayName = "Pumpkin Farmhand Contract"
+icon = ExtResource("2_bemb7")
+rarity = ExtResource("3_swk8u")
+description = "Hire a pumpkin farmhand at the crew board by your house. Grows pumpkins the size of boats."

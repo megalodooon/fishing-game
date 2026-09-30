@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="Charm" format=3]
+
+[ext_resource type="Texture2D" path="res://items/charms/icons/alchemist_1.png" id="1_653dd"]
+[ext_resource type="Resource" path="res://items/rarities/common.tres" id="2_rr6yp"]
+[ext_resource type="Script" path="res://items/charms/charm.gd" id="3_7odl7"]
+
+[resource]
+script = ExtResource("3_7odl7")
+stats = Dictionary[StringName, float]({
+&"potionPower": 10.0
+})
+family = "alchemist"
+displayName = "Alchemist's Charm"
+icon = ExtResource("1_653dd")
+rarity = ExtResource("2_rr6yp")
+description = "Part of the Alchemist line. Upgrade it at a bench to make it stronger."
+sellPrice = 40

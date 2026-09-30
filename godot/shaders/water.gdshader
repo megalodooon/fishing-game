@@ -23,6 +23,9 @@ uniform float caustic_sharpness : hint_range(1.0, 8.0) = 3.5;
 
 group_uniforms flow;
 uniform vec2 scroll = vec2(0.0);
+// Still water (islands) is frozen at still_time instead of moving with TIME.
+uniform bool still = false;
+uniform float still_time = 0.0;
 uniform sampler2D fields : filter_linear, repeat_disable;
 uniform vec2 fields_origin = vec2(0.0);
 uniform vec2 fields_size = vec2(1.0);
@@ -53,7 +56,7 @@ void vertex() {
 
 void fragment() {
 	vec2 w = world_pos / wave_scale;
-	float wt = TIME * wave_speed;
+	float wt = (still ? still_time : TIME) * wave_speed;
 	vec2 wave = 0.5 * vec2(
 		sin(w.y * 6.28 + wt) + sin((w.x + w.y) * 4.1 - wt * 1.3),
 		cos(w.x * 6.28 + wt * 0.9) + cos((w.x - w.y) * 3.7 + wt * 1.1));

@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="FishData" format=3]
+
+[ext_resource type="Texture2D" path="res://fishing/fish/assets/events/headless_hake.png" id="1_sme32"]
+[ext_resource type="Resource" path="res://items/rarities/legendary.tres" id="2_nsm86"]
+[ext_resource type="Script" path="res://fishing/fish/requirements/fish_requirement.gd" id="3_cgoxy"]
+[ext_resource type="Script" path="res://fishing/fish/fish_data.gd" id="4_e2nrr"]
+
+[resource]
+script = ExtResource("4_e2nrr")
+displayName = "Headless Hake"
+icon = ExtResource("1_sme32")
+rarity = ExtResource("2_nsm86")
+description = "Rises at the witching hour, looking for its head."
+weightRange = Vector2(10, 35)
+basePrice = 700
+heldSize = 1.3
+hours = Vector2(0, 3)

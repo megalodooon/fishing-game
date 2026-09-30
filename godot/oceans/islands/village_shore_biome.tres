@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="Biome" format=3]
+
+[ext_resource type="Script" path="res://oceans/biome.gd" id="1_biome"]
+[ext_resource type="Script" path="res://fishing/fish/fish_data.gd" id="1_data"]
+[ext_resource type="Resource" path="res://oceans/islands/village_biome.tres" id="1_page"]
+[ext_resource type="Resource" path="res://fishing/fish/species/sardine.tres" id="f_2"]
+[ext_resource type="Resource" path="res://fishing/fish/species/anchovy.tres" id="f_3"]
+[ext_resource type="Resource" path="res://fishing/fish/species/islands/harbor_goby.tres" id="f_4"]
+[ext_resource type="Resource" path="res://fishing/fish/species/flounder.tres" id="f_5"]
+[ext_resource type="Resource" path="res://fishing/fish/species/islands/dock_perch.tres" id="f_6"]
+[ext_resource type="Resource" path="res://fishing/fish/species/islands/silver_eel.tres" id="f_7"]
+
+[resource]
+script = ExtResource("1_biome")
+displayName = "Village Shore"
+description = "The calm water around the village. Spots don't come up often, but they do."
+fish = Array[ExtResource("1_data")]([ExtResource("f_2"), ExtResource("f_3"), ExtResource("f_4"), ExtResource("f_5"), ExtResource("f_6"), ExtResource("f_7")])
+page = ExtResource("1_page")

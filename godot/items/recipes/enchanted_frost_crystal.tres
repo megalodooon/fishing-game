@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="BaitRecipe" format=3]
+
+[ext_resource type="Resource" path="res://items/materials/frost_crystal.tres" id="1_wstip"]
+[ext_resource type="Resource" path="res://items/enchanted/enchanted_frost_crystal.tres" id="2_2vcp0"]
+[ext_resource type="Script" path="res://fishing/bait/bait_recipe.gd" id="3_riv1q"]
+
+[resource]
+script = ExtResource("3_riv1q")
+output = ExtResource("2_2vcp0")
+amount = 1
+ingredients = Array[Resource]([ExtResource("1_wstip")])
+counts = Array[int]([32])
+requiredFlag = "collection/frost_crystal/2"
+xp = 12.0
+category = "Materials"

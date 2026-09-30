@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="Tackle" format=3]
+
+[ext_resource type="Script" path="res://fishing/tacklebox/tackle.gd" id="1_tackle"]
+[ext_resource type="Texture2D" path="res://fishing/rods/bobbers/basic.png" id="2_icon"]
+[ext_resource type="Resource" path="res://items/rarities/uncommon.tres" id="r_rarity"]
+
+[resource]
+script = ExtResource("1_tackle")
+kind = 0
+displayName = "Feather Bobber"
+icon = ExtResource("2_icon")
+rarity = ExtResource("r_rarity")
+description = "Only sold at the Sunday market. Light enough to cast far."
+discardable = false
+tint = Color(0.8, 0.95, 1, 1)
+rangeBonus = 4.0
+castTimeBonus = 0.0
+buyPrice = 600
+spotSize = 1.25
+biteSpeed = 1.05
+spotTime = 1.15

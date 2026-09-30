@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="BaitRecipe" format=3]
+
+[ext_resource type="Resource" path="res://items/materials/broken_bottle.tres" id="1_in"]
+[ext_resource type="Resource" path="res://items/materials/glass_bottle.tres" id="2_out"]
+[ext_resource type="Script" path="res://fishing/bait/bait_recipe.gd" id="3_script"]
+
+[resource]
+script = ExtResource("3_script")
+output = ExtResource("2_out")
+amount = 1
+ingredients = Array[Resource]([ExtResource("1_in")])
+counts = Array[int]([2])
+xp = 3.0
+category = "Materials"

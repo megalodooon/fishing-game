@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="BaitRecipe" format=3]
+
+[ext_resource type="Resource" path="res://items/materials/clay.tres" id="1_ljfd8"]
+[ext_resource type="Resource" path="res://items/materials/clay_pot.tres" id="2_xgxtj"]
+[ext_resource type="Script" path="res://fishing/bait/bait_recipe.gd" id="3_e4hpo"]
+
+[resource]
+script = ExtResource("3_e4hpo")
+output = ExtResource("2_xgxtj")
+amount = 1
+ingredients = Array[Resource]([ExtResource("1_ljfd8")])
+counts = Array[int]([4])
+xp = 6.0
+station = &"workbench"
+category = "Materials"

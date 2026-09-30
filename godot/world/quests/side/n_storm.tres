@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="Quest" format=3 uid="uid://dcpi6ak0j1gm"]
+
+[ext_resource type="Script" uid="uid://ftrpy1hit5em" path="res://items/item.gd" id="5_j5vde"]
+[ext_resource type="Script" uid="uid://t660ehs2ybui" path="res://world/location.gd" id="6_xs3r1"]
+[ext_resource type="Script" uid="uid://b1p7iyi658nm7" path="res://world/quests/quest.gd" id="e1"]
+[ext_resource type="Script" uid="uid://depkark34l17n" path="res://world/quests/quest_goal.gd" id="e2"]
+[ext_resource type="Resource" path="res://world/village/aquarium/tanks/storm_tank.tres" id="e3"]
+[ext_resource type="Resource" uid="uid://dn1u7sfwgl4ds" path="res://world/quests/side/n_frost.tres" id="e4"]
+
+[sub_resource type="Resource" id="s1"]
+script = ExtResource("e2")
+kind = 5
+target = ExtResource("e3")
+
+[resource]
+script = ExtResource("e1")
+title = "The Storm Tank"
+giver = "Nora"
+description = "A tank that crackles with fish from the Storm Sea."
+goals = Array[ExtResource("e2")]([SubResource("s1")])
+requires = Array[ExtResource("e1")]([ExtResource("e4")])
+rewardCoins = 4000

@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="CrewMember" format=3]
+
+[ext_resource type="Resource" path="res://items/enchanted/enchanted_ink_sac.tres" id="1_38sge"]
+[ext_resource type="Texture2D" path="res://items/materials/icons/ink_sac.png" id="2_wc0ur"]
+[ext_resource type="Resource" path="res://items/materials/ink_sac.tres" id="3_tkgl2"]
+[ext_resource type="Script" path="res://world/crew/crew_member.gd" id="4_5wq5t"]
+
+[resource]
+script = ExtResource("4_5wq5t")
+displayName = "Squid Wrangler"
+description = "Squids don't like them. The feeling is mutual."
+icon = ExtResource("2_wc0ur")
+product = ExtResource("3_tkgl2")
+enchanted = ExtResource("1_38sge")
+hours = 1.5

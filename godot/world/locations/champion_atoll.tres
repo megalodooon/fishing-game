@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="Location" format=3]
+
+[ext_resource type="Script" path="res://world/location.gd" id="e1"]
+[ext_resource type="Texture2D" path="res://world/map/icons/champion_atoll.png" id="e2"]
+[ext_resource type="Resource" path="res://oceans/islands/champion_biome.tres" id="e3"]
+
+[resource]
+script = ExtResource("e1")
+displayName = "Champion Atoll"
+description = "Home of the World Championship."
+kind = 1
+scene = "res://world/islands/champion_atoll/champion_atoll.tscn"
+mapPosition = Vector2(574, 44)
+chartTint = Color(0.9, 0.78, 0.4, 0.25)
+mapIcon = ExtResource("e2")
+biome = ExtResource("e3")
+weatherChances = PackedFloat32Array(0.7, 0.2, 0.1)
+startsUnlocked = false
+coinCost = 0
+requiredHull = 4
+requiredLeague = 4

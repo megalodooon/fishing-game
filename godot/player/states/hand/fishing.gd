@@ -43,17 +43,21 @@ func enter() -> void:
 	shown = rod
 	biteTimers.resize(lines.size())
 	for i in lines.size():
-		biteTimers[i] = lines[i].bite_delay(lines[i].castScore)
+		biteTimers[i] = delay_for(lines[i])
 		if lines[i].castScore > shown.castScore:
 			shown = lines[i]
 	var index : int = mini(shown.castScore, mini(ratingNames.size(), ratingColors.size()) - 1)
-	if index >= 0:
+	if index >= 0 and (not shown.castSpot or shown.castSpot.rated):
 		rating.pop(shown.get_bobber_point(), ratingNames[index], ratingColors[index], ratingTime)
 	biteLeft = 0.0
 	biting = null
 
 func exit() -> void:
 	biteMark.dismiss()
+
+# Ponds like the well keep the fish waiting longer.
+func delay_for(line : FishingRod) -> float:
+	return line.bite_delay(line.castScore) * (line.castSpot.biteDelayScale if line.castSpot else 1.0)
 
 func update_physics(delta : float) -> void:
 	var rod : FishingRod = player.heldItem as FishingRod
@@ -64,7 +68,7 @@ func update_physics(delta : float) -> void:
 		biteLeft -= delta
 		if biteLeft <= 0.0:
 			biteMark.dismiss()
-			biteTimers[lines.find(biting)] = biting.bite_delay(biting.castScore)
+			biteTimers[lines.find(biting)] = delay_for(biting)
 			biting = null
 	else:
 		for i in mini(lines.size(), biteTimers.size()):

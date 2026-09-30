@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Tackle" format=3]
+
+[ext_resource type="Texture2D" path="res://fishing/tacklebox/icons/pearl_hook.png" id="1_2tmny"]
+[ext_resource type="Resource" path="res://items/rarities/rare.tres" id="2_p87bk"]
+[ext_resource type="Script" path="res://fishing/tacklebox/tackle.gd" id="3_b5yr0"]
+
+[resource]
+script = ExtResource("3_b5yr0")
+kind = 2
+biteSpeed = 1.15
+control = 0.2
+displayName = "Pearl Hook"
+icon = ExtResource("1_2tmny")
+rarity = ExtResource("2_p87bk")
+description = "A crafted rod part."
+discardable = false

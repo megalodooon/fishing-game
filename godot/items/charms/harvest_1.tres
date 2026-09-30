@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="Charm" format=3]
+
+[ext_resource type="Texture2D" path="res://items/charms/icons/harvest_1.png" id="1_nfhbs"]
+[ext_resource type="Resource" path="res://items/rarities/common.tres" id="2_1tutj"]
+[ext_resource type="Script" path="res://items/charms/charm.gd" id="3_3g5ah"]
+
+[resource]
+script = ExtResource("3_3g5ah")
+stats = Dictionary[StringName, float]({
+&"harvestBonus": 5.0
+})
+family = "harvest"
+displayName = "Harvest Charm"
+icon = ExtResource("1_nfhbs")
+rarity = ExtResource("2_1tutj")
+description = "Part of the Harvest line. Upgrade it at a bench to make it stronger."
+sellPrice = 40

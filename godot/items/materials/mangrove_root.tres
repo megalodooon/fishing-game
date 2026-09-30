@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Item" format=3]
+
+[ext_resource type="Texture2D" path="res://items/materials/icons/mangrove_root.png" id="1_ou61e"]
+[ext_resource type="Resource" path="res://items/rarities/common.tres" id="2_ad76c"]
+[ext_resource type="Script" path="res://items/item.gd" id="3_my3uo"]
+
+[resource]
+script = ExtResource("3_my3uo")
+displayName = "Mangrove Root"
+category = "Forage"
+icon = ExtResource("1_ou61e")
+rarity = ExtResource("2_ad76c")
+description = "Twisted swamp root, hard as iron once dried."
+maxStack = 99
+sellPrice = 5

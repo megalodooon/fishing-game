@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="FishData" format=3]
+
+[ext_resource type="Script" path="res://fishing/fish/fish_data.gd" id="1_fish"]
+[ext_resource type="Texture2D" path="res://fishing/fish/assets/reef/blue_tang.png" id="2_icon"]
+[ext_resource type="Resource" path="res://items/rarities/common.tres" id="3_rarity"]
+
+[resource]
+script = ExtResource("1_fish")
+displayName = "Blue Tang"
+icon = ExtResource("2_icon")
+rarity = ExtResource("3_rarity")
+description = "A flat blue reef fish with a yellow tail. Easily distracted."
+weightRange = Vector2(0.30000001192093, 0.80000001192093)
+basePrice = 15
+heldSize = 0.8
+hours = Vector2(0.0, 24.0)

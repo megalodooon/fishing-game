@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="BaitRecipe" format=3]
+
+[ext_resource type="Resource" path="res://items/materials/pumpkin.tres" id="1_j7ohs"]
+[ext_resource type="Resource" path="res://items/materials/rope.tres" id="2_ek3oc"]
+[ext_resource type="Resource" path="res://items/crew/pumpkin_farmhand_contract.tres" id="3_vbnvy"]
+[ext_resource type="Script" path="res://fishing/bait/bait_recipe.gd" id="4_oudvr"]
+
+[resource]
+script = ExtResource("4_oudvr")
+output = ExtResource("3_vbnvy")
+amount = 1
+ingredients = Array[Resource]([ExtResource("1_j7ohs"), ExtResource("2_ek3oc")])
+counts = Array[int]([8, 2])
+requiredFlag = "collection/pumpkin/1"
+xp = 25.0
+station = &"workbench"
+category = "Crew"

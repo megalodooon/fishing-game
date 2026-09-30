@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Item" format=3]
+
+[ext_resource type="Script" path="res://items/item.gd" id="1_script"]
+[ext_resource type="Texture2D" path="res://items/materials/icons/pumpkin.png" id="2_icon"]
+[ext_resource type="Resource" path="res://items/rarities/uncommon.tres" id="3_rarity"]
+
+[resource]
+script = ExtResource("1_script")
+maxStack = 99
+sellPrice = 60
+category = "Crop"
+displayName = "Pumpkin"
+icon = ExtResource("2_icon")
+rarity = ExtResource("3_rarity")
+description = "Big, round and worth a lot at the fishmonger."

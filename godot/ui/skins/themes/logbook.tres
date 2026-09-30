@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="MenuSkin" format=3]
+
+[ext_resource type="Script" path="res://ui/skins/menu_skin.gd" id="1_skin"]
+[ext_resource type="StyleBox" path="res://ui/skins/logbook.tres" id="2_frame"]
+[ext_resource type="StyleBox" path="res://ui/skins/well.tres" id="3_well"]
+[ext_resource type="StyleBox" path="res://ui/skins/card.tres" id="4_card"]
+[ext_resource type="StyleBox" path="res://ui/skins/button.tres" id="5_button"]
+[ext_resource type="StyleBox" path="res://ui/skins/button_hover.tres" id="6_buttonHover"]
+[ext_resource type="StyleBox" path="res://ui/skins/button_down.tres" id="7_buttonDown"]
+[ext_resource type="StyleBox" path="res://ui/skins/button_off.tres" id="8_buttonOff"]
+[ext_resource type="StyleBox" path="res://ui/skins/tab.tres" id="9_tab"]
+[ext_resource type="StyleBox" path="res://ui/skins/tab_hover.tres" id="10_tabHover"]
+[ext_resource type="StyleBox" path="res://ui/skins/tab_on.tres" id="11_tabOn"]
+
+[resource]
+script = ExtResource("1_skin")
+frame = ExtResource("2_frame")
+well = ExtResource("3_well")
+card = ExtResource("4_card")
+button = ExtResource("5_button")
+buttonHover = ExtResource("6_buttonHover")
+buttonDown = ExtResource("7_buttonDown")
+buttonOff = ExtResource("8_buttonOff")
+tab = ExtResource("9_tab")
+tabHover = ExtResource("10_tabHover")
+tabOn = ExtResource("11_tabOn")

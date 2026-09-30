@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Snack" format=3]
+
+[ext_resource type="Texture2D" path="res://items/snacks/icons/fishermans_breakfast.png" id="1_n5okl"]
+[ext_resource type="Resource" path="res://items/rarities/uncommon.tres" id="2_61gni"]
+[ext_resource type="Script" path="res://items/snacks/snack.gd" id="3_fgkke"]
+
+[resource]
+script = ExtResource("3_fgkke")
+energy = 70.0
+buffStat = "biteSpeed"
+buffAmount = 1.15
+buffHours = 6.0
+displayName = "Fisherman's Breakfast"
+icon = ExtResource("1_n5okl")
+rarity = ExtResource("2_61gni")
+description = "Cooked at a kitchen."
+hint = "Click while holding it to eat"
+maxStack = 20
+sellPrice = 55

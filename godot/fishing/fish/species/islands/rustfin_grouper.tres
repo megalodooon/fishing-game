@@ -1,0 +1,35 @@
+[gd_resource type="Resource" script_class="FishData" format=3 uid="uid://bt0l6b6uqcv84"]
+
+[ext_resource type="Script" uid="uid://bevdmlyak68oo" path="res://fishing/fish/fish_data.gd" id="1_fish"]
+[ext_resource type="Texture2D" uid="uid://fdb0t5hwrk3o" path="res://fishing/fish/assets/islands/rustfin_grouper.png" id="2_icon"]
+[ext_resource type="Resource" path="res://items/rarities/trophy.tres" id="3_rarity"]
+[ext_resource type="Script" uid="uid://dupq0iwgv25f6" path="res://fishing/fish/requirements/fish_requirement.gd" id="4_req"]
+[ext_resource type="Script" uid="uid://bbi13q2gt1w7m" path="res://fishing/fish/requirements/weekday_requirement.gd" id="5_day_req"]
+[ext_resource type="Script" uid="uid://b3bmwcwg3hf7i" path="res://fishing/fish/requirements/bait_requirement.gd" id="6_bait_req"]
+[ext_resource type="Script" uid="uid://dcv55o5epuv8a" path="res://fishing/fish/requirements/spot_requirement.gd" id="7_spot_req"]
+[ext_resource type="Resource" path="res://fishing/bait/rust_bait.tres" id="8_rust"]
+
+[sub_resource type="Resource" id="Req_day"]
+script = ExtResource("5_day_req")
+days = Array[int]([4])
+
+[sub_resource type="Resource" id="Req_bait"]
+script = ExtResource("6_bait_req")
+bait = ExtResource("8_rust")
+
+[sub_resource type="Resource" id="Req_spot"]
+script = ExtResource("7_spot_req")
+spotId = &"tide_pool"
+spotName = "the wreck's tide pool"
+
+[resource]
+script = ExtResource("1_fish")
+displayName = "Rustfin Grouper"
+icon = ExtResource("2_icon")
+rarity = ExtResource("3_rarity")
+description = "Its fins look like corroded iron. It lives in the wreck's tide pool and only feeds once a week."
+weightRange = Vector2(12, 40)
+basePrice = 900
+heldSize = 1.3
+requirements = Array[ExtResource("4_req")]([SubResource("Req_day"), SubResource("Req_bait"), SubResource("Req_spot")])
+chance = 15.0

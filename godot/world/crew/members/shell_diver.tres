@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="CrewMember" format=3]
+
+[ext_resource type="Resource" path="res://items/enchanted/enchanted_sea_shell.tres" id="1_pooxw"]
+[ext_resource type="Texture2D" path="res://items/materials/icons/sea_shell.png" id="2_f42pj"]
+[ext_resource type="Resource" path="res://items/materials/sea_shell.tres" id="3_30jxb"]
+[ext_resource type="Script" path="res://world/crew/crew_member.gd" id="4_q08os"]
+
+[resource]
+script = ExtResource("4_q08os")
+displayName = "Shell Diver"
+description = "Dives the shallows for shells."
+icon = ExtResource("2_f42pj")
+product = ExtResource("3_30jxb")
+enchanted = ExtResource("1_pooxw")
+hours = 0.7

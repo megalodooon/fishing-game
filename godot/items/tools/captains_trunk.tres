@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="BagUpgrade" format=3]
+
+[ext_resource type="Texture2D" path="res://items/tools/icons/captains_trunk.png" id="1_dhnme"]
+[ext_resource type="Resource" path="res://items/rarities/legendary.tres" id="2_u5r1o"]
+[ext_resource type="Script" path="res://items/tools/bag_upgrade.gd" id="3_fft54"]
+
+[resource]
+script = ExtResource("3_fft54")
+slots = 5
+displayName = "Captain's Trunk"
+icon = ExtResource("1_dhnme")
+rarity = ExtResource("2_u5r1o")
+description = "Sew it into the backpack for 5 more slots."

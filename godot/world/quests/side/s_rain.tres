@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="Quest" format=3]
+
+[ext_resource type="Script" path="res://world/quests/quest.gd" id="e1"]
+[ext_resource type="Script" path="res://world/quests/quest_goal.gd" id="e2"]
+[ext_resource type="Resource" path="res://world/quests/story/q_weather.tres" id="e3"]
+[ext_resource type="Resource" path="res://fishing/bait/storm_lure.tres" id="e4"]
+[ext_resource type="Script" path="res://items/item.gd" id="e5"]
+
+[sub_resource type="Resource" id="s1"]
+script = ExtResource("e2")
+kind = 0
+amount = 5
+weather = 1
+
+[resource]
+script = ExtResource("e1")
+title = "Rainy Days"
+giver = "Old Silas"
+description = "Rain brings out the shy ones. Catch five fish while it rains."
+goals = Array[ExtResource("e2")]([SubResource("s1")])
+requires = Array[ExtResource("e1")]([ExtResource("e3")])
+rewardCoins = 150
+rewardItems = Array[ExtResource("e5")]([ExtResource("e4")])
+rewardAmounts = Array[int]([3])

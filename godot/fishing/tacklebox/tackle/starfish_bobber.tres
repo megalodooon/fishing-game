@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Tackle" format=3]
+
+[ext_resource type="Texture2D" path="res://fishing/tacklebox/icons/starfish_bobber.png" id="1_3lnpl"]
+[ext_resource type="Resource" path="res://items/rarities/uncommon.tres" id="2_qxpwh"]
+[ext_resource type="Script" path="res://fishing/tacklebox/tackle.gd" id="3_pjipr"]
+
+[resource]
+script = ExtResource("3_pjipr")
+tint = Color(0.9490196, 0.5411765, 0.22745098, 1)
+biteSpeed = 1.08
+spotTime = 1.25
+displayName = "Starfish Bobber"
+icon = ExtResource("1_3lnpl")
+rarity = ExtResource("2_qxpwh")
+description = "A crafted rod part."
+discardable = false

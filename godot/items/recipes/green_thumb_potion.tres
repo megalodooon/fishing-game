@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="BaitRecipe" format=3]
+
+[ext_resource type="Resource" path="res://items/materials/glass_bottle.tres" id="1_l41hb"]
+[ext_resource type="Resource" path="res://items/materials/sea_kale.tres" id="2_37sgi"]
+[ext_resource type="Resource" path="res://items/materials/wormroot.tres" id="3_7inmx"]
+[ext_resource type="Resource" path="res://items/potions/green_thumb_potion.tres" id="4_ekowx"]
+[ext_resource type="Script" path="res://fishing/bait/bait_recipe.gd" id="5_gifkl"]
+
+[resource]
+script = ExtResource("5_gifkl")
+output = ExtResource("4_ekowx")
+amount = 1
+ingredients = Array[Resource]([ExtResource("1_l41hb"), ExtResource("2_37sgi"), ExtResource("3_7inmx")])
+counts = Array[int]([1, 3, 3])
+xp = 25.0
+station = &"cauldron"
+category = "Potions"
+requiredSkill = &"alchemy"
+requiredLevel = 5

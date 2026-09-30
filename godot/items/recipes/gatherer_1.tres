@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="BaitRecipe" format=3]
+
+[ext_resource type="Resource" path="res://items/materials/mangrove_root.tres" id="1_b5owc"]
+[ext_resource type="Resource" path="res://items/materials/rope.tres" id="2_iduaw"]
+[ext_resource type="Resource" path="res://items/charms/gatherer_1.tres" id="3_autb6"]
+[ext_resource type="Script" path="res://fishing/bait/bait_recipe.gd" id="4_tix7c"]
+
+[resource]
+script = ExtResource("4_tix7c")
+output = ExtResource("3_autb6")
+amount = 1
+ingredients = Array[Resource]([ExtResource("1_b5owc"), ExtResource("2_iduaw")])
+counts = Array[int]([16, 1])
+xp = 30.0
+station = &"workbench"
+category = "Charms"
+requiredSkill = &"foraging"
+requiredLevel = 3

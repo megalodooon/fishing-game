@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="Tackle" format=3]
+
+[ext_resource type="Texture2D" path="res://fishing/tacklebox/icons/cotton_line.png" id="1_bx2an"]
+[ext_resource type="Resource" path="res://items/rarities/uncommon.tres" id="2_0aryl"]
+[ext_resource type="Script" path="res://fishing/tacklebox/tackle.gd" id="3_6jeav"]
+
+[resource]
+script = ExtResource("3_6jeav")
+kind = 1
+lineColor = Color(0.95686275, 0.9411765, 0.9098039, 1)
+rangeBonus = 10.0
+reelSpeed = 1.1
+displayName = "Cotton Line"
+icon = ExtResource("1_bx2an")
+rarity = ExtResource("2_0aryl")
+description = "A crafted rod part."
+discardable = false

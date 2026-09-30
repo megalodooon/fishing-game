@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="SeaCreature" format=3]
+
+[ext_resource type="Script" path="res://fishing/creatures/sea_creature.gd" id="e1"]
+[ext_resource type="Texture2D" path="res://fishing/creatures/art/ice_walrus.png" id="e2"]
+[ext_resource type="Resource" path="res://items/rarities/legendary.tres" id="e3"]
+[ext_resource type="PackedScene" path="res://fishing/minigames/boss_duel/boss_duel.tscn" id="e4"]
+[ext_resource type="Resource" path="res://items/materials/frost_crystal.tres" id="e5"]
+[ext_resource type="Resource" path="res://items/materials/shark_tooth.tres" id="e6"]
+[ext_resource type="Script" path="res://items/item.gd" id="e7"]
+
+[resource]
+script = ExtResource("e1")
+displayName = "Tusked Horror"
+description = "A walrus-like beast the size of a boat."
+icon = ExtResource("e2")
+rarity = ExtResource("e3")
+minFishing = 22
+announce = "The Tusked Horror surfaces!"
+fight = ExtResource("e4")
+difficulty = 0.65
+toughness = 1.5
+style = &"frost"
+coins = Vector2i(500, 1100)
+xp = 380.0
+drops = Array[ExtResource("e7")]([ExtResource("e5"), ExtResource("e6")])
+dropChances = PackedFloat32Array(1.0, 0.6)
+dropAmounts = Array[Vector2i]([Vector2i(2, 4), Vector2i(1, 2)])

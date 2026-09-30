@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="Location" format=3 uid="uid://daymoebbd8bmv"]
+
+[ext_resource type="Script" uid="uid://t660ehs2ybui" path="res://world/location.gd" id="e1"]
+[ext_resource type="Texture2D" uid="uid://ddwa4nc0ilcwb" path="res://world/map/icons/volcanic_ocean.png" id="e2"]
+[ext_resource type="Resource" uid="uid://bypp8chnnxtf1" path="res://oceans/volcanic/volcanic_biome.tres" id="e3"]
+
+[resource]
+script = ExtResource("e1")
+displayName = "Volcanic Ocean"
+description = "Steaming water over an underwater volcano. Rest at the Ember Isle inn."
+scene = "res://oceans/volcanic/volcanic_ocean.tscn"
+mapPosition = Vector2(384, 73)
+mapIcon = ExtResource("e2")
+chartTint = Color(0.32, 0.12, 0.1, 0.85)
+biome = ExtResource("e3")
+weatherChances = PackedFloat32Array(0.5, 0.2, 0.3)
+startsUnlocked = false
+coinCost = 2500
+requiredHull = 2
+requiredSkill = &"fishing"
+requiredLevel = 16

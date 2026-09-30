@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="SeaCreature" format=3]
+
+[ext_resource type="Script" path="res://fishing/creatures/sea_creature.gd" id="e1"]
+[ext_resource type="Texture2D" path="res://fishing/creatures/art/abyssal_angler.png" id="e2"]
+[ext_resource type="Resource" path="res://items/rarities/legendary.tres" id="e3"]
+[ext_resource type="PackedScene" path="res://fishing/minigames/bullet_hell/bullet_hell.tscn" id="e4"]
+[ext_resource type="Resource" path="res://items/materials/abyssal_scale.tres" id="e5"]
+[ext_resource type="Resource" path="res://items/materials/ink_sac.tres" id="e6"]
+[ext_resource type="Script" path="res://items/item.gd" id="e7"]
+
+[resource]
+script = ExtResource("e1")
+displayName = "Abyssal Angler"
+description = "You only see the lure. That's the idea."
+icon = ExtResource("e2")
+rarity = ExtResource("e3")
+minFishing = 30
+announce = "An Abyssal Angler's light blinks on..."
+fight = ExtResource("e4")
+difficulty = 0.78
+toughness = 1.5
+style = &"abyss"
+coins = Vector2i(900, 1800)
+xp = 600.0
+drops = Array[ExtResource("e7")]([ExtResource("e5"), ExtResource("e6")])
+dropChances = PackedFloat32Array(1.0, 0.5)
+dropAmounts = Array[Vector2i]([Vector2i(1, 2), Vector2i(1, 2)])

@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="BaitRecipe" format=3]
+
+[ext_resource type="Resource" path="res://items/materials/glass_bottle.tres" id="1_hxhrw"]
+[ext_resource type="Resource" path="res://items/materials/pumice.tres" id="2_q3w3l"]
+[ext_resource type="Resource" path="res://items/materials/clay.tres" id="3_71xhf"]
+[ext_resource type="Resource" path="res://items/potions/heavy_draught.tres" id="4_1jewh"]
+[ext_resource type="Script" path="res://fishing/bait/bait_recipe.gd" id="5_lkrdi"]
+
+[resource]
+script = ExtResource("5_lkrdi")
+output = ExtResource("4_1jewh")
+amount = 1
+ingredients = Array[Resource]([ExtResource("1_hxhrw"), ExtResource("2_q3w3l"), ExtResource("3_71xhf")])
+counts = Array[int]([1, 3, 2])
+xp = 28.0
+station = &"cauldron"
+category = "Potions"
+requiredSkill = &"alchemy"
+requiredLevel = 6

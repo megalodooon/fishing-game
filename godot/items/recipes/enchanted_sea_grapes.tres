@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="BaitRecipe" format=3]
+
+[ext_resource type="Resource" path="res://items/materials/sea_grapes.tres" id="1_yjuq5"]
+[ext_resource type="Resource" path="res://items/enchanted/enchanted_sea_grapes.tres" id="2_80q7j"]
+[ext_resource type="Script" path="res://fishing/bait/bait_recipe.gd" id="3_hcpmb"]
+
+[resource]
+script = ExtResource("3_hcpmb")
+output = ExtResource("2_80q7j")
+amount = 1
+ingredients = Array[Resource]([ExtResource("1_yjuq5")])
+counts = Array[int]([32])
+requiredFlag = "collection/sea_grapes/2"
+xp = 12.0
+category = "Materials"

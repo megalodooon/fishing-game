@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="BaitRecipe" format=3]
+
+[ext_resource type="Resource" path="res://items/materials/cotton.tres" id="1_rugpm"]
+[ext_resource type="Resource" path="res://fishing/tacklebox/tackle/cotton_line.tres" id="2_dj8so"]
+[ext_resource type="Script" path="res://fishing/bait/bait_recipe.gd" id="3_s8sgs"]
+
+[resource]
+script = ExtResource("3_s8sgs")
+output = ExtResource("2_dj8so")
+amount = 1
+ingredients = Array[Resource]([ExtResource("1_rugpm")])
+counts = Array[int]([6])
+xp = 45.0
+station = &"workbench"
+category = "Tackle"
+requiredSkill = &"fishing"
+requiredLevel = 5

@@ -1,0 +1,35 @@
+[gd_resource type="Resource" script_class="Quest" format=3 uid="uid://dq0y2llg0bneu"]
+
+[ext_resource type="Script" uid="uid://b1p7iyi658nm7" path="res://world/quests/quest.gd" id="e1"]
+[ext_resource type="Script" uid="uid://depkark34l17n" path="res://world/quests/quest_goal.gd" id="e2"]
+[ext_resource type="Resource" uid="uid://cy14qx16dsl60" path="res://world/quests/story/q_kraken.tres" id="e3"]
+[ext_resource type="Resource" uid="uid://c4pjyrr4bh4r2" path="res://world/quests/story/q_deep_tank.tres" id="e4"]
+[ext_resource type="Resource" uid="uid://dg0gbcebk1kkn" path="res://world/quests/story/q_skill15.tres" id="e5"]
+[ext_resource type="Resource" uid="uid://cmjffgi11ptwg" path="res://world/quests/story/q_treasure.tres" id="e6"]
+[ext_resource type="Resource" path="res://items/key/logbook_page_5.tres" id="e7"]
+[ext_resource type="Script" uid="uid://ftrpy1hit5em" path="res://items/item.gd" id="e8"]
+[ext_resource type="Resource" path="res://world/locations/frostpeak.tres" id="e9"]
+[ext_resource type="Resource" uid="uid://dpdcgbxsadtr7" path="res://world/locations/ember_isle.tres" id="e10"]
+[ext_resource type="Script" uid="uid://t660ehs2ybui" path="res://world/location.gd" id="e11"]
+
+[sub_resource type="Resource" id="s1"]
+script = ExtResource("e2")
+kind = 10
+flag = "creatures"
+amount = 20
+text = "Beat 20 sea creatures"
+
+[resource]
+script = ExtResource("e1")
+title = "The Four Tides"
+giver = "Old Silas"
+description = "Silas finally wants to talk about the logbook. Beat twenty sea creatures first, to prove you're ready."
+story = true
+goals = Array[ExtResource("e2")]([SubResource("s1")])
+chapter = 5
+startScene = "q_four_tides_start"
+endScene = "q_four_tides_end"
+requires = Array[ExtResource("e1")]([ExtResource("e3"), ExtResource("e4"), ExtResource("e5"), ExtResource("e6")])
+rewardItems = Array[ExtResource("e8")]([ExtResource("e7")])
+rewardAmounts = Array[int]([1])
+unlocks = Array[ExtResource("e11")]([ExtResource("e9"), ExtResource("e10")])

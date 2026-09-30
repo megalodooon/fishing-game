@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Item" format=3]
+
+[ext_resource type="Texture2D" path="res://items/materials/icons/sea_kale.png" id="1_ct6rm"]
+[ext_resource type="Resource" path="res://items/rarities/common.tres" id="2_8jxwg"]
+[ext_resource type="Script" path="res://items/item.gd" id="3_bxu42"]
+
+[resource]
+script = ExtResource("3_bxu42")
+displayName = "Sea Kale"
+category = "Crop"
+icon = ExtResource("1_ct6rm")
+rarity = ExtResource("2_8jxwg")
+description = "Grown on the farm. Good for cooking and brewing."
+maxStack = 99
+sellPrice = 10

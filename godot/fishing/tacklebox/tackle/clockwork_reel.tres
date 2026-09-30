@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Tackle" format=3]
+
+[ext_resource type="Texture2D" path="res://fishing/tacklebox/icons/clockwork_reel.png" id="1_mc01e"]
+[ext_resource type="Resource" path="res://items/rarities/legendary.tres" id="2_8oait"]
+[ext_resource type="Script" path="res://fishing/tacklebox/tackle.gd" id="3_0dg4m"]
+
+[resource]
+script = ExtResource("3_0dg4m")
+kind = 3
+castTimeBonus = -0.5
+reelSpeed = 1.6
+displayName = "Clockwork Reel"
+icon = ExtResource("1_mc01e")
+rarity = ExtResource("2_8oait")
+description = "A crafted rod part."
+discardable = false

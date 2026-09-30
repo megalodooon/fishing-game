@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="BaitRecipe" format=3]
+
+[ext_resource type="Resource" path="res://items/materials/glass_bottle.tres" id="1_w0x8m"]
+[ext_resource type="Resource" path="res://items/enchanted/enchanted_lavender.tres" id="2_jip65"]
+[ext_resource type="Resource" path="res://items/materials/pearl_dust.tres" id="3_b1rtj"]
+[ext_resource type="Resource" path="res://items/potions/fortune_elixir_2.tres" id="4_3tlbq"]
+[ext_resource type="Script" path="res://fishing/bait/bait_recipe.gd" id="5_basgt"]
+
+[resource]
+script = ExtResource("5_basgt")
+output = ExtResource("4_3tlbq")
+amount = 1
+ingredients = Array[Resource]([ExtResource("1_w0x8m"), ExtResource("2_jip65"), ExtResource("3_b1rtj")])
+counts = Array[int]([1, 1, 3])
+xp = 70.0
+station = &"cauldron"
+category = "Potions"
+requiredSkill = &"alchemy"
+requiredLevel = 20

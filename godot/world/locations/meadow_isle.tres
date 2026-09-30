@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Location" format=3]
+
+[ext_resource type="Script" path="res://world/location.gd" id="e1"]
+[ext_resource type="Texture2D" path="res://world/map/icons/meadow_isle.png" id="e2"]
+[ext_resource type="Resource" path="res://oceans/islands/meadow_biome.tres" id="e3"]
+
+[resource]
+script = ExtResource("e1")
+displayName = "Meadow Isle"
+description = "Tilly's farm island: fields, beehives and a lily pond."
+kind = 1
+scene = "res://world/islands/meadow_isle/meadow_isle.tscn"
+mapPosition = Vector2(70, 73)
+mapIcon = ExtResource("e2")
+biome = ExtResource("e3")
+travelScale = 0.5
+startsUnlocked = false
+coinCost = 0
+requiredHull = 0

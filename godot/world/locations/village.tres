@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="Location" format=3 uid="uid://cs01wjxi01qmg"]
+
+[ext_resource type="Resource" path="res://oceans/islands/village_biome.tres" id="loc_biome"]
+[ext_resource type="Script" uid="uid://t660ehs2ybui" path="res://world/location.gd" id="e1"]
+[ext_resource type="Texture2D" uid="uid://doqk66nsdyuwe" path="res://world/map/icons/village.png" id="e2"]
+
+[resource]
+script = ExtResource("e1")
+displayName = "Bramblewick"
+description = "Home. The harbor, the aquarium and the shops, slowly coming back to life."
+kind = 1
+scene = "res://world/village/village.tscn"
+mapPosition = Vector2(28, 44)
+mapIcon = ExtResource("e2")
+freeTravel = true
+travelScale = 0.5
+weatherChances = null
+biome = ExtResource("loc_biome")

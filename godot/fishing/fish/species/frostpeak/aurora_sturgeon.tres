@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="FishData" format=3 uid="uid://bd8lv68mvn40s"]
+
+[ext_resource type="Script" uid="uid://bevdmlyak68oo" path="res://fishing/fish/fish_data.gd" id="e1"]
+[ext_resource type="Texture2D" uid="uid://dleo67jhtyqrf" path="res://fishing/fish/assets/frostpeak/aurora_sturgeon.png" id="e2"]
+[ext_resource type="Resource" path="res://items/rarities/trophy.tres" id="e3"]
+[ext_resource type="Script" uid="uid://b3bmwcwg3hf7i" path="res://fishing/fish/requirements/bait_requirement.gd" id="e4"]
+[ext_resource type="Resource" path="res://fishing/bait/ice_bait.tres" id="e5"]
+[ext_resource type="Script" uid="uid://c3d1apon1mdqw" path="res://fishing/fish/requirements/weather_requirement.gd" id="e6"]
+[ext_resource type="Script" uid="uid://dupq0iwgv25f6" path="res://fishing/fish/requirements/fish_requirement.gd" id="e7"]
+
+[sub_resource type="Resource" id="s1"]
+script = ExtResource("e4")
+bait = ExtResource("e5")
+
+[sub_resource type="Resource" id="s2"]
+script = ExtResource("e6")
+weather = 0
+
+[resource]
+script = ExtResource("e1")
+displayName = "Aurora Sturgeon"
+icon = ExtResource("e2")
+rarity = ExtResource("e3")
+description = "The Frost Tide's guardian. Glows with the northern lights on clear nights, for ice bait."
+weightRange = Vector2(60, 220)
+basePrice = 3500
+heldSize = 1.8
+hours = Vector2(21, 4)
+requirements = Array[ExtResource("e7")]([SubResource("s1"), SubResource("s2")])
+chance = 8.0

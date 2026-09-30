@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="BaitRecipe" format=3]
+
+[ext_resource type="Resource" path="res://items/charms/seeker_3.tres" id="1_ish4a"]
+[ext_resource type="Resource" path="res://items/enchanted/enchanted_pearl_oyster.tres" id="2_tq7u1"]
+[ext_resource type="Resource" path="res://items/rare/frozen_relic.tres" id="3_ur5tr"]
+[ext_resource type="Resource" path="res://items/charms/seeker_4.tres" id="4_5b4au"]
+[ext_resource type="Script" path="res://fishing/bait/bait_recipe.gd" id="5_ylk0j"]
+
+[resource]
+script = ExtResource("5_ylk0j")
+output = ExtResource("4_5b4au")
+amount = 1
+ingredients = Array[Resource]([ExtResource("1_ish4a"), ExtResource("2_tq7u1"), ExtResource("3_ur5tr")])
+counts = Array[int]([1, 24, 1])
+xp = 120.0
+station = &"forge"
+category = "Charms"
+requiredSkill = &"foraging"
+requiredLevel = 28

@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="BaitRecipe" format=3]
+
+[ext_resource type="Resource" path="res://items/rarities/uncommon.tres" id="1_207kc"]
+[ext_resource type="Resource" path="res://items/materials/marsh_rice.tres" id="2_rwt4q"]
+[ext_resource type="Resource" path="res://items/materials/seaweed.tres" id="3_ponfh"]
+[ext_resource type="Resource" path="res://items/snacks/sushi_platter.tres" id="4_jbk5f"]
+[ext_resource type="Script" path="res://fishing/bait/bait_recipe.gd" id="5_q3f3d"]
+
+[resource]
+script = ExtResource("5_q3f3d")
+output = ExtResource("4_jbk5f")
+amount = 1
+ingredients = Array[Resource]([ExtResource("1_207kc"), ExtResource("2_rwt4q"), ExtResource("3_ponfh")])
+counts = Array[int]([3, 3, 2])
+xp = 28.0
+station = &"kitchen"
+category = "Food"
+requiredSkill = &"cooking"
+requiredLevel = 10

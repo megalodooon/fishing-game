@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="Snack" format=3]
+
+[ext_resource type="Texture2D" path="res://items/potions/icons/prospectors_draught_1.png" id="1_w0j5w"]
+[ext_resource type="Resource" path="res://items/rarities/uncommon.tres" id="2_kcbg8"]
+[ext_resource type="Script" path="res://items/snacks/snack.gd" id="3_devpm"]
+
+[resource]
+script = ExtResource("3_devpm")
+energy = 5.0
+buffStat = "treasure"
+buffAmount = 1.01
+buffHours = 3.0
+displayName = "Prospector's Draught I"
+category = "Potion"
+icon = ExtResource("1_w0j5w")
+rarity = ExtResource("2_kcbg8")
+description = "Brewed at a cauldron. Drink it for a few hours of treasure chance."
+hint = "Click while holding it to drink"
+maxStack = 10
+sellPrice = 50

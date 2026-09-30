@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="BaitRecipe" format=3]
+
+[ext_resource type="Resource" path="res://items/materials/iron_ingot.tres" id="1_l86ad"]
+[ext_resource type="Resource" path="res://items/materials/treated_plank.tres" id="2_lbdxn"]
+[ext_resource type="Resource" path="res://fishing/rods/ironbound_rod.tres" id="3_yb5ce"]
+[ext_resource type="Script" path="res://fishing/bait/bait_recipe.gd" id="4_tniki"]
+
+[resource]
+script = ExtResource("4_tniki")
+output = ExtResource("3_yb5ce")
+amount = 1
+ingredients = Array[Resource]([ExtResource("1_l86ad"), ExtResource("2_lbdxn")])
+counts = Array[int]([8, 6])
+xp = 125.0
+station = &"workbench"
+category = "Rods"
+requiredSkill = &"fishing"
+requiredLevel = 9

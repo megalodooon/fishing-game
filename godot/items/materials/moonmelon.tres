@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Item" format=3]
+
+[ext_resource type="Script" path="res://items/item.gd" id="e1"]
+[ext_resource type="Texture2D" path="res://items/materials/icons/moonmelon.png" id="e2"]
+[ext_resource type="Resource" path="res://items/rarities/rare.tres" id="e3"]
+
+[resource]
+script = ExtResource("e1")
+displayName = "Moonmelon"
+icon = ExtResource("e2")
+rarity = ExtResource("e3")
+description = "Pale and glowing. Ripens under the full moon, supposedly."
+category = "Crop"
+maxStack = 99
+sellPrice = 120

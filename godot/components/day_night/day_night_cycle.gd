@@ -3,8 +3,14 @@ extends CanvasLayer
 class_name DayNightCycle
 
 signal time_changed(hour : int, minute : int)
+# A new day started, by the clock passing midnight or by sleeping.
+signal day_changed(day : int)
 
 const GROUP : StringName = &"day_night_cycles"
+enum Weekday { MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY, SUNDAY }
+# Day 1 is a Monday.
+const WEEKDAYS : PackedStringArray = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
+const SUNDAY : int = 6
 const MAX_LIGHTS : int = 16
 const WARM_UP_FRAMES : int = 2
 
@@ -61,12 +67,36 @@ static func now(tree : SceneTree) -> float:
 	var cycle : DayNightCycle = tree.get_first_node_in_group(GROUP) as DayNightCycle
 	return cycle.time if cycle else -1.0
 
+static func find(tree : SceneTree) -> DayNightCycle:
+	return tree.get_first_node_in_group(GROUP) as DayNightCycle
+
+# 0 for Monday up to 6 for Sunday.
+func weekday() -> int:
+	return posmod(day - 1, WEEKDAYS.size())
+
+func weekday_name(short : bool = false) -> String:
+	var full : String = WEEKDAYS[weekday()]
+	return full.left(3) if short else full
+
+static func weekday_text(days : Array[int]) -> String:
+	if days.is_empty() or days.size() >= WEEKDAYS.size():
+		return "Every day"
+	var names : PackedStringArray = PackedStringArray()
+	for each in days:
+		names.append(WEEKDAYS[posmod(each, WEEKDAYS.size())] + "s" if days.size() == 1 else WEEKDAYS[posmod(each, WEEKDAYS.size())].left(3))
+	return ", ".join(names)
+
+func set_day(value : int) -> void:
+	if value != day:
+		day = value
+		day_changed.emit(day)
+
 func _process(delta : float) -> void:
 	if not Engine.is_editor_hint() and not paused and dayLength > 0.0:
 		time += delta * 24.0 / dayLength
 		if time >= 24.0:
 			time = fmod(time, 24.0)
-			day += 1
+			set_day(day + 1)
 	frames += 1
 	clock += delta
 	update_clock()
@@ -122,3 +152,9 @@ func set_time(hours : float) -> void:
 	time = fposmod(hours, 24.0)
 	update_clock()
 	update_light()
+
+# Moves the clock forward, into the next days if it passes midnight.
+func advance(hours : float) -> void:
+	var days : int = floori((time + hours) / 24.0)
+	set_time(time + hours)
+	set_day(day + days)

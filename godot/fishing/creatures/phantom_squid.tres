@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="SeaCreature" format=3]
+
+[ext_resource type="Script" path="res://items/item.gd" id="1_gp4tb"]
+[ext_resource type="Resource" path="res://items/events/ghost_candy.tres" id="2_xj8p1"]
+[ext_resource type="Resource" path="res://items/events/candy_corn.tres" id="3_vney0"]
+[ext_resource type="Texture2D" path="res://fishing/fish/assets/events/vampire_squid.png" id="4_lemwn"]
+[ext_resource type="Resource" path="res://items/rarities/rare.tres" id="5_766wj"]
+[ext_resource type="Script" path="res://fishing/fish/requirements/fish_requirement.gd" id="6_sier5"]
+[ext_resource type="Script" path="res://fishing/creatures/sea_creature.gd" id="7_xmskr"]
+
+[resource]
+script = ExtResource("7_xmskr")
+displayName = "Phantom Squid"
+description = "A squid made of mist and bad dreams. Only seen during the Spooky Tide."
+icon = ExtResource("4_lemwn")
+rarity = ExtResource("5_766wj")
+minFishing = 3
+announce = "A Phantom Squid rises from the mist!"
+difficulty = 0.45
+toughness = 1.1
+style = &"abyss"
+coins = Vector2i(60, 160)
+xp = 90.0
+drops = Array[ExtResource("1_gp4tb")]([ExtResource("2_xj8p1"), ExtResource("3_vney0")])
+dropChances = PackedFloat32Array(0.5, 1)
+dropAmounts = Array[Vector2i]([Vector2i(1, 2), Vector2i(5, 12)])

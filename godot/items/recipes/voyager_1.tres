@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="BaitRecipe" format=3]
+
+[ext_resource type="Resource" path="res://items/materials/driftwood_plank.tres" id="1_h40t3"]
+[ext_resource type="Resource" path="res://items/materials/rope.tres" id="2_c7a5o"]
+[ext_resource type="Resource" path="res://items/charms/voyager_1.tres" id="3_4km7p"]
+[ext_resource type="Script" path="res://fishing/bait/bait_recipe.gd" id="4_sdgbw"]
+
+[resource]
+script = ExtResource("4_sdgbw")
+output = ExtResource("3_4km7p")
+amount = 1
+ingredients = Array[Resource]([ExtResource("1_h40t3"), ExtResource("2_c7a5o")])
+counts = Array[int]([16, 1])
+xp = 30.0
+station = &"workbench"
+category = "Charms"
+requiredSkill = &"sailing"
+requiredLevel = 4

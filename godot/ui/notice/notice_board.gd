@@ -20,7 +20,11 @@ var notices : Array[Dictionary] = []
 #------------------------#
 
 
+static func find(tree : SceneTree) -> NoticeBoard:
+	return tree.get_first_node_in_group(&"notice_boards") as NoticeBoard
+
 func _ready() -> void:
+	add_to_group(&"notice_boards")
 	mouse_filter = MOUSE_FILTER_IGNORE
 	set_anchors_preset(PRESET_TOP_LEFT)
 	set_process(false)
@@ -32,7 +36,11 @@ func fit() -> void:
 	size = ui.size
 
 # The icon sits left of the text, the color is the title's and the edge's.
+# The same notice again is ignored until the one on screen has gone.
 func post(title : String, text : String, color : Color, icon : Texture2D = null) -> void:
+	for notice in notices:
+		if notice.title == title and notice.text == text:
+			return
 	var inset : float = icon.get_width() + 2.0 if icon else 0.0
 	var lines : PackedStringArray = ui.wrap_lines(text, maxWidth - padding * 2.0 - inset, ui.statSize) if not text.is_empty() else PackedStringArray()
 	var width : float = ui.font.get_string_size(title, HORIZONTAL_ALIGNMENT_LEFT, -1, ui.titleSize).x
@@ -44,15 +52,25 @@ func post(title : String, text : String, color : Color, icon : Texture2D = null)
 	var box : Vector2 = Vector2(ceilf(width + inset), height).ceil() + Vector2(padding * 2.0 + 1.0, padding * 2.0)
 	for i in range(maxShown - 1, notices.size()):
 		notices[i].age = maxf(notices[i].age, duration)
-	notices.push_front({"title": title, "lines": lines, "color": color, "icon": icon, "size": box, "age": 0.0, "y": float(margin)})
+	notices.push_front({"title": title, "text": text, "lines": lines, "color": color, "icon": icon, "size": box, "age": 0.0, "y": top_edge()})
 	set_process(true)
 
 func clear() -> void:
 	notices.clear()
 	queue_redraw()
 
+# Notices fade back behind open menus once they've been seen.
+func menu_open() -> bool:
+	var hub : MenuHub = MenuHub.find(get_tree())
+	return hub != null and hub.dim > 0.5
+
+# Notices sit under the menus' tab strip while it's up.
+func top_edge() -> float:
+	var hub : MenuHub = MenuHub.find(get_tree())
+	return margin + (MenuHub.HEIGHT if hub and hub.current >= 0 else 0.0)
+
 func _process(delta : float) -> void:
-	var top : float = margin
+	var top : float = top_edge()
 	for i in range(notices.size() - 1, -1, -1):
 		notices[i].age += delta
 		if notices[i].age >= duration + outTime:
@@ -78,10 +96,9 @@ func _draw() -> void:
 		var amount : float = shown(notice)
 		var at : Vector2 = Vector2(size.x - margin - box.x + (1.0 - amount) * (box.x + margin + 2.0), notice.y).round()
 		var area : Rect2 = Rect2(at, box)
-		var alpha : float = clampf(amount * 1.5, 0.0, 1.0)
-		draw_rect(area, Color(ui.frameColor, alpha))
-		draw_rect(area.grow(-1.0), Color(ui.slotColor, 0.97 * alpha))
-		draw_rect(Rect2(at + Vector2(1.0, 1.0), Vector2(1.0, box.y - 2.0)), Color(notice.color, alpha))
+		var alpha : float = clampf(amount * 1.5, 0.0, 1.0) * (lerpf(1.0, 0.35, clampf((notice.age - 1.2) / 0.5, 0.0, 1.0)) if menu_open() else 1.0)
+		UiKit.box(self, InventoryUI.TIP_STYLE, area, Color(1.0, 1.0, 1.0, alpha))
+		draw_rect(Rect2(at + Vector2(2.0, 2.0), Vector2(1.0, box.y - 4.0)), Color(notice.color, alpha))
 		var pen : Vector2 = at + Vector2(padding + 1.0, padding)
 		var icon : Texture2D = notice.icon
 		if icon:

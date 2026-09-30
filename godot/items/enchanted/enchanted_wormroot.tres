@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Item" format=3]
+
+[ext_resource type="Texture2D" path="res://items/enchanted/icons/enchanted_wormroot.png" id="1_h5tav"]
+[ext_resource type="Resource" path="res://items/rarities/uncommon.tres" id="2_oyyya"]
+[ext_resource type="Script" path="res://items/item.gd" id="3_p8kqv"]
+
+[resource]
+script = ExtResource("3_p8kqv")
+displayName = "Enchanted Wormroot"
+category = "Enchanted Material"
+icon = ExtResource("1_h5tav")
+rarity = ExtResource("2_oyyya")
+description = "32 Wormroot pressed into one. Better recipes ask for these."
+maxStack = 99
+sellPrice = 211

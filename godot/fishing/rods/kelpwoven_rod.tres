@@ -1,0 +1,31 @@
+[gd_resource type="Resource" script_class="RodItem" format=3]
+
+[ext_resource type="Script" path="res://fishing/tacklebox/tackle.gd" id="1_s4swk"]
+[ext_resource type="PackedScene" path="res://fishing/rods/starter_rod.tscn" id="2_2sq1m"]
+[ext_resource type="Texture2D" path="res://fishing/rods/icons/kelpwoven_rod.png" id="3_5xgk2"]
+[ext_resource type="Resource" path="res://items/rarities/rare.tres" id="4_j0to0"]
+[ext_resource type="Script" path="res://fishing/rods/rod_item.gd" id="5_hsgo8"]
+[ext_resource type="Resource" path="res://fishing/tacklebox/tackle/basic_bobber.tres" id="6_kn37v"]
+[ext_resource type="Resource" path="res://fishing/tacklebox/tackle/basic_line.tres" id="7_0qaxv"]
+[ext_resource type="Resource" path="res://fishing/tacklebox/tackle/basic_hook.tres" id="8_j6jae"]
+
+[sub_resource type="Resource" id="Resource_3ubh2"]
+script = ExtResource("1_s4swk")
+kind = 3
+biteSpeed = 1.1
+reelSpeed = 1.2
+displayName = "Kelpwoven Rod"
+
+[resource]
+script = ExtResource("5_hsgo8")
+slots = Array[int]([0, 1, 1, 2, 3, 4])
+tackle = Array[ExtResource("1_s4swk")]([ExtResource("6_kn37v"), ExtResource("7_0qaxv"), null, ExtResource("8_j6jae"), null, null])
+builtIn = SubResource("Resource_3ubh2")
+rodTint = Color(0.2901961, 0.6039216, 0.3529412, 1)
+displayName = "Kelpwoven Rod"
+icon = ExtResource("3_5xgk2")
+rarity = ExtResource("4_j0to0")
+description = "A crafted rod. T to customize it."
+heldScene = ExtResource("2_2sq1m")
+discardable = false
+hint = "T to customize"

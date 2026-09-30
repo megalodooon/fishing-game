@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="BaitRecipe" format=3]
+
+[ext_resource type="Resource" path="res://items/charms/alchemist_2.tres" id="1_p0r5k"]
+[ext_resource type="Resource" path="res://items/enchanted/enchanted_swamp_moss.tres" id="2_2pv2k"]
+[ext_resource type="Resource" path="res://items/materials/pearl_dust.tres" id="3_3rc3i"]
+[ext_resource type="Resource" path="res://items/charms/alchemist_3.tres" id="4_u23q4"]
+[ext_resource type="Script" path="res://fishing/bait/bait_recipe.gd" id="5_tcr26"]
+
+[resource]
+script = ExtResource("5_tcr26")
+output = ExtResource("4_u23q4")
+amount = 1
+ingredients = Array[Resource]([ExtResource("1_p0r5k"), ExtResource("2_2pv2k"), ExtResource("3_3rc3i")])
+counts = Array[int]([1, 8, 3])
+xp = 90.0
+station = &"forge"
+category = "Charms"
+requiredSkill = &"alchemy"
+requiredLevel = 20

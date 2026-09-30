@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="BaitRecipe" format=3]
+
+[ext_resource type="Resource" path="res://fishing/bait/salted_bait.tres" id="1_axj8g"]
+[ext_resource type="Resource" path="res://items/materials/sea_salt.tres" id="2_e3ypj"]
+[ext_resource type="Resource" path="res://items/rarities/common.tres" id="3_n2q5w"]
+[ext_resource type="Script" path="res://fishing/bait/bait_recipe.gd" id="4_8psa3"]
+
+[resource]
+script = ExtResource("4_8psa3")
+bait = ExtResource("1_axj8g")
+amount = 10
+ingredients = Array[Resource]([ExtResource("2_e3ypj"), ExtResource("3_n2q5w")])
+counts = Array[int]([2, 1])
+xp = 6.0
+category = "Bait"
+requiredSkill = &"fishing"
+requiredLevel = 4

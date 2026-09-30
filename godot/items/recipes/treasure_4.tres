@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="BaitRecipe" format=3]
+
+[ext_resource type="Resource" path="res://items/charms/treasure_3.tres" id="1_tw1v5"]
+[ext_resource type="Resource" path="res://items/enchanted/enchanted_gull_feather.tres" id="2_rk8n5"]
+[ext_resource type="Resource" path="res://items/rare/pirate_doubloon.tres" id="3_ptv1b"]
+[ext_resource type="Resource" path="res://items/charms/treasure_4.tres" id="4_0dto5"]
+[ext_resource type="Script" path="res://fishing/bait/bait_recipe.gd" id="5_glyre"]
+
+[resource]
+script = ExtResource("5_glyre")
+output = ExtResource("4_0dto5")
+amount = 1
+ingredients = Array[Resource]([ExtResource("1_tw1v5"), ExtResource("2_rk8n5"), ExtResource("3_ptv1b")])
+counts = Array[int]([1, 24, 1])
+xp = 120.0
+station = &"forge"
+category = "Charms"
+requiredSkill = &"fishing"
+requiredLevel = 30

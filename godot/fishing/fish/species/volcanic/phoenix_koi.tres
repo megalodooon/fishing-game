@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="FishData" format=3 uid="uid://b0vyent5sro5b"]
+
+[ext_resource type="Script" uid="uid://bevdmlyak68oo" path="res://fishing/fish/fish_data.gd" id="1_fish"]
+[ext_resource type="Texture2D" uid="uid://goxy8n26ipy1" path="res://fishing/fish/assets/volcanic/phoenix_koi.png" id="2_icon"]
+[ext_resource type="Resource" path="res://items/rarities/trophy.tres" id="3_rarity"]
+[ext_resource type="Resource" path="res://fishing/bait/ember_bait.tres" id="b_ember_bait"]
+[ext_resource type="Script" uid="uid://b3bmwcwg3hf7i" path="res://fishing/fish/requirements/bait_requirement.gd" id="s_b"]
+[ext_resource type="Script" uid="uid://dupq0iwgv25f6" path="res://fishing/fish/requirements/fish_requirement.gd" id="s_req"]
+
+[sub_resource type="Resource" id="Req_1"]
+script = ExtResource("s_b")
+bait = ExtResource("b_ember_bait")
+
+[resource]
+script = ExtResource("1_fish")
+displayName = "Phoenix Koi"
+icon = ExtResource("2_icon")
+rarity = ExtResource("3_rarity")
+description = "Legend says it rises from the lava at night, drawn to ember bait."
+weightRange = Vector2(3, 10)
+basePrice = 2500
+heldSize = 1.3
+hours = Vector2(20, 24)
+requirements = Array[ExtResource("s_req")]([SubResource("Req_1")])
+chance = 8.0

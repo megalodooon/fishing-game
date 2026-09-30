@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="Snack" format=3]
+
+[ext_resource type="Texture2D" path="res://items/snacks/icons/crab_cakes.png" id="1_40pcc"]
+[ext_resource type="Resource" path="res://items/rarities/uncommon.tres" id="2_tc4ev"]
+[ext_resource type="Script" path="res://items/snacks/snack.gd" id="3_ir4rv"]
+
+[resource]
+script = ExtResource("3_ir4rv")
+energy = 45.0
+buffStat = "treasure"
+buffAmount = 1.01
+displayName = "Crab Cakes"
+icon = ExtResource("1_40pcc")
+rarity = ExtResource("2_tc4ev")
+description = "Cooked at a kitchen."
+hint = "Click while holding it to eat"
+maxStack = 20
+sellPrice = 45

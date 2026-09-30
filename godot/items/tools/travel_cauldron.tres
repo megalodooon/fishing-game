@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Item" format=3]
+
+[ext_resource type="Texture2D" path="res://items/tools/icons/travel_cauldron.png" id="1_rvdic"]
+[ext_resource type="Resource" path="res://items/rarities/legendary.tres" id="2_42adl"]
+[ext_resource type="Script" path="res://items/item.gd" id="3_nhw18"]
+
+[resource]
+script = ExtResource("3_nhw18")
+displayName = "Travel Cauldron"
+category = "Tool"
+icon = ExtResource("1_rvdic")
+rarity = ExtResource("2_42adl")
+description = "Auntie Moss's spare. Carry it to brew cauldron recipes anywhere."

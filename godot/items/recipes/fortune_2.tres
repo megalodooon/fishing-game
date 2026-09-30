@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="BaitRecipe" format=3]
+
+[ext_resource type="Resource" path="res://items/charms/fortune_1.tres" id="1_cjvck"]
+[ext_resource type="Resource" path="res://items/enchanted/enchanted_starfish.tres" id="2_v5rlm"]
+[ext_resource type="Resource" path="res://items/materials/iron_ingot.tres" id="3_v3vki"]
+[ext_resource type="Resource" path="res://items/charms/fortune_2.tres" id="4_jy4f7"]
+[ext_resource type="Script" path="res://fishing/bait/bait_recipe.gd" id="5_7btxt"]
+
+[resource]
+script = ExtResource("5_7btxt")
+output = ExtResource("4_jy4f7")
+amount = 1
+ingredients = Array[Resource]([ExtResource("1_cjvck"), ExtResource("2_v5rlm"), ExtResource("3_v3vki")])
+counts = Array[int]([1, 2, 2])
+xp = 60.0
+station = &"workbench"
+category = "Charms"
+requiredSkill = &"fishing"
+requiredLevel = 14
