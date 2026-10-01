@@ -106,6 +106,9 @@ func interact(who : Player) -> void:
 		who.progress.set_flag("talked/" + scene)
 		talk.play(scene, func(_choice : int) -> void: talk.converse(self, who))
 		return
+	if Friendship.TASTES.has(id) and not Features.seen(who, "friends"):
+		Features.introduce(who, "friends", talk.converse.bind(self, who))
+		return
 	talk.converse(self, who)
 
 # Their jobs that can be taken, are going or are ready.

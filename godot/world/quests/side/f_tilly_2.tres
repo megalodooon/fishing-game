@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="Quest" format=3]
+
+[ext_resource type="Script" path="res://world/quests/quest_goal.gd" id="1_vivbe"]
+[ext_resource type="Resource" path="res://items/materials/pumpkin.tres" id="2_y81ar"]
+[ext_resource type="Script" path="res://world/quests/quest.gd" id="3_kj2pe"]
+[ext_resource type="Resource" path="res://world/quests/side/f_tilly_1.tres" id="4_p61gw"]
+[ext_resource type="Script" path="res://items/item.gd" id="5_pvp1w"]
+[ext_resource type="Resource" path="res://items/charms/harvest_1.tres" id="6_mdhh1"]
+[ext_resource type="Resource" path="res://items/potions/green_thumb_potion.tres" id="7_2v4ku"]
+[ext_resource type="Script" path="res://world/location.gd" id="8_pe3pr"]
+
+[sub_resource type="Resource" id="Resource_v5tku"]
+script = ExtResource("1_vivbe")
+kind = 2
+target = ExtResource("2_y81ar")
+amount = 10
+
+[resource]
+script = ExtResource("3_kj2pe")
+title = "Prize Pumpkins"
+giver = "Tilly"
+description = "Tilly wants to win the autumn fair with the biggest pumpkins on the coast."
+goals = Array[ExtResource("1_vivbe")]([SubResource("Resource_v5tku")])
+startScene = "f_tilly_2_start"
+endScene = "f_tilly_2_end"
+requires = Array[ExtResource("3_kj2pe")]([ExtResource("4_p61gw")])
+heartsWith = "tilly"
+requiredHearts = 6
+rewardItems = Array[ExtResource("5_pvp1w")]([ExtResource("6_mdhh1"), ExtResource("7_2v4ku")])
+rewardAmounts = Array[int]([1, 3])

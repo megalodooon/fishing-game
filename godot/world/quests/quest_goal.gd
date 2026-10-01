@@ -5,7 +5,7 @@ class_name QuestGoal
 # they happen after the quest is taken. Deliver goals look in the bag and take
 # the items at the end, flag, tank, skill and boat goals just have to be true.
 
-enum Kind { CATCH, SELL, DELIVER, VISIT, FLAG, TANK, CRAFT, BEAT, SKILL, BOAT, COUNTER }
+enum Kind { CATCH, SELL, DELIVER, VISIT, FLAG, TANK, CRAFT, BEAT, SKILL, BOAT, COUNTER, METRIC }
 
 #------------------------#
 @export var kind : Kind = Kind.CATCH
@@ -17,7 +17,11 @@ enum Kind { CATCH, SELL, DELIVER, VISIT, FLAG, TANK, CRAFT, BEAT, SKILL, BOAT, C
 @export var weather : int = -1
 # Flag goals: the progress flag. Skill goals: the skill (like "fishing").
 # Boat goals: the part (like "hull"). Counter goals: a Progress counter,
-# like "pearls" or "tournaments" (give them a text).
+# like "pearls" or "tournaments" (give them a text). Metric goals: one of
+# "bank" (coins in the bank), "angler" (Angler Level), "hearts:<id>" (hearts
+# with someone), "friends:<hearts>" (villagers at least that friendly),
+# "power" (Magical Power), "crew" (crew hired), "museum" (museum points),
+# "trophies" (trophy tiers caught).
 @export var flag : String = ""
 # Coins for sell goals.
 @export var amount : int = 1
@@ -53,6 +57,8 @@ func describe() -> String:
 		Kind.BOAT:
 			return "Build the %s" % BoatParts.tier_name(StringName(flag), amount)
 		Kind.COUNTER:
+			return "%s: %d" % [flag.capitalize(), amount]
+		Kind.METRIC:
 			return "%s: %d" % [flag.capitalize(), amount]
 	return flag
 
@@ -126,7 +132,30 @@ func progress(player : Player, counted : int) -> int:
 			return mini(BoatParts.tier(player.progress, StringName(flag)), amount)
 		Kind.COUNTER:
 			return mini(player.progress.counter(flag), amount)
+		Kind.METRIC:
+			return mini(metric(player, flag), amount)
 	return mini(counted, amount)
+
+static func metric(player : Player, name : String) -> int:
+	var state : Progress = player.progress
+	if name.begins_with("hearts:"):
+		return Friendship.hearts(state, name.substr(7))
+	if name.begins_with("friends:"):
+		return Friendship.count_at(state, int(name.substr(8)))
+	match name:
+		"bank":
+			return Bank.coins(state)
+		"angler":
+			return AnglerLevel.level(player)
+		"power":
+			return CharmPouch.magical_power(player)
+		"crew":
+			return state.crew.size()
+		"museum":
+			return Museum.points(state)
+		"trophies":
+			return TrophyFishing.tiers_caught(state)
+	return 0
 
 func needed() -> int:
 	return 1 if kind == Kind.FLAG or kind == Kind.TANK else amount

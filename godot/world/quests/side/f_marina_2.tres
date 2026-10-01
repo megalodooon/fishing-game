@@ -1,0 +1,37 @@
+[gd_resource type="Resource" script_class="Quest" format=3]
+
+[ext_resource type="Script" path="res://world/quests/quest_goal.gd" id="1_ly6kl"]
+[ext_resource type="Resource" path="res://items/materials/iron_ingot.tres" id="2_r8w3h"]
+[ext_resource type="Resource" path="res://items/materials/treated_plank.tres" id="3_ut5db"]
+[ext_resource type="Script" path="res://world/quests/quest.gd" id="4_3pr07"]
+[ext_resource type="Resource" path="res://world/quests/side/f_marina_1.tres" id="5_102ob"]
+[ext_resource type="Script" path="res://items/item.gd" id="6_3ci4i"]
+[ext_resource type="Resource" path="res://items/enchanting/sea_essence.tres" id="7_kxvyf"]
+[ext_resource type="Script" path="res://world/location.gd" id="8_7ep61"]
+
+[sub_resource type="Resource" id="Resource_sbkx1"]
+script = ExtResource("1_ly6kl")
+kind = 2
+target = ExtResource("2_r8w3h")
+amount = 8
+
+[sub_resource type="Resource" id="Resource_qku6u"]
+script = ExtResource("1_ly6kl")
+kind = 2
+target = ExtResource("3_ut5db")
+amount = 8
+
+[resource]
+script = ExtResource("4_3pr07")
+title = "A Hull of Her Own"
+giver = "Marina"
+description = "Marina is building her own boat, finally. She needs iron and treated wood."
+goals = Array[ExtResource("1_ly6kl")]([SubResource("Resource_sbkx1"), SubResource("Resource_qku6u")])
+startScene = "f_marina_2_start"
+endScene = "f_marina_2_end"
+requires = Array[ExtResource("4_3pr07")]([ExtResource("5_102ob")])
+heartsWith = "marina"
+requiredHearts = 6
+rewardCoins = 2000
+rewardItems = Array[ExtResource("6_3ci4i")]([ExtResource("7_kxvyf")])
+rewardAmounts = Array[int]([20])

@@ -13,6 +13,9 @@ const DIM : Color = Color(0.58, 0.67, 0.78)
 enum Tab { DONATE, COLLECTION }
 
 
+func intro_id() -> String:
+	return "museum"
+
 func theme_name() -> String:
 	return "glass"
 

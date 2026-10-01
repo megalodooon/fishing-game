@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="Quest" format=3]
+
+[ext_resource type="Script" path="res://world/quests/quest_goal.gd" id="1_c3i15"]
+[ext_resource type="Resource" path="res://items/materials/rope.tres" id="2_di11k"]
+[ext_resource type="Script" path="res://world/quests/quest.gd" id="3_ghmoh"]
+[ext_resource type="Script" path="res://items/item.gd" id="4_e0mly"]
+[ext_resource type="Script" path="res://world/location.gd" id="5_a7fvk"]
+
+[sub_resource type="Resource" id="Resource_j6w8u"]
+script = ExtResource("1_c3i15")
+kind = 2
+target = ExtResource("2_di11k")
+amount = 10
+
+[resource]
+script = ExtResource("3_ghmoh")
+title = "Rope for the Rigging"
+giver = "Marina"
+description = "A boatyard runs on rope. Lots of rope."
+goals = Array[ExtResource("1_c3i15")]([SubResource("Resource_j6w8u")])
+startScene = "f_marina_1_start"
+endScene = "f_marina_1_end"
+heartsWith = "marina"
+requiredHearts = 3
+rewardCoins = 600

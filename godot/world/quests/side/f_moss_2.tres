@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="Quest" format=3]
+
+[ext_resource type="Script" path="res://world/quests/quest_goal.gd" id="1_vcgp6"]
+[ext_resource type="Resource" path="res://items/potions/anglers_brew_2.tres" id="2_qwqw2"]
+[ext_resource type="Script" path="res://world/quests/quest.gd" id="3_ig1p3"]
+[ext_resource type="Resource" path="res://world/quests/side/f_moss_1.tres" id="4_7fowb"]
+[ext_resource type="Script" path="res://items/item.gd" id="5_0njp2"]
+[ext_resource type="Resource" path="res://items/charms/alchemist_2.tres" id="6_b76is"]
+[ext_resource type="Script" path="res://world/location.gd" id="7_y2e8c"]
+
+[sub_resource type="Resource" id="Resource_53ih4"]
+script = ExtResource("1_vcgp6")
+kind = 2
+target = ExtResource("2_qwqw2")
+amount = 2
+
+[resource]
+script = ExtResource("3_ig1p3")
+title = "Auntie's Apprentice"
+giver = "Auntie Moss"
+description = "Show Auntie Moss you can brew: bring her two Angler's Brews of the second kind."
+goals = Array[ExtResource("1_vcgp6")]([SubResource("Resource_53ih4")])
+startScene = "f_moss_2_start"
+endScene = "f_moss_2_end"
+requires = Array[ExtResource("3_ig1p3")]([ExtResource("4_7fowb")])
+heartsWith = "moss"
+requiredHearts = 6
+rewardItems = Array[ExtResource("5_0njp2")]([ExtResource("6_b76is")])
+rewardAmounts = Array[int]([1])

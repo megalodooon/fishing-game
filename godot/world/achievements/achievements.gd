@@ -55,7 +55,7 @@ const LIST : Array = [
 	["chapter_4", "Deep Trouble", "Win the Village Cup.", "Story", 0, false, "chapter", 3, 0],
 	["chapter_6", "Frost and Fire", "Learn of the Four Tides.", "Story", 1, false, "chapter", 5, 0],
 	["chapter_8", "The Rig", "Learn the truth about the storm.", "Story", 1, false, "chapter", 7, 0],
-	["chapter_11", "Champion of the Seas", "Finish the story.", "Story", 2, false, "chapter", 12, 0],
+	["chapter_11", "Champion of the Seas", "Finish the story.", "Story", 2, false, "chapter", 10, 0],
 	["quests_10", "Helping Hand", "Finish 10 quests.", "Story", 0, false, "quests", 10, 0],
 	["quests_60", "Pillar of the Village", "Finish 60 quests.", "Story", 1, false, "quests", 60, 0],
 	["quests_all", "Nothing Left Undone", "Finish every quest.", "Story", 2, false, "quests_all", 0, 0],

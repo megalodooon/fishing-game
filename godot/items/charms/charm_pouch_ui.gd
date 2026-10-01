@@ -95,7 +95,19 @@ func next_slot_level() -> int:
 	var every : int = AnglerLevel.POUCH_EVERY
 	return (floori(AnglerLevel.level(player) / float(every)) + 1) * every
 
+# Out of the hub strip until there's a charm to put in it.
+func hub_available() -> bool:
+	if not player or not player.progress:
+		return false
+	if not player.progress.charms.is_empty() or Features.seen(player, "charms"):
+		return true
+	for item in player.inventory.items:
+		if item is Charm:
+			return true
+	return false
+
 func hub_open() -> void:
+	Features.introduce(player, "charms")
 	if not shown:
 		MenuHub.menu_opened(get_tree(), self)
 		player.frozen = true

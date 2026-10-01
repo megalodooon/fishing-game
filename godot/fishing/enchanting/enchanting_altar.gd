@@ -11,6 +11,9 @@ const BAD : Color = Color(0.95, 0.38, 0.34)
 const DIM : Color = Color(0.58, 0.67, 0.78)
 
 
+func intro_id() -> String:
+	return "enchanting"
+
 func theme_name() -> String:
 	return "glass"
 

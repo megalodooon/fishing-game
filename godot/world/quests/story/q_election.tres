@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="Quest" format=3]
+
+[ext_resource type="Script" path="res://world/quests/quest_goal.gd" id="1_k1t0j"]
+[ext_resource type="Script" path="res://world/quests/quest.gd" id="2_fph3b"]
+[ext_resource type="Resource" path="res://world/quests/story/q_rex_secret.tres" id="3_u5abq"]
+[ext_resource type="Script" path="res://items/item.gd" id="4_5s5au"]
+[ext_resource type="Script" path="res://world/location.gd" id="5_ryht6"]
+
+[sub_resource type="Resource" id="Resource_rgs1o"]
+script = ExtResource("1_k1t0j")
+kind = 11
+flag = "friends:3"
+amount = 4
+text = "Reach 3 hearts with 4 villagers"
+
+[sub_resource type="Resource" id="Resource_yg8hk"]
+script = ExtResource("1_k1t0j")
+kind = 10
+flag = "votes"
+text = "Vote at the ballot box"
+
+[resource]
+script = ExtResource("2_fph3b")
+title = "The Election"
+giver = "Harbor Master Pip"
+description = "Vera Voss is running for the Harbor Council. If she wins, Deepnet runs the village. Earn the villagers' trust and cast your vote at the ballot box."
+story = true
+goals = Array[ExtResource("1_k1t0j")]([SubResource("Resource_rgs1o"), SubResource("Resource_yg8hk")])
+startScene = "q_election_start"
+endScene = "q_election_end"
+requires = Array[ExtResource("2_fph3b")]([ExtResource("3_u5abq")])
+rewardCoins = 1500

@@ -1,5 +1,43 @@
 [gd_scene format=3 uid="uid://dllmcgwhro5aj"]
 
+[ext_resource type="Resource" path="res://world/quests/story/q_rex_secret.tres" id="nq_story_q_rex_secret"]
+[ext_resource type="Resource" path="res://world/quests/story/q_election.tres" id="nq_story_q_election"]
+[ext_resource type="Resource" path="res://world/quests/story/q_savings.tres" id="nq_story_q_savings"]
+[ext_resource type="Resource" path="res://world/quests/story/q_ledger.tres" id="nq_story_q_ledger"]
+[ext_resource type="Resource" path="res://world/quests/story/q_debt_free.tres" id="nq_story_q_debt_free"]
+[ext_resource type="Resource" path="res://world/quests/side/f_barnaby_1.tres" id="nq_side_f_barnaby_1"]
+[ext_resource type="Resource" path="res://world/quests/side/f_barnaby_2.tres" id="nq_side_f_barnaby_2"]
+[ext_resource type="Resource" path="res://world/quests/side/f_bo_1.tres" id="nq_side_f_bo_1"]
+[ext_resource type="Resource" path="res://world/quests/side/f_bo_2.tres" id="nq_side_f_bo_2"]
+[ext_resource type="Resource" path="res://world/quests/side/f_vera_1.tres" id="nq_side_f_vera_1"]
+[ext_resource type="Resource" path="res://world/quests/side/f_vera_2.tres" id="nq_side_f_vera_2"]
+[ext_resource type="Resource" path="res://world/quests/story/q_crew.tres" id="nq_story_q_crew"]
+[ext_resource type="Resource" path="res://world/quests/side/x_crew_5.tres" id="nq_side_x_crew_5"]
+[ext_resource type="Resource" path="res://world/quests/side/f_marina_1.tres" id="nq_side_f_marina_1"]
+[ext_resource type="Resource" path="res://world/quests/side/f_marina_2.tres" id="nq_side_f_marina_2"]
+[ext_resource type="Resource" path="res://world/quests/side/f_rex_1.tres" id="nq_side_f_rex_1"]
+[ext_resource type="Resource" path="res://world/quests/side/f_rex_2.tres" id="nq_side_f_rex_2"]
+[ext_resource type="Resource" path="res://world/quests/story/q_lodge.tres" id="nq_story_q_lodge"]
+[ext_resource type="Resource" path="res://world/quests/side/x_trophy_5.tres" id="nq_side_x_trophy_5"]
+[ext_resource type="Resource" path="res://world/quests/side/x_trophy_diamond.tres" id="nq_side_x_trophy_diamond"]
+[ext_resource type="Resource" path="res://world/quests/side/f_odette_1.tres" id="nq_side_f_odette_1"]
+[ext_resource type="Resource" path="res://world/quests/side/f_odette_2.tres" id="nq_side_f_odette_2"]
+[ext_resource type="Resource" path="res://world/quests/story/q_forage.tres" id="nq_story_q_forage"]
+[ext_resource type="Resource" path="res://world/quests/story/q_friends.tres" id="nq_story_q_friends"]
+[ext_resource type="Resource" path="res://world/quests/story/q_bank.tres" id="nq_story_q_bank"]
+[ext_resource type="Resource" path="res://world/quests/side/x_friends.tres" id="nq_side_x_friends"]
+[ext_resource type="Resource" path="res://world/quests/side/x_angler_20.tres" id="nq_side_x_angler_20"]
+[ext_resource type="Resource" path="res://world/quests/side/f_pip_1.tres" id="nq_side_f_pip_1"]
+[ext_resource type="Resource" path="res://world/quests/side/f_pip_2.tres" id="nq_side_f_pip_2"]
+[ext_resource type="Resource" path="res://world/quests/side/f_gus_1.tres" id="nq_side_f_gus_1"]
+[ext_resource type="Resource" path="res://world/quests/side/f_gus_2.tres" id="nq_side_f_gus_2"]
+[ext_resource type="Resource" path="res://world/quests/story/q_museum.tres" id="nq_story_q_museum"]
+[ext_resource type="Resource" path="res://world/quests/side/x_museum_40.tres" id="nq_side_x_museum_40"]
+[ext_resource type="Resource" path="res://world/quests/side/f_nora_1.tres" id="nq_side_f_nora_1"]
+[ext_resource type="Resource" path="res://world/quests/side/f_nora_2.tres" id="nq_side_f_nora_2"]
+[ext_resource type="Resource" path="res://world/quests/side/x_derby_gold.tres" id="nq_side_x_derby_gold"]
+[ext_resource type="Resource" path="res://world/quests/side/f_hale_1.tres" id="nq_side_f_hale_1"]
+[ext_resource type="Resource" path="res://world/quests/side/f_hale_2.tres" id="nq_side_f_hale_2"]
 [ext_resource type="Script" uid="uid://bjuh2hyenf8ng" path="res://world/island/island.gd" id="1_island"]
 [ext_resource type="Script" uid="uid://cmqtldt3tm5yw" path="res://world/island/island_room.gd" id="2_room"]
 [ext_resource type="PackedScene" uid="uid://dw4byakruepaa" path="res://oceans/basic/basic_ocean.tscn" id="3_ocean"]
@@ -763,7 +801,7 @@ reach = 8.0
 position = Vector2(119, 68)
 script = ExtResource("v_e1")
 id = "pip"
-quests = Array[ExtResource("v_e2")]([ExtResource("v_e3"), ExtResource("v_e4"), ExtResource("v_e5"), ExtResource("v_e6"), ExtResource("v_e7"), ExtResource("v_e8"), ExtResource("v_e9"), ExtResource("v_e10"), ExtResource("v_e11"), ExtResource("v_e12"), ExtResource("xq_festival")])
+quests = Array[ExtResource("v_e2")]([ExtResource("v_e3"), ExtResource("v_e4"), ExtResource("v_e5"), ExtResource("v_e6"), ExtResource("v_e7"), ExtResource("v_e8"), ExtResource("v_e9"), ExtResource("v_e10"), ExtResource("v_e11"), ExtResource("v_e12"), ExtResource("xq_festival"), ExtResource("nq_story_q_forage"), ExtResource("nq_story_q_friends"), ExtResource("nq_story_q_bank"), ExtResource("nq_side_x_friends"), ExtResource("nq_side_x_angler_20"), ExtResource("nq_side_f_pip_1"), ExtResource("nq_side_f_pip_2"), ExtResource("nq_story_q_election")])
 greeting = "Welcome home."
 art = NodePath("Art")
 reach = 12.0
@@ -785,6 +823,7 @@ shape = SubResource("v_s1")
 position = Vector2(108, 96)
 script = ExtResource("v_e1")
 id = "rex"
+quests = Array[ExtResource("v_e2")]([ExtResource("nq_side_f_rex_1"), ExtResource("nq_side_f_rex_2"), ExtResource("nq_story_q_rex_secret")])
 greeting = "Oh. It's you."
 art = NodePath("Art")
 appearFlag = "quest/q_pots"
@@ -1100,7 +1139,7 @@ promptOffset = Vector2(0, -22)
 position = Vector2(50, 60)
 script = ExtResource("v_e1")
 id = "gus"
-quests = Array[ExtResource("v_e2")]([ExtResource("v_e15"), ExtResource("v_e16"), ExtResource("v_e17"), ExtResource("v_e18"), ExtResource("v_e19"), ExtResource("xq_orders")])
+quests = Array[ExtResource("v_e2")]([ExtResource("v_e15"), ExtResource("v_e16"), ExtResource("v_e17"), ExtResource("v_e18"), ExtResource("v_e19"), ExtResource("xq_orders"), ExtResource("nq_side_f_gus_1"), ExtResource("nq_side_f_gus_2")])
 greeting = "Fresh fish! Well, fish."
 art = NodePath("Art")
 service = NodePath("Orders")
@@ -1131,7 +1170,7 @@ listed = false
 position = Vector2(122, 56)
 script = ExtResource("v_e1")
 id = "nora"
-quests = Array[ExtResource("v_e2")]([ExtResource("v_e21"), ExtResource("v_e22"), ExtResource("v_e23"), ExtResource("v_e24"), ExtResource("v_e25"), ExtResource("v_e26"), ExtResource("v_e27"), ExtResource("v_e28"), ExtResource("v_e29"), ExtResource("v_e30"), ExtResource("v_e31"), ExtResource("v_e32"), ExtResource("v_e33"), ExtResource("v_e34"), ExtResource("v_e35"), ExtResource("v_e36"), ExtResource("xq_recipes"), ExtResource("xq_rare")])
+quests = Array[ExtResource("v_e2")]([ExtResource("v_e21"), ExtResource("v_e22"), ExtResource("v_e23"), ExtResource("v_e24"), ExtResource("v_e25"), ExtResource("v_e26"), ExtResource("v_e27"), ExtResource("v_e28"), ExtResource("v_e29"), ExtResource("v_e30"), ExtResource("v_e31"), ExtResource("v_e32"), ExtResource("v_e33"), ExtResource("v_e34"), ExtResource("v_e35"), ExtResource("v_e36"), ExtResource("xq_recipes"), ExtResource("xq_rare"), ExtResource("nq_story_q_museum"), ExtResource("nq_side_x_museum_40"), ExtResource("nq_side_f_nora_1"), ExtResource("nq_side_f_nora_2")])
 greeting = "Oh! Hello!"
 art = NodePath("Art")
 service = NodePath("Museum")
@@ -1160,6 +1199,7 @@ listed = false
 position = Vector2(160, 72)
 script = ExtResource("v_e1")
 id = "vera"
+quests = Array[ExtResource("v_e2")]([ExtResource("nq_side_f_vera_1"), ExtResource("nq_side_f_vera_2")])
 greeting = "Charming little village. For now."
 art = NodePath("Art")
 appearFlag = "quest/q_aquarium"
@@ -1287,7 +1327,7 @@ reach = 8.0
 position = Vector2(116, 96)
 script = ExtResource("v_e1")
 id = "hale"
-quests = Array[ExtResource("v_e2")]([ExtResource("v_e53"), ExtResource("v_e54"), ExtResource("v_e55"), ExtResource("v_e56"), ExtResource("v_e57"), ExtResource("v_e58"), ExtResource("v_e59"), ExtResource("v_e60"), ExtResource("v_e61"), ExtResource("v_e62")])
+quests = Array[ExtResource("v_e2")]([ExtResource("v_e53"), ExtResource("v_e54"), ExtResource("v_e55"), ExtResource("v_e56"), ExtResource("v_e57"), ExtResource("v_e58"), ExtResource("v_e59"), ExtResource("v_e60"), ExtResource("v_e61"), ExtResource("v_e62"), ExtResource("nq_side_x_derby_gold"), ExtResource("nq_side_f_hale_1"), ExtResource("nq_side_f_hale_2")])
 greeting = "Ahem. Tournament business."
 art = NodePath("Art")
 appearFlag = "quest/q_debt"
@@ -1568,7 +1608,7 @@ reach = 8.0
 position = Vector2(140, 56)
 script = ExtResource("v_e1")
 id = "marina"
-quests = Array[ExtResource("v_e2")]([ExtResource("v_e39"), ExtResource("v_e40"), ExtResource("v_e41"), ExtResource("v_e42"), ExtResource("v_e43"), ExtResource("v_e44"), ExtResource("v_e45"), ExtResource("v_e46"), ExtResource("v_e47"), ExtResource("v_e48"), ExtResource("xq_reforge")])
+quests = Array[ExtResource("v_e2")]([ExtResource("v_e39"), ExtResource("v_e40"), ExtResource("v_e41"), ExtResource("v_e42"), ExtResource("v_e43"), ExtResource("v_e44"), ExtResource("v_e45"), ExtResource("v_e46"), ExtResource("v_e47"), ExtResource("v_e48"), ExtResource("xq_reforge"), ExtResource("nq_story_q_crew"), ExtResource("nq_side_x_crew_5"), ExtResource("nq_side_f_marina_1"), ExtResource("nq_side_f_marina_2")])
 greeting = "Mind the tar."
 art = NodePath("Art")
 reach = 12.0
@@ -1590,7 +1630,7 @@ shape = SubResource("v_s6")
 position = Vector2(84, 58)
 script = ExtResource("v_e1")
 id = "bo"
-quests = Array[ExtResource("v_e2")]([ExtResource("v_e50"), ExtResource("v_e51")])
+quests = Array[ExtResource("v_e2")]([ExtResource("v_e50"), ExtResource("v_e51"), ExtResource("nq_side_f_bo_1"), ExtResource("nq_side_f_bo_2")])
 greeting = "Wanna see the pets?"
 art = NodePath("Art")
 reach = 12.0
@@ -1826,6 +1866,7 @@ promptOffset = Vector2(0, -26)
 position = Vector2(54, 60)
 script = ExtResource("v_e1")
 id = "barnaby"
+quests = Array[ExtResource("v_e2")]([ExtResource("nq_story_q_savings"), ExtResource("nq_story_q_ledger"), ExtResource("nq_story_q_debt_free"), ExtResource("nq_side_f_barnaby_1"), ExtResource("nq_side_f_barnaby_2")])
 greeting = "Coins, kept safe, growing quietly. That's the harbor way."
 art = NodePath("Art")
 appearFlag = "quest/q_debt"
@@ -1848,6 +1889,7 @@ shape = SubResource("v_s8")
 position = Vector2(122, 60)
 script = ExtResource("v_e1")
 id = "odette"
+quests = Array[ExtResource("v_e2")]([ExtResource("nq_story_q_lodge"), ExtResource("nq_side_x_trophy_5"), ExtResource("nq_side_x_trophy_diamond"), ExtResource("nq_side_f_odette_1"), ExtResource("nq_side_f_odette_2")])
 greeting = "Every fish has a story. The trophies have the best ones."
 art = NodePath("Art")
 appearFlag = "quest/q_reef"

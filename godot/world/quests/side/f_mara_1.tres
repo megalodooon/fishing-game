@@ -1,0 +1,34 @@
+[gd_resource type="Resource" script_class="Quest" format=3]
+
+[ext_resource type="Script" path="res://world/quests/quest_goal.gd" id="1_16wjs"]
+[ext_resource type="Resource" path="res://items/materials/chili_pepper.tres" id="2_2rfcq"]
+[ext_resource type="Resource" path="res://items/materials/ghost_pepper.tres" id="3_l1i5v"]
+[ext_resource type="Script" path="res://world/quests/quest.gd" id="4_eedw0"]
+[ext_resource type="Script" path="res://items/item.gd" id="5_gn572"]
+[ext_resource type="Resource" path="res://items/snacks/ember_curry.tres" id="6_apbwh"]
+[ext_resource type="Script" path="res://world/location.gd" id="7_xx1n5"]
+
+[sub_resource type="Resource" id="Resource_1rdrs"]
+script = ExtResource("1_16wjs")
+kind = 2
+target = ExtResource("2_2rfcq")
+amount = 10
+
+[sub_resource type="Resource" id="Resource_au032"]
+script = ExtResource("1_16wjs")
+kind = 2
+target = ExtResource("3_l1i5v")
+amount = 2
+
+[resource]
+script = ExtResource("4_eedw0")
+title = "Spice Run"
+giver = "Innkeeper Mara"
+description = "The inn's curry has gone bland. Mara needs peppers, hot ones."
+goals = Array[ExtResource("1_16wjs")]([SubResource("Resource_1rdrs"), SubResource("Resource_au032")])
+startScene = "f_mara_1_start"
+endScene = "f_mara_1_end"
+heartsWith = "mara"
+requiredHearts = 3
+rewardItems = Array[ExtResource("5_gn572")]([ExtResource("6_apbwh")])
+rewardAmounts = Array[int]([3])

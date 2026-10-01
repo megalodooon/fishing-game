@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="Quest" format=3]
+
+[ext_resource type="Script" path="res://world/quests/quest_goal.gd" id="1_lttec"]
+[ext_resource type="Script" path="res://world/quests/quest.gd" id="2_y0cit"]
+[ext_resource type="Resource" path="res://world/quests/story/q_museum.tres" id="3_3jmga"]
+[ext_resource type="Script" path="res://items/item.gd" id="4_lptbt"]
+[ext_resource type="Script" path="res://world/location.gd" id="5_7o37a"]
+
+[sub_resource type="Resource" id="Resource_t8upi"]
+script = ExtResource("1_lttec")
+kind = 11
+flag = "museum"
+amount = 40
+text = "Earn 40 museum points"
+
+[resource]
+script = ExtResource("2_y0cit")
+title = "Patron of the Museum"
+giver = "Nora"
+description = "The museum is filling up. Help it grow to 40 points."
+goals = Array[ExtResource("1_lttec")]([SubResource("Resource_t8upi")])
+startScene = "x_museum_40_start"
+endScene = "x_museum_40_end"
+requires = Array[ExtResource("2_y0cit")]([ExtResource("3_3jmga")])
+rewardCoins = 5000

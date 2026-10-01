@@ -281,6 +281,8 @@ func _gui_input(event : InputEvent) -> void:
 				match found.x:
 					Zone.TAB:
 						tab = found.y
+						if tab == Tab.TREE:
+							Features.introduce(player, "tide_tree")
 					Zone.CARD:
 						open_skill(Skills.LIST[found.y])
 					Zone.BACK:

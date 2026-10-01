@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="Quest" format=3]
+
+[ext_resource type="Script" path="res://world/quests/quest_goal.gd" id="1_1s8e3"]
+[ext_resource type="Script" path="res://world/quests/quest.gd" id="2_mibyb"]
+[ext_resource type="Resource" path="res://world/quests/side/x_trophy_5.tres" id="3_mr8v5"]
+[ext_resource type="Script" path="res://items/item.gd" id="4_0cih0"]
+[ext_resource type="Resource" path="res://items/trophy/trophy_scale.tres" id="5_854t8"]
+[ext_resource type="Script" path="res://world/location.gd" id="6_4vipd"]
+
+[sub_resource type="Resource" id="Resource_n8uli"]
+script = ExtResource("1_1s8e3")
+kind = 10
+flag = "trophy_diamond"
+text = "Catch a diamond trophy"
+
+[resource]
+script = ExtResource("2_mibyb")
+title = "Diamond Dreams"
+giver = "Odette"
+description = "A diamond trophy. Odette has only ever seen one."
+goals = Array[ExtResource("1_1s8e3")]([SubResource("Resource_n8uli")])
+startScene = "x_trophy_diamond_start"
+endScene = "x_trophy_diamond_end"
+requires = Array[ExtResource("2_mibyb")]([ExtResource("3_mr8v5")])
+rewardItems = Array[ExtResource("4_0cih0")]([ExtResource("5_854t8")])
+rewardAmounts = Array[int]([200])

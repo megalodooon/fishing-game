@@ -50,7 +50,14 @@ static func count_owned(player : Player, item : Item) -> int:
 	return player.inventory.count(item)
 
 
+# The first-use intro scene for this kind of counter (see Features), or "".
+func intro_id() -> String:
+	return ""
+
 func interact(player : Player) -> void:
+	Features.introduce(player, intro_id(), open_for.bind(player))
+
+func open_for(player : Player) -> void:
 	var menu : CounterUI = CounterUI.find(get_tree())
 	if menu:
 		menu.open_counter(self, player)

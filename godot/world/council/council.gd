@@ -12,7 +12,7 @@ const CANDIDATES : Array = [
 	["nora", "Curator", {&"xpBonus": 10.0}],
 	["marina", "Shipwright", {&"travelDiscount": 12.0}],
 	["tilly", "Harvest Fair", {&"harvestBonus": 25.0}],
-	["grim", "Buried Treasure", {&"treasure": 2.0}],
+	["grim", "Buried Treasure", {&"treasure": 2.0, &"digLuck": 40.0}],
 	["luma", "Starlight", {&"rareFind": 15.0}],
 	["opal", "Pearl Luck", {&"luck": 8.0}],
 	["brann", "Forgefire", {&"craftBonus": 8.0}],
@@ -20,6 +20,10 @@ const CANDIDATES : Array = [
 	["hale", "Tournament Fever", {&"weight": 10.0}],
 	["bo", "Pet Parade", {&"walkSpeed": 10.0}],
 	["silas", "Old Ways", {&"seaCreature": 2.0}],
+	["odette", "Trophy Season", {&"trophyLuck": 25.0}],
+	["pip", "Harbor Lights", {&"doubleCatch": 3.0}],
+	["mara", "Inn's Welcome", {&"foodPower": 25.0}],
+	["rex", "Rivalry", {&"biteSpeed": 8.0}],
 ]
 const PER_BALLOT : int = 3
 

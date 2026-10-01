@@ -21,6 +21,7 @@ func use(player : Player) -> bool:
 	player.inventory.take_one(player.heldSlot)
 	Digging.place_spot(player.get_tree())
 	player.say("X marks the spot! Follow the arrow.", Digging.COLOR)
+	Features.introduce(player, "digging")
 	return true
 
 func default_type() -> String:

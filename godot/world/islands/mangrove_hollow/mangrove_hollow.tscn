@@ -1,5 +1,7 @@
 [gd_scene format=3]
 
+[ext_resource type="Resource" path="res://world/quests/side/f_moss_1.tres" id="nq_side_f_moss_1"]
+[ext_resource type="Resource" path="res://world/quests/side/f_moss_2.tres" id="nq_side_f_moss_2"]
 [ext_resource type="Script" path="res://world/island/island.gd" id="i_e1"]
 [ext_resource type="Script" path="res://world/island/island_room.gd" id="i_e2"]
 [ext_resource type="Resource" path="res://oceans/islands/mangrove_biome.tres" id="i_e3"]
@@ -146,7 +148,7 @@ greeting = "Heh. Another visitor."
 reach = 12.0
 promptOffset = Vector2(0, -24)
 art = NodePath("Art")
-quests = Array[ExtResource("i_e9")]([ExtResource("i_e10"), ExtResource("i_e11"), ExtResource("i_e12"), ExtResource("i_e13")])
+quests = Array[ExtResource("i_e9")]([ExtResource("i_e10"), ExtResource("i_e11"), ExtResource("i_e12"), ExtResource("i_e13"), ExtResource("nq_side_f_moss_1"), ExtResource("nq_side_f_moss_2")])
 service = NodePath("Cauldron")
 serviceLabel = "Cauldron"
 shop = NodePath("Stall")

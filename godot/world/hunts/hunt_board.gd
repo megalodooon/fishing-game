@@ -13,6 +13,9 @@ const DIM : Color = Color(0.58, 0.67, 0.78)
 const PRICE : Color = Color(1.0, 0.9, 0.4)
 
 
+func intro_id() -> String:
+	return "hunts"
+
 func theme_name() -> String:
 	return "cork"
 

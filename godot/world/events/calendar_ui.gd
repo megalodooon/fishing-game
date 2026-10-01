@@ -93,6 +93,7 @@ func hub_news() -> bool:
 	return not Calendar.active(get_tree()).is_empty()
 
 func open_calendar() -> void:
+	Features.introduce(player, "calendar")
 	MenuHub.menu_opened(get_tree(), self)
 	player.frozen = true
 	var cycle : DayNightCycle = DayNightCycle.find(get_tree())

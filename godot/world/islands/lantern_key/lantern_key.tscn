@@ -1,5 +1,11 @@
 [gd_scene format=3]
 
+[ext_resource type="Resource" path="res://world/quests/story/q_altar.tres" id="nq_story_q_altar"]
+[ext_resource type="Resource" path="res://world/quests/story/q_enchant.tres" id="nq_story_q_enchant"]
+[ext_resource type="Resource" path="res://world/quests/side/x_tide.tres" id="nq_side_x_tide"]
+[ext_resource type="Resource" path="res://world/quests/side/x_enchant_10.tres" id="nq_side_x_enchant_10"]
+[ext_resource type="Resource" path="res://world/quests/side/f_luma_1.tres" id="nq_side_f_luma_1"]
+[ext_resource type="Resource" path="res://world/quests/side/f_luma_2.tres" id="nq_side_f_luma_2"]
 [ext_resource type="Script" path="res://world/island/island.gd" id="1_island"]
 [ext_resource type="Script" path="res://world/island/island_room.gd" id="2_room"]
 [ext_resource type="PackedScene" uid="uid://dw4byakruepaa" path="res://oceans/basic/basic_ocean.tscn" id="3_ocean"]
@@ -191,7 +197,7 @@ greeting = "The light's been out too long."
 reach = 12.0
 promptOffset = Vector2(0, -24)
 art = NodePath("Art")
-quests = Array[ExtResource("l_e2")]([ExtResource("l_e3"), ExtResource("l_e4"), ExtResource("l_e5"), ExtResource("l_e6"), ExtResource("l_e7"), ExtResource("l_e8"), ExtResource("l_e9")])
+quests = Array[ExtResource("l_e2")]([ExtResource("l_e3"), ExtResource("l_e4"), ExtResource("l_e5"), ExtResource("l_e6"), ExtResource("l_e7"), ExtResource("l_e8"), ExtResource("l_e9"), ExtResource("nq_story_q_altar"), ExtResource("nq_story_q_enchant"), ExtResource("nq_side_x_tide"), ExtResource("nq_side_x_enchant_10"), ExtResource("nq_side_f_luma_1"), ExtResource("nq_side_f_luma_2")])
 
 [node name="Art" type="Sprite2D" parent="Landing/Npc_Luma"]
 texture = ExtResource("l_e10")

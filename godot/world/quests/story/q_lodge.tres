@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="Quest" format=3]
+
+[ext_resource type="Script" path="res://world/quests/quest_goal.gd" id="1_buv7y"]
+[ext_resource type="Script" path="res://world/quests/quest.gd" id="2_55tfp"]
+[ext_resource type="Resource" path="res://world/quests/story/q_reef.tres" id="3_yfes5"]
+[ext_resource type="Script" path="res://items/item.gd" id="4_c3hqx"]
+[ext_resource type="Resource" path="res://items/trophy/trophy_scale.tres" id="5_q3hfq"]
+[ext_resource type="Script" path="res://world/location.gd" id="6_xhpl0"]
+
+[sub_resource type="Resource" id="Resource_dtyg2"]
+script = ExtResource("1_buv7y")
+kind = 10
+flag = "trophy_caught"
+text = "Catch a trophy fish"
+
+[resource]
+script = ExtResource("2_55tfp")
+title = "Odette's Lodge"
+giver = "Odette"
+description = "Odette hunts trophy fish: rare, proud fish that only bite when the conditions are just right. Catch one to show her you've got the knack."
+story = true
+goals = Array[ExtResource("1_buv7y")]([SubResource("Resource_dtyg2")])
+startScene = "q_lodge_start"
+endScene = "q_lodge_end"
+requires = Array[ExtResource("2_55tfp")]([ExtResource("3_yfes5")])
+rewardItems = Array[ExtResource("4_c3hqx")]([ExtResource("5_q3hfq")])
+rewardAmounts = Array[int]([20])
+rewardText = "The Trophy Lodge opens"

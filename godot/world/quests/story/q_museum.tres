@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="Quest" format=3]
+
+[ext_resource type="Script" path="res://world/quests/quest_goal.gd" id="1_iqt6g"]
+[ext_resource type="Script" path="res://world/quests/quest.gd" id="2_g0y0m"]
+[ext_resource type="Resource" path="res://world/quests/story/q_harbor_tank.tres" id="3_jnv8l"]
+[ext_resource type="Script" path="res://items/item.gd" id="4_r5hno"]
+[ext_resource type="Resource" path="res://items/enchanting/sea_essence.tres" id="5_ljmx2"]
+[ext_resource type="Script" path="res://world/location.gd" id="6_myygj"]
+
+[sub_resource type="Resource" id="Resource_j5aw4"]
+script = ExtResource("1_iqt6g")
+kind = 11
+flag = "museum"
+amount = 4
+text = "Earn 4 museum points"
+
+[resource]
+script = ExtResource("2_g0y0m")
+title = "A Museum by the Sea"
+giver = "Nora"
+description = "Nora wants a museum wing in the aquarium, for the rare things the sea gives up. Donate pieces to get it started."
+story = true
+goals = Array[ExtResource("1_iqt6g")]([SubResource("Resource_j5aw4")])
+startScene = "q_museum_start"
+endScene = "q_museum_end"
+requires = Array[ExtResource("2_g0y0m")]([ExtResource("3_jnv8l")])
+rewardCoins = 400
+rewardItems = Array[ExtResource("4_r5hno")]([ExtResource("5_ljmx2")])
+rewardAmounts = Array[int]([5])

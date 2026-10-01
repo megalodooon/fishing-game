@@ -9,7 +9,10 @@ class_name MenuHub
 # look; the strip ties them together and shows where everything is.
 #
 # A menu in the strip can have hub_open(), hub_close() and hub_shown(); the
-# strip falls back on MenuPanel's open_menu(), close_menu() and shown.
+# strip falls back on MenuPanel's open_menu(), close_menu() and shown. A menu
+# with hub_available() stays out of the strip until it returns true (like the
+# charm pouch before the first charm), so a new player isn't met with every
+# tab at once.
 
 const GROUP : StringName = &"menu_hubs"
 # Room the menus leave free at the top of the screen for the strip.
@@ -41,6 +44,7 @@ var bounce : Array[float] = []
 # Tabs with something new to see, like a quest to hand in.
 var news : Array[bool] = []
 var tick : float = 0.0
+var availability : Array[bool] = []
 # Dims the world and the HUD behind open menus. It sits in the HUD just
 # before the hotbar, so the menus themselves stay bright.
 var backdrop : Control
@@ -122,14 +126,29 @@ func fit() -> void:
 	if backdrop:
 		backdrop.scale = ui.scale
 		backdrop.size = ui.size
-	var count : int = menus.size()
+	refresh_availability()
+	var count : int = availability.count(true)
 	var width : float = count * tabWidth + (count - 1) * tabGap
 	var x : float = floorf((size.x - width) * 0.5)
 	rects.clear()
-	for i in count:
-		rects.append(Rect2(x + i * (tabWidth + tabGap), 1.0, tabWidth, HEIGHT - 1.0))
+	for i in menus.size():
+		if availability[i]:
+			rects.append(Rect2(x, 1.0, tabWidth, HEIGHT - 1.0))
+			x += tabWidth + tabGap
+		else:
+			rects.append(Rect2(-100.0, -100.0, 0.0, 0.0))
 	closeRect = Rect2(size.x - 11.0, 2.0, 9.0, 9.0)
 	queue_redraw()
+
+# Whether each tab is in the strip. Returns whether anything changed.
+func refresh_availability() -> bool:
+	var fresh : Array[bool] = []
+	for menu in menus:
+		fresh.append(menu == null or not menu.has_method("hub_available") or bool(menu.call("hub_available")))
+	if fresh == availability:
+		return false
+	availability = fresh
+	return true
 
 func is_open(index : int) -> bool:
 	var menu : Node = menus[index] if index >= 0 and index < menus.size() else null
@@ -164,6 +183,8 @@ func close_others(keep : Node) -> void:
 
 func switch_to(index : int) -> void:
 	if index < 0 or index >= menus.size() or not usable():
+		return
+	if index < availability.size() and not availability[index]:
 		return
 	for i in menus.size():
 		if i != index:
@@ -270,6 +291,8 @@ func _process(delta : float) -> void:
 	if tick >= 0.5:
 		tick = 0.0
 		refresh_news()
+		if refresh_availability():
+			fit()
 	if current < 0:
 		marker = -1.0
 		return
@@ -315,6 +338,8 @@ func _draw() -> void:
 		draw_rect(Rect2(marker, HEIGHT - 2.0, tabWidth, 2.0), skin.title)
 	for i in rects.size():
 		var area : Rect2 = rects[i]
+		if area.size.x <= 0.0:
+			continue
 		var on : bool = i == current
 		var hover : bool = i == hovered
 		var lift : float = roundf(sin(bounce[i] * PI) * 1.5)

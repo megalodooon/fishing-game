@@ -1,5 +1,9 @@
 [gd_scene format=3]
 
+[ext_resource type="Resource" path="res://world/quests/side/x_contest.tres" id="nq_side_x_contest"]
+[ext_resource type="Resource" path="res://world/quests/side/x_forage_200.tres" id="nq_side_x_forage_200"]
+[ext_resource type="Resource" path="res://world/quests/side/f_tilly_1.tres" id="nq_side_f_tilly_1"]
+[ext_resource type="Resource" path="res://world/quests/side/f_tilly_2.tres" id="nq_side_f_tilly_2"]
 [ext_resource type="Resource" path="res://world/village/shop/stock/tilly_seeds.tres" id="i_tilly_stock"]
 [ext_resource type="Script" path="res://world/island/island.gd" id="i_e1"]
 [ext_resource type="Script" path="res://world/island/island_room.gd" id="i_e2"]
@@ -165,7 +169,7 @@ greeting = "Welcome to the farm!"
 reach = 12.0
 promptOffset = Vector2(0, -24)
 art = NodePath("Art")
-quests = Array[ExtResource("i_e7")]([ExtResource("i_e8"), ExtResource("i_e9"), ExtResource("i_e10"), ExtResource("i_e11"), ExtResource("i_e12"), ExtResource("i_e13"), ExtResource("i_e14")])
+quests = Array[ExtResource("i_e7")]([ExtResource("i_e8"), ExtResource("i_e9"), ExtResource("i_e10"), ExtResource("i_e11"), ExtResource("i_e12"), ExtResource("i_e13"), ExtResource("i_e14"), ExtResource("nq_side_x_contest"), ExtResource("nq_side_x_forage_200"), ExtResource("nq_side_f_tilly_1"), ExtResource("nq_side_f_tilly_2")])
 shop = NodePath("Stall")
 shopLabel = "Seeds"
 

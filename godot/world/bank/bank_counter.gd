@@ -15,6 +15,9 @@ const AMOUNTS : Array[int] = [1000, 10000, 100000]
 enum Tab { ACCOUNT, VAULT, STORE }
 
 
+func intro_id() -> String:
+	return "bank"
+
 func theme_name() -> String:
 	return "leather_blue"
 

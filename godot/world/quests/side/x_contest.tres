@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="Quest" format=3]
+
+[ext_resource type="Script" path="res://world/quests/quest_goal.gd" id="1_v06bw"]
+[ext_resource type="Script" path="res://world/quests/quest.gd" id="2_k5owi"]
+[ext_resource type="Resource" path="res://world/quests/story/q_meadow.tres" id="3_4vdo8"]
+[ext_resource type="Script" path="res://items/item.gd" id="4_4p70m"]
+[ext_resource type="Resource" path="res://items/events/contest_ribbon.tres" id="5_3n6fc"]
+[ext_resource type="Script" path="res://world/location.gd" id="6_ox030"]
+
+[sub_resource type="Resource" id="Resource_576ja"]
+script = ExtResource("1_v06bw")
+kind = 10
+flag = "contests_medalled"
+text = "Win a contest medal"
+
+[resource]
+script = ExtResource("2_k5owi")
+title = "Contest Debut"
+giver = "Tilly"
+description = "Enter a farming contest or the fishing derby and win a medal."
+goals = Array[ExtResource("1_v06bw")]([SubResource("Resource_576ja")])
+startScene = "x_contest_start"
+endScene = "x_contest_end"
+requires = Array[ExtResource("2_k5owi")]([ExtResource("3_4vdo8")])
+rewardItems = Array[ExtResource("4_4p70m")]([ExtResource("5_3n6fc")])
+rewardAmounts = Array[int]([3])

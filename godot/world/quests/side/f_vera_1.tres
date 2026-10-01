@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="Quest" format=3]
+
+[ext_resource type="Script" path="res://world/quests/quest_goal.gd" id="1_srl1i"]
+[ext_resource type="Resource" path="res://items/snacks/lava_cake.tres" id="2_vfth7"]
+[ext_resource type="Script" path="res://world/quests/quest.gd" id="3_f3rs6"]
+[ext_resource type="Resource" path="res://world/quests/story/q_expose.tres" id="4_h184p"]
+[ext_resource type="Script" path="res://items/item.gd" id="5_h8q5u"]
+[ext_resource type="Script" path="res://world/location.gd" id="6_lt0ph"]
+
+[sub_resource type="Resource" id="Resource_cs7dy"]
+script = ExtResource("1_srl1i")
+kind = 2
+target = ExtResource("2_vfth7")
+
+[resource]
+script = ExtResource("3_f3rs6")
+title = "Off the Record"
+giver = "Vera Voss"
+description = "Vera has a weakness for lava cake, and something she wants to say off the record."
+goals = Array[ExtResource("1_srl1i")]([SubResource("Resource_cs7dy")])
+startScene = "f_vera_1_start"
+endScene = "f_vera_1_end"
+requires = Array[ExtResource("3_f3rs6")]([ExtResource("4_h184p")])
+heartsWith = "vera"
+requiredHearts = 3
+rewardCoins = 2000

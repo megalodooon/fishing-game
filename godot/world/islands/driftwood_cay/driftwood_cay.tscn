@@ -1,5 +1,7 @@
 [gd_scene format=3]
 
+[ext_resource type="Resource" path="res://world/quests/side/f_silas_1.tres" id="nq_side_f_silas_1"]
+[ext_resource type="Resource" path="res://world/quests/side/f_silas_2.tres" id="nq_side_f_silas_2"]
 [ext_resource type="Script" path="res://world/island/island.gd" id="1_island"]
 [ext_resource type="Script" path="res://world/island/island_room.gd" id="2_room"]
 [ext_resource type="PackedScene" uid="uid://dw4byakruepaa" path="res://oceans/basic/basic_ocean.tscn" id="3_ocean"]
@@ -360,7 +362,7 @@ greeting = "Mm. Sit a while."
 reach = 12.0
 promptOffset = Vector2(0, -24)
 art = NodePath("Art")
-quests = Array[ExtResource("d_e2")]([ExtResource("d_e3"), ExtResource("d_e4"), ExtResource("d_e5"), ExtResource("d_e6"), ExtResource("d_e7"), ExtResource("d_e8"), ExtResource("d_e9"), ExtResource("d_e10"), ExtResource("d_e11"), ExtResource("d_e12"), ExtResource("d_e13"), ExtResource("d_e14")])
+quests = Array[ExtResource("d_e2")]([ExtResource("d_e3"), ExtResource("d_e4"), ExtResource("d_e5"), ExtResource("d_e6"), ExtResource("d_e7"), ExtResource("d_e8"), ExtResource("d_e9"), ExtResource("d_e10"), ExtResource("d_e11"), ExtResource("d_e12"), ExtResource("d_e13"), ExtResource("d_e14"), ExtResource("nq_side_f_silas_1"), ExtResource("nq_side_f_silas_2")])
 leaveFlag = "quest/q_seal"
 
 [node name="Art" type="Sprite2D" parent="Lagoon/Npc_Silas"]

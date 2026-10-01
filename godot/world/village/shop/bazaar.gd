@@ -28,6 +28,9 @@ enum Tab { BUY, SELL }
 static var tradedCache : Array[Item] = []
 
 
+func intro_id() -> String:
+	return "bazaar"
+
 func theme_name() -> String:
 	return "wood"
 

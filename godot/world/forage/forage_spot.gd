@@ -160,6 +160,7 @@ func interact(who : Player) -> void:
 	var xp : float = XP_EACH * gathered * (1.0 + int(info()[7]) * 0.6)
 	Skills.add(who, Skills.FORAGING, xp)
 	who.say(", ".join(texts), Color(0.8, 0.92, 0.6))
+	Features.introduce(who, "forage")
 	burst = 0.0
 	set_process(true)
 	queue_redraw()

@@ -1,0 +1,33 @@
+[gd_resource type="Resource" script_class="Quest" format=3]
+
+[ext_resource type="Script" path="res://world/quests/quest_goal.gd" id="1_bobug"]
+[ext_resource type="Resource" path="res://items/materials/storm_glass.tres" id="2_f64ea"]
+[ext_resource type="Resource" path="res://items/enchanting/sea_essence.tres" id="3_kdrqx"]
+[ext_resource type="Script" path="res://world/quests/quest.gd" id="4_sdc65"]
+[ext_resource type="Resource" path="res://world/quests/story/q_station.tres" id="5_6bh8l"]
+[ext_resource type="Script" path="res://items/item.gd" id="6_js12p"]
+[ext_resource type="Script" path="res://world/location.gd" id="7_3i5yt"]
+
+[sub_resource type="Resource" id="Resource_vua72"]
+script = ExtResource("1_bobug")
+kind = 2
+target = ExtResource("2_f64ea")
+amount = 5
+
+[sub_resource type="Resource" id="Resource_tngx4"]
+script = ExtResource("1_bobug")
+kind = 2
+target = ExtResource("3_kdrqx")
+amount = 15
+
+[resource]
+script = ExtResource("4_sdc65")
+title = "The Tide Altar"
+giver = "Luma"
+description = "Luma found plans for a tide altar, the kind the old anglers used to bless their rods. It needs storm glass and the sea's own essence."
+story = true
+goals = Array[ExtResource("1_bobug")]([SubResource("Resource_vua72"), SubResource("Resource_tngx4")])
+startScene = "q_altar_start"
+endScene = "q_altar_end"
+requires = Array[ExtResource("4_sdc65")]([ExtResource("5_6bh8l")])
+rewardText = "The tide altar wakes up"

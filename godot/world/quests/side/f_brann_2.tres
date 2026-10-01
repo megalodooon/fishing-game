@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="Quest" format=3]
+
+[ext_resource type="Script" path="res://world/quests/quest_goal.gd" id="1_1fwdg"]
+[ext_resource type="Resource" path="res://items/materials/obsidian_plate.tres" id="2_qar5l"]
+[ext_resource type="Script" path="res://world/quests/quest.gd" id="3_uayer"]
+[ext_resource type="Resource" path="res://world/quests/side/f_brann_1.tres" id="4_yrngj"]
+[ext_resource type="Script" path="res://items/item.gd" id="5_5peyd"]
+[ext_resource type="Resource" path="res://items/charms/ember_idol.tres" id="6_j0vj7"]
+[ext_resource type="Script" path="res://world/location.gd" id="7_kvf12"]
+
+[sub_resource type="Resource" id="Resource_sx7a0"]
+script = ExtResource("1_1fwdg")
+kind = 2
+target = ExtResource("2_qar5l")
+amount = 3
+
+[resource]
+script = ExtResource("3_uayer")
+title = "Brann's Masterwork"
+giver = "Smith Brann"
+description = "Brann wants to forge something worthy of Finn's grandkid."
+goals = Array[ExtResource("1_1fwdg")]([SubResource("Resource_sx7a0")])
+startScene = "f_brann_2_start"
+endScene = "f_brann_2_end"
+requires = Array[ExtResource("3_uayer")]([ExtResource("4_yrngj")])
+heartsWith = "brann"
+requiredHearts = 6
+rewardItems = Array[ExtResource("5_5peyd")]([ExtResource("6_j0vj7")])
+rewardAmounts = Array[int]([1])

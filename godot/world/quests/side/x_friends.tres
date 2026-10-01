@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="Quest" format=3]
+
+[ext_resource type="Script" path="res://world/quests/quest_goal.gd" id="1_7cp3d"]
+[ext_resource type="Script" path="res://world/quests/quest.gd" id="2_5jx3p"]
+[ext_resource type="Resource" path="res://world/quests/story/q_friends.tres" id="3_cgri4"]
+[ext_resource type="Script" path="res://items/item.gd" id="4_yneif"]
+[ext_resource type="Script" path="res://world/location.gd" id="5_sgasg"]
+
+[sub_resource type="Resource" id="Resource_5ht8i"]
+script = ExtResource("1_7cp3d")
+kind = 11
+flag = "friends:5"
+amount = 5
+text = "Reach 5 hearts with 5 villagers"
+
+[resource]
+script = ExtResource("2_5jx3p")
+title = "Well Liked"
+giver = "Harbor Master Pip"
+description = "Become good friends with five villagers."
+goals = Array[ExtResource("1_7cp3d")]([SubResource("Resource_5ht8i")])
+startScene = "x_friends_start"
+endScene = "x_friends_end"
+requires = Array[ExtResource("2_5jx3p")]([ExtResource("3_cgri4")])
+rewardCoins = 3000

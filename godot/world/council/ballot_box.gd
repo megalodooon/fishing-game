@@ -9,6 +9,9 @@ const GOOD : Color = Color(0.56, 0.93, 0.44)
 const DIM : Color = Color(0.58, 0.67, 0.78)
 
 
+func intro_id() -> String:
+	return "council"
+
 func theme_name() -> String:
 	return "paper"
 

@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="Quest" format=3]
+
+[ext_resource type="Script" path="res://world/quests/quest_goal.gd" id="1_6hfeb"]
+[ext_resource type="Resource" path="res://oceans/islands/frostpeak_biome.tres" id="2_5ubbd"]
+[ext_resource type="Script" path="res://world/quests/quest.gd" id="3_p22xs"]
+[ext_resource type="Resource" path="res://world/quests/side/f_yuki_1.tres" id="4_3d76h"]
+[ext_resource type="Script" path="res://items/item.gd" id="5_yvwgp"]
+[ext_resource type="Resource" path="res://items/charms/frost_amulet.tres" id="6_scytn"]
+[ext_resource type="Script" path="res://world/location.gd" id="7_j3h1y"]
+
+[sub_resource type="Resource" id="Resource_x4sfb"]
+script = ExtResource("1_6hfeb")
+target = ExtResource("2_5ubbd")
+amount = 5
+
+[resource]
+script = ExtResource("3_p22xs")
+title = "Aurora Watch"
+giver = "Yuki"
+description = "Fish with Yuki under the northern lights."
+goals = Array[ExtResource("1_6hfeb")]([SubResource("Resource_x4sfb")])
+startScene = "f_yuki_2_start"
+endScene = "f_yuki_2_end"
+requires = Array[ExtResource("3_p22xs")]([ExtResource("4_3d76h")])
+heartsWith = "yuki"
+requiredHearts = 6
+rewardItems = Array[ExtResource("5_yvwgp")]([ExtResource("6_scytn")])
+rewardAmounts = Array[int]([1])

@@ -1,0 +1,37 @@
+[gd_resource type="Resource" script_class="Quest" format=3]
+
+[ext_resource type="Script" path="res://world/quests/quest_goal.gd" id="1_qddej"]
+[ext_resource type="Resource" path="res://items/materials/sea_salt.tres" id="2_ee8ml"]
+[ext_resource type="Resource" path="res://items/materials/fish_oil.tres" id="3_ijdfy"]
+[ext_resource type="Script" path="res://world/quests/quest.gd" id="4_sl5w3"]
+[ext_resource type="Resource" path="res://world/quests/side/f_gus_1.tres" id="5_nl1s1"]
+[ext_resource type="Script" path="res://items/item.gd" id="6_vn5kw"]
+[ext_resource type="Resource" path="res://items/snacks/fish_and_chips.tres" id="7_ocbcv"]
+[ext_resource type="Script" path="res://world/location.gd" id="8_jmaes"]
+
+[sub_resource type="Resource" id="Resource_bs8vf"]
+script = ExtResource("1_qddej")
+kind = 2
+target = ExtResource("2_ee8ml")
+amount = 20
+
+[sub_resource type="Resource" id="Resource_0601k"]
+script = ExtResource("1_qddej")
+kind = 2
+target = ExtResource("3_ijdfy")
+amount = 10
+
+[resource]
+script = ExtResource("4_sl5w3")
+title = "Gus's Secret Recipe"
+giver = "Gus the Fishmonger"
+description = "Gus's grandmother's fish and chips need sea salt and good oil."
+goals = Array[ExtResource("1_qddej")]([SubResource("Resource_bs8vf"), SubResource("Resource_0601k")])
+startScene = "f_gus_2_start"
+endScene = "f_gus_2_end"
+requires = Array[ExtResource("4_sl5w3")]([ExtResource("5_nl1s1")])
+heartsWith = "gus"
+requiredHearts = 6
+rewardCoins = 1500
+rewardItems = Array[ExtResource("6_vn5kw")]([ExtResource("7_ocbcv")])
+rewardAmounts = Array[int]([5])

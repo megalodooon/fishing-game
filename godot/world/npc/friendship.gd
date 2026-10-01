@@ -55,9 +55,9 @@ const TASTES : Dictionary = {
 const HEART_GIFTS : Dictionary = {
 	2: ["res://items/snacks/fish_stew.tres", 3],
 	4: ["res://items/materials/honey.tres", 5],
-	6: ["res://items/tools/pouch_stitching_1.tres", 1],
+	6: ["res://items/charms/heart_locket.tres", 1],
 	8: ["res://items/rare/lucky_stone.tres", 1],
-	10: ["res://items/rare/four_tides_amulet.tres", 1],
+	10: ["res://items/enchanting/sea_essence.tres", 40],
 }
 const RARITY_ORDER : PackedStringArray = ["Common", "Uncommon", "Rare", "Legendary", "Trophy"]
 
@@ -106,6 +106,7 @@ static func talk(player : Player, id : String, day : int) -> bool:
 	if int(data.talked) == day:
 		return false
 	data.talked = day
+	player.progress.count("talks")
 	add(player, id, TALK_POINTS)
 	return true
 

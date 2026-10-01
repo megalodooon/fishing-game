@@ -78,6 +78,7 @@ static func roll(player : Player, context : FishingContext, where : Biome) -> It
 				progress.count("trophy_kinds")
 			AnglerLevel.forget()
 		Achievements.notify(player, &"trophy", trophy, tier)
+		Features.introduce(player, "trophies")
 		var board : NoticeBoard = NoticeBoard.find(player.get_tree())
 		if board:
 			board.post("TROPHY! %s %s" % [TIER_NAMES[tier], trophy.displayName], "Odette at the Trophy Lodge will want to see this.", TIER_COLORS[tier], item.icon)

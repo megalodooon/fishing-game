@@ -76,6 +76,10 @@ func fit() -> void:
 func _has_point(point : Vector2) -> bool:
 	return shown and panel.grow(1.0).has_point(point)
 
+# Out of the hub strip until there's a pet.
+func hub_available() -> bool:
+	return player != null and player.progress != null and not player.progress.pets.is_empty()
+
 func hub_open() -> void:
 	open_own(player)
 

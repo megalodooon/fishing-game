@@ -23,6 +23,10 @@ class_name Quest
 # And once a skill is high enough, so side jobs trickle in as the player grows.
 @export var requiredSkill : StringName = &""
 @export var requiredLevel : int = 0
+# And once the player is this friendly with someone (a Cast id), for the
+# favors friends ask.
+@export var heartsWith : String = ""
+@export var requiredHearts : int = 0
 
 @export_group("Rewards")
 @export var rewardCoins : int = 0
@@ -45,6 +49,8 @@ func available(player : Player) -> bool:
 		if quest and not player.progress.quest_done(quest):
 			return false
 	if not Unlocks.skill_met(player.progress, requiredSkill, requiredLevel):
+		return false
+	if requiredHearts > 0 and Friendship.hearts(player.progress, heartsWith) < requiredHearts:
 		return false
 	return requiredFlag.is_empty() or player.progress.has_flag(requiredFlag)
 

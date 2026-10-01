@@ -53,6 +53,7 @@ static func hire(player : Player, member : CrewMember) -> bool:
 	if player.progress.crew.size() >= slots(player):
 		return false
 	player.progress.crew.append({"crew": member, "tier": 1, "since": Progress.clock(player.get_tree()), "stored": 0})
+	player.progress.count("crew_hired")
 	mark_tier(player, member, 1)
 	player.progress.emit_changed()
 	return true

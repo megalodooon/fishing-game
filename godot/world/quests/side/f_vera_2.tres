@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="Quest" format=3]
+
+[ext_resource type="Script" path="res://world/quests/quest_goal.gd" id="1_fqff7"]
+[ext_resource type="Resource" path="res://items/materials/coral_shard.tres" id="2_gubvb"]
+[ext_resource type="Script" path="res://world/quests/quest.gd" id="3_p0jn1"]
+[ext_resource type="Resource" path="res://world/quests/side/f_vera_1.tres" id="4_qgeoh"]
+[ext_resource type="Script" path="res://items/item.gd" id="5_fhya3"]
+[ext_resource type="Resource" path="res://items/rare/abyssal_pearl.tres" id="6_yi4d7"]
+[ext_resource type="Script" path="res://world/location.gd" id="7_n2ogr"]
+
+[sub_resource type="Resource" id="Resource_36qfl"]
+script = ExtResource("1_fqff7")
+kind = 2
+target = ExtResource("2_gubvb")
+amount = 20
+
+[resource]
+script = ExtResource("3_p0jn1")
+title = "Vera's Choice"
+giver = "Vera Voss"
+description = "Vera is done with Deepnet. She wants to help the harbor she tried to take, starting with the reef."
+goals = Array[ExtResource("1_fqff7")]([SubResource("Resource_36qfl")])
+startScene = "f_vera_2_start"
+endScene = "f_vera_2_end"
+requires = Array[ExtResource("3_p0jn1")]([ExtResource("4_qgeoh")])
+heartsWith = "vera"
+requiredHearts = 6
+rewardCoins = 5000
+rewardItems = Array[ExtResource("5_fhya3")]([ExtResource("6_yi4d7")])
+rewardAmounts = Array[int]([1])

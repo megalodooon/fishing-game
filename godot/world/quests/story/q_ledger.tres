@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="Quest" format=3]
+
+[ext_resource type="Script" path="res://world/quests/quest_goal.gd" id="1_lnd65"]
+[ext_resource type="Script" path="res://world/quests/quest.gd" id="2_6od1w"]
+[ext_resource type="Resource" path="res://world/quests/story/q_evidence.tres" id="3_0a5uf"]
+[ext_resource type="Resource" path="res://world/quests/story/q_savings.tres" id="4_ex4d6"]
+[ext_resource type="Script" path="res://items/item.gd" id="5_1lbml"]
+[ext_resource type="Script" path="res://world/location.gd" id="6_62gjd"]
+
+[sub_resource type="Resource" id="Resource_5hnms"]
+script = ExtResource("1_lnd65")
+kind = 11
+flag = "bank"
+amount = 10000
+text = "Keep $10,000 in the bank"
+
+[resource]
+script = ExtResource("2_6od1w")
+title = "The Ledger"
+giver = "Banker Barnaby"
+description = "Barnaby found Deepnet's loan papers in the vault, and something about them is wrong. Build up the village's savings so he can open the old ledger."
+story = true
+goals = Array[ExtResource("1_lnd65")]([SubResource("Resource_5hnms")])
+startScene = "q_ledger_start"
+endScene = "q_ledger_end"
+requires = Array[ExtResource("2_6od1w")]([ExtResource("3_0a5uf"), ExtResource("4_ex4d6")])
+rewardCoins = 1000

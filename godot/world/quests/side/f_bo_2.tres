@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="Quest" format=3]
+
+[ext_resource type="Script" path="res://world/quests/quest_goal.gd" id="1_qry2q"]
+[ext_resource type="Script" path="res://world/quests/quest.gd" id="2_abyv0"]
+[ext_resource type="Resource" path="res://world/quests/side/f_bo_1.tres" id="3_0u2sn"]
+[ext_resource type="Script" path="res://items/item.gd" id="4_37vl0"]
+[ext_resource type="Resource" path="res://items/charms/lucky_clover.tres" id="5_1jq16"]
+[ext_resource type="Script" path="res://world/location.gd" id="6_n56yh"]
+
+[sub_resource type="Resource" id="Resource_ijd5q"]
+script = ExtResource("1_qry2q")
+kind = 10
+flag = "variant_giant"
+text = "Catch a giant fish"
+
+[resource]
+script = ExtResource("2_abyv0")
+title = "The Biggest Fish Ever"
+giver = "Bo"
+description = "Bo wants to see a GIANT fish. A real one."
+goals = Array[ExtResource("1_qry2q")]([SubResource("Resource_ijd5q")])
+startScene = "f_bo_2_start"
+endScene = "f_bo_2_end"
+requires = Array[ExtResource("2_abyv0")]([ExtResource("3_0u2sn")])
+heartsWith = "bo"
+requiredHearts = 6
+rewardItems = Array[ExtResource("4_37vl0")]([ExtResource("5_1jq16")])
+rewardAmounts = Array[int]([1])

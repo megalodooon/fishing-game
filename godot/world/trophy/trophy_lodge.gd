@@ -35,6 +35,9 @@ const PRIZES : Array = [
 enum Tab { TROPHIES, FILLET, PRIZES }
 
 
+func intro_id() -> String:
+	return "trophy_lodge"
+
 func theme_name() -> String:
 	return "wood"
 

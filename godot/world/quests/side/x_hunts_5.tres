@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="Quest" format=3]
+
+[ext_resource type="Script" path="res://world/quests/quest_goal.gd" id="1_a7ru7"]
+[ext_resource type="Script" path="res://world/quests/quest.gd" id="2_v0a1i"]
+[ext_resource type="Resource" path="res://world/quests/story/q_hunts.tres" id="3_kc1if"]
+[ext_resource type="Script" path="res://items/item.gd" id="4_hbqvv"]
+[ext_resource type="Resource" path="res://items/enchanting/sea_essence.tres" id="5_1a033"]
+[ext_resource type="Script" path="res://world/location.gd" id="6_rnjxs"]
+
+[sub_resource type="Resource" id="Resource_bej68"]
+script = ExtResource("1_a7ru7")
+kind = 10
+flag = "hunts_done"
+amount = 5
+text = "Finish 5 sea hunts"
+
+[resource]
+script = ExtResource("2_v0a1i")
+title = "Hunter's Path"
+giver = "Captain Grim"
+description = "Finish five sea hunts."
+goals = Array[ExtResource("1_a7ru7")]([SubResource("Resource_bej68")])
+startScene = "x_hunts_5_start"
+endScene = "x_hunts_5_end"
+requires = Array[ExtResource("2_v0a1i")]([ExtResource("3_kc1if")])
+rewardCoins = 6000
+rewardItems = Array[ExtResource("4_hbqvv")]([ExtResource("5_1a033")])
+rewardAmounts = Array[int]([30])

@@ -1,5 +1,11 @@
 [gd_scene format=3]
 
+[ext_resource type="Resource" path="res://world/quests/story/q_dig.tres" id="nq_story_q_dig"]
+[ext_resource type="Resource" path="res://world/quests/story/q_hunts.tres" id="nq_story_q_hunts"]
+[ext_resource type="Resource" path="res://world/quests/side/x_hunts_5.tres" id="nq_side_x_hunts_5"]
+[ext_resource type="Resource" path="res://world/quests/side/x_trails_10.tres" id="nq_side_x_trails_10"]
+[ext_resource type="Resource" path="res://world/quests/side/f_grim_1.tres" id="nq_side_f_grim_1"]
+[ext_resource type="Resource" path="res://world/quests/side/f_grim_2.tres" id="nq_side_f_grim_2"]
 [ext_resource type="Script" path="res://world/village/shop/shop.gd" id="g_shop"]
 [ext_resource type="Resource" path="res://world/village/shop/stock/grim_treasure.tres" id="g_stock"]
 [ext_resource type="Script" path="res://world/island/island.gd" id="1_island"]
@@ -208,7 +214,7 @@ promptOffset = Vector2(0, -24)
 art = NodePath("Art")
 shop = NodePath("Stall")
 shopLabel = "Treasure"
-quests = Array[ExtResource("w_e2")]([ExtResource("w_e3"), ExtResource("w_e4"), ExtResource("w_e5"), ExtResource("w_e6"), ExtResource("w_e7"), ExtResource("w_e8"), ExtResource("w_e9"), ExtResource("w_e10"), ExtResource("w_e11")])
+quests = Array[ExtResource("w_e2")]([ExtResource("w_e3"), ExtResource("w_e4"), ExtResource("w_e5"), ExtResource("w_e6"), ExtResource("w_e7"), ExtResource("w_e8"), ExtResource("w_e9"), ExtResource("w_e10"), ExtResource("w_e11"), ExtResource("nq_story_q_dig"), ExtResource("nq_story_q_hunts"), ExtResource("nq_side_x_hunts_5"), ExtResource("nq_side_x_trails_10"), ExtResource("nq_side_f_grim_1"), ExtResource("nq_side_f_grim_2")])
 
 [node name="Art" type="Sprite2D" parent="Landing/Npc_Grim"]
 texture = ExtResource("w_e12")

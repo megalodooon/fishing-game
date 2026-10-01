@@ -63,6 +63,10 @@ func fit() -> void:
 		categoryRects.append(Rect2(listRect.position.x + 2.0, listRect.position.y + 2.0 + i * pitch, listRect.size.x - 4.0, pitch - 1.0))
 	queue_redraw()
 
+# Out of the hub strip until the first collection tier is reached.
+func hub_available() -> bool:
+	return player != null and player.progress != null and not player.progress.collectionTiers.is_empty()
+
 func hub_open() -> void:
 	if not shown:
 		open_case()

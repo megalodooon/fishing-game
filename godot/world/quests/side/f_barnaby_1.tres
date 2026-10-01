@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="Quest" format=3]
+
+[ext_resource type="Script" path="res://world/quests/quest_goal.gd" id="1_pb0i0"]
+[ext_resource type="Script" path="res://world/quests/quest.gd" id="2_vp70m"]
+[ext_resource type="Resource" path="res://world/quests/story/q_savings.tres" id="3_a4cgi"]
+[ext_resource type="Script" path="res://items/item.gd" id="4_5tnwf"]
+[ext_resource type="Script" path="res://world/location.gd" id="5_kmm2o"]
+
+[sub_resource type="Resource" id="Resource_hpsc8"]
+script = ExtResource("1_pb0i0")
+kind = 11
+flag = "bank"
+amount = 25000
+text = "Keep $25,000 in the bank"
+
+[resource]
+script = ExtResource("2_vp70m")
+title = "Counting Coins"
+giver = "Banker Barnaby"
+description = "Barnaby likes a customer who saves."
+goals = Array[ExtResource("1_pb0i0")]([SubResource("Resource_hpsc8")])
+startScene = "f_barnaby_1_start"
+endScene = "f_barnaby_1_end"
+requires = Array[ExtResource("2_vp70m")]([ExtResource("3_a4cgi")])
+heartsWith = "barnaby"
+requiredHearts = 3
+rewardCoins = 1500

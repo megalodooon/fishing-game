@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="Quest" format=3]
+
+[ext_resource type="Script" path="res://world/quests/quest_goal.gd" id="1_p4y25"]
+[ext_resource type="Script" path="res://world/quests/quest.gd" id="2_44a3u"]
+[ext_resource type="Resource" path="res://world/quests/story/q_dig.tres" id="3_85cgu"]
+[ext_resource type="Script" path="res://items/item.gd" id="4_lnt4c"]
+[ext_resource type="Resource" path="res://items/digging/legends_map.tres" id="5_1qop4"]
+[ext_resource type="Script" path="res://world/location.gd" id="6_sl7sd"]
+
+[sub_resource type="Resource" id="Resource_gil4k"]
+script = ExtResource("1_p4y25")
+kind = 10
+flag = "trails"
+amount = 10
+text = "Dig 10 treasure trails"
+
+[resource]
+script = ExtResource("2_44a3u")
+title = "A Treasure Hunter's Life"
+giver = "Captain Grim"
+description = "Dig up ten treasure trails."
+goals = Array[ExtResource("1_p4y25")]([SubResource("Resource_gil4k")])
+startScene = "x_trails_10_start"
+endScene = "x_trails_10_end"
+requires = Array[ExtResource("2_44a3u")]([ExtResource("3_85cgu")])
+rewardItems = Array[ExtResource("4_lnt4c")]([ExtResource("5_1qop4")])
+rewardAmounts = Array[int]([2])

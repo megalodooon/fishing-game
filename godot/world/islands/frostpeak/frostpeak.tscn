@@ -1,5 +1,8 @@
 [gd_scene format=3]
 
+[ext_resource type="Resource" path="res://world/quests/story/q_frostmaw.tres" id="nq_story_q_frostmaw"]
+[ext_resource type="Resource" path="res://world/quests/side/f_yuki_1.tres" id="nq_side_f_yuki_1"]
+[ext_resource type="Resource" path="res://world/quests/side/f_yuki_2.tres" id="nq_side_f_yuki_2"]
 [ext_resource type="Script" path="res://world/island/island.gd" id="i_e1"]
 [ext_resource type="Script" path="res://world/island/island_room.gd" id="i_e2"]
 [ext_resource type="Resource" path="res://oceans/islands/frostpeak_biome.tres" id="i_e3"]
@@ -135,7 +138,7 @@ greeting = "Brr. You get used to it."
 reach = 12.0
 promptOffset = Vector2(0, -24)
 art = NodePath("Art")
-quests = Array[ExtResource("i_e8")]([ExtResource("i_e9"), ExtResource("i_e10"), ExtResource("i_e11"), ExtResource("i_e12"), ExtResource("i_e13"), ExtResource("i_e14")])
+quests = Array[ExtResource("i_e8")]([ExtResource("i_e9"), ExtResource("i_e10"), ExtResource("i_e11"), ExtResource("i_e12"), ExtResource("i_e13"), ExtResource("i_e14"), ExtResource("nq_story_q_frostmaw"), ExtResource("nq_side_f_yuki_1"), ExtResource("nq_side_f_yuki_2")])
 
 [node name="Art" type="Sprite2D" parent="Landing/Npc_Yuki"]
 texture = ExtResource("i_e15")

@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="Quest" format=3]
+
+[ext_resource type="Script" path="res://world/quests/quest_goal.gd" id="1_ht5ph"]
+[ext_resource type="Script" path="res://world/quests/quest.gd" id="2_ctdug"]
+[ext_resource type="Resource" path="res://world/quests/story/q_crew.tres" id="3_x3eq1"]
+[ext_resource type="Script" path="res://items/item.gd" id="4_h5rra"]
+[ext_resource type="Script" path="res://world/location.gd" id="5_g6mr2"]
+
+[sub_resource type="Resource" id="Resource_el46v"]
+script = ExtResource("1_ht5ph")
+kind = 11
+flag = "crew"
+amount = 5
+text = "Hire 5 crew members"
+
+[resource]
+script = ExtResource("2_ctdug")
+title = "A Crew of Five"
+giver = "Marina"
+description = "Five crew members working the islands for you."
+goals = Array[ExtResource("1_ht5ph")]([SubResource("Resource_el46v")])
+startScene = "x_crew_5_start"
+endScene = "x_crew_5_end"
+requires = Array[ExtResource("2_ctdug")]([ExtResource("3_x3eq1")])
+rewardCoins = 3000

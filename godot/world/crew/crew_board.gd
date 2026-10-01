@@ -14,6 +14,9 @@ const ALL : StringName = &"all"
 enum Tab { CREW, UPGRADE, HIRE }
 
 
+func intro_id() -> String:
+	return "crew"
+
 func theme_name() -> String:
 	return "cork"
 

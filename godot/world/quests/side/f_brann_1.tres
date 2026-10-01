@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="Quest" format=3]
+
+[ext_resource type="Script" path="res://world/quests/quest_goal.gd" id="1_2iwsi"]
+[ext_resource type="Resource" path="res://items/materials/obsidian_shard.tres" id="2_m36jw"]
+[ext_resource type="Script" path="res://world/quests/quest.gd" id="3_bsrvm"]
+[ext_resource type="Script" path="res://items/item.gd" id="4_ul4he"]
+[ext_resource type="Resource" path="res://items/materials/iron_ingot.tres" id="5_ol58s"]
+[ext_resource type="Script" path="res://world/location.gd" id="6_xhd7a"]
+
+[sub_resource type="Resource" id="Resource_nvyh4"]
+script = ExtResource("1_2iwsi")
+kind = 2
+target = ExtResource("2_m36jw")
+amount = 10
+
+[resource]
+script = ExtResource("3_bsrvm")
+title = "Ore for the Forge"
+giver = "Smith Brann"
+description = "Brann's forge eats obsidian like Gus eats pie."
+goals = Array[ExtResource("1_2iwsi")]([SubResource("Resource_nvyh4")])
+startScene = "f_brann_1_start"
+endScene = "f_brann_1_end"
+heartsWith = "brann"
+requiredHearts = 3
+rewardItems = Array[ExtResource("4_ul4he")]([ExtResource("5_ol58s")])
+rewardAmounts = Array[int]([5])

@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="Quest" format=3]
+
+[ext_resource type="Script" path="res://world/quests/quest_goal.gd" id="1_5sfw2"]
+[ext_resource type="Resource" path="res://items/materials/frost_crystal.tres" id="2_60ntp"]
+[ext_resource type="Script" path="res://world/quests/quest.gd" id="3_8jm2l"]
+[ext_resource type="Script" path="res://items/item.gd" id="4_eacb1"]
+[ext_resource type="Resource" path="res://items/snacks/hot_cocoa.tres" id="5_hl0eo"]
+[ext_resource type="Script" path="res://world/location.gd" id="6_cdfso"]
+
+[sub_resource type="Resource" id="Resource_tgs5m"]
+script = ExtResource("1_5sfw2")
+kind = 2
+target = ExtResource("2_60ntp")
+amount = 8
+
+[resource]
+script = ExtResource("3_8jm2l")
+title = "Snow Day"
+giver = "Yuki"
+description = "Yuki wants to build an ice sculpture of the whole village."
+goals = Array[ExtResource("1_5sfw2")]([SubResource("Resource_tgs5m")])
+startScene = "f_yuki_1_start"
+endScene = "f_yuki_1_end"
+heartsWith = "yuki"
+requiredHearts = 3
+rewardItems = Array[ExtResource("4_eacb1")]([ExtResource("5_hl0eo")])
+rewardAmounts = Array[int]([4])

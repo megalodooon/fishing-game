@@ -821,10 +821,10 @@ marina: That rod of yours could use a reforge. The anvil's next to the workbench
 [q_reforge_end]
 marina: Ooh, nice. If you ever find a stone from the deep, bring it to the anvil. Those give the good ones.
 
-[q_festival_start]
+[x_festival_start]
 pip: When a festival's on, the whole coast joins in. Check the calendar (C). Pick up ten festival things, and I'll make it worth your while.
 
-[q_festival_end]
+[x_festival_end]
 pip: Ha! You've got the festival spirit. Finn used to eat all the candy corn before anyone else could.
 
 [q_rare_start]
@@ -833,3 +833,1165 @@ nora: Find me one rare catch. Anything!
 
 [q_rare_end]
 nora: Oh! Oh, it's beautiful. Keep going. The luck meter in the journal fills up with every fish, and when it's full, the sea gives you one for sure.
+
+# ================================================================== final update
+# ------------------------------------------------------------------ first-use intros
+
+[intro_bank]
+barnaby: Welcome to the Harbor Bank! Mind the dust. And the door. Mostly the door.
+barnaby: Coins in your account earn interest at the start of every season. Better accounts earn on more of your savings.
+barnaby: The vault keeps your things safe. Store whole stacks, or every material at once. More pages if you upgrade.
+
+[intro_trophy_lodge]
+odette: Welcome to the lodge. Every fish on this wall was caught under the right conditions. Nothing else works on a trophy.
+odette: They come in bronze, silver, gold and the odd diamond. Bring them to me and I'll fillet them for Trophy Scales.
+odette: The book tells you where each one lives and what it wants. The luck meter tells you how close a gold one is.
+
+[intro_hunts]
+grim: Pick a family and a tier. Beat their kind until the meter fills, and their boss comes looking for you.
+grim: Bosses pay in Sea Essence and trophy parts. Parts make the best gear on the coast. One hunt at a time, mind.
+
+[intro_enchanting]
+luma: Hold a rod and touch the altar. Each enchantment takes Sea Essence and a few coins, and higher levels need more alchemy.
+luma: Enchantments stay on that rod, so pick the one you love. Sea creatures, hunts and buried treasure all give essence.
+
+[intro_museum]
+nora: The museum wing takes one of each rare thing: rare catches, relics, gold trophies, hunt trophies, fine charms.
+nora: Every piece adds museum points, and every few points I have something for you. Missing pieces show as shadows.
+
+[intro_crew]
+marina: Your crew board! Hire someone and they'll gather a material for you all day, even while you sleep.
+marina: Contracts are made at the workbench once you've collected enough of what they gather. Upgrade them with that material.
+
+[intro_bazaar]
+gus: The bazaar buys and sells every material you've ever found. Prices move a little every day.
+gus: Can't find something? Buy it here. Got too much? Sell it here. Just don't tell my customers.
+
+[intro_council]
+pip: The Harbor Council! Each week one villager holds the seat, and their perk helps everyone.
+pip: Three stand for next week. Vote here, any day before Sunday ends.
+
+[intro_charms]
+narrator: Charms work from the bag, but the charm pouch does more: every charm in it adds Magical Power.
+narrator: Magical Power raises your luck, your rare finds and your skill XP. Only the best charm of each family counts.
+
+[intro_forage]
+narrator: Forage spots grow back after a few days. Some need a better foraging tool: a sickle, a coral knife, a Tidecutter.
+narrator: Each island grows something different. The Foraging skill makes every gathering bigger.
+
+[intro_digging]
+narrator: A trail of treasure is buried here now. The arrow by the edge of the screen points to the next spot.
+narrator: Dig each spot with F. The last one holds the map's big chest. Better spades dig longer trails.
+
+[intro_trophies]
+narrator: A trophy fish! Each place has one, and it only comes up when its conditions are met.
+narrator: Odette at the Trophy Lodge in the harbor knows them all. She'll want to see this.
+
+[intro_friends]
+narrator: Villagers remember you. Talk to them once a day, and give them a gift now and then. Two a week is plenty.
+narrator: Everyone loves some things and hates others. Friends share their stories, their favors and their discounts.
+
+[intro_tide_tree]
+narrator: The Tide Tree grows with Tide Tokens. Every Angler Level gives one, and some of the story gives more.
+narrator: Grow the heart first, then the branches. The crown needs three branches grown all the way.
+
+[intro_calendar]
+narrator: Seasons last two weeks. Each has a festival in its middle, and smaller happenings come round all year.
+narrator: Birthdays are marked with hearts. A gift on a villager's birthday means eight times as much.
+
+# ------------------------------------------------------------------ new story quests
+
+[q_forage_start]
+pip: Before the fish came back, we lived off the shore. Berries, shells, driftwood. The islands give as much as the sea.
+pip: Walk up to a berry bush or a tide pool and press F. They grow back in a day or two.
+
+[q_forage_end]
+pip: Look at that! A proper beachcomber. Finn used to come back with his pockets full of shells and no fish at all.
+pip: Here, rope. You'll want it for crafting. Everything starts with rope.
+
+[q_friends_start]
+pip: People here have been alone a long time. A friendly hello goes a long way.
+pip: Talk to folks, a little every day. They remember. Oh, and Gus loves fish tacos. Don't tell him I told you.
+
+[q_friends_end]
+pip: Already the whole harbor's talking about you. In a good way! Mostly.
+pip: Friends share things with friends. Favors, stories, discounts. Keep at it.
+
+[q_bank_start]
+pip: There's someone you should meet. Barnaby ran the harbor bank before the storm. He came back last week.
+pip: The vault door's rusted shut, though. He needs iron and planks to fix it. He's at the bank, in the harbor past the lane.
+
+[q_bank_end]
+barnaby: Ha! It opens! Ten years I've waited to hear that hinge squeak.
+barnaby: Deepnet thinks this village can't keep its own money. We'll show them. Your account is open whenever you are.
+
+[q_savings_start]
+barnaby: Here's the thing about Deepnet's loans. They want proof we can pay. Savings in a bank, not coins under a mattress.
+barnaby: Keep two thousand in your account. It earns interest every season, too. Money that grows while you fish!
+
+[q_savings_end]
+barnaby: Two thousand coins, safe and sound. The first real savings Bramblewick has had in a decade.
+barnaby: I'll write it in the ledger. Neat letters. Deepnet hates neat letters.
+
+[q_crew_start]
+marina: You can't fish, farm, forage and craft all by yourself. Well. You can. But you'll fall over.
+marina: Make a crew contract at the workbench and hire someone at the crew board by your house. They'll gather while you're away.
+
+[q_crew_end]
+marina: Your first crew member! Treat them well. Feed them. Not fish heads, people complain about the fish heads.
+marina: Here's another contract to get you going. More crew, more slots, the more you upgrade.
+
+[q_museum_start]
+nora: Tourists used to come for the aquarium. They'll come back for a museum, I'm sure of it.
+nora: Rare catches, relics, trophies, anything special the sea gives up. Bring them to me and I'll put them on display.
+
+[q_museum_end]
+nora: The museum wing is open! People are already pressing their noses against the glass.
+nora: Mother would have loved this. Here, some Sea Essence. I found it in her old workroom.
+
+[q_lodge_start]
+odette: You're Finn's grandkid. I can tell by the way you hold the rod. Like you're about to argue with it.
+odette: I'm Odette. I hunt trophy fish. Every ground has one, and it only bites when the conditions are just right.
+odette: Start here: the Harbor Snook rises at dawn, between five and seven, right here in Bramblewick. Show me one.
+
+[q_lodge_end]
+odette: There it is. Look at the scales on that one. Finn's first trophy was a Harbor Snook too.
+odette: The lodge is open. Bring me trophies, any tier, and I'll pay you in scales. And I'll tell you where the others hide.
+
+[q_dig_start]
+grim: Your grandfather didn't trust banks. Or chests. Or people. He buried things.
+grim: Get a spade and a map from my stall, open the map on any island, and follow the arrow. Dig where it points.
+
+[q_dig_end]
+grim: Ha! You've got the nose for it. Here, this one's a pirate's map. Better loot, if you've got the spade for it.
+grim: Finn buried his notes with his treasure, you know. Keep digging. You'll find more of him out there.
+
+[q_ledger_start]
+barnaby: I found Deepnet's loan papers at the back of the vault. The dates are wrong. Very wrong.
+barnaby: The ledger's locked by the old trust rules: it only opens for a customer with ten thousand saved. Silly rule. My rule.
+
+[q_ledger_end]
+barnaby: There. Look at this date. Deepnet bought every harbor loan one month before the Great Storm.
+barnaby: Before. As if they knew it was coming. Take this to Nora. And be careful who you show it to.
+
+[q_hunts_start]
+grim: Something's stirring the deep. Krakens in the kelp, serpents in the bay. More every week.
+grim: I want a bounty board in the harbor, for proper hunters. Beat five sea creatures and I'll know you're one.
+
+[q_hunts_end]
+grim: Five. You didn't even flinch. Much.
+grim: The board's up in the harbor. Pick a family, fill the meter, and their boss will come for you. Then you go for it.
+
+[q_election_start]
+pip: Bad news. Vera Voss is standing for the Harbor Council. If she wins the seat, Deepnet runs the village from the inside.
+pip: People won't vote for a stranger's word. They'll vote with their friends. Get to know folks, then vote at the ballot box.
+
+[q_election_end]
+pip: Did you see the count? Vera came last! Dead last! Even her own boat voted against her. Well, Rex did.
+pip: You did that. The village trusts you now. Don't let it go to your head. Let it go a little bit to your head.
+
+[q_frostmaw_start]
+yuki: The ice has teeth now. Something huge in the cold seas. The old ones call it Frostmaw.
+yuki: Grim's board has a Frost Hunt. Beat the frost creatures until Frostmaw shows itself, then end it.
+
+[q_frostmaw_end]
+yuki: You beat Frostmaw? The ice sounds different already. Calmer.
+yuki: Take this amulet. It kept me warm the winter the storm came. It's yours now.
+
+[q_altar_start]
+luma: I found plans in the weather station's archive. Old anglers built tide altars to bless their rods.
+luma: It needs storm glass to catch the sky, and Sea Essence to remember the sea. There's a stone for it in the harbor.
+
+[q_altar_end]
+luma: Feel that? The altar is humming. It's listening to the tides again.
+luma: Hold a rod and touch it. The sea will tell you what it wants to give.
+
+[q_enchant_start]
+luma: Bring your favorite rod to the tide altar in the harbor and give it its first enchantment.
+
+[q_enchant_end]
+luma: It glows! Faintly. Like a nightlight for fish. Here, more essence. Don't spend it all on Lure. Spend most of it on Lure.
+
+[q_debt_free_start]
+barnaby: The ledger, the evidence, the rig. Deepnet's claim on the harbor is rotten. But a loan is still a loan.
+barnaby: So we pay it. All of it. A hundred and fifty thousand coins, saved in this bank. Then not a single plank of this harbor is theirs.
+
+[q_debt_free_end]
+barnaby: Paid. Every coin. I stamped it so hard I broke the stamp.
+pip: Bramblewick owns its own harbor again. For the first time since the storm.
+vera: ...Well. It seems I've been outplayed. Deepnet's lawyers will hate this. I'm finding I don't mind.
+
+# ------------------------------------------------------------------ system side quests
+
+[x_contest_start]
+tilly: Tuesdays I run the farming contest, Wednesdays Hale runs the fishing derby. Win a medal at either! Bronze counts.
+
+[x_contest_end]
+tilly: A medal! Spend your ribbons at the contest stalls. My stall has the good seeds.
+
+[x_derby_gold_start]
+hale: Gold at the derby means the heaviest fish of the featured kind, by a long way. Make it count.
+
+[x_derby_gold_end]
+hale: Gold. The league will hear about this. Here's your prize money.
+
+[x_power_start]
+opal: Pearls aren't the only treasure. Put charms in your charm pouch and feel the Magical Power add up.
+
+[x_power_end]
+opal: Thirty already! Here, pouch stitching. More room for more sparkle.
+
+[x_power_2_start]
+opal: Rings, artifacts, relics. The higher the rarity, the more power each one gives in the pouch.
+
+[x_power_2_end]
+opal: A hundred and twenty! You shine like a lagoon at noon. Here, more stitching.
+
+[x_tide_start]
+luma: Your logbook has a Tide Tree in it now. Every Angler Level gives a token. Spend them, it's what they're for.
+
+[x_tide_end]
+luma: Five nodes! The tree's taking root. Here's some essence, for the altar.
+
+[x_crew_5_start]
+marina: One crew member is a helper. Five is a business.
+
+[x_crew_5_end]
+marina: Five! You'll have to start paying them in actual coins soon. Just kidding. Mostly.
+
+[x_hunts_5_start]
+grim: One hunt makes you lucky. Five make you a hunter.
+
+[x_hunts_5_end]
+grim: Five bosses. The board's got your name carved on it now. Literally, I carved it.
+
+[x_museum_40_start]
+nora: The museum's getting popular! Forty points and we'll need a second display case.
+
+[x_museum_40_end]
+nora: We had twelve visitors yesterday! Twelve! Here, the museum's thank-you.
+
+[x_trails_10_start]
+grim: Ten trails. That's what it takes to call yourself a treasure hunter.
+
+[x_trails_10_end]
+grim: Ten! Here, two legend's maps. Don't spend 'em all in one place. Actually, do. That's the fun.
+
+[x_enchant_10_start]
+luma: The altar has more to give. Ten enchantment levels, and you'll understand what it's saying.
+
+[x_enchant_10_end]
+luma: Your rods practically sing now. Here's essence, a whole jar of it.
+
+[x_forage_200_start]
+tilly: I gather every morning before the chores. Two hundred finds and you'll know every bush by name.
+
+[x_forage_200_end]
+tilly: You're a real forager now! Here, a coral knife. It'll cut through the tougher spots.
+
+[x_friends_start]
+pip: Five good friends. That's all anyone needs. Well, five good friends and a boat.
+
+[x_friends_end]
+pip: Look at you, the most popular angler in Bramblewick. Here's a little something from the harbor fund.
+
+[x_angler_20_start]
+pip: Your logbook says you're an angler of some renown. Angler Level twenty would make it official.
+
+[x_angler_20_end]
+pip: Level twenty! Finn would've thrown a party. I'll throw a smaller one. Here.
+
+[x_trophy_5_start]
+odette: Five different trophy tiers, any fish. Then we'll talk about the rare ones.
+
+[x_trophy_5_end]
+odette: Five! Here's some of my trophy bait. It's my own recipe. Don't ask what's in it.
+
+[x_trophy_diamond_start]
+odette: A diamond trophy. I've seen one, once, in Finn's hands. Patience and the luck meter are your friends.
+
+[x_trophy_diamond_end]
+odette: A diamond. I have to sit down. Here, two hundred scales. You've earned every one.
+
+# ------------------------------------------------------------------ friendship favors
+
+[f_pip_1_start]
+pip: The harbor lamps are running dry. Fish oil burns clean, if you've got any.
+
+[f_pip_1_end]
+pip: Bright as a lighthouse! Here, my coffee. Strong enough to wake the fish.
+
+[f_pip_2_start]
+pip: I lost my old sextant the night of the storm. I think Finn buried it with his things. Silly, I know.
+
+[f_pip_2_end]
+pip: My sextant! And look, he engraved it. "For Pip, who always finds the way home." Here, take my compass charm. Please.
+
+[f_gus_1_start]
+gus: Sardines, sardines, sardines. Bring me ten good fish, uncommon or better, and I'll make it worth your while.
+
+[f_gus_1_end]
+gus: Beautiful! The customers will weep. Here, tacos. On the house.
+
+[f_gus_2_start]
+gus: My grandmother's fish and chips. The secret is sea salt and the right oil. Lots of both.
+
+[f_gus_2_end]
+gus: It's perfect. It's exactly how she made it. Don't look at me, I've got something in my eye.
+
+[f_nora_1_start]
+nora: The deep tank needs gentle light. Glow worms would be perfect. Six of them?
+
+[f_nora_1_end]
+nora: The fish love it! Look, they're dancing. Well, swimming. Happily.
+
+[f_nora_2_start]
+nora: Mother wrote about a legendary fish she never caught. I just want to see one. Any legendary fish.
+
+[f_nora_2_end]
+nora: Oh. It's beautiful. Mother would have cried. I'm crying. Here, her pearl earring. She'd want you to have it.
+
+[f_tilly_1_start]
+tilly: The gulls are eating my seed beds! I need feathers and rope for a scarecrow. Ironic, I know.
+
+[f_tilly_1_end]
+tilly: He's perfect! I'm calling him Finn. Don't tell your grandpa. Here, sea kale seeds.
+
+[f_tilly_2_start]
+tilly: The autumn fair! I want the biggest pumpkins on the coast. Ten of them, please.
+
+[f_tilly_2_end]
+tilly: We're going to win so hard. Here, a harvest charm and some green thumb potions.
+
+[f_silas_1_start]
+silas: My chair broke. Don't look at me like that. I'm not asking. ...Treated planks. Four.
+
+[f_silas_1_end]
+silas: Hm. It doesn't wobble. Tea?
+
+[f_silas_2_start]
+silas: Finn could fish the fog blind. Five in the fog. Then we'll see.
+
+[f_silas_2_end]
+silas: ...Not bad. Not Finn. But not bad. Take this shell. He gave it to me.
+
+[f_marina_1_start]
+marina: A boatyard runs on rope. If you've got ten spare, I'll pay.
+
+[f_marina_1_end]
+marina: Perfect. You'd make a decent boatwright if you ever stopped fishing.
+
+[f_marina_2_start]
+marina: I'm finally building my own boat. Just mine. I need iron and treated wood.
+
+[f_marina_2_end]
+marina: She's beautiful. I'm naming her after my mother. Here, take this. You've earned it.
+
+[f_rex_1_start]
+rex: Okay, Marsh. Rematch. Three rare fish, no Deepnet gear. Just us and the sea.
+
+[f_rex_1_end]
+rex: Fine. You win. Again. Have a soda. I bought too many.
+
+[f_rex_2_start]
+rex: Deepnet put tracking chips on everything they gave me. And they dumped more on the sea floor. Bring me five.
+
+[f_rex_2_end]
+rex: That's the last of them. I'm free of Deepnet. Take my medal. I didn't earn it fair. You did.
+
+[f_vera_1_start]
+vera: I have a weakness for lava cake. Bring me one and I'll tell you something. Off the record.
+
+[f_vera_1_end]
+vera: Deepnet never wanted the harbor. They wanted what's under the shrine. I didn't know, at first. That's the truth.
+
+[f_vera_2_start]
+vera: I'm done with Deepnet. I want to fix something I broke. The reef. Twenty coral shards to replant it.
+
+[f_vera_2_end]
+vera: It's growing. Slowly. Like I am, I suppose. Take this pearl. I kept it from the rig. It belongs to the sea, really.
+
+[f_brann_1_start]
+brann: My forge eats obsidian like Gus eats pie. Ten shards!
+
+[f_brann_1_end]
+brann: Good stuff! Here, ingots. Fresh from the fire.
+
+[f_brann_2_start]
+brann: I want to make something worthy of Finn's grandkid. Bring me obsidian plates. Three.
+
+[f_brann_2_end]
+brann: There. The ember idol. It'll warm your heart and your fishing. Mostly the fishing.
+
+[f_mara_1_start]
+mara: My curry's gone bland. I need chili peppers, and two ghost peppers if you're brave.
+
+[f_mara_1_end]
+mara: Oh, that's the heat. Here, curry for the road. Don't eat it all at once.
+
+[f_mara_2_start]
+mara: The inn's anniversary feast! Three seafood paellas and I'll owe you forever.
+
+[f_mara_2_end]
+mara: The whole island came! Here, payment, and cake. Lots of cake.
+
+[f_luma_1_start]
+luma: I'm measuring the meteors. Bring me stardust from a meteor night. Five pinches.
+
+[f_luma_1_end]
+luma: Look at it under the lens! Here, storm glass. Fair trade, sky for sky.
+
+[f_luma_2_start]
+luma: A whole fallen star. I've dreamed of holding one since I was little.
+
+[f_luma_2_end]
+luma: It's warm. It's still warm. Thank you. Take my storm totem. It always knew when weather was coming.
+
+[f_bo_1_start]
+bo: I'm making the best shell collection in the world! Can you help? I need fifteen shells and two starfish!
+
+[f_bo_1_end]
+bo: It's the BEST! Here, my allowance. And honey cake. One is half eaten, sorry.
+
+[f_bo_2_start]
+bo: Have you ever seen a GIANT fish? Like a really really giant one? I want to see one!
+
+[f_bo_2_end]
+bo: WHOA. Okay you can have my lucky clover. I don't need luck, I have you.
+
+[f_hale_1_start]
+hale: The league requires proof of a working fishing economy. Paperwork. Sell three thousand coins of goods.
+
+[f_hale_1_end]
+hale: Stamped and filed. Bramblewick is officially an economy. Congratulations.
+
+[f_hale_2_start]
+hale: I'm building a trophy wall for the hall. Eight trophy tiers would fill it nicely.
+
+[f_hale_2_end]
+hale: Magnificent. Take this golden scale. The league gives one to its finest. You qualify.
+
+[f_opal_1_start]
+opal: I'm stringing a necklace for my sister. Pearl dust, six pinches?
+
+[f_opal_1_end]
+opal: She'll love it! Here, sea glass. Found it diving yesterday.
+
+[f_opal_2_start]
+opal: I want to map what lives at the bottom of the lagoon. Catch eight fish in Pearl Lagoon for me.
+
+[f_opal_2_end]
+opal: My map's full! Here, payment and more sea glass. The lagoon's full of it.
+
+[f_grim_1_start]
+grim: A real captain wears a shark tooth necklace. Fifteen teeth.
+
+[f_grim_1_end]
+grim: Ha! I look terrifying. Here, doubloons. Real ones.
+
+[f_grim_2_start]
+grim: My old crew buried our haul on five islands. Dig five trails and I'll know you could've found them all.
+
+[f_grim_2_end]
+grim: You'd have made a fine first mate. Here, a legend's map. The last one I've got.
+
+[f_yuki_1_start]
+yuki: I'm making an ice sculpture of the whole village! I need frost crystals. Eight!
+
+[f_yuki_1_end]
+yuki: It's done! Gus's head fell off but it's fine. Here, hot cocoa!
+
+[f_yuki_2_start]
+yuki: Fish with me under the northern lights? Catch five fish at Frostpeak.
+
+[f_yuki_2_end]
+yuki: That was the best night. Take my frost amulet. You'll stay warm.
+
+[f_moss_1_start]
+moss: My brew needs swamp moss and glowcaps, gathered by someone with young knees.
+
+[f_moss_1_end]
+moss: Bubbling nicely. Here, fortune elixir. Don't drink it on an empty stomach.
+
+[f_moss_2_start]
+moss: Show me you can brew, dearie. Two Angler's Brews, the second kind.
+
+[f_moss_2_end]
+moss: Proper brews! You'll make an alchemist yet. Take my ring. I don't need it, I am the luck.
+
+[f_barnaby_1_start]
+barnaby: I do like a customer who saves. Twenty-five thousand and I'll consider you a regular.
+
+[f_barnaby_1_end]
+barnaby: A regular! Here, a little interest on our friendship.
+
+[f_barnaby_2_start]
+barnaby: I collect old coins. Pirate doubloons are my favorite. Three for my collection?
+
+[f_barnaby_2_end]
+barnaby: Look at the gold on these. Here, a very generous exchange. Don't tell the other customers.
+
+[f_odette_1_start]
+odette: The lodge eats scales like a furnace. Forty would keep us stocked for the season.
+
+[f_odette_1_end]
+odette: Thank you. Here, a charm I made. It helps the better tiers bite.
+
+[f_odette_2_start]
+odette: I have Finn's old trophy log. Every fish in it, caught in gold. Five golds and we'll be halfway to him.
+
+[f_odette_2_end]
+odette: Five golds. Finn would be proud. Take my ring. It's been waiting for someone like you.
+
+# ------------------------------------------------------------------ heart scenes (2, 4, 6, 8, 10)
+
+[pip_heart2]
+pip: You know, I keep a list of everyone who comes through the harbor. Your name's on page one now.
+pip: Finn's is on page one of the old book. Seems right. Here, a stew. Mara's recipe, my cooking.
+
+[pip_heart4]
+pip: I lit every lamp on the pier the night of the storm. I thought if Finn saw the lights, he'd come home.
+pip: He didn't. But you did. Sort of. Take these. Honey, for the cold mornings.
+
+[pip_heart6]
+pip: I'm not really the mayor. Nobody voted. I just kept doing things until people stopped asking who was in charge.
+player: You're doing a good job.
+pip: ...Don't tell anyone, but that's the first time anyone's said that. Here. For your pouch.
+
+[pip_heart8]
+pip: Found this in the harbor office. A photo. Finn, me, and a very small you, holding a very large fish.
+pip: You won't remember. You cried when it flopped. Keep it. Well, keep this. The photo's mine.
+
+[pip_heart10]
+pip: When you came back, I thought: the Marsh kid, here to sell the cottage and go. I was wrong. Happily wrong.
+pip: Bramblewick is your home. Whatever happens with Deepnet. This was Finn's. Now it's yours.
+
+[gus_heart2]
+gus: Between us, I don't actually like fish that much. I like people who like fish. Big difference.
+gus: Here, stew. My sister made it. It's terrible. You'll love it.
+
+[gus_heart4]
+gus: The stall was my father's. Before the storm, the line went past the fountain. Every morning.
+gus: Now there's you. And the line's coming back. Slowly. Here, honey. Don't ask where I got it.
+
+[gus_heart6]
+gus: I almost sold to Deepnet once. They offered a lot. I said I'd think about it.
+gus: Then you walked in with a sardine and that grin. I tore up the papers that night.
+
+[gus_heart8]
+gus: My father's old recipe book. I can't read his handwriting. Maybe you'll have better luck.
+gus: Every page has a little fish drawn in the corner. He did that for me. Take this, for your luck.
+
+[gus_heart10]
+gus: You're family now, you know. Gus-family. Which mostly means I yell at you about prices.
+gus: But also, if anyone ever bothers you, they deal with me. And my sister. Mostly my sister.
+
+[nora_heart2]
+nora: Sometimes I talk to the fish. They're good listeners. You're a good listener too.
+nora: Here. Stew. I can't cook, so I bought it, but I bought it with love.
+
+[nora_heart4]
+nora: Mother built the aquarium so people would care about the sea. She said you can't protect what you never see.
+nora: I think that's why I'm so stubborn about it. Thank you for helping. Here, honey.
+
+[nora_heart6]
+nora: Mother was on Finn's boat. The night of the storm. They went out to save the fishing fleet.
+nora: I never told anyone that. It's easier to be the aquarium lady than the girl whose mother didn't come back.
+
+[nora_heart8]
+nora: I found her notebook. The last page says "Shrine. Tides out of balance. Something below." Then nothing.
+nora: I think she knew what Deepnet was doing. I think she tried to stop it. Take this. It was hers.
+
+[nora_heart10]
+nora: The aquarium's full of people again. Kids pressing their faces on the glass. Just like I used to.
+nora: She'd be so happy. I'm so happy. And it's because you came home. Thank you. Really.
+
+[tilly_heart2]
+tilly: Want to know a farming secret? Talk to the plants. They grow better. Or I'm just lonely. Either way!
+tilly: Here, stew. The carrots are mine. You can tell.
+
+[tilly_heart4]
+tilly: Finn traded me fish for pumpkins every week for fifteen years. The worst trade of his life. He never complained once.
+tilly: I think he just wanted someone to talk to. Like you do. Here, honey from my hives.
+
+[tilly_heart6]
+tilly: After the storm, the soil went bad. Salt everywhere. I almost gave up the farm.
+tilly: Your grandpa's letter told me to plant sunflowers. They pull the salt out. He was right. He was always right about weird things.
+
+[tilly_heart8]
+tilly: I'm entering the autumn fair this year. First time in ten years. I'm terrified.
+player: You'll win.
+tilly: You don't know that. ...You really think so? Here. For luck. Mine and yours.
+
+[tilly_heart10]
+tilly: You know what the best part of farming is? Something you plant keeps growing when you're not looking.
+tilly: You're like that. You planted something here. Thank you, friend.
+
+[silas_heart2]
+silas: ...You keep coming back. Hm. Sit. Don't talk. Just fish.
+silas: Here. Stew. I made too much. I always make too much. Habit.
+
+[silas_heart4]
+silas: Finn and I fished this cay every summer for forty years. We had an argument the night before the storm.
+silas: Over a fish. A stupid fish. I never got to say sorry. Take this. Don't make me talk about it.
+
+[silas_heart6]
+silas: He was the better angler. I was the better cook. We'd have made a decent restaurant.
+silas: You remind me of him. The bad parts too. Mostly the bad parts. Here.
+
+[silas_heart8]
+silas: I kept his chair. On the porch. Nobody sits in it. ...You can sit in it.
+silas: That's all. Here. Something lucky. Go away. Come back tomorrow.
+
+[silas_heart10]
+silas: I've been a hermit ten years. Wanted to be alone with the sea. Thought it was all I had left.
+silas: Turns out I had you coming. Took me too long to notice. Thank you, kid.
+
+[marina_heart2]
+marina: Most people see a boat and think "pretty." I see a hull, a keel, and three things I'd fix.
+marina: Here, stew. Fuel for the hands.
+
+[marina_heart4]
+marina: My mother built boats too. She built Finn's. The one he went out in that night.
+marina: I spent years thinking she built it wrong. She didn't. Nothing could have floated through that storm.
+
+[marina_heart6]
+marina: I'm building my own boat. Just for me. Don't tell anyone, they'll want rides.
+marina: Here. You've earned a ride. Well, a pouch upgrade. Rides later.
+
+[marina_heart8]
+marina: I found the plans for Finn's boat. Mother wrote in the margins. "For Finn, who will always come back."
+marina: I'm going to build it again. For you. Someday. Here, something lucky for now.
+
+[marina_heart10]
+marina: She's finished. The boat. She's slower than yours and leaks a little. She's perfect.
+marina: I named her after both our families. The Marsh Light. Don't cry. I'm not crying either.
+
+[rex_heart2]
+rex: Look, I was a jerk. I know. Deepnet paid me to be a jerk. I'm still a little bit a jerk for free.
+rex: Here, stew. Mara made it. I can't cook. Don't tell anyone.
+
+[rex_heart4]
+rex: Grew up in the city. Never caught a real fish until I was fifteen. Deepnet found me at a tournament.
+rex: Said I'd be a legend. I just wanted to fish. Here, honey. Don't ask.
+
+[rex_heart6]
+rex: Your grandpa came to watch me fish once. Before the storm. I didn't know who he was.
+rex: He said I held my rod like I was scared of it. He was right. I'm less scared now.
+
+[rex_heart8]
+rex: I kept a log of everything Deepnet made me do. Dates, places, dumpings. I was going to burn it.
+rex: Nora has it now. Thanks for showing me that's what I should do with it.
+
+[rex_heart10]
+rex: Rivals. That's what we are. Real ones. Not Deepnet's kind.
+rex: Next Village Cup, I'm going to beat you. Fair and square. Probably not. But I'll try.
+
+[vera_heart2]
+vera: You keep being nice to me. It's strategically confusing.
+vera: Here. Stew. Someone left it at my office. I suspect Pip.
+
+[vera_heart4]
+vera: I wasn't always Deepnet. I grew up in a harbor town. Smaller than this. It died. Nobody came to save it.
+vera: I decided I'd be the one doing the buying, not the one being bought.
+
+[vera_heart6]
+vera: I read the ledger. The dates. I didn't know they knew about the storm. I swear I didn't.
+vera: ...I'm not sure you'd believe me. I'm not sure I'd believe me.
+
+[vera_heart8]
+vera: I resigned. From Deepnet. I left a very rude letter. It felt wonderful.
+vera: I have no idea what I'm doing now. Here, have something nice. I've got nobody else to give it to.
+
+[vera_heart10]
+vera: Pip offered me a job. Harbor accountant. Me. In Bramblewick. Working for the village I tried to buy.
+vera: I said yes. Don't make it weird. ...Thank you. For not giving up on me.
+
+[brann_heart2]
+brann: Ha! You've got forge hands. Calloused, burnt, stubborn. Good hands.
+brann: Here, stew. Brought it to the forge. It's warm. Very warm. Careful.
+
+[brann_heart4]
+brann: My father forged Finn's first hook. Finn kept it his whole life. Said it was lucky.
+brann: Iron's not lucky. Skill is. But don't tell him I said that.
+
+[brann_heart6]
+brann: The volcano's been restless since the rig went up. Deepnet drilled too deep.
+brann: I've been listening to the mountain. It's angry. It sounds like I feel. Here.
+
+[brann_heart8]
+brann: I'm forging something. Don't ask what. It's for you. It'll take a while.
+brann: Iron needs patience. Finn taught me that, actually. He was a terrible smith. Here, something for now.
+
+[brann_heart10]
+brann: Done. Took me two seasons. A hook, like my father made for Finn. For you.
+brann: Use it, don't frame it. Hooks are for catching. Catch something big.
+
+[mara_heart2]
+mara: Everyone eats at my inn. Everyone tells me their secrets. I'm the most dangerous woman on the island.
+mara: Here, stew. My recipe. The real one.
+
+[mara_heart4]
+mara: I opened the inn the year after the storm. People needed a warm place to sit and not talk.
+mara: Now they talk. Thanks to you, mostly about you. Here, honey for your tea.
+
+[mara_heart6]
+mara: Brann and I have been friends thirty years. He thinks he's grumpy. He's a marshmallow.
+mara: Don't tell him I said that. Do tell him I said that.
+
+[mara_heart8]
+mara: I keep a recipe book of everyone who's ever stayed. Finn's page says "fish, burnt, extra salt."
+mara: I've started your page. It says "fish, perfect, comes back." Here.
+
+[mara_heart10]
+mara: You've got a room here, you know. Always. Doesn't matter how late or how muddy.
+mara: That's what an inn is for. A home for people who are a long way from theirs.
+
+[luma_heart2]
+luma: The weather's a story, if you know how to read it. Today's story: a nice person brings me things.
+luma: Here, stew. I traded it for a forecast.
+
+[luma_heart4]
+luma: I came here to study the storm. The Great Storm. It didn't behave like weather. It behaved like something woke up.
+luma: Nobody believed me. You might. Here, honey.
+
+[luma_heart6]
+luma: I've measured the tides every night for ten years. They're out of balance. Four tides, pulling wrong.
+luma: The shrine knows. I'm sure of it. Here, something for your pouch.
+
+[luma_heart8]
+luma: Sometimes at night, on the lighthouse, I can hear the sea humming. A low note. Like a song.
+luma: I think it's the Leviathan. Singing. Is that strange? Here, take this.
+
+[luma_heart10]
+luma: The tides are balanced again. Because of you. I've waited ten years to write that sentence.
+luma: I wrote it in big letters. Then I wrote your name next to it. Thank you.
+
+[bo_heart2]
+bo: Did you know fish can't blink? I didn't blink for a whole minute once! I cried after.
+bo: Here, stew! Mum made it! It's mostly carrots!
+
+[bo_heart4]
+bo: I want to be an angler like you when I grow up. Or a dragon. Probably an angler.
+bo: Here, honey! I found it! In a jar! In Mum's cupboard!
+
+[bo_heart6]
+bo: My dad was on the fleet the night of the storm. He came back. Lots of people didn't.
+bo: He doesn't talk about it. He just hugs me really hard sometimes.
+
+[bo_heart8]
+bo: I made you something! It's a drawing of you catching the biggest fish ever. That's you. That's the fish.
+bo: The fish is winning but that's okay. Here, my lucky stone too!
+
+[bo_heart10]
+bo: You're my best friend. Besides my dog. And my other dog. You're third! That's really good!
+bo: When I'm a grown-up angler, we can fish together. Deal? Deal!
+
+[hale_heart2]
+hale: The regulations say I shouldn't play favorites. The regulations have never met you.
+hale: Here. Stew. Approved by the league catering committee. That's me. I'm the committee.
+
+[hale_heart4]
+hale: I fished, you know. Before the clipboard. Not well. But I loved it.
+hale: The league kept me close to the water. That's enough, most days. Here.
+
+[hale_heart6]
+hale: Finn won the Village Cup eleven times. He tried to lose on purpose once, to give someone else a chance.
+hale: He still won. The fish just liked him. They like you too.
+
+[hale_heart8]
+hale: The league wanted to shut Bramblewick out of the championship. Too small, they said.
+hale: I threatened to resign. They backed down. I wouldn't have, but they didn't know that. Here.
+
+[hale_heart10]
+hale: When you win the World Championship, and you will, I'll be the one handing you the trophy.
+hale: I've practiced my speech. It's forty minutes. You'll love it.
+
+[opal_heart2]
+opal: I can hold my breath for five minutes! Watch! ...Okay, two. It's been a while.
+opal: Here, stew! It's a bit wet. Everything I own is a bit wet.
+
+[opal_heart4]
+opal: Pearls grow around something that hurts the oyster. A grain of sand. Something sharp.
+opal: I think that's beautiful. Something lovely made from something that hurt. Here.
+
+[opal_heart6]
+opal: My sister left the lagoon after the storm. Went to the city. She writes, sometimes.
+opal: I'm making her a necklace. I want her to remember the sea. Here, for your pouch.
+
+[opal_heart8]
+opal: I dove to the bottom of the lagoon last week. Deeper than ever. Found a door. A stone door.
+opal: I didn't open it. Some things are better left until you're sure. Here.
+
+[opal_heart10]
+opal: My sister's coming home! She saw a newspaper about Bramblewick. About you!
+opal: You brought her back. You're bringing everyone back. Thank you.
+
+[grim_heart2]
+grim: Arr. You're all right. For a landlubber. Which you aren't. Arr.
+grim: Here, stew. Pirates eat stew. That's a fact. I made that fact up.
+
+[grim_heart4]
+grim: Captained a salvage ship for thirty years. Never once found real treasure.
+grim: Found friends, though. Most of them are at the bottom of the sea now. Here, honey.
+
+[grim_heart6]
+grim: Your grandfather and I salvaged together once. He found a gold coin. Gave it to me.
+grim: Said I needed it more. I still have it. It's not even gold. It's painted. He knew. Here.
+
+[grim_heart8]
+grim: I've been mapping every wreck since the storm. Every one. I know every name.
+grim: Someday I'll put them all on a stone. In the harbor. So nobody forgets.
+
+[grim_heart10]
+grim: Here's real treasure, kid. Not gold. A crew. A port. Someone to tell the stories to.
+grim: Thanks for giving an old pirate a port. Arr.
+
+[yuki_heart2]
+yuki: Most people hate the cold. I love it. It's quiet. It's honest.
+yuki: Here, stew! It's frozen. Thaw it first. Probably.
+
+[yuki_heart4]
+yuki: I came north after the storm. Everything was too loud. The ice was quiet.
+yuki: Now the village is loud again. In a good way. Here, honey.
+
+[yuki_heart6]
+yuki: The glaciers are melting faster since the rig went up. I measure them every morning.
+yuki: Deepnet didn't just hurt the village. They hurt the whole north. Here.
+
+[yuki_heart8]
+yuki: I carved an ice sculpture of you. It melted. I'll carve another one. Bigger.
+yuki: Here, something lucky. It doesn't melt.
+
+[yuki_heart10]
+yuki: The glaciers stopped melting. Just like that. The tides are right again.
+yuki: I think the ice is saying thank you. I'm saying it too. Thank you.
+
+[moss_heart2]
+moss: Ah, dearie. You've got kind eyes and terrible posture. Here, a stew. Good for both.
+
+[moss_heart4]
+moss: People call me a witch. I'm a herbalist with a cauldron and a sense of humor.
+moss: The cauldron's mostly for soup. Mostly. Here, honey.
+
+[moss_heart6]
+moss: I read the bog water. It tells me things. It told me you'd come. Ten years ago.
+moss: I didn't tell anyone. They'd think I was strange. Well. Stranger. Here.
+
+[moss_heart8]
+moss: Your grandfather came to me before the storm. Asked me to brew something for courage.
+moss: I told him he didn't need it. He drank it anyway. Silly man. Brave man. Here.
+
+[moss_heart10]
+moss: The bog's happy. The tides are right. The village is singing. Even the frogs.
+moss: You did that, dearie. Now go fish. I'm busy being proud of you.
+
+[barnaby_heart2]
+barnaby: A good customer is like a good coin. Rare, bright, and they always come back.
+barnaby: Here, stew. Mara bills me monthly.
+
+[barnaby_heart4]
+barnaby: When the storm came, I locked the vault with everyone's savings inside. Then the village emptied.
+barnaby: I kept the key ten years. Waiting for someone to come back for their money. Here, honey.
+
+[barnaby_heart6]
+barnaby: Finn had an account here. Every coin he ever saved. Untouched. Ten years of interest.
+barnaby: Legally it's yours. I've added a little to your pouch. Don't argue, it's paperwork.
+
+[barnaby_heart8]
+barnaby: Deepnet offered me a job once. Head of the harbor branch. Big office.
+barnaby: I told them a bank is a promise, not a business. They didn't understand. You do. Here.
+
+[barnaby_heart10]
+barnaby: The village's savings are back to where they were before the storm. Better, actually.
+barnaby: Bramblewick is solvent. I've wanted to say that word for ten years. Solvent! Thank you.
+
+[odette_heart2]
+odette: Most anglers want the biggest fish. Trophy hunters want the right fish. At the right moment.
+odette: Here, stew. I eat on the dock, waiting for dawn. It's cold by the time I remember it.
+
+[odette_heart4]
+odette: Finn taught me trophy fishing. I was nine. I caught a bronze snook and cried for an hour.
+odette: He said the best trophies are the ones you cry over. Here, honey.
+
+[odette_heart6]
+odette: I left after the storm. Couldn't look at the water. Fished in other seas for years.
+odette: Then I heard Finn's grandkid came home. I had to see if you had his patience.
+
+[odette_heart8]
+odette: You do. More, maybe. Finn was patient with fish. You're patient with people too.
+odette: Here. Something for the pouch. It's from my first gold trophy.
+
+[odette_heart10]
+odette: Finn's trophy log has one page left blank. He wrote "for whoever comes next."
+odette: I think that's you. Write your name. Then go catch something that makes you cry.
+
+# ------------------------------------------------------------------ new villagers' small talk
+
+[barnaby_chat]
+barnaby: Interest is just patience, paid in coins.
+barnaby: The vault hums at night. I like to think it's counting.
+barnaby: A season's interest on a full account buys a very nice boat. Just saying.
+barnaby: I polish every coin that comes in. Old habit. Very shiny habit.
+
+[odette_chat]
+odette: Dawn, dusk, rain, fog. Every trophy has its hour. Learn the hours.
+odette: The luck meter never lies. Keep fishing the same trophy and gold comes around.
+odette: Finn used to say a trophy is a fish that's decided to be remembered.
+odette: Glow bait in the trench at night. If you see a lantern under the water, that's the one.
+
+[oriel_chat]
+oriel: Every harbor has its own wind. Yours smells of salt and sawdust. Rebuilding, yes?
+oriel: I trade what I find. What I find is usually strange. Strange sells.
+oriel: I'll be back in a few days. Or a few weeks. The caravan goes where the road goes.
+
+[oriel_hello]
+oriel: Ah, a customer with salt in their hair. Look closely. Nothing here twice.
+
+# ------------------------------------------------------------------ greetings
+
+[pip_hello]
+pip: Morning! Or afternoon. I lose track out here.
+pip: Ah, my favorite angler. Don't tell the others.
+
+[gus_hello]
+gus: Fresh fish! Well, fish.
+gus: What've you got for me today?
+
+[nora_hello]
+nora: Oh! Hello! The fish were just asking about you.
+
+[tilly_hello]
+tilly: Mind the seed beds! Hello!
+
+[silas_hello]
+silas: ...Hm.
+
+[marina_hello]
+marina: Careful, wet varnish. Hello!
+
+[hale_hello]
+hale: Ahem. Good day.
+
+[grim_hello]
+grim: Arr. Treasure's out there.
+
+[barnaby_hello]
+barnaby: Welcome, welcome. Mind the step, it's older than me.
+
+[odette_hello]
+odette: Quiet. Something's rising. ...Never mind, it's a boot.
+
+# ------------------------------------------------------------------ friends talk (4+ hearts)
+
+[pip_chat_friend]
+pip: You know you can tell me anything, right? I'll probably tell everyone. But you can tell me.
+pip: I saved you the good bench on the pier. The one that doesn't creak.
+pip: Some days I look at the harbor and can't believe how alive it is again.
+
+[gus_chat_friend]
+gus: I set aside the best fish for my friends. You're getting the second best. The best is for me.
+gus: My sister asked about you. Run.
+
+[nora_chat_friend]
+nora: I named a guppy after you. It's very brave. It also eats too much.
+nora: Come by the museum after hours sometime. The tanks glow at night.
+
+[tilly_chat_friend]
+tilly: I planted a row of sunflowers just for you. They're facing your house. I may have overthought it.
+tilly: The bees like you. Bees are very good judges of character.
+
+[silas_chat_friend]
+silas: ...Tea's on. If you want. I'm not asking.
+silas: Finn would've liked you. He'd never have said so. Neither will I.
+
+[marina_chat_friend]
+marina: Your boat's making a funny sound. Bring it in, I'll fix it for free. Don't tell anyone.
+marina: My mother would've liked you. She liked people who fix things.
+
+[rex_chat_friend]
+rex: I still think I'm a better angler. I'm just losing gracefully. Very gracefully.
+rex: Want to fish the pier at sunrise? First one to ten wins nothing.
+
+[vera_chat_friend]
+vera: I've started feeding the harbor cats. Don't make it a thing.
+vera: Pip still calls me "the villain" sometimes. I think he likes it.
+
+[brann_chat_friend]
+brann: Bring me your rod sometime. I'll look at the hook. Old habit.
+brann: Mara says I talk about you too much. I talk about everyone too much.
+
+[mara_chat_friend]
+mara: There's a bowl of soup waiting for you at the inn. Always is.
+mara: Brann asked me how you take your tea. I told him strong. He looked proud.
+
+[luma_chat_friend]
+luma: Clear skies tonight. Come up the lighthouse and watch the meteors with me.
+luma: I put your name in the station log. Under "trusted observers."
+
+[bo_chat_friend]
+bo: I told everyone at school you're my best friend! Well, I told my dog. He agreed.
+bo: Can you teach me to cast? I promise I won't hook Mum again.
+
+[hale_chat_friend]
+hale: Off the record, you're my favorite competitor. On the record, I have no favorites.
+hale: I've been practicing my fishing. Don't laugh. Laugh a little.
+
+[opal_chat_friend]
+opal: I found a pearl shaped like a heart! I'm keeping it. Sorry. It's very me.
+opal: Dive with me sometime! You can hold my bag. It's heavy. It's full of shells.
+
+[grim_chat_friend]
+grim: I'd give you a ship if I had one. I'll give you a story instead. It's longer.
+grim: Arr. That's pirate for "glad you're here."
+
+[yuki_chat_friend]
+yuki: The snow's perfect today. For snowballs. For throwing at Gus.
+yuki: I carved a tiny you out of ice. It's in my freezer. Don't tell anyone.
+
+[moss_chat_friend]
+moss: Eat your greens, dearie. And your blues. Bog mushrooms are blue.
+moss: The frogs say you're doing well. I trust the frogs.
+
+[barnaby_chat_friend]
+barnaby: For you, I'd waive the fees. There are no fees. But I'd waive them.
+barnaby: Your account's the neatest in the ledger. I check it for fun.
+
+[odette_chat_friend]
+odette: Fish the reef with a perfect cast tomorrow. Trust me.
+odette: I kept Finn's lucky hat. It's yours when you're ready. You're not ready.
+
+# ------------------------------------------------------------------ close friends talk (8+ hearts)
+
+[pip_chat_close]
+pip: Whatever happens with the harbor, you'll always have a home here. That's a mayor promise. Unofficial mayor.
+
+[gus_chat_close]
+gus: You know what? I do like fish. I like them because of you. Don't tell my sister.
+
+[nora_chat_close]
+nora: I think Mother would've adopted you. She adopted everyone. Mostly crabs.
+
+[tilly_chat_close]
+tilly: Best friends share their best pumpkins. You're getting my best pumpkin. Its name is Gerald.
+
+[silas_chat_close]
+silas: Sit in his chair. Go on. ...Fits you.
+
+[marina_chat_close]
+marina: Whenever you need a boat, any boat, it's yours. That's a boatwright's oath.
+
+[rex_chat_close]
+rex: Best rival I ever had. Best friend, too. Don't make it weird.
+
+[vera_chat_close]
+vera: I never had a friend who didn't want something. You want things. Fish, mostly. That's fine.
+
+[brann_chat_close]
+brann: Forge's always warm for you. Like a heart. A very hot heart.
+
+[mara_chat_close]
+mara: Your page in my recipe book is the longest one now. It says "family."
+
+[luma_chat_close]
+luma: When the tides balance, I'm going to watch the sunrise with you from the lighthouse. That's a forecast.
+
+[bo_chat_close]
+bo: You're my hero. Don't tell my dad. He thinks he's my hero. He's my second hero.
+
+[hale_chat_close]
+hale: If I ever leave the league, I'll come fish with you. Every day. Badly.
+
+[opal_chat_close]
+opal: You're like a pearl. Something lovely that came out of something sad. That's a compliment!
+
+[grim_chat_close]
+grim: You're my crew now. Captain's orders. You can't say no. Arr.
+
+[yuki_chat_close]
+yuki: The north is quiet. But it's nicer when you visit. Loud is nice sometimes.
+
+[moss_chat_close]
+moss: I knew you'd come, dearie. The bog told me. It didn't tell me I'd love you. That part I figured out.
+
+[barnaby_chat_close]
+barnaby: If I had a vault for friends, you'd be in it. That sounds worse than I meant it.
+
+[odette_chat_close]
+odette: Here's the hat. Finn's. You're ready now. Don't lose it in the fog.
+
+# ------------------------------------------------------------------ seasons
+
+[pip_chat_spring]
+pip: Spring at last! The Blossom Derby's in the middle of the season. Tilly's been practicing.
+
+[pip_chat_summer]
+pip: Summer nights are for Starfall. Bring a blanket. And a rod. Mostly a rod.
+
+[pip_chat_autumn]
+pip: Spooky Tide's coming. Moss has been cackling more than usual.
+
+[pip_chat_winter]
+pip: Winter! Wally's workshop opens for the Gift Tide. Get your presents ready.
+
+[tilly_chat_spring]
+tilly: Spring planting! Everything grows faster when you're excited about it. Probably.
+
+[tilly_chat_autumn]
+tilly: Pumpkin season! My favorite season. Pumpkins are my favorite vegetable. Fruit? Pumpkins.
+
+[gus_chat_summer]
+gus: Summer means mackerel. Mackerel means profit. Profit means I smile more.
+
+[gus_chat_winter]
+gus: Cold fish keep longer! That's the only good thing about winter.
+
+[luma_chat_summer]
+luma: Summer skies are clear for meteors. Check the calendar for meteor nights.
+
+[yuki_chat_winter]
+yuki: Winter! Finally! The rest of you can join me in the cold now.
+
+[moss_chat_autumn]
+moss: The bog glows brightest in autumn. Something in the mushrooms. Don't eat those ones.
+
+[odette_chat_spring]
+odette: Spring fog brings the Bay Ghostfin up. Keep your eyes on the bay.
+
+# ------------------------------------------------------------------ gift reactions
+
+[gus_gift_loved]
+gus: A fish taco! You know me too well. It's frightening. Thank you.
+
+[tilly_gift_loved]
+tilly: Oh! This is my favorite! You remembered! Or guessed! Either way!
+
+[silas_gift_loved]
+silas: ...Hm. Good. Very good. Thank you.
+
+[silas_gift_hated]
+silas: Why. Why would you give me this.
+
+[nora_gift_loved]
+nora: Oh, it's beautiful! It's going straight in the museum. No, it's going on my desk.
+
+[bo_gift_loved]
+bo: WOW! Is this for me? This is the best day of my life! Again!
+
+[bo_gift_hated]
+bo: Ew! Ew ew ew! ...Thank you for trying though.
+
+[grim_gift_loved]
+grim: Treasure! Arr, you've made an old pirate very happy.
+
+[moss_gift_loved]
+moss: Oh, dearie. This is exactly what my cauldron needed.
+
+[yuki_gift_hated]
+yuki: That's... hot. Why is it hot. Get it away.
+
+[barnaby_gift_loved]
+barnaby: Gold! Real gold! I'm going to polish this for a week.
+
+[odette_gift_loved]
+odette: A trophy? For me? I'm putting this one on the wall.
