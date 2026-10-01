@@ -11,5 +11,5 @@ displayName = "Glow Worm"
 icon = ExtResource("2_icon")
 rarity = ExtResource("3_rarity")
 description = "Lives in damp, dark places. Its light draws curious fish."
-maxStack = 99
+maxStack = 100
 sellPrice = 20

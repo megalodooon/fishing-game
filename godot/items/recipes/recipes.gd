@@ -116,7 +116,8 @@ static func craft(player : Player, recipe : BaitRecipe, times : int) -> int:
 				player.inventory.give(result, recipe.amount * extra)
 			player.say("Double craft!", Color(0.56, 0.93, 0.44))
 		Quest.notify(player, &"craft", result, recipe.amount * made)
-		Skills.add(player, skill_for(result), recipe.xp * made)
+		# Artisan, fully grown: double crafting XP.
+		Skills.add(player, skill_for(result), recipe.xp * made * (2.0 if TideTree.has(player, "artisan") else 1.0))
 		player.progress.count("crafted", recipe.amount * made)
 		if result is Snack:
 			player.progress.count("meals_cooked", recipe.amount * made)

@@ -17,4 +17,4 @@ displayName = "Starfish Bait"
 icon = ExtResource("2_0f3wr")
 rarity = ExtResource("3_ey5x7")
 description = "Goes in a rod's bait slot."
-maxStack = 99
+maxStack = 100

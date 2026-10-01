@@ -11,5 +11,5 @@ category = "Hunt Trophy"
 icon = ExtResource("1_x7jb1")
 rarity = ExtResource("2_p0lkt")
 description = "A pearl of ice that never melts."
-maxStack = 99
+maxStack = 100
 sellPrice = 400

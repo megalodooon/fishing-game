@@ -11,5 +11,5 @@ category = "Enchanted Material"
 icon = ExtResource("1_bnd7g")
 rarity = ExtResource("2_bggux")
 description = "16 Moonmelon pressed into one. Better recipes ask for these."
-maxStack = 99
+maxStack = 100
 sellPrice = 2112

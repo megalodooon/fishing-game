@@ -11,5 +11,5 @@ category = "Enchanted Material"
 icon = ExtResource("1_wda5q")
 rarity = ExtResource("2_4a0rg")
 description = "32 Pumice Stone pressed into one. Better recipes ask for these."
-maxStack = 99
+maxStack = 100
 sellPrice = 282

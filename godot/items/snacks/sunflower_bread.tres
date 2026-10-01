@@ -12,5 +12,5 @@ rarity = ExtResource("e3")
 description = "Crunchy seeds baked right in."
 energy = 35
 hint = "Click while holding it to eat"
-maxStack = 20
+maxStack = 100
 sellPrice = 18

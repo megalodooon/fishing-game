@@ -11,5 +11,5 @@ category = "Fish Product"
 icon = ExtResource("1_lpy06")
 rarity = ExtResource("2_ydn1n")
 description = "Made in the recipe book."
-maxStack = 99
+maxStack = 100
 sellPrice = 15

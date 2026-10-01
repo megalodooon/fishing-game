@@ -15,5 +15,5 @@ buffStat = "seaCreature"
 buffAmount = 1.02
 buffHours = 4.0
 hint = "Click while holding it to eat"
-maxStack = 20
+maxStack = 100
 sellPrice = 43

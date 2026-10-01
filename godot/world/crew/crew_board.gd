@@ -57,8 +57,8 @@ func rows(player : Player) -> Array[Dictionary]:
 				var member : CrewMember = entry.crew
 				if not member:
 					continue
-				var detail : String = "%d/%d" % [entry.stored, member.storage(entry.tier)] if tab == Tab.CREW else ("Max" if entry.tier >= CrewMember.MAX_TIER else "-> %s" % Unlocks.roman(entry.tier + 1))
-				var full : bool = entry.stored >= member.storage(entry.tier)
+				var detail : String = "%d/%d" % [entry.stored, Crew.storage(player, member, entry.tier)] if tab == Tab.CREW else ("Max" if entry.tier >= CrewMember.MAX_TIER else "-> %s" % Unlocks.roman(entry.tier + 1))
+				var full : bool = entry.stored >= Crew.storage(player, member, entry.tier)
 				list.append({"value": i, "icon": member.icon, "text": member.tier_name(entry.tier), "detail": detail, "detailColor": BAD if full and tab == Tab.CREW else (GOOD if can_upgrade(player, i) and tab == Tab.UPGRADE else DIM), "marked": entry.stored > 0 and tab == Tab.CREW})
 			for i in range(player.progress.crew.size(), Crew.slots(player)):
 				list.append({"value": -1 - i, "cross": true, "text": "Empty slot", "detail": "Hire", "dim": true})
@@ -91,7 +91,7 @@ func info(player : Player, value : Variant) -> Dictionary:
 		return shown
 	var entry : Dictionary = player.progress.crew[value]
 	var member : CrewMember = entry.crew
-	var lines : Array = [["Gathers", member.product.displayName], ["Speed", "1 per %s" % Crew.hours_text(member.interval(entry.tier, Crew.speed(player)))], ["Holding", "%d/%d" % [entry.stored, member.storage(entry.tier)], BAD if entry.stored >= member.storage(entry.tier) else Color(0.94, 0.97, 1.0)]]
+	var lines : Array = [["Gathers", member.product.displayName], ["Speed", "1 per %s" % Crew.hours_text(member.interval(entry.tier, Crew.speed(player)))], ["Holding", "%d/%d" % [entry.stored, Crew.storage(player, member, entry.tier)], BAD if entry.stored >= Crew.storage(player, member, entry.tier) else Color(0.94, 0.97, 1.0)]]
 	var details : Dictionary = {"title": member.tier_name(entry.tier), "icon": member.icon, "tag": "Crew member", "text": member.description, "lines": lines}
 	if tab == Tab.CREW:
 		details.action = "Collect %d" % entry.stored

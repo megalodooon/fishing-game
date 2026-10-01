@@ -11,5 +11,5 @@ category = "Enchanted Material"
 icon = ExtResource("1_0rs8w")
 rarity = ExtResource("2_rev4m")
 description = "32 Cotton pressed into one. Better recipes ask for these."
-maxStack = 99
+maxStack = 100
 sellPrice = 563

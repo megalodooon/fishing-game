@@ -57,7 +57,8 @@ static func roll(player : Player, context : FishingContext, where : Biome) -> It
 	for trophy in all():
 		if trophy.tiers.size() < 4 or not trophy.can_bite(context, where, rod):
 			continue
-		if randf() >= trophy.chance:
+		# Trophy Eye, fully grown: trophy fish bite twice as often.
+		if randf() >= trophy.chance * (2.0 if TideTree.has(player, "trophy_eye") else 1.0):
 			continue
 		var tier : int = roll_tier(player, trophy)
 		var item : Item = trophy.tiers[tier]

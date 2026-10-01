@@ -5,6 +5,8 @@
 [ext_resource type="Resource" path="res://items/equipment/nightcap.tres" id="8_5yxjl"]
 [ext_resource type="Resource" path="res://items/equipment/divers_helmet.tres" id="9_w2mn0"]
 [ext_resource type="Resource" path="res://items/equipment/merchants_waistcoat.tres" id="10_5x2oj"]
+[ext_resource type="Resource" path="res://items/equipment/night_watch_coat.tres" id="11_vsm8b"]
+[ext_resource type="Resource" path="res://items/equipment/captains_tricorn.tres" id="12_bu7u5"]
 [ext_resource type="Resource" path="res://fishing/bait/glow_bait.tres" id="i1"]
 [ext_resource type="Resource" path="res://fishing/bait/rust_bait.tres" id="i2"]
 [ext_resource type="Resource" path="res://fishing/bait/squid_bait.tres" id="i3"]
@@ -66,7 +68,21 @@ price = 4200
 requiredSkill = &"trading"
 requiredLevel = 10
 
+[sub_resource type="Resource" id="Resource_bu7u5"]
+script = ExtResource("2_offer")
+item = ExtResource("11_vsm8b")
+price = 2600
+requiredSkill = &"fishing"
+requiredLevel = 10
+
+[sub_resource type="Resource" id="Resource_oypeg"]
+script = ExtResource("2_offer")
+item = ExtResource("12_bu7u5")
+price = 5000
+requiredSkill = &"trading"
+requiredLevel = 12
+
 [resource]
 script = ExtResource("1_stock")
 shopName = "The Angler's Market"
-offers = Array[ExtResource("2_offer")]([SubResource("o1"), SubResource("o2"), SubResource("o3"), SubResource("o4"), SubResource("o5"), SubResource("o6"), SubResource("Resource_w2mn0"), SubResource("Resource_5x2oj"), SubResource("Resource_vsm8b")])
+offers = Array[ExtResource("2_offer")]([SubResource("o1"), SubResource("o2"), SubResource("o3"), SubResource("o4"), SubResource("o5"), SubResource("o6"), SubResource("Resource_w2mn0"), SubResource("Resource_5x2oj"), SubResource("Resource_vsm8b"), SubResource("Resource_bu7u5"), SubResource("Resource_oypeg")])

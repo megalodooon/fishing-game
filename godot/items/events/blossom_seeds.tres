@@ -15,4 +15,4 @@ displayName = "Blossom Seeds"
 icon = ExtResource("2_q4iw2")
 rarity = ExtResource("3_01w6d")
 description = "Grows into a cherry blossom branch in three days."
-maxStack = 99
+maxStack = 100

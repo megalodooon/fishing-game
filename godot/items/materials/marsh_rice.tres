@@ -11,5 +11,5 @@ icon = ExtResource("e2")
 rarity = ExtResource("e3")
 description = "Grows in the wet mangrove soil."
 category = "Crop"
-maxStack = 99
+maxStack = 100
 sellPrice = 12

@@ -11,5 +11,5 @@ category = "Enchanted Material"
 icon = ExtResource("1_cske6")
 rarity = ExtResource("2_n3tt8")
 description = "16 Winter Squash pressed into one. Better recipes ask for these."
-maxStack = 99
+maxStack = 100
 sellPrice = 880

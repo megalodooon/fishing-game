@@ -81,7 +81,13 @@ func move_fish(delta : float) -> void:
 	if moveTimer <= 0.0:
 		moveTimer = tune(moveInterval) * random.randf_range(0.6, 1.4)
 		var reach : float = tune(jump) * length * random.randf_range(0.5, 1.0)
-		fishGoal = clampf(fish + reach * (1.0 if random.randf() < 0.5 else -1.0), fishFloor, length - 1.0)
+		# Toward whichever side has room, so it never pins itself to an edge.
+		var up : bool = random.randf() < 0.5
+		if fish + reach > length - 1.0:
+			up = false
+		elif fish - reach < fishFloor:
+			up = true
+		fishGoal = clampf(fish + reach * (1.0 if up else -1.0), fishFloor, length - 1.0)
 		var darting : bool = random.randf() < tune(dartChance)
 		fishTop = minf(tune(fishSpeed) * (dartBoost if darting else 1.0), maxSpeed * speedCap)
 		if darting:

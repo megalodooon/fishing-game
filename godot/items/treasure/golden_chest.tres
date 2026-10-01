@@ -30,4 +30,4 @@ icon = ExtResource("e12")
 rarity = ExtResource("e13")
 description = "It gleams even underwater."
 hint = "Click while holding it to open"
-maxStack = 20
+maxStack = 100

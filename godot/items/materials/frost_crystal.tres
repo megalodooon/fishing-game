@@ -11,5 +11,5 @@ icon = ExtResource("e2")
 rarity = ExtResource("e3")
 description = "Never melts, even in your pocket."
 category = "Material"
-maxStack = 99
+maxStack = 100
 sellPrice = 45

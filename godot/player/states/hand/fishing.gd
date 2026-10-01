@@ -24,6 +24,8 @@ class_name PlayerFishingState
 
 # One bite timer per line. Only one line bites at a time.
 var biteTimers : PackedFloat32Array = PackedFloat32Array()
+# Swift Line, fully grown: one missed bite per cast comes right back.
+var secondChance : bool = false
 var biting : FishingRod
 var shown : FishingRod
 var biteLeft : float = 0.0
@@ -51,6 +53,12 @@ func enter() -> void:
 		rating.pop(shown.get_bobber_point(), ratingNames[index], ratingColors[index], ratingTime)
 	biteLeft = 0.0
 	biting = null
+	secondChance = TideTree.has(player, "swift_line")
+	# Tidecaller's Heart, fully grown: the first cast each day bites at once.
+	var cycle : DayNightCycle = DayNightCycle.find(get_tree())
+	if cycle and TideTree.has(player, "heart") and player.progress.get_flag("first_cast", -1) != cycle.day and not biteTimers.is_empty():
+		player.progress.set_flag("first_cast", cycle.day)
+		biteTimers[0] = 0.4
 
 func exit() -> void:
 	biteMark.dismiss()
@@ -68,7 +76,8 @@ func update_physics(delta : float) -> void:
 		biteLeft -= delta
 		if biteLeft <= 0.0:
 			biteMark.dismiss()
-			biteTimers[lines.find(biting)] = delay_for(biting)
+			biteTimers[lines.find(biting)] = 0.5 if secondChance else delay_for(biting)
+			secondChance = false
 			biting = null
 	else:
 		for i in mini(lines.size(), biteTimers.size()):

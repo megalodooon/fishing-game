@@ -11,5 +11,5 @@ category = "Enchanted Material"
 icon = ExtResource("1_k7tbj")
 rarity = ExtResource("2_3r8fw")
 description = "32 Scrap Wire pressed into one. Better recipes ask for these."
-maxStack = 99
+maxStack = 100
 sellPrice = 211

@@ -18,4 +18,4 @@ displayName = "Feather Lure"
 icon = ExtResource("2_vtbwm")
 rarity = ExtResource("3_563w8")
 description = "Goes in a rod's bait slot."
-maxStack = 99
+maxStack = 100

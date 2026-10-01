@@ -12,5 +12,5 @@ rarity = ExtResource("e3")
 description = "Easy to carry, easy to eat."
 energy = 30
 hint = "Click while holding it to eat"
-maxStack = 20
+maxStack = 100
 sellPrice = 15

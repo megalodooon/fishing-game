@@ -11,5 +11,5 @@ category = "Refined"
 icon = ExtResource("1_3rsgm")
 rarity = ExtResource("2_7cnfe")
 description = "Made in the recipe book."
-maxStack = 99
+maxStack = 100
 sellPrice = 12

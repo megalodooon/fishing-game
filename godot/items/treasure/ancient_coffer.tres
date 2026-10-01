@@ -29,4 +29,4 @@ icon = ExtResource("e11")
 rarity = ExtResource("e12")
 description = "Older than the village. Carved with the four tides."
 hint = "Click while holding it to open"
-maxStack = 20
+maxStack = 100

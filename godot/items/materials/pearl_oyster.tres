@@ -11,5 +11,5 @@ category = "Forage"
 icon = ExtResource("1_ls8mr")
 rarity = ExtResource("2_624qk")
 description = "Some have pearls. Most have pearl dust."
-maxStack = 99
+maxStack = 100
 sellPrice = 25

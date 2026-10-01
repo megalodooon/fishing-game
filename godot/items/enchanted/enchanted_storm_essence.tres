@@ -11,5 +11,5 @@ category = "Enchanted Material"
 icon = ExtResource("1_ss5aj")
 rarity = ExtResource("2_8oh4i")
 description = "16 Storm Essence pressed into one. Better recipes ask for these."
-maxStack = 99
+maxStack = 100
 sellPrice = 2112

@@ -17,4 +17,4 @@ displayName = "Berry Bait"
 icon = ExtResource("2_xwhom")
 rarity = ExtResource("3_jgjkd")
 description = "Goes in a rod's bait slot."
-maxStack = 99
+maxStack = 100

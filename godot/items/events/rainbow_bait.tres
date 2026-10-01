@@ -18,4 +18,4 @@ displayName = "Rainbow Bait"
 icon = ExtResource("2_dxq3n")
 rarity = ExtResource("3_im5ke")
 description = "Every color at once. Rare fish can't resist it."
-maxStack = 99
+maxStack = 100

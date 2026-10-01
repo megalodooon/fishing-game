@@ -11,5 +11,5 @@ icon = ExtResource("e2")
 rarity = ExtResource("e3")
 description = "Sharp enough to shave with. Please don't."
 category = "Creature Drop"
-maxStack = 99
+maxStack = 100
 sellPrice = 60

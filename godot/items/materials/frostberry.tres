@@ -11,5 +11,5 @@ icon = ExtResource("e2")
 rarity = ExtResource("e3")
 description = "Sweet berries that only ripen in the cold."
 category = "Crop"
-maxStack = 99
+maxStack = 100
 sellPrice = 35

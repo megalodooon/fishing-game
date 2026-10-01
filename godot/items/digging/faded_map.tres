@@ -11,5 +11,5 @@ icon = ExtResource("1_bwmcm")
 rarity = ExtResource("2_s254y")
 description = "Open it on an island to bury a trail of treasure there. You'll need a spade."
 hint = "Click to open"
-maxStack = 20
+maxStack = 100
 sellPrice = 100

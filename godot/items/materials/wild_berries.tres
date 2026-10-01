@@ -11,5 +11,5 @@ category = "Forage"
 icon = ExtResource("1_ju3og")
 rarity = ExtResource("2_c5844")
 description = "Sweet and sour. Birds and fish both love them."
-maxStack = 99
+maxStack = 100
 sellPrice = 4

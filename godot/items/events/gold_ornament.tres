@@ -11,5 +11,5 @@ category = "Festival"
 icon = ExtResource("1_a4qmv")
 rarity = ExtResource("2_gf6td")
 description = "Shiny, heavy and very festive. Worth a lot to the right collector."
-maxStack = 99
+maxStack = 100
 sellPrice = 250

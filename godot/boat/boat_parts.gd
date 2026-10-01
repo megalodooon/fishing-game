@@ -35,7 +35,7 @@ const PARTS : Dictionary = {
 		[6000, {"res://items/materials/iron_scrap.tres": 20}, {}, "Cargo Hold"],
 		[24000, {"res://items/materials/frost_crystal.tres": 10, "res://items/materials/iron_scrap.tres": 30}, {}, "Deep Hold"],
 	]],
-	SONAR: ["Sonar", "Pings the water for fish: spots show up more often and last longer.", [
+	SONAR: ["Sonar", "Pings the water for fish: spots show up more often and last longer. The Sonar Array shows the shadow of the fish in each spot; Deep Sonar shows the fish itself.", [
 		[1500, {"res://items/materials/iron_scrap.tres": 8, "res://items/materials/glowcap.tres": 5}, {&"luck": 3.0}, "Fish Finder"],
 		[8000, {"res://items/materials/iron_scrap.tres": 25, "res://items/materials/ink_sac.tres": 10}, {&"luck": 4.0}, "Sonar Array"],
 		[30000, {"res://items/materials/abyssal_scale.tres": 5, "res://items/materials/storm_essence.tres": 5}, {&"luck": 6.0}, "Deep Sonar"],

@@ -11,5 +11,5 @@ category = "Enchanted Material"
 icon = ExtResource("1_q2arr")
 rarity = ExtResource("2_o4iar")
 description = "32 Pumpkin pressed into one. Better recipes ask for these."
-maxStack = 99
+maxStack = 100
 sellPrice = 2112

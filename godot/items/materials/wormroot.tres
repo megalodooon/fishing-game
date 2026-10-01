@@ -11,5 +11,5 @@ displayName = "Wormroot"
 icon = ExtResource("2_icon")
 rarity = ExtResource("3_rarity")
 description = "A wriggly pink root. Fish can't resist it."
-maxStack = 99
+maxStack = 100
 sellPrice = 6

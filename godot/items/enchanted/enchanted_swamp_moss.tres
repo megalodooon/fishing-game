@@ -11,5 +11,5 @@ category = "Enchanted Material"
 icon = ExtResource("1_bwlwn")
 rarity = ExtResource("2_1ak4r")
 description = "32 Swamp Moss pressed into one. Better recipes ask for these."
-maxStack = 99
+maxStack = 100
 sellPrice = 141

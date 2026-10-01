@@ -24,4 +24,4 @@ icon = ExtResource("1_axs67")
 rarity = ExtResource("9_kop3c")
 description = "The biggest box under the tree. Something wonderful is inside."
 hint = "Click to open"
-maxStack = 99
+maxStack = 100

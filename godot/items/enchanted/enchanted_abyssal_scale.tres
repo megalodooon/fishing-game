@@ -11,5 +11,5 @@ category = "Enchanted Material"
 icon = ExtResource("1_imofd")
 rarity = ExtResource("2_d4tea")
 description = "16 Abyssal Scale pressed into one. Better recipes ask for these."
-maxStack = 99
+maxStack = 100
 sellPrice = 2640

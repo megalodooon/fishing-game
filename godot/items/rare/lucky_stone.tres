@@ -11,5 +11,5 @@ category = "Reforge Stone"
 icon = ExtResource("1_1qj11")
 rarity = ExtResource("2_kjyta")
 description = "Bring it to an anvil: it gives a rod the Blessed reforge."
-maxStack = 20
+maxStack = 100
 sellPrice = 300

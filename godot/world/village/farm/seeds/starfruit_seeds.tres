@@ -14,5 +14,5 @@ displayName = "Starfruit Seeds"
 icon = ExtResource("2_0yu25")
 rarity = ExtResource("3_v18f5")
 description = "Plant it on a farm plot. Grows into Starfruit in 5 days."
-maxStack = 99
+maxStack = 100
 buyPrice = 84

@@ -11,5 +11,5 @@ category = "Enchanted Material"
 icon = ExtResource("1_pm1ek")
 rarity = ExtResource("2_sg4hh")
 description = "32 Seaweed pressed into one. Better recipes ask for these."
-maxStack = 99
+maxStack = 100
 sellPrice = 70

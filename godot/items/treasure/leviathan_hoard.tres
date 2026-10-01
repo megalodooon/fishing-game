@@ -28,4 +28,4 @@ icon = ExtResource("e10")
 rarity = ExtResource("e11")
 description = "What the deep has swallowed over a thousand years."
 hint = "Click while holding it to open"
-maxStack = 20
+maxStack = 100

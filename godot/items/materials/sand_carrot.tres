@@ -11,5 +11,5 @@ category = "Crop"
 icon = ExtResource("1_7rvhd")
 rarity = ExtResource("2_5qm3r")
 description = "Grown on the farm. Good for cooking and brewing."
-maxStack = 99
+maxStack = 100
 sellPrice = 8

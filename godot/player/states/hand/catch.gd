@@ -8,6 +8,8 @@ class_name PlayerCatchState
 # catch pays Fishing XP, fills the journal and collections, can bring up a
 # second fish (Double catch) and a treasure chest (Treasure chance).
 
+# Junk comes up this much less often than a sea lists, so the bag stays clear.
+const JUNK_SCALE : float = 0.5
 const RARITY_XP : Dictionary = {"Common": 6.0, "Uncommon": 14.0, "Rare": 35.0, "Legendary": 90.0, "Trophy": 300.0}
 
 #------------------------#
@@ -131,7 +133,7 @@ func next_fish() -> void:
 				var scene : PackedScene = creature.fight if creature.fight else bossMinigames.pick_random()
 				start(scene, creature.difficulty, 0.5, creature.rarity.color if creature.rarity else creatureColor, creature.icon, creature.style, creature.toughness, creature.announce if not creature.announce.is_empty() else "A %s appears!" % creature.displayName)
 				return
-		if biome and not biome.junk.is_empty() and randf() < biome.junkChance:
+		if biome and not biome.junk.is_empty() and randf() < biome.junkChance * JUNK_SCALE:
 			var junk : Item = biome.junk.pick_random()
 			if junk and player.inventory.give(junk, 1) == 0:
 				player.progress.count("junk")
@@ -148,7 +150,9 @@ func next_fish() -> void:
 					fishBiome = event.page
 					break
 		if not data:
-			data = FishData.roll(spot.fish, context)
+			data = crown_fish(spot, context)
+		if not data:
+			data = spot.take_fish(context)
 		if not data:
 			continue
 		fish = Fish.caught(data, player.stat(&"weight") * 0.01, 1.0 + player.stat(&"variantLuck") * 0.01)
@@ -165,7 +169,8 @@ func start(scene : PackedScene, difficulty : float, heft : float, color : Color,
 	minigame = scene.instantiate()
 	minigame.finished.connect(on_finished)
 	minigame.tugged.connect(line.bobber.splash)
-	minigame.hearts = roundi(player.stat(&"hearts"))
+	# Monster Lure, fully grown: a heart more against sea creatures.
+	minigame.hearts = roundi(player.stat(&"hearts")) + (1 if creature and TideTree.has(player, "monster_lure") else 0)
 	minigame.power = 1.0 + player.stat(&"damage") * 0.01
 	minigame.style = style
 	minigame.toughness = toughness
@@ -212,6 +217,21 @@ func on_finished(caught : bool) -> void:
 		queue.clear()
 	next_fish()
 
+# Heart of the Sea, fully grown: once a day a perfect cast hooks a rare fish
+# or better, when the spot has one that bites now.
+func crown_fish(spot : FishingSpot, context : FishingContext) -> FishData:
+	var cycle : DayNightCycle = DayNightCycle.find(get_tree())
+	if not cycle or not is_instance_valid(line) or line.castScore < FishingSpot.MAX_SCORE or not TideTree.has(player, "crown") or player.progress.get_flag("crown", -1) == cycle.day:
+		return null
+	var rare : Array[FishData] = []
+	for data in spot.fish:
+		if data.rarity and not data.rarity.displayName in ["Common", "Uncommon"] and data.can_bite(context):
+			rare.append(data)
+	if rare.is_empty():
+		return null
+	player.progress.set_flag("crown", cycle.day)
+	return rare.pick_random()
+
 func fish_xp(caught : Fish, biome : Biome) -> float:
 	var base : float = RARITY_XP.get(caught.rarity.displayName if caught.rarity else "Common", 6.0)
 	return base * (1.0 + (biome.tier if biome else 0) * 0.5) * (1.5 if caught.variant != Fish.NORMAL else 1.0)
@@ -226,7 +246,8 @@ func land(caught : Fish) -> void:
 	var first : bool = player.journal.record(caught, where) if player.journal else false
 	use_bait()
 	grow_pet()
-	Skills.add(player, Skills.FISHING, fish_xp(caught, where))
+	# Scholar, fully grown: a species never caught before gives triple XP.
+	Skills.add(player, Skills.FISHING, fish_xp(caught, where) * (3.0 if first and TideTree.has(player, "scholar") else 1.0))
 	Collections.check(player, caught.species)
 	player.progress.count("fish_caught")
 	if caught.variant != Fish.NORMAL:
@@ -236,7 +257,11 @@ func land(caught : Fish) -> void:
 	player.fish_caught.emit(caught, where)
 	results.append({"icon": caught.icon, "text": "%s%s %s" % [newText if first else "", caught.displayName, caught.weight_text()], "color": Fish.VARIANT_COLORS[caught.variant] if caught.variant != Fish.NORMAL else caught.title_color(), "from": from})
 	if randf() * 100.0 < player.stat(&"doubleCatch") and player.inventory.has_space():
-		var twin : Fish = Fish.caught(caught.species, player.stat(&"weight") * 0.01)
+		# Double Hook, fully grown: half the time the second fish is another one from the spot.
+		var other : FishData = null
+		if TideTree.has(player, "double_hook") and is_instance_valid(fishSpot) and randf() < 0.5:
+			other = FishData.roll(fishSpot.fish, FishingContext.make(player, line, fishSpot))
+		var twin : Fish = Fish.caught(other if other else caught.species, player.stat(&"weight") * 0.01)
 		if player.inventory.add(twin) >= 0:
 			player.journal.record(twin, where)
 			Skills.add(player, Skills.FISHING, fish_xp(twin, where))

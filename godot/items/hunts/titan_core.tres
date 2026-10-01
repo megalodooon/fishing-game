@@ -11,5 +11,5 @@ category = "Hunt Trophy"
 icon = ExtResource("1_kx3t6")
 rarity = ExtResource("2_07lm7")
 description = "It still hums with polluted power."
-maxStack = 99
+maxStack = 100
 sellPrice = 400

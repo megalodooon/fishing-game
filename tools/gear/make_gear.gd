@@ -39,6 +39,20 @@ const SOLD : Array = [
 	["sunday_rare", "nightcap", 1400, &"", 0],
 	["sunday_rare", "divers_helmet", 3500, &"fishing", 12],
 	["sunday_rare", "merchants_waistcoat", 4200, &"trading", 10],
+	["general_store", "wader_overalls", 700, &"fishing", 4],
+	["sunday_rare", "night_watch_coat", 2600, &"fishing", 10],
+	["sunday_rare", "captains_tricorn", 5000, &"trading", 12],
+]
+# Gear only sea creatures drop: creature, gear id, chance.
+const DROPPED : Array = [
+	["phantom_squid", "lantern_helm", 0.04],
+	["thunder_squid", "lantern_helm", 0.04],
+	["reef_shark_brute", "sharkskin_jacket", 0.03],
+	["great_white", "sharkskin_jacket", 0.05],
+	["abyssal_angler", "crown_of_tides", 0.015],
+	["bone_shark", "crown_of_tides", 0.015],
+	["sea_dragon", "leviathan_mail", 0.02],
+	["storm_kraken", "leviathan_mail", 0.02],
 ]
 
 
@@ -80,6 +94,17 @@ func run() -> void:
 		offer.requiredLevel = sale[4]
 		offers.append(offer)
 		print("sold ", sale[1], " at ", sale[0], " ", ResourceSaver.save(stock, stock_path))
+
+	for row in DROPPED:
+		var path : String = "res://fishing/creatures/%s.tres" % row[0]
+		var creature : SeaCreature = load(path)
+		var item : Item = load("res://items/equipment/%s.tres" % row[1])
+		if creature.drops.has(item):
+			continue
+		creature.drops.append(item)
+		creature.dropChances.append(row[2])
+		creature.dropAmounts.append(Vector2i(1, 1))
+		print("drop ", row[1], " from ", row[0], " ", ResourceSaver.save(creature, path))
 
 # A hat (a crown and a brim) or a coat (a body with sleeves), in two colors.
 static func icon(hat : bool, main : Color, trim : Color) -> Image:

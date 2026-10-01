@@ -11,5 +11,5 @@ category = "Enchanted Material"
 icon = ExtResource("1_cyq3y")
 rarity = ExtResource("2_is6yv")
 description = "32 Sea Salt pressed into one. Better recipes ask for these."
-maxStack = 99
+maxStack = 100
 sellPrice = 106

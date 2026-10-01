@@ -11,5 +11,5 @@ category = "Hunt Trophy"
 icon = ExtResource("1_88abu")
 rarity = ExtResource("2_530dr")
 description = "Pulled from the Reef Tyrant's jaw."
-maxStack = 99
+maxStack = 100
 sellPrice = 400

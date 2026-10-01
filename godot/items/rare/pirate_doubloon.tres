@@ -11,5 +11,5 @@ category = "Rare Catch"
 icon = ExtResource("1_l7dwe")
 rarity = ExtResource("2_qy0rm")
 description = "Solid gold, stamped with a skull. Collectors pay well for these."
-maxStack = 99
+maxStack = 100
 sellPrice = 600

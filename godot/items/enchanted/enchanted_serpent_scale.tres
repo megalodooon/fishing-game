@@ -11,5 +11,5 @@ category = "Enchanted Material"
 icon = ExtResource("1_2gq1v")
 rarity = ExtResource("2_emt5g")
 description = "32 Serpent Scale pressed into one. Better recipes ask for these."
-maxStack = 99
+maxStack = 100
 sellPrice = 1056

@@ -11,5 +11,5 @@ category = "Enchanted Material"
 icon = ExtResource("1_ovw7w")
 rarity = ExtResource("2_c1y3i")
 description = "32 Marsh Rice pressed into one. Better recipes ask for these."
-maxStack = 99
+maxStack = 100
 sellPrice = 422

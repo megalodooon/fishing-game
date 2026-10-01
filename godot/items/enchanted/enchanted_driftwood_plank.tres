@@ -11,5 +11,5 @@ category = "Enchanted Material"
 icon = ExtResource("1_0en3a")
 rarity = ExtResource("2_a4muu")
 description = "32 Driftwood Plank pressed into one. Better recipes ask for these."
-maxStack = 99
+maxStack = 100
 sellPrice = 141

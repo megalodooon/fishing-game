@@ -11,5 +11,5 @@ category = "Enchanted Material"
 icon = ExtResource("1_fbfr0")
 rarity = ExtResource("2_w5jpl")
 description = "32 Crab Shell pressed into one. Better recipes ask for these."
-maxStack = 99
+maxStack = 100
 sellPrice = 352

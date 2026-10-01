@@ -11,5 +11,5 @@ category = "Forage"
 icon = ExtResource("1_b4vxx")
 rarity = ExtResource("2_8r88j")
 description = "Coral from far below the light. It glows blue."
-maxStack = 99
+maxStack = 100
 sellPrice = 60

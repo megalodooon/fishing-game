@@ -11,5 +11,5 @@ category = "Enchanted Material"
 icon = ExtResource("1_1rxb4")
 rarity = ExtResource("2_n3mbm")
 description = "16 Deep Coral pressed into one. Better recipes ask for these."
-maxStack = 99
+maxStack = 100
 sellPrice = 1056

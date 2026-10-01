@@ -11,5 +11,5 @@ category = "Enchanted Material"
 icon = ExtResource("1_jg88m")
 rarity = ExtResource("2_nbnjw")
 description = "32 Barnacle pressed into one. Better recipes ask for these."
-maxStack = 99
+maxStack = 100
 sellPrice = 141

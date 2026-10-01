@@ -11,5 +11,5 @@ category = "Forage"
 icon = ExtResource("1_n6qwc")
 rarity = ExtResource("2_0tgdr")
 description = "It only grows where it's freezing."
-maxStack = 99
+maxStack = 100
 sellPrice = 8

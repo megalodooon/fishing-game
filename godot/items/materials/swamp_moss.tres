@@ -11,5 +11,5 @@ category = "Forage"
 icon = ExtResource("1_ylngu")
 rarity = ExtResource("2_ra64j")
 description = "Soggy green moss. Auntie Moss's favorite."
-maxStack = 99
+maxStack = 100
 sellPrice = 4

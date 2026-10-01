@@ -15,5 +15,5 @@ displayName = "Ghost Pepper Seeds"
 icon = ExtResource("2_6ftg4")
 rarity = ExtResource("3_nneeg")
 description = "Plant it on a farm plot. Grows into Ghost Pepper in 4 days."
-maxStack = 99
+maxStack = 100
 buyPrice = 27

@@ -11,5 +11,5 @@ category = "Forage"
 icon = ExtResource("1_usj4m")
 rarity = ExtResource("2_7eedp")
 description = "Scraped from the rocks where the tide dries out."
-maxStack = 99
+maxStack = 100
 sellPrice = 3

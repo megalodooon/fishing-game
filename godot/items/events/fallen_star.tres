@@ -11,5 +11,5 @@ category = "Festival"
 icon = ExtResource("1_3enen")
 rarity = ExtResource("2_6uhwb")
 description = "Still warm from the sky. Luma collects them at her stall."
-maxStack = 99
+maxStack = 100
 sellPrice = 10

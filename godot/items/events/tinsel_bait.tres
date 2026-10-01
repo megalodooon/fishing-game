@@ -18,4 +18,4 @@ displayName = "Tinsel Bait"
 icon = ExtResource("2_qjhgy")
 rarity = ExtResource("3_rlp5h")
 description = "Shiny and festive. Uncommon fish go wild for it."
-maxStack = 99
+maxStack = 100

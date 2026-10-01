@@ -16,6 +16,6 @@ icon = ExtResource("2_icon")
 rarity = ExtResource("3_rarity")
 description = "Needs patience. Glows when it's ready."
 hint = "Hold it and click the farm soil"
-maxStack = 99
+maxStack = 100
 sellPrice = 6
 buyPrice = 12

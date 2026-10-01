@@ -11,5 +11,5 @@ icon = ExtResource("e2")
 rarity = ExtResource("e3")
 description = "Slimy. The kitchen might want it."
 category = "Junk"
-maxStack = 99
+maxStack = 100
 sellPrice = 2

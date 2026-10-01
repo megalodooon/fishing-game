@@ -11,5 +11,5 @@ category = "Rare Catch"
 icon = ExtResource("1_n4e4x")
 rarity = ExtResource("2_hpfi0")
 description = "Carved from a single shell. It hums when you hold it to your ear."
-maxStack = 10
+maxStack = 100
 sellPrice = 1500

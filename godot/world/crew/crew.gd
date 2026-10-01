@@ -28,6 +28,10 @@ static func mark_tier(player : Player, member : CrewMember, tier : int) -> void:
 		player.progress.set_flag(flag)
 		AnglerLevel.forget()
 
+# How much a member holds; Foreman, fully grown, adds half again.
+static func storage(player : Player, member : CrewMember, tier : int) -> int:
+	return roundi(member.storage(tier) * (1.5 if TideTree.has(player, "foreman") else 1.0))
+
 static func speed(player : Player) -> float:
 	return player.stat(&"crewSpeed")
 
@@ -41,7 +45,7 @@ static func work(player : Player) -> void:
 			continue
 		var interval : float = member.interval(entry.tier, rate)
 		var made : int = floori((now - entry.since) / interval)
-		var room : int = member.storage(entry.tier) - entry.stored
+		var room : int = storage(player, member, entry.tier) - entry.stored
 		if made <= 0:
 			continue
 		if made >= room:

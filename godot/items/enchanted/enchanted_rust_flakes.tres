@@ -11,5 +11,5 @@ category = "Enchanted Material"
 icon = ExtResource("1_vs6ir")
 rarity = ExtResource("2_b6o2s")
 description = "32 Rust Flakes pressed into one. Better recipes ask for these."
-maxStack = 99
+maxStack = 100
 sellPrice = 422

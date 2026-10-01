@@ -9,8 +9,8 @@ and a local commit. Nothing is pushed until the last phase.
 - [x] Split `Progress` into **per-player** state and **world** state (`WorldState`: story chapter and
       flags, quests, village projects, donations, farm, traps, council, unlocked places, clock).
 - [x] Save format v2: `{world, players: {name: {...}}, host}`. Old saves show as outdated.
-- [ ] Character naming on a new game (and for a guest joining a world for the first time).
-- [ ] Stacks of 100 for items, fish never stack.
+- [x] Character naming on a new game (and for a guest joining a world for the first time).
+- [x] Stacks of 100 for items, fish never stack.
 
 ## Phase 2: Multiplayer (2 players, host-owned world)
 
@@ -67,15 +67,15 @@ and a local commit. Nothing is pushed until the last phase.
 
 ## Phase 5: Systems
 
-- [ ] Equipment (Hat, Gear, 2 Charms) replaces the charm pouch; charms equip from the bag; unique
+- [x] Equipment (Hat, Gear, 2 Charms) replaces the charm pouch; charms equip from the bag; unique
       effects, not just stats; sleep: pass out at 2 AM, gear can push it, hard cap 48 h awake.
-- [ ] Creature combat: 1 heart to start; hearts and damage from rod, equipment, levels.
-- [ ] Fix the crab fight lag spike; fix fish sticking at the top in the bar minigame.
-- [ ] Food: much smaller energy values.
-- [ ] Unique fishing tech (radar shows the fish over its spot for a while, etc.).
-- [ ] NPC likes/dislikes/loves/hates visible and meaningful.
+- [x] Creature combat: 1 heart to start; hearts and damage from rod, equipment, levels.
+- [x] Fix the crab fight lag spike; fix fish sticking at the top in the bar minigame.
+- [x] Food: much smaller energy values.
+- [x] Unique fishing tech (radar shows the fish over its spot for a while, etc.).
+- [x] NPC likes/dislikes/loves/hates visible and meaningful.
 - [ ] Fewer junk drops; go over every system for function, fun and performance.
-- [ ] Restoration board: projects become a fund both players can chip into; coin costs scale with
+- [x] Restoration board: projects become a fund both players can chip into; coin costs scale with
       NetSession.players_in_world (x1.5 for two).
 - [x] Lighthouse: remove the glow bait recipe from the Lightning Eel explanation.
 

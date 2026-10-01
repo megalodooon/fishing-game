@@ -11,5 +11,5 @@ icon = ExtResource("e2")
 rarity = ExtResource("e3")
 description = "Someone lost a boot. Just one."
 category = "Junk"
-maxStack = 99
+maxStack = 100
 sellPrice = 1

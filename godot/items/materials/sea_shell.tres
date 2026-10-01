@@ -11,5 +11,5 @@ icon = ExtResource("e2")
 rarity = ExtResource("e3")
 description = "Pretty, and it sounds like the sea."
 category = "Material"
-maxStack = 99
+maxStack = 100
 sellPrice = 6

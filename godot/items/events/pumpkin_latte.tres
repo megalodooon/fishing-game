@@ -13,5 +13,5 @@ displayName = "Pumpkin Spice Latte"
 icon = ExtResource("1_8j1q6")
 rarity = ExtResource("2_udjr7")
 description = "Tastes like autumn. Keeps you up past bedtime."
-maxStack = 20
+maxStack = 100
 sellPrice = 18

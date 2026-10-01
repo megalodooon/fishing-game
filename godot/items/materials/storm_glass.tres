@@ -11,5 +11,5 @@ category = "Forage"
 icon = ExtResource("1_3xvr0")
 rarity = ExtResource("2_gfcj5")
 description = "Sand struck by lightning. It hums in storms."
-maxStack = 99
+maxStack = 100
 sellPrice = 30

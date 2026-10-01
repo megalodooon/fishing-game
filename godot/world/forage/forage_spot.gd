@@ -80,7 +80,9 @@ func regrows_on() -> int:
 	if not player or not player.progress:
 		return 0
 	var taken : Variant = player.progress.get_flag(key())
-	return int(taken) + int(info()[6]) if taken != null else 0
+	# Forager, fully grown: back a day sooner.
+	var days : int = maxi(int(info()[6]) - (1 if TideTree.has(player, "forager") else 0), 1)
+	return int(taken) + days if taken != null else 0
 
 func ready_now() -> bool:
 	return today() >= regrows_on()

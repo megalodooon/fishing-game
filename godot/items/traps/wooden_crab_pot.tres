@@ -13,6 +13,6 @@ displayName = "Wooden Crab Pot"
 icon = ExtResource("e2")
 rarity = ExtResource("e3")
 description = "A crab pot. Set it at a trap spot and it catches fish while you're away."
-maxStack = 10
+maxStack = 100
 sellPrice = 20
 buyPrice = 150

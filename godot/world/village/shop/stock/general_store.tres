@@ -5,6 +5,7 @@
 [ext_resource type="Resource" path="res://items/equipment/straw_hat.tres" id="13_0g5f7"]
 [ext_resource type="Resource" path="res://items/equipment/work_apron.tres" id="14_ftrbr"]
 [ext_resource type="Resource" path="res://items/equipment/fishers_cap.tres" id="15_4bbyl"]
+[ext_resource type="Resource" path="res://items/equipment/wader_overalls.tres" id="16_p6440"]
 [ext_resource type="Resource" path="res://world/village/farm/seeds/sunflower_seeds.tres" id="i1"]
 [ext_resource type="Resource" path="res://world/village/farm/seeds/wormroot_seeds.tres" id="i2"]
 [ext_resource type="Resource" path="res://world/village/farm/seeds/sweetcorn_seeds.tres" id="i3"]
@@ -96,7 +97,14 @@ price = 260
 requiredSkill = &"fishing"
 requiredLevel = 3
 
+[sub_resource type="Resource" id="Resource_outjc"]
+script = ExtResource("2_offer")
+item = ExtResource("16_p6440")
+price = 700
+requiredSkill = &"fishing"
+requiredLevel = 4
+
 [resource]
 script = ExtResource("1_stock")
 shopName = "The Market Hall"
-offers = Array[ExtResource("2_offer")]([SubResource("o1"), SubResource("o2"), SubResource("o3"), SubResource("o4"), SubResource("o5"), SubResource("o6"), SubResource("o7"), SubResource("o8"), SubResource("o9"), SubResource("o10"), SubResource("o11"), SubResource("Resource_ftrbr"), SubResource("Resource_4bbyl"), SubResource("Resource_p6440")])
+offers = Array[ExtResource("2_offer")]([SubResource("o1"), SubResource("o2"), SubResource("o3"), SubResource("o4"), SubResource("o5"), SubResource("o6"), SubResource("o7"), SubResource("o8"), SubResource("o9"), SubResource("o10"), SubResource("o11"), SubResource("Resource_ftrbr"), SubResource("Resource_4bbyl"), SubResource("Resource_p6440"), SubResource("Resource_outjc")])

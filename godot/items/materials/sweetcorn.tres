@@ -11,5 +11,5 @@ displayName = "Sweetcorn"
 icon = ExtResource("2_icon")
 rarity = ExtResource("3_rarity")
 description = "Sweet enough to fool a perch."
-maxStack = 99
+maxStack = 100
 sellPrice = 8

@@ -11,5 +11,5 @@ category = "Forage"
 icon = ExtResource("1_thoc5")
 rarity = ExtResource("2_sjim2")
 description = "Soft red clay from the island streams."
-maxStack = 99
+maxStack = 100
 sellPrice = 3

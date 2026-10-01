@@ -11,5 +11,5 @@ icon = ExtResource("e2")
 rarity = ExtResource("e3")
 description = "From squid and krakens. Stains everything."
 category = "Creature Drop"
-maxStack = 99
+maxStack = 100
 sellPrice = 25

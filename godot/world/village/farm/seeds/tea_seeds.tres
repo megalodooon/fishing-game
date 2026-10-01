@@ -15,5 +15,5 @@ displayName = "Tea Seeds"
 icon = ExtResource("2_p7chh")
 rarity = ExtResource("3_i5425")
 description = "Plant it on a farm plot. Grows into Tea Leaves in 3 days."
-maxStack = 99
+maxStack = 100
 buyPrice = 8

@@ -18,4 +18,4 @@ displayName = "Prize Lure"
 icon = ExtResource("2_554xf")
 rarity = ExtResource("3_ea677")
 description = "A contest prize. Big fish can't resist it."
-maxStack = 99
+maxStack = 100

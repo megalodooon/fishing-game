@@ -11,5 +11,5 @@ category = "Enchanted Material"
 icon = ExtResource("1_p7jdf")
 rarity = ExtResource("2_uan4k")
 description = "32 Sand Carrot pressed into one. Better recipes ask for these."
-maxStack = 99
+maxStack = 100
 sellPrice = 282

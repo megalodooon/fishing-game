@@ -18,4 +18,4 @@ displayName = "Salted Bait"
 icon = ExtResource("2_0074h")
 rarity = ExtResource("3_2f231")
 description = "Goes in a rod's bait slot."
-maxStack = 99
+maxStack = 100

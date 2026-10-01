@@ -11,5 +11,5 @@ category = "Hunt Trophy"
 icon = ExtResource("1_gmpot")
 rarity = ExtResource("2_8rthd")
 description = "Shards of a crown from a kingdom under the sea."
-maxStack = 99
+maxStack = 100
 sellPrice = 900

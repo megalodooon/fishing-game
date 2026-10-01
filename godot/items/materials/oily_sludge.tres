@@ -11,5 +11,5 @@ icon = ExtResource("e2")
 rarity = ExtResource("e3")
 description = "Deepnet's waste. Proof, if anyone asked."
 category = "Junk"
-maxStack = 99
+maxStack = 100
 sellPrice = 1

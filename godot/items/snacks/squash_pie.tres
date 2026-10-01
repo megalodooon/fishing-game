@@ -15,5 +15,5 @@ icon = ExtResource("1_h6s88")
 rarity = ExtResource("2_irpjg")
 description = "Cooked at a kitchen."
 hint = "Click while holding it to eat"
-maxStack = 20
+maxStack = 100
 sellPrice = 60

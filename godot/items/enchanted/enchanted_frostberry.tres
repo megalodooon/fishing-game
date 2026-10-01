@@ -11,5 +11,5 @@ category = "Enchanted Material"
 icon = ExtResource("1_v3lyk")
 rarity = ExtResource("2_g0mpv")
 description = "32 Frostberry pressed into one. Better recipes ask for these."
-maxStack = 99
+maxStack = 100
 sellPrice = 1232

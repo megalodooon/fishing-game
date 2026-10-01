@@ -11,5 +11,5 @@ category = "Enchanted Material"
 icon = ExtResource("1_7jws4")
 rarity = ExtResource("2_mciom")
 description = "32 Sludge Gland pressed into one. Better recipes ask for these."
-maxStack = 99
+maxStack = 100
 sellPrice = 704

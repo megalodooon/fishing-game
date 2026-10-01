@@ -11,5 +11,5 @@ category = "Enchanted Material"
 icon = ExtResource("1_vmqcb")
 rarity = ExtResource("2_17awh")
 description = "32 Sea Grapes pressed into one. Better recipes ask for these."
-maxStack = 99
+maxStack = 100
 sellPrice = 211

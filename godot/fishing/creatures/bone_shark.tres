@@ -1,5 +1,7 @@
 [gd_resource type="Resource" script_class="SeaCreature" format=3]
 
+[ext_resource type="Resource" path="res://items/equipment/crown_of_tides.tres" id="4_t1txs"]
+[ext_resource type="Script" path="res://fishing/fish/requirements/fish_requirement.gd" id="8_hjol4"]
 [ext_resource type="Script" path="res://fishing/creatures/sea_creature.gd" id="e1"]
 [ext_resource type="Texture2D" path="res://fishing/creatures/art/bone_shark.png" id="e2"]
 [ext_resource type="Resource" path="res://items/rarities/trophy.tres" id="e3"]
@@ -22,6 +24,6 @@ toughness = 2.0
 style = &"ghost"
 coins = Vector2i(870, 1750)
 xp = 1100.0
-drops = Array[ExtResource("e7")]([ExtResource("e5"), ExtResource("e6")])
-dropChances = PackedFloat32Array(1.0, 1.0)
-dropAmounts = Array[Vector2i]([Vector2i(2, 3), Vector2i(2, 4)])
+drops = Array[ExtResource("e7")]([ExtResource("e5"), ExtResource("e6"), ExtResource("4_t1txs")])
+dropChances = PackedFloat32Array(1, 1, 0.015)
+dropAmounts = Array[Vector2i]([Vector2i(2, 3), Vector2i(2, 4), Vector2i(1, 1)])

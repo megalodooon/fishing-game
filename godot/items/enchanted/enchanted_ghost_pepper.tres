@@ -11,5 +11,5 @@ category = "Enchanted Material"
 icon = ExtResource("1_vdflo")
 rarity = ExtResource("2_iy68o")
 description = "32 Ghost Pepper pressed into one. Better recipes ask for these."
-maxStack = 99
+maxStack = 100
 sellPrice = 1584

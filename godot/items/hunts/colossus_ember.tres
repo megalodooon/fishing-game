@@ -11,5 +11,5 @@ category = "Hunt Trophy"
 icon = ExtResource("1_67rpc")
 rarity = ExtResource("2_wbuko")
 description = "The fire that kept the colossus moving."
-maxStack = 99
+maxStack = 100
 sellPrice = 900

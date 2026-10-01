@@ -11,5 +11,5 @@ category = "Forage"
 icon = ExtResource("1_dv8dh")
 rarity = ExtResource("2_pq0we")
 description = "Light as anything. Floats forever."
-maxStack = 99
+maxStack = 100
 sellPrice = 10

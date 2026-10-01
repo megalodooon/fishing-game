@@ -11,5 +11,5 @@ category = "Enchanted Material"
 icon = ExtResource("1_v4e8d")
 rarity = ExtResource("2_u20r0")
 description = "32 Glow Worm pressed into one. Better recipes ask for these."
-maxStack = 99
+maxStack = 100
 sellPrice = 704

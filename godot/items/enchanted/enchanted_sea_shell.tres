@@ -11,5 +11,5 @@ category = "Enchanted Material"
 icon = ExtResource("1_vmfw6")
 rarity = ExtResource("2_c5t8k")
 description = "32 Sea Shell pressed into one. Better recipes ask for these."
-maxStack = 99
+maxStack = 100
 sellPrice = 211

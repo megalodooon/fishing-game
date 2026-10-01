@@ -11,5 +11,5 @@ displayName = "Rust Flakes"
 icon = ExtResource("2_icon")
 rarity = ExtResource("3_rarity")
 description = "Scraped off an old wreck. Some fish like the taste of iron."
-maxStack = 99
+maxStack = 100
 sellPrice = 12

@@ -11,5 +11,5 @@ icon = ExtResource("e2")
 rarity = ExtResource("e3")
 description = "Black as the trench and cold as the deep."
 category = "Creature Drop"
-maxStack = 99
+maxStack = 100
 sellPrice = 150

@@ -16,5 +16,5 @@ days = 3
 harvest = 4
 leafColor = Color(0.5, 0.7, 0.3, 1)
 hint = "Hold it and click the farm soil"
-maxStack = 99
+maxStack = 100
 sellPrice = 3

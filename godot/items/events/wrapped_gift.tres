@@ -24,4 +24,4 @@ icon = ExtResource("1_uatm0")
 rarity = ExtResource("9_bkyq2")
 description = "Open it for a surprise, or save it: Wally's Workshop takes gifts as payment."
 hint = "Click to open"
-maxStack = 99
+maxStack = 100

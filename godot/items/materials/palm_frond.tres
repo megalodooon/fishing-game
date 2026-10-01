@@ -11,5 +11,5 @@ category = "Forage"
 icon = ExtResource("1_kk4qp")
 rarity = ExtResource("2_mfwef")
 description = "Tough, long leaves. Twisted, they make good rope."
-maxStack = 99
+maxStack = 100
 sellPrice = 3

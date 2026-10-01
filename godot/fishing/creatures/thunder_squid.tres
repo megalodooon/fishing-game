@@ -1,5 +1,7 @@
 [gd_resource type="Resource" script_class="SeaCreature" format=3]
 
+[ext_resource type="Resource" path="res://items/equipment/lantern_helm.tres" id="4_s2pmw"]
+[ext_resource type="Script" path="res://fishing/fish/requirements/fish_requirement.gd" id="8_gb8m5"]
 [ext_resource type="Script" path="res://fishing/creatures/sea_creature.gd" id="e1"]
 [ext_resource type="Texture2D" path="res://fishing/creatures/art/thunder_squid.png" id="e2"]
 [ext_resource type="Resource" path="res://items/rarities/legendary.tres" id="e3"]
@@ -22,6 +24,6 @@ toughness = 1.4
 style = &"storm"
 coins = Vector2i(490, 980)
 xp = 480.0
-drops = Array[ExtResource("e7")]([ExtResource("e5"), ExtResource("e6")])
-dropChances = PackedFloat32Array(0.8, 1.0)
-dropAmounts = Array[Vector2i]([Vector2i(1, 2), Vector2i(2, 4)])
+drops = Array[ExtResource("e7")]([ExtResource("e5"), ExtResource("e6"), ExtResource("4_s2pmw")])
+dropChances = PackedFloat32Array(0.8, 1, 0.04)
+dropAmounts = Array[Vector2i]([Vector2i(1, 2), Vector2i(2, 4), Vector2i(1, 1)])

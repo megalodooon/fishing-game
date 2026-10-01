@@ -11,5 +11,5 @@ category = "Enchanted Material"
 icon = ExtResource("1_7fbqe")
 rarity = ExtResource("2_h4fiy")
 description = "32 Starfish pressed into one. Better recipes ask for these."
-maxStack = 99
+maxStack = 100
 sellPrice = 528

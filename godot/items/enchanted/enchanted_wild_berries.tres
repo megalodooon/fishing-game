@@ -11,5 +11,5 @@ category = "Enchanted Material"
 icon = ExtResource("1_7jxwj")
 rarity = ExtResource("2_m6y5n")
 description = "32 Wild Berries pressed into one. Better recipes ask for these."
-maxStack = 99
+maxStack = 100
 sellPrice = 141

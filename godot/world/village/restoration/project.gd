@@ -67,21 +67,65 @@ func missing(progress : Progress) -> Array[PackedStringArray]:
 func amount(index : int) -> int:
 	return amounts[index] if index < amounts.size() else 1
 
+# A fund anyone in the world chips into (a world flag, so a friend's coins
+# count too). With two players it costs half as much again.
+# ponytail: last write wins if both chip in the same instant; fine for 2 players.
+func fund_key() -> String:
+	return "world/fund/" + resource_path.get_file().get_basename()
+
+func cost_scale(progress : Progress) -> float:
+	return 1.5 if NetSession.players_in_world(progress) >= 2 else 1.0
+
+func coin_cost(progress : Progress) -> int:
+	return roundi(coins * cost_scale(progress))
+
+func item_cost(progress : Progress, index : int) -> int:
+	return ceili(amount(index) * cost_scale(progress))
+
+func funded(progress : Progress) -> Dictionary:
+	return progress.get_flag(fund_key(), {})
+
+func coins_left(progress : Progress) -> int:
+	return maxi(coin_cost(progress) - int(funded(progress).get("coins", 0)), 0)
+
+func item_left(progress : Progress, index : int) -> int:
+	return maxi(item_cost(progress, index) - int(funded(progress).get(str(index), 0)), 0)
+
+# Whether the player has anything left to put in.
 func affordable(player : Player) -> bool:
-	if not player.wallet.can_afford(coins):
+	if coins_left(player.progress) > 0 and player.wallet.coins > 0:
+		return true
+	for i in items.size():
+		if items[i] and item_left(player.progress, i) > 0 and player.inventory.count(items[i]) > 0:
+			return true
+	return false
+
+func complete(progress : Progress) -> bool:
+	if coins_left(progress) > 0:
 		return false
 	for i in items.size():
-		if items[i] and player.inventory.count(items[i]) < amount(i):
+		if items[i] and item_left(progress, i) > 0:
 			return false
 	return true
 
+# Puts in all the coins and materials the player can, up to what's left.
+# Returns whether that finished it.
 func pay(player : Player) -> bool:
 	if done(player.progress) or not affordable(player):
 		return false
-	player.wallet.spend(coins)
+	var fund : Dictionary = funded(player.progress).duplicate()
+	var give : int = mini(coins_left(player.progress), player.wallet.coins)
+	player.wallet.spend(give)
+	fund["coins"] = int(fund.get("coins", 0)) + give
 	for i in items.size():
 		if items[i]:
-			player.inventory.take(items[i], amount(i))
+			var part : int = mini(item_left(player.progress, i), player.inventory.count(items[i]))
+			if part > 0:
+				player.inventory.take(items[i], part)
+				fund[str(i)] = int(fund.get(str(i), 0)) + part
+	player.progress.set_flag(fund_key(), fund)
+	if not complete(player.progress):
+		return false
 	player.progress.set_flag(key())
 	player.progress.count("projects")
 	return true

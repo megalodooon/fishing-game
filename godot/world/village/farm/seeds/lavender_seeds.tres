@@ -15,5 +15,5 @@ displayName = "Lavender Seeds"
 icon = ExtResource("2_j8sex")
 rarity = ExtResource("3_af0yq")
 description = "Plant it on a farm plot. Grows into Lavender in 3 days."
-maxStack = 99
+maxStack = 100
 buyPrice = 11

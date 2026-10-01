@@ -11,5 +11,5 @@ category = "Crop"
 icon = ExtResource("1_y8rmd")
 rarity = ExtResource("2_3pvuh")
 description = "A branch in full bloom. Sells well, smells better."
-maxStack = 99
+maxStack = 100
 sellPrice = 70

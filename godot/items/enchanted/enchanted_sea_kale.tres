@@ -11,5 +11,5 @@ category = "Enchanted Material"
 icon = ExtResource("1_y4oc7")
 rarity = ExtResource("2_qpron")
 description = "32 Sea Kale pressed into one. Better recipes ask for these."
-maxStack = 99
+maxStack = 100
 sellPrice = 352

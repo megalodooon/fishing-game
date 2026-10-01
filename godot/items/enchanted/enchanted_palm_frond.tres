@@ -11,5 +11,5 @@ category = "Enchanted Material"
 icon = ExtResource("1_mvyu5")
 rarity = ExtResource("2_numo6")
 description = "32 Palm Frond pressed into one. Better recipes ask for these."
-maxStack = 99
+maxStack = 100
 sellPrice = 106

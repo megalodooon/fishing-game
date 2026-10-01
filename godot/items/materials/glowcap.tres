@@ -11,5 +11,5 @@ displayName = "Glowcap"
 icon = ExtResource("2_icon")
 rarity = ExtResource("3_rarity")
 description = "A mushroom that glows faintly in the dark."
-maxStack = 99
+maxStack = 100
 sellPrice = 18

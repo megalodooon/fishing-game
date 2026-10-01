@@ -14,5 +14,5 @@ displayName = "Yule Log"
 icon = ExtResource("1_qgkw0")
 rarity = ExtResource("2_pu72i")
 description = "Chocolate cake shaped like a log. Keeps you warm and lucky."
-maxStack = 20
+maxStack = 100
 sellPrice = 30

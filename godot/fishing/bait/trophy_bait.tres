@@ -19,4 +19,4 @@ displayName = "Trophy Bait"
 icon = ExtResource("2_h8kt6")
 rarity = ExtResource("3_n0ues")
 description = "Odette's own recipe. Big, proud fish can't resist it."
-maxStack = 99
+maxStack = 100

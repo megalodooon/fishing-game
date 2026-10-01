@@ -15,5 +15,5 @@ displayName = "Cotton Seeds"
 icon = ExtResource("2_wt8q7")
 rarity = ExtResource("3_0rtk7")
 description = "Plant it on a farm plot. Grows into Cotton in 3 days."
-maxStack = 99
+maxStack = 100
 buyPrice = 10

@@ -50,6 +50,12 @@ var ringTimer : float = 0.0
 var frame : int = -1
 var framePhase : float = 0.0
 var random : RandomNumberGenerator = RandomNumberGenerator.new()
+# The fish waiting here, picked ahead when the player can see it: a Sonar
+# Array shows its shadow, a Deep Sonar shows it, and Deep Luck (fully grown)
+# makes spots with a rare one shimmer. The next bite here is this fish.
+var preview : FishData
+var reveal : int = 0
+var shimmer : bool = false
 #------------------------#
 
 
@@ -65,6 +71,7 @@ func _ready() -> void:
 		presence = 1.0
 		return
 	add_to_group(GROUP)
+	scan.call_deferred()
 	if permanent:
 		add_to_group(PONDS)
 		presence = 1.0
@@ -104,7 +111,34 @@ func update_rings(delta : float) -> void:
 		if not leaving:
 			rings.append(0.0)
 
+func scan() -> void:
+	var player : Player = Player.find(get_tree())
+	if not player or not player.progress or fish.is_empty():
+		return
+	var sonar : int = BoatParts.tier(player.progress, BoatParts.SONAR)
+	reveal = clampi(sonar - 1, 0, 2)
+	var lucky : bool = TideTree.has(player, "deep_luck")
+	preview = FishData.roll(fish, FishingContext.make(player, null, self)) if reveal > 0 or lucky else null
+	shimmer = lucky and preview != null and preview.rarity != null and not preview.rarity.displayName in ["Common", "Uncommon"]
+
+# The fish that bites here: the one picked ahead when it still can, then the
+# next one is picked.
+func take_fish(context : FishingContext) -> FishData:
+	var picked : FishData = preview if preview and preview.can_bite(context) else FishData.roll(fish, context)
+	if preview:
+		scan()
+	return picked
+
 func _draw() -> void:
+	if preview and preview.icon and presence > 0.0 and reveal > 0:
+		var tint : Color = Color(1.0, 1.0, 1.0, 0.8 * presence) if reveal >= 2 else Color(0.02, 0.08, 0.16, 0.5 * presence)
+		draw_texture(preview.icon, (-preview.icon.get_size() * 0.5).floor(), tint)
+	if shimmer and presence > 0.0:
+		for i in 3:
+			var phase : float = age * 2.0 + i * 2.1
+			if fmod(phase, 2.0) < 1.0:
+				var at : Vector2 = Vector2(cos(i * 2.4 + floorf(phase * 0.5)), sin(i * 2.4 + floorf(phase * 0.5)) * squash) * size * 0.6
+				draw_rect(Rect2(at.floor(), Vector2.ONE), Color(1.0, 0.86, 0.35, presence))
 	for ring in rings:
 		var shape : Vector2i = pixel_shape(ring)
 		var strength : float = roundf(sin(clampf(ring / size, 0.0, 1.0) * PI) * fadeSteps) / fadeSteps

@@ -18,4 +18,4 @@ displayName = "Deep Bait"
 icon = ExtResource("2_owekh")
 rarity = ExtResource("3_umfy5")
 description = "Goes in a rod's bait slot."
-maxStack = 99
+maxStack = 100

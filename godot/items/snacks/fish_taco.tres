@@ -12,6 +12,6 @@ icon = ExtResource("2_icon")
 rarity = ExtResource("3_rarity")
 description = "Fresh from the Sunday market grill."
 hint = "Click while holding it to eat"
-maxStack = 20
+maxStack = 100
 sellPrice = 15
 buyPrice = 35

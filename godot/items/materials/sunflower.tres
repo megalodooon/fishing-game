@@ -11,5 +11,5 @@ icon = ExtResource("e2")
 rarity = ExtResource("e3")
 description = "Tall, bright and full of seeds."
 category = "Crop"
-maxStack = 99
+maxStack = 100
 sellPrice = 20

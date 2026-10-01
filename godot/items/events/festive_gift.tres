@@ -25,4 +25,4 @@ icon = ExtResource("1_pqvl7")
 rarity = ExtResource("9_kno2c")
 description = "Green paper, gold ribbon. Heavier than it looks."
 hint = "Click to open"
-maxStack = 99
+maxStack = 100

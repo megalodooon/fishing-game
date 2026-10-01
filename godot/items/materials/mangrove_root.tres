@@ -11,5 +11,5 @@ category = "Forage"
 icon = ExtResource("1_ou61e")
 rarity = ExtResource("2_ad76c")
 description = "Twisted swamp root, hard as iron once dried."
-maxStack = 99
+maxStack = 100
 sellPrice = 5

@@ -11,6 +11,6 @@ icon = ExtResource("e2")
 rarity = ExtResource("e3")
 description = "Rusty but strong. From wrecks, treasure and junk."
 category = "Material"
-maxStack = 99
+maxStack = 100
 sellPrice = 12
 buyPrice = 24

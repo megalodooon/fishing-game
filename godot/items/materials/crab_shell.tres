@@ -11,5 +11,5 @@ icon = ExtResource("e2")
 rarity = ExtResource("e3")
 description = "A spare shell. The crab didn't need it anymore."
 category = "Creature Drop"
-maxStack = 99
+maxStack = 100
 sellPrice = 10

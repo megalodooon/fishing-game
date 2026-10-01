@@ -11,5 +11,5 @@ category = "Trophy Fish"
 icon = ExtResource("1_0ql8g")
 rarity = ExtResource("2_t8c2u")
 description = "A diamond trophy. Odette at the Trophy Lodge fillets them for Trophy Scales."
-maxStack = 99
+maxStack = 100
 sellPrice = 480

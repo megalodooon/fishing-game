@@ -11,5 +11,5 @@ category = "Forage"
 icon = ExtResource("1_pdsee")
 rarity = ExtResource("2_ji87n")
 description = "It regrows its arms. Lucky, some say."
-maxStack = 99
+maxStack = 100
 sellPrice = 15

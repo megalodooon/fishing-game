@@ -11,5 +11,5 @@ category = "Enchanted Material"
 icon = ExtResource("1_80sfi")
 rarity = ExtResource("2_j6wdx")
 description = "32 Obsidian Shard pressed into one. Better recipes ask for these."
-maxStack = 99
+maxStack = 100
 sellPrice = 1760

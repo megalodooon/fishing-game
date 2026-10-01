@@ -11,5 +11,5 @@ category = "Rare Catch"
 icon = ExtResource("1_efp5s")
 rarity = ExtResource("2_1vr8s")
 description = "Glass worn smooth by a hundred years of waves. Pretty, and useful for charms."
-maxStack = 99
+maxStack = 100
 sellPrice = 40

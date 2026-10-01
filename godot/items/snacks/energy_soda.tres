@@ -12,6 +12,6 @@ icon = ExtResource("2_icon")
 rarity = ExtResource("3_rarity")
 description = "Tastes like a battery. Works like one too."
 hint = "Click while holding it to eat"
-maxStack = 20
+maxStack = 100
 sellPrice = 10
 buyPrice = 30

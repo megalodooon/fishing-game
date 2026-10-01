@@ -11,5 +11,5 @@ category = "Forage"
 icon = ExtResource("1_nfhnl")
 rarity = ExtResource("2_hi15q")
 description = "Still warm. It glows when you blow on it."
-maxStack = 99
+maxStack = 100
 sellPrice = 14

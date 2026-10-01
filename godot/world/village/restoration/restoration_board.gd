@@ -34,7 +34,7 @@ func rows(player : Player) -> Array[Dictionary]:
 		if project.done(player.progress):
 			later.append({"value": project, "icon": project.icon, "text": project.displayName, "detail": "Done", "detailColor": GOOD, "dim": true})
 		elif project.available(player.progress):
-			list.append({"value": project, "icon": project.icon, "text": project.displayName, "detail": "$%d" % project.coins, "detailColor": Color(1.0, 0.9, 0.4) if project.affordable(player) else DIM, "marked": project.affordable(player)})
+			list.append({"value": project, "icon": project.icon, "text": project.displayName, "detail": "$%d" % project.coins_left(player.progress), "detailColor": Color(1.0, 0.9, 0.4) if project.affordable(player) else DIM, "marked": project.affordable(player)})
 		else:
 			var needs : Array[PackedStringArray] = project.missing(player.progress)
 			later.append({"value": project, "icon": project.icon, "tint": Color(1.0, 1.0, 1.0, 0.45), "text": project.displayName, "detail": needs[0][0] if not needs.is_empty() else "Later", "detailColor": BAD, "dim": true})
@@ -56,27 +56,31 @@ func info(player : Player, value : Variant) -> Dictionary:
 	var lines : Array = []
 	if not project.unlockText.is_empty():
 		lines.append(["Brings back", project.unlockText, GOOD])
-	lines.append(["Coins", "$%d" % project.coins, GOOD if player.wallet.can_afford(project.coins) else BAD])
+	var progress : Progress = player.progress
+	var paid : int = project.coin_cost(progress) - project.coins_left(progress)
+	lines.append(["Coins", "$%d/%d" % [paid, project.coin_cost(progress)], GOOD if project.coins_left(progress) == 0 else BAD])
 	for i in project.items.size():
 		var item : Item = project.items[i]
 		if item:
-			var have : int = player.inventory.count(item)
-			lines.append([item.displayName, "%d/%d" % [mini(have, project.amount(i)), project.amount(i)], GOOD if have >= project.amount(i) else BAD])
+			var cost : int = project.item_cost(progress, i)
+			lines.append([item.displayName, "%d/%d (have %d)" % [cost - project.item_left(progress, i), cost, player.inventory.count(item)], GOOD if project.item_left(progress, i) == 0 else BAD])
 	var details : Dictionary = {"title": project.displayName, "icon": project.icon, "tag": "Restoration project", "text": project.description, "lines": lines}
 	if project.done(player.progress):
 		details.action = "Restored"
 		details.enabled = false
 	else:
 		details.enabled = project.affordable(player)
-		details.action = "Fund it" if details.enabled else "Missing materials"
+		details.action = "Chip in" if details.enabled else "Nothing to give"
 	return details
 
 func choose(player : Player, value : Variant) -> String:
 	var project : Project = value as Project
 	if not project or not project.available(player.progress):
 		return ""
+	if not project.affordable(player):
+		return fail("Nothing to give")
 	if not project.pay(player):
-		return fail("Missing materials")
+		return ok("Chipped in!")
 	notice("%s restored!" % project.displayName, project.unlockText, GOOD, project.icon)
 	return ok("Restored!")
 

@@ -21,4 +21,4 @@ icon = ExtResource("1_gpv7u")
 rarity = ExtResource("6_5nljv")
 description = "Someone rolled a note inside. And something else, by the rattle."
 hint = "Click to open"
-maxStack = 99
+maxStack = 100

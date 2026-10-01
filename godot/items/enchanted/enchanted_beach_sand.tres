@@ -11,5 +11,5 @@ category = "Enchanted Material"
 icon = ExtResource("1_ba564")
 rarity = ExtResource("2_cjwk6")
 description = "32 Beach Sand pressed into one. Better recipes ask for these."
-maxStack = 99
+maxStack = 100
 sellPrice = 70

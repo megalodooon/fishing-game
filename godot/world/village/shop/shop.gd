@@ -239,7 +239,7 @@ func choose(player : Player, value : Variant) -> String:
 		for slot in player.inventory.trashSlot:
 			var item : Item = player.inventory.items[slot]
 			if item is Fish and will_buy(item, player):
-				total += offer_for(item, player)
+				total += haggle(player, offer_for(item, player))
 				player.inventory.items[slot] = null
 		if total == 0:
 			return fail("No fish to sell")
@@ -251,7 +251,7 @@ func choose(player : Player, value : Variant) -> String:
 		var item : Item = player.inventory.get_item(value)
 		if not selling() or not will_buy(item, player):
 			return ""
-		var price : int = offer_for(item, player)
+		var price : int = haggle(player, offer_for(item, player)) if item is Fish else offer_for(item, player)
 		player.inventory.take_one(value)
 		player.wallet.add(price)
 		sold(player, price)
@@ -273,6 +273,13 @@ func choose(player : Player, value : Variant) -> String:
 	if stock_left(player, offer) > 0:
 		note_bought(player, offer)
 	return ok("Got %s!" % offer.label())
+
+# Haggler, fully grown: the first fish sold each day goes for double.
+func haggle(player : Player, price : int) -> int:
+	if not TideTree.has(player, "haggler") or player.progress.get_flag("haggled", -1) == today():
+		return price
+	player.progress.set_flag("haggled", today())
+	return price * 2
 
 func sold(player : Player, coins : int) -> void:
 	Quest.notify(player, &"sell", coins)

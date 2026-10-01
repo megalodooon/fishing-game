@@ -14,5 +14,5 @@ displayName = "Sand Carrot Seeds"
 icon = ExtResource("2_2nu83")
 rarity = ExtResource("3_m7oec")
 description = "Plant it on a farm plot. Grows into Sand Carrot in 2 days."
-maxStack = 99
+maxStack = 100
 buyPrice = 5

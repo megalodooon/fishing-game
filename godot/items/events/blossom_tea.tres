@@ -13,5 +13,5 @@ displayName = "Blossom Tea"
 icon = ExtResource("1_fbn17")
 rarity = ExtResource("2_oba35")
 description = "Sweet and floral. Fish seem to bite sooner after a cup."
-maxStack = 20
+maxStack = 100
 sellPrice = 15

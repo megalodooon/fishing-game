@@ -17,4 +17,4 @@ displayName = "Star Bait"
 icon = ExtResource("2_ak61b")
 rarity = ExtResource("3_aqr3r")
 description = "Glows in the dark. Legendary fish come to look."
-maxStack = 99
+maxStack = 100

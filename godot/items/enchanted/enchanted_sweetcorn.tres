@@ -11,5 +11,5 @@ category = "Enchanted Material"
 icon = ExtResource("1_letq3")
 rarity = ExtResource("2_4102g")
 description = "32 Sweetcorn pressed into one. Better recipes ask for these."
-maxStack = 99
+maxStack = 100
 sellPrice = 282

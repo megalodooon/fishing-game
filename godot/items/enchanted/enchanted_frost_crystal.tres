@@ -11,5 +11,5 @@ category = "Enchanted Material"
 icon = ExtResource("1_0m2n2")
 rarity = ExtResource("2_3q5ap")
 description = "32 Frost Crystal pressed into one. Better recipes ask for these."
-maxStack = 99
+maxStack = 100
 sellPrice = 1584

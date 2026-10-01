@@ -11,5 +11,5 @@ category = "Enchanted Material"
 icon = ExtResource("1_p4ynd")
 rarity = ExtResource("2_1h5g2")
 description = "32 Sunflower pressed into one. Better recipes ask for these."
-maxStack = 99
+maxStack = 100
 sellPrice = 704

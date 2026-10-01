@@ -6,7 +6,7 @@
 
 [resource]
 script = ExtResource("1_script")
-maxStack = 99
+maxStack = 100
 sellPrice = 60
 category = "Crop"
 displayName = "Pumpkin"

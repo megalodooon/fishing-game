@@ -16,4 +16,4 @@ displayName = "Ghostly Bait"
 icon = ExtResource("2_iqwoq")
 rarity = ExtResource("3_2ulv0")
 description = "Faintly see-through. Sea creatures love it."
-maxStack = 99
+maxStack = 100

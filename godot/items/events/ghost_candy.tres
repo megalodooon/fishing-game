@@ -11,5 +11,5 @@ category = "Festival"
 icon = ExtResource("1_q5me7")
 rarity = ExtResource("2_mcnke")
 description = "Cold to the touch. It says boo when you unwrap it."
-maxStack = 99
+maxStack = 100
 sellPrice = 40

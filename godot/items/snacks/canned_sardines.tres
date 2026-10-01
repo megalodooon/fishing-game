@@ -12,6 +12,6 @@ icon = ExtResource("2_icon")
 rarity = ExtResource("3_rarity")
 description = "Fish, for the fisher. Oily and filling."
 hint = "Click while holding it to eat"
-maxStack = 20
+maxStack = 100
 sellPrice = 7
 buyPrice = 20

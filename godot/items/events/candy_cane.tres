@@ -11,5 +11,5 @@ category = "Festival"
 icon = ExtResource("1_advpw")
 rarity = ExtResource("2_57kld")
 description = "Peppermint. Pets love them."
-maxStack = 99
+maxStack = 100
 sellPrice = 5

@@ -11,5 +11,5 @@ category = "Enchanted Material"
 icon = ExtResource("1_0n1ww")
 rarity = ExtResource("2_n4pxb")
 description = "32 Lavender pressed into one. Better recipes ask for these."
-maxStack = 99
+maxStack = 100
 sellPrice = 634

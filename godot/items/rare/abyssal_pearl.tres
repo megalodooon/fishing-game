@@ -11,5 +11,5 @@ category = "Rare Catch"
 icon = ExtResource("1_8db1s")
 rarity = ExtResource("2_mc8k4")
 description = "Black as the trench it came from. A piece of the Moon Tide."
-maxStack = 10
+maxStack = 100
 sellPrice = 1500

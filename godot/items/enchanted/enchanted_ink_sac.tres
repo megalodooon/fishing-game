@@ -11,5 +11,5 @@ category = "Enchanted Material"
 icon = ExtResource("1_tb63y")
 rarity = ExtResource("2_bc77f")
 description = "32 Ink Sac pressed into one. Better recipes ask for these."
-maxStack = 99
+maxStack = 100
 sellPrice = 880

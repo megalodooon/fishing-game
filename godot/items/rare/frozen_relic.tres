@@ -11,5 +11,5 @@ category = "Rare Catch"
 icon = ExtResource("1_tl5wr")
 rarity = ExtResource("2_ho6u3")
 description = "A shard of the Frost Tide, cold enough to burn. It never melts."
-maxStack = 10
+maxStack = 100
 sellPrice = 1200

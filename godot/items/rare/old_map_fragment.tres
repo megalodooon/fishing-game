@@ -11,5 +11,5 @@ category = "Rare Catch"
 icon = ExtResource("1_3bynr")
 rarity = ExtResource("2_wa7h7")
 description = "A torn corner of a pirate map. Five of them would make a whole one."
-maxStack = 20
+maxStack = 100
 sellPrice = 90

@@ -11,5 +11,5 @@ category = "Enchanted Material"
 icon = ExtResource("1_ehixe")
 rarity = ExtResource("2_16t8u")
 description = "32 Storm Glass pressed into one. Better recipes ask for these."
-maxStack = 99
+maxStack = 100
 sellPrice = 1056

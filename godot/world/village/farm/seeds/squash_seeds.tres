@@ -14,5 +14,5 @@ displayName = "Squash Seeds"
 icon = ExtResource("2_n01ql")
 rarity = ExtResource("3_ck8ta")
 description = "Plant it on a farm plot. Grows into Winter Squash in 4 days."
-maxStack = 99
+maxStack = 100
 buyPrice = 30

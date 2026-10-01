@@ -15,5 +15,5 @@ icon = ExtResource("1_e11kw")
 rarity = ExtResource("2_h2yv1")
 description = "Brewed at a cauldron. Drink it for a few hours of skill xp."
 hint = "Click while holding it to drink"
-maxStack = 10
+maxStack = 100
 sellPrice = 92
