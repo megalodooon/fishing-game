@@ -1,206 +1,207 @@
 [gd_scene format=3]
 
-[ext_resource type="Script" path="res://world/island/island.gd" id="1_pfggv"]
-[ext_resource type="Script" path="res://world/island/island_room.gd" id="2_8c5fo"]
-[ext_resource type="PackedScene" path="res://oceans/basic/basic_ocean.tscn" id="3_iip2o"]
-[ext_resource type="Script" path="res://oceans/ocean_base.gd" id="4_mc4dv"]
-[ext_resource type="Resource" path="res://oceans/islands/village_shore_biome.tres" id="5_1cepb"]
-[ext_resource type="Texture2D" path="res://world/village/land/town_0_0.png" id="6_m5po0"]
-[ext_resource type="Script" path="res://world/interact/secret.gd" id="7_wk7g0"]
-[ext_resource type="Texture2D" path="res://world/village/land/town_1_0.png" id="8_o2yba"]
-[ext_resource type="Texture2D" path="res://world/village/land/town_2_0.png" id="9_h5t5u"]
-[ext_resource type="Texture2D" path="res://world/village/land/town_3_0.png" id="10_3qnhx"]
-[ext_resource type="Texture2D" path="res://world/village/land/town_0_1.png" id="11_l4xug"]
-[ext_resource type="Script" path="res://world/village/building.gd" id="12_hvck5"]
-[ext_resource type="Texture2D" path="res://world/village/buildings/house.png" id="13_2pat5"]
-[ext_resource type="Script" path="res://world/village/entrance.gd" id="14_vxaop"]
-[ext_resource type="Texture2D" path="res://world/village/props/lamp.png" id="15_dhtde"]
-[ext_resource type="Script" path="res://components/day_night/night_light.gd" id="16_fxrxj"]
-[ext_resource type="Script" path="res://world/forage/forage_spot.gd" id="17_cb4t0"]
-[ext_resource type="Script" path="res://items/item.gd" id="18_6cmjg"]
-[ext_resource type="Resource" path="res://world/village/farm/seeds/glowcap_spores.tres" id="19_mcmyn"]
-[ext_resource type="Texture2D" path="res://world/village/buildings/cottage.png" id="20_x5h4o"]
-[ext_resource type="Texture2D" path="res://world/village/land/town_1_1.png" id="21_kfq4t"]
-[ext_resource type="Texture2D" path="res://world/village/props/well.png" id="22_8y1c7"]
-[ext_resource type="PackedScene" path="res://fishing/fishing_spots/fishing_spot.tscn" id="23_foj3u"]
-[ext_resource type="Script" path="res://fishing/fishing_spots/fishing_spot.gd" id="24_txgr0"]
-[ext_resource type="Script" path="res://fishing/fish/fish_data.gd" id="25_s6r7g"]
-[ext_resource type="Resource" path="res://fishing/fish/species/islands/well_minnow.tres" id="26_368jp"]
-[ext_resource type="Resource" path="res://fishing/fish/species/islands/cave_loach.tres" id="27_ttyfm"]
-[ext_resource type="Resource" path="res://fishing/fish/species/islands/ghost_catfish.tres" id="28_vgl26"]
-[ext_resource type="Resource" path="res://fishing/fish/species/islands/wishing_koi.tres" id="29_luh3r"]
-[ext_resource type="Resource" path="res://oceans/islands/village_well_biome.tres" id="30_ug665"]
-[ext_resource type="Script" path="res://world/village/restoration/restoration_board.gd" id="31_ve83l"]
-[ext_resource type="Script" path="res://world/village/restoration/project.gd" id="32_ihem0"]
-[ext_resource type="Resource" path="res://world/village/restoration/projects/aquarium_wing.tres" id="33_svndg"]
-[ext_resource type="Resource" path="res://world/village/restoration/projects/boatyard.tres" id="34_66nfl"]
-[ext_resource type="Resource" path="res://world/village/restoration/projects/festival_stage.tres" id="35_scijq"]
-[ext_resource type="Resource" path="res://world/village/restoration/projects/fountain.tres" id="36_5xqeq"]
-[ext_resource type="Resource" path="res://world/village/restoration/projects/greenhouse.tres" id="37_1mqt0"]
-[ext_resource type="Resource" path="res://world/village/restoration/projects/lamp_posts.tres" id="38_bco56"]
-[ext_resource type="Resource" path="res://world/village/restoration/projects/lighthouse_lamp.tres" id="39_lx62a"]
-[ext_resource type="Resource" path="res://world/village/restoration/projects/market_hall.tres" id="40_n8i4n"]
-[ext_resource type="Resource" path="res://world/village/restoration/projects/tournament_hall.tres" id="41_ts262"]
-[ext_resource type="Resource" path="res://world/village/restoration/projects/weather_station.tres" id="42_2bn44"]
-[ext_resource type="Resource" path="res://world/village/restoration/projects/workbench.tres" id="43_n175k"]
-[ext_resource type="Texture2D" path="res://world/islands/props/restoration_board.png" id="44_si2qd"]
-[ext_resource type="Script" path="res://world/crew/crew_board.gd" id="45_3t0ly"]
-[ext_resource type="Texture2D" path="res://world/village/props/crew_board.png" id="46_40wu1"]
-[ext_resource type="Script" path="res://world/npc/npc.gd" id="47_semjt"]
-[ext_resource type="Script" path="res://world/quests/quest.gd" id="48_hjp23"]
-[ext_resource type="Resource" path="res://world/quests/story/q_rex.tres" id="49_euve5"]
-[ext_resource type="Resource" path="res://world/quests/story/q_hall.tres" id="50_gtk46"]
-[ext_resource type="Resource" path="res://world/quests/story/q_first_cup.tres" id="51_1iemf"]
-[ext_resource type="Resource" path="res://world/quests/story/q_win_cup.tres" id="52_amhd0"]
-[ext_resource type="Resource" path="res://world/quests/story/q_silver_podium.tres" id="53_fsj3g"]
-[ext_resource type="Resource" path="res://world/quests/story/q_gold.tres" id="54_3ddmt"]
-[ext_resource type="Resource" path="res://world/quests/story/q_platinum.tres" id="55_kjlwc"]
-[ext_resource type="Resource" path="res://world/quests/story/q_worlds.tres" id="56_miqkj"]
-[ext_resource type="Resource" path="res://world/quests/side/h_regular.tres" id="57_b7w4w"]
-[ext_resource type="Resource" path="res://world/quests/side/h_podium.tres" id="58_okq6l"]
-[ext_resource type="Resource" path="res://world/quests/side/x_derby_gold.tres" id="59_6wl54"]
-[ext_resource type="Resource" path="res://world/quests/side/f_hale_1.tres" id="60_kxmfc"]
-[ext_resource type="Resource" path="res://world/quests/side/f_hale_2.tres" id="61_h4xu0"]
-[ext_resource type="Texture2D" path="res://world/npcs/hale.png" id="62_uav1m"]
-[ext_resource type="Texture2D" path="res://world/village/land/town_2_1.png" id="63_4fae7"]
-[ext_resource type="Texture2D" path="res://world/village/buildings/aquarium.png" id="64_ujrur"]
-[ext_resource type="Script" path="res://world/council/ballot_box.gd" id="65_grv4o"]
-[ext_resource type="Texture2D" path="res://world/village/props/ballot_box.png" id="66_pf8rx"]
-[ext_resource type="Texture2D" path="res://world/islands/props/tournament_hall.png" id="67_ov7xv"]
-[ext_resource type="Script" path="res://world/tournament/tournament_desk.gd" id="68_x1rhh"]
-[ext_resource type="Script" path="res://world/village/shop/shop_offer.gd" id="69_pqsjl"]
-[ext_resource type="Resource" path="res://items/charms/anglers_medal.tres" id="70_071bd"]
-[ext_resource type="Resource" path="res://items/treasure/golden_chest.tres" id="71_bwqnh"]
-[ext_resource type="Resource" path="res://fishing/bait/moon_bait.tres" id="72_xigit"]
-[ext_resource type="Resource" path="res://items/charms/lucky_clover.tres" id="73_lql7s"]
-[ext_resource type="Resource" path="res://items/charms/twin_hook_charm.tres" id="74_uagj2"]
-[ext_resource type="Resource" path="res://fishing/tacklebox/tackle/champion_line.tres" id="75_n46rn"]
-[ext_resource type="Resource" path="res://items/treasure/ancient_coffer.tres" id="76_u5xsb"]
-[ext_resource type="Resource" path="res://fishing/rods/champion_rod.tres" id="77_82yam"]
-[ext_resource type="Texture2D" path="res://world/islands/props/stadium.png" id="78_x3gop"]
-[ext_resource type="Texture2D" path="res://world/village/land/town_3_1.png" id="79_bfq6f"]
-[ext_resource type="Texture2D" path="res://world/village/buildings/tavern.png" id="80_qvjd8"]
-[ext_resource type="Texture2D" path="res://world/village/props/tide_altar.png" id="81_j7hdr"]
-[ext_resource type="Script" path="res://fishing/enchanting/enchanting_altar.gd" id="82_arxvr"]
-[ext_resource type="Texture2D" path="res://world/village/land/town_0_2.png" id="83_6klbb"]
-[ext_resource type="Resource" path="res://world/village/aquarium/tanks/harbor_tank.tres" id="84_vq48p"]
-[ext_resource type="Texture2D" path="res://world/village/buildings/tackle_shop.png" id="85_6f04y"]
-[ext_resource type="Texture2D" path="res://world/village/props/boards.png" id="86_1fumj"]
-[ext_resource type="Script" path="res://world/village/shop/shop.gd" id="87_17m7f"]
-[ext_resource type="Resource" path="res://world/village/shop/stock/tackle_shop.tres" id="88_msq0f"]
-[ext_resource type="Texture2D" path="res://world/village/buildings/smokehouse.png" id="89_cgd5f"]
-[ext_resource type="Script" path="res://world/village/bait_crafter.gd" id="90_643ho"]
-[ext_resource type="Script" path="res://fishing/bait/bait_recipe.gd" id="91_dv6we"]
-[ext_resource type="Resource" path="res://items/snacks/recipes/grilled_fish.tres" id="92_uywtq"]
-[ext_resource type="Resource" path="res://items/snacks/recipes/fish_stew.tres" id="93_ygsrg"]
-[ext_resource type="Resource" path="res://items/snacks/recipes/chili_bowl.tres" id="94_socpy"]
-[ext_resource type="Resource" path="res://items/snacks/recipes/pumpkin_pie.tres" id="95_fcuhm"]
-[ext_resource type="Resource" path="res://items/snacks/recipes/lucky_sushi.tres" id="96_upndu"]
-[ext_resource type="Resource" path="res://items/snacks/recipes/lava_cake.tres" id="97_ey1qr"]
-[ext_resource type="Resource" path="res://items/snacks/recipes/honey_cake.tres" id="98_hq3gh"]
-[ext_resource type="Resource" path="res://items/snacks/recipes/sunflower_bread.tres" id="99_r2qgm"]
-[ext_resource type="Resource" path="res://items/snacks/recipes/frostberry_tart.tres" id="100_18mes"]
-[ext_resource type="Resource" path="res://items/snacks/recipes/rice_ball.tres" id="101_w404o"]
-[ext_resource type="Resource" path="res://items/snacks/recipes/seafood_paella.tres" id="102_itl57"]
-[ext_resource type="Resource" path="res://items/snacks/recipes/kraken_calamari.tres" id="103_knbg3"]
-[ext_resource type="Resource" path="res://items/snacks/recipes/storm_chowder.tres" id="104_dp0jt"]
-[ext_resource type="Resource" path="res://items/snacks/recipes/ember_curry.tres" id="105_347us"]
-[ext_resource type="Resource" path="res://items/snacks/recipes/champion_feast.tres" id="106_3yaqk"]
-[ext_resource type="Resource" path="res://world/village/aquarium/tanks/grand_tank.tres" id="107_qdsnu"]
-[ext_resource type="Texture2D" path="res://world/village/buildings/pet_shop.png" id="108_xuhna"]
-[ext_resource type="Script" path="res://world/village/pets/pet_shop.gd" id="109_4rtnb"]
-[ext_resource type="Script" path="res://world/village/pets/pet_data.gd" id="110_t2s5q"]
-[ext_resource type="Resource" path="res://world/village/pets/harbor_cat.tres" id="111_deb6q"]
-[ext_resource type="Resource" path="res://world/village/pets/otter.tres" id="112_y2pk7"]
-[ext_resource type="Resource" path="res://world/village/pets/seagull.tres" id="113_mnt1e"]
-[ext_resource type="Resource" path="res://world/village/pets/lantern_jelly.tres" id="114_ickfj"]
-[ext_resource type="Resource" path="res://world/quests/side/bo_walkies.tres" id="115_648dm"]
-[ext_resource type="Resource" path="res://world/quests/side/bo_hundred.tres" id="116_4cyxt"]
-[ext_resource type="Resource" path="res://world/quests/side/f_bo_1.tres" id="117_dgp4s"]
-[ext_resource type="Resource" path="res://world/quests/side/f_bo_2.tres" id="118_3gyb2"]
-[ext_resource type="Texture2D" path="res://world/npcs/bo.png" id="119_md47n"]
-[ext_resource type="Texture2D" path="res://world/village/land/town_1_2.png" id="120_7f17a"]
-[ext_resource type="Texture2D" path="res://world/village/props/vending_machine.png" id="121_f3t3t"]
-[ext_resource type="Script" path="res://world/village/shop/vending_machine.gd" id="122_4m368"]
-[ext_resource type="Resource" path="res://items/snacks/kelp_chips.tres" id="123_x0eeh"]
-[ext_resource type="Resource" path="res://items/snacks/canned_sardines.tres" id="124_msnmx"]
-[ext_resource type="Resource" path="res://items/snacks/energy_soda.tres" id="125_iwq57"]
-[ext_resource type="Resource" path="res://items/snacks/island_coffee.tres" id="126_gcgun"]
-[ext_resource type="Texture2D" path="res://world/village/props/bait_crafter.png" id="127_gob0w"]
-[ext_resource type="Resource" path="res://fishing/bait/recipes/worm_bait.tres" id="128_2gkxl"]
-[ext_resource type="Resource" path="res://fishing/bait/recipes/chum_bait.tres" id="129_3fblu"]
-[ext_resource type="Resource" path="res://fishing/bait/recipes/corn_bait.tres" id="130_viwms"]
-[ext_resource type="Resource" path="res://fishing/bait/recipes/glow_bait.tres" id="131_27ebc"]
-[ext_resource type="Resource" path="res://fishing/bait/recipes/rust_bait.tres" id="132_jtde8"]
-[ext_resource type="Resource" path="res://fishing/bait/recipes/shrimp_bait.tres" id="133_vvh7l"]
-[ext_resource type="Resource" path="res://fishing/bait/recipes/squid_bait.tres" id="134_ruwjv"]
-[ext_resource type="Resource" path="res://fishing/bait/recipes/ember_bait.tres" id="135_dykn3"]
-[ext_resource type="Resource" path="res://fishing/bait/recipes/honey_bait.tres" id="136_87l8t"]
-[ext_resource type="Resource" path="res://fishing/bait/recipes/kelp_bait.tres" id="137_bh686"]
-[ext_resource type="Resource" path="res://fishing/bait/recipes/ice_bait.tres" id="138_05wpx"]
-[ext_resource type="Resource" path="res://fishing/bait/recipes/moon_bait.tres" id="139_uh6lc"]
-[ext_resource type="Texture2D" path="res://world/village/props/stall_0.png" id="140_yw3db"]
-[ext_resource type="Resource" path="res://world/village/shop/stock/sunday_rare.tres" id="141_7amqi"]
-[ext_resource type="Texture2D" path="res://world/portraits/merchant.png" id="142_eoqm8"]
-[ext_resource type="Texture2D" path="res://world/village/props/stall_1.png" id="143_66mkj"]
-[ext_resource type="Resource" path="res://world/village/shop/stock/sunday_farm.tres" id="144_jwqhs"]
-[ext_resource type="Texture2D" path="res://world/islands/props/market_hall.png" id="145_r7ml0"]
-[ext_resource type="Script" path="res://world/village/shop/bazaar.gd" id="146_481qe"]
-[ext_resource type="Texture2D" path="res://world/village/land/town_2_2.png" id="147_6v10h"]
-[ext_resource type="Texture2D" path="res://world/village/buildings/harbor_office.png" id="148_xrmlq"]
-[ext_resource type="Resource" path="res://world/quests/side/f_vera_1.tres" id="149_cfxwc"]
-[ext_resource type="Resource" path="res://world/quests/side/f_vera_2.tres" id="150_evo1k"]
-[ext_resource type="Texture2D" path="res://world/npcs/vera.png" id="151_8tfg8"]
-[ext_resource type="Texture2D" path="res://world/islands/props/fountain.png" id="152_avafx"]
-[ext_resource type="Texture2D" path="res://world/village/buildings/bank.png" id="153_vmybl"]
-[ext_resource type="Texture2D" path="res://world/village/props/hunt_board.png" id="154_6hygl"]
-[ext_resource type="Script" path="res://world/hunts/hunt_board.gd" id="155_4g78i"]
-[ext_resource type="Texture2D" path="res://world/village/land/town_3_2.png" id="156_xtit2"]
-[ext_resource type="Script" path="res://world/traps/trap_spot.gd" id="157_glku6"]
-[ext_resource type="Resource" path="res://items/materials/sea_shell.tres" id="158_s6ig4"]
-[ext_resource type="Resource" path="res://items/materials/driftwood_plank.tres" id="159_v527f"]
-[ext_resource type="Texture2D" path="res://world/village/buildings/trophy_lodge.png" id="160_buudy"]
-[ext_resource type="Script" path="res://world/trophy/trophy_lodge.gd" id="161_oejs7"]
-[ext_resource type="Resource" path="res://world/quests/story/q_lodge.tres" id="162_gok8r"]
-[ext_resource type="Resource" path="res://world/quests/side/x_trophy_5.tres" id="163_btkg6"]
-[ext_resource type="Resource" path="res://world/quests/side/x_trophy_diamond.tres" id="164_ensqk"]
-[ext_resource type="Resource" path="res://world/quests/side/f_odette_1.tres" id="165_162rx"]
-[ext_resource type="Resource" path="res://world/quests/side/f_odette_2.tres" id="166_kxbm6"]
-[ext_resource type="Texture2D" path="res://world/npcs/odette.png" id="167_ep03e"]
-[ext_resource type="Texture2D" path="res://world/village/land/town_0_3.png" id="168_2qokl"]
-[ext_resource type="Texture2D" path="res://world/village/land/town_1_3.png" id="169_e6s21"]
-[ext_resource type="Resource" path="res://items/materials/crab_shell.tres" id="170_iuyu7"]
-[ext_resource type="Resource" path="res://items/materials/seaweed.tres" id="171_xhbsy"]
-[ext_resource type="Texture2D" path="res://world/village/land/town_2_3.png" id="172_4banl"]
-[ext_resource type="Texture2D" path="res://world/village/props/sign.png" id="173_aur6s"]
-[ext_resource type="Resource" path="res://world/quests/side/f_rex_1.tres" id="174_s13y3"]
-[ext_resource type="Resource" path="res://world/quests/side/f_rex_2.tres" id="175_tgi47"]
-[ext_resource type="Resource" path="res://world/quests/story/q_rex_secret.tres" id="176_lme5h"]
-[ext_resource type="Texture2D" path="res://world/npcs/rex.png" id="177_o7t5l"]
-[ext_resource type="Texture2D" path="res://world/village/land/town_3_3.png" id="178_j26e7"]
-[ext_resource type="Texture2D" path="res://world/village/buildings/boatyard.png" id="179_0lv20"]
-[ext_resource type="Script" path="res://boat/boatyard.gd" id="180_lfxvj"]
-[ext_resource type="Resource" path="res://world/quests/story/q_boatyard.tres" id="181_duvwv"]
-[ext_resource type="Resource" path="res://world/quests/story/q_hull2.tres" id="182_3o4wa"]
-[ext_resource type="Resource" path="res://world/quests/story/q_kelp.tres" id="183_v7q2x"]
-[ext_resource type="Resource" path="res://world/quests/story/q_hull3.tres" id="184_qt5jt"]
-[ext_resource type="Resource" path="res://world/quests/story/q_hull4.tres" id="185_tsqqq"]
-[ext_resource type="Resource" path="res://world/quests/side/m_sails.tres" id="186_i73h3"]
-[ext_resource type="Resource" path="res://world/quests/side/m_cargo.tres" id="187_myp8a"]
-[ext_resource type="Resource" path="res://world/quests/side/m_sonar.tres" id="188_r33wg"]
-[ext_resource type="Resource" path="res://world/quests/side/m_cabin.tres" id="189_3hl55"]
-[ext_resource type="Resource" path="res://world/quests/side/m_winch.tres" id="190_788ke"]
-[ext_resource type="Resource" path="res://world/quests/side/x_reforge.tres" id="191_rj533"]
-[ext_resource type="Resource" path="res://world/quests/story/q_crew.tres" id="192_6k3ag"]
-[ext_resource type="Resource" path="res://world/quests/side/x_crew_5.tres" id="193_nv8dh"]
-[ext_resource type="Resource" path="res://world/quests/side/f_marina_1.tres" id="194_qnto2"]
-[ext_resource type="Resource" path="res://world/quests/side/f_marina_2.tres" id="195_uecgv"]
-[ext_resource type="Texture2D" path="res://world/npcs/marina.png" id="196_uqb8o"]
+[ext_resource type="Script" path="res://world/island/island.gd" id="1_8c5fo"]
+[ext_resource type="Script" path="res://world/island/island_room.gd" id="2_iip2o"]
+[ext_resource type="PackedScene" path="res://oceans/basic/basic_ocean.tscn" id="3_mc4dv"]
+[ext_resource type="Script" path="res://oceans/ocean_base.gd" id="4_1cepb"]
+[ext_resource type="Resource" path="res://oceans/islands/village_shore_biome.tres" id="5_m5po0"]
+[ext_resource type="Texture2D" path="res://world/village/land/town_0_0.png" id="6_wk7g0"]
+[ext_resource type="Script" path="res://world/interact/secret.gd" id="7_o2yba"]
+[ext_resource type="Texture2D" path="res://world/village/land/town_1_0.png" id="8_h5t5u"]
+[ext_resource type="Texture2D" path="res://world/village/land/town_2_0.png" id="9_3qnhx"]
+[ext_resource type="Texture2D" path="res://world/village/land/town_3_0.png" id="10_l4xug"]
+[ext_resource type="Texture2D" path="res://world/village/land/town_0_1.png" id="11_hvck5"]
+[ext_resource type="Script" path="res://world/village/building.gd" id="12_2pat5"]
+[ext_resource type="Texture2D" path="res://world/village/buildings/house.png" id="13_vxaop"]
+[ext_resource type="Script" path="res://world/village/entrance.gd" id="14_dhtde"]
+[ext_resource type="Texture2D" path="res://world/village/props/lamp.png" id="15_fxrxj"]
+[ext_resource type="Script" path="res://components/day_night/night_light.gd" id="16_cb4t0"]
+[ext_resource type="Script" path="res://world/forage/forage_spot.gd" id="17_6cmjg"]
+[ext_resource type="Script" path="res://items/item.gd" id="18_mcmyn"]
+[ext_resource type="Resource" path="res://world/village/farm/seeds/glowcap_spores.tres" id="19_x5h4o"]
+[ext_resource type="Texture2D" path="res://world/village/buildings/cottage.png" id="20_kfq4t"]
+[ext_resource type="Texture2D" path="res://world/village/land/town_1_1.png" id="21_8y1c7"]
+[ext_resource type="Texture2D" path="res://world/village/props/well.png" id="22_foj3u"]
+[ext_resource type="PackedScene" path="res://fishing/fishing_spots/fishing_spot.tscn" id="23_txgr0"]
+[ext_resource type="Script" path="res://fishing/fishing_spots/fishing_spot.gd" id="24_s6r7g"]
+[ext_resource type="Script" path="res://fishing/fish/fish_data.gd" id="25_368jp"]
+[ext_resource type="Resource" path="res://fishing/fish/species/islands/well_minnow.tres" id="26_ttyfm"]
+[ext_resource type="Resource" path="res://fishing/fish/species/islands/cave_loach.tres" id="27_vgl26"]
+[ext_resource type="Resource" path="res://fishing/fish/species/islands/ghost_catfish.tres" id="28_luh3r"]
+[ext_resource type="Resource" path="res://fishing/fish/species/islands/wishing_koi.tres" id="29_ug665"]
+[ext_resource type="Resource" path="res://oceans/islands/village_well_biome.tres" id="30_ve83l"]
+[ext_resource type="Script" path="res://world/village/restoration/restoration_board.gd" id="31_ihem0"]
+[ext_resource type="Script" path="res://world/village/restoration/project.gd" id="32_svndg"]
+[ext_resource type="Resource" path="res://world/village/restoration/projects/aquarium_wing.tres" id="33_66nfl"]
+[ext_resource type="Resource" path="res://world/village/restoration/projects/boatyard.tres" id="34_scijq"]
+[ext_resource type="Resource" path="res://world/village/restoration/projects/festival_stage.tres" id="35_5xqeq"]
+[ext_resource type="Resource" path="res://world/village/restoration/projects/fountain.tres" id="36_1mqt0"]
+[ext_resource type="Resource" path="res://world/village/restoration/projects/greenhouse.tres" id="37_bco56"]
+[ext_resource type="Resource" path="res://world/village/restoration/projects/lamp_posts.tres" id="38_lx62a"]
+[ext_resource type="Resource" path="res://world/village/restoration/projects/lighthouse_lamp.tres" id="39_n8i4n"]
+[ext_resource type="Resource" path="res://world/village/restoration/projects/market_hall.tres" id="40_ts262"]
+[ext_resource type="Resource" path="res://world/village/restoration/projects/tournament_hall.tres" id="41_2bn44"]
+[ext_resource type="Resource" path="res://world/village/restoration/projects/weather_station.tres" id="42_n175k"]
+[ext_resource type="Resource" path="res://world/village/restoration/projects/workbench.tres" id="43_si2qd"]
+[ext_resource type="Texture2D" path="res://world/islands/props/restoration_board.png" id="44_3t0ly"]
+[ext_resource type="Script" path="res://world/crew/crew_board.gd" id="45_40wu1"]
+[ext_resource type="Texture2D" path="res://world/village/props/crew_board.png" id="46_semjt"]
+[ext_resource type="Script" path="res://world/npc/npc.gd" id="47_hjp23"]
+[ext_resource type="Script" path="res://world/quests/quest.gd" id="48_euve5"]
+[ext_resource type="Resource" path="res://world/quests/story/q_rex.tres" id="49_gtk46"]
+[ext_resource type="Resource" path="res://world/quests/story/q_hall.tres" id="50_1iemf"]
+[ext_resource type="Resource" path="res://world/quests/story/q_first_cup.tres" id="51_amhd0"]
+[ext_resource type="Resource" path="res://world/quests/story/q_win_cup.tres" id="52_fsj3g"]
+[ext_resource type="Resource" path="res://world/quests/story/q_silver_podium.tres" id="53_3ddmt"]
+[ext_resource type="Resource" path="res://world/quests/story/q_gold.tres" id="54_kjlwc"]
+[ext_resource type="Resource" path="res://world/quests/story/q_platinum.tres" id="55_miqkj"]
+[ext_resource type="Resource" path="res://world/quests/story/q_worlds.tres" id="56_b7w4w"]
+[ext_resource type="Resource" path="res://world/quests/side/h_regular.tres" id="57_okq6l"]
+[ext_resource type="Resource" path="res://world/quests/side/h_podium.tres" id="58_6wl54"]
+[ext_resource type="Resource" path="res://world/quests/side/x_derby_gold.tres" id="59_kxmfc"]
+[ext_resource type="Resource" path="res://world/quests/side/f_hale_1.tres" id="60_h4xu0"]
+[ext_resource type="Resource" path="res://world/quests/side/f_hale_2.tres" id="61_uav1m"]
+[ext_resource type="Texture2D" path="res://world/npcs/hale.png" id="62_4fae7"]
+[ext_resource type="Texture2D" path="res://world/village/land/town_2_1.png" id="63_ujrur"]
+[ext_resource type="Texture2D" path="res://world/village/buildings/aquarium.png" id="64_grv4o"]
+[ext_resource type="Script" path="res://world/council/ballot_box.gd" id="65_pf8rx"]
+[ext_resource type="Texture2D" path="res://world/village/props/ballot_box.png" id="66_ov7xv"]
+[ext_resource type="Texture2D" path="res://world/islands/props/tournament_hall.png" id="67_x1rhh"]
+[ext_resource type="Script" path="res://world/tournament/tournament_desk.gd" id="68_pqsjl"]
+[ext_resource type="Script" path="res://world/village/shop/shop_offer.gd" id="69_071bd"]
+[ext_resource type="Resource" path="res://items/charms/anglers_medal.tres" id="70_bwqnh"]
+[ext_resource type="Resource" path="res://items/treasure/golden_chest.tres" id="71_xigit"]
+[ext_resource type="Resource" path="res://fishing/bait/moon_bait.tres" id="72_lql7s"]
+[ext_resource type="Resource" path="res://items/charms/lucky_clover.tres" id="73_uagj2"]
+[ext_resource type="Resource" path="res://items/charms/twin_hook_charm.tres" id="74_n46rn"]
+[ext_resource type="Resource" path="res://fishing/tacklebox/tackle/champion_line.tres" id="75_u5xsb"]
+[ext_resource type="Resource" path="res://items/treasure/ancient_coffer.tres" id="76_82yam"]
+[ext_resource type="Resource" path="res://fishing/rods/champion_rod.tres" id="77_x3gop"]
+[ext_resource type="Texture2D" path="res://world/islands/props/stadium.png" id="78_bfq6f"]
+[ext_resource type="Script" path="res://world/arcade/arcade_stand.gd" id="79_qvjd8"]
+[ext_resource type="Texture2D" path="res://world/village/land/town_3_1.png" id="80_j7hdr"]
+[ext_resource type="Texture2D" path="res://world/village/buildings/tavern.png" id="81_arxvr"]
+[ext_resource type="Texture2D" path="res://world/village/props/tide_altar.png" id="82_6klbb"]
+[ext_resource type="Script" path="res://fishing/enchanting/enchanting_altar.gd" id="83_vq48p"]
+[ext_resource type="Texture2D" path="res://world/village/land/town_0_2.png" id="84_6f04y"]
+[ext_resource type="Resource" path="res://world/village/aquarium/tanks/harbor_tank.tres" id="85_1fumj"]
+[ext_resource type="Texture2D" path="res://world/village/buildings/tackle_shop.png" id="86_17m7f"]
+[ext_resource type="Texture2D" path="res://world/village/props/boards.png" id="87_msq0f"]
+[ext_resource type="Script" path="res://world/village/shop/shop.gd" id="88_cgd5f"]
+[ext_resource type="Resource" path="res://world/village/shop/stock/tackle_shop.tres" id="89_643ho"]
+[ext_resource type="Texture2D" path="res://world/village/buildings/smokehouse.png" id="90_dv6we"]
+[ext_resource type="Script" path="res://world/village/bait_crafter.gd" id="91_uywtq"]
+[ext_resource type="Script" path="res://fishing/bait/bait_recipe.gd" id="92_ygsrg"]
+[ext_resource type="Resource" path="res://items/snacks/recipes/grilled_fish.tres" id="93_socpy"]
+[ext_resource type="Resource" path="res://items/snacks/recipes/fish_stew.tres" id="94_fcuhm"]
+[ext_resource type="Resource" path="res://items/snacks/recipes/chili_bowl.tres" id="95_upndu"]
+[ext_resource type="Resource" path="res://items/snacks/recipes/pumpkin_pie.tres" id="96_ey1qr"]
+[ext_resource type="Resource" path="res://items/snacks/recipes/lucky_sushi.tres" id="97_hq3gh"]
+[ext_resource type="Resource" path="res://items/snacks/recipes/lava_cake.tres" id="98_r2qgm"]
+[ext_resource type="Resource" path="res://items/snacks/recipes/honey_cake.tres" id="99_18mes"]
+[ext_resource type="Resource" path="res://items/snacks/recipes/sunflower_bread.tres" id="100_w404o"]
+[ext_resource type="Resource" path="res://items/snacks/recipes/frostberry_tart.tres" id="101_itl57"]
+[ext_resource type="Resource" path="res://items/snacks/recipes/rice_ball.tres" id="102_knbg3"]
+[ext_resource type="Resource" path="res://items/snacks/recipes/seafood_paella.tres" id="103_dp0jt"]
+[ext_resource type="Resource" path="res://items/snacks/recipes/kraken_calamari.tres" id="104_347us"]
+[ext_resource type="Resource" path="res://items/snacks/recipes/storm_chowder.tres" id="105_3yaqk"]
+[ext_resource type="Resource" path="res://items/snacks/recipes/ember_curry.tres" id="106_qdsnu"]
+[ext_resource type="Resource" path="res://items/snacks/recipes/champion_feast.tres" id="107_xuhna"]
+[ext_resource type="Resource" path="res://world/village/aquarium/tanks/grand_tank.tres" id="108_4rtnb"]
+[ext_resource type="Texture2D" path="res://world/village/buildings/pet_shop.png" id="109_t2s5q"]
+[ext_resource type="Script" path="res://world/village/pets/pet_shop.gd" id="110_deb6q"]
+[ext_resource type="Script" path="res://world/village/pets/pet_data.gd" id="111_y2pk7"]
+[ext_resource type="Resource" path="res://world/village/pets/harbor_cat.tres" id="112_mnt1e"]
+[ext_resource type="Resource" path="res://world/village/pets/otter.tres" id="113_ickfj"]
+[ext_resource type="Resource" path="res://world/village/pets/seagull.tres" id="114_648dm"]
+[ext_resource type="Resource" path="res://world/village/pets/lantern_jelly.tres" id="115_4cyxt"]
+[ext_resource type="Resource" path="res://world/quests/side/bo_walkies.tres" id="116_dgp4s"]
+[ext_resource type="Resource" path="res://world/quests/side/bo_hundred.tres" id="117_3gyb2"]
+[ext_resource type="Resource" path="res://world/quests/side/f_bo_1.tres" id="118_md47n"]
+[ext_resource type="Resource" path="res://world/quests/side/f_bo_2.tres" id="119_7f17a"]
+[ext_resource type="Texture2D" path="res://world/npcs/bo.png" id="120_f3t3t"]
+[ext_resource type="Texture2D" path="res://world/village/land/town_1_2.png" id="121_4m368"]
+[ext_resource type="Texture2D" path="res://world/village/props/vending_machine.png" id="122_x0eeh"]
+[ext_resource type="Script" path="res://world/village/shop/vending_machine.gd" id="123_msnmx"]
+[ext_resource type="Resource" path="res://items/snacks/kelp_chips.tres" id="124_iwq57"]
+[ext_resource type="Resource" path="res://items/snacks/canned_sardines.tres" id="125_gcgun"]
+[ext_resource type="Resource" path="res://items/snacks/energy_soda.tres" id="126_gob0w"]
+[ext_resource type="Resource" path="res://items/snacks/island_coffee.tres" id="127_2gkxl"]
+[ext_resource type="Texture2D" path="res://world/village/props/bait_crafter.png" id="128_3fblu"]
+[ext_resource type="Resource" path="res://fishing/bait/recipes/worm_bait.tres" id="129_viwms"]
+[ext_resource type="Resource" path="res://fishing/bait/recipes/chum_bait.tres" id="130_27ebc"]
+[ext_resource type="Resource" path="res://fishing/bait/recipes/corn_bait.tres" id="131_jtde8"]
+[ext_resource type="Resource" path="res://fishing/bait/recipes/glow_bait.tres" id="132_vvh7l"]
+[ext_resource type="Resource" path="res://fishing/bait/recipes/rust_bait.tres" id="133_ruwjv"]
+[ext_resource type="Resource" path="res://fishing/bait/recipes/shrimp_bait.tres" id="134_dykn3"]
+[ext_resource type="Resource" path="res://fishing/bait/recipes/squid_bait.tres" id="135_87l8t"]
+[ext_resource type="Resource" path="res://fishing/bait/recipes/ember_bait.tres" id="136_bh686"]
+[ext_resource type="Resource" path="res://fishing/bait/recipes/honey_bait.tres" id="137_05wpx"]
+[ext_resource type="Resource" path="res://fishing/bait/recipes/kelp_bait.tres" id="138_uh6lc"]
+[ext_resource type="Resource" path="res://fishing/bait/recipes/ice_bait.tres" id="139_yw3db"]
+[ext_resource type="Resource" path="res://fishing/bait/recipes/moon_bait.tres" id="140_7amqi"]
+[ext_resource type="Texture2D" path="res://world/village/props/stall_0.png" id="141_eoqm8"]
+[ext_resource type="Resource" path="res://world/village/shop/stock/sunday_rare.tres" id="142_66mkj"]
+[ext_resource type="Texture2D" path="res://world/portraits/merchant.png" id="143_jwqhs"]
+[ext_resource type="Texture2D" path="res://world/village/props/stall_1.png" id="144_r7ml0"]
+[ext_resource type="Resource" path="res://world/village/shop/stock/sunday_farm.tres" id="145_481qe"]
+[ext_resource type="Texture2D" path="res://world/islands/props/market_hall.png" id="146_6v10h"]
+[ext_resource type="Script" path="res://world/village/shop/bazaar.gd" id="147_xrmlq"]
+[ext_resource type="Texture2D" path="res://world/village/land/town_2_2.png" id="148_cfxwc"]
+[ext_resource type="Texture2D" path="res://world/village/buildings/harbor_office.png" id="149_evo1k"]
+[ext_resource type="Resource" path="res://world/quests/side/f_vera_1.tres" id="150_8tfg8"]
+[ext_resource type="Resource" path="res://world/quests/side/f_vera_2.tres" id="151_avafx"]
+[ext_resource type="Texture2D" path="res://world/npcs/vera.png" id="152_vmybl"]
+[ext_resource type="Texture2D" path="res://world/islands/props/fountain.png" id="153_6hygl"]
+[ext_resource type="Texture2D" path="res://world/village/buildings/bank.png" id="154_4g78i"]
+[ext_resource type="Texture2D" path="res://world/village/props/hunt_board.png" id="155_xtit2"]
+[ext_resource type="Script" path="res://world/hunts/hunt_board.gd" id="156_glku6"]
+[ext_resource type="Texture2D" path="res://world/village/land/town_3_2.png" id="157_s6ig4"]
+[ext_resource type="Script" path="res://world/traps/trap_spot.gd" id="158_v527f"]
+[ext_resource type="Resource" path="res://items/materials/sea_shell.tres" id="159_buudy"]
+[ext_resource type="Resource" path="res://items/materials/driftwood_plank.tres" id="160_oejs7"]
+[ext_resource type="Texture2D" path="res://world/village/buildings/trophy_lodge.png" id="161_gok8r"]
+[ext_resource type="Script" path="res://world/trophy/trophy_lodge.gd" id="162_btkg6"]
+[ext_resource type="Resource" path="res://world/quests/story/q_lodge.tres" id="163_ensqk"]
+[ext_resource type="Resource" path="res://world/quests/side/x_trophy_5.tres" id="164_162rx"]
+[ext_resource type="Resource" path="res://world/quests/side/x_trophy_diamond.tres" id="165_kxbm6"]
+[ext_resource type="Resource" path="res://world/quests/side/f_odette_1.tres" id="166_ep03e"]
+[ext_resource type="Resource" path="res://world/quests/side/f_odette_2.tres" id="167_2qokl"]
+[ext_resource type="Texture2D" path="res://world/npcs/odette.png" id="168_e6s21"]
+[ext_resource type="Texture2D" path="res://world/village/land/town_0_3.png" id="169_iuyu7"]
+[ext_resource type="Texture2D" path="res://world/village/land/town_1_3.png" id="170_xhbsy"]
+[ext_resource type="Resource" path="res://items/materials/crab_shell.tres" id="171_4banl"]
+[ext_resource type="Resource" path="res://items/materials/seaweed.tres" id="172_aur6s"]
+[ext_resource type="Texture2D" path="res://world/village/land/town_2_3.png" id="173_s13y3"]
+[ext_resource type="Texture2D" path="res://world/village/props/sign.png" id="174_tgi47"]
+[ext_resource type="Resource" path="res://world/quests/side/f_rex_1.tres" id="175_lme5h"]
+[ext_resource type="Resource" path="res://world/quests/side/f_rex_2.tres" id="176_o7t5l"]
+[ext_resource type="Resource" path="res://world/quests/story/q_rex_secret.tres" id="177_j26e7"]
+[ext_resource type="Texture2D" path="res://world/npcs/rex.png" id="178_0lv20"]
+[ext_resource type="Texture2D" path="res://world/village/land/town_3_3.png" id="179_lfxvj"]
+[ext_resource type="Texture2D" path="res://world/village/buildings/boatyard.png" id="180_duvwv"]
+[ext_resource type="Script" path="res://boat/boatyard.gd" id="181_3o4wa"]
+[ext_resource type="Resource" path="res://world/quests/story/q_boatyard.tres" id="182_v7q2x"]
+[ext_resource type="Resource" path="res://world/quests/story/q_hull2.tres" id="183_qt5jt"]
+[ext_resource type="Resource" path="res://world/quests/story/q_kelp.tres" id="184_tsqqq"]
+[ext_resource type="Resource" path="res://world/quests/story/q_hull3.tres" id="185_i73h3"]
+[ext_resource type="Resource" path="res://world/quests/story/q_hull4.tres" id="186_myp8a"]
+[ext_resource type="Resource" path="res://world/quests/side/m_sails.tres" id="187_r33wg"]
+[ext_resource type="Resource" path="res://world/quests/side/m_cargo.tres" id="188_3hl55"]
+[ext_resource type="Resource" path="res://world/quests/side/m_sonar.tres" id="189_788ke"]
+[ext_resource type="Resource" path="res://world/quests/side/m_cabin.tres" id="190_rj533"]
+[ext_resource type="Resource" path="res://world/quests/side/m_winch.tres" id="191_6k3ag"]
+[ext_resource type="Resource" path="res://world/quests/side/x_reforge.tres" id="192_nv8dh"]
+[ext_resource type="Resource" path="res://world/quests/story/q_crew.tres" id="193_qnto2"]
+[ext_resource type="Resource" path="res://world/quests/side/x_crew_5.tres" id="194_uecgv"]
+[ext_resource type="Resource" path="res://world/quests/side/f_marina_1.tres" id="195_uqb8o"]
+[ext_resource type="Resource" path="res://world/quests/side/f_marina_2.tres" id="196_2ybg7"]
+[ext_resource type="Texture2D" path="res://world/npcs/marina.png" id="197_wosie"]
 
 [sub_resource type="RectangleShape2D" id="Rect_house"]
 size = Vector2(34, 10)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_2ybg7"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_78fyd"]
 size = Vector2(26, 9)
 
 [sub_resource type="RectangleShape2D" id="Rect_well"]
@@ -212,10 +213,10 @@ size = Vector2(4, 3)
 [sub_resource type="RectangleShape2D" id="v_s8"]
 size = Vector2(6, 3)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_wosie"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_46smj"]
 size = Vector2(26, 9)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_78fyd"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xnhlk"]
 size = Vector2(26, 9)
 
 [sub_resource type="RectangleShape2D" id="Rect_aquarium"]
@@ -225,44 +226,44 @@ size = Vector2(54, 10)
 size = Vector2(40, 6)
 
 [sub_resource type="Resource" id="v_s11"]
-script = ExtResource("69_pqsjl")
-item = ExtResource("70_071bd")
+script = ExtResource("69_071bd")
+item = ExtResource("70_bwqnh")
 price = 3
 
 [sub_resource type="Resource" id="v_s12"]
-script = ExtResource("69_pqsjl")
-item = ExtResource("71_bwqnh")
+script = ExtResource("69_071bd")
+item = ExtResource("71_xigit")
 price = 4
 
 [sub_resource type="Resource" id="v_s13"]
-script = ExtResource("69_pqsjl")
-item = ExtResource("72_xigit")
+script = ExtResource("69_071bd")
+item = ExtResource("72_lql7s")
 amount = 3
 price = 5
 
 [sub_resource type="Resource" id="v_s14"]
-script = ExtResource("69_pqsjl")
-item = ExtResource("73_lql7s")
+script = ExtResource("69_071bd")
+item = ExtResource("73_uagj2")
 price = 5
 
 [sub_resource type="Resource" id="v_s15"]
-script = ExtResource("69_pqsjl")
-item = ExtResource("74_uagj2")
+script = ExtResource("69_071bd")
+item = ExtResource("74_n46rn")
 price = 8
 
 [sub_resource type="Resource" id="v_s16"]
-script = ExtResource("69_pqsjl")
-item = ExtResource("75_n46rn")
+script = ExtResource("69_071bd")
+item = ExtResource("75_u5xsb")
 price = 18
 
 [sub_resource type="Resource" id="v_s17"]
-script = ExtResource("69_pqsjl")
-item = ExtResource("76_u5xsb")
+script = ExtResource("69_071bd")
+item = ExtResource("76_82yam")
 price = 15
 
 [sub_resource type="Resource" id="v_s18"]
-script = ExtResource("69_pqsjl")
-item = ExtResource("77_82yam")
+script = ExtResource("69_071bd")
+item = ExtResource("77_x3gop")
 price = 40
 requiredFlag = "league/3"
 lockedText = "Reach the Platinum League."
@@ -270,13 +271,13 @@ lockedText = "Reach the Platinum League."
 [sub_resource type="RectangleShape2D" id="v_s19"]
 size = Vector2(38, 6)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_46smj"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4r7d8"]
 size = Vector2(42, 9)
 
 [sub_resource type="RectangleShape2D" id="hb_rect_small"]
 size = Vector2(10, 4)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_xnhlk"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vumkh"]
 size = Vector2(26, 9)
 
 [sub_resource type="RectangleShape2D" id="Rect_tackle"]
@@ -295,20 +296,20 @@ size = Vector2(6, 3)
 size = Vector2(10, 4)
 
 [sub_resource type="Resource" id="Offer_n1"]
-script = ExtResource("69_pqsjl")
-item = ExtResource("123_x0eeh")
+script = ExtResource("69_071bd")
+item = ExtResource("124_iwq57")
 
 [sub_resource type="Resource" id="Offer_n2"]
-script = ExtResource("69_pqsjl")
-item = ExtResource("124_msnmx")
+script = ExtResource("69_071bd")
+item = ExtResource("125_gcgun")
 
 [sub_resource type="Resource" id="Offer_n3"]
-script = ExtResource("69_pqsjl")
-item = ExtResource("125_iwq57")
+script = ExtResource("69_071bd")
+item = ExtResource("126_gob0w")
 
 [sub_resource type="Resource" id="Offer_n4"]
-script = ExtResource("69_pqsjl")
-item = ExtResource("126_gcgun")
+script = ExtResource("69_071bd")
+item = ExtResource("127_2gkxl")
 
 [sub_resource type="RectangleShape2D" id="Rect_crafter"]
 size = Vector2(22, 5)
@@ -319,7 +320,7 @@ size = Vector2(24, 6)
 [sub_resource type="RectangleShape2D" id="v_s20"]
 size = Vector2(40, 6)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_4r7d8"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yndcp"]
 size = Vector2(36, 9)
 
 [sub_resource type="RectangleShape2D" id="v_s5"]
@@ -345,20 +346,20 @@ size = Vector2(6, 3)
 
 [node name="Village" type="Node2D" unique_id=1181606296]
 y_sort_enabled = true
-script = ExtResource("1_pfggv")
+script = ExtResource("1_8c5fo")
 arrival = Vector2(384, 416)
 
-[node name="R0_0" type="Node2D" parent="." unique_id=250041294 node_paths=PackedStringArray("land")]
+[node name="R0_0" type="Node2D" parent="." unique_id=150560029 node_paths=PackedStringArray("land")]
 y_sort_enabled = true
-script = ExtResource("2_8c5fo")
+script = ExtResource("2_iip2o")
 land = [NodePath("Land")]
 
-[node name="Water" type="Node2D" parent="R0_0" unique_id=548284199 node_paths=PackedStringArray("sprite", "ground", "decorationLayers") instance=ExtResource("3_iip2o")]
+[node name="Water" type="Node2D" parent="R0_0" unique_id=548284199 node_paths=PackedStringArray("sprite", "ground", "decorationLayers") instance=ExtResource("3_mc4dv")]
 z_index = -2
-script = ExtResource("4_mc4dv")
+script = ExtResource("4_1cepb")
 sprite = NodePath("Sprite2D")
 ground = NodePath("Ground")
-biome = ExtResource("5_1cepb")
+biome = ExtResource("5_m5po0")
 depth_scale = 500.0
 depth_contrast = 2.0670000981825
 wave_scale = 160.0
@@ -371,32 +372,32 @@ caustic_coverage = 75.0
 decorationLayers = [NodePath("DecorationLayer")]
 metadata/_custom_type_script = "uid://bpejegmgve8km"
 
-[node name="Land" type="Sprite2D" parent="R0_0" unique_id=678044372]
+[node name="Land" type="Sprite2D" parent="R0_0" unique_id=569130630]
 z_index = -1
-texture = ExtResource("6_m5po0")
+texture = ExtResource("6_wk7g0")
 centered = false
 
 [node name="Pearl2" type="Node2D" parent="R0_0" unique_id=1439455237]
 position = Vector2(110, 100)
-script = ExtResource("7_wk7g0")
+script = ExtResource("7_o2yba")
 flag = "pearl_village_2"
 title = "A lost pearl!"
 message = "Opal on Pearl Lagoon collects these."
 prompt = "Pick up"
 reach = 7.0
 
-[node name="R1_0" type="Node2D" parent="." unique_id=1574627800 node_paths=PackedStringArray("land")]
+[node name="R1_0" type="Node2D" parent="." unique_id=620180775 node_paths=PackedStringArray("land")]
 y_sort_enabled = true
 position = Vector2(192, 0)
-script = ExtResource("2_8c5fo")
+script = ExtResource("2_iip2o")
 land = [NodePath("Land")]
 
-[node name="Water" type="Node2D" parent="R1_0" unique_id=241527255 node_paths=PackedStringArray("sprite", "ground", "decorationLayers") instance=ExtResource("3_iip2o")]
+[node name="Water" type="Node2D" parent="R1_0" unique_id=1260046794 node_paths=PackedStringArray("sprite", "ground", "decorationLayers") instance=ExtResource("3_mc4dv")]
 z_index = -2
-script = ExtResource("4_mc4dv")
+script = ExtResource("4_1cepb")
 sprite = NodePath("Sprite2D")
 ground = NodePath("Ground")
-biome = ExtResource("5_1cepb")
+biome = ExtResource("5_m5po0")
 depth_scale = 500.0
 depth_contrast = 2.0670000981825
 wave_scale = 160.0
@@ -409,23 +410,23 @@ caustic_coverage = 75.0
 decorationLayers = [NodePath("DecorationLayer")]
 metadata/_custom_type_script = "uid://bpejegmgve8km"
 
-[node name="Land" type="Sprite2D" parent="R1_0" unique_id=1631816561]
+[node name="Land" type="Sprite2D" parent="R1_0" unique_id=1100026334]
 z_index = -1
-texture = ExtResource("8_o2yba")
+texture = ExtResource("8_h5t5u")
 centered = false
 
-[node name="R2_0" type="Node2D" parent="." unique_id=719749255 node_paths=PackedStringArray("land")]
+[node name="R2_0" type="Node2D" parent="." unique_id=532019911 node_paths=PackedStringArray("land")]
 y_sort_enabled = true
 position = Vector2(384, 0)
-script = ExtResource("2_8c5fo")
+script = ExtResource("2_iip2o")
 land = [NodePath("Land")]
 
-[node name="Water" type="Node2D" parent="R2_0" unique_id=336212734 node_paths=PackedStringArray("sprite", "ground", "decorationLayers") instance=ExtResource("3_iip2o")]
+[node name="Water" type="Node2D" parent="R2_0" unique_id=817745379 node_paths=PackedStringArray("sprite", "ground", "decorationLayers") instance=ExtResource("3_mc4dv")]
 z_index = -2
-script = ExtResource("4_mc4dv")
+script = ExtResource("4_1cepb")
 sprite = NodePath("Sprite2D")
 ground = NodePath("Ground")
-biome = ExtResource("5_1cepb")
+biome = ExtResource("5_m5po0")
 depth_scale = 500.0
 depth_contrast = 2.0670000981825
 wave_scale = 160.0
@@ -438,32 +439,32 @@ caustic_coverage = 75.0
 decorationLayers = [NodePath("DecorationLayer")]
 metadata/_custom_type_script = "uid://bpejegmgve8km"
 
-[node name="Land" type="Sprite2D" parent="R2_0" unique_id=1509856601]
+[node name="Land" type="Sprite2D" parent="R2_0" unique_id=736612296]
 z_index = -1
-texture = ExtResource("9_h5t5u")
+texture = ExtResource("9_3qnhx")
 centered = false
 
 [node name="Pearl6" type="Node2D" parent="R2_0" unique_id=1182550414]
 position = Vector2(176, 60)
-script = ExtResource("7_wk7g0")
+script = ExtResource("7_o2yba")
 flag = "pearl_village_6"
 title = "A lost pearl!"
 message = "Opal on Pearl Lagoon collects these."
 prompt = "Pick up"
 reach = 7.0
 
-[node name="R3_0" type="Node2D" parent="." unique_id=2080387414 node_paths=PackedStringArray("land")]
+[node name="R3_0" type="Node2D" parent="." unique_id=1709279938 node_paths=PackedStringArray("land")]
 y_sort_enabled = true
 position = Vector2(576, 0)
-script = ExtResource("2_8c5fo")
+script = ExtResource("2_iip2o")
 land = [NodePath("Land")]
 
-[node name="Water" type="Node2D" parent="R3_0" unique_id=1424058180 node_paths=PackedStringArray("sprite", "ground", "decorationLayers") instance=ExtResource("3_iip2o")]
+[node name="Water" type="Node2D" parent="R3_0" unique_id=1394015617 node_paths=PackedStringArray("sprite", "ground", "decorationLayers") instance=ExtResource("3_mc4dv")]
 z_index = -2
-script = ExtResource("4_mc4dv")
+script = ExtResource("4_1cepb")
 sprite = NodePath("Sprite2D")
 ground = NodePath("Ground")
-biome = ExtResource("5_1cepb")
+biome = ExtResource("5_m5po0")
 depth_scale = 500.0
 depth_contrast = 2.0670000981825
 wave_scale = 160.0
@@ -476,23 +477,23 @@ caustic_coverage = 75.0
 decorationLayers = [NodePath("DecorationLayer")]
 metadata/_custom_type_script = "uid://bpejegmgve8km"
 
-[node name="Land" type="Sprite2D" parent="R3_0" unique_id=576293025]
+[node name="Land" type="Sprite2D" parent="R3_0" unique_id=1807429538]
 z_index = -1
-texture = ExtResource("10_3qnhx")
+texture = ExtResource("10_l4xug")
 centered = false
 
-[node name="R0_1" type="Node2D" parent="." unique_id=119445012 node_paths=PackedStringArray("land")]
+[node name="R0_1" type="Node2D" parent="." unique_id=1991634034 node_paths=PackedStringArray("land")]
 y_sort_enabled = true
 position = Vector2(0, 108)
-script = ExtResource("2_8c5fo")
+script = ExtResource("2_iip2o")
 land = [NodePath("Land")]
 
-[node name="Water" type="Node2D" parent="R0_1" unique_id=1268513064 node_paths=PackedStringArray("sprite", "ground", "decorationLayers") instance=ExtResource("3_iip2o")]
+[node name="Water" type="Node2D" parent="R0_1" unique_id=1780595568 node_paths=PackedStringArray("sprite", "ground", "decorationLayers") instance=ExtResource("3_mc4dv")]
 z_index = -2
-script = ExtResource("4_mc4dv")
+script = ExtResource("4_1cepb")
 sprite = NodePath("Sprite2D")
 ground = NodePath("Ground")
-biome = ExtResource("5_1cepb")
+biome = ExtResource("5_m5po0")
 depth_scale = 500.0
 depth_contrast = 2.0670000981825
 wave_scale = 160.0
@@ -505,18 +506,18 @@ caustic_coverage = 75.0
 decorationLayers = [NodePath("DecorationLayer")]
 metadata/_custom_type_script = "uid://bpejegmgve8km"
 
-[node name="Land" type="Sprite2D" parent="R0_1" unique_id=443229377]
+[node name="Land" type="Sprite2D" parent="R0_1" unique_id=566531628]
 z_index = -1
-texture = ExtResource("11_l4xug")
+texture = ExtResource("11_hvck5")
 centered = false
 
 [node name="House" type="Node2D" parent="R0_1" unique_id=1029931856]
 position = Vector2(150, 2)
-script = ExtResource("12_hvck5")
+script = ExtResource("12_2pat5")
 displayName = "Home"
 
 [node name="Art" type="Sprite2D" parent="R0_1/House" unique_id=996548590]
-texture = ExtResource("13_2pat5")
+texture = ExtResource("13_vxaop")
 centered = false
 offset = Vector2(-18, -32)
 
@@ -526,68 +527,68 @@ offset = Vector2(-18, -32)
 position = Vector2(0, -5)
 shape = SubResource("Rect_house")
 
-[node name="Entrance" type="Node2D" parent="R0_1/House" unique_id=469731419]
+[node name="Entrance" type="Node2D" parent="R0_1/House" unique_id=508116242]
 position = Vector2(0, 2)
-script = ExtResource("14_vxaop")
+script = ExtResource("14_dhtde")
 inside = "res://world/village/insides/house.tscn"
 reach = 12.0
 promptOffset = Vector2(0, -16)
 
 [node name="Lamp" type="Sprite2D" parent="R0_1" unique_id=1313464241]
 position = Vector2(120, 10)
-texture = ExtResource("15_dhtde")
+texture = ExtResource("15_fxrxj")
 centered = false
 offset = Vector2(-3, -18)
 
 [node name="Light" type="Node2D" parent="R0_1/Lamp" unique_id=1026210]
 position = Vector2(0, -16)
-script = ExtResource("16_fxrxj")
+script = ExtResource("16_cb4t0")
 radius = 30.0
 height = 16.0
 
-[node name="ForageBerryBush2" type="Node2D" parent="R0_1" unique_id=845038894]
+[node name="ForageBerryBush2" type="Node2D" parent="R0_1" unique_id=810140582]
 position = Vector2(92, 42)
-script = ExtResource("17_cb4t0")
+script = ExtResource("17_6cmjg")
 
 [node name="Stash" type="Node2D" parent="R0_1" unique_id=451997072]
 position = Vector2(40, 88)
-script = ExtResource("7_wk7g0")
+script = ExtResource("7_o2yba")
 flag = "lane_stash"
 title = "Hidden stash"
 message = "Someone tucked this away behind the shops."
-items = Array[ExtResource("18_6cmjg")]([ExtResource("19_mcmyn")])
+items = Array[ExtResource("18_mcmyn")]([ExtResource("19_x5h4o")])
 amounts = Array[int]([2])
 coins = 30
 prompt = "Search"
 reach = 8.0
 
-[node name="Cottage4" type="Node2D" parent="R0_1" unique_id=1039355900]
+[node name="Cottage4" type="Node2D" parent="R0_1" unique_id=1246514115]
 position = Vector2(70, 102)
-script = ExtResource("12_hvck5")
+script = ExtResource("12_2pat5")
 
-[node name="Art" type="Sprite2D" parent="R0_1/Cottage4" unique_id=951406476]
-texture = ExtResource("20_x5h4o")
+[node name="Art" type="Sprite2D" parent="R0_1/Cottage4" unique_id=585084338]
+texture = ExtResource("20_kfq4t")
 centered = false
 offset = Vector2(-15, -26)
 
-[node name="Body" type="StaticBody2D" parent="R0_1/Cottage4" unique_id=257433696]
+[node name="Body" type="StaticBody2D" parent="R0_1/Cottage4" unique_id=2033706623]
 
-[node name="Shape" type="CollisionShape2D" parent="R0_1/Cottage4/Body" unique_id=1776004483]
+[node name="Shape" type="CollisionShape2D" parent="R0_1/Cottage4/Body" unique_id=2027175915]
 position = Vector2(0, -5.5)
-shape = SubResource("RectangleShape2D_2ybg7")
+shape = SubResource("RectangleShape2D_78fyd")
 
-[node name="R1_1" type="Node2D" parent="." unique_id=1936119520 node_paths=PackedStringArray("land")]
+[node name="R1_1" type="Node2D" parent="." unique_id=421965078 node_paths=PackedStringArray("land")]
 y_sort_enabled = true
 position = Vector2(192, 108)
-script = ExtResource("2_8c5fo")
+script = ExtResource("2_iip2o")
 land = [NodePath("Land")]
 
-[node name="Water" type="Node2D" parent="R1_1" unique_id=721616838 node_paths=PackedStringArray("sprite", "ground", "decorationLayers") instance=ExtResource("3_iip2o")]
+[node name="Water" type="Node2D" parent="R1_1" unique_id=1626982364 node_paths=PackedStringArray("sprite", "ground", "decorationLayers") instance=ExtResource("3_mc4dv")]
 z_index = -2
-script = ExtResource("4_mc4dv")
+script = ExtResource("4_1cepb")
 sprite = NodePath("Sprite2D")
 ground = NodePath("Ground")
-biome = ExtResource("5_1cepb")
+biome = ExtResource("5_m5po0")
 depth_scale = 500.0
 depth_contrast = 2.0670000981825
 wave_scale = 160.0
@@ -600,16 +601,16 @@ caustic_coverage = 75.0
 decorationLayers = [NodePath("DecorationLayer")]
 metadata/_custom_type_script = "uid://bpejegmgve8km"
 
-[node name="Land" type="Sprite2D" parent="R1_1" unique_id=504519450]
+[node name="Land" type="Sprite2D" parent="R1_1" unique_id=172316790]
 z_index = -1
-texture = ExtResource("21_kfq4t")
+texture = ExtResource("21_8y1c7")
 centered = false
 
 [node name="Well" type="Node2D" parent="R1_1" unique_id=539202974]
 position = Vector2(108, 78)
 
 [node name="Art" type="Sprite2D" parent="R1_1/Well" unique_id=905764654]
-texture = ExtResource("22_8y1c7")
+texture = ExtResource("22_foj3u")
 centered = false
 offset = Vector2(-9, -16)
 
@@ -619,13 +620,13 @@ offset = Vector2(-9, -16)
 position = Vector2(0, -2.5)
 shape = SubResource("Rect_well")
 
-[node name="Pond" type="Node2D" parent="R1_1/Well" unique_id=586407110 instance=ExtResource("23_foj3u")]
+[node name="Pond" type="Node2D" parent="R1_1/Well" unique_id=586407110 instance=ExtResource("23_txgr0")]
 z_index = 1
 position = Vector2(0, -8)
-script = ExtResource("24_txgr0")
+script = ExtResource("24_s6r7g")
 radius = 3.5
-fish = Array[ExtResource("25_s6r7g")]([ExtResource("26_368jp"), ExtResource("27_ttyfm"), ExtResource("28_vgl26"), ExtResource("29_luh3r")])
-biome = ExtResource("30_ug665")
+fish = Array[ExtResource("25_368jp")]([ExtResource("26_ttyfm"), ExtResource("27_vgl26"), ExtResource("28_luh3r"), ExtResource("29_ug665")])
+biome = ExtResource("30_ve83l")
 id = &"village_well"
 permanent = true
 fixedScore = 3
@@ -637,7 +638,7 @@ ringColor = Color(0.75, 0.9, 1, 0.6)
 
 [node name="Look" type="Node2D" parent="R1_1/Well" unique_id=1583824801]
 position = Vector2(0, 3)
-script = ExtResource("7_wk7g0")
+script = ExtResource("7_o2yba")
 flag = "village_well_look"
 title = "The well"
 message = "The water is far down and very still. Cast into it and be patient: the fish down there take their time."
@@ -649,15 +650,15 @@ promptOffset = Vector2(0, -20)
 
 [node name="NoticeBoard" type="Node2D" parent="R1_1" unique_id=1460736378]
 position = Vector2(160, 82)
-script = ExtResource("31_ve83l")
-projects = Array[ExtResource("32_ihem0")]([ExtResource("33_svndg"), ExtResource("34_66nfl"), ExtResource("35_scijq"), ExtResource("36_5xqeq"), ExtResource("37_1mqt0"), ExtResource("38_bco56"), ExtResource("39_lx62a"), ExtResource("40_n8i4n"), ExtResource("41_ts262"), ExtResource("42_2bn44"), ExtResource("43_n175k")])
+script = ExtResource("31_ihem0")
+projects = Array[ExtResource("32_svndg")]([ExtResource("33_66nfl"), ExtResource("34_scijq"), ExtResource("35_5xqeq"), ExtResource("36_1mqt0"), ExtResource("37_bco56"), ExtResource("38_lx62a"), ExtResource("39_n8i4n"), ExtResource("40_ts262"), ExtResource("41_2bn44"), ExtResource("42_n175k"), ExtResource("43_si2qd")])
 title = "Restoration Board"
 prompt = "Restoration board"
 reach = 10.0
 promptOffset = Vector2(0, -18)
 
 [node name="Art" type="Sprite2D" parent="R1_1/NoticeBoard" unique_id=309629787]
-texture = ExtResource("44_si2qd")
+texture = ExtResource("44_3t0ly")
 centered = false
 offset = Vector2(-8, -14)
 
@@ -667,30 +668,30 @@ offset = Vector2(-8, -14)
 position = Vector2(0, -1.5)
 shape = SubResource("Rect_post")
 
-[node name="CrewBoard" type="Node2D" parent="R1_1" unique_id=369228144]
+[node name="CrewBoard" type="Node2D" parent="R1_1" unique_id=1676864810]
 position = Vector2(4, 6)
-script = ExtResource("45_3t0ly")
+script = ExtResource("45_40wu1")
 title = "Crew Board"
 prompt = "Crew board"
 reach = 11.0
 promptOffset = Vector2(0, -24)
 
-[node name="Art" type="Sprite2D" parent="R1_1/CrewBoard" unique_id=1587996034]
-texture = ExtResource("46_40wu1")
+[node name="Art" type="Sprite2D" parent="R1_1/CrewBoard" unique_id=1706826523]
+texture = ExtResource("46_semjt")
 centered = false
 offset = Vector2(-10, -21)
 
-[node name="Body" type="StaticBody2D" parent="R1_1/CrewBoard" unique_id=1863505629]
+[node name="Body" type="StaticBody2D" parent="R1_1/CrewBoard" unique_id=1424461562]
 
-[node name="Shape" type="CollisionShape2D" parent="R1_1/CrewBoard/Body" unique_id=717284252]
+[node name="Shape" type="CollisionShape2D" parent="R1_1/CrewBoard/Body" unique_id=2004364131]
 position = Vector2(0, -1.5)
 shape = SubResource("Rect_post")
 
 [node name="Npc_Hale" type="Node2D" parent="R1_1" unique_id=1377304106 node_paths=PackedStringArray("art")]
 position = Vector2(84, 26)
-script = ExtResource("47_semjt")
+script = ExtResource("47_hjp23")
 id = "hale"
-quests = Array[ExtResource("48_hjp23")]([ExtResource("49_euve5"), ExtResource("50_gtk46"), ExtResource("51_1iemf"), ExtResource("52_amhd0"), ExtResource("53_fsj3g"), ExtResource("54_3ddmt"), ExtResource("55_kjlwc"), ExtResource("56_miqkj"), ExtResource("57_b7w4w"), ExtResource("58_okq6l"), ExtResource("59_6wl54"), ExtResource("60_kxmfc"), ExtResource("61_h4xu0")])
+quests = Array[ExtResource("48_euve5")]([ExtResource("49_gtk46"), ExtResource("50_1iemf"), ExtResource("51_amhd0"), ExtResource("52_fsj3g"), ExtResource("53_3ddmt"), ExtResource("54_kjlwc"), ExtResource("55_miqkj"), ExtResource("56_b7w4w"), ExtResource("57_okq6l"), ExtResource("58_6wl54"), ExtResource("59_kxmfc"), ExtResource("60_h4xu0"), ExtResource("61_uav1m")])
 greeting = "Ahem. Tournament business."
 art = NodePath("Art")
 appearFlag = "quest/q_debt"
@@ -698,7 +699,7 @@ reach = 12.0
 promptOffset = Vector2(0, -24)
 
 [node name="Art" type="Sprite2D" parent="R1_1/Npc_Hale" unique_id=1350960583]
-texture = ExtResource("62_uav1m")
+texture = ExtResource("62_4fae7")
 centered = false
 offset = Vector2(-6, -20)
 
@@ -708,60 +709,60 @@ offset = Vector2(-6, -20)
 position = Vector2(0, -1)
 shape = SubResource("v_s8")
 
-[node name="Cottage1" type="Node2D" parent="R1_1" unique_id=2091939928]
+[node name="Cottage1" type="Node2D" parent="R1_1" unique_id=496864643]
 position = Vector2(58, 2)
-script = ExtResource("12_hvck5")
+script = ExtResource("12_2pat5")
 
-[node name="Art" type="Sprite2D" parent="R1_1/Cottage1" unique_id=1499379304]
-texture = ExtResource("20_x5h4o")
+[node name="Art" type="Sprite2D" parent="R1_1/Cottage1" unique_id=603098415]
+texture = ExtResource("20_kfq4t")
 centered = false
 offset = Vector2(-15, -26)
 
-[node name="Body" type="StaticBody2D" parent="R1_1/Cottage1" unique_id=971502262]
+[node name="Body" type="StaticBody2D" parent="R1_1/Cottage1" unique_id=1889555628]
 
-[node name="Shape" type="CollisionShape2D" parent="R1_1/Cottage1/Body" unique_id=414213481]
+[node name="Shape" type="CollisionShape2D" parent="R1_1/Cottage1/Body" unique_id=1496869957]
 position = Vector2(0, -5.5)
-shape = SubResource("RectangleShape2D_wosie")
+shape = SubResource("RectangleShape2D_46smj")
 
-[node name="Cottage2" type="Node2D" parent="R1_1" unique_id=1534734809]
+[node name="Cottage2" type="Node2D" parent="R1_1" unique_id=914446895]
 position = Vector2(126, 2)
-script = ExtResource("12_hvck5")
+script = ExtResource("12_2pat5")
 
-[node name="Art" type="Sprite2D" parent="R1_1/Cottage2" unique_id=1358400086]
-texture = ExtResource("20_x5h4o")
+[node name="Art" type="Sprite2D" parent="R1_1/Cottage2" unique_id=1531756395]
+texture = ExtResource("20_kfq4t")
 centered = false
 offset = Vector2(-15, -26)
 
-[node name="Body" type="StaticBody2D" parent="R1_1/Cottage2" unique_id=493612490]
+[node name="Body" type="StaticBody2D" parent="R1_1/Cottage2" unique_id=237268828]
 
-[node name="Shape" type="CollisionShape2D" parent="R1_1/Cottage2/Body" unique_id=389554361]
+[node name="Shape" type="CollisionShape2D" parent="R1_1/Cottage2/Body" unique_id=78655046]
 position = Vector2(0, -5.5)
-shape = SubResource("RectangleShape2D_78fyd")
+shape = SubResource("RectangleShape2D_xnhlk")
 
-[node name="StreetLamp2" type="Sprite2D" parent="R1_1" unique_id=1515748834]
+[node name="StreetLamp2" type="Sprite2D" parent="R1_1" unique_id=1063963458]
 position = Vector2(28, 20)
-texture = ExtResource("15_dhtde")
+texture = ExtResource("15_fxrxj")
 centered = false
 offset = Vector2(-3, -18)
 
-[node name="Light" type="Node2D" parent="R1_1/StreetLamp2" unique_id=1456642612]
+[node name="Light" type="Node2D" parent="R1_1/StreetLamp2" unique_id=2063606341]
 position = Vector2(0, -16)
-script = ExtResource("16_fxrxj")
+script = ExtResource("16_cb4t0")
 radius = 34.0
 height = 16.0
 
-[node name="R2_1" type="Node2D" parent="." unique_id=742850282 node_paths=PackedStringArray("land")]
+[node name="R2_1" type="Node2D" parent="." unique_id=1615948033 node_paths=PackedStringArray("land")]
 y_sort_enabled = true
 position = Vector2(384, 108)
-script = ExtResource("2_8c5fo")
+script = ExtResource("2_iip2o")
 land = [NodePath("Land")]
 
-[node name="Water" type="Node2D" parent="R2_1" unique_id=1480025107 node_paths=PackedStringArray("sprite", "ground", "decorationLayers") instance=ExtResource("3_iip2o")]
+[node name="Water" type="Node2D" parent="R2_1" unique_id=2022724561 node_paths=PackedStringArray("sprite", "ground", "decorationLayers") instance=ExtResource("3_mc4dv")]
 z_index = -2
-script = ExtResource("4_mc4dv")
+script = ExtResource("4_1cepb")
 sprite = NodePath("Sprite2D")
 ground = NodePath("Ground")
-biome = ExtResource("5_1cepb")
+biome = ExtResource("5_m5po0")
 depth_scale = 500.0
 depth_contrast = 2.0670000981825
 wave_scale = 160.0
@@ -774,18 +775,18 @@ caustic_coverage = 75.0
 decorationLayers = [NodePath("DecorationLayer")]
 metadata/_custom_type_script = "uid://bpejegmgve8km"
 
-[node name="Land" type="Sprite2D" parent="R2_1" unique_id=798542223]
+[node name="Land" type="Sprite2D" parent="R2_1" unique_id=881148041]
 z_index = -1
-texture = ExtResource("63_4fae7")
+texture = ExtResource("63_ujrur")
 centered = false
 
 [node name="Aquarium" type="Node2D" parent="R2_1" unique_id=1065843931]
 position = Vector2(136, 2)
-script = ExtResource("12_hvck5")
+script = ExtResource("12_2pat5")
 displayName = "Aquarium"
 
 [node name="Art" type="Sprite2D" parent="R2_1/Aquarium" unique_id=1716708445]
-texture = ExtResource("64_ujrur")
+texture = ExtResource("64_grv4o")
 centered = false
 offset = Vector2(-28, -34)
 
@@ -795,40 +796,40 @@ offset = Vector2(-28, -34)
 position = Vector2(0, -5)
 shape = SubResource("Rect_aquarium")
 
-[node name="Entrance" type="Node2D" parent="R2_1/Aquarium" unique_id=2034139731]
+[node name="Entrance" type="Node2D" parent="R2_1/Aquarium" unique_id=477854029]
 position = Vector2(0, 2)
-script = ExtResource("14_vxaop")
+script = ExtResource("14_dhtde")
 inside = "res://world/village/insides/museum.tscn"
 reach = 12.0
 promptOffset = Vector2(0, -16)
 
-[node name="BallotBox" type="Node2D" parent="R2_1" unique_id=592799819]
+[node name="BallotBox" type="Node2D" parent="R2_1" unique_id=975667691]
 position = Vector2(34, 82)
-script = ExtResource("65_grv4o")
+script = ExtResource("65_pf8rx")
 title = "Harbor Council"
 prompt = "Ballot box"
 reach = 10.0
 promptOffset = Vector2(0, -18)
 
-[node name="Art" type="Sprite2D" parent="R2_1/BallotBox" unique_id=581996291]
-texture = ExtResource("66_pf8rx")
+[node name="Art" type="Sprite2D" parent="R2_1/BallotBox" unique_id=1223917296]
+texture = ExtResource("66_ov7xv")
 centered = false
 offset = Vector2(-7, -15)
 
-[node name="Body" type="StaticBody2D" parent="R2_1/BallotBox" unique_id=1271072842]
+[node name="Body" type="StaticBody2D" parent="R2_1/BallotBox" unique_id=1483403104]
 
-[node name="Shape" type="CollisionShape2D" parent="R2_1/BallotBox/Body" unique_id=773887012]
+[node name="Shape" type="CollisionShape2D" parent="R2_1/BallotBox/Body" unique_id=1051349146]
 position = Vector2(0, -1.5)
 shape = SubResource("Rect_post")
 
 [node name="TournamentHall" type="Node2D" parent="R2_1" unique_id=1083898995]
 position = Vector2(90, 78)
-script = ExtResource("12_hvck5")
+script = ExtResource("12_2pat5")
 displayName = "Tournament Hall"
 unlockFlag = "project/tournament_hall"
 
 [node name="Art" type="Sprite2D" parent="R2_1/TournamentHall" unique_id=373282257]
-texture = ExtResource("67_ov7xv")
+texture = ExtResource("67_x1rhh")
 centered = false
 offset = Vector2(-22, -34)
 
@@ -840,20 +841,20 @@ shape = SubResource("v_s10")
 
 [node name="Desk" type="Node2D" parent="R2_1/TournamentHall" unique_id=1919964017]
 position = Vector2(0, 2)
-script = ExtResource("68_x1rhh")
-prizes = Array[ExtResource("69_pqsjl")]([SubResource("v_s11"), SubResource("v_s12"), SubResource("v_s13"), SubResource("v_s14"), SubResource("v_s15"), SubResource("v_s16"), SubResource("v_s17"), SubResource("v_s18")])
+script = ExtResource("68_pqsjl")
+prizes = Array[ExtResource("69_071bd")]([SubResource("v_s11"), SubResource("v_s12"), SubResource("v_s13"), SubResource("v_s14"), SubResource("v_s15"), SubResource("v_s16"), SubResource("v_s17"), SubResource("v_s18")])
 title = "Tournament Hall"
 prompt = "Tournament desk"
 reach = 12.0
 
 [node name="Stage" type="Node2D" parent="R2_1" unique_id=559851684]
 position = Vector2(0, 44)
-script = ExtResource("12_hvck5")
+script = ExtResource("12_2pat5")
 displayName = "Festival Stage"
 requiredFlag = "project/festival_stage"
 
 [node name="Art" type="Sprite2D" parent="R2_1/Stage" unique_id=571290023]
-texture = ExtResource("78_x3gop")
+texture = ExtResource("78_bfq6f")
 centered = false
 offset = Vector2(-20, -22)
 
@@ -863,30 +864,35 @@ offset = Vector2(-20, -22)
 position = Vector2(0, -4)
 shape = SubResource("v_s19")
 
-[node name="StreetLamp3" type="Sprite2D" parent="R2_1" unique_id=773293160]
+[node name="StreetLamp3" type="Sprite2D" parent="R2_1" unique_id=1778377919]
 position = Vector2(66, 20)
-texture = ExtResource("15_dhtde")
+texture = ExtResource("15_fxrxj")
 centered = false
 offset = Vector2(-3, -18)
 
-[node name="Light" type="Node2D" parent="R2_1/StreetLamp3" unique_id=42266483]
+[node name="Light" type="Node2D" parent="R2_1/StreetLamp3" unique_id=761840596]
 position = Vector2(0, -16)
-script = ExtResource("16_fxrxj")
+script = ExtResource("16_cb4t0")
 radius = 34.0
 height = 16.0
 
-[node name="R3_1" type="Node2D" parent="." unique_id=1357519037 node_paths=PackedStringArray("land")]
+[node name="TossBooth" type="Node2D" parent="R2_1" unique_id=1766232306]
+position = Vector2(36, 78)
+script = ExtResource("79_qvjd8")
+game = 2
+
+[node name="R3_1" type="Node2D" parent="." unique_id=64860142 node_paths=PackedStringArray("land")]
 y_sort_enabled = true
 position = Vector2(576, 108)
-script = ExtResource("2_8c5fo")
+script = ExtResource("2_iip2o")
 land = [NodePath("Land")]
 
-[node name="Water" type="Node2D" parent="R3_1" unique_id=1162972709 node_paths=PackedStringArray("sprite", "ground", "decorationLayers") instance=ExtResource("3_iip2o")]
+[node name="Water" type="Node2D" parent="R3_1" unique_id=1264053321 node_paths=PackedStringArray("sprite", "ground", "decorationLayers") instance=ExtResource("3_mc4dv")]
 z_index = -2
-script = ExtResource("4_mc4dv")
+script = ExtResource("4_1cepb")
 sprite = NodePath("Sprite2D")
 ground = NodePath("Ground")
-biome = ExtResource("5_1cepb")
+biome = ExtResource("5_m5po0")
 depth_scale = 500.0
 depth_contrast = 2.0670000981825
 wave_scale = 160.0
@@ -899,107 +905,107 @@ caustic_coverage = 75.0
 decorationLayers = [NodePath("DecorationLayer")]
 metadata/_custom_type_script = "uid://bpejegmgve8km"
 
-[node name="Land" type="Sprite2D" parent="R3_1" unique_id=1633969069]
+[node name="Land" type="Sprite2D" parent="R3_1" unique_id=1968947967]
 z_index = -1
-texture = ExtResource("79_bfq6f")
+texture = ExtResource("80_j7hdr")
 centered = false
 
-[node name="Tavern" type="Node2D" parent="R3_1" unique_id=1665257138]
+[node name="Tavern" type="Node2D" parent="R3_1" unique_id=1917307374]
 position = Vector2(64, 2)
-script = ExtResource("12_hvck5")
+script = ExtResource("12_2pat5")
 displayName = "The Salty Gull"
 
-[node name="Art" type="Sprite2D" parent="R3_1/Tavern" unique_id=487918818]
-texture = ExtResource("80_qvjd8")
+[node name="Art" type="Sprite2D" parent="R3_1/Tavern" unique_id=750280349]
+texture = ExtResource("81_arxvr")
 centered = false
 offset = Vector2(-23, -34)
 
-[node name="Body" type="StaticBody2D" parent="R3_1/Tavern" unique_id=1325149048]
+[node name="Body" type="StaticBody2D" parent="R3_1/Tavern" unique_id=2136077484]
 
-[node name="Shape" type="CollisionShape2D" parent="R3_1/Tavern/Body" unique_id=989670605]
+[node name="Shape" type="CollisionShape2D" parent="R3_1/Tavern/Body" unique_id=1451737034]
 position = Vector2(0, -5.5)
-shape = SubResource("RectangleShape2D_46smj")
+shape = SubResource("RectangleShape2D_4r7d8")
 
-[node name="Entrance" type="Node2D" parent="R3_1/Tavern" unique_id=2096254685]
+[node name="Entrance" type="Node2D" parent="R3_1/Tavern" unique_id=1386148995]
 position = Vector2(0, 2)
-script = ExtResource("14_vxaop")
+script = ExtResource("14_dhtde")
 inside = "res://world/village/insides/tavern.tscn"
 reach = 12.0
 promptOffset = Vector2(0, -16)
 
 [node name="Pearl4" type="Node2D" parent="R3_1" unique_id=357284285]
 position = Vector2(124, 42)
-script = ExtResource("7_wk7g0")
+script = ExtResource("7_o2yba")
 flag = "pearl_village_4"
 title = "A lost pearl!"
 message = "Opal on Pearl Lagoon collects these."
 prompt = "Pick up"
 reach = 7.0
 
-[node name="TideAltar" type="Node2D" parent="R3_1" unique_id=235248023]
+[node name="TideAltar" type="Node2D" parent="R3_1" unique_id=1907806468]
 position = Vector2(154, 106)
-script = ExtResource("12_hvck5")
+script = ExtResource("12_2pat5")
 displayName = "Tide Altar"
 unlockFlag = "quest/q_altar"
 unlockHint = "The altar is cold. Luma says it needs a spark from the Tidal Shrine."
 
-[node name="Art" type="Sprite2D" parent="R3_1/TideAltar" unique_id=1251784578]
-texture = ExtResource("81_j7hdr")
+[node name="Art" type="Sprite2D" parent="R3_1/TideAltar" unique_id=297637381]
+texture = ExtResource("82_6klbb")
 centered = false
 offset = Vector2(-9, -23)
 
-[node name="Body" type="StaticBody2D" parent="R3_1/TideAltar" unique_id=380758289]
+[node name="Body" type="StaticBody2D" parent="R3_1/TideAltar" unique_id=591887318]
 
-[node name="Shape" type="CollisionShape2D" parent="R3_1/TideAltar/Body" unique_id=1330939116]
+[node name="Shape" type="CollisionShape2D" parent="R3_1/TideAltar/Body" unique_id=920691520]
 position = Vector2(0, -1.5)
 shape = SubResource("hb_rect_small")
 
-[node name="Altar" type="Node2D" parent="R3_1/TideAltar" unique_id=1903598436]
-script = ExtResource("82_arxvr")
+[node name="Altar" type="Node2D" parent="R3_1/TideAltar" unique_id=192602417]
+script = ExtResource("83_vq48p")
 title = "Tide Altar"
 prompt = "Enchant"
 reach = 10.0
 promptOffset = Vector2(0, -26)
 
-[node name="Cottage3" type="Node2D" parent="R3_1" unique_id=193894017]
+[node name="Cottage3" type="Node2D" parent="R3_1" unique_id=1564868155]
 position = Vector2(128, 52)
-script = ExtResource("12_hvck5")
+script = ExtResource("12_2pat5")
 
-[node name="Art" type="Sprite2D" parent="R3_1/Cottage3" unique_id=1929978693]
-texture = ExtResource("20_x5h4o")
+[node name="Art" type="Sprite2D" parent="R3_1/Cottage3" unique_id=2070266671]
+texture = ExtResource("20_kfq4t")
 centered = false
 offset = Vector2(-15, -26)
 
-[node name="Body" type="StaticBody2D" parent="R3_1/Cottage3" unique_id=1974571559]
+[node name="Body" type="StaticBody2D" parent="R3_1/Cottage3" unique_id=1421489687]
 
-[node name="Shape" type="CollisionShape2D" parent="R3_1/Cottage3/Body" unique_id=686341062]
+[node name="Shape" type="CollisionShape2D" parent="R3_1/Cottage3/Body" unique_id=857468401]
 position = Vector2(0, -5.5)
-shape = SubResource("RectangleShape2D_xnhlk")
+shape = SubResource("RectangleShape2D_vumkh")
 
-[node name="StreetLamp4" type="Sprite2D" parent="R3_1" unique_id=1581257213]
+[node name="StreetLamp4" type="Sprite2D" parent="R3_1" unique_id=285667060]
 position = Vector2(4, 20)
-texture = ExtResource("15_dhtde")
+texture = ExtResource("15_fxrxj")
 centered = false
 offset = Vector2(-3, -18)
 
-[node name="Light" type="Node2D" parent="R3_1/StreetLamp4" unique_id=1206752389]
+[node name="Light" type="Node2D" parent="R3_1/StreetLamp4" unique_id=1596485088]
 position = Vector2(0, -16)
-script = ExtResource("16_fxrxj")
+script = ExtResource("16_cb4t0")
 radius = 34.0
 height = 16.0
 
-[node name="R0_2" type="Node2D" parent="." unique_id=354101282 node_paths=PackedStringArray("land")]
+[node name="R0_2" type="Node2D" parent="." unique_id=497486131 node_paths=PackedStringArray("land")]
 y_sort_enabled = true
 position = Vector2(0, 216)
-script = ExtResource("2_8c5fo")
+script = ExtResource("2_iip2o")
 land = [NodePath("Land")]
 
-[node name="Water" type="Node2D" parent="R0_2" unique_id=628431667 node_paths=PackedStringArray("sprite", "ground", "decorationLayers") instance=ExtResource("3_iip2o")]
+[node name="Water" type="Node2D" parent="R0_2" unique_id=1301572709 node_paths=PackedStringArray("sprite", "ground", "decorationLayers") instance=ExtResource("3_mc4dv")]
 z_index = -2
-script = ExtResource("4_mc4dv")
+script = ExtResource("4_1cepb")
 sprite = NodePath("Sprite2D")
 ground = NodePath("Ground")
-biome = ExtResource("5_1cepb")
+biome = ExtResource("5_m5po0")
 depth_scale = 500.0
 depth_contrast = 2.0670000981825
 wave_scale = 160.0
@@ -1012,19 +1018,19 @@ caustic_coverage = 75.0
 decorationLayers = [NodePath("DecorationLayer")]
 metadata/_custom_type_script = "uid://bpejegmgve8km"
 
-[node name="Land" type="Sprite2D" parent="R0_2" unique_id=1242904606]
+[node name="Land" type="Sprite2D" parent="R0_2" unique_id=1504845660]
 z_index = -1
-texture = ExtResource("83_6klbb")
+texture = ExtResource("84_6f04y")
 centered = false
 
-[node name="ForageTidePool1" type="Node2D" parent="R0_2" unique_id=1795506391]
+[node name="ForageTidePool1" type="Node2D" parent="R0_2" unique_id=474745364]
 position = Vector2(130, 104)
-script = ExtResource("17_cb4t0")
+script = ExtResource("17_6cmjg")
 kind = 1
 
 [node name="Pearl3" type="Node2D" parent="R0_2" unique_id=2113684224]
 position = Vector2(30, 20)
-script = ExtResource("7_wk7g0")
+script = ExtResource("7_o2yba")
 flag = "pearl_village_3"
 title = "A lost pearl!"
 message = "Opal on Pearl Lagoon collects these."
@@ -1033,18 +1039,18 @@ reach = 7.0
 
 [node name="TackleShop" type="Node2D" parent="R0_2" unique_id=1833249863 node_paths=PackedStringArray("lockedArt")]
 position = Vector2(180, 36)
-script = ExtResource("12_hvck5")
+script = ExtResource("12_2pat5")
 displayName = "Tackle Shop"
-unlockedBy = ExtResource("84_vq48p")
+unlockedBy = ExtResource("85_1fumj")
 lockedArt = NodePath("Boards")
 
 [node name="Art" type="Sprite2D" parent="R0_2/TackleShop" unique_id=1630817511]
-texture = ExtResource("85_6f04y")
+texture = ExtResource("86_17m7f")
 centered = false
 offset = Vector2(-16, -28)
 
 [node name="Boards" type="Sprite2D" parent="R0_2/TackleShop" unique_id=1551875845]
-texture = ExtResource("86_1fumj")
+texture = ExtResource("87_msq0f")
 centered = false
 offset = Vector2(-6, -12)
 
@@ -1056,8 +1062,8 @@ shape = SubResource("Rect_tackle")
 
 [node name="Door" type="Node2D" parent="R0_2/TackleShop" unique_id=431236245]
 position = Vector2(0, 2)
-script = ExtResource("87_17m7f")
-stock = ExtResource("88_msq0f")
+script = ExtResource("88_cgd5f")
+stock = ExtResource("89_643ho")
 buyRate = 0.0
 greeting = "Better stock as your Fishing level grows"
 title = "Tackle Shop"
@@ -1066,18 +1072,18 @@ reach = 12.0
 
 [node name="Smokehouse" type="Node2D" parent="R0_2" unique_id=315302127 node_paths=PackedStringArray("lockedArt")]
 position = Vector2(130, 98)
-script = ExtResource("12_hvck5")
+script = ExtResource("12_2pat5")
 displayName = "Smokehouse"
-unlockedBy = ExtResource("84_vq48p")
+unlockedBy = ExtResource("85_1fumj")
 lockedArt = NodePath("Boards")
 
 [node name="Art" type="Sprite2D" parent="R0_2/Smokehouse" unique_id=2071193200]
-texture = ExtResource("89_cgd5f")
+texture = ExtResource("90_dv6we")
 centered = false
 offset = Vector2(-14, -24)
 
 [node name="Boards" type="Sprite2D" parent="R0_2/Smokehouse" unique_id=1584844696]
-texture = ExtResource("86_1fumj")
+texture = ExtResource("87_msq0f")
 centered = false
 offset = Vector2(-6, -12)
 
@@ -1089,8 +1095,8 @@ shape = SubResource("Rect_smokehouse")
 
 [node name="Door" type="Node2D" parent="R0_2/Smokehouse" unique_id=509957647]
 position = Vector2(0, 2)
-script = ExtResource("90_643ho")
-recipes = Array[ExtResource("91_dv6we")]([ExtResource("92_uywtq"), ExtResource("93_ygsrg"), ExtResource("94_socpy"), ExtResource("95_fcuhm"), ExtResource("96_upndu"), ExtResource("97_ey1qr"), ExtResource("98_hq3gh"), ExtResource("99_r2qgm"), ExtResource("100_18mes"), ExtResource("101_w404o"), ExtResource("102_itl57"), ExtResource("103_knbg3"), ExtResource("104_dp0jt"), ExtResource("105_347us"), ExtResource("106_3yaqk")])
+script = ExtResource("91_uywtq")
+recipes = Array[ExtResource("92_ygsrg")]([ExtResource("93_socpy"), ExtResource("94_fcuhm"), ExtResource("95_upndu"), ExtResource("96_ey1qr"), ExtResource("97_hq3gh"), ExtResource("98_r2qgm"), ExtResource("99_18mes"), ExtResource("100_w404o"), ExtResource("101_itl57"), ExtResource("102_knbg3"), ExtResource("103_dp0jt"), ExtResource("104_347us"), ExtResource("105_3yaqk"), ExtResource("106_qdsnu"), ExtResource("107_xuhna")])
 note = "Cook your catch. Meals give energy and buffs"
 verb = "cook"
 title = "Smokehouse Kitchen"
@@ -1099,18 +1105,18 @@ reach = 12.0
 
 [node name="PetShop" type="Node2D" parent="R0_2" unique_id=1669130792 node_paths=PackedStringArray("lockedArt")]
 position = Vector2(116, 38)
-script = ExtResource("12_hvck5")
+script = ExtResource("12_2pat5")
 displayName = "Pet Shop"
-unlockedBy = ExtResource("107_qdsnu")
+unlockedBy = ExtResource("108_4rtnb")
 lockedArt = NodePath("Boards")
 
 [node name="Art" type="Sprite2D" parent="R0_2/PetShop" unique_id=1802272084]
-texture = ExtResource("108_xuhna")
+texture = ExtResource("109_t2s5q")
 centered = false
 offset = Vector2(-17, -30)
 
 [node name="Boards" type="Sprite2D" parent="R0_2/PetShop" unique_id=1011496615]
-texture = ExtResource("86_1fumj")
+texture = ExtResource("87_msq0f")
 centered = false
 offset = Vector2(-6, -12)
 
@@ -1122,24 +1128,24 @@ shape = SubResource("Rect_pet_shop")
 
 [node name="Door" type="Node2D" parent="R0_2/PetShop" unique_id=1789302465]
 position = Vector2(0, 2)
-script = ExtResource("109_4rtnb")
-pets = Array[ExtResource("110_t2s5q")]([ExtResource("111_deb6q"), ExtResource("112_y2pk7"), ExtResource("113_mnt1e"), ExtResource("114_ickfj")])
+script = ExtResource("110_deb6q")
+pets = Array[ExtResource("111_y2pk7")]([ExtResource("112_mnt1e"), ExtResource("113_ickfj"), ExtResource("114_648dm"), ExtResource("115_4cyxt")])
 title = "Pet Shop"
 prompt = "Pet Shop"
 reach = 12.0
 
 [node name="Npc_Bo" type="Node2D" parent="R0_2" unique_id=1943816501 node_paths=PackedStringArray("art")]
 position = Vector2(150, 56)
-script = ExtResource("47_semjt")
+script = ExtResource("47_hjp23")
 id = "bo"
-quests = Array[ExtResource("48_hjp23")]([ExtResource("115_648dm"), ExtResource("116_4cyxt"), ExtResource("117_dgp4s"), ExtResource("118_3gyb2")])
+quests = Array[ExtResource("48_euve5")]([ExtResource("116_dgp4s"), ExtResource("117_3gyb2"), ExtResource("118_md47n"), ExtResource("119_7f17a")])
 greeting = "Wanna see the pets?"
 art = NodePath("Art")
 reach = 12.0
 promptOffset = Vector2(0, -24)
 
 [node name="Art" type="Sprite2D" parent="R0_2/Npc_Bo" unique_id=1811331665]
-texture = ExtResource("119_md47n")
+texture = ExtResource("120_f3t3t")
 centered = false
 offset = Vector2(-6, -20)
 
@@ -1149,18 +1155,18 @@ offset = Vector2(-6, -20)
 position = Vector2(0, -1)
 shape = SubResource("v_s7")
 
-[node name="R1_2" type="Node2D" parent="." unique_id=2108141793 node_paths=PackedStringArray("land")]
+[node name="R1_2" type="Node2D" parent="." unique_id=1411184984 node_paths=PackedStringArray("land")]
 y_sort_enabled = true
 position = Vector2(192, 216)
-script = ExtResource("2_8c5fo")
+script = ExtResource("2_iip2o")
 land = [NodePath("Land")]
 
-[node name="Water" type="Node2D" parent="R1_2" unique_id=1416614596 node_paths=PackedStringArray("sprite", "ground", "decorationLayers") instance=ExtResource("3_iip2o")]
+[node name="Water" type="Node2D" parent="R1_2" unique_id=1584137922 node_paths=PackedStringArray("sprite", "ground", "decorationLayers") instance=ExtResource("3_mc4dv")]
 z_index = -2
-script = ExtResource("4_mc4dv")
+script = ExtResource("4_1cepb")
 sprite = NodePath("Sprite2D")
 ground = NodePath("Ground")
-biome = ExtResource("5_1cepb")
+biome = ExtResource("5_m5po0")
 depth_scale = 500.0
 depth_contrast = 2.0670000981825
 wave_scale = 160.0
@@ -1173,18 +1179,18 @@ caustic_coverage = 75.0
 decorationLayers = [NodePath("DecorationLayer")]
 metadata/_custom_type_script = "uid://bpejegmgve8km"
 
-[node name="Land" type="Sprite2D" parent="R1_2" unique_id=1758093549]
+[node name="Land" type="Sprite2D" parent="R1_2" unique_id=1274273600]
 z_index = -1
-texture = ExtResource("120_7f17a")
+texture = ExtResource("121_4m368")
 centered = false
 
 [node name="VendingMachine" type="Node2D" parent="R1_2" unique_id=1253075955]
 position = Vector2(160, 56)
-script = ExtResource("12_hvck5")
+script = ExtResource("12_2pat5")
 displayName = "Vending Machine"
 
 [node name="Art" type="Sprite2D" parent="R1_2/VendingMachine" unique_id=2021212696]
-texture = ExtResource("121_f3t3t")
+texture = ExtResource("122_x0eeh")
 centered = false
 offset = Vector2(-6, -18)
 
@@ -1196,8 +1202,8 @@ shape = SubResource("Rect_small")
 
 [node name="Machine" type="Node2D" parent="R1_2/VendingMachine" unique_id=153754180]
 position = Vector2(0, 2)
-script = ExtResource("122_4m368")
-snacks = Array[ExtResource("69_pqsjl")]([SubResource("Offer_n1"), SubResource("Offer_n2"), SubResource("Offer_n3"), SubResource("Offer_n4")])
+script = ExtResource("123_msnmx")
+snacks = Array[ExtResource("69_071bd")]([SubResource("Offer_n1"), SubResource("Offer_n2"), SubResource("Offer_n3"), SubResource("Offer_n4")])
 title = "Vending Machine"
 prompt = "Vending machine"
 reach = 10.0
@@ -1205,11 +1211,11 @@ promptOffset = Vector2(0, -20)
 
 [node name="BaitCrafter" type="Node2D" parent="R1_2" unique_id=236492960]
 position = Vector2(114, 36)
-script = ExtResource("12_hvck5")
+script = ExtResource("12_2pat5")
 displayName = "Bait Crafter"
 
 [node name="Art" type="Sprite2D" parent="R1_2/BaitCrafter" unique_id=919265075]
-texture = ExtResource("127_gob0w")
+texture = ExtResource("128_3fblu")
 centered = false
 offset = Vector2(-12, -20)
 
@@ -1221,8 +1227,8 @@ shape = SubResource("Rect_crafter")
 
 [node name="Bench" type="Node2D" parent="R1_2/BaitCrafter" unique_id=849411920]
 position = Vector2(0, 2)
-script = ExtResource("90_643ho")
-recipes = Array[ExtResource("91_dv6we")]([ExtResource("128_2gkxl"), ExtResource("129_3fblu"), ExtResource("130_viwms"), ExtResource("131_27ebc"), ExtResource("132_jtde8"), ExtResource("133_vvh7l"), ExtResource("134_ruwjv"), ExtResource("135_dykn3"), ExtResource("136_87l8t"), ExtResource("137_bh686"), ExtResource("138_05wpx"), ExtResource("139_uh6lc")])
+script = ExtResource("91_uywtq")
+recipes = Array[ExtResource("92_ygsrg")]([ExtResource("129_viwms"), ExtResource("130_27ebc"), ExtResource("131_jtde8"), ExtResource("132_vvh7l"), ExtResource("133_ruwjv"), ExtResource("134_dykn3"), ExtResource("135_87l8t"), ExtResource("136_bh686"), ExtResource("137_05wpx"), ExtResource("138_uh6lc"), ExtResource("139_yw3db"), ExtResource("140_7amqi")])
 title = "Bait Crafter"
 prompt = "Bait crafter"
 reach = 12.0
@@ -1230,14 +1236,14 @@ promptOffset = Vector2(0, -22)
 
 [node name="TackleStall" type="Node2D" parent="R1_2" unique_id=1723075585]
 position = Vector2(14, 86)
-script = ExtResource("12_hvck5")
+script = ExtResource("12_2pat5")
 displayName = "Angler's Market"
 openDays = Array[int]([6])
 openHours = Vector2(7, 17)
 hideWhenClosed = true
 
 [node name="Art" type="Sprite2D" parent="R1_2/TackleStall" unique_id=956662566]
-texture = ExtResource("140_yw3db")
+texture = ExtResource("141_eoqm8")
 centered = false
 offset = Vector2(-13, -20)
 
@@ -1249,26 +1255,26 @@ shape = SubResource("Rect_stall")
 
 [node name="Counter" type="Node2D" parent="R1_2/TackleStall" unique_id=146196376]
 position = Vector2(0, 2)
-script = ExtResource("87_17m7f")
-stock = ExtResource("141_7amqi")
+script = ExtResource("88_cgd5f")
+stock = ExtResource("142_66mkj")
 buyRate = 0.0
 greeting = "Rare bait and charms, Sundays only"
 title = "Angler's Market"
-portrait = ExtResource("142_eoqm8")
+portrait = ExtResource("143_jwqhs")
 prompt = "Market stall"
 reach = 11.0
 promptOffset = Vector2(0, -22)
 
 [node name="Goods" type="Node2D" parent="R1_2" unique_id=1856828646]
 position = Vector2(84, 86)
-script = ExtResource("12_hvck5")
+script = ExtResource("12_2pat5")
 displayName = "Angler's Market"
 openDays = Array[int]([6])
 openHours = Vector2(7, 17)
 hideWhenClosed = true
 
 [node name="Art" type="Sprite2D" parent="R1_2/Goods" unique_id=866228650]
-texture = ExtResource("143_66mkj")
+texture = ExtResource("144_r7ml0")
 centered = false
 offset = Vector2(-13, -20)
 
@@ -1280,8 +1286,8 @@ shape = SubResource("Rect_stall")
 
 [node name="Counter" type="Node2D" parent="R1_2/Goods" unique_id=1858098367]
 position = Vector2(0, 2)
-script = ExtResource("87_17m7f")
-stock = ExtResource("144_jwqhs")
+script = ExtResource("88_cgd5f")
+stock = ExtResource("145_481qe")
 buyRate = 0.0
 greeting = "Fresh from the farms, Sundays only"
 title = "Farmer's Stall"
@@ -1291,11 +1297,11 @@ promptOffset = Vector2(0, -22)
 
 [node name="MarketHall" type="Node2D" parent="R1_2" unique_id=984900431]
 position = Vector2(60, 34)
-script = ExtResource("12_hvck5")
+script = ExtResource("12_2pat5")
 displayName = "Market Hall"
 
 [node name="Art" type="Sprite2D" parent="R1_2/MarketHall" unique_id=1012516288]
-texture = ExtResource("145_r7ml0")
+texture = ExtResource("146_6v10h")
 centered = false
 offset = Vector2(-22, -32)
 
@@ -1305,75 +1311,75 @@ offset = Vector2(-22, -32)
 position = Vector2(0, -4)
 shape = SubResource("v_s20")
 
-[node name="Entrance" type="Node2D" parent="R1_2/MarketHall" unique_id=1971125695]
+[node name="Entrance" type="Node2D" parent="R1_2/MarketHall" unique_id=1796092459]
 position = Vector2(0, 2)
-script = ExtResource("14_vxaop")
+script = ExtResource("14_dhtde")
 inside = "res://world/village/insides/market_hall.tscn"
 reach = 12.0
 promptOffset = Vector2(0, -16)
 
-[node name="Bazaar" type="Node2D" parent="R1_2" unique_id=1539556263]
+[node name="Bazaar" type="Node2D" parent="R1_2" unique_id=1761236971]
 position = Vector2(120, 86)
-script = ExtResource("12_hvck5")
+script = ExtResource("12_2pat5")
 displayName = "Bazaar"
 unlockFlag = "project/market_hall"
 
-[node name="Art" type="Sprite2D" parent="R1_2/Bazaar" unique_id=97903729]
+[node name="Art" type="Sprite2D" parent="R1_2/Bazaar" unique_id=2051831881]
 self_modulate = Color(0.86, 0.76, 1, 1)
-texture = ExtResource("143_66mkj")
+texture = ExtResource("144_r7ml0")
 centered = false
 offset = Vector2(-13, -20)
 
-[node name="Body" type="StaticBody2D" parent="R1_2/Bazaar" unique_id=321308437]
+[node name="Body" type="StaticBody2D" parent="R1_2/Bazaar" unique_id=650627211]
 
-[node name="Shape" type="CollisionShape2D" parent="R1_2/Bazaar/Body" unique_id=1916567245]
+[node name="Shape" type="CollisionShape2D" parent="R1_2/Bazaar/Body" unique_id=1757913590]
 position = Vector2(0, -3)
 shape = SubResource("Rect_stall")
 
-[node name="Counter" type="Node2D" parent="R1_2/Bazaar" unique_id=1658294362]
+[node name="Counter" type="Node2D" parent="R1_2/Bazaar" unique_id=475636470]
 position = Vector2(0, 2)
-script = ExtResource("146_481qe")
+script = ExtResource("147_xrmlq")
 title = "Bazaar"
 prompt = "Bazaar"
 reach = 11.0
 promptOffset = Vector2(0, -22)
 
-[node name="StreetLamp1" type="Sprite2D" parent="R1_2" unique_id=364483401]
+[node name="StreetLamp1" type="Sprite2D" parent="R1_2" unique_id=2145378345]
 position = Vector2(156, 36)
-texture = ExtResource("15_dhtde")
+texture = ExtResource("15_fxrxj")
 centered = false
 offset = Vector2(-3, -18)
 
-[node name="Light" type="Node2D" parent="R1_2/StreetLamp1" unique_id=27709578]
+[node name="Light" type="Node2D" parent="R1_2/StreetLamp1" unique_id=1478708561]
 position = Vector2(0, -16)
-script = ExtResource("16_fxrxj")
+script = ExtResource("16_cb4t0")
 radius = 34.0
 height = 16.0
 
-[node name="StreetLamp5" type="Sprite2D" parent="R1_2" unique_id=1837205523]
+[node name="StreetLamp5" type="Sprite2D" parent="R1_2" unique_id=336451831]
 position = Vector2(108, 54)
-texture = ExtResource("15_dhtde")
+texture = ExtResource("15_fxrxj")
 centered = false
 offset = Vector2(-3, -18)
 
-[node name="Light" type="Node2D" parent="R1_2/StreetLamp5" unique_id=557770649]
+[node name="Light" type="Node2D" parent="R1_2/StreetLamp5" unique_id=1873126368]
 position = Vector2(0, -16)
-script = ExtResource("16_fxrxj")
+script = ExtResource("16_cb4t0")
 radius = 34.0
 height = 16.0
 
-[node name="R2_2" type="Node2D" parent="." unique_id=885291827 node_paths=PackedStringArray("land")]
+[node name="R2_2" type="Node2D" parent="." unique_id=1382440999 node_paths=PackedStringArray("land")]
 y_sort_enabled = true
 position = Vector2(384, 216)
-script = ExtResource("2_8c5fo")
+script = ExtResource("2_iip2o")
 land = [NodePath("Land")]
 
-[node name="Water" type="Node2D" parent="R2_2" unique_id=188904626 node_paths=PackedStringArray("sprite", "ground", "decorationLayers") instance=ExtResource("3_iip2o")]
+[node name="Water" type="Node2D" parent="R2_2" unique_id=1707007108 node_paths=PackedStringArray("sprite", "ground", "decorationLayers") instance=ExtResource("3_mc4dv")]
 z_index = -2
-script = ExtResource("4_mc4dv")
+script = ExtResource("4_1cepb")
 sprite = NodePath("Sprite2D")
 ground = NodePath("Ground")
-biome = ExtResource("5_1cepb")
+biome = ExtResource("5_m5po0")
 depth_scale = 500.0
 depth_contrast = 2.0670000981825
 wave_scale = 160.0
@@ -1386,51 +1392,51 @@ caustic_coverage = 75.0
 decorationLayers = [NodePath("DecorationLayer")]
 metadata/_custom_type_script = "uid://bpejegmgve8km"
 
-[node name="Land" type="Sprite2D" parent="R2_2" unique_id=309508607]
+[node name="Land" type="Sprite2D" parent="R2_2" unique_id=292003691]
 z_index = -1
-texture = ExtResource("147_6v10h")
+texture = ExtResource("148_cfxwc")
 centered = false
 
-[node name="HarborOffice" type="Node2D" parent="R2_2" unique_id=2115890575]
+[node name="HarborOffice" type="Node2D" parent="R2_2" unique_id=1851279221]
 position = Vector2(116, 36)
-script = ExtResource("12_hvck5")
+script = ExtResource("12_2pat5")
 displayName = "Harbor Office"
 
-[node name="Art" type="Sprite2D" parent="R2_2/HarborOffice" unique_id=1337185117]
-texture = ExtResource("148_xrmlq")
+[node name="Art" type="Sprite2D" parent="R2_2/HarborOffice" unique_id=1866485451]
+texture = ExtResource("149_evo1k")
 centered = false
 offset = Vector2(-20, -32)
 
-[node name="Body" type="StaticBody2D" parent="R2_2/HarborOffice" unique_id=290772847]
+[node name="Body" type="StaticBody2D" parent="R2_2/HarborOffice" unique_id=1852923364]
 
-[node name="Shape" type="CollisionShape2D" parent="R2_2/HarborOffice/Body" unique_id=1314493678]
+[node name="Shape" type="CollisionShape2D" parent="R2_2/HarborOffice/Body" unique_id=1314148381]
 position = Vector2(0, -5.5)
-shape = SubResource("RectangleShape2D_4r7d8")
+shape = SubResource("RectangleShape2D_yndcp")
 
-[node name="Entrance" type="Node2D" parent="R2_2/HarborOffice" unique_id=1706586259]
+[node name="Entrance" type="Node2D" parent="R2_2/HarborOffice" unique_id=1295096632]
 position = Vector2(0, 2)
-script = ExtResource("14_vxaop")
+script = ExtResource("14_dhtde")
 inside = "res://world/village/insides/harbor_office.tscn"
 reach = 12.0
 promptOffset = Vector2(0, -16)
 
 [node name="Lamp" type="Sprite2D" parent="R2_2" unique_id=1043947687]
 position = Vector2(36, 36)
-texture = ExtResource("15_dhtde")
+texture = ExtResource("15_fxrxj")
 centered = false
 offset = Vector2(-3, -18)
 
 [node name="Light" type="Node2D" parent="R2_2/Lamp" unique_id=1993168959]
 position = Vector2(0, -16)
-script = ExtResource("16_fxrxj")
+script = ExtResource("16_cb4t0")
 radius = 34.0
 height = 16.0
 
 [node name="Npc_Vera" type="Node2D" parent="R2_2" unique_id=2018591267 node_paths=PackedStringArray("art")]
 position = Vector2(56, 14)
-script = ExtResource("47_semjt")
+script = ExtResource("47_hjp23")
 id = "vera"
-quests = Array[ExtResource("48_hjp23")]([ExtResource("149_cfxwc"), ExtResource("150_evo1k")])
+quests = Array[ExtResource("48_euve5")]([ExtResource("150_8tfg8"), ExtResource("151_avafx")])
 greeting = "Charming little village. For now."
 art = NodePath("Art")
 appearFlag = "quest/q_aquarium"
@@ -1439,7 +1445,7 @@ reach = 12.0
 promptOffset = Vector2(0, -24)
 
 [node name="Art" type="Sprite2D" parent="R2_2/Npc_Vera" unique_id=968514721]
-texture = ExtResource("151_8tfg8")
+texture = ExtResource("152_vmybl")
 centered = false
 offset = Vector2(-6, -20)
 
@@ -1451,12 +1457,12 @@ shape = SubResource("v_s5")
 
 [node name="Fountain" type="Node2D" parent="R2_2" unique_id=1606205064]
 position = Vector2(0, 6)
-script = ExtResource("12_hvck5")
+script = ExtResource("12_2pat5")
 displayName = "Harbor Fountain"
 requiredFlag = "project/fountain"
 
 [node name="Art" type="Sprite2D" parent="R2_2/Fountain" unique_id=899197504]
-texture = ExtResource("152_avafx")
+texture = ExtResource("153_6hygl")
 centered = false
 offset = Vector2(-11, -16)
 
@@ -1466,80 +1472,80 @@ offset = Vector2(-11, -16)
 position = Vector2(0, -3.5)
 shape = SubResource("v_s33")
 
-[node name="Bank" type="Node2D" parent="R2_2" unique_id=1412676740]
+[node name="Bank" type="Node2D" parent="R2_2" unique_id=1624593845]
 position = Vector2(186, 36)
-script = ExtResource("12_hvck5")
+script = ExtResource("12_2pat5")
 displayName = "Harbor Bank"
 unlockFlag = "quest/q_bank"
 unlockHint = "Barnaby is still dusting off the vault. Pip knows more."
 
-[node name="Art" type="Sprite2D" parent="R2_2/Bank" unique_id=407696229]
-texture = ExtResource("153_vmybl")
+[node name="Art" type="Sprite2D" parent="R2_2/Bank" unique_id=1572472699]
+texture = ExtResource("154_4g78i")
 centered = false
 offset = Vector2(-22, -32)
 
-[node name="Body" type="StaticBody2D" parent="R2_2/Bank" unique_id=1973253230]
+[node name="Body" type="StaticBody2D" parent="R2_2/Bank" unique_id=1037970376]
 
-[node name="Shape" type="CollisionShape2D" parent="R2_2/Bank/Body" unique_id=561318806]
+[node name="Shape" type="CollisionShape2D" parent="R2_2/Bank/Body" unique_id=74023726]
 position = Vector2(0, -4)
 shape = SubResource("hb_rect_bank")
 
-[node name="Entrance" type="Node2D" parent="R2_2/Bank" unique_id=685336367]
+[node name="Entrance" type="Node2D" parent="R2_2/Bank" unique_id=424652875]
 position = Vector2(0, 2)
-script = ExtResource("14_vxaop")
+script = ExtResource("14_dhtde")
 inside = "res://world/village/insides/bank.tscn"
 reach = 12.0
 promptOffset = Vector2(0, -16)
 
-[node name="HuntBoard" type="Node2D" parent="R2_2" unique_id=135508299]
+[node name="HuntBoard" type="Node2D" parent="R2_2" unique_id=788958464]
 position = Vector2(146, 96)
-script = ExtResource("12_hvck5")
+script = ExtResource("12_2pat5")
 displayName = "Hunters' Board"
 unlockFlag = "quest/q_hunts"
 unlockHint = "Captain Grim hasn't pinned any bounties up yet."
 
-[node name="Art" type="Sprite2D" parent="R2_2/HuntBoard" unique_id=1251743856]
-texture = ExtResource("154_6hygl")
+[node name="Art" type="Sprite2D" parent="R2_2/HuntBoard" unique_id=121664515]
+texture = ExtResource("155_xtit2")
 centered = false
 offset = Vector2(-10, -21)
 
-[node name="Body" type="StaticBody2D" parent="R2_2/HuntBoard" unique_id=1740038565]
+[node name="Body" type="StaticBody2D" parent="R2_2/HuntBoard" unique_id=741763413]
 
-[node name="Shape" type="CollisionShape2D" parent="R2_2/HuntBoard/Body" unique_id=1530907074]
+[node name="Shape" type="CollisionShape2D" parent="R2_2/HuntBoard/Body" unique_id=1519713616]
 position = Vector2(0, -1.5)
 shape = SubResource("hb_rect_small")
 
-[node name="Board" type="Node2D" parent="R2_2/HuntBoard" unique_id=996506598]
-script = ExtResource("155_4g78i")
+[node name="Board" type="Node2D" parent="R2_2/HuntBoard" unique_id=2080494981]
+script = ExtResource("156_glku6")
 title = "Hunters' Board"
 prompt = "Hunters' board"
 reach = 10.0
 promptOffset = Vector2(0, -24)
 
-[node name="StreetLamp6" type="Sprite2D" parent="R2_2" unique_id=1414282363]
+[node name="StreetLamp6" type="Sprite2D" parent="R2_2" unique_id=2061317450]
 position = Vector2(86, 54)
-texture = ExtResource("15_dhtde")
+texture = ExtResource("15_fxrxj")
 centered = false
 offset = Vector2(-3, -18)
 
-[node name="Light" type="Node2D" parent="R2_2/StreetLamp6" unique_id=301363471]
+[node name="Light" type="Node2D" parent="R2_2/StreetLamp6" unique_id=983956198]
 position = Vector2(0, -16)
-script = ExtResource("16_fxrxj")
+script = ExtResource("16_cb4t0")
 radius = 34.0
 height = 16.0
 
-[node name="R3_2" type="Node2D" parent="." unique_id=998142376 node_paths=PackedStringArray("land")]
+[node name="R3_2" type="Node2D" parent="." unique_id=1312275043 node_paths=PackedStringArray("land")]
 y_sort_enabled = true
 position = Vector2(576, 216)
-script = ExtResource("2_8c5fo")
+script = ExtResource("2_iip2o")
 land = [NodePath("Land")]
 
-[node name="Water" type="Node2D" parent="R3_2" unique_id=1217614309 node_paths=PackedStringArray("sprite", "ground", "decorationLayers") instance=ExtResource("3_iip2o")]
+[node name="Water" type="Node2D" parent="R3_2" unique_id=522972885 node_paths=PackedStringArray("sprite", "ground", "decorationLayers") instance=ExtResource("3_mc4dv")]
 z_index = -2
-script = ExtResource("4_mc4dv")
+script = ExtResource("4_1cepb")
 sprite = NodePath("Sprite2D")
 ground = NodePath("Ground")
-biome = ExtResource("5_1cepb")
+biome = ExtResource("5_m5po0")
 depth_scale = 500.0
 depth_contrast = 2.0670000981825
 wave_scale = 160.0
@@ -1552,79 +1558,79 @@ caustic_coverage = 75.0
 decorationLayers = [NodePath("DecorationLayer")]
 metadata/_custom_type_script = "uid://bpejegmgve8km"
 
-[node name="Land" type="Sprite2D" parent="R3_2" unique_id=892643406]
+[node name="Land" type="Sprite2D" parent="R3_2" unique_id=99152658]
 z_index = -1
-texture = ExtResource("156_xtit2")
+texture = ExtResource("157_s6ig4")
 centered = false
 
 [node name="Trap" type="Node2D" parent="R3_2" unique_id=1303398069]
 position = Vector2(94, 74)
-script = ExtResource("157_glku6")
-biome = ExtResource("5_1cepb")
-extras = Array[ExtResource("18_6cmjg")]([ExtResource("158_s6ig4"), ExtResource("159_v527f")])
+script = ExtResource("158_v527f")
+biome = ExtResource("5_m5po0")
+extras = Array[ExtResource("18_mcmyn")]([ExtResource("159_buudy"), ExtResource("160_oejs7")])
 reach = 9.0
 promptOffset = Vector2(0, -8)
 
-[node name="TrophyLodge" type="Node2D" parent="R3_2" unique_id=1674398313]
+[node name="TrophyLodge" type="Node2D" parent="R3_2" unique_id=944619617]
 position = Vector2(74, 36)
-script = ExtResource("12_hvck5")
+script = ExtResource("12_2pat5")
 displayName = "Trophy Lodge"
 unlockFlag = "quest/q_lodge"
 unlockHint = "Odette is still hanging the trophies. She'll open when she's ready."
 
-[node name="Art" type="Sprite2D" parent="R3_2/TrophyLodge" unique_id=227703399]
-texture = ExtResource("160_buudy")
+[node name="Art" type="Sprite2D" parent="R3_2/TrophyLodge" unique_id=1019043717]
+texture = ExtResource("161_gok8r")
 centered = false
 offset = Vector2(-20, -30)
 
-[node name="Body" type="StaticBody2D" parent="R3_2/TrophyLodge" unique_id=363362290]
+[node name="Body" type="StaticBody2D" parent="R3_2/TrophyLodge" unique_id=1250986890]
 
-[node name="Shape" type="CollisionShape2D" parent="R3_2/TrophyLodge/Body" unique_id=953202608]
+[node name="Shape" type="CollisionShape2D" parent="R3_2/TrophyLodge/Body" unique_id=1776697424]
 position = Vector2(0, -4)
 shape = SubResource("hb_rect_lodge")
 
-[node name="Counter" type="Node2D" parent="R3_2/TrophyLodge" unique_id=1709441607]
+[node name="Counter" type="Node2D" parent="R3_2/TrophyLodge" unique_id=2107666219]
 position = Vector2(0, 2)
-script = ExtResource("161_oejs7")
+script = ExtResource("162_btkg6")
 title = "Trophy Lodge"
 prompt = "Trophy Lodge"
 reach = 11.0
 promptOffset = Vector2(0, -32)
 
-[node name="Npc_Odette" type="Node2D" parent="R3_2" unique_id=820766342 node_paths=PackedStringArray("art")]
+[node name="Npc_Odette" type="Node2D" parent="R3_2" unique_id=685584910 node_paths=PackedStringArray("art")]
 position = Vector2(88, 60)
-script = ExtResource("47_semjt")
+script = ExtResource("47_hjp23")
 id = "odette"
-quests = Array[ExtResource("48_hjp23")]([ExtResource("162_gok8r"), ExtResource("163_btkg6"), ExtResource("164_ensqk"), ExtResource("165_162rx"), ExtResource("166_kxbm6")])
+quests = Array[ExtResource("48_euve5")]([ExtResource("163_ensqk"), ExtResource("164_162rx"), ExtResource("165_kxbm6"), ExtResource("166_ep03e"), ExtResource("167_2qokl")])
 greeting = "Every fish has a story. The trophies have the best ones."
 art = NodePath("Art")
 appearFlag = "quest/q_reef"
 reach = 12.0
 promptOffset = Vector2(0, -24)
 
-[node name="Art" type="Sprite2D" parent="R3_2/Npc_Odette" unique_id=896285625]
-texture = ExtResource("167_ep03e")
+[node name="Art" type="Sprite2D" parent="R3_2/Npc_Odette" unique_id=916733243]
+texture = ExtResource("168_e6s21")
 centered = false
 offset = Vector2(-6, -20)
 
-[node name="Body" type="StaticBody2D" parent="R3_2/Npc_Odette" unique_id=1228918458]
+[node name="Body" type="StaticBody2D" parent="R3_2/Npc_Odette" unique_id=755025051]
 
-[node name="Shape" type="CollisionShape2D" parent="R3_2/Npc_Odette/Body" unique_id=1583978510]
+[node name="Shape" type="CollisionShape2D" parent="R3_2/Npc_Odette/Body" unique_id=1003393010]
 position = Vector2(0, -1)
 shape = SubResource("v_s8")
 
-[node name="R0_3" type="Node2D" parent="." unique_id=1227875109 node_paths=PackedStringArray("land")]
+[node name="R0_3" type="Node2D" parent="." unique_id=788954371 node_paths=PackedStringArray("land")]
 y_sort_enabled = true
 position = Vector2(0, 324)
-script = ExtResource("2_8c5fo")
+script = ExtResource("2_iip2o")
 land = [NodePath("Land")]
 
-[node name="Water" type="Node2D" parent="R0_3" unique_id=1043888931 node_paths=PackedStringArray("sprite", "ground", "decorationLayers") instance=ExtResource("3_iip2o")]
+[node name="Water" type="Node2D" parent="R0_3" unique_id=1985987624 node_paths=PackedStringArray("sprite", "ground", "decorationLayers") instance=ExtResource("3_mc4dv")]
 z_index = -2
-script = ExtResource("4_mc4dv")
+script = ExtResource("4_1cepb")
 sprite = NodePath("Sprite2D")
 ground = NodePath("Ground")
-biome = ExtResource("5_1cepb")
+biome = ExtResource("5_m5po0")
 depth_scale = 500.0
 depth_contrast = 2.0670000981825
 wave_scale = 160.0
@@ -1637,32 +1643,32 @@ caustic_coverage = 75.0
 decorationLayers = [NodePath("DecorationLayer")]
 metadata/_custom_type_script = "uid://bpejegmgve8km"
 
-[node name="Land" type="Sprite2D" parent="R0_3" unique_id=1916967171]
+[node name="Land" type="Sprite2D" parent="R0_3" unique_id=1480021248]
 z_index = -1
-texture = ExtResource("168_2qokl")
+texture = ExtResource("169_iuyu7")
 centered = false
 
 [node name="Pearl5" type="Node2D" parent="R0_3" unique_id=408681543]
 position = Vector2(180, 28)
-script = ExtResource("7_wk7g0")
+script = ExtResource("7_o2yba")
 flag = "pearl_village_5"
 title = "A lost pearl!"
 message = "Opal on Pearl Lagoon collects these."
 prompt = "Pick up"
 reach = 7.0
 
-[node name="R1_3" type="Node2D" parent="." unique_id=1005101257 node_paths=PackedStringArray("land")]
+[node name="R1_3" type="Node2D" parent="." unique_id=62752058 node_paths=PackedStringArray("land")]
 y_sort_enabled = true
 position = Vector2(192, 324)
-script = ExtResource("2_8c5fo")
+script = ExtResource("2_iip2o")
 land = [NodePath("Land")]
 
-[node name="Water" type="Node2D" parent="R1_3" unique_id=1299069893 node_paths=PackedStringArray("sprite", "ground", "decorationLayers") instance=ExtResource("3_iip2o")]
+[node name="Water" type="Node2D" parent="R1_3" unique_id=1601333614 node_paths=PackedStringArray("sprite", "ground", "decorationLayers") instance=ExtResource("3_mc4dv")]
 z_index = -2
-script = ExtResource("4_mc4dv")
+script = ExtResource("4_1cepb")
 sprite = NodePath("Sprite2D")
 ground = NodePath("Ground")
-biome = ExtResource("5_1cepb")
+biome = ExtResource("5_m5po0")
 depth_scale = 500.0
 depth_contrast = 2.0670000981825
 wave_scale = 160.0
@@ -1675,26 +1681,26 @@ caustic_coverage = 75.0
 decorationLayers = [NodePath("DecorationLayer")]
 metadata/_custom_type_script = "uid://bpejegmgve8km"
 
-[node name="Land" type="Sprite2D" parent="R1_3" unique_id=590921971]
+[node name="Land" type="Sprite2D" parent="R1_3" unique_id=829427401]
 z_index = -1
-texture = ExtResource("169_e6s21")
+texture = ExtResource("170_xhbsy")
 centered = false
 
 [node name="Lamp" type="Sprite2D" parent="R1_3" unique_id=1736292725]
 position = Vector2(174, 56)
-texture = ExtResource("15_dhtde")
+texture = ExtResource("15_fxrxj")
 centered = false
 offset = Vector2(-3, -18)
 
 [node name="Light" type="Node2D" parent="R1_3/Lamp" unique_id=14240605]
 position = Vector2(0, -16)
-script = ExtResource("16_fxrxj")
+script = ExtResource("16_cb4t0")
 radius = 30.0
 height = 16.0
 
 [node name="Coin" type="Node2D" parent="R1_3" unique_id=773415641]
 position = Vector2(148, 40)
-script = ExtResource("7_wk7g0")
+script = ExtResource("7_o2yba")
 flag = "village_pier_coin"
 title = "Something shiny"
 message = "A coin half buried in the sand."
@@ -1704,7 +1710,7 @@ reach = 8.0
 
 [node name="Pearl1" type="Node2D" parent="R1_3" unique_id=85864625]
 position = Vector2(108, 48)
-script = ExtResource("7_wk7g0")
+script = ExtResource("7_o2yba")
 flag = "pearl_village_1"
 title = "A lost pearl!"
 message = "Opal on Pearl Lagoon collects these."
@@ -1713,24 +1719,24 @@ reach = 7.0
 
 [node name="Trap" type="Node2D" parent="R1_3" unique_id=1648296845]
 position = Vector2(58, 36)
-script = ExtResource("157_glku6")
-biome = ExtResource("5_1cepb")
-extras = Array[ExtResource("18_6cmjg")]([ExtResource("170_iuyu7"), ExtResource("171_xhbsy")])
+script = ExtResource("158_v527f")
+biome = ExtResource("5_m5po0")
+extras = Array[ExtResource("18_mcmyn")]([ExtResource("171_4banl"), ExtResource("172_aur6s")])
 reach = 9.0
 promptOffset = Vector2(0, -8)
 
-[node name="R2_3" type="Node2D" parent="." unique_id=1740624231 node_paths=PackedStringArray("land")]
+[node name="R2_3" type="Node2D" parent="." unique_id=466975332 node_paths=PackedStringArray("land")]
 y_sort_enabled = true
 position = Vector2(384, 324)
-script = ExtResource("2_8c5fo")
+script = ExtResource("2_iip2o")
 land = [NodePath("Land")]
 
-[node name="Water" type="Node2D" parent="R2_3" unique_id=1683216884 node_paths=PackedStringArray("sprite", "ground", "decorationLayers") instance=ExtResource("3_iip2o")]
+[node name="Water" type="Node2D" parent="R2_3" unique_id=157761039 node_paths=PackedStringArray("sprite", "ground", "decorationLayers") instance=ExtResource("3_mc4dv")]
 z_index = -2
-script = ExtResource("4_mc4dv")
+script = ExtResource("4_1cepb")
 sprite = NodePath("Sprite2D")
 ground = NodePath("Ground")
-biome = ExtResource("5_1cepb")
+biome = ExtResource("5_m5po0")
 depth_scale = 500.0
 depth_contrast = 2.0670000981825
 wave_scale = 160.0
@@ -1743,14 +1749,14 @@ caustic_coverage = 75.0
 decorationLayers = [NodePath("DecorationLayer")]
 metadata/_custom_type_script = "uid://bpejegmgve8km"
 
-[node name="Land" type="Sprite2D" parent="R2_3" unique_id=410762099]
+[node name="Land" type="Sprite2D" parent="R2_3" unique_id=546317601]
 z_index = -1
-texture = ExtResource("172_4banl")
+texture = ExtResource("173_s13y3")
 centered = false
 
 [node name="Sign" type="Node2D" parent="R2_3" unique_id=1654579789]
 position = Vector2(20, 54)
-script = ExtResource("7_wk7g0")
+script = ExtResource("7_o2yba")
 flag = "village_pier_sign"
 title = "Village Pier"
 message = "Welcome! The aquarium and the shops are up the path. Home is south of the square."
@@ -1760,15 +1766,15 @@ prompt = "Read"
 reach = 10.0
 
 [node name="Art" type="Sprite2D" parent="R2_3/Sign" unique_id=1879857117]
-texture = ExtResource("173_aur6s")
+texture = ExtResource("174_tgi47")
 centered = false
 offset = Vector2(-5, -12)
 
 [node name="Npc_Rex" type="Node2D" parent="R2_3" unique_id=1902643923 node_paths=PackedStringArray("art")]
 position = Vector2(30, 36)
-script = ExtResource("47_semjt")
+script = ExtResource("47_hjp23")
 id = "rex"
-quests = Array[ExtResource("48_hjp23")]([ExtResource("174_s13y3"), ExtResource("175_tgi47"), ExtResource("176_lme5h")])
+quests = Array[ExtResource("48_euve5")]([ExtResource("175_lme5h"), ExtResource("176_o7t5l"), ExtResource("177_j26e7")])
 greeting = "Oh. It's you."
 art = NodePath("Art")
 appearFlag = "quest/q_pots"
@@ -1776,7 +1782,7 @@ reach = 12.0
 promptOffset = Vector2(0, -24)
 
 [node name="Art" type="Sprite2D" parent="R2_3/Npc_Rex" unique_id=1291282030]
-texture = ExtResource("177_o7t5l")
+texture = ExtResource("178_0lv20")
 centered = false
 offset = Vector2(-6, -20)
 
@@ -1788,7 +1794,7 @@ shape = SubResource("v_s2")
 
 [node name="Bottle" type="Node2D" parent="R2_3" unique_id=1752066640]
 position = Vector2(66, 56)
-script = ExtResource("7_wk7g0")
+script = ExtResource("7_o2yba")
 flag = "home_bottle"
 title = "Message in a bottle"
 message = "\"The eel off Lantern Key only rises between midnight and two, to glowing bait, and only to a perfect cast.\""
@@ -1796,35 +1802,35 @@ coins = 25
 prompt = "Look"
 reach = 8.0
 
-[node name="ForageDriftwood3" type="Node2D" parent="R2_3" unique_id=720427385]
+[node name="ForageDriftwood3" type="Node2D" parent="R2_3" unique_id=942226174]
 position = Vector2(136, 48)
-script = ExtResource("17_cb4t0")
+script = ExtResource("17_6cmjg")
 kind = 3
 
-[node name="StreetLamp7" type="Sprite2D" parent="R2_3" unique_id=1577302632]
+[node name="StreetLamp7" type="Sprite2D" parent="R2_3" unique_id=186666041]
 position = Vector2(8, 6)
-texture = ExtResource("15_dhtde")
+texture = ExtResource("15_fxrxj")
 centered = false
 offset = Vector2(-3, -18)
 
-[node name="Light" type="Node2D" parent="R2_3/StreetLamp7" unique_id=1027111597]
+[node name="Light" type="Node2D" parent="R2_3/StreetLamp7" unique_id=1881321360]
 position = Vector2(0, -16)
-script = ExtResource("16_fxrxj")
+script = ExtResource("16_cb4t0")
 radius = 34.0
 height = 16.0
 
-[node name="R3_3" type="Node2D" parent="." unique_id=1898234680 node_paths=PackedStringArray("land")]
+[node name="R3_3" type="Node2D" parent="." unique_id=810709700 node_paths=PackedStringArray("land")]
 y_sort_enabled = true
 position = Vector2(576, 324)
-script = ExtResource("2_8c5fo")
+script = ExtResource("2_iip2o")
 land = [NodePath("Land")]
 
-[node name="Water" type="Node2D" parent="R3_3" unique_id=374341338 node_paths=PackedStringArray("sprite", "ground", "decorationLayers") instance=ExtResource("3_iip2o")]
+[node name="Water" type="Node2D" parent="R3_3" unique_id=634523685 node_paths=PackedStringArray("sprite", "ground", "decorationLayers") instance=ExtResource("3_mc4dv")]
 z_index = -2
-script = ExtResource("4_mc4dv")
+script = ExtResource("4_1cepb")
 sprite = NodePath("Sprite2D")
 ground = NodePath("Ground")
-biome = ExtResource("5_1cepb")
+biome = ExtResource("5_m5po0")
 depth_scale = 500.0
 depth_contrast = 2.0670000981825
 wave_scale = 160.0
@@ -1837,25 +1843,25 @@ caustic_coverage = 75.0
 decorationLayers = [NodePath("DecorationLayer")]
 metadata/_custom_type_script = "uid://bpejegmgve8km"
 
-[node name="Land" type="Sprite2D" parent="R3_3" unique_id=1752668890]
+[node name="Land" type="Sprite2D" parent="R3_3" unique_id=1173679671]
 z_index = -1
-texture = ExtResource("178_j26e7")
+texture = ExtResource("179_lfxvj")
 centered = false
 
 [node name="Boatyard" type="Node2D" parent="R3_3" unique_id=667668959 node_paths=PackedStringArray("lockedArt")]
 position = Vector2(4, 10)
-script = ExtResource("12_hvck5")
+script = ExtResource("12_2pat5")
 displayName = "Boatyard"
 unlockFlag = "project/boatyard"
 lockedArt = NodePath("Boards")
 
 [node name="Art" type="Sprite2D" parent="R3_3/Boatyard" unique_id=848675258]
-texture = ExtResource("179_0lv20")
+texture = ExtResource("180_duvwv")
 centered = false
 offset = Vector2(-20, -28)
 
 [node name="Boards" type="Sprite2D" parent="R3_3/Boatyard" unique_id=2043083491]
-texture = ExtResource("86_1fumj")
+texture = ExtResource("87_msq0f")
 centered = false
 offset = Vector2(-6, -12)
 
@@ -1867,23 +1873,23 @@ shape = SubResource("Rect_boatyard")
 
 [node name="Door" type="Node2D" parent="R3_3/Boatyard" unique_id=530654269]
 position = Vector2(0, 2)
-script = ExtResource("180_lfxvj")
+script = ExtResource("181_3o4wa")
 title = "Marina's Boatyard"
 prompt = "Boatyard"
 reach = 12.0
 
 [node name="Npc_Marina" type="Node2D" parent="R3_3" unique_id=883722793 node_paths=PackedStringArray("art")]
 position = Vector2(50, 6)
-script = ExtResource("47_semjt")
+script = ExtResource("47_hjp23")
 id = "marina"
-quests = Array[ExtResource("48_hjp23")]([ExtResource("181_duvwv"), ExtResource("182_3o4wa"), ExtResource("183_v7q2x"), ExtResource("184_qt5jt"), ExtResource("185_tsqqq"), ExtResource("186_i73h3"), ExtResource("187_myp8a"), ExtResource("188_r33wg"), ExtResource("189_3hl55"), ExtResource("190_788ke"), ExtResource("191_rj533"), ExtResource("192_6k3ag"), ExtResource("193_nv8dh"), ExtResource("194_qnto2"), ExtResource("195_uecgv")])
+quests = Array[ExtResource("48_euve5")]([ExtResource("182_v7q2x"), ExtResource("183_qt5jt"), ExtResource("184_tsqqq"), ExtResource("185_i73h3"), ExtResource("186_myp8a"), ExtResource("187_r33wg"), ExtResource("188_3hl55"), ExtResource("189_788ke"), ExtResource("190_rj533"), ExtResource("191_6k3ag"), ExtResource("192_nv8dh"), ExtResource("193_qnto2"), ExtResource("194_uecgv"), ExtResource("195_uqb8o"), ExtResource("196_2ybg7")])
 greeting = "Mind the tar."
 art = NodePath("Art")
 reach = 12.0
 promptOffset = Vector2(0, -24)
 
 [node name="Art" type="Sprite2D" parent="R3_3/Npc_Marina" unique_id=588884393]
-texture = ExtResource("196_uqb8o")
+texture = ExtResource("197_wosie")
 centered = false
 offset = Vector2(-6, -20)
 
@@ -1892,3 +1898,8 @@ offset = Vector2(-6, -20)
 [node name="Shape" type="CollisionShape2D" parent="R3_3/Npc_Marina/Body" unique_id=473125142]
 position = Vector2(0, -1)
 shape = SubResource("v_s6")
+
+[node name="RegattaFlag" type="Node2D" parent="R3_3" unique_id=2007140865]
+position = Vector2(74, 20)
+script = ExtResource("79_qvjd8")
+game = 1

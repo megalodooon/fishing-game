@@ -36,7 +36,7 @@ func _process(delta : float) -> void:
 			queue_free()
 		return
 	var key : String = "rod" if not player.heldItem is FishingRod else String(player.handStates.currentState.name) if player.handStates.currentState else ""
-	if not HINTS.has(key) or (dialogue and dialogue.busy()):
+	if not HINTS.has(key) or (dialogue and dialogue.busy()) or (player.frozen and key != "Catch"):
 		key = ""
 	if key != shown:
 		shown = key

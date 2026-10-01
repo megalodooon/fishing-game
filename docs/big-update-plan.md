@@ -94,7 +94,7 @@ and a local commit. Nothing is pushed until the last phase.
 
 ## Phase 8: Fun
 
-- [ ] Festival minigames and event shop; village visitors with quest chains.
+- [x] Festival minigames and event shop; village visitors with quest chains.
 - [ ] Tavern games (playable against your friend); boat races and fishing derbies.
 
 ## Phase 9: Polish and ship

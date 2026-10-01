@@ -408,3 +408,53 @@ func tool_arrivals() -> void:
 
 func tool_gear() -> void:
 	(load("res://../tools/gear/make_gear.gd").new()).run()
+
+# Plays darts against Wren, a regatta (steering by hand) and checks they pay.
+func arcade_test() -> void:
+	await village()
+	var flag : ArcadeStand = null
+	for node in game.find_children("*", "ArcadeStand", true, false):
+		if (node as ArcadeStand).game == ArcadeUI.RACE:
+			flag = node
+	check(flag != null, "the regatta flag stands in the village")
+	player.wallet.add(100)
+	var coins : int = player.wallet.coins
+	ArcadeUI.open(get_tree(), player, ArcadeUI.DARTS)
+	var arcade : ArcadeUI = get_tree().get_first_node_in_group(ArcadeUI.GROUP)
+	await seconds(0.3)
+	await shot("arcade_menu")
+	arcade.choose(&"wren")
+	check(player.wallet.coins == coins - ArcadeUI.STAKE, "darts against Wren takes the stake")
+	for i in 3:
+		await seconds(0.4)
+		arcade.throw()
+	await shot("arcade_darts")
+	await seconds(1.2)
+	check(arcade.stage == ArcadeUI.Stage.RESULT, "three darts end the game")
+	await shot("arcade_darts_result")
+	arcade.close()
+	ArcadeUI.open(get_tree(), player, ArcadeUI.RACE)
+	arcade.choose(&"race")
+	await seconds(2.0)
+	await shot("arcade_race")
+	var limit : float = 60.0
+	while arcade.stage == ArcadeUI.Stage.PLAY and limit > 0.0:
+		await seconds(0.5)
+		limit -= 0.5
+	check(arcade.stage == ArcadeUI.Stage.RESULT, "the regatta finishes")
+	print("HARNESS: race ", arcade.resultLines)
+	await shot("arcade_race_result")
+	arcade.close()
+	# A friend's darts challenge comes in, gets answered, and is judged.
+	ArcadeUI.challenges.clear()
+	ArcadeUI.received(get_tree(), {"game": ArcadeUI.DARTS, "seed": 7, "score": 40, "name": "Ana"})
+	check(ArcadeUI.challenges.has(ArcadeUI.DARTS), "a friend's challenge is remembered")
+	ArcadeUI.open(get_tree(), player, ArcadeUI.DARTS)
+	arcade.choose(&"answer")
+	for i in 3:
+		await seconds(0.3)
+		arcade.throw()
+	await seconds(1.2)
+	check(arcade.stage == ArcadeUI.Stage.RESULT and "Ana" in " ".join(arcade.resultLines), "the answered challenge is judged")
+	check(not ArcadeUI.challenges.has(ArcadeUI.DARTS), "a judged challenge is cleared")
+	arcade.close()

@@ -59,28 +59,28 @@ size = Vector2(20, 10)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_34xwc"]
 size = Vector2(10, 10)
 
-[node name="House" type="Node2D" unique_id=213963230]
+[node name="House" type="Node2D" unique_id=220151669]
 script = ExtResource("1_m7epb")
 arrival = Vector2(96, 92)
 interior = true
 
-[node name="House" type="Node2D" parent="." unique_id=2018840158 node_paths=PackedStringArray("land")]
+[node name="House" type="Node2D" parent="." unique_id=1995774364 node_paths=PackedStringArray("land")]
 y_sort_enabled = true
 script = ExtResource("2_x3jul")
 land = [NodePath("Floor")]
 
-[node name="Back" type="Sprite2D" parent="House" unique_id=241885429]
+[node name="Back" type="Sprite2D" parent="House" unique_id=262356839]
 z_index = -2
 texture = ExtResource("3_4sfss")
 centered = false
 
-[node name="Floor" type="Sprite2D" parent="House" unique_id=850608828]
+[node name="Floor" type="Sprite2D" parent="House" unique_id=380869993]
 modulate = Color(1, 1, 1, 0)
 z_index = -2
 texture = ExtResource("4_6ogqc")
 centered = false
 
-[node name="Exit" type="Node2D" parent="House" unique_id=1252309521]
+[node name="Exit" type="Node2D" parent="House" unique_id=293263853]
 position = Vector2(96, 103)
 script = ExtResource("5_04t7v")
 reach = 10.0
@@ -119,56 +119,56 @@ title = "Tinker's Workbench"
 prompt = "Workbench"
 reach = 12.0
 
-[node name="Anvil" type="Node2D" parent="House/Workbench" unique_id=1042879713]
+[node name="Anvil" type="Node2D" parent="House/Workbench" unique_id=1552031691]
 position = Vector2(18, 4)
 script = ExtResource("41_wd3j0")
 title = "Reforge Anvil"
 prompt = "Anvil"
 reach = 10.0
 
-[node name="Art" type="Sprite2D" parent="House/Workbench/Anvil" unique_id=1232268076]
+[node name="Art" type="Sprite2D" parent="House/Workbench/Anvil" unique_id=17451140]
 position = Vector2(0, -6)
 texture = ExtResource("42_pxv7e")
 
-[node name="BedArt" type="Sprite2D" parent="House" unique_id=1377253622]
+[node name="BedArt" type="Sprite2D" parent="House" unique_id=711992054]
 position = Vector2(56, 50)
 texture = ExtResource("43_jwl7y")
 centered = false
 offset = Vector2(-9, -26)
 
-[node name="Body" type="StaticBody2D" parent="House/BedArt" unique_id=1162282215]
+[node name="Body" type="StaticBody2D" parent="House/BedArt" unique_id=2108695625]
 
-[node name="Shape" type="CollisionShape2D" parent="House/BedArt/Body" unique_id=1851906300]
+[node name="Shape" type="CollisionShape2D" parent="House/BedArt/Body" unique_id=913500501]
 position = Vector2(0, -5)
 shape = SubResource("RectangleShape2D_6raey")
 
-[node name="Rug" type="Sprite2D" parent="House" unique_id=973665801]
+[node name="Rug" type="Sprite2D" parent="House" unique_id=1997264436]
 z_index = -1
 position = Vector2(92, 84)
 texture = ExtResource("44_elut2")
 centered = false
 offset = Vector2(-18, -20)
 
-[node name="Table" type="Sprite2D" parent="House" unique_id=1679935358]
+[node name="Table" type="Sprite2D" parent="House" unique_id=38773624]
 position = Vector2(112, 72)
 texture = ExtResource("45_gxh23")
 centered = false
 offset = Vector2(-10, -12)
 
-[node name="Body" type="StaticBody2D" parent="House/Table" unique_id=1160383631]
+[node name="Body" type="StaticBody2D" parent="House/Table" unique_id=1949378077]
 
-[node name="Shape" type="CollisionShape2D" parent="House/Table/Body" unique_id=2079833298]
+[node name="Shape" type="CollisionShape2D" parent="House/Table/Body" unique_id=1912188781]
 position = Vector2(0, -5)
 shape = SubResource("RectangleShape2D_1tbty")
 
-[node name="Barrel" type="Sprite2D" parent="House" unique_id=159831547]
+[node name="Barrel" type="Sprite2D" parent="House" unique_id=1065513207]
 position = Vector2(30, 92)
 texture = ExtResource("46_7e2bm")
 centered = false
 offset = Vector2(-5, -13)
 
-[node name="Body" type="StaticBody2D" parent="House/Barrel" unique_id=1100239815]
+[node name="Body" type="StaticBody2D" parent="House/Barrel" unique_id=152536211]
 
-[node name="Shape" type="CollisionShape2D" parent="House/Barrel/Body" unique_id=1213531621]
+[node name="Shape" type="CollisionShape2D" parent="House/Barrel/Body" unique_id=401894003]
 position = Vector2(0, -5)
 shape = SubResource("RectangleShape2D_34xwc")

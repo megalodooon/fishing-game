@@ -42,6 +42,8 @@ func run() -> void:
 		var copy : Node2D = lamp.duplicate()
 		copy.name = "StreetLamp%d" % (i + 1)
 		place(copy, LAYOUT.LAMPS[i])
+	for spot in LAYOUT.STANDS:
+		place(stand(spot[0], spot[1]), spot[2])
 	for key in LAYOUT.DROP:
 		var node : Node = old.get_node_or_null(key)
 		if node:
@@ -67,6 +69,8 @@ func check_land() -> void:
 		spots["cottage %d" % i] = LAYOUT.COTTAGES[i]
 	for i in LAYOUT.LAMPS.size():
 		spots["lamp %d" % i] = LAYOUT.LAMPS[i]
+	for spot in LAYOUT.STANDS:
+		spots[spot[0]] = spot[2]
 	for key in spots:
 		var at : Vector2i = Vector2i(spots[key])
 		if land.get_pixelv(at.clamp(Vector2i.ZERO, land.get_size() - Vector2i.ONE)).a <= 0.0:
@@ -255,6 +259,9 @@ func decorate(room : Node, name : String) -> void:
 			furniture(room, "TableA", "table", Vector2(44.0, 76.0), true)
 			furniture(room, "TableB", "table", Vector2(140.0, 76.0), true)
 			furniture(room, "BarrelA", "barrel", Vector2(30.0, 50.0), true)
+			var board : Node2D = stand("DartBoard", 0)
+			board.position = Vector2(56.0, 40.0)
+			room.add_child(board)
 			var wren : Node2D = Node2D.new()
 			wren.name = "Npc_Wren"
 			wren.set_script(load("res://world/npc/npc.gd"))
@@ -267,6 +274,13 @@ func decorate(room : Node, name : String) -> void:
 			wren.set("art", art)
 			wren.position = Vector2(96.0, 44.0)
 			room.add_child(wren)
+
+func stand(name : String, game : int) -> Node2D:
+	var node : Node2D = Node2D.new()
+	node.name = name
+	node.set_script(load("res://world/arcade/arcade_stand.gd"))
+	node.set("game", game)
+	return node
 
 # Saves a scene, owning every node made or moved here (but not the insides
 # of scenes placed in it).

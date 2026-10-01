@@ -41,28 +41,28 @@ size = Vector2(46, 10)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hrc1h"]
 size = Vector2(10, 10)
 
-[node name="HarborOffice" type="Node2D" unique_id=1741248739]
+[node name="HarborOffice" type="Node2D" unique_id=2138995571]
 script = ExtResource("1_h2212")
 arrival = Vector2(96, 92)
 interior = true
 
-[node name="HarborOffice" type="Node2D" parent="." unique_id=723184998 node_paths=PackedStringArray("land")]
+[node name="HarborOffice" type="Node2D" parent="." unique_id=2082608345 node_paths=PackedStringArray("land")]
 y_sort_enabled = true
 script = ExtResource("2_pg38g")
 land = [NodePath("Floor")]
 
-[node name="Back" type="Sprite2D" parent="HarborOffice" unique_id=2137745345]
+[node name="Back" type="Sprite2D" parent="HarborOffice" unique_id=728567487]
 z_index = -2
 texture = ExtResource("3_ga8id")
 centered = false
 
-[node name="Floor" type="Sprite2D" parent="HarborOffice" unique_id=2138722256]
+[node name="Floor" type="Sprite2D" parent="HarborOffice" unique_id=1131575123]
 modulate = Color(1, 1, 1, 0)
 z_index = -2
 texture = ExtResource("4_bmk1i")
 centered = false
 
-[node name="Exit" type="Node2D" parent="HarborOffice" unique_id=1712386363]
+[node name="Exit" type="Node2D" parent="HarborOffice" unique_id=1671637167]
 position = Vector2(96, 103)
 script = ExtResource("5_ax3af")
 reach = 10.0
@@ -89,38 +89,38 @@ offset = Vector2(-6, -20)
 position = Vector2(0, -1)
 shape = SubResource("v_s1")
 
-[node name="Desk" type="Sprite2D" parent="HarborOffice" unique_id=1767984614]
+[node name="Desk" type="Sprite2D" parent="HarborOffice" unique_id=1316284394]
 position = Vector2(96, 58)
 texture = ExtResource("28_b24sx")
 centered = false
 offset = Vector2(-23, -14)
 
-[node name="Body" type="StaticBody2D" parent="HarborOffice/Desk" unique_id=533756802]
+[node name="Body" type="StaticBody2D" parent="HarborOffice/Desk" unique_id=375487452]
 
-[node name="Shape" type="CollisionShape2D" parent="HarborOffice/Desk/Body" unique_id=635882314]
+[node name="Shape" type="CollisionShape2D" parent="HarborOffice/Desk/Body" unique_id=185059438]
 position = Vector2(0, -5)
 shape = SubResource("RectangleShape2D_8nova")
 
-[node name="Chart" type="Sprite2D" parent="HarborOffice" unique_id=1674995044]
+[node name="Chart" type="Sprite2D" parent="HarborOffice" unique_id=751287787]
 position = Vector2(64, 30)
 texture = ExtResource("29_g4ro2")
 centered = false
 offset = Vector2(-13, -18)
 
-[node name="ShelfA" type="Sprite2D" parent="HarborOffice" unique_id=1547813079]
+[node name="ShelfA" type="Sprite2D" parent="HarborOffice" unique_id=321176221]
 position = Vector2(150, 34)
 texture = ExtResource("30_upso6")
 centered = false
 offset = Vector2(-15, -22)
 
-[node name="BarrelA" type="Sprite2D" parent="HarborOffice" unique_id=1595930311]
+[node name="BarrelA" type="Sprite2D" parent="HarborOffice" unique_id=1576668685]
 position = Vector2(30, 92)
 texture = ExtResource("31_vxv83")
 centered = false
 offset = Vector2(-5, -13)
 
-[node name="Body" type="StaticBody2D" parent="HarborOffice/BarrelA" unique_id=2069746180]
+[node name="Body" type="StaticBody2D" parent="HarborOffice/BarrelA" unique_id=1966596086]
 
-[node name="Shape" type="CollisionShape2D" parent="HarborOffice/BarrelA/Body" unique_id=1287295427]
+[node name="Shape" type="CollisionShape2D" parent="HarborOffice/BarrelA/Body" unique_id=1948865596]
 position = Vector2(0, -5)
 shape = SubResource("RectangleShape2D_hrc1h")

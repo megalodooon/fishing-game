@@ -103,6 +103,8 @@ const INSIDE : Dictionary = {
 }
 # Nodes of the old village that aren't needed any more.
 const DROP : PackedStringArray = ["Square/Fishmonger"]
+# Little games (see ArcadeStand): name, game (1 regatta, 2 festival toss), foot.
+const STANDS : Array = [["RegattaFlag", 1, Vector2(650.0, 344.0)], ["TossBooth", 2, Vector2(420.0, 186.0)]]
 # Little houses the villagers go home to at night (just outsides).
 const COTTAGES : Array = [Vector2(250.0, 110.0), Vector2(318.0, 110.0), Vector2(704.0, 160.0), Vector2(70.0, 210.0)]
 # Lamps along the streets, besides the old ones.

@@ -21,7 +21,7 @@ const CLOCK_SLACK : float = 0.02
 # A shared quest's coins are split between the players.
 const QUEST_COIN_SHARE : float = 0.5
 # Every message this listens to, each handled by on_<kind>.
-const MESSAGES : Array[StringName] = [&"pose", &"clock", &"world", &"world_all", &"scene", &"quest", &"say", &"sleep", &"night", &"toast", &"board_ask", &"board_reply", &"boarded", &"carry", &"spot", &"fight", &"fight_join", &"fight_hit", &"fight_state", &"fight_end", &"drop", &"drop_gone"]
+const MESSAGES : Array[StringName] = [&"arcade", &"pose", &"clock", &"world", &"world_all", &"scene", &"quest", &"say", &"sleep", &"night", &"toast", &"board_ask", &"board_reply", &"boarded", &"carry", &"spot", &"fight", &"fight_join", &"fight_hit", &"fight_state", &"fight_end", &"drop", &"drop_gone"]
 # Seconds to jump into a friend's fight, and how much tougher a foe gets with two.
 const FIGHT_INVITE : float = 6.0
 const COOP_HEALTH : float = 1.6
@@ -449,6 +449,11 @@ func on_caught(fish : Fish, _biome : Biome) -> void:
 func on_say(from : int, data : Variant) -> void:
 	if remotes.has(from) and data is Dictionary:
 		(remotes[from] as RemotePlayer).say(str(data.get("text", "")), data.get("color", Color.WHITE))
+
+# A darts or regatta challenge, or the score for one (see ArcadeUI).
+func on_arcade(_from : int, data : Variant) -> void:
+	if data is Dictionary:
+		ArcadeUI.received(get_tree(), data)
 
 # Tells the other player something (like a rare catch) as a notice.
 func tell(title : String, text : String, color : Color) -> void:

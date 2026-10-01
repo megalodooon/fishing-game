@@ -63,28 +63,28 @@ size = Vector2(18, 10)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sk3lf"]
 size = Vector2(46, 10)
 
-[node name="Museum" type="Node2D" unique_id=1514255361]
+[node name="Museum" type="Node2D" unique_id=448407877]
 script = ExtResource("1_i2xne")
 arrival = Vector2(96, 92)
 interior = true
 
-[node name="Museum" type="Node2D" parent="." unique_id=1775242793 node_paths=PackedStringArray("land")]
+[node name="Museum" type="Node2D" parent="." unique_id=1671165947 node_paths=PackedStringArray("land")]
 y_sort_enabled = true
 script = ExtResource("2_cs8qp")
 land = [NodePath("Floor")]
 
-[node name="Back" type="Sprite2D" parent="Museum" unique_id=357075880]
+[node name="Back" type="Sprite2D" parent="Museum" unique_id=1933931187]
 z_index = -2
 texture = ExtResource("3_nw1m2")
 centered = false
 
-[node name="Floor" type="Sprite2D" parent="Museum" unique_id=598102502]
+[node name="Floor" type="Sprite2D" parent="Museum" unique_id=1185714891]
 modulate = Color(1, 1, 1, 0)
 z_index = -2
 texture = ExtResource("4_w1peq")
 centered = false
 
-[node name="Exit" type="Node2D" parent="Museum" unique_id=118081600]
+[node name="Exit" type="Node2D" parent="Museum" unique_id=803503011]
 position = Vector2(96, 103)
 script = ExtResource("5_tivhl")
 reach = 10.0
@@ -122,67 +122,67 @@ offset = Vector2(-6, -20)
 position = Vector2(0, -1)
 shape = SubResource("v_s4")
 
-[node name="Museum" type="Node2D" parent="Museum/Npc_Nora" unique_id=1062049785]
+[node name="Museum" type="Node2D" parent="Museum/Npc_Nora" unique_id=2036069162]
 script = ExtResource("41_rpk8q")
 title = "Museum Wing"
 listed = false
 
-[node name="TankA" type="Sprite2D" parent="Museum" unique_id=226415224]
+[node name="TankA" type="Sprite2D" parent="Museum" unique_id=1644044276]
 position = Vector2(40, 56)
 texture = ExtResource("42_f4488")
 centered = false
 offset = Vector2(-16, -22)
 
-[node name="Body" type="StaticBody2D" parent="Museum/TankA" unique_id=326417463]
+[node name="Body" type="StaticBody2D" parent="Museum/TankA" unique_id=723888754]
 
-[node name="Shape" type="CollisionShape2D" parent="Museum/TankA/Body" unique_id=1202316335]
+[node name="Shape" type="CollisionShape2D" parent="Museum/TankA/Body" unique_id=1705106544]
 position = Vector2(0, -5)
 shape = SubResource("RectangleShape2D_ije4e")
 
-[node name="TankB" type="Sprite2D" parent="Museum" unique_id=498167061]
+[node name="TankB" type="Sprite2D" parent="Museum" unique_id=183661191]
 position = Vector2(40, 88)
 texture = ExtResource("42_f4488")
 centered = false
 offset = Vector2(-16, -22)
 
-[node name="Body" type="StaticBody2D" parent="Museum/TankB" unique_id=853574122]
+[node name="Body" type="StaticBody2D" parent="Museum/TankB" unique_id=894384813]
 
-[node name="Shape" type="CollisionShape2D" parent="Museum/TankB/Body" unique_id=1025383968]
+[node name="Shape" type="CollisionShape2D" parent="Museum/TankB/Body" unique_id=590764140]
 position = Vector2(0, -5)
 shape = SubResource("RectangleShape2D_aggna")
 
-[node name="CaseA" type="Sprite2D" parent="Museum" unique_id=687396515]
+[node name="CaseA" type="Sprite2D" parent="Museum" unique_id=2026229351]
 position = Vector2(104, 76)
 texture = ExtResource("43_fif3h")
 centered = false
 offset = Vector2(-9, -16)
 
-[node name="Body" type="StaticBody2D" parent="Museum/CaseA" unique_id=321625429]
+[node name="Body" type="StaticBody2D" parent="Museum/CaseA" unique_id=197583701]
 
-[node name="Shape" type="CollisionShape2D" parent="Museum/CaseA/Body" unique_id=1033392321]
+[node name="Shape" type="CollisionShape2D" parent="Museum/CaseA/Body" unique_id=70347052]
 position = Vector2(0, -5)
 shape = SubResource("RectangleShape2D_xobpy")
 
-[node name="CaseB" type="Sprite2D" parent="Museum" unique_id=2094278556]
+[node name="CaseB" type="Sprite2D" parent="Museum" unique_id=1155613136]
 position = Vector2(128, 76)
 texture = ExtResource("43_fif3h")
 centered = false
 offset = Vector2(-9, -16)
 
-[node name="Body" type="StaticBody2D" parent="Museum/CaseB" unique_id=1436577723]
+[node name="Body" type="StaticBody2D" parent="Museum/CaseB" unique_id=1439870452]
 
-[node name="Shape" type="CollisionShape2D" parent="Museum/CaseB/Body" unique_id=1940399371]
+[node name="Shape" type="CollisionShape2D" parent="Museum/CaseB/Body" unique_id=20530507]
 position = Vector2(0, -5)
 shape = SubResource("RectangleShape2D_fumfl")
 
-[node name="Counter" type="Sprite2D" parent="Museum" unique_id=650176804]
+[node name="Counter" type="Sprite2D" parent="Museum" unique_id=1231289719]
 position = Vector2(140, 54)
 texture = ExtResource("44_ypaks")
 centered = false
 offset = Vector2(-23, -14)
 
-[node name="Body" type="StaticBody2D" parent="Museum/Counter" unique_id=451459760]
+[node name="Body" type="StaticBody2D" parent="Museum/Counter" unique_id=458262971]
 
-[node name="Shape" type="CollisionShape2D" parent="Museum/Counter/Body" unique_id=185040417]
+[node name="Shape" type="CollisionShape2D" parent="Museum/Counter/Body" unique_id=1721025920]
 position = Vector2(0, -5)
 shape = SubResource("RectangleShape2D_sk3lf")
