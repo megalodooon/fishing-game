@@ -142,13 +142,15 @@ portrait = ExtResource("19_5emvr")
 prompt = "Fishmonger"
 reach = 12.0
 
-[node name="Npc_Gus" type="Node2D" parent="MarketHall" unique_id=652463784 node_paths=PackedStringArray("service", "art")]
+[node name="Npc_Gus" type="Node2D" parent="MarketHall" unique_id=652463784 node_paths=PackedStringArray("service", "art", "shop")]
 position = Vector2(62, 40)
 script = ExtResource("20_geny5")
 id = "gus"
 quests = Array[ExtResource("21_okd6f")]([ExtResource("22_iy1ly"), ExtResource("23_qw2xl"), ExtResource("24_eh5do"), ExtResource("25_61fm0"), ExtResource("26_qo5d7"), ExtResource("27_ai2ok"), ExtResource("28_cr1qc"), ExtResource("29_sd0o4")])
 service = NodePath("Orders")
 serviceLabel = "Orders"
+shop = NodePath("../Door")
+shopLabel = "Sell fish"
 greeting = "Fresh fish! Well, fish."
 art = NodePath("Art")
 reach = 12.0

@@ -483,3 +483,18 @@ func perf_test() -> void:
 			sum += took
 			count += 1
 		print("HARNESS: perf %s avg %.2f ms, worst %.2f ms" % [place[0], sum / count, worst])
+
+# Gus's menu has a Sell fish button that opens the fish counter.
+func sell_test() -> void:
+	await enter_market()
+	var gus : Npc = null
+	for node in get_tree().get_nodes_in_group(&"npcs") if not get_tree().get_nodes_in_group(&"npcs").is_empty() else game.find_children("*", "Npc", true, false):
+		if (node as Npc).id == "gus":
+			gus = node
+	check(gus != null and gus.shop != null, "Gus has the fish counter")
+	var talk : DialogueUI = find(DialogueUI)
+	talk.converse(gus, player)
+	await seconds(0.5)
+	var labels : Array = talk.menuItems.map(func(item : Array) -> String: return item[1])
+	check("Sell fish" in labels, "Gus's menu has Sell fish")
+	print("HARNESS: menu ", labels)

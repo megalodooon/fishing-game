@@ -220,6 +220,10 @@ func make_inside(root : Node2D, name : String, info : Dictionary) -> void:
 		var holder : Node = lockHolder if lockHolder and path == "Lane/MarketHall/Door" else room
 		holder.add_child(node)
 		node.position = info.moves[path] - (holder.position if holder != room else Vector2.ZERO)
+	# Gus stands at the fish counter, so his menu opens it.
+	if name == "MarketHall" and room.has_node("Npc_Gus") and room.has_node("Door"):
+		room.get_node("Npc_Gus").set("shop", room.get_node("Door"))
+		room.get_node("Npc_Gus").set("shopLabel", "Sell fish")
 	decorate(room, name)
 	save_scene(island, INSIDES + name.to_snake_case() + ".tscn")
 

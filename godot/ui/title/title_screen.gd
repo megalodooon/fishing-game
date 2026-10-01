@@ -240,7 +240,9 @@ func _gui_input(event : InputEvent) -> void:
 			if buttons[i][0].has_point(event.position):
 				selected = buttons[i][1]
 	elif event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
-		for each in buttons:
+		# Last drawn first: the Del button sits on top of its slot.
+		for index in range(buttons.size() - 1, -1, -1):
+			var each : Array = buttons[index]
 			if each[0].has_point(event.position):
 				if each.size() > 2 and each[2] == &"delete":
 					delete_slot(each[1])
