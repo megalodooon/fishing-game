@@ -24,8 +24,13 @@ func _ready() -> void:
 	set_process(not Preloader.done())
 	player.atlas.setup()
 	player.progress.quest_taken.connect(func(_quest : Quest) -> void: count_visit())
+	var session : NetSession = NetSession.new()
+	session.setup(self)
+	add_child(session)
 	if not SaveGame.pending.is_empty():
 		load_save.call_deferred()
+	else:
+		player.progress.playerName = SaveGame.newName
 	var location : Location = player.atlas.current
 	if location and not location.scene.is_empty() and (not place or place.scene_file_path != location.scene):
 		load_place(location)

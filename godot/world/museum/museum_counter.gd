@@ -87,7 +87,7 @@ func choose(player : Player, value : Variant) -> String:
 		if not Counter.fits(player, thing, reward[1]):
 			return fail("No room in the bag")
 		Counter.deliver(player, thing, reward[1])
-		player.progress.set_flag("museum/claimed", Museum.claimed(player.progress) + 1)
+		player.progress.set_flag("museum_claimed", Museum.claimed(player.progress) + 1)
 		return ok("Claimed %s!" % thing.displayName)
 	if value is int:
 		var item : Item = player.inventory.get_item(value)

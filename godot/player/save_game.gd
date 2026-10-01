@@ -3,13 +3,19 @@ class_name SaveGame
 
 # Saving and loading. Three slots in user://, each a text file of plain values:
 # resources the game ships with are stored by their path, fish and item stacks
-# by what they're made of. Everything the player owns or has done lives in the
-# player's resources (inventory, tacklebox, journal, energy, wallet, atlas,
-# progress) plus the clock. Every script variable of Progress is saved, so new
-# progress fields are picked up without touching this file.
+# by what they're made of.
+#
+# A save is one world and the players in it. The world is what everyone in a
+# multiplayer game shares (the story, quests, the village, the farm, unlocked
+# places, the clock); each player keeps their own bag, coins, skills and so on
+# under their name. The host's save holds every player who ever joined, so a
+# friend picks up where they left off by joining with the same name. Every
+# script variable of Progress is saved, so new progress fields are picked up
+# without touching this file; they belong to the player unless listed in
+# WORLD_PROGRESS.
 
 const SLOTS : int = 3
-const VERSION : int = 1
+const VERSION : int = 2
 const RES : String = "@res:"
 # The resources on the player and which of their properties are the save.
 # Progress saves all of its properties.
@@ -19,18 +25,27 @@ const STATE : Dictionary = {
 	"journal": ["caught", "heaviest", "discovered"],
 	"energy": ["maximum", "value"],
 	"wallet": ["coins"],
-	"atlas": ["current", "previous", "unlocked"],
+	"atlas": ["current", "previous"],
 }
+# Progress fields the whole world shares.
+const WORLD_PROGRESS : PackedStringArray = ["donations", "farms", "quests", "chapter", "traps", "pickups"]
+# Progress flags the whole world shares, by how their names start.
+const WORLD_FLAGS : PackedStringArray = ["quest/", "story/", "project/", "forage/", "museum/", "vote/", "weather_order", "world/"]
 
 # The slot the running game saves to.
 static var slot : int = 0
-# Filled by the title screen: the save to load when the game starts, or empty
-# for a new game.
+# Filled by the title screen (or by joining a friend): the save to load when
+# the game starts, or empty for a new game. "you" names the player to load
+# when it isn't the save's owner.
 static var pending : Dictionary = {}
+# The name for a new game's player, picked on the title screen.
+static var newName : String = ""
+# Where the slots are kept (tests use their own folder).
+static var folder : String = "user://"
 
 
 static func path(which : int) -> String:
-	return "user://save_%d.sav" % which
+	return folder.path_join("save_%d.sav" % which)
 
 static func exists(which : int) -> bool:
 	return FileAccess.file_exists(path(which))
@@ -48,28 +63,39 @@ static func read(which : int) -> Dictionary:
 	var data : Variant = str_to_var(file.get_as_text())
 	return data if data is Dictionary else {}
 
+# Saves from before the current format can't be loaded any more.
+static func outdated(data : Dictionary) -> bool:
+	return not data.is_empty() and int(data.get("version", 1)) != VERSION
+
 # What the title screen shows for a slot, without loading any resources.
 static func summary(which : int) -> Dictionary:
 	var data : Dictionary = read(which)
-	return data.get("summary", {}) if not data.is_empty() else {}
+	if data.is_empty():
+		return {}
+	var info : Dictionary = (data.get("summary", {}) as Dictionary).duplicate()
+	info["outdated"] = outdated(data)
+	return info
 
-# The slot saved last, or -1 when there are none.
+# The slot saved last that can still be loaded, or -1 when there are none.
 static func latest() -> int:
 	var best : int = -1
 	var when : float = -1.0
 	for i in SLOTS:
 		var info : Dictionary = summary(i)
-		if not info.is_empty() and float(info.get("saved", 0.0)) > when:
+		if not info.is_empty() and not info.outdated and float(info.get("saved", 0.0)) > when:
 			when = info.get("saved", 0.0)
 			best = i
 	return best
 
-static func save_game(tree : SceneTree) -> bool:
-	var player : Player = Player.find(tree)
-	var cycle : DayNightCycle = DayNightCycle.find(tree)
-	if not player:
-		return false
-	var data : Dictionary = {"version": VERSION}
+static func is_world_flag(key : String) -> bool:
+	for prefix in WORLD_FLAGS:
+		if key.begins_with(prefix):
+			return true
+	return false
+
+# Everything that belongs to this player alone.
+static func player_data(player : Player) -> Dictionary:
+	var data : Dictionary = {}
 	for key in STATE:
 		var owner : Resource = player.get(key)
 		var part : Dictionary = {}
@@ -78,19 +104,108 @@ static func save_game(tree : SceneTree) -> bool:
 		data[key] = part
 	var progress : Dictionary = {}
 	for property in state_properties(player.progress):
-		progress[property] = encode(player.progress.get(property))
+		if property == "flags":
+			progress[property] = encode(flags_of(player.progress, false))
+		elif not WORLD_PROGRESS.has(property):
+			progress[property] = encode(player.progress.get(property))
 	data["progress"] = progress
+	return data
+
+# Everything the world shares, as this player sees it.
+static func world_data(player : Player) -> Dictionary:
+	var progress : Dictionary = {"flags": encode(flags_of(player.progress, true))}
+	for property in WORLD_PROGRESS:
+		progress[property] = encode(player.progress.get(property))
+	var data : Dictionary = {"progress": progress, "unlocked": encode(player.atlas.unlocked)}
+	var cycle : DayNightCycle = DayNightCycle.find(player.get_tree())
 	if cycle:
 		data["clock"] = {"day": cycle.day, "time": cycle.time}
-	data["summary"] = {
-		"saved": Time.get_unix_time_from_system(),
-		"day": cycle.day if cycle else 1,
-		"weekday": cycle.weekday_name(true) if cycle else "",
-		"coins": player.wallet.coins,
-		"place": player.atlas.current.displayName if player.atlas.current else "",
-		"playtime": player.progress.playtime,
-		"chapter": player.progress.chapter_title(),
-		"completion": Collections.completion(player),
+	return data
+
+static func flags_of(progress : Progress, world : bool) -> Dictionary:
+	var out : Dictionary = {}
+	for key in progress.flags:
+		if is_world_flag(key) == world:
+			out[key] = progress.flags[key]
+	return out
+
+static func apply_player(player : Player, data : Dictionary) -> void:
+	for key in STATE:
+		var owner : Resource = player.get(key)
+		var part : Dictionary = data.get(key, {})
+		for property in part:
+			put(owner, property, decode(part[property]))
+	var progress : Dictionary = data.get("progress", {})
+	var known : PackedStringArray = state_properties(player.progress)
+	for property in progress:
+		if property == "flags":
+			replace_flags(player.progress, decode(progress[property]), false)
+		elif known.has(property) and not WORLD_PROGRESS.has(property):
+			put(player.progress, property, decode(progress[property]))
+	player.inventory.setup()
+	for key in STATE:
+		(player.get(key) as Resource).emit_changed()
+	player.progress.emit_changed()
+
+static func apply_world(player : Player, data : Dictionary) -> void:
+	var progress : Dictionary = data.get("progress", {})
+	for property in progress:
+		if property == "flags":
+			replace_flags(player.progress, decode(progress[property]), true)
+		elif WORLD_PROGRESS.has(property):
+			put(player.progress, property, decode(progress[property]))
+	if data.has("unlocked"):
+		put(player.atlas, "unlocked", decode(data["unlocked"]))
+		player.atlas.setup()
+	var cycle : DayNightCycle = DayNightCycle.find(player.get_tree())
+	var clock : Dictionary = data.get("clock", {})
+	if cycle and not clock.is_empty():
+		cycle.set_day(clock.day)
+		cycle.set_time(clock.time)
+	player.atlas.emit_changed()
+	player.progress.emit_changed()
+
+# Swaps the world's (or the player's) flags for these, keeping the others.
+static func replace_flags(progress : Progress, incoming : Dictionary, world : bool) -> void:
+	for key in progress.flags.keys():
+		if is_world_flag(key) == world:
+			progress.flags.erase(key)
+	for key in incoming:
+		if is_world_flag(key) == world:
+			progress.flags[key] = incoming[key]
+
+static func save_game(tree : SceneTree) -> bool:
+	var player : Player = Player.find(tree)
+	var cycle : DayNightCycle = DayNightCycle.find(tree)
+	if not player:
+		return false
+	# A guest's game is kept in the host's save.
+	if Net.is_guest():
+		Net.send_player_data()
+		return true
+	var data : Dictionary = read(slot)
+	var players : Dictionary = {} if outdated(data) else data.get("players", {})
+	var me : String = player.progress.playerName
+	players[me] = player_data(player)
+	for name in Net.guestData:
+		players[name] = Net.guestData[name]
+	data = {
+		"version": VERSION,
+		"owner": me,
+		"world": world_data(player),
+		"players": players,
+		"summary": {
+			"saved": Time.get_unix_time_from_system(),
+			"name": me,
+			"players": players.keys(),
+			"day": cycle.day if cycle else 1,
+			"weekday": cycle.weekday_name(true) if cycle else "",
+			"coins": player.wallet.coins,
+			"place": player.atlas.current.displayName if player.atlas.current else "",
+			"playtime": player.progress.playtime,
+			"chapter": player.progress.chapter_title(),
+			"completion": Collections.completion(player),
+		},
 	}
 	var file : FileAccess = FileAccess.open(path(slot), FileAccess.WRITE)
 	if not file:
@@ -101,27 +216,20 @@ static func save_game(tree : SceneTree) -> bool:
 # Puts a save into the running game. Called once everything is ready.
 static func load_into(tree : SceneTree, data : Dictionary) -> void:
 	var player : Player = Player.find(tree)
-	if not player or data.is_empty():
+	if not player or data.is_empty() or outdated(data):
 		return
-	for key in STATE:
-		var owner : Resource = player.get(key)
-		var part : Dictionary = data.get(key, {})
-		for property in part:
-			put(owner, property, decode(part[property]))
-	var progress : Dictionary = data.get("progress", {})
-	var known : PackedStringArray = state_properties(player.progress)
-	for property in progress:
-		if known.has(property):
-			put(player.progress, property, decode(progress[property]))
-	player.inventory.setup()
-	var cycle : DayNightCycle = DayNightCycle.find(tree)
-	var clock : Dictionary = data.get("clock", {})
-	if cycle and not clock.is_empty():
-		cycle.set_day(clock.day)
-		cycle.set_time(clock.time)
-	for key in STATE:
-		(player.get(key) as Resource).emit_changed()
-	player.progress.emit_changed()
+	var you : String = data.get("you", data.get("owner", ""))
+	var players : Dictionary = data.get("players", {})
+	var mine : Dictionary = players.get(you, {})
+	# The friends who played in this world, kept for when they join again.
+	if not Net.is_guest():
+		Net.guestData = players.duplicate()
+		Net.guestData.erase(you)
+	if not mine.is_empty():
+		apply_player(player, mine)
+	if not you.is_empty():
+		player.progress.playerName = you
+	apply_world(player, data.get("world", {}))
 
 static func state_properties(resource : Resource) -> PackedStringArray:
 	var list : PackedStringArray = PackedStringArray()

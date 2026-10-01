@@ -101,7 +101,7 @@ func turn_in(player : Player) -> bool:
 		if rewardItems[i]:
 			Counter.deliver(player, rewardItems[i], rewardAmounts[i] if i < rewardAmounts.size() else 1)
 	if rewardCoins > 0:
-		player.wallet.add(rewardCoins)
+		player.wallet.add(shared_coins(rewardCoins))
 	for location in unlocks:
 		if location and not player.atlas.is_unlocked(location):
 			player.atlas.unlocked.append(location)
@@ -111,6 +111,11 @@ func turn_in(player : Player) -> bool:
 		player.progress.chapter = chapter
 		player.progress.emit_changed()
 	return true
+
+# With a friend in the world, quests are shared and so are their coins: each
+# player gets this many (see NetSession.on_quest).
+static func shared_coins(coins : int) -> int:
+	return ceili(coins * NetSession.QUEST_COIN_SHARE) if Net.has_company() else coins
 
 # Something happened that quests might count: a catch, a sale, a trip, a
 # craft, a harvest, a gathering. Contests and achievements hear it too.

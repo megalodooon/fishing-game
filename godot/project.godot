@@ -14,6 +14,10 @@ config/name="Fishing Game"
 run/main_scene="res://ui/title/title_screen.tscn"
 config/features=PackedStringArray("4.7", "Mobile")
 
+[autoload]
+
+Net="*res://net/net.gd"
+
 [display]
 
 window/size/viewport_width=192

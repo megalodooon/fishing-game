@@ -70,6 +70,10 @@ var summaryTitle : String = ""
 var summaryLine : String = ""
 var summaryColor : Color = Color.WHITE
 var summaryShare : float = 1.0
+# In bed, waiting for the other player (multiplayer), and whether Esc asked
+# to get up again.
+var waitText : String = ""
+var getUp : bool = false
 #------------------------#
 
 
@@ -140,8 +144,10 @@ func try_sleep() -> bool:
 		notices.post("Not now", "Reel in before going to sleep.", sleepyColor, sleepyIcon)
 	return false
 
-func _input(_event : InputEvent) -> void:
+func _input(event : InputEvent) -> void:
 	if sleeping:
+		if not waitText.is_empty() and event.is_action_pressed("ui_cancel"):
+			getUp = true
 		get_viewport().set_input_as_handled()
 
 func _process(delta : float) -> void:
@@ -156,8 +162,12 @@ func _process(delta : float) -> void:
 	set_overlay(drowsy, maxVignette * lateLevel * lateLevel * (0.82 + 0.18 * breathe), 0.0)
 	set_overlay(lids, 0.0, maxf(eyes, blink))
 	warm = maxi(warm - 1, 0)
-	if summaryAlpha > 0.0:
+	if summaryAlpha > 0.0 or not waitText.is_empty() or summary.has_meta("waited"):
 		summary.queue_redraw()
+	if waitText.is_empty():
+		summary.remove_meta("waited")
+	else:
+		summary.set_meta("waited", true)
 
 func set_overlay(rect : ColorRect, vignette : float, closed : float) -> void:
 	rect.visible = warm > 0 or vignette > 0.002 or closed > 0.002
@@ -233,7 +243,23 @@ func go_to_sleep(passedOut : bool = false) -> void:
 	else:
 		closing.tween_property(self, "eyes", 1.0, closeTime).set_ease(Tween.EASE_IN_OUT)
 	await closing.finished
-	get_tree().paused = true
+	# With a friend, the night only comes once both are in bed.
+	var session : NetSession = NetSession.find(get_tree())
+	if session and session.online():
+		session.lie_down(true)
+		getUp = false
+		while session.online() and not session.nightReady:
+			waitText = "Waiting for %s to go to bed..." % session.waiting_for()
+			if getUp and not passedOut:
+				waitText = ""
+				session.lie_down(false)
+				await open_eyes()
+				return
+			await get_tree().process_frame
+		waitText = ""
+		session.nightReady = false
+	if not Net.has_company():
+		get_tree().paused = true
 	notices.clear()
 	player.wake_reset()
 	var nextDay : bool = cycle.time >= wakeHour
@@ -268,6 +294,10 @@ func go_to_sleep(passedOut : bool = false) -> void:
 	hidden.tween_method(set_summary.bind(true), 1.0, 0.0, 0.35)
 	await hidden.finished
 	get_tree().paused = false
+	await open_eyes()
+	slept.emit(share)
+
+func open_eyes() -> void:
 	var opening : Tween = create_tween().set_trans(Tween.TRANS_SINE)
 	opening.tween_property(self, "eyes", 0.4, openTime * 0.4).set_ease(Tween.EASE_OUT)
 	opening.tween_property(self, "eyes", 0.6, openTime * 0.2).set_ease(Tween.EASE_IN_OUT)
@@ -276,7 +306,6 @@ func go_to_sleep(passedOut : bool = false) -> void:
 	sleeping = false
 	player.asleep = false
 	lids.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	slept.emit(share)
 
 func set_summary(amount : float, alpha : bool) -> void:
 	if alpha:
@@ -286,9 +315,14 @@ func set_summary(amount : float, alpha : bool) -> void:
 	summary.queue_redraw()
 
 func draw_summary() -> void:
+	var font : Font = ui.font
+	if not waitText.is_empty():
+		var y : float = summary.size.y * 0.5
+		summary.draw_string(font, Vector2(0.0, y), waitText, HORIZONTAL_ALIGNMENT_CENTER, summary.size.x, 4, ui.textColor)
+		summary.draw_string(font, Vector2(0.0, y + 8.0), "Esc: get up", HORIZONTAL_ALIGNMENT_CENTER, summary.size.x, 3, ui.dimColor)
+		return
 	if summaryAlpha <= 0.0:
 		return
-	var font : Font = ui.font
 	var middle : Vector2 = (summary.size * 0.5).floor()
 	var fade : Color = Color(1.0, 1.0, 1.0, summaryAlpha)
 	if sleepyIcon:

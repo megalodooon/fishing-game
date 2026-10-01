@@ -40,7 +40,9 @@ func begin() -> void:
 			if firstQuest and not player.progress.quest_started(firstQuest):
 				player.progress.start_quest(firstQuest))
 
-func play(id : String, callback : Callable = Callable()) -> void:
+# Watching along (multiplayer): the other player started this scene, so
+# choices in it change nothing here.
+func play(id : String, callback : Callable = Callable(), _watching : bool = false) -> void:
 	if id.is_empty() or not Dialogue.has_scene(id):
 		if callback.is_valid():
 			callback.call(-1)
@@ -57,11 +59,26 @@ func _process(_delta : float) -> void:
 
 func on_started(quest : Quest) -> void:
 	play(quest.startScene)
+	share(quest.startScene, quest.title)
 
 func on_finished(quest : Quest) -> void:
 	play(quest.endScene, func(_choice : int) -> void: check_chapter())
+	share(quest.endScene, quest.title)
 	if quest.endScene.is_empty() or not Dialogue.has_scene(quest.endScene):
 		check_chapter.call_deferred()
+
+# The other player in a multiplayer game sees story scenes too.
+func share(id : String, title : String) -> void:
+	var session : NetSession = NetSession.find(get_tree())
+	if session and Dialogue.has_scene(id):
+		session.share_scene(id, title)
+
+# A story scene that played in the other player's game while this one was
+# somewhere else, kept to watch later from the quest log.
+func remember(id : String) -> void:
+	if Dialogue.has_scene(id) and not player.progress.missedScenes.has(id):
+		player.progress.missedScenes.append(id)
+		player.progress.emit_changed()
 
 func check_chapter() -> void:
 	if player.progress.chapter > lastChapter:

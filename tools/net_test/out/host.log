@@ -1,0 +1,24 @@
+Godot Engine v4.7.2.stable.steam.ed1daf0bf - https://godotengine.org
+
+HARNESS: step host_test
+HARNESS: ok   hosting started
+ERROR: Couldn't add port mapping.
+   at: add_port_mapping (modules/upnp/upnp_device_miniupnp.cpp:85)
+   GDScript backtrace (most recent call first):
+       [0] open_port (res://net/net.gd:342)
+HARNESS: ok   a guest joined
+HARNESS: ok   the guest's pose arrives
+HARNESS: ok   the guest's world flag arrives
+HARNESS: ok   the guest's own flags stay theirs
+HARNESS: ok   a quest the guest took is shared
+HARNESS: ok   the guest is drawn (same place)
+HARNESS: ok   the night waits for the guest
+HARNESS: ok   the night comes once both are in bed
+HARNESS: ok   the host saves
+HARNESS: ok   the save keeps the guest's character
+HARNESS: ok   the save keeps the host's character
+HARNESS: done, 0 failed
+WARNING: 6 ObjectDB instances were leaked at exit (run with `--verbose` for details).
+   at: cleanup (core/object/object.cpp:2536)
+ERROR: 5 resources still in use at exit (run with --verbose for details).
+   at: clear (core/io/resource.cpp:822)

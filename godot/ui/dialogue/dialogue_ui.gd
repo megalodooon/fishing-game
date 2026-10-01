@@ -142,7 +142,7 @@ func begin() -> void:
 		counter.close()
 	if not shown:
 		pausedBefore = get_tree().paused
-		get_tree().paused = true
+		get_tree().paused = not Net.has_company()
 		if player:
 			player.frozen = true
 	rewrap()
@@ -522,7 +522,7 @@ func _process(delta : float) -> void:
 	if cardAge >= 0.0:
 		if cardAge == 0.0:
 			pausedBefore = get_tree().paused
-			get_tree().paused = true
+			get_tree().paused = not Net.has_company()
 		cardAge += delta
 		if cardAge >= cardTime:
 			cardAge = -1.0

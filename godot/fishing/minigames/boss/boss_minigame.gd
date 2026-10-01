@@ -84,12 +84,6 @@ func draw_arena() -> void:
 	for i in bands:
 		var t : float = float(i) / bands
 		draw_rect(Rect2(area.position.x, area.position.y + area.size.y * t, area.size.x, area.size.y / bands + 0.5), (colors[2] as Color).lerp(colors[3], t))
-	for i in 5:
-		var y : float = area.position.y + 6.0 + i * (area.size.y - 8.0) / 4.0
-		var points : PackedVector2Array = PackedVector2Array()
-		for x in range(int(area.position.x), int(area.end.x) + 1, 4):
-			points.append(Vector2(x, y + sin(x * 0.2 + time * 1.5 + i) * 0.6))
-		draw_polyline(points, Color(1.0, 1.0, 1.0, 0.04), 0.3, true)
 
 # The line runs from the top of the arena down to the lure, like it's hooked.
 func draw_lure() -> void:

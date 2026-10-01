@@ -11,6 +11,8 @@ signal quest_taken(quest : Quest)
 signal quest_handed_in(quest : Quest)
 
 #------------------------#
+# The player's name, picked when the story starts (or when joining a friend).
+@export var playerName : String = ""
 # Anything that only has to be remembered, by name.
 @export var flags : Dictionary = {}
 # Every aquarium tank's donated fish.
@@ -28,6 +30,9 @@ signal quest_handed_in(quest : Quest)
 @export var quests : Dictionary = {}
 # The quest shown on the HUD. Empty picks the first one going.
 @export var tracked : Quest
+# Story scenes that played for the other player while this one was elsewhere
+# (multiplayer), to watch from the quest log.
+@export var missedScenes : Array[String] = []
 # Seconds played, for the save slots.
 @export var playtime : float = 0.0
 # The story chapter reached (see Story).
@@ -97,6 +102,7 @@ func setup() -> void:
 	friends = friends.duplicate(true)
 	bank = bank.duplicate(true)
 	vault = vault.duplicate()
+	missedScenes = missedScenes.duplicate()
 
 func chapter_title() -> String:
 	return Story.chapter_title(chapter)

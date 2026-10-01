@@ -72,7 +72,7 @@ static func donate(player : Player, slot : int) -> bool:
 	return true
 
 static func claimed(progress : Progress) -> int:
-	return int(progress.get_flag("museum/claimed", 0))
+	return int(progress.get_flag("museum_claimed", 0))
 
 static func reached(progress : Progress) -> int:
 	var have : int = points(progress)
