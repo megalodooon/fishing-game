@@ -12,5 +12,5 @@ rarity = ExtResource("e3")
 description = "Salvaged wood. Boats, buildings and pots all need some."
 category = "Material"
 maxStack = 99
-sellPrice = 2
-buyPrice = 6
+sellPrice = 4
+buyPrice = 8

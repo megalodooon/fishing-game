@@ -16,6 +16,9 @@ const DIM : Color = Color(0.58, 0.67, 0.78)
 #------------------------#
 @export var bonus : Item
 #------------------------#
+# What any shop sells for coins: never asked for, or buying to deliver
+# would turn a profit.
+static var shopGoods : Dictionary = {}
 
 
 func theme_name() -> String:
@@ -33,6 +36,15 @@ func subtitle(player : Player) -> String:
 	return "Today's orders: %d/%d delivered" % [done, COUNT]
 
 # Today's orders as [thing, amount], the same all day.
+static func sold_in_shops() -> Dictionary:
+	if shopGoods.is_empty():
+		shopGoods[""] = true
+		for stock in ShopStock.all():
+			for offer in stock.offers:
+				if offer and offer.item and not offer.currency:
+					shopGoods[offer.item.resource_path] = true
+	return shopGoods
+
 func orders(player : Player) -> Array:
 	var random : RandomNumberGenerator = RandomNumberGenerator.new()
 	random.seed = hash([today(), "orders"])
@@ -47,7 +59,7 @@ func orders(player : Player) -> Array:
 	fish.sort_custom(func(a : FishData, b : FishData) -> bool: return a.resource_path < b.resource_path)
 	var goods : Array[Item] = []
 	for thing in player.progress.collected:
-		if thing is Item and (thing as Item).sellPrice > 0 and not thing is Tackle and not thing is TreasureChest and (thing as Item).stacks():
+		if thing is Item and (thing as Item).sellPrice > 0 and not thing is Tackle and not thing is TreasureChest and (thing as Item).stacks() and not sold_in_shops().has(thing.resource_path):
 			goods.append(thing)
 	goods.sort_custom(func(a : Item, b : Item) -> bool: return a.resource_path < b.resource_path)
 	var list : Array = []

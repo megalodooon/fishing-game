@@ -15,5 +15,5 @@ icon = ExtResource("e2")
 coins = 4000
 items = Array[ExtResource("e5")]([ExtResource("e3"), ExtResource("e4")])
 amounts = Array[int]([25, 10])
-unlockText = "A market open every day. +2% sell price"
+unlockText = "A market open every day. +2% fish prices"
 requires = Array[ExtResource("e1")]([ExtResource("e6")])

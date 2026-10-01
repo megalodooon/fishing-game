@@ -12,4 +12,4 @@ description = "Digs the stream banks for red clay."
 icon = ExtResource("2_p42u6")
 product = ExtResource("3_q0h65")
 enchanted = ExtResource("1_aldg5")
-hours = 0.8
+hours = 1.0

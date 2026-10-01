@@ -18,4 +18,4 @@ displayName = "Chili Seeds"
 icon = ExtResource("2_icon")
 rarity = ExtResource("3_rarity")
 description = "Grow hot peppers."
-buyPrice = 25
+buyPrice = 15

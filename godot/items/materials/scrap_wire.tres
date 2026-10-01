@@ -12,4 +12,4 @@ icon = ExtResource("1_hoo0h")
 rarity = ExtResource("2_kyumx")
 description = "Copper wire off the rig. Endless uses."
 maxStack = 99
-sellPrice = 3
+sellPrice = 6

@@ -18,4 +18,4 @@ description = "Needs patience. Glows when it's ready."
 hint = "Hold it and click the farm soil"
 maxStack = 99
 sellPrice = 6
-buyPrice = 35
+buyPrice = 12

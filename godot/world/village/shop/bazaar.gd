@@ -65,8 +65,8 @@ func drift(item : Item) -> float:
 func buy_price(item : Item) -> int:
 	return maxi(roundi(item.shop_price() * drift(item)), 1)
 
-func sell_price(item : Item, player : Player) -> int:
-	return maxi(floori(item.sellPrice * drift(item) * SELL_SHARE * (1.0 + player.stat(&"sellBonus") * 0.01)), 1)
+func sell_price(item : Item, _player : Player) -> int:
+	return maxi(floori(item.sellPrice * drift(item) * SELL_SHARE), 1)
 
 func batch(item : Item) -> int:
 	return BULK if buy_price(item) < BULK_UNDER else 1

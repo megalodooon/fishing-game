@@ -4,14 +4,16 @@ class_name Crew
 # The crew's work, worked out from the clock whenever someone looks: each
 # member made one item per interval since they were last counted, up to what
 # they can hold. Slots: two to start, one more for every three new crew tiers
-# reached, and more from the Angler Level.
+# reached, and more from the Angler Level, up to MAX_SLOTS so the crew never
+# earns more than fishing does.
 
 const BASE_SLOTS : int = 2
 const UNIQUE_PER_SLOT : int = 3
+const MAX_SLOTS : int = 10
 
 
 static func slots(player : Player) -> int:
-	return BASE_SLOTS + floori(unique_tiers(player) / float(UNIQUE_PER_SLOT)) + AnglerLevel.crew_bonus(player)
+	return mini(BASE_SLOTS + floori(unique_tiers(player) / float(UNIQUE_PER_SLOT)) + AnglerLevel.crew_bonus(player), MAX_SLOTS)
 
 static func unique_tiers(player : Player) -> int:
 	var count : int = 0

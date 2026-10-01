@@ -12,4 +12,4 @@ description = "Works the cooled lava by the volcano."
 icon = ExtResource("2_nswpg")
 product = ExtResource("3_eua1g")
 enchanted = ExtResource("1_lxcdy")
-hours = 2.5
+hours = 12.0

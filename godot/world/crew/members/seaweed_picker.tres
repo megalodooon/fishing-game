@@ -12,4 +12,4 @@ description = "Pulls seaweed off the rocks at low tide."
 icon = ExtResource("2_1mbwh")
 product = ExtResource("3_s873v")
 enchanted = ExtResource("1_dx5kv")
-hours = 0.5
+hours = 0.7

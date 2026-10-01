@@ -15,7 +15,7 @@ const NODES : Array = [
 	["swift_line", "Swift Line", &"biteSpeed", 3.0, 5, 1, ["heart"], Vector2i(1, 1), "Fish bite sooner."],
 	["deep_luck", "Deep Luck", &"luck", 2.0, 5, 1, ["heart"], Vector2i(2, 1), "Rarer fish, more often."],
 	["forager", "Forager", &"forageBonus", 10.0, 5, 1, ["heart"], Vector2i(4, 1), "More from every forage spot."],
-	["haggler", "Haggler", &"sellBonus", 1.0, 5, 1, ["heart"], Vector2i(5, 1), "Better prices when you sell."],
+	["haggler", "Haggler", &"sellBonus", 1.0, 5, 1, ["heart"], Vector2i(5, 1), "Fish sell for more."],
 	["double_hook", "Double Hook", &"doubleCatch", 1.0, 5, 1, ["swift_line"], Vector2i(0, 2), "Sometimes two fish at once."],
 	["monster_lure", "Monster Lure", &"seaCreature", 0.5, 5, 1, ["swift_line", "deep_luck"], Vector2i(1, 2), "Sea creatures take the bait more."],
 	["treasure_sense", "Treasure Sense", &"treasure", 0.3, 5, 1, ["deep_luck"], Vector2i(2, 2), "Treasure comes up more."],

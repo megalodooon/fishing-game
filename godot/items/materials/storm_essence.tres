@@ -12,4 +12,4 @@ rarity = ExtResource("e3")
 description = "A bottled spark of the storm."
 category = "Creature Drop"
 maxStack = 99
-sellPrice = 60
+sellPrice = 120

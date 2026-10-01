@@ -12,4 +12,4 @@ description = "Chips frost crystals from the glaciers."
 icon = ExtResource("2_thvw6")
 product = ExtResource("3_dyx7y")
 enchanted = ExtResource("1_ohoxs")
-hours = 2.0
+hours = 10.8

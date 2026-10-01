@@ -12,4 +12,4 @@ description = "Doesn't mind wet boots."
 icon = ExtResource("2_clusr")
 product = ExtResource("3_jpfn4")
 enchanted = ExtResource("1_75cu3")
-hours = 0.8
+hours = 1.4

@@ -12,4 +12,4 @@ description = "Dives the shallows for shells."
 icon = ExtResource("2_f42pj")
 product = ExtResource("3_30jxb")
 enchanted = ExtResource("1_pooxw")
-hours = 0.7
+hours = 2.1

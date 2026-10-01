@@ -30,7 +30,7 @@ func opened(player : Player) -> void:
 	Crew.work(player)
 
 func subtitle(player : Player) -> String:
-	return "%d/%d slots. New tiers open more." % [player.progress.crew.size(), Crew.slots(player)]
+	return "%d/%d slots.%s" % [player.progress.crew.size(), Crew.slots(player), "" if Crew.slots(player) >= Crew.MAX_SLOTS else " New tiers open more."]
 
 func contracts(player : Player) -> Array[int]:
 	var list : Array[int] = []
@@ -79,7 +79,7 @@ func info(player : Player, value : Variant) -> Dictionary:
 	if not value is int:
 		return {}
 	if value < 0:
-		return {"title": "Empty slot", "text": "Craft a crew contract in the recipe book (R), then hire them on the Hire tab.", "lines": [["Slots", "%d/%d" % [player.progress.crew.size(), Crew.slots(player)]], ["New tiers reached", "%d" % Crew.unique_tiers(player)], ["Next slot at", "%d tiers" % ((floori(Crew.unique_tiers(player) / float(Crew.UNIQUE_PER_SLOT)) + 1) * Crew.UNIQUE_PER_SLOT)]]}
+		return {"title": "Empty slot", "text": "Craft a crew contract in the recipe book (R), then hire them on the Hire tab.", "lines": [["Slots", "%d/%d" % [player.progress.crew.size(), Crew.slots(player)]], ["New tiers reached", "%d" % Crew.unique_tiers(player)], ["Next slot at", "All open" if Crew.slots(player) >= Crew.MAX_SLOTS else "%d tiers" % ((floori(Crew.unique_tiers(player) / float(Crew.UNIQUE_PER_SLOT)) + 1) * Crew.UNIQUE_PER_SLOT)]]}
 	if tab == Tab.HIRE:
 		var contract : CrewContract = player.inventory.get_item(value) as CrewContract
 		if not contract:

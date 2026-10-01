@@ -7,6 +7,7 @@
 
 [resource]
 script = ExtResource("4_m4ce0")
+hours = 4.1
 displayName = "Scrap Scavenger"
 description = "Knows every wreck on the coast."
 icon = ExtResource("2_x8ydy")

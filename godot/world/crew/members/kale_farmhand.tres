@@ -7,6 +7,7 @@
 
 [resource]
 script = ExtResource("4_17xef")
+hours = 3.4
 displayName = "Kale Farmhand"
 description = "Really, really likes kale."
 icon = ExtResource("2_cokgm")

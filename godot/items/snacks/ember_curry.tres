@@ -16,4 +16,4 @@ buffAmount = 0.8
 buffHours = 6.0
 hint = "Click while holding it to eat"
 maxStack = 20
-sellPrice = 45
+sellPrice = 34

@@ -12,4 +12,4 @@ description = "Runs toward the lightning."
 icon = ExtResource("2_b5let")
 product = ExtResource("3_andsx")
 enchanted = ExtResource("1_7x4ut")
-hours = 4.0
+hours = 28.8

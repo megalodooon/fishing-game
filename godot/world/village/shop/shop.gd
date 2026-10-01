@@ -120,7 +120,7 @@ func will_buy(item : Item, player : Player) -> bool:
 	return (item is Fish and buysFish) or (not item is Fish and buysGoods)
 
 func offer_for(item : Item, player : Player = null) -> int:
-	var bonus : float = 1.0 + (player.stat(&"sellBonus") * 0.01 if player else 0.0)
+	var bonus : float = 1.0 + (player.stat(&"sellBonus") * 0.01 if player and item is Fish else 0.0)
 	return maxi(roundi(item.price() * buyRate * bonus * demand(item)), 1)
 
 func demand(item : Item) -> float:

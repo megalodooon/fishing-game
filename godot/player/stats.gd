@@ -18,7 +18,7 @@ const INFO : Dictionary = {
 	&"doubleCatch": ["Double catch", "%"],
 	&"weight": ["Heavier fish", "%"],
 	&"variantLuck": ["Shiny luck", "%"],
-	&"sellBonus": ["Sell price", "%"],
+	&"sellBonus": ["Fish sell price", "%"],
 	&"xpBonus": ["Skill XP", "%"],
 	&"control": ["Catch control", "%"],
 	&"damage": ["Fight damage", "%"],

@@ -12,4 +12,4 @@ description = "Spins kelp into fiber by the fire."
 icon = ExtResource("2_q058p")
 product = ExtResource("3_0mcys")
 enchanted = ExtResource("1_lx8bu")
-hours = 0.8
+hours = 1.7

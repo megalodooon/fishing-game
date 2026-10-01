@@ -12,4 +12,4 @@ rarity = ExtResource("e3")
 description = "Never melts, even in your pocket."
 category = "Material"
 maxStack = 99
-sellPrice = 23
+sellPrice = 45

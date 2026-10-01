@@ -15,5 +15,5 @@ icon = ExtResource("e2")
 coins = 20000
 items = Array[ExtResource("e5")]([ExtResource("e3"), ExtResource("e4")])
 amounts = Array[int]([25, 10])
-unlockText = "The village's pride. +3% luck, +3% sell price"
+unlockText = "The village's pride. +3% luck, +3% fish prices"
 requires = Array[ExtResource("e1")]([ExtResource("e6")])

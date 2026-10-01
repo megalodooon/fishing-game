@@ -12,4 +12,4 @@ description = "Combs the beach for driftwood."
 icon = ExtResource("2_0lopy")
 product = ExtResource("3_fpw0w")
 enchanted = ExtResource("1_vku1u")
-hours = 0.5
+hours = 1.4

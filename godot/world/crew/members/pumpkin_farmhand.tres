@@ -12,4 +12,4 @@ description = "Grows pumpkins the size of boats."
 icon = ExtResource("2_p80hp")
 product = ExtResource("3_lm3pw")
 enchanted = ExtResource("1_ckmw6")
-hours = 2.0
+hours = 14.4

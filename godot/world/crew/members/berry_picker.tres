@@ -12,4 +12,4 @@ description = "Eats about half of what they pick."
 icon = ExtResource("2_l65jw")
 product = ExtResource("3_hyvur")
 enchanted = ExtResource("1_5rdyr")
-hours = 0.7
+hours = 1.4

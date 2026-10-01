@@ -12,4 +12,4 @@ icon = ExtResource("1_b4vxx")
 rarity = ExtResource("2_8r88j")
 description = "Coral from far below the light. It glows blue."
 maxStack = 99
-sellPrice = 30
+sellPrice = 60

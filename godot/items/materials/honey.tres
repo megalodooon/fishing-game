@@ -12,4 +12,4 @@ rarity = ExtResource("e3")
 description = "From Tilly's hives on Meadow Isle."
 category = "Crop"
 maxStack = 99
-sellPrice = 30
+sellPrice = 22
