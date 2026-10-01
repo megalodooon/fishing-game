@@ -11,17 +11,19 @@ class_name Schedules
 
 const WALK_SPEED : float = 16.0
 const PEOPLE : Dictionary = {
-	# Bramblewick (village.tscn): Pier, Square, Home, Lane, Harbor.
-	"pip": [[0.0, "Lane", Vector2(40, 92), "inside"], [6.5, "Pier", Vector2(104, 56), ""], [9.0, "Square", Vector2(112, 80), ""], [12.0, "Lane", Vector2(44, 96), ""], [13.5, "Pier", Vector2(119, 68), ""], [18.0, "Square", Vector2(160, 94), ""], [21.0, "Lane", Vector2(40, 92), "inside"]],
-	"gus": [[0.0, "Square", Vector2(32, 50), "inside"], [7.0, "Square", Vector2(50, 60), ""], [18.0, "Pier", Vector2(134, 82), ""], [20.0, "Square", Vector2(32, 50), "inside"]],
-	"nora": [[0.0, "Square", Vector2(96, 50), "inside"], [8.0, "Square", Vector2(122, 58), ""], [12.0, "Square", Vector2(170, 88), "sun"], [17.0, "Pier", Vector2(72, 94), ""], [19.0, "Square", Vector2(96, 50), "inside"]],
-	"vera": [[0.0, "Pier", Vector2(24, 60), "inside"], [10.0, "Square", Vector2(160, 72), ""], [15.0, "Harbor", Vector2(120, 70), ""], [19.0, "Pier", Vector2(24, 60), "inside"]],
-	"rex": [[0.0, "Lane", Vector2(28, 50), "inside"], [6.0, "Pier", Vector2(108, 96), ""], [12.0, "Lane", Vector2(30, 58), ""], [15.0, "Pier", Vector2(150, 96), ""], [20.0, "Lane", Vector2(28, 50), "inside"]],
-	"hale": [[0.0, "Home", Vector2(163, 68), "inside"], [9.0, "Home", Vector2(140, 82), ""], [13.0, "Harbor", Vector2(60, 74), ""], [16.0, "Home", Vector2(116, 96), ""], [20.0, "Home", Vector2(163, 68), "inside"]],
-	"marina": [[0.0, "Lane", Vector2(114, 46), "inside"], [7.0, "Lane", Vector2(140, 56), ""], [18.0, "Lane", Vector2(58, 94), ""], [21.0, "Lane", Vector2(114, 46), "inside"]],
-	"bo": [[0.0, "Lane", Vector2(68, 50), "inside"], [8.0, "Lane", Vector2(84, 60), ""], [11.0, "Square", Vector2(176, 90), ""], [14.0, "Pier", Vector2(62, 84), ""], [17.0, "Home", Vector2(40, 80), ""], [19.0, "Lane", Vector2(68, 50), "inside"]],
-	"barnaby": [[0.0, "Harbor", Vector2(40, 54), "inside"], [8.0, "Harbor", Vector2(54, 60), ""], [17.0, "Square", Vector2(140, 84), "week"], [17.0, "Pier", Vector2(128, 50), "sun"], [20.0, "Harbor", Vector2(40, 54), "inside"]],
-	"odette": [[0.0, "Harbor", Vector2(104, 52), "inside"], [6.0, "Harbor", Vector2(140, 90), ""], [10.0, "Harbor", Vector2(122, 60), ""], [17.0, "Pier", Vector2(90, 100), ""], [21.0, "Harbor", Vector2(104, 52), "inside"]],
+	# Bramblewick (village.tscn): no room means a point on the whole island;
+	# MarketHall, Bank, HarborOffice, Museum and Tavern are insides.
+	"pip": [[0.0, "", Vector2(250, 112), "inside"], [6.5, "", Vector2(392, 368), ""], [8.0, "HarborOffice", Vector2(96, 42), ""], [12.0, "", Vector2(420, 234), ""], [13.0, "HarborOffice", Vector2(96, 42), ""], [18.0, "", Vector2(392, 372), ""], [21.0, "", Vector2(250, 112), "inside"]],
+	"gus": [[0.0, "", Vector2(318, 112), "inside"], [7.0, "MarketHall", Vector2(62, 40), ""], [18.0, "", Vector2(360, 238), ""], [20.5, "", Vector2(318, 112), "inside"]],
+	"nora": [[0.0, "", Vector2(704, 162), "inside"], [8.0, "Museum", Vector2(136, 42), ""], [17.0, "", Vector2(310, 200), ""], [19.0, "", Vector2(704, 162), "inside"]],
+	"vera": [[0.0, "", Vector2(704, 162), "inside"], [10.0, "", Vector2(440, 230), ""], [15.0, "", Vector2(560, 282), ""], [19.0, "", Vector2(704, 162), "inside"]],
+	"rex": [[0.0, "", Vector2(250, 112), "inside"], [6.0, "", Vector2(414, 362), ""], [12.0, "", Vector2(240, 282), ""], [15.0, "", Vector2(404, 376), ""], [20.0, "", Vector2(250, 112), "inside"]],
+	"hale": [[0.0, "", Vector2(70, 212), "inside"], [9.0, "", Vector2(276, 134), ""], [13.0, "", Vector2(560, 282), ""], [16.0, "", Vector2(472, 206), ""], [20.0, "", Vector2(70, 212), "inside"]],
+	"marina": [[0.0, "", Vector2(318, 112), "inside"], [7.0, "", Vector2(626, 332), ""], [18.0, "", Vector2(332, 240), ""], [21.0, "", Vector2(318, 112), "inside"]],
+	"bo": [[0.0, "", Vector2(250, 112), "inside"], [8.0, "", Vector2(150, 274), ""], [11.0, "", Vector2(420, 200), ""], [14.0, "", Vector2(384, 376), ""], [17.0, "", Vector2(160, 142), ""], [19.0, "", Vector2(250, 112), "inside"]],
+	"barnaby": [[0.0, "", Vector2(70, 212), "inside"], [8.0, "Bank", Vector2(96, 40), ""], [17.0, "", Vector2(432, 240), "week"], [17.0, "", Vector2(392, 372), "sun"], [20.0, "", Vector2(70, 212), "inside"]],
+	"odette": [[0.0, "", Vector2(704, 162), "inside"], [6.0, "", Vector2(664, 278), ""], [10.0, "", Vector2(640, 264), ""], [17.0, "", Vector2(388, 380), ""], [21.0, "", Vector2(704, 162), "inside"]],
+	"wren": [[0.0, "Tavern", Vector2(96, 44), ""]],
 	# The islands.
 	"tilly": [[0.0, "Fields", Vector2(72, 104), "inside"], [6.0, "Fields", Vector2(60, 60), ""], [11.0, "Landing", Vector2(119, 62), ""], [14.0, "Orchard", Vector2(96, 76), ""], [18.0, "Landing", Vector2(100, 66), ""], [21.0, "Fields", Vector2(72, 104), "inside"]],
 	"silas": [[0.0, "Landing", Vector2(116, 40), "inside"], [5.0, "Lagoon", Vector2(34, 80), ""], [10.0, "Landing", Vector2(116, 48), ""], [16.0, "Lagoon", Vector2(44, 72), ""], [21.0, "Landing", Vector2(116, 40), "inside"]],

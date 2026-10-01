@@ -1,0 +1,174 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://world/island/island.gd" id="1_m7epb"]
+[ext_resource type="Script" path="res://world/island/island_room.gd" id="2_x3jul"]
+[ext_resource type="Texture2D" path="res://world/village/insides/wood.png" id="3_4sfss"]
+[ext_resource type="Texture2D" path="res://world/village/insides/wood_floor.png" id="4_6ogqc"]
+[ext_resource type="Script" path="res://world/village/exit.gd" id="5_04t7v"]
+[ext_resource type="Script" path="res://world/village/bed.gd" id="6_nhpdx"]
+[ext_resource type="Script" path="res://world/village/building.gd" id="7_xig3l"]
+[ext_resource type="Texture2D" path="res://world/islands/props/workbench.png" id="8_lqf73"]
+[ext_resource type="Script" path="res://world/village/bait_crafter.gd" id="9_txtvy"]
+[ext_resource type="Script" path="res://fishing/bait/bait_recipe.gd" id="10_1qse7"]
+[ext_resource type="Resource" path="res://items/recipes/abyss_hook.tres" id="11_acstw"]
+[ext_resource type="Resource" path="res://items/recipes/bait_bucket.tres" id="12_qq7pp"]
+[ext_resource type="Resource" path="res://items/recipes/bone_hook.tres" id="13_katwy"]
+[ext_resource type="Resource" path="res://items/recipes/coral_rod.tres" id="14_7aym7"]
+[ext_resource type="Resource" path="res://items/recipes/crab_claw_charm.tres" id="15_ph64r"]
+[ext_resource type="Resource" path="res://items/recipes/deep_crab_pot.tres" id="16_yxml1"]
+[ext_resource type="Resource" path="res://items/recipes/driftwood_bobber.tres" id="17_m4kea"]
+[ext_resource type="Resource" path="res://items/recipes/driftwood_rod.tres" id="18_vm3vp"]
+[ext_resource type="Resource" path="res://items/recipes/ember_idol.tres" id="19_i6h3v"]
+[ext_resource type="Resource" path="res://items/recipes/frost_amulet.tres" id="20_fvm1t"]
+[ext_resource type="Resource" path="res://items/recipes/frost_bobber.tres" id="21_stb3s"]
+[ext_resource type="Resource" path="res://items/recipes/frost_line.tres" id="22_exqor"]
+[ext_resource type="Resource" path="res://items/recipes/frostbite_rod.tres" id="23_ir74b"]
+[ext_resource type="Resource" path="res://items/recipes/glow_bobber.tres" id="24_sxqjv"]
+[ext_resource type="Resource" path="res://items/recipes/heavy_sinker.tres" id="25_wynuo"]
+[ext_resource type="Resource" path="res://items/recipes/iron_crab_pot.tres" id="26_0tj2g"]
+[ext_resource type="Resource" path="res://items/recipes/kelp_line.tres" id="27_vsua5"]
+[ext_resource type="Resource" path="res://items/recipes/kraken_eye.tres" id="28_4ryl8"]
+[ext_resource type="Resource" path="res://items/recipes/lucky_clover.tres" id="29_ej5jn"]
+[ext_resource type="Resource" path="res://items/recipes/reef_hook.tres" id="30_rh47p"]
+[ext_resource type="Resource" path="res://items/recipes/sea_glass_charm.tres" id="31_w4eh3"]
+[ext_resource type="Resource" path="res://items/recipes/shark_tooth_necklace.tres" id="32_3b41b"]
+[ext_resource type="Resource" path="res://items/recipes/storm_line.tres" id="33_4wrdn"]
+[ext_resource type="Resource" path="res://items/recipes/storm_totem.tres" id="34_77r2h"]
+[ext_resource type="Resource" path="res://items/recipes/tempest_bobber.tres" id="35_vlb7w"]
+[ext_resource type="Resource" path="res://items/recipes/tempest_rod.tres" id="36_7ws56"]
+[ext_resource type="Resource" path="res://items/recipes/tide_compass.tres" id="37_dd8mq"]
+[ext_resource type="Resource" path="res://items/recipes/twin_hook_charm.tres" id="38_qon0e"]
+[ext_resource type="Resource" path="res://items/recipes/weather_vane.tres" id="39_q1kus"]
+[ext_resource type="Resource" path="res://items/recipes/wooden_crab_pot.tres" id="40_aje5s"]
+[ext_resource type="Script" path="res://fishing/reforges/reforge_anvil.gd" id="41_wd3j0"]
+[ext_resource type="Texture2D" path="res://items/tools/icons/field_anvil.png" id="42_pxv7e"]
+[ext_resource type="Texture2D" path="res://world/village/insides/bed.png" id="43_jwl7y"]
+[ext_resource type="Texture2D" path="res://world/village/insides/rug.png" id="44_elut2"]
+[ext_resource type="Texture2D" path="res://world/village/insides/table.png" id="45_gxh23"]
+[ext_resource type="Texture2D" path="res://world/village/insides/barrel.png" id="46_7e2bm"]
+
+[sub_resource type="RectangleShape2D" id="v_s9"]
+size = Vector2(18, 4)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6raey"]
+size = Vector2(18, 10)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1tbty"]
+size = Vector2(20, 10)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_34xwc"]
+size = Vector2(10, 10)
+
+[node name="House" type="Node2D" unique_id=213963230]
+script = ExtResource("1_m7epb")
+arrival = Vector2(96, 92)
+interior = true
+
+[node name="House" type="Node2D" parent="." unique_id=2018840158 node_paths=PackedStringArray("land")]
+y_sort_enabled = true
+script = ExtResource("2_x3jul")
+land = [NodePath("Floor")]
+
+[node name="Back" type="Sprite2D" parent="House" unique_id=241885429]
+z_index = -2
+texture = ExtResource("3_4sfss")
+centered = false
+
+[node name="Floor" type="Sprite2D" parent="House" unique_id=850608828]
+modulate = Color(1, 1, 1, 0)
+z_index = -2
+texture = ExtResource("4_6ogqc")
+centered = false
+
+[node name="Exit" type="Node2D" parent="House" unique_id=1252309521]
+position = Vector2(96, 103)
+script = ExtResource("5_04t7v")
+reach = 10.0
+promptOffset = Vector2(0, -6)
+
+[node name="Bed" type="Node2D" parent="House" unique_id=1583136254]
+position = Vector2(56, 48)
+script = ExtResource("6_nhpdx")
+prompt = "Sleep"
+reach = 12.0
+promptOffset = Vector2(0, -16)
+
+[node name="Workbench" type="Node2D" parent="House" unique_id=1587567810]
+position = Vector2(140, 48)
+script = ExtResource("7_xig3l")
+displayName = "Tinker's Workbench"
+unlockFlag = "project/workbench"
+
+[node name="Art" type="Sprite2D" parent="House/Workbench" unique_id=60842647]
+texture = ExtResource("8_lqf73")
+centered = false
+offset = Vector2(-10, -14)
+
+[node name="Body" type="StaticBody2D" parent="House/Workbench" unique_id=1346497150]
+
+[node name="Shape" type="CollisionShape2D" parent="House/Workbench/Body" unique_id=733411924]
+position = Vector2(0, -3)
+shape = SubResource("v_s9")
+
+[node name="Bench" type="Node2D" parent="House/Workbench" unique_id=1673979940]
+position = Vector2(0, 2)
+script = ExtResource("9_txtvy")
+recipes = Array[ExtResource("10_1qse7")]([ExtResource("11_acstw"), ExtResource("12_qq7pp"), ExtResource("13_katwy"), ExtResource("14_7aym7"), ExtResource("15_ph64r"), ExtResource("16_yxml1"), ExtResource("17_m4kea"), ExtResource("18_vm3vp"), ExtResource("19_i6h3v"), ExtResource("20_fvm1t"), ExtResource("21_stb3s"), ExtResource("22_exqor"), ExtResource("23_ir74b"), ExtResource("24_sxqjv"), ExtResource("25_wynuo"), ExtResource("26_0tj2g"), ExtResource("27_vsua5"), ExtResource("28_4ryl8"), ExtResource("29_ej5jn"), ExtResource("30_rh47p"), ExtResource("31_w4eh3"), ExtResource("32_3b41b"), ExtResource("33_4wrdn"), ExtResource("34_77r2h"), ExtResource("35_vlb7w"), ExtResource("36_7ws56"), ExtResource("37_dd8mq"), ExtResource("38_qon0e"), ExtResource("39_q1kus"), ExtResource("40_aje5s")])
+note = "Pots, charms, rods and tackle. Recipes unlock with collections."
+title = "Tinker's Workbench"
+prompt = "Workbench"
+reach = 12.0
+
+[node name="Anvil" type="Node2D" parent="House/Workbench" unique_id=1042879713]
+position = Vector2(18, 4)
+script = ExtResource("41_wd3j0")
+title = "Reforge Anvil"
+prompt = "Anvil"
+reach = 10.0
+
+[node name="Art" type="Sprite2D" parent="House/Workbench/Anvil" unique_id=1232268076]
+position = Vector2(0, -6)
+texture = ExtResource("42_pxv7e")
+
+[node name="BedArt" type="Sprite2D" parent="House" unique_id=1377253622]
+position = Vector2(56, 50)
+texture = ExtResource("43_jwl7y")
+centered = false
+offset = Vector2(-9, -26)
+
+[node name="Body" type="StaticBody2D" parent="House/BedArt" unique_id=1162282215]
+
+[node name="Shape" type="CollisionShape2D" parent="House/BedArt/Body" unique_id=1851906300]
+position = Vector2(0, -5)
+shape = SubResource("RectangleShape2D_6raey")
+
+[node name="Rug" type="Sprite2D" parent="House" unique_id=973665801]
+z_index = -1
+position = Vector2(92, 84)
+texture = ExtResource("44_elut2")
+centered = false
+offset = Vector2(-18, -20)
+
+[node name="Table" type="Sprite2D" parent="House" unique_id=1679935358]
+position = Vector2(112, 72)
+texture = ExtResource("45_gxh23")
+centered = false
+offset = Vector2(-10, -12)
+
+[node name="Body" type="StaticBody2D" parent="House/Table" unique_id=1160383631]
+
+[node name="Shape" type="CollisionShape2D" parent="House/Table/Body" unique_id=2079833298]
+position = Vector2(0, -5)
+shape = SubResource("RectangleShape2D_1tbty")
+
+[node name="Barrel" type="Sprite2D" parent="House" unique_id=159831547]
+position = Vector2(30, 92)
+texture = ExtResource("46_7e2bm")
+centered = false
+offset = Vector2(-5, -13)
+
+[node name="Body" type="StaticBody2D" parent="House/Barrel" unique_id=1100239815]
+
+[node name="Shape" type="CollisionShape2D" parent="House/Barrel/Body" unique_id=1213531621]
+position = Vector2(0, -5)
+shape = SubResource("RectangleShape2D_34xwc")

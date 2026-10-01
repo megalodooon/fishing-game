@@ -1,0 +1,126 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://world/island/island.gd" id="1_h2212"]
+[ext_resource type="Script" path="res://world/island/island_room.gd" id="2_pg38g"]
+[ext_resource type="Texture2D" path="res://world/village/insides/wood.png" id="3_ga8id"]
+[ext_resource type="Texture2D" path="res://world/village/insides/wood_floor.png" id="4_bmk1i"]
+[ext_resource type="Script" path="res://world/village/exit.gd" id="5_ax3af"]
+[ext_resource type="Script" path="res://world/npc/npc.gd" id="6_7wmx6"]
+[ext_resource type="Script" path="res://world/quests/quest.gd" id="7_s1xce"]
+[ext_resource type="Resource" path="res://world/quests/story/q_rod.tres" id="8_hxeyl"]
+[ext_resource type="Resource" path="res://world/quests/story/q_debt.tres" id="9_1vhyb"]
+[ext_resource type="Resource" path="res://world/quests/story/q_hermit.tres" id="10_s01b2"]
+[ext_resource type="Resource" path="res://world/quests/story/q_workbench.tres" id="11_spshw"]
+[ext_resource type="Resource" path="res://world/quests/story/q_skill15.tres" id="12_f03vs"]
+[ext_resource type="Resource" path="res://world/quests/story/q_expose.tres" id="13_ol088"]
+[ext_resource type="Resource" path="res://world/quests/story/q_festival.tres" id="14_jign1"]
+[ext_resource type="Resource" path="res://world/quests/side/p_lamps.tres" id="15_s5jct"]
+[ext_resource type="Resource" path="res://world/quests/side/p_market.tres" id="16_wg6hk"]
+[ext_resource type="Resource" path="res://world/quests/side/p_fountain.tres" id="17_m6qwe"]
+[ext_resource type="Resource" path="res://world/quests/side/x_festival.tres" id="18_bfbhj"]
+[ext_resource type="Resource" path="res://world/quests/story/q_forage.tres" id="19_v6voj"]
+[ext_resource type="Resource" path="res://world/quests/story/q_friends.tres" id="20_atxde"]
+[ext_resource type="Resource" path="res://world/quests/story/q_bank.tres" id="21_yw4q0"]
+[ext_resource type="Resource" path="res://world/quests/side/x_friends.tres" id="22_qsopo"]
+[ext_resource type="Resource" path="res://world/quests/side/x_angler_20.tres" id="23_4kr3g"]
+[ext_resource type="Resource" path="res://world/quests/side/f_pip_1.tres" id="24_18m1h"]
+[ext_resource type="Resource" path="res://world/quests/side/f_pip_2.tres" id="25_2lprh"]
+[ext_resource type="Resource" path="res://world/quests/story/q_election.tres" id="26_wadin"]
+[ext_resource type="Texture2D" path="res://world/npcs/pip.png" id="27_0vb4b"]
+[ext_resource type="Texture2D" path="res://world/village/insides/counter.png" id="28_b24sx"]
+[ext_resource type="Texture2D" path="res://world/village/insides/chart.png" id="29_g4ro2"]
+[ext_resource type="Texture2D" path="res://world/village/insides/shelf.png" id="30_upso6"]
+[ext_resource type="Texture2D" path="res://world/village/insides/barrel.png" id="31_vxv83"]
+
+[sub_resource type="RectangleShape2D" id="v_s1"]
+size = Vector2(6, 3)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8nova"]
+size = Vector2(46, 10)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hrc1h"]
+size = Vector2(10, 10)
+
+[node name="HarborOffice" type="Node2D" unique_id=1741248739]
+script = ExtResource("1_h2212")
+arrival = Vector2(96, 92)
+interior = true
+
+[node name="HarborOffice" type="Node2D" parent="." unique_id=723184998 node_paths=PackedStringArray("land")]
+y_sort_enabled = true
+script = ExtResource("2_pg38g")
+land = [NodePath("Floor")]
+
+[node name="Back" type="Sprite2D" parent="HarborOffice" unique_id=2137745345]
+z_index = -2
+texture = ExtResource("3_ga8id")
+centered = false
+
+[node name="Floor" type="Sprite2D" parent="HarborOffice" unique_id=2138722256]
+modulate = Color(1, 1, 1, 0)
+z_index = -2
+texture = ExtResource("4_bmk1i")
+centered = false
+
+[node name="Exit" type="Node2D" parent="HarborOffice" unique_id=1712386363]
+position = Vector2(96, 103)
+script = ExtResource("5_ax3af")
+reach = 10.0
+promptOffset = Vector2(0, -6)
+
+[node name="Npc_Pip" type="Node2D" parent="HarborOffice" unique_id=500286377 node_paths=PackedStringArray("art")]
+position = Vector2(96, 42)
+script = ExtResource("6_7wmx6")
+id = "pip"
+quests = Array[ExtResource("7_s1xce")]([ExtResource("8_hxeyl"), ExtResource("9_1vhyb"), ExtResource("10_s01b2"), ExtResource("11_spshw"), ExtResource("12_f03vs"), ExtResource("13_ol088"), ExtResource("14_jign1"), ExtResource("15_s5jct"), ExtResource("16_wg6hk"), ExtResource("17_m6qwe"), ExtResource("18_bfbhj"), ExtResource("19_v6voj"), ExtResource("20_atxde"), ExtResource("21_yw4q0"), ExtResource("22_qsopo"), ExtResource("23_4kr3g"), ExtResource("24_18m1h"), ExtResource("25_2lprh"), ExtResource("26_wadin")])
+greeting = "Welcome home."
+art = NodePath("Art")
+reach = 12.0
+promptOffset = Vector2(0, -24)
+
+[node name="Art" type="Sprite2D" parent="HarborOffice/Npc_Pip" unique_id=1436021823]
+texture = ExtResource("27_0vb4b")
+centered = false
+offset = Vector2(-6, -20)
+
+[node name="Body" type="StaticBody2D" parent="HarborOffice/Npc_Pip" unique_id=490088045]
+
+[node name="Shape" type="CollisionShape2D" parent="HarborOffice/Npc_Pip/Body" unique_id=1311394908]
+position = Vector2(0, -1)
+shape = SubResource("v_s1")
+
+[node name="Desk" type="Sprite2D" parent="HarborOffice" unique_id=1767984614]
+position = Vector2(96, 58)
+texture = ExtResource("28_b24sx")
+centered = false
+offset = Vector2(-23, -14)
+
+[node name="Body" type="StaticBody2D" parent="HarborOffice/Desk" unique_id=533756802]
+
+[node name="Shape" type="CollisionShape2D" parent="HarborOffice/Desk/Body" unique_id=635882314]
+position = Vector2(0, -5)
+shape = SubResource("RectangleShape2D_8nova")
+
+[node name="Chart" type="Sprite2D" parent="HarborOffice" unique_id=1674995044]
+position = Vector2(64, 30)
+texture = ExtResource("29_g4ro2")
+centered = false
+offset = Vector2(-13, -18)
+
+[node name="ShelfA" type="Sprite2D" parent="HarborOffice" unique_id=1547813079]
+position = Vector2(150, 34)
+texture = ExtResource("30_upso6")
+centered = false
+offset = Vector2(-15, -22)
+
+[node name="BarrelA" type="Sprite2D" parent="HarborOffice" unique_id=1595930311]
+position = Vector2(30, 92)
+texture = ExtResource("31_vxv83")
+centered = false
+offset = Vector2(-5, -13)
+
+[node name="Body" type="StaticBody2D" parent="HarborOffice/BarrelA" unique_id=2069746180]
+
+[node name="Shape" type="CollisionShape2D" parent="HarborOffice/BarrelA/Body" unique_id=1287295427]
+position = Vector2(0, -5)
+shape = SubResource("RectangleShape2D_hrc1h")

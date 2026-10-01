@@ -163,12 +163,18 @@ func follow_schedule(snap : bool) -> void:
 	var next : Array = Schedules.stop_at(id, cycle.day, cycle.time)
 	if next.is_empty() or next == stop:
 		return
-	var goalRoom : IslandRoom = home.room_named(next[1])
-	if not goalRoom:
-		return
+	# A stop names a room and a point in it, or no room and a point on the
+	# whole island. A room that isn't here (like inside a building, or out
+	# here when this is the inside) means they're somewhere else.
+	var goalRoom : IslandRoom = home.room_named(next[1]) if not String(next[1]).is_empty() else (null if home.interior else home.room_at(home.global_position + next[2]))
 	stop = next
-	var goal : Vector2 = goalRoom.global_position + next[2]
-	var seen : bool = home.room == room() or home.room == goalRoom
+	if not goalRoom:
+		walking = false
+		indoors = true
+		visible = false
+		return
+	var goal : Vector2 = goalRoom.global_position + next[2] if not String(next[1]).is_empty() else home.global_position + next[2]
+	var seen : bool = home.room_seen(room()) or home.room_seen(goalRoom)
 	if snap or not seen or not visible:
 		arrive_at(goalRoom, goal)
 		return
@@ -178,11 +184,12 @@ func follow_schedule(snap : bool) -> void:
 	if route.is_empty():
 		arrive_at(goalRoom, goal)
 		return
-	# Walking in from a room out of sight: start at the edge of this one.
-	if home.room != room():
+	# Walking in from a room out of sight: start where the way comes into view.
+	if not home.room_seen(room()):
 		for i in route.size():
-			if home.room.rect().has_point(route[i]):
-				move_into(home.room, route[i])
+			var through : IslandRoom = home.room_at(route[i])
+			if through and home.room_seen(through):
+				move_into(through, route[i])
 				routeAt = i
 				break
 	indoors = false
@@ -220,7 +227,7 @@ func walk(delta : float) -> void:
 	if home and not room().rect().has_point(global_position):
 		var next : IslandRoom = home.room_at(global_position)
 		if next and next != room():
-			if next == home.room:
+			if home.room_seen(next):
 				reparent(next)
 			else:
 				finish_walk()

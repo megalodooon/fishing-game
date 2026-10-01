@@ -30,6 +30,7 @@ const PEOPLE : Dictionary = {
 	"oriel": ["Oriel the Wanderer", Color(0.78, 0.55, 1.0)],
 	"barnaby": ["Banker Barnaby", Color(0.55, 0.9, 0.6)],
 	"odette": ["Odette", Color(0.55, 0.75, 1.0)],
+	"wren": ["Wren", Color(0.5, 0.9, 0.8)],
 }
 
 

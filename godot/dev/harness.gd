@@ -61,7 +61,7 @@ func load_game() -> void:
 func run(steps : Array) -> void:
 	SaveGame.folder = "user://harness/"
 	DirAccess.make_dir_recursive_absolute(SaveGame.folder)
-	if steps.is_empty() or not (String(steps[0]).begins_with("title") or String(steps[0]).begins_with("join")):
+	if steps.is_empty() or not (String(steps[0]).begins_with("title") or String(steps[0]).begins_with("join") or String(steps[0]).begins_with("tool_")):
 		await load_game()
 	for step in steps:
 		print("HARNESS: step ", step)
@@ -310,3 +310,80 @@ func journal_creatures() -> void:
 	book.pickedCreature = book.creatureList[0]
 	book.refresh()
 	await seconds(0.5)
+
+# The whole of an island at once, zoomed out, for looking at layouts.
+func overview(location : String) -> void:
+	var world : World = game.get_node("World")
+	world.arrive(load("res://world/locations/%s.tres" % location))
+	await wait(20)
+	var island : Island = Island.current(get_tree())
+	var bounds : Rect2 = Rect2()
+	for room in island.rooms:
+		room.visible = true
+		room.process_mode = Node.PROCESS_MODE_INHERIT
+		bounds = room.rect() if bounds.size == Vector2.ZERO else bounds.merge(room.rect())
+	var camera : Camera2D = world.camera
+	camera.anchor_mode = Camera2D.ANCHOR_MODE_DRAG_CENTER
+	camera.position = bounds.get_center()
+	var fit : float = minf(192.0 / bounds.size.x, 108.0 / bounds.size.y)
+	camera.zoom = Vector2(fit, fit)
+	for layer in game.find_children("*", "CanvasLayer", true, false):
+		if layer.name == "Hud":
+			layer.visible = false
+	await wait(10)
+
+func overview_village() -> void:
+	await overview("village")
+
+func overview_meadow() -> void:
+	await overview("meadow_isle")
+
+func overview_ember() -> void:
+	await overview("ember_isle")
+
+func walk_meadow() -> void:
+	(game.get_node("World") as World).arrive(load("res://world/locations/meadow_isle.tres"))
+	await seconds(1.0)
+	player.global_position += Vector2(150.0, 0.0)
+	await seconds(1.5)
+
+#------------------------# Tools
+
+func tool_village() -> void:
+	(load("res://../tools/village/build_village.gd").new()).run()
+
+func enter_market() -> void:
+	await village()
+	var world : World = game.get_node("World")
+	world.enter_interior("res://world/village/insides/market_hall.tscn", Vector2(252.0, 260.0))
+	await seconds(1.5)
+
+func walk_village() -> void:
+	await village()
+	player.global_position = Vector2(384.0, 230.0)
+	await seconds(1.5)
+
+func drops_test() -> void:
+	await village()
+	var spot : ForageSpot = null
+	for node in game.find_children("*", "ForageSpot", true, false):
+		spot = node
+		break
+	player.global_position = spot.global_position + Vector2(0.0, 14.0)
+	await wait(5)
+	var before : int = player.inventory.items.filter(func(i : Item) -> bool: return i != null).size()
+	spot.interact(player)
+	await seconds(0.5)
+	var talk : DialogueUI = find(DialogueUI)
+	if talk.shown:
+		talk.finish(-1)
+	await seconds(0.3)
+	check(get_tree().get_nodes_in_group(DroppedItem.GROUP).size() > 0, "forage drops land on the ground")
+	await shot("drops_ground")
+	for drop in get_tree().get_nodes_in_group(DroppedItem.GROUP):
+		player.global_position = (drop as DroppedItem).to
+		await wait(4)
+	await seconds(0.3)
+	var after : int = player.inventory.items.filter(func(i : Item) -> bool: return i != null).size()
+	check(after > before, "walking over drops picks them up")
+	check(get_tree().get_nodes_in_group(DroppedItem.GROUP).is_empty(), "picked up drops are gone")

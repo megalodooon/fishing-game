@@ -71,6 +71,11 @@ func new_drop(anywhere : bool) -> Vector4:
 	return Vector4(randf_range(-10.0, screen.x + 30.0), y, randf_range(dropSpeed.x, dropSpeed.y), randf_range(dropLength.x, dropLength.y))
 
 func _process(delta : float) -> void:
+	# No rain or fog inside buildings.
+	var island : Island = Island.current(get_tree())
+	visible = not (island and island.interior)
+	if not visible:
+		return
 	var step : float = delta / fadeTime
 	rain = move_toward(rain, rainGoal, step)
 	fog = move_toward(fog, fogGoal, step)

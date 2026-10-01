@@ -1,0 +1,188 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://world/island/island.gd" id="1_i2xne"]
+[ext_resource type="Script" path="res://world/island/island_room.gd" id="2_cs8qp"]
+[ext_resource type="Texture2D" path="res://world/village/insides/marble.png" id="3_nw1m2"]
+[ext_resource type="Texture2D" path="res://world/village/insides/marble_floor.png" id="4_w1peq"]
+[ext_resource type="Script" path="res://world/village/exit.gd" id="5_tivhl"]
+[ext_resource type="Script" path="res://world/village/aquarium/aquarium.gd" id="6_u63rl"]
+[ext_resource type="Script" path="res://world/village/aquarium/aquarium_tank.gd" id="7_e1l83"]
+[ext_resource type="Resource" path="res://world/village/aquarium/tanks/harbor_tank.tres" id="8_a7n3t"]
+[ext_resource type="Resource" path="res://world/village/aquarium/tanks/deep_tank.tres" id="9_6gqeq"]
+[ext_resource type="Resource" path="res://world/village/aquarium/tanks/curio_tank.tres" id="10_sb1b4"]
+[ext_resource type="Resource" path="res://world/village/aquarium/tanks/grand_tank.tres" id="11_5kagm"]
+[ext_resource type="Resource" path="res://world/village/aquarium/tanks/reef_tank.tres" id="12_cd35a"]
+[ext_resource type="Resource" path="res://world/village/aquarium/tanks/frost_tank.tres" id="13_couop"]
+[ext_resource type="Resource" path="res://world/village/aquarium/tanks/storm_tank.tres" id="14_2n1l2"]
+[ext_resource type="Resource" path="res://world/village/aquarium/tanks/abyss_tank.tres" id="15_415gy"]
+[ext_resource type="Script" path="res://world/npc/npc.gd" id="16_ydgv7"]
+[ext_resource type="Script" path="res://world/quests/quest.gd" id="17_de6ss"]
+[ext_resource type="Resource" path="res://world/quests/story/q_aquarium.tres" id="18_m5q5i"]
+[ext_resource type="Resource" path="res://world/quests/story/q_harbor_tank.tres" id="19_fusta"]
+[ext_resource type="Resource" path="res://world/quests/story/q_reef.tres" id="20_cecnd"]
+[ext_resource type="Resource" path="res://world/quests/story/q_sludge.tres" id="21_ghihv"]
+[ext_resource type="Resource" path="res://world/quests/story/q_evidence.tres" id="22_41uwc"]
+[ext_resource type="Resource" path="res://world/quests/story/q_deep_tank.tres" id="23_g0w3y"]
+[ext_resource type="Resource" path="res://world/quests/side/n_curio.tres" id="24_u1086"]
+[ext_resource type="Resource" path="res://world/quests/side/n_grand.tres" id="25_mpp83"]
+[ext_resource type="Resource" path="res://world/quests/side/n_reef.tres" id="26_0mfny"]
+[ext_resource type="Resource" path="res://world/quests/side/n_frost.tres" id="27_y2qmt"]
+[ext_resource type="Resource" path="res://world/quests/side/n_storm.tres" id="28_343dp"]
+[ext_resource type="Resource" path="res://world/quests/side/n_abyss.tres" id="29_y6dar"]
+[ext_resource type="Resource" path="res://world/quests/side/n_shiny.tres" id="30_iqy5n"]
+[ext_resource type="Resource" path="res://world/quests/side/n_giant.tres" id="31_wy0a1"]
+[ext_resource type="Resource" path="res://world/quests/side/p_wing.tres" id="32_aptdg"]
+[ext_resource type="Resource" path="res://world/quests/side/k_golden.tres" id="33_2olnd"]
+[ext_resource type="Resource" path="res://world/quests/side/x_recipes.tres" id="34_23wt0"]
+[ext_resource type="Resource" path="res://world/quests/side/x_rare.tres" id="35_lc5p1"]
+[ext_resource type="Resource" path="res://world/quests/story/q_museum.tres" id="36_s6crs"]
+[ext_resource type="Resource" path="res://world/quests/side/x_museum_40.tres" id="37_i1n5d"]
+[ext_resource type="Resource" path="res://world/quests/side/f_nora_1.tres" id="38_24170"]
+[ext_resource type="Resource" path="res://world/quests/side/f_nora_2.tres" id="39_amqlw"]
+[ext_resource type="Texture2D" path="res://world/npcs/nora.png" id="40_646hm"]
+[ext_resource type="Script" path="res://world/museum/museum_counter.gd" id="41_rpk8q"]
+[ext_resource type="Texture2D" path="res://world/village/insides/tank.png" id="42_f4488"]
+[ext_resource type="Texture2D" path="res://world/village/insides/case.png" id="43_fif3h"]
+[ext_resource type="Texture2D" path="res://world/village/insides/counter.png" id="44_ypaks"]
+
+[sub_resource type="RectangleShape2D" id="v_s4"]
+size = Vector2(6, 3)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ije4e"]
+size = Vector2(32, 10)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aggna"]
+size = Vector2(32, 10)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xobpy"]
+size = Vector2(18, 10)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fumfl"]
+size = Vector2(18, 10)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sk3lf"]
+size = Vector2(46, 10)
+
+[node name="Museum" type="Node2D" unique_id=1514255361]
+script = ExtResource("1_i2xne")
+arrival = Vector2(96, 92)
+interior = true
+
+[node name="Museum" type="Node2D" parent="." unique_id=1775242793 node_paths=PackedStringArray("land")]
+y_sort_enabled = true
+script = ExtResource("2_cs8qp")
+land = [NodePath("Floor")]
+
+[node name="Back" type="Sprite2D" parent="Museum" unique_id=357075880]
+z_index = -2
+texture = ExtResource("3_nw1m2")
+centered = false
+
+[node name="Floor" type="Sprite2D" parent="Museum" unique_id=598102502]
+modulate = Color(1, 1, 1, 0)
+z_index = -2
+texture = ExtResource("4_w1peq")
+centered = false
+
+[node name="Exit" type="Node2D" parent="Museum" unique_id=118081600]
+position = Vector2(96, 103)
+script = ExtResource("5_tivhl")
+reach = 10.0
+promptOffset = Vector2(0, -6)
+
+[node name="Door" type="Node2D" parent="Museum" unique_id=732074368]
+position = Vector2(56, 44)
+script = ExtResource("6_u63rl")
+tanks = Array[ExtResource("7_e1l83")]([ExtResource("8_a7n3t"), ExtResource("9_6gqeq"), ExtResource("10_sb1b4"), ExtResource("11_5kagm"), ExtResource("12_cd35a"), ExtResource("13_couop"), ExtResource("14_2n1l2"), ExtResource("15_415gy")])
+title = "Village Aquarium"
+prompt = "Aquarium"
+reach = 12.0
+promptOffset = Vector2(0, -18)
+
+[node name="Npc_Nora" type="Node2D" parent="Museum" unique_id=2075377887 node_paths=PackedStringArray("service", "art")]
+position = Vector2(136, 42)
+script = ExtResource("16_ydgv7")
+id = "nora"
+quests = Array[ExtResource("17_de6ss")]([ExtResource("18_m5q5i"), ExtResource("19_fusta"), ExtResource("20_cecnd"), ExtResource("21_ghihv"), ExtResource("22_41uwc"), ExtResource("23_g0w3y"), ExtResource("24_u1086"), ExtResource("25_mpp83"), ExtResource("26_0mfny"), ExtResource("27_y2qmt"), ExtResource("28_343dp"), ExtResource("29_y6dar"), ExtResource("30_iqy5n"), ExtResource("31_wy0a1"), ExtResource("32_aptdg"), ExtResource("33_2olnd"), ExtResource("34_23wt0"), ExtResource("35_lc5p1"), ExtResource("36_s6crs"), ExtResource("37_i1n5d"), ExtResource("38_24170"), ExtResource("39_amqlw")])
+service = NodePath("Museum")
+serviceLabel = "Museum"
+greeting = "Oh! Hello!"
+art = NodePath("Art")
+reach = 12.0
+promptOffset = Vector2(0, -24)
+
+[node name="Art" type="Sprite2D" parent="Museum/Npc_Nora" unique_id=1589225645]
+texture = ExtResource("40_646hm")
+centered = false
+offset = Vector2(-6, -20)
+
+[node name="Body" type="StaticBody2D" parent="Museum/Npc_Nora" unique_id=1521665623]
+
+[node name="Shape" type="CollisionShape2D" parent="Museum/Npc_Nora/Body" unique_id=375853806]
+position = Vector2(0, -1)
+shape = SubResource("v_s4")
+
+[node name="Museum" type="Node2D" parent="Museum/Npc_Nora" unique_id=1062049785]
+script = ExtResource("41_rpk8q")
+title = "Museum Wing"
+listed = false
+
+[node name="TankA" type="Sprite2D" parent="Museum" unique_id=226415224]
+position = Vector2(40, 56)
+texture = ExtResource("42_f4488")
+centered = false
+offset = Vector2(-16, -22)
+
+[node name="Body" type="StaticBody2D" parent="Museum/TankA" unique_id=326417463]
+
+[node name="Shape" type="CollisionShape2D" parent="Museum/TankA/Body" unique_id=1202316335]
+position = Vector2(0, -5)
+shape = SubResource("RectangleShape2D_ije4e")
+
+[node name="TankB" type="Sprite2D" parent="Museum" unique_id=498167061]
+position = Vector2(40, 88)
+texture = ExtResource("42_f4488")
+centered = false
+offset = Vector2(-16, -22)
+
+[node name="Body" type="StaticBody2D" parent="Museum/TankB" unique_id=853574122]
+
+[node name="Shape" type="CollisionShape2D" parent="Museum/TankB/Body" unique_id=1025383968]
+position = Vector2(0, -5)
+shape = SubResource("RectangleShape2D_aggna")
+
+[node name="CaseA" type="Sprite2D" parent="Museum" unique_id=687396515]
+position = Vector2(104, 76)
+texture = ExtResource("43_fif3h")
+centered = false
+offset = Vector2(-9, -16)
+
+[node name="Body" type="StaticBody2D" parent="Museum/CaseA" unique_id=321625429]
+
+[node name="Shape" type="CollisionShape2D" parent="Museum/CaseA/Body" unique_id=1033392321]
+position = Vector2(0, -5)
+shape = SubResource("RectangleShape2D_xobpy")
+
+[node name="CaseB" type="Sprite2D" parent="Museum" unique_id=2094278556]
+position = Vector2(128, 76)
+texture = ExtResource("43_fif3h")
+centered = false
+offset = Vector2(-9, -16)
+
+[node name="Body" type="StaticBody2D" parent="Museum/CaseB" unique_id=1436577723]
+
+[node name="Shape" type="CollisionShape2D" parent="Museum/CaseB/Body" unique_id=1940399371]
+position = Vector2(0, -5)
+shape = SubResource("RectangleShape2D_fumfl")
+
+[node name="Counter" type="Sprite2D" parent="Museum" unique_id=650176804]
+position = Vector2(140, 54)
+texture = ExtResource("44_ypaks")
+centered = false
+offset = Vector2(-23, -14)
+
+[node name="Body" type="StaticBody2D" parent="Museum/Counter" unique_id=451459760]
+
+[node name="Shape" type="CollisionShape2D" parent="Museum/Counter/Body" unique_id=185040417]
+position = Vector2(0, -5)
+shape = SubResource("RectangleShape2D_sk3lf")

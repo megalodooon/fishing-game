@@ -184,10 +184,30 @@ func _gui_input(event : InputEvent) -> void:
 		elif dragFrom != NONE:
 			if at >= 0 and can_drop(dragFrom, at):
 				inventory.move(dragFrom, at)
+			elif at < 0 and not over_panels(mouse):
+				throw_out(dragFrom)
 			dragFrom = NONE
 		hover(at)
 		redraw()
 		accept_event()
+
+func over_panels(point : Vector2) -> bool:
+	return hotbarRect.grow(2.0).has_point(point) or (open and panelRect.grow(2.0).has_point(point))
+
+# Dragged out of the bag onto the world: it lands on the ground in front of
+# the player (and goes away after a while if nobody picks it up).
+func throw_out(slot : int) -> void:
+	var item : Item = inventory.get_item(slot)
+	if not item or not item.discardable or not player.can_move_slot(slot) or player.asleep:
+		return
+	var stack : Item = inventory.take_slot(slot)
+	if slot == player.heldSlot:
+		player.equip(player.heldSlot)
+	var aim : Vector2 = (player.get_global_mouse_position() - player.global_position).limit_length(1.0)
+	var land : Vector2 = player.global_position + Vector2(aim.x * 12.0, 4.0 + aim.y * 6.0)
+	if not player.can_stand(land):
+		land = player.global_position + Vector2(0.0, 4.0)
+	DroppedItem.spawn(player.get_tree(), stack, land, player.center.global_position, true, DroppedItem.PICKUP_DELAY)
 
 func can_drop(from : int, to : int) -> bool:
 	return inventory.can_move(from, to) and player.can_move_slot(from) and player.can_move_slot(to)

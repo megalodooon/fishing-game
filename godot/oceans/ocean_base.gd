@@ -120,6 +120,10 @@ static var sharedPasses : Array[SubViewport] = []
 static var sharedOwner : Ocean
 var fieldsLayout : Array = []
 var still : bool = false
+# Island water: it doesn't scroll (no boat sails through) but still moves.
+var calm : bool = false
+# Island water near the screen; far off it stops rendering.
+var awake : bool = true
 # Frames the passes of still water keep rendering after it's shown, so they
 # are ready whichever order the viewports are drawn in.
 var stillFrames : int = 0
@@ -187,7 +191,7 @@ func release_shared_passes() -> void:
 	fieldsLayout = []
 
 func refresh_passes() -> void:
-	var shown : bool = is_visible_in_tree()
+	var shown : bool = is_visible_in_tree() and awake
 	stillFrames = 3 if still and shown else 0
 	set_process(shown)
 	if shown and still:
@@ -216,11 +220,33 @@ func make_still(cover : Sprite2D) -> void:
 	if ground:
 		ground.draw_only(CanvasClip.uncovered_rects(ground, Rect2(Vector2.ZERO, ground.size), cover))
 
+# Island water: drawn only where the land (cover) leaves it showing, with
+# its waves and caustics moving but nothing scrolling. Each piece keeps its
+# own passes and only renders them while it's near the screen (set_awake).
+func make_calm(cover : Sprite2D) -> void:
+	calm = true
+	if sprite and waterTexture:
+		var rects : Array[Rect2] = CanvasClip.uncovered_rects(sprite, water_rect(), cover)
+		bands = CanvasClip.new(sprite, rects.size())
+		bandRects = rects
+		bands.record(rects, draw_band)
+	if ground:
+		ground.draw_only(CanvasClip.uncovered_rects(ground, Rect2(Vector2.ZERO, ground.size), cover))
+
+func set_awake(value : bool) -> void:
+	awake = value
+	if value:
+		update_fields()
+	refresh_passes()
+
 static func current_biome(tree : SceneTree) -> Biome:
 	var ocean : Ocean = tree.get_first_node_in_group(GROUP) as Ocean
 	return ocean.biome if ocean else null
 
 func _process(delta : float) -> void:
+	if calm:
+		update_fields()
+		return
 	if still:
 		# Nothing moves: the passes render a few frames after being shown, then stop.
 		stillFrames -= 1

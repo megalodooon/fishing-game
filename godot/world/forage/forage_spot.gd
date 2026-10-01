@@ -146,22 +146,23 @@ func interact(who : Player) -> void:
 		var rare : Item = load(info()[4]) as Item
 		if rare:
 			got[rare] = got.get(rare, 0) + 1
-	var texts : PackedStringArray = PackedStringArray()
+	# What's found pops out onto the ground around the spot, to pick up.
 	var gathered : int = 0
+	var side : float = -1.0
 	for item in got:
-		var given : int = got[item] - who.inventory.give(item, got[item])
-		if given > 0:
-			gathered += given
-			texts.append("+%d %s" % [given, item.displayName])
-			Quest.notify(who, &"forage", item, given)
-	if gathered <= 0:
-		notice(info()[1], "No room in the bag.", blockedColor)
-		return
+		var stack : Item = item.unique()
+		stack.amount = got[item]
+		gathered += got[item]
+		var land : Vector2 = global_position + Vector2(side * randf_range(6.0, 11.0), randf_range(8.0, 12.0))
+		if not who.can_stand(land):
+			land = global_position + Vector2(0.0, 6.0)
+		DroppedItem.spawn(get_tree(), stack, land, global_position + Vector2(0.0, -4.0))
+		side = -side
+		Quest.notify(who, &"forage", item, got[item])
 	who.progress.set_flag(key(), today())
 	who.progress.count("forage", gathered)
 	var xp : float = XP_EACH * gathered * (1.0 + int(info()[7]) * 0.6)
 	Skills.add(who, Skills.FORAGING, xp)
-	who.say(", ".join(texts), Color(0.8, 0.92, 0.6))
 	Features.introduce(who, "forage")
 	burst = 0.0
 	set_process(true)

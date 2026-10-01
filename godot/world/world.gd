@@ -14,10 +14,21 @@ class_name World
 @export var camera : Camera2D
 # Where the player stands on the deck after coming back from an island.
 @export var boardOffset : Vector2 = Vector2(-26.0, 3.0)
+
+# Inside a building: the inside is the place, the island outside waits
+# (hidden, asleep) until the player walks back out, to where they came in.
+var interior : Island
+var outside : Island
+var outsideAt : Vector2 = Vector2.ZERO
 #------------------------#
+
+static func find(tree : SceneTree) -> World:
+	return tree.get_first_node_in_group(&"worlds") as World
+
 
 
 func _ready() -> void:
+	add_to_group(&"worlds")
 	# Normally the loading screen has already loaded everything; this covers
 	# starting the game scene directly, like from the editor.
 	Preloader.start()
@@ -57,6 +68,8 @@ func count_visit() -> void:
 		Quest.notify(player, &"visit", player.atlas.current)
 
 func load_place(location : Location) -> void:
+	drop_interior()
+	DroppedItem.clear_all(get_tree())
 	if place:
 		if place is Island:
 			(place as Island).leave()
@@ -86,6 +99,80 @@ func settle(location : Location) -> void:
 # Puts the player back aboard, out at sea.
 func board() -> void:
 	player.global_position = boat.global_position + boardOffset
+
+# Goes into a building: loads its inside over the island, which waits.
+func enter_interior(path : String, comeBackAt : Vector2) -> void:
+	var island : Island = place as Island
+	if interior or not island or not ResourceLoader.exists(path) or island.switching:
+		return
+	await island.fade_through(func() -> void:
+		outside = island
+		outsideAt = comeBackAt
+		outside.visible = false
+		outside.process_mode = Node.PROCESS_MODE_DISABLED
+		outside.remove_from_group(Island.GROUP)
+		for node in outside.find_children("*", "Interactable", true, false):
+			node.remove_from_group(Interactable.GROUP)
+		DroppedItem.clear_all(get_tree())
+		interior = (load(path) as PackedScene).instantiate()
+		add_child(interior)
+		move_child(interior, 0)
+		place = interior
+		interior.enter(self)
+		player.frozen = false)
+	interior.fade_in()
+
+# Back out of the building, in front of its door.
+func leave_interior() -> void:
+	if not interior or interior.switching:
+		return
+	var inside : Island = interior
+	await inside.fade_through(func() -> void:
+		DroppedItem.clear_all(get_tree())
+		drop_interior()
+		place.enter(self, outsideAt)
+		player.frozen = false)
+	(place as Island).fade_in()
+
+func drop_interior() -> void:
+	if not interior:
+		return
+	interior.queue_free()
+	remove_child(interior)
+	interior = null
+	place = outside
+	outside.visible = true
+	outside.process_mode = Node.PROCESS_MODE_INHERIT
+	outside.add_to_group(Island.GROUP)
+	for node in outside.find_children("*", "Interactable", true, false):
+		node.add_to_group(Interactable.GROUP)
+	outside = null
+
+# Where dropped things lie (see DroppedItem): beside the player, so they
+# sort with everything standing around.
+func drops() -> Node2D:
+	var holder : Node2D = get_parent().get_node_or_null("Drops") as Node2D
+	if not holder:
+		holder = Node2D.new()
+		holder.name = "Drops"
+		holder.y_sort_enabled = true
+		get_parent().add_child(holder)
+	return holder
+
+# After passing out: in the village, in front of the house.
+const HOME : String = "res://world/locations/village.tres"
+
+func wake_at_home() -> void:
+	var village : Location = load(HOME)
+	if player.atlas.current != village:
+		arrive(village)
+	else:
+		drop_interior()
+	var house : Node2D = place.find_child("House", true, false) as Node2D if place else null
+	if house:
+		player.global_position = house.global_position + Vector2(0.0, 12.0)
+		if place is Island:
+			(place as Island).enter(self, player.global_position)
 
 # Where the player stands: an island when docked at one, null out at sea.
 func island() -> Island:

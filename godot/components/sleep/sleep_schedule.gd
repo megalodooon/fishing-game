@@ -271,6 +271,10 @@ func go_to_sleep(passedOut : bool = false) -> void:
 	player.energy.refill(share)
 	player.progress.count("days")
 	slept_night.emit()
+	# Passed out somewhere: Pip found you and brought you home.
+	var world : World = World.find(get_tree())
+	if passedOut and world:
+		world.wake_at_home()
 	var saved : bool = SaveGame.save_game(get_tree())
 	summaryTitle = "%s, day %d" % [cycle.weekday_name(), cycle.day]
 	summaryShare = share
@@ -296,6 +300,21 @@ func go_to_sleep(passedOut : bool = false) -> void:
 	get_tree().paused = false
 	await open_eyes()
 	slept.emit(share)
+	if passedOut:
+		rescued()
+
+# Pip has a word about it after the player wakes in front of their house.
+const RESCUE_LINES : PackedStringArray = [
+	"Found you face down by the water again. You snore like a foghorn, you know that?",
+	"Carried you home myself. My back would like a word with you.",
+	"Bed. Is. Inside. The house. I am too old to be hauling anglers up the hill.",
+	"You were asleep on a crate of mackerel. The mackerel did not mind. I did.",
+]
+
+func rescued() -> void:
+	var talk : DialogueUI = DialogueUI.find(get_tree())
+	if talk and not talk.busy():
+		talk.say("pip", RESCUE_LINES[randi() % RESCUE_LINES.size()], PackedStringArray())
 
 func open_eyes() -> void:
 	var opening : Tween = create_tween().set_trans(Tween.TRANS_SINE)

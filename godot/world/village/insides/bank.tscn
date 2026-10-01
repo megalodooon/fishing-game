@@ -1,0 +1,107 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://world/island/island.gd" id="1_apdke"]
+[ext_resource type="Script" path="res://world/island/island_room.gd" id="2_tnpvx"]
+[ext_resource type="Texture2D" path="res://world/village/insides/marble.png" id="3_2e2to"]
+[ext_resource type="Texture2D" path="res://world/village/insides/marble_floor.png" id="4_7r8gj"]
+[ext_resource type="Script" path="res://world/village/exit.gd" id="5_5prwn"]
+[ext_resource type="Script" path="res://world/bank/bank_counter.gd" id="6_h3csq"]
+[ext_resource type="Script" path="res://world/npc/npc.gd" id="7_1tsge"]
+[ext_resource type="Script" path="res://world/quests/quest.gd" id="8_sdgle"]
+[ext_resource type="Resource" path="res://world/quests/story/q_savings.tres" id="9_i26q4"]
+[ext_resource type="Resource" path="res://world/quests/story/q_ledger.tres" id="10_poyqq"]
+[ext_resource type="Resource" path="res://world/quests/story/q_debt_free.tres" id="11_n15ut"]
+[ext_resource type="Resource" path="res://world/quests/side/f_barnaby_1.tres" id="12_j52r7"]
+[ext_resource type="Resource" path="res://world/quests/side/f_barnaby_2.tres" id="13_i4bp1"]
+[ext_resource type="Texture2D" path="res://world/npcs/barnaby.png" id="14_xllej"]
+[ext_resource type="Texture2D" path="res://world/village/insides/counter.png" id="15_4r6nn"]
+[ext_resource type="Texture2D" path="res://world/village/insides/vault.png" id="16_6uc1m"]
+[ext_resource type="Texture2D" path="res://world/village/insides/rug.png" id="17_atja4"]
+
+[sub_resource type="RectangleShape2D" id="v_s8"]
+size = Vector2(6, 3)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wudp2"]
+size = Vector2(46, 10)
+
+[node name="Bank" type="Node2D" unique_id=1141970694]
+script = ExtResource("1_apdke")
+arrival = Vector2(96, 92)
+interior = true
+
+[node name="Bank" type="Node2D" parent="." unique_id=1393927503 node_paths=PackedStringArray("land")]
+y_sort_enabled = true
+script = ExtResource("2_tnpvx")
+land = [NodePath("Floor")]
+
+[node name="Back" type="Sprite2D" parent="Bank" unique_id=1604289573]
+z_index = -2
+texture = ExtResource("3_2e2to")
+centered = false
+
+[node name="Floor" type="Sprite2D" parent="Bank" unique_id=571206501]
+modulate = Color(1, 1, 1, 0)
+z_index = -2
+texture = ExtResource("4_7r8gj")
+centered = false
+
+[node name="Exit" type="Node2D" parent="Bank" unique_id=328233147]
+position = Vector2(96, 103)
+script = ExtResource("5_5prwn")
+reach = 10.0
+promptOffset = Vector2(0, -6)
+
+[node name="Counter" type="Node2D" parent="Bank" unique_id=632756993]
+position = Vector2(96, 46)
+script = ExtResource("6_h3csq")
+title = "Harbor Bank"
+prompt = "Bank"
+reach = 11.0
+promptOffset = Vector2(0, -34)
+
+[node name="Npc_Barnaby" type="Node2D" parent="Bank" unique_id=1587966060 node_paths=PackedStringArray("art")]
+position = Vector2(96, 40)
+script = ExtResource("7_1tsge")
+id = "barnaby"
+quests = Array[ExtResource("8_sdgle")]([ExtResource("9_i26q4"), ExtResource("10_poyqq"), ExtResource("11_n15ut"), ExtResource("12_j52r7"), ExtResource("13_i4bp1")])
+greeting = "Coins, kept safe, growing quietly. That's the harbor way."
+art = NodePath("Art")
+appearFlag = "quest/q_debt"
+reach = 12.0
+promptOffset = Vector2(0, -24)
+
+[node name="Art" type="Sprite2D" parent="Bank/Npc_Barnaby" unique_id=483756817]
+texture = ExtResource("14_xllej")
+centered = false
+offset = Vector2(-6, -20)
+
+[node name="Body" type="StaticBody2D" parent="Bank/Npc_Barnaby" unique_id=1433877003]
+
+[node name="Shape" type="CollisionShape2D" parent="Bank/Npc_Barnaby/Body" unique_id=701764746]
+position = Vector2(0, -1)
+shape = SubResource("v_s8")
+
+[node name="@Sprite2D@3" type="Sprite2D" parent="Bank" unique_id=262266823]
+position = Vector2(96, 58)
+texture = ExtResource("15_4r6nn")
+centered = false
+offset = Vector2(-23, -14)
+
+[node name="Body" type="StaticBody2D" parent="Bank/@Sprite2D@3" unique_id=67997015]
+
+[node name="Shape" type="CollisionShape2D" parent="Bank/@Sprite2D@3/Body" unique_id=280781798]
+position = Vector2(0, -5)
+shape = SubResource("RectangleShape2D_wudp2")
+
+[node name="Vault" type="Sprite2D" parent="Bank" unique_id=1703819542]
+position = Vector2(150, 34)
+texture = ExtResource("16_6uc1m")
+centered = false
+offset = Vector2(-12, -26)
+
+[node name="Rug" type="Sprite2D" parent="Bank" unique_id=1388060669]
+z_index = -1
+position = Vector2(96, 90)
+texture = ExtResource("17_atja4")
+centered = false
+offset = Vector2(-18, -20)

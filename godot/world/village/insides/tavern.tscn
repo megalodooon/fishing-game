@@ -1,0 +1,123 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://world/island/island.gd" id="1_55fn6"]
+[ext_resource type="Script" path="res://world/island/island_room.gd" id="2_8b37o"]
+[ext_resource type="Texture2D" path="res://world/village/insides/wood.png" id="3_usibo"]
+[ext_resource type="Texture2D" path="res://world/village/insides/wood_floor.png" id="4_75bua"]
+[ext_resource type="Script" path="res://world/village/exit.gd" id="5_qnuj0"]
+[ext_resource type="Texture2D" path="res://world/village/insides/bar.png" id="6_xf5tu"]
+[ext_resource type="Texture2D" path="res://world/village/insides/bottles.png" id="7_pmjbr"]
+[ext_resource type="Texture2D" path="res://world/village/insides/hearth.png" id="8_hge5e"]
+[ext_resource type="Texture2D" path="res://world/village/insides/table.png" id="9_ldbm2"]
+[ext_resource type="Texture2D" path="res://world/village/insides/barrel.png" id="10_nhep0"]
+[ext_resource type="Script" path="res://world/npc/npc.gd" id="11_um1af"]
+[ext_resource type="Texture2D" path="res://world/npcs/wren.png" id="12_hi4n2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5vxw6"]
+size = Vector2(64, 10)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2fh33"]
+size = Vector2(20, 10)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nwtmw"]
+size = Vector2(20, 10)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7xii5"]
+size = Vector2(10, 10)
+
+[node name="Tavern" type="Node2D" unique_id=1017660293]
+script = ExtResource("1_55fn6")
+arrival = Vector2(96, 92)
+interior = true
+
+[node name="Tavern" type="Node2D" parent="." unique_id=1653668463 node_paths=PackedStringArray("land")]
+y_sort_enabled = true
+script = ExtResource("2_8b37o")
+land = [NodePath("Floor")]
+
+[node name="Back" type="Sprite2D" parent="Tavern" unique_id=1514508906]
+z_index = -2
+texture = ExtResource("3_usibo")
+centered = false
+
+[node name="Floor" type="Sprite2D" parent="Tavern" unique_id=1352743393]
+modulate = Color(1, 1, 1, 0)
+z_index = -2
+texture = ExtResource("4_75bua")
+centered = false
+
+[node name="Exit" type="Node2D" parent="Tavern" unique_id=758878793]
+position = Vector2(96, 103)
+script = ExtResource("5_qnuj0")
+reach = 10.0
+promptOffset = Vector2(0, -6)
+
+[node name="Bar" type="Sprite2D" parent="Tavern" unique_id=1949141513]
+position = Vector2(96, 52)
+texture = ExtResource("6_xf5tu")
+centered = false
+offset = Vector2(-32, -14)
+
+[node name="Body" type="StaticBody2D" parent="Tavern/Bar" unique_id=514382417]
+
+[node name="Shape" type="CollisionShape2D" parent="Tavern/Bar/Body" unique_id=96788614]
+position = Vector2(0, -5)
+shape = SubResource("RectangleShape2D_5vxw6")
+
+[node name="Bottles" type="Sprite2D" parent="Tavern" unique_id=1556487076]
+position = Vector2(96, 30)
+texture = ExtResource("7_pmjbr")
+centered = false
+offset = Vector2(-22, -14)
+
+[node name="Hearth" type="Sprite2D" parent="Tavern" unique_id=664478240]
+position = Vector2(150, 36)
+texture = ExtResource("8_hge5e")
+centered = false
+offset = Vector2(-13, -24)
+
+[node name="TableA" type="Sprite2D" parent="Tavern" unique_id=389494322]
+position = Vector2(44, 76)
+texture = ExtResource("9_ldbm2")
+centered = false
+offset = Vector2(-10, -12)
+
+[node name="Body" type="StaticBody2D" parent="Tavern/TableA" unique_id=565666341]
+
+[node name="Shape" type="CollisionShape2D" parent="Tavern/TableA/Body" unique_id=28218081]
+position = Vector2(0, -5)
+shape = SubResource("RectangleShape2D_2fh33")
+
+[node name="TableB" type="Sprite2D" parent="Tavern" unique_id=1730824846]
+position = Vector2(140, 76)
+texture = ExtResource("9_ldbm2")
+centered = false
+offset = Vector2(-10, -12)
+
+[node name="Body" type="StaticBody2D" parent="Tavern/TableB" unique_id=516908033]
+
+[node name="Shape" type="CollisionShape2D" parent="Tavern/TableB/Body" unique_id=2027545041]
+position = Vector2(0, -5)
+shape = SubResource("RectangleShape2D_nwtmw")
+
+[node name="BarrelA" type="Sprite2D" parent="Tavern" unique_id=1251825337]
+position = Vector2(30, 50)
+texture = ExtResource("10_nhep0")
+centered = false
+offset = Vector2(-5, -13)
+
+[node name="Body" type="StaticBody2D" parent="Tavern/BarrelA" unique_id=1761204674]
+
+[node name="Shape" type="CollisionShape2D" parent="Tavern/BarrelA/Body" unique_id=1418162663]
+position = Vector2(0, -5)
+shape = SubResource("RectangleShape2D_7xii5")
+
+[node name="Npc_Wren" type="Node2D" parent="Tavern" unique_id=1380270031 node_paths=PackedStringArray("art")]
+position = Vector2(96, 44)
+script = ExtResource("11_um1af")
+id = "wren"
+greeting = "Sit anywhere that isn't sticky."
+art = NodePath("Art")
+
+[node name="Art" type="Sprite2D" parent="Tavern/Npc_Wren" unique_id=720056169]
+texture = ExtResource("12_hi4n2")

@@ -21,7 +21,7 @@ const CLOCK_SLACK : float = 0.02
 # A shared quest's coins are split between the players.
 const QUEST_COIN_SHARE : float = 0.5
 # Every message this listens to, each handled by on_<kind>.
-const MESSAGES : Array[StringName] = [&"pose", &"clock", &"world", &"world_all", &"scene", &"quest", &"say", &"sleep", &"night", &"toast", &"board_ask", &"board_reply", &"boarded", &"carry", &"spot", &"fight", &"fight_join", &"fight_hit", &"fight_state", &"fight_end"]
+const MESSAGES : Array[StringName] = [&"pose", &"clock", &"world", &"world_all", &"scene", &"quest", &"say", &"sleep", &"night", &"toast", &"board_ask", &"board_reply", &"boarded", &"carry", &"spot", &"fight", &"fight_join", &"fight_hit", &"fight_state", &"fight_end", &"drop", &"drop_gone"]
 # Seconds to jump into a friend's fight, and how much tougher a foe gets with two.
 const FIGHT_INVITE : float = 6.0
 const COOP_HEALTH : float = 1.6
@@ -711,6 +711,33 @@ func on_helper_finished(won : bool) -> void:
 	player.frozen = false
 	player.minigameScreen.caption = ""
 	player.minigameScreen.close_menu()
+
+#------------------------# Things on the ground
+
+func share_drop(drop : DroppedItem) -> void:
+	if not online():
+		return
+	var data : Dictionary = {"id": drop.id, "item": SaveGame.encode(drop.item), "to": drop.to, "from": drop.from, "age": drop.age, "at": place_key()}
+	for id in nearby():
+		Net.send(&"drop", data, id)
+
+func on_drop(_from : int, data : Variant) -> void:
+	if not data is Dictionary or data.get("at", "") != place_key():
+		return
+	var stack : Item = SaveGame.decode(data.get("item")) as Item
+	if stack:
+		DroppedItem.spawn(get_tree(), stack, data.to, data.from, false, 0.0, data.id, data.get("age", 0.0))
+
+func drop_taken(drop_id : int) -> void:
+	if online():
+		for id in nearby():
+			Net.send(&"drop_gone", drop_id, id)
+
+func on_drop_gone(_from : int, data : Variant) -> void:
+	var drop : DroppedItem = DroppedItem.by_id(get_tree(), int(data))
+	if drop:
+		drop.taken = true
+		drop.queue_free()
 
 #------------------------# Sleeping
 

@@ -138,6 +138,14 @@ func take_where(test : Callable, amount : int) -> Array[Item]:
 func take(kind : Item, amount : int = 1) -> bool:
 	return not take_where(func(item : Item) -> bool: return item.same_kind(kind), amount).is_empty()
 
+# Takes out the whole stack in this slot.
+func take_slot(slot : int) -> Item:
+	var item : Item = get_item(slot)
+	if item:
+		items[slot] = null
+		emit_changed()
+	return item
+
 # Takes out the item in this slot, or one from its stack.
 func take_one(slot : int) -> Item:
 	var item : Item = get_item(slot)
