@@ -313,6 +313,20 @@ static func decode_address(text : String) -> Array:
 	var ip : String = "%d.%d.%d.%d" % [(value >> 24) & 255, (value >> 16) & 255, (value >> 8) & 255, value & 255]
 	return [ip, port]
 
+# A virtual LAN address when one is running (Radmin VPN 26.x, Tailscale
+# 100.64-127.x, ZeroTier's usual 172.2x), so friends can join without touching
+# the router. Empty when there's none.
+static func vpn_address() -> String:
+	for address in IP.get_local_addresses():
+		var parts : PackedStringArray = address.split(".")
+		if parts.size() != 4:
+			continue
+		var a : int = int(parts[0])
+		var b : int = int(parts[1])
+		if a == 26 or (a == 100 and b >= 64 and b < 128) or (a == 172 and b >= 22 and b <= 30):
+			return address
+	return ""
+
 static func lan_address() -> String:
 	for address in IP.get_local_addresses():
 		if address.begins_with("192.168.") or address.begins_with("10.") or (address.begins_with("172.") and int(address.split(".")[1]) in range(16, 32)):
@@ -340,6 +354,8 @@ func open_port(port : int) -> void:
 	var opened : bool = false
 	if result == 0 and device.call("get_gateway") and device.call("get_gateway").call("is_valid_gateway"):
 		opened = device.call("add_port_mapping", port, port, "Fishing Game", "UDP", 0) == 0
+		# Even when the router won't map it, its internet address is useful for
+		# a port forwarded by hand.
 		external = device.call("query_external_address")
 	finish_port.call_deferred(device, port, opened, external)
 
@@ -359,8 +375,15 @@ func finish_port(device : Object, port : int, opened : bool, external : String) 
 	elif opened:
 		mappedPort = port
 		addressNote = "Your internet provider shares one address between many homes (CGNAT), so only players on your network can join. Steam invites will get around this later."
+	elif external.is_valid_ip_address() and not private_address(external):
+		joinCode = encode_address(external, port)
+		addressNote = "Your router didn't open the port by itself. In the router, forward UDP port %d to this PC (%s), or turn on UPnP; then this code works. Same Wi-Fi: %s. Easiest: both run Radmin VPN or Tailscale." % [port, lan_address(), lanCode]
 	else:
-		addressNote = "Your router didn't open the port by itself (UPnP is off), so only players on your network can join. Turn on UPnP in the router, or forward UDP port %d." % port
+		addressNote = "Your router didn't open the port by itself, so only players on your network can join. Easiest fix: both install Radmin VPN or Tailscale and join the same network, then host again. Or forward UDP port %d to this PC (%s)." % [port, lan_address()]
+	var vpn : String = vpn_address()
+	if not opened and not vpn.is_empty():
+		joinCode = encode_address(vpn, port)
+		addressNote = "Using your VPN address (%s). Your friend must be on the same VPN network." % vpn
 	address_ready.emit(joinCode, addressNote)
 
 static func private_address(ip : String) -> bool:
