@@ -22,6 +22,6 @@ goals = Array[ExtResource("e2")]([SubResource("s1")])
 startScene = "q_tempest_start"
 endScene = "q_tempest_end"
 requires = Array[ExtResource("e1")]([ExtResource("e4")])
-rewardCoins = 3000
+rewardCoins = 1050
 rewardItems = Array[ExtResource("e6")]([ExtResource("e5")])
 rewardAmounts = Array[int]([1])

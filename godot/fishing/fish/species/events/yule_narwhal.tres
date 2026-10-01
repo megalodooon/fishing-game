@@ -12,6 +12,6 @@ icon = ExtResource("1_g1gi4")
 rarity = ExtResource("2_1xawb")
 description = "The sailors' legend of winter. Its horn is hung with ice like tinsel."
 weightRange = Vector2(40, 120)
-basePrice = 1200
+basePrice = 600
 heldSize = 1.6
 hours = Vector2(17, 23)

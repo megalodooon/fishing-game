@@ -11,6 +11,6 @@ icon = ExtResource("e2")
 rarity = ExtResource("e3")
 description = "Brilliant green and gold, and fading fast once caught."
 weightRange = Vector2(5.0, 20.0)
-basePrice = 90
+basePrice = 45
 heldSize = 1.2
 hours = Vector2(0.0, 24.0)

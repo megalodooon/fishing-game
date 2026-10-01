@@ -20,4 +20,4 @@ startScene = "f_hale_1_start"
 endScene = "f_hale_1_end"
 heartsWith = "hale"
 requiredHearts = 3
-rewardCoins = 800
+rewardCoins = 280

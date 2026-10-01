@@ -11,6 +11,6 @@ icon = ExtResource("e2")
 rarity = ExtResource("e3")
 description = "A gentle giant that can outlive a person."
 weightRange = Vector2(40.0, 200.0)
-basePrice = 200
+basePrice = 100
 heldSize = 1.6
 hours = Vector2(0.0, 24.0)

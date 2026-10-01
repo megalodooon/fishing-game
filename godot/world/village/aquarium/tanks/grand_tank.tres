@@ -16,5 +16,5 @@ description = "The big tank in the middle of the hall, for the rarest catches. A
 icon = ExtResource("1_icon")
 fish = Array[ExtResource("1_data")]([ExtResource("f_2"), ExtResource("f_3"), ExtResource("f_4"), ExtResource("f_5"), ExtResource("f_6")])
 needs = 4
-rewardCoins = 600
+rewardCoins = 210
 opens = "The Pet Shop"

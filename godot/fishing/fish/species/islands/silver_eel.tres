@@ -12,6 +12,6 @@ icon = ExtResource("2_icon")
 rarity = ExtResource("3_rarity")
 description = "Slips out of the harbor mud after dark."
 weightRange = Vector2(0.5, 2.5)
-basePrice = 60
+basePrice = 30
 heldSize = 1
 hours = Vector2(18, 4)

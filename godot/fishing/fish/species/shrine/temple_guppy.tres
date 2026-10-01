@@ -11,6 +11,6 @@ icon = ExtResource("e2")
 rarity = ExtResource("e3")
 description = "Guards the shrine steps, bravely."
 weightRange = Vector2(0.01999999955297, 0.07999999821186)
-basePrice = 15
+basePrice = 8
 heldSize = 0.6
 hours = Vector2(0.0, 24.0)

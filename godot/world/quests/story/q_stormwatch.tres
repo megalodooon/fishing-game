@@ -22,4 +22,4 @@ goals = Array[ExtResource("e2")]([SubResource("s1")])
 startScene = "q_stormwatch_start"
 endScene = "q_stormwatch_end"
 requires = Array[ExtResource("e1")]([ExtResource("e4")])
-rewardCoins = 800
+rewardCoins = 280

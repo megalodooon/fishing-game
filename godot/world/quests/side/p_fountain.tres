@@ -19,4 +19,4 @@ giver = "Harbor Master Pip"
 description = "The fountain was the village's pride. Restore it."
 goals = Array[ExtResource("e2")]([SubResource("s1")])
 requires = Array[ExtResource("e1")]([ExtResource("e3")])
-rewardCoins = 2000
+rewardCoins = 700

@@ -11,6 +11,6 @@ icon = ExtResource("2_icon")
 rarity = ExtResource("3_rarity")
 description = "Not a vampire, not quite a squid. Its eyes glow blue."
 weightRange = Vector2(0.30000001192093, 1.0)
-basePrice = 100
+basePrice = 50
 heldSize = 0.9
 hours = Vector2(0.0, 24.0)

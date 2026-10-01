@@ -12,5 +12,5 @@ icon = ExtResource("2_icon")
 rarity = ExtResource("3_rarity")
 description = "Slashes through schools with its long bill."
 weightRange = Vector2(20, 120)
-basePrice = 200
+basePrice = 100
 heldSize = 1.3

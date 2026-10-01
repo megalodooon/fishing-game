@@ -12,6 +12,6 @@ icon = ExtResource("1_2j22a")
 rarity = ExtResource("2_73fhl")
 description = "Only bites at night. Of course."
 weightRange = Vector2(2, 9)
-basePrice = 150
+basePrice = 75
 heldSize = 0.78
 hours = Vector2(19, 5)

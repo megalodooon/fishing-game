@@ -22,4 +22,4 @@ goals = Array[ExtResource("e2")]([SubResource("s1")])
 startScene = "q_hermit_start"
 endScene = "q_hermit_end"
 requires = Array[ExtResource("e1")]([ExtResource("e4")])
-rewardCoins = 50
+rewardCoins = 20

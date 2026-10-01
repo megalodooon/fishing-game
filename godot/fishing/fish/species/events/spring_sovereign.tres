@@ -12,6 +12,6 @@ icon = ExtResource("1_42vcb")
 rarity = ExtResource("2_6df6n")
 description = "Crowned in green and gold. It rises at dawn to greet the new season."
 weightRange = Vector2(10, 30)
-basePrice = 600
+basePrice = 300
 heldSize = 1.2
 hours = Vector2(5, 9)

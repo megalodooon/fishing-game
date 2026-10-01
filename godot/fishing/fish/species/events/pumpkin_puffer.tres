@@ -12,5 +12,5 @@ icon = ExtResource("1_x0142")
 rarity = ExtResource("2_tnb0c")
 description = "Puffs up into a perfect pumpkin when scared."
 weightRange = Vector2(0.5, 2.5)
-basePrice = 45
+basePrice = 23
 heldSize = 0.65

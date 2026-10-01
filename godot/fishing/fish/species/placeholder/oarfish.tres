@@ -12,6 +12,6 @@ icon = ExtResource("2_icon")
 rarity = ExtResource("3_rarity")
 description = "A ribbon-like giant from the deep, rarely seen alive."
 weightRange = Vector2(20, 80)
-basePrice = 600
+basePrice = 300
 heldSize = 1.15
 style = &"ghost"

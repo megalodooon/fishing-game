@@ -11,6 +11,6 @@ icon = ExtResource("2_icon")
 rarity = ExtResource("3_rarity")
 description = "Patrols the reef edge at dusk and through the night."
 weightRange = Vector2(20.0, 60.0)
-basePrice = 180
+basePrice = 90
 heldSize = 1.5
 hours = Vector2(18.0, 6.0)

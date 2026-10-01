@@ -11,5 +11,5 @@ icon = ExtResource("2_icon")
 rarity = ExtResource("3_rarity")
 description = "Lies flat on the seabed with both eyes on one side."
 weightRange = Vector2(0.5, 3.5)
-basePrice = 22
+basePrice = 11
 heldSize = 1

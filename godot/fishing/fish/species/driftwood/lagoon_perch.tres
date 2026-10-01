@@ -11,6 +11,6 @@ icon = ExtResource("2_icon")
 rarity = ExtResource("3_rarity")
 description = "Fat and lazy from the calm lagoon."
 weightRange = Vector2(0.20000000298023, 1.0)
-basePrice = 10
+basePrice = 5
 heldSize = 0.8
 hours = Vector2(0.0, 24.0)

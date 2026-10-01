@@ -12,6 +12,6 @@ icon = ExtResource("1_tayni")
 rarity = ExtResource("2_6jex8")
 description = "Said to have fallen from the sky, still burning."
 weightRange = Vector2(20, 60)
-basePrice = 800
+basePrice = 400
 heldSize = 1.6
 hours = Vector2(23, 2)

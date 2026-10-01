@@ -20,4 +20,4 @@ description = "The new wing has a reef tank waiting."
 goals = Array[ExtResource("e2")]([SubResource("s1")])
 requires = Array[ExtResource("e1")]([ExtResource("e4")])
 requiredFlag = "project/aquarium_wing"
-rewardCoins = 1500
+rewardCoins = 525

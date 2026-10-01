@@ -11,6 +11,6 @@ icon = ExtResource("e2")
 rarity = ExtResource("e3")
 description = "A giant swimming head. Suns itself at the surface."
 weightRange = Vector2(200.0, 1000.0)
-basePrice = 1200
+basePrice = 600
 heldSize = 1.9
 hours = Vector2(8.0, 16.0)

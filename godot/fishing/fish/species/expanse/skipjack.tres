@@ -11,6 +11,6 @@ icon = ExtResource("e2")
 rarity = ExtResource("e3")
 description = "Fast, shiny and everywhere."
 weightRange = Vector2(2.0, 8.0)
-basePrice = 26
+basePrice = 13
 heldSize = 1.0
 hours = Vector2(0.0, 24.0)

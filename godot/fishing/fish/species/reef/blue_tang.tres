@@ -11,6 +11,6 @@ icon = ExtResource("2_icon")
 rarity = ExtResource("3_rarity")
 description = "A flat blue reef fish with a yellow tail. Easily distracted."
 weightRange = Vector2(0.30000001192093, 0.80000001192093)
-basePrice = 15
+basePrice = 8
 heldSize = 0.8
 hours = Vector2(0.0, 24.0)

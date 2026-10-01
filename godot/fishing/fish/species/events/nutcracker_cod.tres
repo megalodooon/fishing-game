@@ -12,5 +12,5 @@ icon = ExtResource("1_l3blu")
 rarity = ExtResource("2_a3q7o")
 description = "Wears a tiny uniform. Cracks shells for fun."
 weightRange = Vector2(1, 6)
-basePrice = 55
+basePrice = 28
 heldSize = 0.72

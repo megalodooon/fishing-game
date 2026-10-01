@@ -20,4 +20,4 @@ giver = "Commissioner Hale"
 description = "Finish on the podium ten times."
 goals = Array[ExtResource("e2")]([SubResource("s1")])
 requires = Array[ExtResource("e1")]([ExtResource("e3")])
-rewardCoins = 3000
+rewardCoins = 1050

@@ -25,6 +25,6 @@ endScene = "f_vera_2_end"
 requires = Array[ExtResource("3_p0jn1")]([ExtResource("4_qgeoh")])
 heartsWith = "vera"
 requiredHearts = 6
-rewardCoins = 5000
+rewardCoins = 1750
 rewardItems = Array[ExtResource("5_fhya3")]([ExtResource("6_yi4d7")])
 rewardAmounts = Array[int]([1])

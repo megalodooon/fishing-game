@@ -12,5 +12,5 @@ icon = ExtResource("1_qaubl")
 rarity = ExtResource("2_50nxm")
 description = "Swims upstream only while the blossoms fall."
 weightRange = Vector2(2, 8)
-basePrice = 120
+basePrice = 60
 heldSize = 0.76

@@ -24,6 +24,6 @@ goals = Array[ExtResource("1_1fum7")]([SubResource("Resource_6veq2")])
 startScene = "q_frostmaw_start"
 endScene = "q_frostmaw_end"
 requires = Array[ExtResource("2_4diuv")]([ExtResource("3_n1ufs"), ExtResource("4_o5bla")])
-rewardCoins = 2500
+rewardCoins = 875
 rewardItems = Array[ExtResource("5_67a5g")]([ExtResource("6_3h465")])
 rewardAmounts = Array[int]([1])

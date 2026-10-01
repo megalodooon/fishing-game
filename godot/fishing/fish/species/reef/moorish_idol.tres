@@ -11,6 +11,6 @@ icon = ExtResource("2_icon")
 rarity = ExtResource("3_rarity")
 description = "Striking stripes and a long trailing fin."
 weightRange = Vector2(0.20000000298023, 0.60000002384186)
-basePrice = 40
+basePrice = 20
 heldSize = 0.9
 hours = Vector2(8.0, 20.0)

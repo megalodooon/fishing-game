@@ -40,7 +40,7 @@ const FEET : PackedVector2Array = [Vector2(-3.0, 3.0), Vector2(3.0, 3.0), Vector
 # Secrets found, aquarium donations, the farm and so on.
 @export var progress : Progress
 # Energy used up by every cast.
-@export var castEnergy : float = 2.0
+@export var castEnergy : float = 3.0
 @export var minigameScreen : MinigameScreen
 # How big held items other than rods are drawn. Meant for the settings screen.
 @export_range(0.25, 2.0, 0.05) var heldItemScale : float = 0.75:

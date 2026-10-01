@@ -22,4 +22,4 @@ startScene = "f_nora_1_start"
 endScene = "f_nora_1_end"
 heartsWith = "nora"
 requiredHearts = 3
-rewardCoins = 800
+rewardCoins = 280

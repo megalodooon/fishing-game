@@ -19,4 +19,4 @@ giver = "Harbor Master Pip"
 description = "Restore the old market hall in the square."
 goals = Array[ExtResource("e2")]([SubResource("s1")])
 requires = Array[ExtResource("e1")]([ExtResource("e3")])
-rewardCoins = 800
+rewardCoins = 280

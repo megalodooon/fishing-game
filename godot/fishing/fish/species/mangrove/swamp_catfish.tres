@@ -11,6 +11,6 @@ icon = ExtResource("e2")
 rarity = ExtResource("e3")
 description = "Whiskers like a wise old man."
 weightRange = Vector2(1.0, 5.0)
-basePrice = 12
+basePrice = 6
 heldSize = 1.0
 hours = Vector2(0.0, 24.0)

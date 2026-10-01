@@ -12,5 +12,5 @@ icon = ExtResource("1_bledn")
 rarity = ExtResource("2_c4ovp")
 description = "You can see right through it. Mostly."
 weightRange = Vector2(0.5, 3)
-basePrice = 18
+basePrice = 9
 heldSize = 0.6599999999999999

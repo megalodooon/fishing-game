@@ -21,4 +21,4 @@ description = "Finish on the podium in two tournaments."
 story = true
 goals = Array[ExtResource("e2")]([SubResource("s1")])
 requires = Array[ExtResource("e1")]([ExtResource("e3")])
-rewardCoins = 600
+rewardCoins = 210

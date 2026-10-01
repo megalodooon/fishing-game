@@ -19,6 +19,6 @@ story = true
 goals = Array[ExtResource("e2")]([SubResource("s1")])
 startScene = "q_rod_start"
 endScene = "q_rod_end"
-rewardCoins = 60
+rewardCoins = 20
 rewardItems = Array[ExtResource("e4")]([ExtResource("e3")])
 rewardAmounts = Array[int]([5])

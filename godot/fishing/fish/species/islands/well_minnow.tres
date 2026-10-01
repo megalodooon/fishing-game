@@ -12,5 +12,5 @@ icon = ExtResource("2_icon")
 rarity = ExtResource("3_rarity")
 description = "Pale and tiny. Nobody knows how it got down there."
 weightRange = Vector2(0.02, 0.08)
-basePrice = 10
+basePrice = 5
 heldSize = 0.6

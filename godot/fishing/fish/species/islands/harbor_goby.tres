@@ -12,6 +12,6 @@ icon = ExtResource("2_icon")
 rarity = ExtResource("3_rarity")
 description = "A stubby little bottom dweller that lives between the pier posts."
 weightRange = Vector2(0.05, 0.3)
-basePrice = 7
+basePrice = 4
 heldSize = 0.7
 spawnRate = 1.2

@@ -11,5 +11,5 @@ icon = ExtResource("2_icon")
 rarity = ExtResource("3_rarity")
 description = "Striped and restless, it never stops swimming."
 weightRange = Vector2(0.3, 1.2)
-basePrice = 10
+basePrice = 5
 heldSize = 0.9

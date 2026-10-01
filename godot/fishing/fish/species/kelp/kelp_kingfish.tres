@@ -11,6 +11,6 @@ icon = ExtResource("e2")
 rarity = ExtResource("e3")
 description = "Rules the kelp from the canopy down."
 weightRange = Vector2(8.0, 30.0)
-basePrice = 620
+basePrice = 310
 heldSize = 1.4
 hours = Vector2(0.0, 24.0)

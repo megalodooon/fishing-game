@@ -11,6 +11,6 @@ icon = ExtResource("2_icon")
 rarity = ExtResource("3_rarity")
 description = "Bright orange with white bands. Never far from its anemone."
 weightRange = Vector2(0.10000000149012, 0.30000001192093)
-basePrice = 12
+basePrice = 6
 heldSize = 0.7
 hours = Vector2(0.0, 24.0)

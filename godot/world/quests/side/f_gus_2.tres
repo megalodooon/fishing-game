@@ -32,6 +32,6 @@ endScene = "f_gus_2_end"
 requires = Array[ExtResource("4_sl5w3")]([ExtResource("5_nl1s1")])
 heartsWith = "gus"
 requiredHearts = 6
-rewardCoins = 1500
+rewardCoins = 525
 rewardItems = Array[ExtResource("6_vn5kw")]([ExtResource("7_ocbcv")])
 rewardAmounts = Array[int]([5])

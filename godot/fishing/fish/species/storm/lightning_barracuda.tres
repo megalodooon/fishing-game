@@ -16,6 +16,6 @@ icon = ExtResource("e2")
 rarity = ExtResource("e3")
 description = "Strikes faster than you can see, but only in the rain."
 weightRange = Vector2(5, 20)
-basePrice = 260
+basePrice = 130
 heldSize = 1.4
 requirements = Array[ExtResource("e5")]([SubResource("s1")])

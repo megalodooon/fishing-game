@@ -11,6 +11,6 @@ icon = ExtResource("e2")
 rarity = ExtResource("e3")
 description = "Metallic scales. Rings when you tap it."
 weightRange = Vector2(2.0, 9.0)
-basePrice = 240
+basePrice = 120
 heldSize = 1.1
 hours = Vector2(0.0, 24.0)

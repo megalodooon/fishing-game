@@ -24,5 +24,5 @@ goals = Array[ExtResource("1_pcnq0")]([SubResource("Resource_gc6i3")])
 startScene = "q_debt_free_start"
 endScene = "q_debt_free_end"
 requires = Array[ExtResource("2_amvpn")]([ExtResource("3_cwmk7"), ExtResource("4_7j2wt")])
-rewardCoins = 5000
+rewardCoins = 1750
 rewardText = "Bramblewick owns its harbor again"

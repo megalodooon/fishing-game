@@ -11,6 +11,6 @@ icon = ExtResource("e2")
 rarity = ExtResource("e3")
 description = "Sees more than it should. Deepnet's leftovers."
 weightRange = Vector2(1.0, 4.0)
-basePrice = 20
+basePrice = 10
 heldSize = 1.0
 hours = Vector2(0.0, 24.0)

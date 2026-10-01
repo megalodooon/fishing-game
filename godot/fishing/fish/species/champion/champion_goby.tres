@@ -11,6 +11,6 @@ icon = ExtResource("e2")
 rarity = ExtResource("e3")
 description = "The mascot of the World Championship."
 weightRange = Vector2(0.01999999955297, 0.10000000149012)
-basePrice = 20
+basePrice = 10
 heldSize = 0.6
 hours = Vector2(0.0, 24.0)

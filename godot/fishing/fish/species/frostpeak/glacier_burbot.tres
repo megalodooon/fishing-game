@@ -11,6 +11,6 @@ icon = ExtResource("e2")
 rarity = ExtResource("e3")
 description = "The only cod that likes fresh water. Hunts under the ice at night."
 weightRange = Vector2(1.0, 6.0)
-basePrice = 180
+basePrice = 90
 heldSize = 1.1
 hours = Vector2(20.0, 5.0)

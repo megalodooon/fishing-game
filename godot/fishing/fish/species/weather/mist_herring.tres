@@ -17,6 +17,6 @@ icon = ExtResource("2_icon")
 rarity = ExtResource("3_rarity")
 description = "A silvery ghost of a fish that only shows up in fog."
 weightRange = Vector2(0.2, 0.6)
-basePrice = 140
+basePrice = 70
 heldSize = 0.8
 requirements = Array[ExtResource("s_req")]([SubResource("Req_1")])

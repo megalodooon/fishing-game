@@ -11,6 +11,6 @@ icon = ExtResource("e2")
 rarity = ExtResource("e3")
 description = "Rides the waves like a surfer."
 weightRange = Vector2(0.30000001192093, 1.5)
-basePrice = 20
+basePrice = 10
 heldSize = 0.9
 hours = Vector2(0.0, 24.0)

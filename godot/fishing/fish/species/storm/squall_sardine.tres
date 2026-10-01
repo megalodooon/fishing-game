@@ -11,6 +11,6 @@ icon = ExtResource("e2")
 rarity = ExtResource("e3")
 description = "Schools so fast they look like rain."
 weightRange = Vector2(0.05000000074506, 0.20000000298023)
-basePrice = 14
+basePrice = 7
 heldSize = 0.7
 hours = Vector2(0.0, 24.0)

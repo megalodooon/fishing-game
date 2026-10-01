@@ -21,4 +21,4 @@ goals = Array[ExtResource("1_h4rre")]([SubResource("Resource_bacxt")])
 startScene = "x_derby_gold_start"
 endScene = "x_derby_gold_end"
 requires = Array[ExtResource("2_o5o14")]([ExtResource("3_e6hyx")])
-rewardCoins = 2000
+rewardCoins = 700

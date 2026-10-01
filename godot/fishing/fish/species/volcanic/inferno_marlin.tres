@@ -11,6 +11,6 @@ icon = ExtResource("2_icon")
 rarity = ExtResource("3_rarity")
 description = "Fast as a flare and twice as hot tempered."
 weightRange = Vector2(60.0, 200.0)
-basePrice = 900
+basePrice = 450
 heldSize = 1.6
 hours = Vector2(0.0, 24.0)

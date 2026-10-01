@@ -25,4 +25,4 @@ giver = "Auntie Moss"
 description = "Bring Auntie Moss three Swamp Catfish and two Marsh Rice."
 goals = Array[ExtResource("e2")]([SubResource("s1"), SubResource("s2")])
 requires = Array[ExtResource("e1")]([ExtResource("e5")])
-rewardCoins = 300
+rewardCoins = 105

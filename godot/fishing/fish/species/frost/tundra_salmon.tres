@@ -11,6 +11,6 @@ icon = ExtResource("e2")
 rarity = ExtResource("e3")
 description = "Swims home through freezing water every year."
 weightRange = Vector2(2.0, 9.0)
-basePrice = 55
+basePrice = 28
 heldSize = 1.1
 hours = Vector2(0.0, 24.0)

@@ -11,6 +11,6 @@ icon = ExtResource("2_icon")
 rarity = ExtResource("3_rarity")
 description = "It looks up through its see-through head."
 weightRange = Vector2(0.5, 2.0)
-basePrice = 300
+basePrice = 150
 heldSize = 1.0
 hours = Vector2(0.0, 24.0)

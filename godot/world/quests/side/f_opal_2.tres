@@ -24,6 +24,6 @@ endScene = "f_opal_2_end"
 requires = Array[ExtResource("3_4xmah")]([ExtResource("4_1tgu7")])
 heartsWith = "opal"
 requiredHearts = 6
-rewardCoins = 2500
+rewardCoins = 875
 rewardItems = Array[ExtResource("5_h243f")]([ExtResource("6_fw8o8")])
 rewardAmounts = Array[int]([3])

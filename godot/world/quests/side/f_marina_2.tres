@@ -32,6 +32,6 @@ endScene = "f_marina_2_end"
 requires = Array[ExtResource("4_3pr07")]([ExtResource("5_102ob")])
 heartsWith = "marina"
 requiredHearts = 6
-rewardCoins = 2000
+rewardCoins = 700
 rewardItems = Array[ExtResource("6_3ci4i")]([ExtResource("7_kxvyf")])
 rewardAmounts = Array[int]([20])

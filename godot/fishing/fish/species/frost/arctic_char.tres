@@ -11,6 +11,6 @@ icon = ExtResource("e2")
 rarity = ExtResource("e3")
 description = "Pink-bellied and cold-blooded, even for a fish."
 weightRange = Vector2(0.5, 4.0)
-basePrice = 18
+basePrice = 9
 heldSize = 1.0
 hours = Vector2(0.0, 24.0)

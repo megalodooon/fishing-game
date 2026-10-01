@@ -25,6 +25,6 @@ endScene = "f_mara_2_end"
 requires = Array[ExtResource("3_8tmh6")]([ExtResource("4_hsxi6")])
 heartsWith = "mara"
 requiredHearts = 6
-rewardCoins = 3000
+rewardCoins = 1050
 rewardItems = Array[ExtResource("5_ocrvt")]([ExtResource("6_xokcc")])
 rewardAmounts = Array[int]([5])

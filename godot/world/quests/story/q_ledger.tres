@@ -24,4 +24,4 @@ goals = Array[ExtResource("1_lnd65")]([SubResource("Resource_5hnms")])
 startScene = "q_ledger_start"
 endScene = "q_ledger_end"
 requires = Array[ExtResource("2_6od1w")]([ExtResource("3_0a5uf"), ExtResource("4_ex4d6")])
-rewardCoins = 1000
+rewardCoins = 350

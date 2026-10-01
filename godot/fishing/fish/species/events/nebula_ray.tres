@@ -12,6 +12,6 @@ icon = ExtResource("1_1j7eb")
 rarity = ExtResource("2_t6aq0")
 description = "Glides like a cloud of stars."
 weightRange = Vector2(3, 12)
-basePrice = 160
+basePrice = 80
 heldSize = 0.84
 hours = Vector2(20, 4)

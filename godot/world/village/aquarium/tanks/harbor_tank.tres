@@ -16,5 +16,5 @@ description = "Fish from right around the village. Any four will do."
 icon = ExtResource("1_icon")
 fish = Array[ExtResource("1_data")]([ExtResource("f_2"), ExtResource("f_3"), ExtResource("f_4"), ExtResource("f_5"), ExtResource("f_6")])
 needs = 4
-rewardCoins = 100
+rewardCoins = 35
 opens = "The Tackle Shop"

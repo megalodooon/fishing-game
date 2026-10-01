@@ -11,6 +11,6 @@ icon = ExtResource("e2")
 rarity = ExtResource("e3")
 description = "Its blood has antifreeze in it. Truly."
 weightRange = Vector2(1.0, 6.0)
-basePrice = 16
+basePrice = 8
 heldSize = 1.0
 hours = Vector2(0.0, 24.0)

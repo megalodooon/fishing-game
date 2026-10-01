@@ -17,4 +17,4 @@ giver = "Tilly"
 description = "Restore Meadow Isle's greenhouse."
 goals = Array[ExtResource("e2")]([SubResource("s1")])
 requires = Array[ExtResource("e1")]([ExtResource("e3")])
-rewardCoins = 500
+rewardCoins = 175

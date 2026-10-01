@@ -22,4 +22,4 @@ goals = Array[ExtResource("1_ht5ph")]([SubResource("Resource_el46v")])
 startScene = "x_crew_5_start"
 endScene = "x_crew_5_end"
 requires = Array[ExtResource("2_ctdug")]([ExtResource("3_x3eq1")])
-rewardCoins = 3000
+rewardCoins = 1050

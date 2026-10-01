@@ -11,6 +11,6 @@ icon = ExtResource("e2")
 rarity = ExtResource("e3")
 description = "Clear as glass. Swims up rivers at night."
 weightRange = Vector2(0.05000000074506, 0.30000001192093)
-basePrice = 40
+basePrice = 20
 heldSize = 0.8
 hours = Vector2(20.0, 5.0)

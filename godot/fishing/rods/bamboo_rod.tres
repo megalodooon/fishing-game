@@ -29,4 +29,4 @@ description = "Light and springy. A real step up from the starter rod."
 heldScene = ExtResource("4_scene")
 discardable = false
 hint = "T to customize"
-buyPrice = 1200
+buyPrice = 600

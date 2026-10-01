@@ -15,5 +15,5 @@ displayName = "Abyss Tank"
 description = "A dark tank for the deepest fish."
 icon = ExtResource("e8")
 fish = Array[ExtResource("e2")]([ExtResource("e3"), ExtResource("e4"), ExtResource("e5"), ExtResource("e6"), ExtResource("e7")])
-rewardCoins = 8000
+rewardCoins = 2800
 requiredFlag = "project/aquarium_wing"

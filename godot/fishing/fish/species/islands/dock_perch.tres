@@ -12,5 +12,5 @@ icon = ExtResource("2_icon")
 rarity = ExtResource("3_rarity")
 description = "Hangs around the docks waiting for dropped bait."
 weightRange = Vector2(0.2, 1.2)
-basePrice = 18
+basePrice = 9
 heldSize = 0.85

@@ -19,4 +19,4 @@ giver = "Nora"
 description = "The darkest tank, for the deepest fish."
 goals = Array[ExtResource("e2")]([SubResource("s1")])
 requires = Array[ExtResource("e1")]([ExtResource("e4")])
-rewardCoins = 8000
+rewardCoins = 2800

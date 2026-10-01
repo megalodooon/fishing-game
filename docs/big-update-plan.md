@@ -81,9 +81,10 @@ and a local commit. Nothing is pushed until the last phase.
 
 ## Phase 6: Economy
 
-- [ ] Simulate income per day; target ~200-350 coins by the end of day 4, fishing is the main income.
-- [ ] Quests, collections, achievements: items and XP, small coins. Seeds and shop prices rebalanced.
-- [ ] Multiplayer price/reward scaling.
+- [x] Simulate income per day; target ~200-350 coins by the end of day 4, fishing is the main income.
+- [x] Quests, collections, achievements: items and XP, small coins. Seeds and shop prices rebalanced.
+- [x] Multiplayer price/reward scaling.
+  Done as data: fish basePrice x0.5, quest/aquarium coins x0.35 (rounded to 5, min 10), chest and creature coins x0.5, skill-level coins 20->8, collection tiers [10,30,90,280], cast energy 2->3, Bamboo Rod 1200->600. Estimate: ~27 fish/day at ~6 coins plus ~250 from early quests = ~750 earned by day 4, ~250-350 left after the usual early buys.
 
 ## Phase 7: Story (25-50 h; 100% in 100+ h)
 

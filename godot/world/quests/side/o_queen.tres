@@ -18,4 +18,4 @@ giver = "Opal the Diver"
 description = "The Pearl Queen holds court on Sundays. Catch her with a perfect cast."
 goals = Array[ExtResource("e2")]([SubResource("s1")])
 requires = Array[ExtResource("e1")]([ExtResource("e4")])
-rewardCoins = 3000
+rewardCoins = 1050

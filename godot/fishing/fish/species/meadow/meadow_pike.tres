@@ -11,6 +11,6 @@ icon = ExtResource("e2")
 rarity = ExtResource("e3")
 description = "An ambush hunter lurking in the reeds."
 weightRange = Vector2(2.0, 8.0)
-basePrice = 110
+basePrice = 55
 heldSize = 1.1
 hours = Vector2(0.0, 24.0)

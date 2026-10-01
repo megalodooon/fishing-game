@@ -11,6 +11,6 @@ icon = ExtResource("e2")
 rarity = ExtResource("e3")
 description = "Follows the lighthouse beam at night."
 weightRange = Vector2(1.0, 6.0)
-basePrice = 200
+basePrice = 100
 heldSize = 1.1
 hours = Vector2(20.0, 4.0)

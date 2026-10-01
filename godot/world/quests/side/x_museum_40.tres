@@ -22,4 +22,4 @@ goals = Array[ExtResource("1_lttec")]([SubResource("Resource_t8upi")])
 startScene = "x_museum_40_start"
 endScene = "x_museum_40_end"
 requires = Array[ExtResource("2_y0cit")]([ExtResource("3_3jmga")])
-rewardCoins = 5000
+rewardCoins = 1750

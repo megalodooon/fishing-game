@@ -11,6 +11,6 @@ icon = ExtResource("e2")
 rarity = ExtResource("e3")
 description = "Golden as honey, and just as sweet on the grill."
 weightRange = Vector2(0.30000001192093, 1.20000004768372)
-basePrice = 28
+basePrice = 14
 heldSize = 0.9
 hours = Vector2(6.0, 20.0)

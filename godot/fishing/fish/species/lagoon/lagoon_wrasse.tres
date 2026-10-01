@@ -11,6 +11,6 @@ icon = ExtResource("e2")
 rarity = ExtResource("e3")
 description = "Cleans the lagoon's bigger fish."
 weightRange = Vector2(0.20000000298023, 0.89999997615814)
-basePrice = 11
+basePrice = 6
 heldSize = 0.8
 hours = Vector2(0.0, 24.0)

@@ -20,4 +20,4 @@ giver = "Nora"
 description = "Catch five giant fish."
 goals = Array[ExtResource("e2")]([SubResource("s1")])
 requires = Array[ExtResource("e1")]([ExtResource("e3")])
-rewardCoins = 1200
+rewardCoins = 420

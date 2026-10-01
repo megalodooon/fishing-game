@@ -11,6 +11,6 @@ icon = ExtResource("e2")
 rarity = ExtResource("e3")
 description = "Freckled with orange spots."
 weightRange = Vector2(0.5, 2.0)
-basePrice = 42
+basePrice = 21
 heldSize = 0.9
 hours = Vector2(0.0, 24.0)

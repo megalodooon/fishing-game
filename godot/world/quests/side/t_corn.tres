@@ -20,6 +20,6 @@ giver = "Tilly"
 description = "Tilly's selling sweetcorn at the market. Bring her five."
 goals = Array[ExtResource("e2")]([SubResource("s1")])
 requires = Array[ExtResource("e1")]([ExtResource("e4")])
-rewardCoins = 120
+rewardCoins = 40
 rewardItems = Array[ExtResource("e6")]([ExtResource("e5")])
 rewardAmounts = Array[int]([3])

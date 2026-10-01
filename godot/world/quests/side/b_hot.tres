@@ -20,6 +20,6 @@ giver = "Smith Brann"
 description = "Brann quenches blades in Ash Cod oil. Bring three."
 goals = Array[ExtResource("e2")]([SubResource("s1")])
 requires = Array[ExtResource("e1")]([ExtResource("e4")])
-rewardCoins = 400
+rewardCoins = 140
 rewardItems = Array[ExtResource("e6")]([ExtResource("e5")])
 rewardAmounts = Array[int]([5])

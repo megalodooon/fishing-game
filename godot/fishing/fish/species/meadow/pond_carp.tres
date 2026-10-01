@@ -11,6 +11,6 @@ icon = ExtResource("e2")
 rarity = ExtResource("e3")
 description = "Lazy and golden-brown. Loves bread crumbs."
 weightRange = Vector2(0.5, 3.0)
-basePrice = 8
+basePrice = 4
 heldSize = 0.9
 hours = Vector2(0.0, 24.0)

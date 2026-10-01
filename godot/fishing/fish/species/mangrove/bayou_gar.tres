@@ -11,6 +11,6 @@ icon = ExtResource("e2")
 rarity = ExtResource("e3")
 description = "A living fossil with a mouthful of needles."
 weightRange = Vector2(3.0, 12.0)
-basePrice = 45
+basePrice = 23
 heldSize = 1.2
 hours = Vector2(0.0, 24.0)

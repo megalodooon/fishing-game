@@ -11,6 +11,6 @@ icon = ExtResource("e2")
 rarity = ExtResource("e3")
 description = "Peeks out of cracks in the lighthouse rocks."
 weightRange = Vector2(0.01999999955297, 0.10000000149012)
-basePrice = 12
+basePrice = 6
 heldSize = 0.6
 hours = Vector2(0.0, 24.0)

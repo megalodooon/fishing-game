@@ -11,6 +11,6 @@ icon = ExtResource("e2")
 rarity = ExtResource("e3")
 description = "Hides among the roots and snaps at anything shiny."
 weightRange = Vector2(1.0, 6.0)
-basePrice = 130
+basePrice = 65
 heldSize = 1.1
 hours = Vector2(0.0, 24.0)

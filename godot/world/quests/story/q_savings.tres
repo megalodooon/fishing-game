@@ -23,4 +23,4 @@ goals = Array[ExtResource("1_ewstd")]([SubResource("Resource_x636l")])
 startScene = "q_savings_start"
 endScene = "q_savings_end"
 requires = Array[ExtResource("2_qtefh")]([ExtResource("3_jiqdc")])
-rewardCoins = 300
+rewardCoins = 105

@@ -12,5 +12,5 @@ icon = ExtResource("1_cep7w")
 rarity = ExtResource("2_nfn4c")
 description = "Its spots turn pink in spring. Nobody knows why."
 weightRange = Vector2(0.5, 2)
-basePrice = 20
+basePrice = 10
 heldSize = 0.64

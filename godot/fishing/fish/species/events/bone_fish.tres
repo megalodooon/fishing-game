@@ -12,5 +12,5 @@ icon = ExtResource("1_j6q2y")
 rarity = ExtResource("2_n2bqb")
 description = "All bones and bad attitude."
 weightRange = Vector2(1, 4)
-basePrice = 50
+basePrice = 25
 heldSize = 0.6799999999999999

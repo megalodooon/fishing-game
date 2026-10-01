@@ -12,5 +12,5 @@ icon = ExtResource("1_8ls3d")
 rarity = ExtResource("2_uvxu1")
 description = "Covered in a thin layer of frost. It seems to like it."
 weightRange = Vector2(0.05, 0.4)
-basePrice = 15
+basePrice = 8
 heldSize = 0.6080000001192093

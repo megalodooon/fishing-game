@@ -11,6 +11,6 @@ icon = ExtResource("e2")
 rarity = ExtResource("e3")
 description = "Its tail beats like thunder when hooked."
 weightRange = Vector2(10.0, 50.0)
-basePrice = 75
+basePrice = 38
 heldSize = 1.3
 hours = Vector2(0.0, 24.0)

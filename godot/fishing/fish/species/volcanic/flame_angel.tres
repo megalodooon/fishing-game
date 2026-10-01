@@ -11,6 +11,6 @@ icon = ExtResource("2_icon")
 rarity = ExtResource("3_rarity")
 description = "Blazing orange with deep blue fin tips."
 weightRange = Vector2(0.30000001192093, 1.0)
-basePrice = 180
+basePrice = 90
 heldSize = 0.9
 hours = Vector2(10.0, 20.0)

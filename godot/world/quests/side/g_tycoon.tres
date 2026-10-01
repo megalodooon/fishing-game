@@ -20,4 +20,4 @@ giver = "Gus the Fishmonger"
 description = "Earn 50,000 coins from sales."
 goals = Array[ExtResource("e2")]([SubResource("s1")])
 requires = Array[ExtResource("e1")]([ExtResource("e3")])
-rewardCoins = 5000
+rewardCoins = 1750

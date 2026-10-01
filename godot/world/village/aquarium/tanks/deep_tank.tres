@@ -15,5 +15,5 @@ description = "Bigger fish from further out at sea."
 icon = ExtResource("1_icon")
 fish = Array[ExtResource("1_data")]([ExtResource("f_2"), ExtResource("f_3"), ExtResource("f_4"), ExtResource("f_5")])
 needs = 0
-rewardCoins = 250
+rewardCoins = 90
 opens = "The Boatyard"

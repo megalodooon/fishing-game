@@ -22,4 +22,4 @@ startScene = "f_marina_1_start"
 endScene = "f_marina_1_end"
 heartsWith = "marina"
 requiredHearts = 3
-rewardCoins = 600
+rewardCoins = 210

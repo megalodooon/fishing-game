@@ -16,5 +16,5 @@ displayName = "Frost Tank"
 description = "Fish from the frozen north."
 icon = ExtResource("e9")
 fish = Array[ExtResource("e2")]([ExtResource("e3"), ExtResource("e4"), ExtResource("e5"), ExtResource("e6"), ExtResource("e7"), ExtResource("e8")])
-rewardCoins = 2500
+rewardCoins = 875
 requiredFlag = "project/aquarium_wing"

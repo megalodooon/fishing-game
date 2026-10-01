@@ -12,5 +12,5 @@ icon = ExtResource("1_xwsp4")
 rarity = ExtResource("2_3hawr")
 description = "Tiny and pink. They school under the falling blossoms."
 weightRange = Vector2(0.05, 0.3)
-basePrice = 12
+basePrice = 6
 heldSize = 0.6060000002384186

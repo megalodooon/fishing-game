@@ -16,5 +16,5 @@ displayName = "Reef Tank"
 description = "Color from the Coral Reef."
 icon = ExtResource("e9")
 fish = Array[ExtResource("e2")]([ExtResource("e3"), ExtResource("e4"), ExtResource("e5"), ExtResource("e6"), ExtResource("e7"), ExtResource("e8")])
-rewardCoins = 1500
+rewardCoins = 525
 requiredFlag = "project/aquarium_wing"

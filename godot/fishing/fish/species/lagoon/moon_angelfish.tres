@@ -11,6 +11,6 @@ icon = ExtResource("e2")
 rarity = ExtResource("e3")
 description = "Silver under the moonlight, and only then."
 weightRange = Vector2(0.30000001192093, 1.20000004768372)
-basePrice = 160
+basePrice = 80
 heldSize = 0.9
 hours = Vector2(19.0, 3.0)

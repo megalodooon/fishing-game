@@ -24,4 +24,4 @@ endScene = "f_barnaby_1_end"
 requires = Array[ExtResource("2_vp70m")]([ExtResource("3_a4cgi")])
 heartsWith = "barnaby"
 requiredHearts = 3
-rewardCoins = 1500
+rewardCoins = 525

@@ -30,6 +30,6 @@ startScene = "f_bo_1_start"
 endScene = "f_bo_1_end"
 heartsWith = "bo"
 requiredHearts = 3
-rewardCoins = 300
+rewardCoins = 105
 rewardItems = Array[ExtResource("5_c74wm")]([ExtResource("6_senl5")])
 rewardAmounts = Array[int]([2])

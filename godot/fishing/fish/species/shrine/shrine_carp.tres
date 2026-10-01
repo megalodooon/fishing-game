@@ -11,6 +11,6 @@ icon = ExtResource("e2")
 rarity = ExtResource("e3")
 description = "Said to carry wishes down to the deep."
 weightRange = Vector2(1.0, 5.0)
-basePrice = 70
+basePrice = 35
 heldSize = 1.0
 hours = Vector2(0.0, 24.0)

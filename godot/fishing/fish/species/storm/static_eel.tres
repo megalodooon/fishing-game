@@ -16,6 +16,6 @@ icon = ExtResource("e2")
 rarity = ExtResource("e3")
 description = "Buzzes with electricity in the rain. Don't touch it."
 weightRange = Vector2(2, 8)
-basePrice = 80
+basePrice = 40
 heldSize = 1.1
 requirements = Array[ExtResource("e5")]([SubResource("s1")])

@@ -19,4 +19,4 @@ giver = "Nora"
 description = "Restore the aquarium's west wing for new tanks."
 goals = Array[ExtResource("e2")]([SubResource("s1")])
 requires = Array[ExtResource("e1")]([ExtResource("e3")])
-rewardCoins = 500
+rewardCoins = 175

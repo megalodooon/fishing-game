@@ -21,4 +21,4 @@ story = true
 goals = Array[ExtResource("e2")]([SubResource("s1")])
 endScene = "q_skill15_end"
 requires = Array[ExtResource("e1")]([ExtResource("e3")])
-rewardCoins = 1000
+rewardCoins = 350

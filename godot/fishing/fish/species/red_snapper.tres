@@ -11,5 +11,5 @@ icon = ExtResource("2_icon")
 rarity = ExtResource("3_rarity")
 description = "Bright red and prized at every market."
 weightRange = Vector2(1, 6)
-basePrice = 30
+basePrice = 15
 heldSize = 1.1

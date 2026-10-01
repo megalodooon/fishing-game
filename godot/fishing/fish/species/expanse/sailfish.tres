@@ -11,6 +11,6 @@ icon = ExtResource("e2")
 rarity = ExtResource("e3")
 description = "The fastest fish in the sea, sail up and all."
 weightRange = Vector2(20.0, 60.0)
-basePrice = 300
+basePrice = 150
 heldSize = 1.5
 hours = Vector2(0.0, 24.0)

@@ -11,6 +11,6 @@ icon = ExtResource("2_icon")
 rarity = ExtResource("3_rarity")
 description = "Chews coral all day and turns it into sand."
 weightRange = Vector2(1.0, 3.0)
-basePrice = 35
+basePrice = 18
 heldSize = 1.0
 hours = Vector2(6.0, 18.0)

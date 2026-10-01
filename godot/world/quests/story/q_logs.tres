@@ -29,4 +29,4 @@ goals = Array[ExtResource("e2")]([SubResource("s1"), SubResource("s2")])
 startScene = "q_logs_start"
 endScene = "q_logs_end"
 requires = Array[ExtResource("e1")]([ExtResource("e5")])
-rewardCoins = 3000
+rewardCoins = 1050

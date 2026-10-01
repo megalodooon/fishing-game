@@ -11,6 +11,6 @@ icon = ExtResource("2_icon")
 rarity = ExtResource("3_rarity")
 description = "Grey as volcanic ash. The smith uses them to temper steel. Somehow."
 weightRange = Vector2(1.0, 4.0)
-basePrice = 25
+basePrice = 13
 heldSize = 1.0
 hours = Vector2(0.0, 24.0)

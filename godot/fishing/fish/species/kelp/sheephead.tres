@@ -11,6 +11,6 @@ icon = ExtResource("e2")
 rarity = ExtResource("e3")
 description = "Crunches urchins with human-like teeth."
 weightRange = Vector2(1.0, 8.0)
-basePrice = 48
+basePrice = 24
 heldSize = 1.1
 hours = Vector2(0.0, 24.0)

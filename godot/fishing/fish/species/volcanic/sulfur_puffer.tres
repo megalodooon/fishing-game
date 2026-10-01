@@ -11,6 +11,6 @@ icon = ExtResource("2_icon")
 rarity = ExtResource("3_rarity")
 description = "Smells of rotten eggs. Puffs up when annoyed, which is always."
 weightRange = Vector2(0.5, 2.0)
-basePrice = 160
+basePrice = 80
 heldSize = 1.0
 hours = Vector2(0.0, 24.0)

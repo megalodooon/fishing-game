@@ -18,6 +18,6 @@ giver = "Tilly"
 description = "A white and red koi lives in Tilly's pond. It only rises for honey bait early in the morning."
 goals = Array[ExtResource("e2")]([SubResource("s1")])
 requires = Array[ExtResource("e1")]([ExtResource("e4")])
-rewardCoins = 1500
+rewardCoins = 525
 requiredSkill = &"fishing"
 requiredLevel = 6

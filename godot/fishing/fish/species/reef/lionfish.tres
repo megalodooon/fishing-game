@@ -11,6 +11,6 @@ icon = ExtResource("2_icon")
 rarity = ExtResource("3_rarity")
 description = "Venomous spines and a big appetite. Handle with care."
 weightRange = Vector2(0.5, 1.5)
-basePrice = 120
+basePrice = 60
 heldSize = 1.0
 hours = Vector2(0.0, 24.0)

@@ -11,6 +11,6 @@ icon = ExtResource("2_icon")
 rarity = ExtResource("3_rarity")
 description = "Glassy black and sharp-edged. Hunts at night."
 weightRange = Vector2(2.0, 6.0)
-basePrice = 70
+basePrice = 35
 heldSize = 1.0
 hours = Vector2(18.0, 6.0)

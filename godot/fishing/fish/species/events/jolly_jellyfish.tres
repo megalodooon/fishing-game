@@ -12,5 +12,5 @@ icon = ExtResource("1_hae02")
 rarity = ExtResource("2_h5vmf")
 description = "Blinks red and green. Surprisingly cheerful for a jellyfish."
 weightRange = Vector2(0.5, 4)
-basePrice = 170
+basePrice = 85
 heldSize = 0.6799999999999999

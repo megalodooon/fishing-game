@@ -11,6 +11,6 @@ icon = ExtResource("e2")
 rarity = ExtResource("e3")
 description = "Shines like the championship trophy."
 weightRange = Vector2(3.0, 15.0)
-basePrice = 340
+basePrice = 170
 heldSize = 1.2
 hours = Vector2(0.0, 24.0)

@@ -16,5 +16,5 @@ description = "Odd fish from odd places. Any four of them."
 icon = ExtResource("1_icon")
 fish = Array[ExtResource("1_data")]([ExtResource("f_2"), ExtResource("f_3"), ExtResource("f_4"), ExtResource("f_5"), ExtResource("f_6")])
 needs = 4
-rewardCoins = 400
+rewardCoins = 140
 opens = "The Smokehouse"

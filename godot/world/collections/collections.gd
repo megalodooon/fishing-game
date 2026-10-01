@@ -16,7 +16,7 @@ const TIERS : Dictionary = {
 	"Trophy": [1, 2, 5, 10],
 }
 const WORTH : Dictionary = {"Common": 1.0, "Uncommon": 1.6, "Rare": 3.0, "Legendary": 6.0, "Trophy": 12.0}
-const TIER_COINS : PackedInt32Array = [25, 80, 250, 800]
+const TIER_COINS : PackedInt32Array = [10, 30, 90, 280]
 const TIER_XP : PackedFloat32Array = [30.0, 120.0, 400.0, 1200.0]
 const ROMAN : PackedStringArray = ["I", "II", "III", "IV", "V"]
 const TIER_COLOR : Color = Color(1.0, 0.78, 0.35)

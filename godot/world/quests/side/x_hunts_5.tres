@@ -23,6 +23,6 @@ goals = Array[ExtResource("1_a7ru7")]([SubResource("Resource_bej68")])
 startScene = "x_hunts_5_start"
 endScene = "x_hunts_5_end"
 requires = Array[ExtResource("2_v0a1i")]([ExtResource("3_kc1if")])
-rewardCoins = 6000
+rewardCoins = 2100
 rewardItems = Array[ExtResource("4_hbqvv")]([ExtResource("5_1a033")])
 rewardAmounts = Array[int]([30])

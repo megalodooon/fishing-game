@@ -12,6 +12,6 @@ icon = ExtResource("1_seiea")
 rarity = ExtResource("2_vtidl")
 description = "Its back is a map of the night sky."
 weightRange = Vector2(0.5, 3)
-basePrice = 40
+basePrice = 20
 heldSize = 0.6599999999999999
 hours = Vector2(20, 4)

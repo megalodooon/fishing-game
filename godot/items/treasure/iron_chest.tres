@@ -20,7 +20,7 @@
 
 [resource]
 script = ExtResource("e1")
-coins = Vector2i(40, 150)
+coins = Vector2i(20, 75)
 rolls = Vector2i(2, 3)
 loot = Array[ExtResource("e2")]([ExtResource("e3"), ExtResource("e4"), ExtResource("e5"), ExtResource("e6"), ExtResource("e7"), ExtResource("e8"), ExtResource("e9"), ExtResource("e10"), ExtResource("e11"), ExtResource("12_ema8h"), ExtResource("13_vmt21"), ExtResource("14_xqqyj"), ExtResource("15_pgpvo")])
 lootWeights = PackedFloat32Array(5, 3, 2, 2, 2, 0.4, 0.4, 0.3, 0.05, 2, 1, 1, 1)

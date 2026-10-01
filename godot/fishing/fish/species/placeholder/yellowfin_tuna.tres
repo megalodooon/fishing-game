@@ -12,5 +12,5 @@ icon = ExtResource("2_icon")
 rarity = ExtResource("3_rarity")
 description = "A powerful swimmer built for the open sea."
 weightRange = Vector2(5, 30)
-basePrice = 80
+basePrice = 40
 heldSize = 1.2

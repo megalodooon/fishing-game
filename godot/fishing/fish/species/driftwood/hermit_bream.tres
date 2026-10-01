@@ -11,6 +11,6 @@ icon = ExtResource("2_icon")
 rarity = ExtResource("3_rarity")
 description = "The old hermit claims he taught this one to wave."
 weightRange = Vector2(0.5, 2.0)
-basePrice = 30
+basePrice = 15
 heldSize = 0.9
 hours = Vector2(0.0, 24.0)

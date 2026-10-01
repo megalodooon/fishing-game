@@ -12,5 +12,5 @@ icon = ExtResource("2_icon")
 rarity = ExtResource("3_rarity")
 description = "Almost see-through. Hold it up and you can count its bones."
 weightRange = Vector2(0.5, 3)
-basePrice = 120
+basePrice = 60
 heldSize = 0.95

@@ -17,4 +17,4 @@ giver = "Luma"
 description = "Restore the lamp of the Lantern Key lighthouse."
 goals = Array[ExtResource("e2")]([SubResource("s1")])
 requires = Array[ExtResource("e1")]([ExtResource("e3")])
-rewardCoins = 1000
+rewardCoins = 350

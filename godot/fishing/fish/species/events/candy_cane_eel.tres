@@ -12,5 +12,5 @@ icon = ExtResource("1_pt46t")
 rarity = ExtResource("2_stmn4")
 description = "Red and white stripes, and it smells of peppermint."
 weightRange = Vector2(1, 5)
-basePrice = 50
+basePrice = 25
 heldSize = 0.7

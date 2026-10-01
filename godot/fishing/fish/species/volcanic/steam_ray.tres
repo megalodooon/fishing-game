@@ -16,6 +16,6 @@ icon = ExtResource("2_icon")
 rarity = ExtResource("3_rarity")
 description = "Glides up to the surface when rain hisses on the hot sea."
 weightRange = Vector2(3, 12)
-basePrice = 220
+basePrice = 110
 heldSize = 1.2
 requirements = Array[ExtResource("s_req")]([SubResource("Req_1")])

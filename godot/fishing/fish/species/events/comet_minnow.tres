@@ -12,6 +12,6 @@ icon = ExtResource("1_n0sxu")
 rarity = ExtResource("2_o4hlq")
 description = "Leaves a glowing trail. Easy to spot, hard to catch."
 weightRange = Vector2(0.05, 0.4)
-basePrice = 14
+basePrice = 7
 heldSize = 0.6080000001192093
 hours = Vector2(20, 4)

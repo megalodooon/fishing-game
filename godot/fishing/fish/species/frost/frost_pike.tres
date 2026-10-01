@@ -17,6 +17,6 @@ icon = ExtResource("e2")
 rarity = ExtResource("e3")
 description = "White as snow. Comes up when fog lies on the ice."
 weightRange = Vector2(3, 12)
-basePrice = 170
+basePrice = 85
 heldSize = 1.2
 requirements = Array[ExtResource("e5")]([SubResource("s1")])

@@ -15,7 +15,7 @@ const PERK : Texture2D = preload("res://ui/hub/icons/unlock_perk.png")
 const HEART : Texture2D = preload("res://ui/hub/icons/unlock_heart.png")
 const FISH : Texture2D = preload("res://ui/hub/icons/unlock_fish.png")
 # Coins paid for reaching a level: this times the level.
-const COINS_PER_LEVEL : int = 20
+const COINS_PER_LEVEL : int = 8
 
 # Per skill: level -> Array of [icon, text].
 static var tracks : Dictionary = {}

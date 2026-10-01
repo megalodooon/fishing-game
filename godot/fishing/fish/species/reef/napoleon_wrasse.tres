@@ -11,6 +11,6 @@ icon = ExtResource("2_icon")
 rarity = ExtResource("3_rarity")
 description = "A huge, gentle reef giant with a bump on its forehead."
 weightRange = Vector2(15.0, 60.0)
-basePrice = 600
+basePrice = 300
 heldSize = 1.6
 hours = Vector2(8.0, 16.0)

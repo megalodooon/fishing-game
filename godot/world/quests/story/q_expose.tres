@@ -31,5 +31,5 @@ chapter = 8
 startScene = "q_expose_start"
 endScene = "q_expose_end"
 requires = Array[ExtResource("e1")]([ExtResource("e3"), ExtResource("e4")])
-rewardCoins = 5000
+rewardCoins = 1750
 unlocks = Array[ExtResource("e6")]([ExtResource("e5")])
