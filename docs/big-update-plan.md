@@ -24,7 +24,7 @@ and a local commit. Nothing is pushed until the last phase.
       through the host).
 - [x] Shared clock from the host; the day ends when both are asleep ("waiting for X"); Esc doesn't
       pause in MP. Pass out → wake in front of your house.
-- [ ] Location-shared things: fishing spots, forage, dropped items, NPC positions (deterministic from
+- [x] Location-shared things: fishing spots, forage, dropped items, NPC positions (deterministic from
       the clock), farm tiles, festival pickups. The first player in a location owns its spawns.
 - [x] Sea chart shows both players; **boarding**: request from the chart (travel to an occupied
       place, or while already there), owner accepts, rider stands on the owner's deck and fishes, the
@@ -74,7 +74,7 @@ and a local commit. Nothing is pushed until the last phase.
 - [x] Food: much smaller energy values.
 - [x] Unique fishing tech (radar shows the fish over its spot for a while, etc.).
 - [x] NPC likes/dislikes/loves/hates visible and meaningful.
-- [ ] Fewer junk drops; go over every system for function, fun and performance.
+- [x] Fewer junk drops; go over every system for function, fun and performance.
 - [x] Restoration board: projects become a fund both players can chip into; coin costs scale with
       NetSession.players_in_world (x1.5 for two).
 - [x] Lighthouse: remove the glow bait recipe from the Lightning Eel explanation.
@@ -89,17 +89,17 @@ and a local commit. Nothing is pushed until the last phase.
 ## Phase 7: Story (25-50 h; 100% in 100+ h)
 
 - [x] New tutorial: Pip explains, then guides the first fish step by step.
-- [ ] Rewrite every scene: distinct voices, emotional beats, hardships, a twist ending. Player is
+- [x] Rewrite every scene: distinct voices, emotional beats, hardships, a twist ending. Player is
       named, "they" in text. Story paced across the locations and skill gates.
 
 ## Phase 8: Fun
 
 - [x] Festival minigames and event shop; village visitors with quest chains.
-- [ ] Tavern games (playable against your friend); boat races and fishing derbies.
+- [x] Tavern games (playable against your friend); boat races and fishing derbies.
 
 ## Phase 9: Polish and ship
 
-- [ ] Performance pass, QoL, every system once more, docs, push.
+- [x] Performance pass, QoL, every system once more, docs, push.
 
 ## Decisions (question round)
 

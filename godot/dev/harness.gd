@@ -142,11 +142,16 @@ func talk_pip() -> void:
 	for node in game.find_children("*", "Npc", true, false):
 		if (node as Npc).id == "pip":
 			pip = node
+	if not pip:
+		print("HARNESS: skip, Pip is indoors right now")
+		return
 	(find(DialogueUI) as DialogueUI).converse(pip, player)
 	await seconds(1.5)
 
 func gift_pip() -> void:
 	await talk_pip()
+	if not (find(DialogueUI) as DialogueUI).npc:
+		return
 	(find(DialogueUI) as DialogueUI).open_gift()
 	await seconds(1.0)
 
@@ -458,3 +463,23 @@ func arcade_test() -> void:
 	check(arcade.stage == ArcadeUI.Stage.RESULT and "Ana" in " ".join(arcade.resultLines), "the answered challenge is judged")
 	check(not ArcadeUI.challenges.has(ArcadeUI.DARTS), "a judged challenge is cleared")
 	arcade.close()
+
+# Frame times walking across the village and out at sea: average and worst.
+func perf_test() -> void:
+	await village()
+	for place in [["square", Vector2(384.0, 212.0)], ["harbor", Vector2(640.0, 330.0)], ["home", Vector2(200.0, 150.0)]]:
+		player.global_position = place[1]
+		await seconds(1.0)
+		var worst : float = 0.0
+		var sum : float = 0.0
+		var count : int = 0
+		var last : int = Time.get_ticks_usec()
+		while count < 180:
+			await get_tree().process_frame
+			var now : int = Time.get_ticks_usec()
+			var took : float = (now - last) / 1000.0
+			last = now
+			worst = maxf(worst, took)
+			sum += took
+			count += 1
+		print("HARNESS: perf %s avg %.2f ms, worst %.2f ms" % [place[0], sum / count, worst])

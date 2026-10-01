@@ -1,6 +1,6 @@
 # Game design overview
 
-How the game fits together after the 2026-09-30 overhaul: what each system is for, how it ties into
+How the game fits together after the 2026-09-30 overhaul and the 2026-10-02 big update: what each system is for, how it ties into
 progression, and where to change it.
 
 ## Controls
@@ -13,7 +13,7 @@ progression, and where to change it.
 | J | Journal |
 | R | Recipe book (in the bag or the book: R over an item shows every recipe that uses it) |
 | K | Skills, Angler Level, Tide Tree, achievements and stats |
-| O | Charm pouch |
+| O | Gear (hat, gear, two charms) |
 | L | Collections |
 | Q | Quests |
 | C | Calendar |
@@ -63,7 +63,7 @@ Everything else opens through play:
 | Crew | Hired helpers (like SkyBlock minions) who gather one material while you're away, up to what they can hold; collect at the crew board by the house. Contracts are crafted after a collection tier; tiers II-VII cost that material (then its enchanted form) and make them faster with more storage. New tiers of different members open more crew slots. | `world/crew/` |
 | Bazaar | Beside the Market Hall once it's restored: buy and sell every material, crop and enchanted material you've found, any time, at prices that drift daily. | `world/village/shop/bazaar.gd` |
 | Enchanted materials | 32 of a material (16 for rare ones) press into its enchanted form, taught by that material's collection tier II. Better rods, tackle, charm upgrades, potions and crew tiers ask for them. | `items/enchanted/` |
-| Charm pouch | Charms come in families that upgrade: charm, ring, artifact, relic (16 families). Only the best of a family counts. Charms in the pouch add Magical Power by rarity, which turns into luck, rare find and XP. Pouch slots grow with the Angler Level and Pouch Stitching. | `items/charms/charm_pouch.gd` |
+| Gear | Hat, Gear and two Charm slots. Hats and gear have stats and some a unique effect (storm fisher, lantern, captain, oilskin, diver, night owl). Every charm ever collected adds Magical Power (luck, rare find, XP); charm families upgrade (charm, ring, artifact, relic). Worn things can also add fight hearts and push bedtime later. | `items/equipment/` |
 | Potions | Brewed at the cauldron from a Glass Bottle (sand, or two broken bottles) and ingredients; they give hours of a stat. The Alchemy skill makes them last longer. | `items/potions/` |
 | Harbor Council | A ballot box in the square: each week one of three villagers holds the seat and their perk helps all week. Vote for next week's. | `world/council/` |
 | Tilly's seed stall | Every seed in the game on Meadow Isle (open from the start), rarer seeds by Farming level. | `stock/tilly_seeds.tres` |
@@ -102,6 +102,31 @@ and the first crew member (1), the museum and Odette's lodge (2), Finn's buried 
 ledger that proves Deepnet bought the loans before the storm (3), the hunters' board and Vera's run
 for the council (4), Frostmaw (5), the tide altar (6), and Debt-Free (pay off the harbor) before the
 finale. Plus 38 friendship favors and 14 system quests.
+
+## The big update (2026-10-02)
+
+| System | What it is | Where |
+|---|---|---|
+| Multiplayer | Two players over ENet (join code = packed IP and port, UPnP when it can), Steam-ready behind `MultiplayerPeer`. The host's save holds both characters. Shared clock, story, village, farm, places, side quests and fishing spots; separate stats, bags and wallets. Sleep together; quest coins are split; restoration costs x1.5. Board a friend's boat from the sea chart; join a friend's fight with J. | `net/` |
+| Saves | Version 2: world progress plus one entry per player. Old saves don't load. | `player/save_game.gd` |
+| Bramblewick | One big island (4x4 rooms) with a follow camera; the House, Market Hall, Bank, Harbor Office, Museum and Tavern have interiors. Built from data by `tools/village/`. | `world/village/` |
+| Dropped items | Forage drops on the ground; drag an item out of the bag to throw it; drops vanish after 15 s. | `world/drops/` |
+| Sleep | Pass out after 19 hours awake (2 AM from 7 AM), later with gear (Night Owl, Night Watch Coat), never past 48. Passing out wakes you at home, rescued by Pip. | `components/sleep/` |
+| Fights | One heart to start; more from rods (by rarity), gear and every 10 Angler Levels. | `player/stats.gd` |
+| Tide Tree | Every node, fully grown, adds a unique effect (first cast bites at once, second chance on a missed bite, rare spots shimmer, ...). | `player/tide_tree.gd` |
+| Fishing tech | The Sonar Array shows a spot's fish as a shadow, Deep Sonar shows the fish itself; the next bite there is that fish. | `fishing/fishing_spots/fishing_spot.gd` |
+| Economy | Fish base prices halved, quest and aquarium coins about a third, casting costs 3 energy, food fills 0.6x and less for each meal in a day, junk halved, stacks of 100 (fish never stack). Aim: 200-350 coins by day 4. | data |
+| Restoration fund | Projects take any part of their coins and materials from anyone in the world until they're paid. | `world/village/restoration/` |
+| Arcade | Tavern darts (Wren, or a friend's challenge), the harbor regatta on the east pier, the festival lantern toss (Contest Ribbons). | `world/arcade/` |
+| Tutorial | Pip names the player, then coaches the first fish on a hint line that follows the rod. | `story/fishing_tutorial.gd` |
+| Settings | Shared by the title screen and pause: audio buses, window and FPS, key rebinding, text speed, autosave, accessibility (rarity letters, reduced flashing, screen shake). | `ui/settings/` |
+
+The story (`story/dialogue.txt`): Finn Marsh built the Tide Engine with his student Vera to save
+a dying bay; Deepnet scaled it up, and the Great Storm was the Leviathan rising to its pull. Finn
+sealed the trench with the four Tide Pearls and hid as Silas, then guided his grandkid into opening
+it so he could land the Leviathan. Vera has kept people away from the shrine for ten years, guilty of
+the dumping but not of what Finn thinks. The player wins the sea rights, brings the Leviathan up and
+lets it go; at the festival Finn tells the village the truth himself.
 
 ## Menus and their looks
 
