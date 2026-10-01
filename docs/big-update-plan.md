@@ -58,12 +58,12 @@ and a local commit. Nothing is pushed until the last phase.
 
 ## Phase 4: World
 
-- [ ] Islands: follow camera clamped to the island, no long walk from the arrival point, island water
+- [x] Islands: follow camera clamped to the island, no long walk from the arrival point, island water
       animates.
-- [ ] Village becomes a big hub island; interiors (own scenes) for the house, Market Hall + Fishmonger,
+- [x] Village becomes a big hub island; interiors (own scenes) for the house, Market Hall + Fishmonger,
       Bank + Harbor Office, Museum/Aquarium + Tavern. Bank moves into the village.
-- [ ] Dropped items: forage drops onto the ground, drag out of the bag to drop, 15 s despawn, synced in MP.
-- [ ] Farming: hold to plant, planting costs energy.
+- [x] Dropped items: forage drops onto the ground, drag out of the bag to drop, 15 s despawn, synced in MP.
+- [x] Farming: hold to plant, planting costs energy.
 
 ## Phase 5: Systems
 
@@ -77,7 +77,7 @@ and a local commit. Nothing is pushed until the last phase.
 - [ ] Fewer junk drops; go over every system for function, fun and performance.
 - [ ] Restoration board: projects become a fund both players can chip into; coin costs scale with
       NetSession.players_in_world (x1.5 for two).
-- [ ] Lighthouse: remove the glow bait recipe from the Lightning Eel explanation.
+- [x] Lighthouse: remove the glow bait recipe from the Lightning Eel explanation.
 
 ## Phase 6: Economy
 

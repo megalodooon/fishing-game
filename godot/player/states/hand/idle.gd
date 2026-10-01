@@ -23,6 +23,12 @@ func update_physics(_delta : float) -> void:
 	if player.heldSlot >= 0 and player.inventory.get_item(player.heldSlot) != player.held_data():
 		switchState.slot = player.heldSlot
 		stateMachine.change_state(switchState)
+		return
+	# Holding the button down plants (or harvests) every tile swept over.
+	if Input.is_action_pressed("use") and not player.frozen and not player.charting:
+		player.hold_farm()
+	else:
+		player.lastFarmKey = []
 
 func update_input(event : InputEvent) -> void:
 	if player.asleep:

@@ -342,9 +342,8 @@ func overview_ember() -> void:
 	await overview("ember_isle")
 
 func walk_meadow() -> void:
+	player.progress.set_flag("arrived/meadow_isle")
 	(game.get_node("World") as World).arrive(load("res://world/locations/meadow_isle.tres"))
-	await seconds(1.0)
-	player.global_position += Vector2(150.0, 0.0)
 	await seconds(1.5)
 
 #------------------------# Tools
@@ -387,3 +386,22 @@ func drops_test() -> void:
 	var after : int = player.inventory.items.filter(func(i : Item) -> bool: return i != null).size()
 	check(after > before, "walking over drops picks them up")
 	check(get_tree().get_nodes_in_group(DroppedItem.GROUP).is_empty(), "picked up drops are gone")
+
+# Moves each island's arrival to where its main area starts (the edge of the
+# landing room), on land, so stepping ashore isn't a walk through nothing.
+func tool_arrivals() -> void:
+	for folder in DirAccess.get_directories_at("res://world/islands"):
+		var path : String = "res://world/islands/%s/%s.tscn" % [folder, folder]
+		if not ResourceLoader.exists(path):
+			continue
+		var island : Island = (load(path) as PackedScene).instantiate()
+		var landing : IslandRoom = island.get_node_or_null("Landing")
+		if landing and island.get_child_count() > 1:
+			var best : Vector2 = Vector2.INF
+			for x in range(178, 120, -2):
+				for dy in range(0, 50, 2):
+					for y in [54 + dy, 54 - dy]:
+						if best == Vector2.INF and landing.is_land(landing.position + Vector2(x, y) + Vector2(-3, 3)) and landing.is_land(landing.position + Vector2(x, y) + Vector2(3, 5)):
+							best = Vector2(x, y)
+			print("ARRIVAL ", path, " ", best)
+		island.free()

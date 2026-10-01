@@ -57,6 +57,9 @@ func _ready() -> void:
 func tiles() -> Array:
 	return player.progress.plot(id, columns * rows) if player and player.progress else []
 
+# Putting a seed in the ground takes a little energy.
+const PLANT_ENERGY : float = 1.0
+
 func tile_rect(index : int) -> Rect2:
 	@warning_ignore("integer_division")
 	var cell : Vector2 = Vector2(index % columns, index / columns)
@@ -129,8 +132,15 @@ func click(who : Player, index : int) -> bool:
 		Skills.add(who, Skills.FARMING, kind.xp())
 		who.say("+%d %s" % [amount, kind.crop.displayName], readyColor)
 		return true
-	var planted : Seed = who.inventory.take_one(who.heldSlot) as Seed
+	if who.energy.value < PLANT_ENERGY:
+		who.say("too tired", farColor)
+		return true
+	who.energy.spend(PLANT_ENERGY)
+	var held : Seed = who.held_data() as Seed
+	# Fully grown Green Hands sometimes keep the seed.
+	var planted : Seed = (held.original() as Seed) if TideTree.has(who, "green_hands") and randf() < 0.2 else who.inventory.take_one(who.heldSlot) as Seed
 	who.progress.plant(id, index, planted.original() as Seed, cycle.day if cycle else 1)
+	Skills.add(who, Skills.FARMING, 1.0)
 	return true
 
 func _process(delta : float) -> void:

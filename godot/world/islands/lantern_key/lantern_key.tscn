@@ -53,6 +53,7 @@ size = Vector2(6.0, 3.0)
 [node name="LanternKey" type="Node2D"]
 y_sort_enabled = true
 script = ExtResource("1_island")
+arrival = Vector2(176, 54)
 
 [node name="Landing" type="Node2D" parent="." node_paths=PackedStringArray("land")]
 y_sort_enabled = true
@@ -145,7 +146,7 @@ position = Vector2(96, 60)
 script = ExtResource("10_secret")
 flag = "lantern_key_log"
 title = "Keeper's log"
-message = "\"Past midnight and before two, the lantern eel follows glowing bait up from the deep. It only takes a perfect cast.\" Glow bait: one glowcap and one glow worm."
+message = "\"Past midnight and before two, the lantern eel follows glowing bait up from the deep. It only takes a perfect cast.\""
 repeatable = true
 concealed = false
 prompt = "Read"

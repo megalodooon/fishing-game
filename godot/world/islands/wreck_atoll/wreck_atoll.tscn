@@ -64,6 +64,7 @@ size = Vector2(6.0, 3.0)
 [node name="WreckAtoll" type="Node2D"]
 y_sort_enabled = true
 script = ExtResource("1_island")
+arrival = Vector2(176, 54)
 
 [node name="Landing" type="Node2D" parent="." node_paths=PackedStringArray("land")]
 y_sort_enabled = true

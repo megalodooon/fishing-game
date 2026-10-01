@@ -86,6 +86,8 @@ var promptText : String = ""
 var farmTarget : FarmPlot
 var farmTile : int = -1
 var farmText : String = ""
+# The tile last planted or harvested while the button's held.
+var lastFarmKey : Array = []
 var aimTarget : Variant = null
 var facing : float = 1.0
 var facingBlend : float = 1.0
@@ -257,7 +259,15 @@ func update_farm_hover(free : bool) -> void:
 
 # A click on the farm tile under the cursor. Returns whether it was used.
 func click_farm() -> bool:
-	return is_instance_valid(farmTarget) and farmTile >= 0 and farmTarget.click(self, farmTile)
+	if not is_instance_valid(farmTarget) or farmTile < 0:
+		return false
+	lastFarmKey = [farmTarget, farmTile]
+	return farmTarget.click(self, farmTile)
+
+# The button held down over the farm: each tile once as the cursor moves on.
+func hold_farm() -> void:
+	if is_instance_valid(farmTarget) and farmTile >= 0 and lastFarmKey != [farmTarget, farmTile] and farmTarget.in_reach(self, farmTile) and not farmTarget.action(self, farmTile).is_empty():
+		click_farm()
 # One of the active pet's buff multipliers, 1 without a pet.
 func pet_stat(property : StringName) -> float:
 	var pet : PetData = progress.activePet if progress else null

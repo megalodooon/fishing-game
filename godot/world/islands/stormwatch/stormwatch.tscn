@@ -51,6 +51,7 @@ size = Vector2(22.0, 5.0)
 [node name="Stormwatch" type="Node2D"]
 y_sort_enabled = true
 script = ExtResource("i_e1")
+arrival = Vector2(176, 54)
 
 [node name="Landing" type="Node2D" parent="." node_paths=PackedStringArray("land")]
 position = Vector2(0.0, 0.0)
