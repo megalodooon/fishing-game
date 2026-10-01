@@ -234,7 +234,7 @@ func _draw() -> void:
 	draw_fish(boss + shaken() * 0.4, facing, sin(time * (3.0 if tired else 8.0)) * 0.1)
 	fishSize = big
 	if flash > 0.0:
-		draw_circle(boss, bossRadius, Color(1.0, 1.0, 1.0, flash * 4.0))
+		draw_circle(boss, bossRadius, Color(1.0, 1.0, 1.0, flash * (1.5 if Settings.get_value("reduceFlashing") else 4.0)))
 	if clang > 0.0:
 		draw_arc(boss, bossRadius + 2.0, 0.0, TAU, 20, Color(lightColor, clang * 3.0), 0.4, true)
 	draw_lure()

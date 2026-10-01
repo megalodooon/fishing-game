@@ -6,55 +6,55 @@ and a local commit. Nothing is pushed until the last phase.
 
 ## Phase 1: Foundations (everything else builds on these)
 
-- [ ] Split `Progress` into **per-player** state and **world** state (`WorldState`: story chapter and
+- [x] Split `Progress` into **per-player** state and **world** state (`WorldState`: story chapter and
       flags, quests, village projects, donations, farm, traps, council, unlocked places, clock).
-- [ ] Save format v2: `{world, players: {name: {...}}, host}`. Old saves show as outdated.
+- [x] Save format v2: `{world, players: {name: {...}}, host}`. Old saves show as outdated.
 - [ ] Character naming on a new game (and for a guest joining a world for the first time).
 - [ ] Stacks of 100 for items, fish never stack.
 
 ## Phase 2: Multiplayer (2 players, host-owned world)
 
-- [ ] `Net` autoload: host/join over ENet behind `MultiplayerPeer` (Steam peer drops in later), UPnP
+- [x] `Net` autoload: host/join over ENet behind `MultiplayerPeer` (Steam peer drops in later), UPnP
       auto port-forward, short join code, LAN fallback, clear error when UPnP/CGNAT blocks it.
-- [ ] Title: Singleplayer / Multiplayer → Host (pick a slot) / Join (code or IP).
-- [ ] Handshake: version check, guest name, host sends world and the guest's character (new guest → naming).
-- [ ] Each peer runs its own location; the other player is drawn as an avatar when you're in the same
+- [x] Title: Singleplayer / Multiplayer → Host (pick a slot) / Join (code or IP).
+- [x] Handshake: version check, guest name, host sends world and the guest's character (new guest → naming).
+- [x] Each peer runs its own location; the other player is drawn as an avatar when you're in the same
       place (position, facing, held item, cast line, boat). Guest gets a pale tint and name tags.
-- [ ] World state replication (host authoritative, key-level dictionary sync; guest changes go
+- [x] World state replication (host authoritative, key-level dictionary sync; guest changes go
       through the host).
-- [ ] Shared clock from the host; the day ends when both are asleep ("waiting for X"); Esc doesn't
+- [x] Shared clock from the host; the day ends when both are asleep ("waiting for X"); Esc doesn't
       pause in MP. Pass out → wake in front of your house.
 - [ ] Location-shared things: fishing spots, forage, dropped items, NPC positions (deterministic from
       the clock), farm tiles, festival pickups. The first player in a location owns its spawns.
-- [ ] Sea chart shows both players; **boarding**: request from the chart (travel to an occupied
+- [x] Sea chart shows both players; **boarding**: request from the chart (travel to an occupied
       place, or while already there), owner accepts, rider stands on the owner's deck and fishes, the
       owner sails.
-- [ ] Co-op creature fights: the other player can join within a few seconds, creature HP scales,
+- [x] Co-op creature fights: the other player can join within a few seconds, creature HP scales,
       both get drops.
-- [ ] Shared story scenes (play for everyone nearby, the triggering player chooses); shared quests with
+- [x] Shared story scenes (play for everyone nearby, the triggering player chooses); shared quests with
       split/scaled rewards; village costs scale with 2 players.
-- [ ] Host saves everything (guest data streamed to the host and on disconnect).
-- [ ] Two-instance automated test (host + join headless, scripted checks).
+- [x] Host saves everything (guest data streamed to the host and on disconnect).
+- [x] Two-instance automated test (host + join headless, scripted checks).
 
 ## Phase 3: UI and UX
 
-- [ ] Remove the title "sea" effect everywhere it's used.
-- [ ] Main menu redesign, saves menu with player names, global Settings (audio, video, rebinding,
+- [x] Remove the title "sea" effect everywhere it's used.
+- [x] Main menu redesign, saves menu with player names, global Settings (audio, video, rebinding,
       gameplay/accessibility).
-- [ ] Toasts: small corner toasts, stacked and merged; compact banner for big moments (level up,
+- [x] Toasts: small corner toasts, stacked and merged; compact banner for big moments (level up,
       advancement, chest, quest).
-- [ ] Smaller quest tracker, smaller hover callouts and prompts; declutter the screen generally.
-- [ ] Dialogue: player portrait and NPC portraits, better buttons and layout.
-- [ ] Quest log redesign (clean, intuitive).
-- [ ] Pause menu redesign (no big color block).
-- [ ] Journal: no dark outlines (rarity outline only), scrollable right page, Fish/Sea creature tabs
+- [x] Smaller quest tracker, smaller hover callouts and prompts; declutter the screen generally.
+- [x] Dialogue: player portrait and NPC portraits, better buttons and layout.
+- [x] Quest log redesign (clean, intuitive).
+- [x] Pause menu redesign (no big color block).
+- [x] Journal: no dark outlines (rarity outline only), scrollable right page, Fish/Sea creature tabs
       when a place has creatures.
-- [ ] Recipe book: rarity outlines only.
-- [ ] Inventory: more saturated rarity outlines, effects for golden/shiny/giant fish.
-- [ ] Coins shown on the Tab hub. Tab/E close dialogues and shops.
-- [ ] Tackle descriptions: "Common Bobber", not "Common Tackle: ...".
-- [ ] Sea chart: clear path line, nicer boat movement.
-- [ ] Skills/Tide tree: say exactly what each node does; make it feel substantial.
+- [x] Recipe book: rarity outlines only.
+- [x] Inventory: more saturated rarity outlines, effects for golden/shiny/giant fish.
+- [x] Coins shown on the Tab hub. Tab/E close dialogues and shops.
+- [x] Tackle descriptions: "Common Bobber", not "Common Tackle: ...".
+- [x] Sea chart: clear path line, nicer boat movement.
+- [x] Skills/Tide tree: say exactly what each node does; make it feel substantial.
 
 ## Phase 4: World
 

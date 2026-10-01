@@ -48,4 +48,8 @@ func mod(lines : PackedStringArray, label : String, value : float, neutral : flo
 		lines.append_array([label, text])
 
 func default_type() -> String:
-	return KIND_NAMES[kind] if kind == Kind.BAIT else "Tackle: %s" % KIND_NAMES[kind]
+	return KIND_NAMES[kind]
+
+# "Common Bobber" or "Rare Hook", whatever the category says.
+func type_name() -> String:
+	return KIND_NAMES[kind]

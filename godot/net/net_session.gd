@@ -92,13 +92,17 @@ func _ready() -> void:
 		Net.on(kind, Callable(self, "on_" + kind))
 	worldKnown = world_snapshot()
 	if Net.is_guest():
-		player.sprite.self_modulate = RemotePlayer.GUEST_TINT
-		player.hand.self_modulate = RemotePlayer.GUEST_TINT
+		tint_guest.call_deferred()
 	Net.say_ready.call_deferred()
 
 func _exit_tree() -> void:
 	for kind in MESSAGES:
 		Net.off(kind, Callable(self, "on_" + kind))
+
+# The guest is drawn whiter, in both games (see RemotePlayer.GUEST_TINT).
+func tint_guest() -> void:
+	player.sprite.self_modulate = RemotePlayer.GUEST_TINT
+	player.hand.self_modulate = RemotePlayer.GUEST_TINT
 
 func online() -> bool:
 	return Net.has_company()

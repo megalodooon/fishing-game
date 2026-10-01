@@ -17,6 +17,7 @@ config/features=PackedStringArray("4.7", "Mobile")
 [autoload]
 
 Net="*res://net/net.gd"
+Overlay="*res://ui/overlay/overlay.gd"
 
 [display]
 

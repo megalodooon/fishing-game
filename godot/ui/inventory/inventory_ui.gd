@@ -347,6 +347,9 @@ func draw_slot(canvas : CanvasItem, slot : int) -> void:
 		draw_variant(canvas, item, area, false)
 		draw_icon(canvas, item.icon, area.get_center(), Color(1.0, 1.0, 1.0, 0.35 if slot == dragFrom else 1.0), outline_color(item))
 		draw_variant(canvas, item, area, true)
+		if item.rarity and bool(Settings.get_value("rarityLetters")):
+			# For telling rarities apart without their colors.
+			canvas.draw_string(font, Vector2(area.position.x + 1.5, area.position.y + 1.0 + font.get_ascent(2)), item.rarity.displayName.left(1), HORIZONTAL_ALIGNMENT_LEFT, -1, 2, rarity_outline(item.rarity))
 		if item.amount > 1:
 			draw_count(canvas, area, item.amount)
 	elif slot == inventory.trashSlot and trashIcon:

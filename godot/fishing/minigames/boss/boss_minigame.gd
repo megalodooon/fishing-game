@@ -97,6 +97,8 @@ func grow_health(_factor : float) -> void:
 	pass
 
 func shaken() -> Vector2:
+	if not Settings.get_value("screenShake"):
+		return Vector2.ZERO
 	return Vector2(sin(time * 90.0), cos(time * 77.0)) * shake * 3.0
 
 func draw_arena() -> void:
