@@ -11,7 +11,7 @@ class_name ProfileUI
 # running totals.
 
 enum Tab { SKILLS, ANGLER, TREE, FEATS, STATS }
-enum Zone { NONE, TAB, CARD, BACK, ROAD, UP, DOWN, NODE, GROUP, FEAT }
+enum Zone { NONE, TAB, CARD, BACK, ROAD, UP, DOWN, NODE, GROUP, FEAT, GROW }
 const TAB_NAMES : PackedStringArray = ["Skills", "Angler", "Tide Tree", "Feats", "Stats"]
 const COUNTERS : Array = [["Fish caught", "fish_caught"], ["Sea creatures beaten", "creatures"], ["Treasure found", "treasure_found"], ["Treasure opened", "treasure_opened"], ["Rare catches", "rare_drops"], ["Crops harvested", "harvests"], ["Things foraged", "forage"], ["Meals eaten", "meals"], ["Things crafted", "crafted"], ["Trips sailed", "trips"], ["Coins from sales", "coins_earned"], ["Orders delivered", "orders"], ["Days", "days"], ["Giant fish", "variant_giant"], ["Shiny fish", "variant_shiny"], ["Golden fish", "variant_golden"]]
 const SKILL_ICONS : Dictionary = {
@@ -62,6 +62,10 @@ var time : float = 0.0
 var pick : float = 1.0
 var nodeRects : Array[Rect2] = []
 var treeArea : Rect2
+# The Tide Tree node shown on the right, and its grow button.
+var treeNode : int = 0
+var nodeCard : Rect2
+var growRect : Rect2
 var groupRects : Array[Rect2] = []
 var featRects : Array[Rect2] = []
 var featGroup : int = 0
@@ -79,6 +83,7 @@ func _ready() -> void:
 	ui.laid_out.connect(fit)
 	ui.opened.connect(close)
 	set_process(false)
+	TideTree.icon("")
 	fit()
 
 func fit() -> void:
@@ -114,14 +119,17 @@ func fit() -> void:
 	layout_feats()
 	queue_redraw()
 
+# The tree on the left, the picked node's card on the right.
 func layout_tree() -> void:
 	nodeRects.clear()
-	treeArea = Rect2(body.position.x, body.position.y + 10.0, body.size.x, body.size.y - 10.0)
+	treeArea = Rect2(body.position.x + 2.0, body.position.y + 10.0, floorf(body.size.x * 0.58), body.size.y - 12.0)
+	nodeCard = Rect2(treeArea.end.x + 3.0, body.position.y + 2.0, body.end.x - treeArea.end.x - 5.0, body.size.y - 4.0)
+	growRect = Rect2(nodeCard.position.x + 3.0, nodeCard.end.y - 12.0, nodeCard.size.x - 6.0, 9.0)
 	var step : Vector2 = Vector2(treeArea.size.x / 7.0, treeArea.size.y / 5.0)
 	for each in TideTree.NODES:
 		var place_at : Vector2i = each[7]
 		var center : Vector2 = Vector2(treeArea.position.x + (place_at.x + 0.5) * step.x, treeArea.end.y - (place_at.y + 0.5) * step.y).round()
-		nodeRects.append(Rect2(center - Vector2(5.0, 5.0), Vector2(10.0, 10.0)))
+		nodeRects.append(Rect2(center - Vector2(6.0, 6.0), Vector2(12.0, 12.0)))
 
 func layout_feats() -> void:
 	groupRects.clear()
@@ -226,6 +234,8 @@ func zone_at(point : Vector2) -> Vector2i:
 		for i in nodeRects.size():
 			if nodeRects[i].grow(1.0).has_point(point):
 				return Vector2i(Zone.NODE, i)
+		if growRect.has_point(point):
+			return Vector2i(Zone.GROW, 0)
 		return Vector2i(Zone.NONE, -1)
 	if tab == Tab.FEATS:
 		for i in groupRects.size():
@@ -292,9 +302,11 @@ func _gui_input(event : InputEvent) -> void:
 					Zone.DOWN:
 						scroll_road(3)
 					Zone.NODE:
-						var id : String = TideTree.NODES[found.y][0]
+						treeNode = found.y
+					Zone.GROW:
+						var id : String = TideTree.NODES[treeNode][0]
 						if TideTree.grow(player, id):
-							sparkles.burst(nodeRects[found.y].get_center(), TideTree.TOKEN_COLOR, 12)
+							sparkles.burst(nodeRects[treeNode].get_center(), TideTree.TOKEN_COLOR, 12)
 							AnglerLevel.forget()
 					Zone.GROUP:
 						featGroup = found.y
@@ -551,32 +563,80 @@ func draw_angler(font : Font) -> void:
 func draw_tree(font : Font) -> void:
 	UiKit.box(self, skin.well, body)
 	var tokens : int = TideTree.tokens(player)
-	UiKit.label(self, font, Vector2(body.position.x + 3.0, line_at(body.position.y + 2.0)), "Tide Tokens: %d" % tokens, ui.statSize, TideTree.TOKEN_COLOR if tokens > 0 else skin.dim)
-	UiKit.label(self, font, Vector2(body.position.x, line_at(body.position.y + 2.0)), "1 per Angler Level", ui.statSize, skin.dim, HORIZONTAL_ALIGNMENT_RIGHT, body.size.x - 3.0)
-	# Branches first, under the nodes.
+	UiKit.label(self, font, Vector2(treeArea.position.x + 1.0, line_at(body.position.y + 2.0)), "Tokens: %d" % tokens, ui.statSize, TideTree.TOKEN_COLOR if tokens > 0 else skin.dim)
+	UiKit.label(self, font, Vector2(treeArea.position.x, line_at(body.position.y + 2.0)), "+1 per Angler Lv", ui.statSize, skin.dim, HORIZONTAL_ALIGNMENT_RIGHT, treeArea.size.x)
+	# Branches first, under the nodes: lit once the lower node is grown.
 	for i in TideTree.NODES.size():
 		for parent in TideTree.NODES[i][6]:
 			for j in TideTree.NODES.size():
 				if TideTree.NODES[j][0] == parent:
 					var grown : bool = TideTree.level(player.progress, parent) > 0
-					draw_line(nodeRects[i].get_center(), nodeRects[j].get_center(), Color(TideTree.TOKEN_COLOR, 0.8) if grown else Color(skin.line, 0.6), 1.0)
+					draw_line(nodeRects[i].get_center(), nodeRects[j].get_center(), Color(TideTree.TOKEN_COLOR, 0.7) if grown else Color(skin.line, 0.7), 1.0 if grown else 0.6)
+	var shown_node : int = index if zone == Zone.NODE else treeNode
 	for i in TideTree.NODES.size():
 		var each : Array = TideTree.NODES[i]
 		var area : Rect2 = nodeRects[i]
 		var at : int = TideTree.level(player.progress, each[0])
 		var full : bool = at >= int(each[4])
 		var open : bool = TideTree.reachable(player.progress, each[0])
-		var fill : Color = Color(1.0, 0.82, 0.3) if full else (TideTree.TOKEN_COLOR if at > 0 else (Color(0.2, 0.3, 0.4) if open else Color(0.1, 0.12, 0.16)))
-		draw_rect(area, Color(0.03, 0.05, 0.1))
-		draw_rect(area.grow(-1.0), fill)
-		if at > 0 and not full:
-			draw_rect(Rect2(area.position.x + 1.0, area.end.y - 2.0, (area.size.x - 2.0) * at / float(each[4]), 1.0), Color(1.0, 1.0, 1.0, 0.8))
+		var ring : Color = Color(1.0, 0.82, 0.3) if full else (TideTree.TOKEN_COLOR if at > 0 else (Color(0.35, 0.48, 0.6) if open else Color(0.16, 0.2, 0.26)))
+		draw_rect(area.grow(1.0), Color(0.02, 0.04, 0.08))
+		draw_rect(area, ring)
+		draw_rect(area.grow(-1.0), Color(0.06, 0.1, 0.16) if at == 0 else Color(0.1, 0.2, 0.28))
+		var picture : Texture2D = TideTree.icon(each[0])
+		if picture:
+			draw_texture(picture, (area.get_center() - picture.get_size() * 0.5).floor(), Color.WHITE if at > 0 else Color(0.6, 0.68, 0.78, 0.9 if open else 0.35))
+		# A pip per level under the node.
+		var pips : int = int(each[4])
+		var pipX : float = area.get_center().x - (pips * 2.0 - 1.0) * 0.5
+		for p in pips:
+			draw_rect(Rect2(pipX + p * 2.0, area.end.y + 1.5, 1.0, 1.0), Color(1.0, 0.82, 0.3) if p < at else Color(0.25, 0.32, 0.4))
 		if open and TideTree.blocked(player, each[0]).is_empty():
 			UiKit.brackets(self, area.grow(1.0), TideTree.TOKEN_COLOR, time)
-		if zone == Zone.NODE and index == i:
-			UiKit.outline(self, area.grow(1.0), skin.title)
-		var glyph : String = "%d" % at if at > 0 else String(each[1]).left(1)
-		UiKit.label(self, font, Vector2(area.position.x, UiKit.baseline(font, area, ui.statSize)), glyph, ui.statSize, Color(0.05, 0.08, 0.12) if at > 0 else Color(0.5, 0.62, 0.72, 0.9 if open else 0.4), HORIZONTAL_ALIGNMENT_CENTER, area.size.x)
+		if i == shown_node:
+			UiKit.outline(self, area.grow(2.0), skin.title)
+	draw_node_card(font, clampi(shown_node, 0, TideTree.NODES.size() - 1))
+
+# The picked node: what it does now, next level and once fully grown, its
+# cost, and the button to grow it.
+func draw_node_card(font : Font, which : int) -> void:
+	var each : Array = TideTree.NODES[which]
+	var at : int = TideTree.level(player.progress, each[0])
+	var most : int = int(each[4])
+	UiKit.box(self, skin.card, nodeCard)
+	var x : float = nodeCard.position.x + 3.0
+	var width : float = nodeCard.size.x - 6.0
+	var y : float = nodeCard.position.y + 3.0
+	UiKit.label(self, font, Vector2(x, line_at(y)), each[1], ui.statSize, skin.title, HORIZONTAL_ALIGNMENT_LEFT, width)
+	y += ui.statSize + 2.0
+	UiKit.label(self, font, Vector2(x, line_at(y)), "Level %d/%d" % [at, most], ui.statSize, Color(1.0, 0.82, 0.3) if at >= most else skin.dim)
+	y += ui.statSize + 3.0
+	for line in ui.wrap_lines(each[8], width, ui.statSize):
+		UiKit.label(self, font, Vector2(x, line_at(y)), line, ui.statSize, skin.text)
+		y += ui.statSize + 1.0
+	y += 2.0
+	var rows : Array = []
+	rows.append(["Now", Stats.perk_line(each[2], float(each[3]) * at) if at > 0 else "Nothing yet", skin.text if at > 0 else skin.dim])
+	if at < most:
+		rows.append(["Next", Stats.perk_line(each[2], float(each[3]) * (at + 1)), TideTree.TOKEN_COLOR])
+	for row in rows:
+		UiKit.label(self, font, Vector2(x, line_at(y)), row[0], ui.statSize, skin.dim)
+		y += ui.statSize + 1.0
+		for line in ui.wrap_lines(row[1], width - 3.0, ui.statSize):
+			UiKit.label(self, font, Vector2(x + 3.0, line_at(y)), line, ui.statSize, row[2])
+			y += ui.statSize + 1.0
+	y += 2.0
+	var full : bool = at >= most
+	UiKit.label(self, font, Vector2(x, line_at(y)), "Fully grown" if full else "At level %d" % most, ui.statSize, Color(1.0, 0.82, 0.3) if full else skin.dim)
+	y += ui.statSize + 1.0
+	for line in ui.wrap_lines(each[9], width - 3.0, ui.statSize):
+		if y > growRect.position.y - ui.statSize - 2.0:
+			break
+		UiKit.label(self, font, Vector2(x + 3.0, line_at(y)), line, ui.statSize, Color(1.0, 0.82, 0.3) if full else skin.text)
+		y += ui.statSize + 1.0
+	var why : String = TideTree.blocked(player, each[0])
+	var label : String = "Fully grown" if full else ("Grow: %d token%s" % [each[5], "" if int(each[5]) == 1 else "s"] if why.is_empty() else why)
+	UiKit.button(self, font, skin, growRect, label, ui.statSize, why.is_empty(), zone == Zone.GROW)
 
 # ---------------------------------------------------------------- feats
 
@@ -649,16 +709,6 @@ func draw_stats(font : Font) -> void:
 # [title, lines, title color] for what's under the pointer, or [].
 func tip() -> Array:
 	match zone:
-		Zone.NODE:
-			if index >= 0 and index < TideTree.NODES.size():
-				var each : Array = TideTree.NODES[index]
-				var at : int = TideTree.level(player.progress, each[0])
-				var lines : PackedStringArray = PackedStringArray([each[8], "", "Level", "%d/%d" % [at, each[4]], "Now", Stats.bonus_text(each[2], float(each[3]) * at) if at > 0 else "-"])
-				if at < int(each[4]):
-					lines.append_array(["Next", Stats.bonus_text(each[2], float(each[3]) * (at + 1)), "Costs", "%d token%s" % [each[5], "" if int(each[5]) == 1 else "s"]])
-				var why : String = TideTree.blocked(player, each[0])
-				lines.append_array([why if not why.is_empty() else "Click to grow", ""])
-				return [each[1], lines, TideTree.TOKEN_COLOR]
 		Zone.FEAT:
 			if index >= 0 and index < feats.size():
 				var each : Array = feats[index]

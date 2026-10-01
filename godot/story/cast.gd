@@ -36,6 +36,13 @@ const PEOPLE : Dictionary = {
 static func name_of(id : String) -> String:
 	return PEOPLE.get(id, [id.capitalize()])[0]
 
+# The id of someone by the name shown for them, like "Harbor Master Pip".
+static func id_of(shown : String) -> String:
+	for id in PEOPLE:
+		if PEOPLE[id][0] == shown:
+			return id
+	return ""
+
 static func color_of(id : String) -> Color:
 	return PEOPLE.get(id, ["", Color.WHITE])[1]
 

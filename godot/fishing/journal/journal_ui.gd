@@ -637,13 +637,7 @@ func draw_sheet() -> void:
 	for i in tabRects.size():
 		var on : bool = (i == 1) == creatureTab
 		var hovering : bool = zone == Zone.TAB and hoveredIndex == i
-		# Paper tabs: the open one light with red ink, the other a shade darker.
-		var area : Rect2 = tabRects[i]
-		sheet.draw_rect(area, cellEdge.darkened(0.25))
-		sheet.draw_rect(area.grow(-1.0), cellColor if on else (cellColor.darkened(0.08) if hovering else cellEdge))
-		if on:
-			sheet.draw_rect(Rect2(area.position.x + 1.0, area.end.y - 1.0, area.size.x - 2.0, 1.0), skin.title)
-		UiKit.label(sheet, font, Vector2(area.position.x, UiKit.baseline(font, area, ui.statSize)), "Creatures" if i == 1 else "Fish", ui.statSize, skin.title if on else skin.dim, HORIZONTAL_ALIGNMENT_CENTER, area.size.x)
+		UiKit.paper_tab(sheet, font, tabRects[i], "Creatures" if i == 1 else "Fish", on, hovering, skin.title, skin.dim)
 	var deepest : float = detail_max_scroll()
 	if deepest > 0.0:
 		var bar : Rect2 = Rect2(detailRect.end.x + 1.0, detailRect.position.y, 1.0, detailRect.size.y)

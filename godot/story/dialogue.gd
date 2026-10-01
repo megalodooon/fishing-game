@@ -52,6 +52,16 @@ static func choices(id : String) -> PackedStringArray:
 	load_all()
 	return scenes[id].choices if scenes.has(id) else PackedStringArray()
 
+# A scene's name for menus: the quest it belongs to when it's a quest's scene.
+static func title_of(id : String) -> String:
+	for ending in ["_start", "_end"]:
+		if id.ends_with(ending):
+			for folder in ["story", "side"]:
+				var path : String = "res://world/quests/%s/%s.tres" % [folder, id.trim_suffix(ending)]
+				if ResourceLoader.exists(path):
+					return (load(path) as Quest).title
+	return id.replace("_", " ").capitalize()
+
 static func random_line(id : String) -> Array:
 	var list : Array = lines(id)
 	return list.pick_random() if not list.is_empty() else []

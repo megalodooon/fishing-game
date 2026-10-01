@@ -116,6 +116,14 @@ func journal() -> void:
 	(find(JournalUI) as JournalUI).toggle()
 
 func quests() -> void:
+	# Quests set straight into the progress, so their scenes don't play.
+	for path in ["res://world/quests/story/q_market.tres", "res://world/quests/story/q_rod.tres", "res://world/quests/side/" + DirAccess.get_files_at("res://world/quests/side")[0].trim_suffix(".remap")]:
+		var quest : Quest = load(path)
+		var counts : Array = []
+		counts.resize(quest.goals.size())
+		counts.fill(1)
+		player.progress.quests[quest] = {"counts": counts, "done": false}
+	player.progress.tracked = load("res://world/quests/story/q_market.tres")
 	(find(QuestLog) as QuestLog).open_log(player)
 
 func chart() -> void:
@@ -150,11 +158,23 @@ func toasts() -> void:
 	board.post("Quest ready!", "Fresh Off the Boat: go back to Gus.", Color(0.56, 0.93, 0.44))
 	board.post("Treasure!", "Wooden Chest", Color(1.0, 0.86, 0.36))
 	board.post("Treasure!", "Wooden Chest", Color(1.0, 0.86, 0.36))
-	board.banner("Fishing 5", "+2% rare fish luck", Color(0.4, 0.8, 1.0))
+	board.banner("Fishing 5", "+2% rare fish luck", Color(0.4, 0.8, 1.0), TideTree.icon("crown"))
+	board.post("Heart", "icon test", Color.WHITE, TideTree.icon("heart"))
 	await seconds(0.6)
 
 func profile() -> void:
 	(find(ProfileUI) as ProfileUI).open_profile()
+
+func tide_tree() -> void:
+	var menu : ProfileUI = find(ProfileUI)
+	menu.open_profile()
+	menu.tab = ProfileUI.Tab.TREE
+	player.progress.set_flag("tide/heart", 3)
+	player.progress.set_flag("tide/forager", 2)
+	menu.treeNode = 3
+	var icon : Texture2D = TideTree.icon("heart")
+	print("HARNESS: icon ", icon, " ", icon.get_class() if icon else "", " ", icon.get_image().get_pixel(0, 0) if icon else "")
+	menu.queue_redraw()
 
 #------------------------# Two players (run host_test in one game, join_test in another)
 

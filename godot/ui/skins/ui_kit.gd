@@ -60,6 +60,16 @@ static func button(canvas : CanvasItem, font : Font, skin : MenuSkin, area : Rec
 	var color : Color = skin.buttonText if enabled else Color(skin.buttonText, 0.45)
 	label(canvas, font, Vector2(area.position.x, baseline(font, area, size) + drop), text, size, color, HORIZONTAL_ALIGNMENT_CENTER, area.size.x)
 
+# A tab on a paper page: the open one light with a line of ink under it,
+# the others a shade darker.
+static func paper_tab(canvas : CanvasItem, font : Font, area : Rect2, text : String, on : bool, hovered : bool, ink : Color, dim : Color) -> void:
+	var paper : Color = Color(0.88, 0.8, 0.63)
+	canvas.draw_rect(area, Color(0.45, 0.33, 0.2))
+	canvas.draw_rect(area.grow(-1.0), paper if on else (paper.darkened(0.1) if hovered else paper.darkened(0.18)))
+	if on:
+		canvas.draw_rect(Rect2(area.position.x + 1.0, area.end.y - 1.0, area.size.x - 2.0, 1.0), ink)
+	label(canvas, font, Vector2(area.position.x, baseline(font, area, 3)), text, 3, ink if on else dim, HORIZONTAL_ALIGNMENT_CENTER, area.size.x)
+
 # A progress bar with a dark trough and a highlight on the fill.
 static func bar(canvas : CanvasItem, area : Rect2, amount : float, fill : Color, back : Color = Color(0.04, 0.07, 0.13)) -> void:
 	canvas.draw_rect(area, back)

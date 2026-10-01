@@ -9,24 +9,25 @@ class_name TideTree
 
 const TOKEN_COLOR : Color = Color(0.45, 0.85, 0.95)
 # id, name, stat, per level, max level, tokens per level, hangs from (any of),
-# place on the tree (column 0-6, row 0-4 from the bottom), what it's about.
+# place on the tree (column 0-6, row 0-4 from the bottom), what it's about,
+# and what it does once fully grown (beyond its stat; see has()).
 const NODES : Array = [
-	["heart", "Tidecaller's Heart", &"biteSpeed", 2.0, 3, 1, [], Vector2i(3, 0), "Where every angler starts."],
-	["swift_line", "Swift Line", &"biteSpeed", 3.0, 5, 1, ["heart"], Vector2i(1, 1), "Fish bite sooner."],
-	["deep_luck", "Deep Luck", &"luck", 2.0, 5, 1, ["heart"], Vector2i(2, 1), "Rarer fish, more often."],
-	["forager", "Forager", &"forageBonus", 10.0, 5, 1, ["heart"], Vector2i(4, 1), "More from every forage spot."],
-	["haggler", "Haggler", &"sellBonus", 1.0, 5, 1, ["heart"], Vector2i(5, 1), "Fish sell for more."],
-	["double_hook", "Double Hook", &"doubleCatch", 1.0, 5, 1, ["swift_line"], Vector2i(0, 2), "Sometimes two fish at once."],
-	["monster_lure", "Monster Lure", &"seaCreature", 0.5, 5, 1, ["swift_line", "deep_luck"], Vector2i(1, 2), "Sea creatures take the bait more."],
-	["treasure_sense", "Treasure Sense", &"treasure", 0.3, 5, 1, ["deep_luck"], Vector2i(2, 2), "Treasure comes up more."],
-	["green_hands", "Green Hands", &"harvestBonus", 5.0, 5, 1, ["forager"], Vector2i(4, 2), "Bigger harvests."],
-	["artisan", "Artisan", &"craftBonus", 2.0, 5, 1, ["forager", "haggler"], Vector2i(5, 2), "Crafts sometimes make double."],
-	["foreman", "Foreman", &"crewSpeed", 5.0, 5, 1, ["haggler"], Vector2i(6, 2), "Your crew works faster."],
-	["trophy_eye", "Trophy Eye", &"trophyLuck", 6.0, 5, 2, ["double_hook", "monster_lure"], Vector2i(1, 3), "Better trophy fish tiers."],
-	["scholar", "Scholar", &"xpBonus", 2.0, 5, 2, ["treasure_sense", "green_hands"], Vector2i(3, 3), "More skill XP from everything."],
-	["brewer", "Brewer", &"potionPower", 10.0, 3, 2, ["artisan", "foreman"], Vector2i(5, 3), "Potions last longer."],
-	["voyager", "Voyager", &"travelDiscount", 5.0, 3, 2, ["scholar"], Vector2i(2, 4), "Cheaper trips on the sea chart."],
-	["crown", "Heart of the Sea", &"rareFind", 10.0, 1, 6, ["trophy_eye", "scholar", "brewer"], Vector2i(4, 4), "Rare finds everywhere. Needs three nodes grown all the way."],
+	["heart", "Tidecaller's Heart", &"biteSpeed", 2.0, 3, 1, [], Vector2i(3, 0), "Where every angler starts.", "Your first cast each day bites at once."],
+	["swift_line", "Swift Line", &"biteSpeed", 3.0, 5, 1, ["heart"], Vector2i(1, 1), "Fish bite sooner.", "Missing a bite gives you a second chance."],
+	["deep_luck", "Deep Luck", &"luck", 2.0, 5, 1, ["heart"], Vector2i(2, 1), "Rarer fish, more often.", "Fishing spots with a rare fish in them shimmer."],
+	["forager", "Forager", &"forageBonus", 10.0, 5, 1, ["heart"], Vector2i(4, 1), "More from every forage spot.", "Forage spots grow back a day sooner."],
+	["haggler", "Haggler", &"sellBonus", 1.0, 5, 1, ["heart"], Vector2i(5, 1), "Fish sell for more.", "The first fish you sell each day sells for double."],
+	["double_hook", "Double Hook", &"doubleCatch", 1.0, 5, 1, ["swift_line"], Vector2i(0, 2), "Sometimes two fish at once.", "Double catches can be a different fish."],
+	["monster_lure", "Monster Lure", &"seaCreature", 0.5, 5, 1, ["swift_line", "deep_luck"], Vector2i(1, 2), "Sea creatures take the bait more.", "+1 heart in every fight."],
+	["treasure_sense", "Treasure Sense", &"treasure", 0.3, 5, 1, ["deep_luck"], Vector2i(2, 2), "Treasure comes up more.", "Treasure chests hold one more thing."],
+	["green_hands", "Green Hands", &"harvestBonus", 5.0, 5, 1, ["forager"], Vector2i(4, 2), "Bigger harvests.", "Planting sometimes doesn't use up the seed."],
+	["artisan", "Artisan", &"craftBonus", 2.0, 5, 1, ["forager", "haggler"], Vector2i(5, 2), "Crafts sometimes make double.", "Crafting costs no energy."],
+	["foreman", "Foreman", &"crewSpeed", 5.0, 5, 1, ["haggler"], Vector2i(6, 2), "Your crew works faster.", "Crew members hold half as much again."],
+	["trophy_eye", "Trophy Eye", &"trophyLuck", 6.0, 5, 2, ["double_hook", "monster_lure"], Vector2i(1, 3), "Better trophy fish tiers.", "The journal marks trophy fish that are biting right now."],
+	["scholar", "Scholar", &"xpBonus", 2.0, 5, 2, ["treasure_sense", "green_hands"], Vector2i(3, 3), "More skill XP from everything.", "Fish you've never caught give triple XP."],
+	["brewer", "Brewer", &"potionPower", 10.0, 3, 2, ["artisan", "foreman"], Vector2i(5, 3), "Potions last longer.", "Drinking a potion also gives back 10 energy."],
+	["voyager", "Voyager", &"travelDiscount", 5.0, 3, 2, ["scholar"], Vector2i(2, 4), "Cheaper trips on the sea chart.", "Trips cost no energy in clear weather."],
+	["crown", "Heart of the Sea", &"rareFind", 10.0, 1, 6, ["trophy_eye", "scholar", "brewer"], Vector2i(4, 4), "Rare finds everywhere. Needs three nodes grown all the way.", "Once a day, a perfect cast hooks a rare fish or better."],
 ]
 # Tokens from story moments on top of Angler Levels: flag -> tokens.
 const STORY_TOKENS : Dictionary = {"quest/q_four_tides": 2, "quest/q_truth": 2, "quest/q_seal": 3, "quest/q_festival": 5}
@@ -41,6 +42,20 @@ static func node(id : String) -> Array:
 		for each in NODES:
 			byId[each[0]] = each
 	return byId.get(id, [])
+
+# Whether a node is fully grown, which turns on its special effect.
+static func has(player : Player, id : String) -> bool:
+	return player != null and player.progress != null and maxed(player.progress, id)
+
+static var icons : Dictionary = {}
+
+# Loaded once, before menus draw them.
+static func icon(id : String) -> Texture2D:
+	if icons.is_empty():
+		for each in NODES:
+			var path : String = "res://player/tide_icons/%s.png" % each[0]
+			icons[each[0]] = load(path) if ResourceLoader.exists(path) else null
+	return icons.get(id)
 
 static func level(progress : Progress, id : String) -> int:
 	return int(progress.get_flag("tide/" + id, 0))

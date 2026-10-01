@@ -153,10 +153,6 @@ player = NodePath("../Player")
 dialogue = NodePath("../Hud/Dialogue")
 firstQuest = ExtResource("n_first")
 
-[node name="QuestLog" type="Node2D" parent="."]
-script = ExtResource("n_log")
-title = "Quest Log"
-
 [node name="Hud" type="CanvasLayer" parent="."]
 layer = 20
 
@@ -322,13 +318,20 @@ script = ExtResource("h_calendar_ui")
 player = NodePath("../../Player")
 ui = NodePath("../Inventory")
 
+[node name="QuestLog" type="Control" parent="Hud" node_paths=PackedStringArray("player", "ui")]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("n_log")
+player = NodePath("../../Player")
+ui = NodePath("../Inventory")
+
 [node name="Hub" type="Control" parent="Hud" node_paths=PackedStringArray("player", "ui", "menus")]
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("h_hub")
 player = NodePath("../../Player")
 ui = NodePath("../Inventory")
-menus = [NodePath("../Inventory"), NodePath("../Tacklebox"), NodePath("../Journal"), NodePath("../Recipes"), NodePath("../Profile"), NodePath("../Charms"), NodePath("../Collections"), NodePath("../../QuestLog"), NodePath("../Calendar"), NodePath("../Pets"), NodePath("../WorldMap")]
+menus = [NodePath("../Inventory"), NodePath("../Tacklebox"), NodePath("../Journal"), NodePath("../Recipes"), NodePath("../Profile"), NodePath("../Charms"), NodePath("../Collections"), NodePath("../QuestLog"), NodePath("../Calendar"), NodePath("../Pets"), NodePath("../WorldMap")]
 titles = PackedStringArray("Bag", "Tacklebox", "Journal", "Recipes", "Skills", "Charms", "Collections", "Quests", "Calendar", "Pets", "Sea Chart")
 icons = Array[Texture2D]([ExtResource("n_i1"), ExtResource("n_i2"), ExtResource("n_i3"), ExtResource("h_recipes"), ExtResource("h_skills"), ExtResource("h_charms"), ExtResource("h_collections"), ExtResource("n_i5"), ExtResource("h_calendar"), ExtResource("n_i6"), ExtResource("n_i4")])
 actions = Array[StringName]([&"backpack", &"tacklebox", &"journal", &"recipes", &"profile", &"charms", &"collections", &"quests", &"calendar", &"pets", &"map"])
@@ -358,7 +361,7 @@ ui = NodePath("../Inventory")
 tacklebox = NodePath("../Tacklebox")
 journal = NodePath("../Journal")
 map = NodePath("../WorldMap")
-questLog = NodePath("../../QuestLog")
+questLog = NodePath("../QuestLog")
 pets = NodePath("../Pets")
 profile = NodePath("../Profile")
 weather = NodePath("../../Weather")
