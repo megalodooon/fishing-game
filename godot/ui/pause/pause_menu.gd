@@ -155,8 +155,9 @@ func _input(event : InputEvent) -> void:
 				activate(hovered, 1 if event.button_index == MOUSE_BUTTON_WHEEL_UP else -1)
 	else:
 		return
-	get_viewport().set_input_as_handled()
-	queue_redraw()
+	if is_inside_tree():
+		get_viewport().set_input_as_handled()
+		queue_redraw()
 
 func open_pause() -> void:
 	page = Page.MAIN
@@ -229,7 +230,9 @@ func activate(index : int, direction : int) -> void:
 		&"leave":
 			SaveGame.save_game(get_tree())
 			get_tree().paused = false
-			get_tree().change_scene_to_file(TITLE_SCENE)
+			# At the end of the frame: changing scenes frees this menu, and the
+			# click that got here still has to finish.
+			get_tree().change_scene_to_file.call_deferred(TITLE_SCENE)
 		&"back":
 			back()
 		&"uiScale":

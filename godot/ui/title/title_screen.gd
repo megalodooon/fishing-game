@@ -95,7 +95,7 @@ func start(which : int) -> void:
 	leaving = true
 	SaveGame.slot = which
 	SaveGame.pending = SaveGame.read(which)
-	get_tree().change_scene_to_file(loadingScene)
+	get_tree().change_scene_to_file.call_deferred(loadingScene)
 
 func _gui_input(event : InputEvent) -> void:
 	if event is InputEventMouseMotion:
