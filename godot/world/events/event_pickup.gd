@@ -31,6 +31,9 @@ func _process(delta : float) -> void:
 		taken += delta
 		if taken > 0.4:
 			queue_free()
+	elif player and player.progress.pickups.has(key):
+		# Picked up by the other player.
+		taken = 0.0
 	elif player and player.global_position.distance_to(global_position) < REACH:
 		collect()
 	queue_redraw()
@@ -42,6 +45,7 @@ func collect() -> void:
 	player.inventory.give(item, 1)
 	player.progress.pickups[key] = true
 	player.progress.count("pickups")
+	player.progress.emit_changed()
 	player.say("+1 %s" % item.displayName, Color(1.0, 0.86, 0.36))
 
 func _draw() -> void:

@@ -156,6 +156,7 @@ func host_test() -> void:
 	check(await wait_for(func() -> bool: return session.riders().size() == 1, 15.0), "the guest is aboard")
 	await wait(3)
 	check(not (session.remotes.values()[0] as RemotePlayer).far, "a rider is drawn on the deck, not on the horizon")
+	await shot("host_aboard")
 	var screen : Rect2 = Rect2(Vector2.ZERO, Vector2(192.0, 108.0))
 	for i in 3:
 		(game.get_node("World") as World).spawner.spawn(screen)
@@ -209,6 +210,11 @@ func join_test() -> void:
 	check(await wait_for(func() -> bool: return session.boardedOn == 1, 20.0), "the host lets the guest aboard")
 	var spawner : FishingSpotSpawner = (get_tree().current_scene.get_node("World") as World).spawner
 	check(await wait_for(func() -> bool: return spawner.get_child_count() > 0, 10.0), "the host's fishing spots show up for the rider")
+	var map : WorldMapUI = WorldMapUI.find(get_tree())
+	map.try_open()
+	await seconds(0.6)
+	await shot("guest_chart")
+	map.close()
 	check(await wait_for(func() -> bool: return not session.invite.is_empty(), 15.0), "the host's creature fight is offered")
 	session.join_fight()
 	check(not session.helping.is_empty(), "the guest joins the fight")

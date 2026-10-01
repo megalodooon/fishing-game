@@ -9,8 +9,9 @@ class_name RemotePlayer
 # horizon instead (see NetSession).
 
 const SMOOTH : float = 18.0
-# A pale tint so two players with the same placeholder art can be told apart.
-const GUEST_TINT : Color = Color(1.0, 0.97, 0.9)
+# The guest is drawn whiter (in both games) so two players with the same
+# placeholder art can be told apart.
+const GUEST_TINT : Color = Color(1.3, 1.3, 1.35)
 const NAME_COLOR : Color = Color(0.86, 0.94, 1.0)
 
 #------------------------#
@@ -64,7 +65,7 @@ func setup(local : Player, id : int, who : String) -> void:
 	sprite.offset = local.sprite.offset
 	sprite.hframes = local.sprite.hframes
 	sprite.vframes = local.sprite.vframes
-	sprite.self_modulate = GUEST_TINT
+	sprite.self_modulate = GUEST_TINT if id != 1 else Color.WHITE
 	body.add_child(sprite)
 	center = Node2D.new()
 	center.position = local.center_rest_position
@@ -76,7 +77,7 @@ func setup(local : Player, id : int, who : String) -> void:
 	holder.add_child(icon)
 	hand = Sprite2D.new()
 	hand.texture = local.hand.texture
-	hand.self_modulate = GUEST_TINT
+	hand.self_modulate = sprite.self_modulate
 	center.add_child(hand)
 	visible = false
 

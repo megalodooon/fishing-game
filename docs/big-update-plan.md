@@ -75,6 +75,8 @@ and a local commit. Nothing is pushed until the last phase.
 - [ ] Unique fishing tech (radar shows the fish over its spot for a while, etc.).
 - [ ] NPC likes/dislikes/loves/hates visible and meaningful.
 - [ ] Fewer junk drops; go over every system for function, fun and performance.
+- [ ] Restoration board: projects become a fund both players can chip into; coin costs scale with
+      NetSession.players_in_world (x1.5 for two).
 - [ ] Lighthouse: remove the glow bait recipe from the Lightning Eel explanation.
 
 ## Phase 6: Economy

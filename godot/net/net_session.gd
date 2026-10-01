@@ -64,6 +64,10 @@ var invite : Dictionary = {}
 static func find(tree : SceneTree) -> NetSession:
 	return tree.get_first_node_in_group(GROUP) as NetSession
 
+# Everyone who has ever played in this world (1 alone).
+static func players_in_world(progress : Progress) -> int:
+	return maxi(int(progress.get_flag("world/players", 1)), 1)
+
 # Riding on another player's boat.
 static func riding(tree : SceneTree) -> bool:
 	var session : NetSession = find(tree)
@@ -87,6 +91,9 @@ func _ready() -> void:
 	for kind in MESSAGES:
 		Net.on(kind, Callable(self, "on_" + kind))
 	worldKnown = world_snapshot()
+	if Net.is_guest():
+		player.sprite.self_modulate = RemotePlayer.GUEST_TINT
+		player.hand.self_modulate = RemotePlayer.GUEST_TINT
 	Net.say_ready.call_deferred()
 
 func _exit_tree() -> void:
@@ -251,6 +258,10 @@ func on_joined(id : int, who : String) -> void:
 	remote_for(id)
 	toast("%s joined" % who, "Say hi! Open the sea chart (M) to see where they are.", Color(0.56, 0.93, 0.44))
 	if Net.is_host():
+		# How many people play in this world, for costs that scale with it.
+		var count : int = 1 + Net.guestData.size() + (0 if Net.guestData.has(who) else 1)
+		if count > players_in_world(player.progress):
+			player.progress.set_flag("world/players", count)
 		Net.send(&"world_all", encode_world(world_snapshot()), id)
 		if cycle:
 			Net.send(&"clock", {"day": cycle.day, "time": cycle.time, "force": true}, id)
@@ -497,7 +508,7 @@ func board(owner : int) -> void:
 	boardedOn = owner
 	boardOnArrival = 0
 	world.spawner.clear_spots()
-	player.global_position = world.boat.global_position + world.boardOffset + Vector2(10.0, 0.0)
+	player.global_position = world.boat.global_position + world.boardOffset + Vector2(16.0, 7.0)
 	Net.send(&"boarded", true, owner)
 	toast("Aboard!", "You're on %s's boat. They steer; open the sea chart to leave." % Net.name_of(owner), Color(0.56, 0.93, 0.44))
 
