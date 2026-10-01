@@ -9,7 +9,7 @@ const DEFAULTS : Dictionary = {
 	"uiScale": 1.0,
 	"hotbarOnTop": false,
 	"heldItemScale": 0.75,
-	"fullscreen": false,
+	"fullscreen": true,
 	"weatherEffects": true,
 	"questTracker": true,
 	"volume": 1.0,
