@@ -26,6 +26,10 @@ static func best_tier(player : Player) -> int:
 	var tool : ForageTool = best(player)
 	return tool.tier if tool else 0
 
+# The chance in percent of one more find per gathering: half a find per point.
+func extra_chance() -> float:
+	return yieldBonus * 50.0
+
 static func name_for(level : int) -> String:
 	return NAMES[clampi(level, 0, NAMES.size() - 1)]
 
@@ -33,6 +37,6 @@ func default_type() -> String:
 	return "Foraging Tool"
 
 func details() -> PackedStringArray:
-	var lines : PackedStringArray = PackedStringArray(["Tier", "%d" % tier, "Extra per gathering", "+%d" % yieldBonus, "Rare finds", "x%s" % String.num(rareBoost, 2), "Works from the bag", ""])
+	var lines : PackedStringArray = PackedStringArray(["Tier", "%d" % tier, "Extra find chance", "+%d%%" % roundi(extra_chance()), "Rare finds", "x%s" % String.num(rareBoost, 2), "Works from the bag", ""])
 	lines.append_array(super())
 	return lines

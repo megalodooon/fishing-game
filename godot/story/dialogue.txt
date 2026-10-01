@@ -1248,7 +1248,7 @@ luma: A whole fallen star. I've dreamed of holding one since I was little.
 luma: It's warm. It's still warm. Thank you. Take my storm totem. It always knew when weather was coming.
 
 [f_bo_1_start]
-bo: I'm making the best shell collection in the world! Can you help? I need fifteen shells and two starfish!
+bo: I'm making the best shell collection in the world! Can you help? I need ten shells and two starfish!
 
 [f_bo_1_end]
 bo: It's the BEST! Here, my allowance. And honey cake. One is half eaten, sorry.

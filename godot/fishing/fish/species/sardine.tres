@@ -11,5 +11,5 @@ icon = ExtResource("2_icon")
 rarity = ExtResource("3_rarity")
 description = "A small silver schooler. Where there's one, there are hundreds."
 weightRange = Vector2(0.05, 0.2)
-basePrice = 5
+basePrice = 8
 heldSize = 0.7

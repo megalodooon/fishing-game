@@ -12,5 +12,5 @@ rarity = ExtResource("e3")
 description = "Rusty but strong. From wrecks, treasure and junk."
 category = "Material"
 maxStack = 99
-sellPrice = 12
+sellPrice = 6
 buyPrice = 18

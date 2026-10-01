@@ -18,20 +18,20 @@ const READY_GLINT : Color = Color(1.0, 0.97, 0.8)
 # Per kind: file name, name, verb, [item path, weight] list, rare item path,
 # rare chance, days to grow back, tool tier needed, where they're found.
 const KINDS : Dictionary = {
-	Kind.BERRY_BUSH: ["berry_bush", "Berry bush", "Pick berries", [["res://items/materials/wild_berries.tres", 5.0]], "res://items/materials/honey.tres", 0.05, 2, 0, "Bramblewick, Meadow Isle"],
-	Kind.TIDE_POOL: ["tide_pool", "Tide pool", "Search the pool", [["res://items/materials/sea_shell.tres", 3.0], ["res://items/materials/barnacle.tres", 3.0], ["res://items/materials/starfish.tres", 1.0]], "res://items/rare/sea_glass.tres", 0.04, 2, 0, "Bramblewick, Driftwood Cay, Pearl Lagoon, Wreck Atoll, Champion Atoll"],
-	Kind.SALT_CRUST: ["salt_crust", "Salt flat", "Scrape salt", [["res://items/materials/sea_salt.tres", 4.0], ["res://items/materials/beach_sand.tres", 3.0]], "res://items/materials/pearl_oyster.tres", 0.03, 1, 0, "Driftwood Cay, Tidal Shrine"],
-	Kind.DRIFTWOOD: ["driftwood", "Driftwood pile", "Pick through it", [["res://items/materials/driftwood_plank.tres", 4.0], ["res://items/materials/palm_frond.tres", 1.5], ["res://items/materials/gull_feather.tres", 0.8]], "res://items/rare/old_map_fragment.tres", 0.02, 2, 0, "Bramblewick, Driftwood Cay, Wreck Atoll"],
-	Kind.PALM_LITTER: ["palm_litter", "Fallen fronds", "Gather fronds", [["res://items/materials/palm_frond.tres", 4.0], ["res://items/materials/gull_feather.tres", 1.0]], "res://items/materials/wild_berries.tres", 0.1, 2, 0, "Lantern Key"],
-	Kind.CLAY_BANK: ["clay_bank", "Clay bank", "Dig clay", [["res://items/materials/clay.tres", 4.0], ["res://items/materials/beach_sand.tres", 1.5]], "res://items/materials/wormroot.tres", 0.08, 2, 0, "Meadow Isle, Mangrove Hollow"],
-	Kind.REEDS: ["reeds", "Reed bed", "Cut reeds", [["res://items/materials/swamp_moss.tres", 3.0], ["res://items/materials/mangrove_root.tres", 3.0]], "res://items/materials/glow_worm.tres", 0.06, 2, 0, "Mangrove Hollow"],
-	Kind.OYSTER_BED: ["oyster_bed", "Oyster bed", "Pry oysters", [["res://items/materials/pearl_oyster.tres", 3.0], ["res://items/materials/sea_shell.tres", 2.0]], "res://items/rare/sea_glass.tres", 0.05, 3, 1, "Pearl Lagoon, Tidal Shrine"],
-	Kind.FROST_ROCK: ["frost_rock", "Frosted rocks", "Chip the frost", [["res://items/materials/frost_lichen.tres", 4.0], ["res://items/materials/frost_crystal.tres", 1.5]], "res://items/rare/frozen_relic.tres", 0.008, 3, 1, "Frostpeak"],
-	Kind.EMBER_VENT: ["ember_vent", "Ember vent", "Rake the vent", [["res://items/materials/ember_ash.tres", 3.0], ["res://items/materials/pumice.tres", 3.0], ["res://items/materials/obsidian_shard.tres", 1.0]], "res://items/rare/magma_heart.tres", 0.008, 3, 2, "Ember Isle"],
-	Kind.STORM_SHARDS: ["storm_shards", "Storm glass", "Break off shards", [["res://items/materials/storm_glass.tres", 3.0], ["res://items/materials/storm_essence.tres", 0.8]], "res://items/rare/storm_crystal.tres", 0.008, 3, 2, "Stormwatch"],
-	Kind.SCRAP_HEAP: ["scrap_heap", "Scrap heap", "Salvage", [["res://items/materials/scrap_wire.tres", 3.0], ["res://items/materials/iron_scrap.tres", 3.0], ["res://items/materials/rust_flakes.tres", 1.5]], "res://items/materials/deepnet_chip.tres", 0.04, 2, 0, "The Deepnet Rig"],
-	Kind.CORAL_HEAP: ["coral_heap", "Coral heap", "Break off coral", [["res://items/materials/coral_shard.tres", 3.0], ["res://items/materials/starfish.tres", 1.5], ["res://items/materials/deep_coral.tres", 0.8]], "res://items/rare/abyssal_pearl.tres", 0.006, 4, 3, "Champion Atoll"],
-	Kind.NEST: ["nest", "Gull nest", "Take feathers", [["res://items/materials/gull_feather.tres", 4.0], ["res://items/materials/palm_frond.tres", 1.0]], "res://items/rare/lucky_stone.tres", 0.01, 2, 0, "Lantern Key, Stormwatch"],
+	Kind.BERRY_BUSH: ["berry_bush", "Berry bush", "Pick berries", [["res://items/materials/wild_berries.tres", 5.0]], "res://items/materials/honey.tres", 0.05, 3, 0, "Bramblewick, Meadow Isle"],
+	Kind.TIDE_POOL: ["tide_pool", "Tide pool", "Search the pool", [["res://items/materials/sea_shell.tres", 3.0], ["res://items/materials/barnacle.tres", 3.0], ["res://items/materials/starfish.tres", 0.5]], "res://items/rare/sea_glass.tres", 0.03, 3, 0, "Bramblewick, Driftwood Cay, Pearl Lagoon, Wreck Atoll, Champion Atoll"],
+	Kind.SALT_CRUST: ["salt_crust", "Salt flat", "Scrape salt", [["res://items/materials/sea_salt.tres", 4.0], ["res://items/materials/beach_sand.tres", 3.0]], "res://items/materials/pearl_oyster.tres", 0.03, 2, 0, "Driftwood Cay, Tidal Shrine"],
+	Kind.DRIFTWOOD: ["driftwood", "Driftwood pile", "Pick through it", [["res://items/materials/driftwood_plank.tres", 4.0], ["res://items/materials/palm_frond.tres", 1.5], ["res://items/materials/gull_feather.tres", 0.5]], "res://items/rare/old_map_fragment.tres", 0.02, 3, 0, "Bramblewick, Driftwood Cay, Wreck Atoll"],
+	Kind.PALM_LITTER: ["palm_litter", "Fallen fronds", "Gather fronds", [["res://items/materials/palm_frond.tres", 4.0], ["res://items/materials/gull_feather.tres", 0.6]], "res://items/materials/wild_berries.tres", 0.1, 3, 0, "Lantern Key"],
+	Kind.CLAY_BANK: ["clay_bank", "Clay bank", "Dig clay", [["res://items/materials/clay.tres", 4.0], ["res://items/materials/beach_sand.tres", 1.5]], "res://items/materials/wormroot.tres", 0.06, 3, 0, "Meadow Isle, Mangrove Hollow"],
+	Kind.REEDS: ["reeds", "Reed bed", "Cut reeds", [["res://items/materials/swamp_moss.tres", 3.0], ["res://items/materials/mangrove_root.tres", 3.0]], "res://items/materials/glow_worm.tres", 0.05, 3, 0, "Mangrove Hollow"],
+	Kind.OYSTER_BED: ["oyster_bed", "Oyster bed", "Pry oysters", [["res://items/materials/pearl_oyster.tres", 1.5], ["res://items/materials/sea_shell.tres", 3.0]], "res://items/rare/sea_glass.tres", 0.04, 4, 1, "Pearl Lagoon, Tidal Shrine"],
+	Kind.FROST_ROCK: ["frost_rock", "Frosted rocks", "Chip the frost", [["res://items/materials/frost_lichen.tres", 4.0], ["res://items/materials/frost_crystal.tres", 0.7]], "res://items/rare/frozen_relic.tres", 0.008, 4, 1, "Frostpeak"],
+	Kind.EMBER_VENT: ["ember_vent", "Ember vent", "Rake the vent", [["res://items/materials/ember_ash.tres", 3.0], ["res://items/materials/pumice.tres", 3.0], ["res://items/materials/obsidian_shard.tres", 0.4]], "res://items/rare/magma_heart.tres", 0.008, 4, 2, "Ember Isle"],
+	Kind.STORM_SHARDS: ["storm_shards", "Storm glass", "Break off shards", [["res://items/materials/storm_glass.tres", 3.0], ["res://items/materials/storm_essence.tres", 0.3]], "res://items/rare/storm_crystal.tres", 0.008, 4, 2, "Stormwatch"],
+	Kind.SCRAP_HEAP: ["scrap_heap", "Scrap heap", "Salvage", [["res://items/materials/scrap_wire.tres", 3.0], ["res://items/materials/iron_scrap.tres", 1.5], ["res://items/materials/rust_flakes.tres", 1.0]], "res://items/materials/deepnet_chip.tres", 0.03, 3, 0, "The Deepnet Rig"],
+	Kind.CORAL_HEAP: ["coral_heap", "Coral heap", "Break off coral", [["res://items/materials/coral_shard.tres", 3.0], ["res://items/materials/starfish.tres", 0.6], ["res://items/materials/deep_coral.tres", 0.4]], "res://items/rare/abyssal_pearl.tres", 0.006, 5, 3, "Champion Atoll"],
+	Kind.NEST: ["nest", "Gull nest", "Take feathers", [["res://items/materials/gull_feather.tres", 4.0], ["res://items/materials/palm_frond.tres", 1.0]], "res://items/rare/lucky_stone.tres", 0.01, 3, 0, "Lantern Key, Stormwatch"],
 }
 
 #------------------------#
@@ -128,8 +128,10 @@ func roll(list : Array) -> Item:
 
 func interact(who : Player) -> void:
 	var tool : ForageTool = ForageTool.best(who)
-	var bonus : float = who.stat(&"forageBonus")
-	var total : int = randi_range(3, 5) + (tool.yieldBonus if tool else 0)
+	# A small handful: one or two, and a chance at one more from the tool and
+	# the forageBonus stat (every full 100% is one more for sure).
+	var bonus : float = who.stat(&"forageBonus") + (tool.extra_chance() if tool else 0.0)
+	var total : int = randi_range(1, 2)
 	while bonus > 0.0:
 		if randf() * 100.0 < minf(bonus, 100.0):
 			total += 1
@@ -147,7 +149,7 @@ func interact(who : Player) -> void:
 	var texts : PackedStringArray = PackedStringArray()
 	var gathered : int = 0
 	for item in got:
-		var given : int = who.inventory.give(item, got[item])
+		var given : int = got[item] - who.inventory.give(item, got[item])
 		if given > 0:
 			gathered += given
 			texts.append("+%d %s" % [given, item.displayName])

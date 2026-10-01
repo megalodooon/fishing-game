@@ -12,4 +12,4 @@ icon = ExtResource("1_ea0n2")
 rarity = ExtResource("2_i2k1g")
 description = "Pried off old piers. Bait loves a bit of barnacle."
 maxStack = 99
-sellPrice = 4
+sellPrice = 2

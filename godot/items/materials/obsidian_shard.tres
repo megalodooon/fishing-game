@@ -12,4 +12,4 @@ rarity = ExtResource("e3")
 description = "Volcanic glass, sharper than steel."
 category = "Material"
 maxStack = 99
-sellPrice = 50
+sellPrice = 25

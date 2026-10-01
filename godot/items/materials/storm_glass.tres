@@ -12,4 +12,4 @@ icon = ExtResource("1_3xvr0")
 rarity = ExtResource("2_gfcj5")
 description = "Sand struck by lightning. It hums in storms."
 maxStack = 99
-sellPrice = 30
+sellPrice = 15

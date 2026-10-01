@@ -12,4 +12,4 @@ rarity = ExtResource("e3")
 description = "Broken coral, pink and sharp."
 category = "Material"
 maxStack = 99
-sellPrice = 18
+sellPrice = 9

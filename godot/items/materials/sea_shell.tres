@@ -12,4 +12,4 @@ rarity = ExtResource("e3")
 description = "Pretty, and it sounds like the sea."
 category = "Material"
 maxStack = 99
-sellPrice = 6
+sellPrice = 3

@@ -12,4 +12,4 @@ icon = ExtResource("1_ls8mr")
 rarity = ExtResource("2_624qk")
 description = "Some have pearls. Most have pearl dust."
 maxStack = 99
-sellPrice = 25
+sellPrice = 13
