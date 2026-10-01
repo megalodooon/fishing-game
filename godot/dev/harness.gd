@@ -51,6 +51,7 @@ func load_game() -> void:
 	get_tree().current_scene = game
 	player = game.get_node("Player")
 	player.progress.set_flag("story/intro")
+	player.progress.playerName = "Tester"
 	await wait(30)
 	var dialogue : DialogueUI = find(DialogueUI)
 	if dialogue and dialogue.shown:
@@ -119,6 +120,38 @@ func quests() -> void:
 
 func chart() -> void:
 	(find(WorldMapUI) as WorldMapUI).try_open()
+
+func scene_player() -> void:
+	(find(DialogueUI) as DialogueUI).start([["pip", "Well now, {name}! You came back."], ["player", "I got Grandpa's letter. Is it true about the harbor?"]], PackedStringArray(["Tell me", "Later"]), Callable())
+	await seconds(0.3)
+	(find(DialogueUI) as DialogueUI).index = 1
+	(find(DialogueUI) as DialogueUI).rewrap()
+	await seconds(1.5)
+
+func talk_pip() -> void:
+	await village()
+	var pip : Npc = null
+	for node in game.find_children("*", "Npc", true, false):
+		if (node as Npc).id == "pip":
+			pip = node
+	(find(DialogueUI) as DialogueUI).converse(pip, player)
+	await seconds(1.5)
+
+func gift_pip() -> void:
+	await talk_pip()
+	(find(DialogueUI) as DialogueUI).open_gift()
+	await seconds(1.0)
+
+func toasts() -> void:
+	var talk : DialogueUI = find(DialogueUI)
+	if talk.shown:
+		talk.finish(-1)
+	var board : NoticeBoard = NoticeBoard.find(get_tree())
+	board.post("Quest ready!", "Fresh Off the Boat: go back to Gus.", Color(0.56, 0.93, 0.44))
+	board.post("Treasure!", "Wooden Chest", Color(1.0, 0.86, 0.36))
+	board.post("Treasure!", "Wooden Chest", Color(1.0, 0.86, 0.36))
+	board.banner("Fishing 5", "+2% rare fish luck", Color(0.4, 0.8, 1.0))
+	await seconds(0.6)
 
 func profile() -> void:
 	(find(ProfileUI) as ProfileUI).open_profile()
@@ -235,3 +268,25 @@ func join_test() -> void:
 	SleepSchedule.find(get_tree()).go_to_sleep()
 	check(await wait_for(func() -> bool: return cycle.day == day + 1, 30.0), "the guest wakes on the next day too")
 	await seconds(8.0)
+
+func journal_fish() -> void:
+	var book : JournalUI = find(JournalUI)
+	if not book.shown:
+		book.toggle()
+	await wait(5)
+	for i in book.journal.biomes.size():
+		if not book.journal.biomes[i].creatures.is_empty():
+			book.show_page(i + 1, 1)
+			break
+	book.journal.record(Fish.caught(book.list[0], 0.0), book.page_biome())
+	book.select(book.list[0])
+	await seconds(0.5)
+
+func journal_creatures() -> void:
+	await journal_fish()
+	var book : JournalUI = find(JournalUI)
+	book.show_tab(true)
+	player.progress.bestiary[book.creatureList[0]] = 2
+	book.pickedCreature = book.creatureList[0]
+	book.refresh()
+	await seconds(0.5)

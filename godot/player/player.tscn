@@ -411,7 +411,7 @@ unique_name_in_owner = true
 visible = false
 script = ExtResource("16_callout")
 font = ExtResource("17_font")
-fontSize = 4
+fontSize = 3
 outlineWidth = 0.5
 rise = 2.0
 
@@ -420,7 +420,7 @@ unique_name_in_owner = true
 visible = false
 script = ExtResource("16_callout")
 font = ExtResource("17_font")
-fontSize = 4
+fontSize = 3
 outlineWidth = 0.5
 rise = 1.0
 bob = 0.4

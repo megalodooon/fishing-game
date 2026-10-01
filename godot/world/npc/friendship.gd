@@ -136,6 +136,57 @@ static func gift_blocked(progress : Progress, id : String, day : int) -> String:
 		return "Two gifts a week is plenty"
 	return ""
 
+# What the player has found out about a villager's tastes, kept per player as
+# item path to reaction ("tastes/<id>").
+static func item_key(item : Item) -> String:
+	if item is Fish and (item as Fish).species:
+		return (item as Fish).species.resource_path
+	return item.original().resource_path
+
+static func learn_taste(progress : Progress, id : String, item : Item, reaction : String) -> void:
+	var known : Dictionary = (progress.get_flag("tastes/" + id, {}) as Dictionary).duplicate()
+	known[item_key(item)] = reaction
+	progress.set_flag("tastes/" + id, known)
+
+static func known_taste(progress : Progress, id : String, item : Item) -> String:
+	return (progress.get_flag("tastes/" + id, {}) as Dictionary).get(item_key(item), "")
+
+# Hearts it takes for a villager to mention what they like, and what they love.
+const HINT_HEARTS : Dictionary = {"liked": 3, "loved": 6}
+
+# Everything known of this kind of taste: items given, and hints the
+# villager has dropped by now.
+static func taste_names(progress : Progress, id : String, kind : String) -> PackedStringArray:
+	var names : PackedStringArray = PackedStringArray()
+	var known : Dictionary = progress.get_flag("tastes/" + id, {})
+	for path in known:
+		if known[path] == kind and ResourceLoader.exists(path):
+			var thing : Resource = load(path)
+			var shown : String = thing.get("displayName") if thing.get("displayName") else path.get_file().get_basename()
+			if not names.has(shown):
+				names.append(shown)
+	if hearts(progress, id) >= HINT_HEARTS.get(kind, 99):
+		for token in (TASTES.get(id, {}) as Dictionary).get(kind, []):
+			var hint : String = token_name(token)
+			if not hint.is_empty() and not names.has(hint):
+				names.append(hint)
+	return names
+
+# A taste token in words, like "Rare fish" or "Food".
+static func token_name(token : String) -> String:
+	if token.begins_with("res://"):
+		var thing : Resource = load(token) if ResourceLoader.exists(token) else null
+		return str(thing.get("displayName")) if thing else ""
+	if token.begins_with("cat:"):
+		return token.substr(4)
+	if token == "fish":
+		return "Any fish"
+	if token.begins_with("fish:"):
+		return "%s fish" % token.substr(5).capitalize()
+	if token.begins_with("rarity:"):
+		return "%s things" % token.substr(7).capitalize()
+	return ""
+
 static func matches(token : String, item : Item) -> bool:
 	if token.begins_with("res://"):
 		return item.original().resource_path == token or (item is Fish and (item as Fish).species and (item as Fish).species.resource_path == token)

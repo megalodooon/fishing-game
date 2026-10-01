@@ -51,9 +51,9 @@ signal laid_out
 @export var dimColor : Color = Color(0.58, 0.67, 0.78, 1.0)
 @export var blockedColor : Color = Color(0.95, 0.38, 0.34, 1.0)
 # Drawn one art pixel around every item icon. Items with a rarity use its
-# color instead, mixed this far toward white.
+# color instead, made this much more saturated so rarities read at a glance.
 @export var outlineColor : Color = Color.WHITE
-@export_range(0.0, 1.0) var rarityWhiten : float = 0.35
+@export_range(1.0, 2.0) var raritySaturate : float = 1.3
 
 var inventory : Inventory
 var open : bool = false
@@ -113,6 +113,12 @@ func _process(delta : float) -> void:
 	if player and player.heldSlot != shownSlot:
 		shownSlot = player.heldSlot
 		queue_redraw()
+	# Golden and shiny fish shimmer.
+	if inventory and Engine.get_process_frames() % 3 == 0:
+		if has_variants(0, inventory.hotbarSize):
+			queue_redraw()
+		if open and has_variants(inventory.hotbarSize, inventory.items.size()):
+			backpack.queue_redraw()
 	if hovered != NONE and dragFrom == NONE and not rects[hovered].has_point(get_local_mouse_position()):
 		hover(NONE)
 	if thrown:
@@ -338,7 +344,9 @@ func draw_slot(canvas : CanvasItem, slot : int) -> void:
 		color = hoverColor
 	draw_frame(canvas, area, color)
 	if item and item.icon:
+		draw_variant(canvas, item, area, false)
 		draw_icon(canvas, item.icon, area.get_center(), Color(1.0, 1.0, 1.0, 0.35 if slot == dragFrom else 1.0), outline_color(item))
+		draw_variant(canvas, item, area, true)
 		if item.amount > 1:
 			draw_count(canvas, area, item.amount)
 	elif slot == inventory.trashSlot and trashIcon:
@@ -365,7 +373,63 @@ func draw_frame(canvas : CanvasItem, area : Rect2, color : Color) -> void:
 	canvas.draw_rect(Rect2(area.position.x + 1.0, area.position.y + 1.0, area.size.x - 2.0, 1.0), Color(0.0, 0.0, 0.0, 0.22))
 
 func outline_color(item : Item) -> Color:
-	return item.rarity.color.lerp(Color.WHITE, rarityWhiten) if item and item.rarity else outlineColor
+	return rarity_outline(item.rarity) if item and item.rarity else outlineColor
+
+func rarity_outline(rarity : Rarity) -> Color:
+	if not rarity:
+		return outlineColor
+	var color : Color = rarity.color
+	return Color.from_hsv(color.h, clampf(color.s * raritySaturate, 0.0, 1.0), color.v)
+
+# Giant, shiny and golden fish stand out in their slot: golden ones get a gold
+# glow and a shine that sweeps across, shiny ones twinkle, giant ones wear a
+# little up arrow. Drawn under (glow) and over (the rest) the icon.
+func draw_variant(canvas : CanvasItem, item : Item, area : Rect2, over : bool) -> void:
+	var fish : Fish = item as Fish
+	if not fish or fish.variant == Fish.NORMAL:
+		return
+	var now : float = Time.get_ticks_msec() * 0.001
+	var color : Color = Fish.VARIANT_COLORS[fish.variant]
+	var inner : Rect2 = area.grow(-1.0)
+	if not over:
+		if fish.variant == Fish.GOLDEN:
+			canvas.draw_rect(inner, Color(1.0, 0.75, 0.2, 0.22 + 0.08 * sin(now * 3.0)))
+		elif fish.variant == Fish.SHINY:
+			canvas.draw_rect(inner, Color(0.5, 0.9, 1.0, 0.14))
+		return
+	match fish.variant:
+		Fish.GOLDEN:
+			# A bright band sliding across every couple of seconds.
+			var sweep : float = fmod(now * 0.6, 1.6) - 0.3
+			for i in 3:
+				var x : float = inner.position.x + (sweep * inner.size.x) + i - inner.size.y * 0.5
+				for y in int(inner.size.y):
+					var px : float = x + y * 0.5
+					if px >= inner.position.x and px < inner.end.x:
+						canvas.draw_rect(Rect2(floorf(px), inner.position.y + y, 1.0, 1.0), Color(1.0, 0.97, 0.8, 0.28 - i * 0.08))
+			UiKit.outline(canvas, area, Color(color, 0.7 + 0.3 * sin(now * 4.0)))
+		Fish.SHINY:
+			for i in 3:
+				var phase : float = fmod(now * 1.3 + i * 0.37, 1.0)
+				var spot : Vector2 = inner.position + Vector2(fmod(i * 7.3 + floorf(now * 1.3 + i * 0.37) * 3.1, inner.size.x - 2.0) + 1.0, fmod(i * 4.1 + floorf(now * 1.3 + i * 0.37) * 5.3, inner.size.y - 2.0) + 1.0)
+				var glow : float = sin(phase * PI)
+				canvas.draw_rect(Rect2(spot.floor(), Vector2.ONE), Color(1.0, 1.0, 1.0, glow))
+				if glow > 0.6:
+					for offset in [Vector2(1.0, 0.0), Vector2(-1.0, 0.0), Vector2(0.0, 1.0), Vector2(0.0, -1.0)]:
+						canvas.draw_rect(Rect2(spot.floor() + offset, Vector2.ONE), Color(color, (glow - 0.6) * 2.0))
+		Fish.GIANT:
+			var tip : Vector2 = Vector2(inner.position.x + 1.0, inner.position.y + 1.0)
+			canvas.draw_rect(Rect2(tip + Vector2(1.0, 0.0), Vector2(1.0, 1.0)), color)
+			canvas.draw_rect(Rect2(tip + Vector2(0.0, 1.0), Vector2(3.0, 1.0)), color)
+			canvas.draw_rect(Rect2(tip + Vector2(1.0, 2.0), Vector2(1.0, 2.0)), color)
+
+# Whether anything in these slots is animated (variant fish), so they redraw.
+func has_variants(from : int, to : int) -> bool:
+	for slot in range(from, mini(to, inventory.items.size())):
+		var fish : Fish = inventory.get_item(slot) as Fish
+		if fish and fish.variant != Fish.NORMAL and fish.variant != Fish.GIANT:
+			return true
+	return false
 
 # Centers the icon's visible pixels, not its canvas, snapped to its own pixel
 # grid. Icons too big for a slot at iconScale (like long fish) shrink to fit.

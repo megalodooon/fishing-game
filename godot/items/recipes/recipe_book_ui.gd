@@ -247,7 +247,7 @@ func recipe_row(each : BaitRecipe, order : int) -> Dictionary:
 	if not learned:
 		return {"value": each, "icon": made.icon, "tint": Color(0.36, 0.26, 0.17, 0.85), "text": "???", "search": "", "detail": "", "dim": true, "rank": rank, "order": order}
 	var detail : String = "x%d" % batches if batches > 0 and here else ""
-	return {"value": each, "icon": made.icon, "tint": BaitCrafter.tint_of(made), "text": made.displayName, "detail": detail, "detailIcon": null if here else Recipes.station_icon(Recipes.station_of(each)), "detailColor": skin.good if batches > 0 and here else skin.dim, "dim": batches <= 0 or not here, "badge": "" if seen(each) else "NEW", "rank": rank, "order": order, "marked": each == player.progress.pinnedRecipe, "markColor": skin.accent}
+	return {"value": each, "icon": made.icon, "tint": BaitCrafter.tint_of(made), "outline": ui.outline_color(made), "text": made.displayName, "detail": detail, "detailIcon": null if here else Recipes.station_icon(Recipes.station_of(each)), "detailColor": skin.good if batches > 0 and here else skin.dim, "dim": batches <= 0 or not here, "badge": "" if seen(each) else "NEW", "rank": rank, "order": order, "marked": each == player.progress.pinnedRecipe, "markColor": skin.accent}
 
 # Opens the book on everything to do with one thing: the recipes that make it
 # and the ones that use it. A fish looks up its species.
@@ -489,7 +489,7 @@ func draw_card(font : Font) -> void:
 	var zoom : float = minf(1.0, (iconBox - 4.0) / maxf(made.icon.get_width(), made.icon.get_height())) if made.icon else 1.0
 	if made.icon:
 		if learned:
-			ui.draw_icon(self, made.icon, box.get_center(), BaitCrafter.tint_of(made), Color(0.2, 0.12, 0.08, 0.9), zoom)
+			ui.draw_icon(self, made.icon, box.get_center(), BaitCrafter.tint_of(made), ui.outline_color(made), zoom)
 		else:
 			ui.draw_silhouette(self, made.icon, box.get_center(), Color(0.36, 0.26, 0.17, 0.9), zoom)
 	var x : float = box.end.x + 3.0

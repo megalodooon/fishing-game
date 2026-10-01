@@ -8,6 +8,9 @@ class_name UiKit
 const RIBBON_TEXT : Color = Color(1.0, 0.95, 0.86)
 const RIBBON_SHADOW : Color = Color(0.25, 0.05, 0.05, 0.9)
 const NEW_COLOR : Color = Color(1.0, 0.86, 0.3)
+# The HUD (toasts, the quest tracker, prompts over things) is drawn smaller than
+# the menus, so it stays out of the way.
+const HUD : float = 0.75
 
 
 static func box(canvas : CanvasItem, style : StyleBox, area : Rect2, tint : Color = Color.WHITE) -> void:

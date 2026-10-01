@@ -328,7 +328,13 @@ func draw_row(index : int, area : Rect2, font : Font, s : MenuSkin) -> void:
 			fit *= 0.5
 		var drawn : Vector2 = icon.get_size() * fit
 		var tint : Color = row.get("tint", Color.WHITE)
-		view.draw_texture_rect(icon, Rect2((box.get_center() - drawn * 0.5).round(), drawn), false, Color(tint, tint.a * (0.4 if dim else 1.0)))
+		var edge : Variant = row.get("outline")
+		if edge is Color and ui:
+			# A rarity outline around the icon, one art pixel wide.
+			var fitted : float = minf(1.0, (box.size.x - 1.0) / (maxf(icon.get_width(), icon.get_height()) + 2.0))
+			ui.draw_icon(view, icon, box.get_center(), Color(tint, tint.a * (0.4 if dim else 1.0)), Color(edge, (edge as Color).a * (0.4 if dim else 1.0)), fitted)
+		else:
+			view.draw_texture_rect(icon, Rect2((box.get_center() - drawn * 0.5).round(), drawn), false, Color(tint, tint.a * (0.4 if dim else 1.0)))
 	var detail : String = row.get("detail", "")
 	var detailIcon : Texture2D = row.get("detailIcon")
 	var iconSide : float = minf(8.0, maxf(detailIcon.get_width(), detailIcon.get_height())) if detailIcon else 0.0

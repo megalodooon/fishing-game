@@ -6,10 +6,13 @@ class_name JournalUI
 # Colored bookmarks down the book's edge jump straight to a region (the top
 # one back to the contents). On a ground's page the left side is a grid of
 # its fish, the right side the fish clicked on, or the page's progress when
-# none is. Fish not caught there yet are ink silhouettes. The journal opens
-# on the ground the player is at.
+# none is. Fish not caught there yet are ink silhouettes. Grounds where sea
+# creatures turn up get two tabs over the grid, Fish and Sea creatures; the
+# creature side shows each one (silhouettes until beaten), when it bites and
+# what it drops. The right page scrolls with the wheel when there's more on it
+# than fits. The journal opens on the ground the player is at.
 
-enum Zone { NONE, CELL, PREV, NEXT, TITLE, MARK, ENTRY }
+enum Zone { NONE, CELL, PREV, NEXT, TITLE, MARK, ENTRY, TAB }
 enum Mode { CONTENTS, PAGE }
 
 # Bookmark order and colors. A biome's region picks its bookmark; unknown
@@ -100,6 +103,14 @@ var tipColor : Color = Color.WHITE
 var tipLines : PackedStringArray = PackedStringArray()
 var tipSize : Vector2 = Vector2.ZERO
 var time : float = 0.0
+# The Sea creatures tab of a page, its creatures and the one clicked on.
+var creatureTab : bool = false
+var creatureList : Array[SeaCreature] = []
+var pickedCreature : SeaCreature
+var tabRects : Array[Rect2] = []
+# How far the right page is scrolled, and how tall its content was last drawn.
+var detailScroll : float = 0.0
+var detailHeight : float = 0.0
 #------------------------#
 
 
@@ -113,6 +124,7 @@ func _ready() -> void:
 	grid = canvas(sheet, draw_grid)
 	grid.clip_contents = true
 	detail = canvas(sheet, draw_detail)
+	detail.clip_contents = true
 	tipLayer = canvas(self, draw_tip)
 	journal.changed.connect(refresh)
 	ui.opened.connect(close)
@@ -240,8 +252,12 @@ func show_page(index : int, direction : int) -> void:
 	pageIndex = clampi(index, 0, page_count() - 1)
 	var biome : Biome = page_biome()
 	list.assign(biome.fish.filter(func(data : FishData) -> bool: return data != null) if biome else journal.all_fish())
+	creatureList.assign(biome.creatures.filter(func(c : SeaCreature) -> bool: return c != null) if biome else [])
+	creatureTab = false
+	pickedCreature = null
 	selected = null
 	scroll = 0.0
+	detailScroll = 0.0
 	pack()
 	sheetMotion = slide_in(sheetMotion, sheet, Vector2.ZERO, Vector2(flipSlide * (direction if direction != 0 else 1), 0.0))
 	layout()
@@ -259,7 +275,7 @@ func pack() -> void:
 	cells.clear()
 	rows = 0
 	var taken : Dictionary[Vector2i, bool] = {}
-	for data in list:
+	for data in shown_things():
 		var art : Vector2 = data.icon.get_size() if data.icon else Vector2.ONE
 		var span : Vector2i = Vector2i(clampi(ceili(art.x / cellArt), 1, columns), maxi(ceili(art.y / cellArt), 1))
 		var at : Vector2i = Vector2i.ZERO
@@ -272,6 +288,27 @@ func pack() -> void:
 				taken[at + Vector2i(x, y)] = true
 		cells.append(Rect2i(at, span))
 		rows = maxi(rows, at.y + span.y)
+
+# What the grid shows: the page's fish, or its sea creatures.
+func shown_things() -> Array:
+	return creatureList if creatureTab else list
+
+func has_tabs() -> bool:
+	return mode == Mode.PAGE and not creatureList.is_empty()
+
+func beaten(creature : SeaCreature) -> bool:
+	return player.progress.bestiary.has(creature)
+
+func show_tab(creatures : bool) -> void:
+	if creatures == creatureTab:
+		return
+	creatureTab = creatures
+	selected = null
+	pickedCreature = null
+	scroll = 0.0
+	detailScroll = 0.0
+	pack()
+	layout()
 
 func fits(taken : Dictionary[Vector2i, bool], at : Vector2i, span : Vector2i) -> bool:
 	for y in span.y:
@@ -303,6 +340,11 @@ func layout() -> void:
 	nextRect = Rect2(Vector2(leftRect.end.x - padding - buttonSize, prevRect.position.y), button)
 	titleRect = Rect2(prevRect.end.x + 1.0, prevRect.position.y, nextRect.position.x - prevRect.end.x - 2.0, buttonSize)
 	var gridTop : float = prevRect.end.y + 2.0
+	tabRects.clear()
+	if has_tabs():
+		var tabWidth : float = floorf((columns * step() - cellGap) * 0.5)
+		tabRects = [Rect2(leftRect.position.x + padding, gridTop, tabWidth - 1.0, 8.0), Rect2(leftRect.position.x + padding + tabWidth, gridTop, tabWidth, 8.0)]
+		gridTop += 10.0
 	gridRect = Rect2(leftRect.position.x + padding, gridTop, columns * step() - cellGap, leftRect.end.y - padding - gridTop)
 	detailRect = Rect2(rightRect.position + Vector2.ONE * padding, rightRect.size - Vector2.ONE * padding * 2.0)
 	markRects.clear()
@@ -390,6 +432,9 @@ func zone_at(point : Vector2) -> Vector2i:
 		return Vector2i(Zone.NEXT, 0)
 	if titleRect.has_point(point):
 		return Vector2i(Zone.TITLE, 0)
+	for i in tabRects.size():
+		if tabRects[i].has_point(point):
+			return Vector2i(Zone.TAB, i)
 	if gridRect.has_point(point):
 		var local : Vector2 = point - gridRect.position
 		for i in cells.size():
@@ -416,7 +461,11 @@ func _gui_input(event : InputEvent) -> void:
 				elif mode == Mode.PAGE:
 					show_contents()
 			MOUSE_BUTTON_WHEEL_UP, MOUSE_BUTTON_WHEEL_DOWN:
-				if mode == Mode.PAGE and gridRect.has_point(event.position) and max_scroll() > 0.0:
+				var up : bool = event.button_index == MOUSE_BUTTON_WHEEL_UP
+				if mode == Mode.PAGE and detailRect.has_point(event.position):
+					detailScroll = clampf(detailScroll + (-6.0 if up else 6.0), 0.0, detail_max_scroll())
+					refresh()
+				elif mode == Mode.PAGE and gridRect.has_point(event.position) and max_scroll() > 0.0:
 					scroll = clampf(scroll + step() * (-1.0 if event.button_index == MOUSE_BUTTON_WHEEL_UP else 1.0), 0.0, max_scroll())
 					hover_at(event.position)
 					refresh()
@@ -437,16 +486,28 @@ func click(at : Zone, index : int) -> void:
 				show_region(marks[index][2])
 		Zone.ENTRY:
 			show_page(entries[index][1], 1)
+		Zone.TAB:
+			show_tab(index == 1)
 		Zone.CELL:
-			select(null if list[index] == selected else list[index])
+			if creatureTab:
+				pickedCreature = null if creatureList[index] == pickedCreature else creatureList[index]
+				detailScroll = 0.0
+				detailMotion = slide_in(detailMotion, detail, detailRect.position, Vector2(0.0, 2.0))
+				refresh()
+			else:
+				select(null if list[index] == selected else list[index])
 		_:
 			if mode == Mode.PAGE and gridRect.has_point(mouse):
 				select(null)
+
+func detail_max_scroll() -> float:
+	return maxf(detailHeight - detailRect.size.y, 0.0)
 
 func select(data : FishData) -> void:
 	if data == selected:
 		return
 	selected = data
+	detailScroll = 0.0
 	if data:
 		journal.see(data)
 	detailMotion = slide_in(detailMotion, detail, detailRect.position, Vector2(0.0, 2.0))
@@ -462,7 +523,7 @@ func hover(at : Zone, index : int, force : bool = false) -> void:
 	zone = at
 	hoveredIndex = index
 	update_tip()
-	if zone == Zone.CELL and index >= 0 and index < list.size() and journal.is_found(list[index], page_biome()):
+	if zone == Zone.CELL and not creatureTab and index >= 0 and index < list.size() and journal.is_found(list[index], page_biome()):
 		journal.see(list[index])
 	grid.queue_redraw()
 	sheet.queue_redraw()
@@ -480,8 +541,16 @@ func update_tip() -> void:
 		Zone.MARK:
 			if hoveredIndex >= 0 and hoveredIndex < marks.size():
 				set_tip(marks[hoveredIndex][0], marks[hoveredIndex][1].lightened(0.3), PackedStringArray())
+		Zone.TAB:
+			set_tip("Sea creatures" if hoveredIndex == 1 else "Fish", ui.textColor, PackedStringArray())
 		Zone.CELL:
-			if hoveredIndex >= 0 and hoveredIndex < list.size():
+			if creatureTab and hoveredIndex >= 0 and hoveredIndex < creatureList.size():
+				var creature : SeaCreature = creatureList[hoveredIndex]
+				if beaten(creature):
+					set_tip(creature.displayName, creature.rarity.color if creature.rarity else ui.textColor, PackedStringArray())
+				else:
+					set_tip("Not beaten yet", ui.dimColor, PackedStringArray(["Fishing", "%d+" % creature.minFishing]))
+			elif hoveredIndex >= 0 and hoveredIndex < list.size():
 				var data : FishData = list[hoveredIndex]
 				if journal.is_found(data, page_biome()):
 					set_tip(data.displayName, rarity_color(data), PackedStringArray())
@@ -510,9 +579,10 @@ func rarity_color(data : FishData) -> Color:
 
 func _process(delta : float) -> void:
 	time += delta
-	if zone == Zone.MARK or zone == Zone.CELL or selected:
+	if zone == Zone.MARK or zone == Zone.CELL or selected or pickedCreature:
 		queue_redraw()
 		grid.queue_redraw()
+		sheet.queue_redraw()
 
 func _draw() -> void:
 	draw_rect(Rect2(bookRect.position + Vector2(2.0, 2.0), bookRect.size), Color(0.0, 0.0, 0.0, 0.3))
@@ -562,8 +632,24 @@ func draw_sheet() -> void:
 		var width : float = minf(UiKit.text_width(font, title, ui.titleSize), titleRect.size.x - countWidth - 3.0)
 		sheet.draw_rect(Rect2(titleRect.position.x + 1.0, baseline + 1.0, width, 1.0), Color(titleColor, 0.6))
 	UiKit.label(sheet, font, Vector2(titleRect.end.x - countWidth, baseline), count, ui.statSize, skin.dim)
-	if selected:
+	if selected and not creatureTab and detailScroll <= 0.0:
 		UiKit.label(sheet, font, Vector2(detailRect.position.x, detailRect.position.y + font.get_ascent(ui.statSize)), "No. %02d" % (list.find(selected) + 1), ui.statSize, skin.dim)
+	for i in tabRects.size():
+		var on : bool = (i == 1) == creatureTab
+		var hovering : bool = zone == Zone.TAB and hoveredIndex == i
+		# Paper tabs: the open one light with red ink, the other a shade darker.
+		var area : Rect2 = tabRects[i]
+		sheet.draw_rect(area, cellEdge.darkened(0.25))
+		sheet.draw_rect(area.grow(-1.0), cellColor if on else (cellColor.darkened(0.08) if hovering else cellEdge))
+		if on:
+			sheet.draw_rect(Rect2(area.position.x + 1.0, area.end.y - 1.0, area.size.x - 2.0, 1.0), skin.title)
+		UiKit.label(sheet, font, Vector2(area.position.x, UiKit.baseline(font, area, ui.statSize)), "Creatures" if i == 1 else "Fish", ui.statSize, skin.title if on else skin.dim, HORIZONTAL_ALIGNMENT_CENTER, area.size.x)
+	var deepest : float = detail_max_scroll()
+	if deepest > 0.0:
+		var bar : Rect2 = Rect2(detailRect.end.x + 1.0, detailRect.position.y, 1.0, detailRect.size.y)
+		var knob : float = maxf(bar.size.y * bar.size.y / (bar.size.y + deepest), 4.0)
+		sheet.draw_rect(bar, skin.line)
+		sheet.draw_rect(Rect2(bar.position.x, bar.position.y + (bar.size.y - knob) * detailScroll / deepest, 1.0, knob), skin.dim)
 	var most : float = max_scroll()
 	if most > 0.0:
 		var track : Rect2 = Rect2(gridRect.end.x + 1.0, gridRect.position.y, 1.0, gridRect.size.y)
@@ -613,37 +699,51 @@ func draw_grid() -> void:
 	if mode != Mode.PAGE:
 		return
 	var origin : Vector2 = Vector2.ONE
+	var things : Array = shown_things()
 	for i in cells.size():
 		var area : Rect2 = cell_rect(i)
 		area.position += origin
 		if area.end.y < 0.0 or area.position.y > grid.size.y:
 			continue
-		var data : FishData = list[i]
-		var found : bool = journal.is_found(data, page_biome())
+		var thing : Resource = things[i]
+		var rarity : Rarity = thing.get("rarity")
+		var icon : Texture2D = thing.get("icon")
+		var found : bool = beaten(thing) if creatureTab else journal.is_found(thing, page_biome())
+		var picked : bool = thing == (pickedCreature if creatureTab else selected)
 		grid.draw_rect(area, cellEdge)
 		grid.draw_rect(area.grow(-1.0), cellColor)
-		if found and data.rarity:
-			grid.draw_rect(Rect2(area.position.x + 1.0, area.end.y - 2.0, area.size.x - 2.0, 1.0), Color(data.rarity.color.darkened(0.2), 0.8))
-		if data == selected or (i == hoveredIndex and zone == Zone.CELL):
-			UiKit.brackets(grid, area, skin.title if data == selected else skin.dim, time)
-		if not data.icon:
+		if found and rarity:
+			grid.draw_rect(Rect2(area.position.x + 1.0, area.end.y - 2.0, area.size.x - 2.0, 1.0), Color(rarity.color.darkened(0.2), 0.8))
+		if picked or (i == hoveredIndex and zone == Zone.CELL):
+			UiKit.brackets(grid, area, skin.title if picked else skin.dim, time)
+		if not icon:
 			continue
+		var fit : float = minf(1.0, (minf(area.size.x, area.size.y) - 2.0) / (maxf(icon.get_width(), icon.get_height()) + 2.0)) if creatureTab else 1.0
 		if found:
-			ui.draw_icon(grid, data.icon, area.get_center(), Color.WHITE, Color(0.2, 0.12, 0.08, 0.9), 1.0)
-			if journal.unseen.has(data):
+			ui.draw_icon(grid, icon, area.get_center(), Color.WHITE, ui.rarity_outline(rarity), fit)
+			if not creatureTab and journal.unseen.has(thing):
 				grid.draw_rect(Rect2(area.end.x - 3.0, area.position.y + 1.0, 2.0, 2.0), newColor)
 		else:
-			ui.draw_silhouette(grid, data.icon, area.get_center(), silhouetteColor, 1.0)
+			ui.draw_silhouette(grid, icon, area.get_center(), silhouetteColor, fit)
 
 func draw_detail() -> void:
 	if mode != Mode.PAGE:
 		return
-	if selected:
-		draw_fish_page(selected)
+	# Everything on the right page is drawn shifted up by the scroll; the
+	# lowest point reached sets how far it can scroll.
+	detail.draw_set_transform(Vector2(0.0, -detailScroll))
+	var bottom : float = 0.0
+	if creatureTab:
+		bottom = draw_creature_page(pickedCreature) if pickedCreature else draw_creature_list()
+	elif selected:
+		bottom = draw_fish_page(selected)
 	else:
-		draw_progress()
+		bottom = draw_progress()
+	detail.draw_set_transform(Vector2.ZERO)
+	detailHeight = bottom + 2.0
+	detailScroll = clampf(detailScroll, 0.0, detail_max_scroll())
 
-func draw_fish_page(data : FishData) -> void:
+func draw_fish_page(data : FishData) -> float:
 	var font : Font = ui.font
 	var width : float = detailRect.size.x
 	var found : bool = journal.is_found(data, page_biome())
@@ -651,7 +751,7 @@ func draw_fish_page(data : FishData) -> void:
 	if data.icon:
 		var box : float = (data.icon.get_height() + 2.0) * detailScale
 		if found:
-			ui.draw_icon(detail, data.icon, Vector2(width * 0.5, y + box * 0.5), Color.WHITE, Color(0.2, 0.12, 0.08, 0.9), detailScale)
+			ui.draw_icon(detail, data.icon, Vector2(width * 0.5, y + box * 0.5), Color.WHITE, ui.rarity_outline(data.rarity), detailScale)
 		else:
 			ui.draw_silhouette(detail, data.icon, Vector2(width * 0.5, y + box * 0.5), silhouetteColor, detailScale)
 		y += box + 2.0
@@ -676,9 +776,10 @@ func draw_fish_page(data : FishData) -> void:
 		y += ui.statSize + 1.0
 	for line in data.requirement_lines():
 		y = paragraph(line, y + 1.0, skin.accent)
+	return y
 
 # How much of the page has been found, overall and per rarity.
-func draw_progress() -> void:
+func draw_progress() -> float:
 	var font : Font = ui.font
 	var width : float = detailRect.size.x
 	var biome : Biome = page_biome()
@@ -705,7 +806,69 @@ func draw_progress() -> void:
 		y = draw_rare(font, biome, y + 2.0)
 	var text : String = biome.description if biome else allDescription
 	if not text.is_empty():
-		paragraph(text, y + 3.0, skin.dim)
+		y = paragraph(text, y + 3.0, skin.dim)
+	return y
+
+# The creatures of this ground: how many are beaten, and a nudge to click one.
+func draw_creature_list() -> float:
+	var y : float = buttonSize + 3.0
+	var done : int = creatureList.filter(func(c : SeaCreature) -> bool: return beaten(c)).size()
+	y = centered_text("Sea creatures", y, ui.statSize, skin.dim)
+	y = centered_text("%d/%d beaten" % [done, creatureList.size()], y + 1.0, ui.titleSize, skin.text) + 1.0
+	UiKit.bar(detail, Rect2(0.0, y, detailRect.size.x, 4.0), float(done) / maxf(creatureList.size(), 1.0), barColor, Color(0.5, 0.4, 0.28))
+	y += 7.0
+	y = paragraph("Sometimes something bigger than a fish takes the bait here. Beat one to learn about it, or click one to see what's known.", y, skin.dim)
+	return y
+
+# One creature: its picture, name, what it is, when it bites, what it pays
+# and what it drops (only once beaten).
+func draw_creature_page(creature : SeaCreature) -> float:
+	var font : Font = ui.font
+	var width : float = detailRect.size.x
+	var known : bool = beaten(creature)
+	var y : float = buttonSize + 2.0
+	var color : Color = creature.rarity.color if creature.rarity else ui.textColor
+	if creature.icon:
+		var zoom : float = minf(detailScale, 40.0 / maxf(creature.icon.get_width(), creature.icon.get_height()))
+		var box : float = (creature.icon.get_height() + 2.0) * zoom
+		if known:
+			ui.draw_icon(detail, creature.icon, Vector2(width * 0.5, y + box * 0.5), Color.WHITE, ui.rarity_outline(creature.rarity), zoom)
+		else:
+			ui.draw_silhouette(detail, creature.icon, Vector2(width * 0.5, y + box * 0.5), silhouetteColor, zoom)
+		y += box + 2.0
+	y = centered_text(creature.displayName if known else "???", y, ui.titleSize, skin.readable(color) if known else skin.text)
+	if creature.rarity:
+		y = centered_text(creature.rarity.displayName + " creature", y, ui.statSize, skin.readable(color))
+	y += 2.0
+	y = paragraph(creature.description if known and not creature.description.is_empty() else "Not beaten yet.", y, skin.dim) + 2.0
+	var stats : PackedStringArray = PackedStringArray()
+	if known:
+		stats.append_array(["Beaten", "%d" % player.progress.bestiary.get(creature, 0), "Coins", "%d-%d" % [creature.coins.x, creature.coins.y]])
+	stats.append_array(["Fishing", "Lv %d+" % creature.minFishing, "When", hours_text(creature.hours)])
+	for i in range(0, stats.size() - 1, 2):
+		var baseline : Vector2 = Vector2(0.0, y + font.get_ascent(ui.statSize))
+		detail.draw_string(font, baseline, stats[i], HORIZONTAL_ALIGNMENT_LEFT, -1, ui.statSize, skin.dim)
+		detail.draw_string(font, baseline, stats[i + 1], HORIZONTAL_ALIGNMENT_RIGHT, width, ui.statSize, skin.text)
+		y += ui.statSize + 1.0
+	if known and not creature.drops.is_empty():
+		y += 1.0
+		detail.draw_string(font, Vector2(0.0, y + font.get_ascent(ui.statSize)), "Drops", HORIZONTAL_ALIGNMENT_LEFT, -1, ui.statSize, skin.title)
+		y += ui.statSize + 1.0
+		for i in creature.drops.size():
+			var drop : Item = creature.drops[i]
+			if not drop:
+				continue
+			var chance : float = creature.dropChances[i] if i < creature.dropChances.size() else 1.0
+			var baseline : Vector2 = Vector2(0.0, y + font.get_ascent(ui.statSize))
+			detail.draw_string(font, baseline, drop.displayName, HORIZONTAL_ALIGNMENT_LEFT, width - 16.0, ui.statSize, skin.text)
+			detail.draw_string(font, baseline, "%d%%" % roundi(chance * 100.0), HORIZONTAL_ALIGNMENT_RIGHT, width, ui.statSize, skin.dim)
+			y += ui.statSize + 1.0
+	return y
+
+static func hours_text(hours : Vector2) -> String:
+	if is_equal_approx(fposmod(hours.x, 24.0), fposmod(hours.y, 24.0)):
+		return "Any time"
+	return "%d:00-%d:00" % [int(fposmod(hours.x, 24.0)), int(fposmod(hours.y, 24.0))]
 
 # The rare catches of this ground, with how full each one's luck meter is.
 func draw_rare(font : Font, biome : Biome, y : float) -> float:

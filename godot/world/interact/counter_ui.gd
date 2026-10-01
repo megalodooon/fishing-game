@@ -206,7 +206,7 @@ func coins_changed() -> void:
 func _unhandled_input(event : InputEvent) -> void:
 	if not shown:
 		return
-	if event.is_action_pressed("interact") or event.is_action_pressed("ui_cancel"):
+	if event.is_action_pressed("interact") or event.is_action_pressed("ui_cancel") or event.is_action_pressed("hub") or event.is_action_pressed("backpack"):
 		get_viewport().set_input_as_handled()
 		close()
 	elif not tabRects.is_empty() and (event.is_action_pressed("ui_left") or event.is_action_pressed("ui_right")):

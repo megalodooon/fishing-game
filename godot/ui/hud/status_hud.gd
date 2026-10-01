@@ -33,8 +33,6 @@ var mouse : Vector2 = Vector2(-100.0, -100.0)
 var tick : float = 0.0
 # Recent XP: skill, amount, age.
 var gains : Array[Array] = []
-# Level up banners waiting: skill, level, age.
-var banners : Array[Array] = []
 #------------------------#
 
 
@@ -47,8 +45,14 @@ func _ready() -> void:
 	player.progress.changed.connect(queue_redraw)
 	player.inventory.changed.connect(queue_redraw)
 	player.xp_gained.connect(on_xp)
-	player.skill_up.connect(func(skill : StringName, level : int) -> void: banners.append([skill, level, 0.0]))
+	player.skill_up.connect(on_level)
 	fit()
+
+# A level up gets a short banner in the middle of the top edge.
+func on_level(skill : StringName, level : int) -> void:
+	var board : NoticeBoard = NoticeBoard.find(get_tree())
+	if board:
+		board.banner("%s %d" % [Skills.NAMES[skill], level], Skills.perk_text(skill), Skills.COLORS[skill])
 
 func on_xp(skill : StringName, amount : float) -> void:
 	for gain in gains:
@@ -90,11 +94,7 @@ func _process(delta : float) -> void:
 	for gain in gains:
 		gain[2] += delta
 	gains = gains.filter(func(gain : Array) -> bool: return gain[2] < 2.6)
-	if not banners.is_empty():
-		banners[0][2] += delta
-		if banners[0][2] > 3.2:
-			banners.pop_front()
-	if not gains.is_empty() or not banners.is_empty():
+	if not gains.is_empty():
 		queue_redraw()
 	tick += delta
 	if tick >= 1.0:
@@ -164,21 +164,26 @@ func _draw() -> void:
 			lines.append_array(["Ends", "today" if left <= 0 else "in %d day%s" % [left, "" if left == 1 else "s"], "Hours", event.hours_text()])
 			tip = [event.displayName, lines]
 		badgeX += 13.0
+	# The tracker and the XP lines are drawn at the HUD's smaller scale.
+	draw_set_transform(Vector2.ZERO, 0.0, Vector2.ONE * UiKit.HUD)
 	var quest : Quest = tracked_quest() if showTracker else null
+	var track : Vector2 = trackerAt / UiKit.HUD
 	if quest:
 		var goal : int = quest.next_goal(player)
 		var line : String = "Hand in to %s" % quest.giver if goal < 0 else quest.goals[goal].describe()
 		if goal >= 0 and quest.goals[goal].needed() > 1:
 			line += " %d/%d" % [quest.goal_progress(player, goal), quest.goals[goal].needed()]
-		var titleY : float = trackerAt.y + font.get_ascent(ui.statSize + 1)
-		draw_rect(Rect2(trackerAt.x, trackerAt.y + 1.0, 2.0, 2.0), questColor)
-		draw_string_outline(font, Vector2(trackerAt.x + 4.0, titleY), quest.title, HORIZONTAL_ALIGNMENT_LEFT, trackerWidth, ui.statSize + 1, 2, outline)
-		draw_string(font, Vector2(trackerAt.x + 4.0, titleY), quest.title, HORIZONTAL_ALIGNMENT_LEFT, trackerWidth, ui.statSize + 1, questColor)
-		var lineY : float = trackerAt.y + ui.statSize + 3.0 + font.get_ascent(ui.statSize)
+		var titleY : float = track.y + font.get_ascent(ui.statSize)
+		draw_rect(Rect2(track.x, track.y + 1.0, 2.0, 2.0), questColor)
+		draw_string_outline(font, Vector2(track.x + 4.0, titleY), quest.title, HORIZONTAL_ALIGNMENT_LEFT, trackerWidth, ui.statSize, 2, outline)
+		draw_string(font, Vector2(track.x + 4.0, titleY), quest.title, HORIZONTAL_ALIGNMENT_LEFT, trackerWidth, ui.statSize, questColor)
+		var lineY : float = track.y + ui.statSize + 3.0 + font.get_ascent(ui.statSize)
 		var lineColor : Color = Color(0.56, 0.93, 0.44) if goal < 0 else ui.textColor
-		draw_string_outline(font, Vector2(trackerAt.x + 4.0, lineY), line, HORIZONTAL_ALIGNMENT_LEFT, trackerWidth, ui.statSize, 2, outline)
-		draw_string(font, Vector2(trackerAt.x + 4.0, lineY), line, HORIZONTAL_ALIGNMENT_LEFT, trackerWidth, ui.statSize, lineColor)
-	draw_pinned(font, 18.0 + (ui.statSize * 2.0 + 5.0 if quest else 0.0))
+		draw_string_outline(font, Vector2(track.x + 4.0, lineY), line, HORIZONTAL_ALIGNMENT_LEFT, trackerWidth, ui.statSize, 2, outline)
+		draw_string(font, Vector2(track.x + 4.0, lineY), line, HORIZONTAL_ALIGNMENT_LEFT, trackerWidth, ui.statSize, lineColor)
+	draw_pinned(font, track.y + (ui.statSize * 2.0 + 5.0 if quest else 0.0))
+	draw_gains(font)
+	draw_set_transform(Vector2.ZERO)
 	buffRects.clear()
 	buffList = player.progress.active_buffs(Progress.clock(get_tree()))
 	var x : float = size.x - buffRight - buffSize
@@ -195,8 +200,6 @@ func _draw() -> void:
 		if area.has_point(mouse):
 			tip = [Snack.BUFF_NAMES.get(buff[0], String(buff[0])), PackedStringArray(["Boost", "x%.2f" % buff[1], "Time left", "%dh%02d" % [floori(buff[2]), floori(fmod(buff[2], 1.0) * 60.0)]])]
 		x -= buffSize + 1.0
-	draw_gains(font)
-	draw_banner(font)
 	if not tip.is_empty():
 		ui.paint_tip(self, mouse, tip[0], ui.textColor, tip[1], ui.tip_size(tip[0], tip[1]))
 
@@ -206,10 +209,10 @@ func draw_pinned(font : Font, y : float) -> void:
 	if not recipe or not recipe.result() or not showTracker:
 		return
 	var made : Item = recipe.result()
-	var x : float = trackerAt.x + 4.0
+	var x : float = (trackerAt.x / UiKit.HUD) + 4.0
 	var titleY : float = y + font.get_ascent(ui.statSize)
 	var makeable : bool = recipe.can_craft(player.inventory)
-	draw_rect(Rect2(trackerAt.x, y + 1.0, 2.0, 2.0), Color(0.56, 0.93, 0.44) if makeable else Color(0.75, 0.62, 0.45))
+	draw_rect(Rect2((trackerAt.x / UiKit.HUD), y + 1.0, 2.0, 2.0), Color(0.56, 0.93, 0.44) if makeable else Color(0.75, 0.62, 0.45))
 	draw_string_outline(font, Vector2(x, titleY), made.displayName, HORIZONTAL_ALIGNMENT_LEFT, trackerWidth, ui.statSize, 2, outline)
 	draw_string(font, Vector2(x, titleY), made.displayName, HORIZONTAL_ALIGNMENT_LEFT, trackerWidth, ui.statSize, Color(0.56, 0.93, 0.44) if makeable else Color(0.95, 0.85, 0.65))
 	y += ui.statSize + 2.0
@@ -223,7 +226,7 @@ func draw_pinned(font : Font, y : float) -> void:
 		y += ui.statSize + 1.0
 
 func draw_gains(font : Font) -> void:
-	var y : float = size.y - 20.0
+	var y : float = size.y / UiKit.HUD - 26.0
 	for i in range(gains.size() - 1, -1, -1):
 		var gain : Array = gains[i]
 		var alpha : float = clampf((2.6 - gain[2]) / 0.6, 0.0, 1.0)
@@ -232,19 +235,3 @@ func draw_gains(font : Font) -> void:
 		draw_string_outline(font, Vector2(3.0, y), text, HORIZONTAL_ALIGNMENT_LEFT, -1, ui.statSize, 2, Color(outline, alpha))
 		draw_string(font, Vector2(3.0, y), text, HORIZONTAL_ALIGNMENT_LEFT, -1, ui.statSize, color)
 		y -= ui.statSize + 2.0
-
-func draw_banner(font : Font) -> void:
-	if banners.is_empty():
-		return
-	var banner : Array = banners[0]
-	var age : float = banner[2]
-	var pop : float = clampf(age / 0.25, 0.0, 1.0)
-	var alpha : float = clampf((3.2 - age) / 0.5, 0.0, 1.0) * pop
-	var color : Color = Skills.COLORS[banner[0]]
-	var box : Rect2 = Rect2(floorf(size.x * 0.5 - 50.0), 20.0 - (1.0 - pop) * 4.0, 100.0, 17.0)
-	draw_rect(box, Color(ui.frameColor, 0.92 * alpha))
-	draw_rect(Rect2(box.position.x, box.position.y, box.size.x, 1.0), Color(color, alpha))
-	draw_rect(Rect2(box.position.x, box.end.y - 1.0, box.size.x, 1.0), Color(color, alpha))
-	var title : String = "%s LEVEL %d" % [String(Skills.NAMES[banner[0]]).to_upper(), banner[1]]
-	draw_string(font, Vector2(box.position.x, box.position.y + 2.0 + font.get_ascent(ui.titleSize)), title, HORIZONTAL_ALIGNMENT_CENTER, box.size.x, ui.titleSize, Color(color, alpha))
-	draw_string(font, Vector2(box.position.x, box.position.y + ui.titleSize + 4.0 + font.get_ascent(ui.statSize)), Skills.perk_text(banner[0]), HORIZONTAL_ALIGNMENT_CENTER, box.size.x, ui.statSize, Color(ui.textColor, alpha))

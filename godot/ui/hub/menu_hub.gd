@@ -17,6 +17,7 @@ class_name MenuHub
 const GROUP : StringName = &"menu_hubs"
 # Room the menus leave free at the top of the screen for the strip.
 const HEIGHT : float = 12.0
+const COIN : Texture2D = preload("res://world/map/icons/coin.png")
 
 #------------------------#
 @export var player : Player
@@ -351,6 +352,11 @@ func _draw() -> void:
 			draw_texture(icon, at, Color.WHITE if on or hover else Color(0.8, 0.85, 0.95, 0.8))
 		if news[i]:
 			draw_rect(Rect2(shown.end.x - 3.0, shown.position.y + 1.0, 2.0, 2.0), UiKit.NEW_COLOR)
+	# The player's coins, left of the close button.
+	var coins : String = UiKit.coins_text(player.wallet.coins)
+	var coinsX : float = closeRect.position.x - 3.0 - UiKit.text_width(font, coins, ui.statSize)
+	UiKit.label(self, font, Vector2(coinsX, UiKit.baseline(font, band, ui.statSize)), coins, ui.statSize, ui.selectedColor)
+	draw_texture(COIN, Vector2(coinsX - COIN.get_width() - 1.0, floorf((HEIGHT - COIN.get_height()) * 0.5)))
 	UiKit.box(self, skin.tabHover if closeHovered else skin.tab, closeRect)
 	var cross : Rect2 = closeRect.grow(-2.5)
 	draw_line(cross.position, cross.end, skin.text, 1.0)

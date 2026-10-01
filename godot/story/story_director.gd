@@ -36,9 +36,27 @@ func begin() -> void:
 	if not player.progress.has_flag("story/intro"):
 		player.progress.set_flag("story/intro")
 		play("intro", func(_choice : int) -> void:
-			show_card()
-			if firstQuest and not player.progress.quest_started(firstQuest):
-				player.progress.start_quest(firstQuest))
+			ask_name(func() -> void:
+				play("intro_named", func(_c : int) -> void:
+					show_card()
+					if firstQuest and not player.progress.quest_started(firstQuest):
+						player.progress.start_quest(firstQuest))))
+	elif player.progress.playerName.is_empty():
+		ask_name(Callable())
+	elif Net.is_guest() and not player.progress.has_flag("intro/guest"):
+		# A friend's first time in this world: someone says hello.
+		player.progress.set_flag("intro/guest")
+		play("guest_intro")
+
+# Pip asks the player's name (once; a guest named themselves when joining).
+func ask_name(then : Callable) -> void:
+	if not player.progress.playerName.is_empty():
+		if then.is_valid():
+			then.call()
+		return
+	dialogue.ask_name("pip", "Sorry, my memory's like a sieve these days. What was your name again?", func(_name : Variant) -> void:
+		if then.is_valid():
+			then.call())
 
 # Watching along (multiplayer): the other player started this scene, so
 # choices in it change nothing here.
