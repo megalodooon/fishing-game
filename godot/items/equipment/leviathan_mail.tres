@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="Gear" format=3]
+
+[ext_resource type="Texture2D" path="res://items/equipment/icons/leviathan_mail.png" id="1_m1woj"]
+[ext_resource type="Resource" path="res://items/rarities/legendary.tres" id="2_2lhgf"]
+[ext_resource type="Script" path="res://items/equipment/gear.gd" id="3_4e6gq"]
+
+[resource]
+script = ExtResource("3_4e6gq")
+slot = 1
+stats = Dictionary[StringName, float]({
+&"damage": 25.0,
+&"hearts": 2.0
+})
+displayName = "Leviathan Mail"
+icon = ExtResource("1_m1woj")
+rarity = ExtResource("2_2lhgf")
+description = "Scales the size of plates. Still warm."
+sellPrice = 1500

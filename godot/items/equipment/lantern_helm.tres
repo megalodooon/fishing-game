@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="Gear" format=3]
+
+[ext_resource type="Texture2D" path="res://items/equipment/icons/lantern_helm.png" id="1_howvf"]
+[ext_resource type="Resource" path="res://items/rarities/rare.tres" id="2_n0qe6"]
+[ext_resource type="Script" path="res://items/equipment/gear.gd" id="3_hpwhh"]
+
+[resource]
+script = ExtResource("3_hpwhh")
+stats = Dictionary[StringName, float]({
+&"seaCreature": 0.5
+})
+unique_effect = &"lantern"
+displayName = "Lantern Helm"
+icon = ExtResource("1_howvf")
+rarity = ExtResource("2_n0qe6")
+description = "A little light for the dark water. Things come to look."
+sellPrice = 300

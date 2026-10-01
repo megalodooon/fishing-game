@@ -12,6 +12,10 @@ signal slept(share : float)
 signal slept_night
 
 const GROUP : StringName = &"sleep_schedules"
+# Hours awake before passing out (7 AM to 2 AM), and the most anything can
+# stretch that to.
+const PASS_OUT_AWAKE : float = 19.0
+const MAX_AWAKE : float = 48.0
 
 #------------------------#
 @export var cycle : DayNightCycle
@@ -111,19 +115,39 @@ func awake_hours(hour : float) -> float:
 func since(hour : float) -> bool:
 	return awake_hours(cycle.time) >= awake_hours(hour)
 
+# How long the player has been up, in game hours, from when they last woke.
+func awake_now() -> float:
+	if player.progress.awakeSince < 0.0:
+		player.progress.awakeSince = Progress.clock(get_tree()) - awake_hours(cycle.time)
+	return Progress.clock(get_tree()) - player.progress.awakeSince
+
+# Hours awake when the player passes out: 19 (2 AM after a 7 AM start), more
+# with things worn that keep them up, and never past two days.
+func bedtime() -> float:
+	return minf(PASS_OUT_AWAKE + maxf(player.stat(&"stayUp"), 0.0), MAX_AWAKE)
+
+# Sleeping later than this (two hours before passing out) rests less.
+func full_rest() -> float:
+	return bedtime() - 2.0
+
+# The clock hour something this many hours awake falls on.
+func clock_at(awake : float) -> float:
+	return fposmod(player.progress.awakeSince + awake, 24.0)
+
 # The share of energy a sleep right now would bring back.
 func rest_share() -> float:
-	if since(passOutHour):
+	var awake : float = awake_now()
+	if awake >= bedtime():
 		return passOutRest
-	return lateRest if since(fullRestHour) else 1.0
+	return lateRest if awake >= full_rest() else 1.0
 
 # 0 until the full rest cutoff, rising to 1 at passing out.
 func lateness() -> float:
-	return clampf(inverse_lerp(awake_hours(fullRestHour), awake_hours(passOutHour), awake_hours(cycle.time)), 0.0, 1.0)
+	return clampf(inverse_lerp(full_rest(), bedtime(), awake_now()), 0.0, 1.0)
 
 # Starts an hour before the full rest cutoff.
 func drowsiness() -> float:
-	return clampf(inverse_lerp(awake_hours(fullRestHour) - 1.0, awake_hours(passOutHour), awake_hours(cycle.time)), 0.0, 1.0)
+	return clampf(inverse_lerp(full_rest() - 1.0, bedtime(), awake_now()), 0.0, 1.0)
 
 func hour_text(hour : float) -> String:
 	return "%d:%02d" % [floori(fposmod(hour, 24.0)), roundi(fmod(hour, 1.0) * 60.0)]
@@ -135,7 +159,7 @@ static func find(tree : SceneTree) -> SleepSchedule:
 func try_sleep() -> bool:
 	if sleeping:
 		return false
-	if not since(earliestSleepHour):
+	if not since(earliestSleepHour) and awake_now() < 13.0:
 		notices.post("Not tired yet", "You can go to sleep after %s." % hour_text(earliestSleepHour), infoColor, sleepyIcon)
 	elif player.handStates.currentState is PlayerHandIdleState:
 		go_to_sleep()
@@ -154,7 +178,7 @@ func _process(delta : float) -> void:
 	time += delta
 	if not sleeping:
 		check_warnings()
-		if since(passOutHour):
+		if awake_now() >= bedtime():
 			go_to_sleep(true)
 		update_blinks(delta)
 	var lateLevel : float = drowsiness()
@@ -190,28 +214,30 @@ func update_blinks(delta : float) -> void:
 	blinkMotion.tween_property(self, "blink", 0.3 + 0.35 * late, 0.35).set_ease(Tween.EASE_IN)
 	blinkMotion.tween_property(self, "blink", 0.0, 0.5).set_ease(Tween.EASE_OUT)
 
-# Posts the latest warning whose time just went by.
+# Posts the latest warning whose time just went by: two hours before the
+# full rest cutoff, half an hour before it, at it, and half an hour before
+# passing out.
 func check_warnings() -> void:
-	var awake : float = awake_hours(cycle.time)
+	var awake : float = awake_now()
 	if awake < lastAwake:
 		lastAwake = awake
 		return
 	var latest : int = -1
-	var hours : PackedFloat32Array = PackedFloat32Array([midnightHour, fullRestHour - warnLead, fullRestHour, passOutHour - warnLead])
+	var hours : PackedFloat32Array = PackedFloat32Array([full_rest() - 2.0, full_rest() - warnLead, full_rest(), bedtime() - warnLead])
 	for i in hours.size():
-		var at : float = awake_hours(hours[i])
-		if lastAwake < at and awake >= at:
+		if lastAwake < hours[i] and awake >= hours[i]:
 			latest = i
 	lastAwake = awake
+	var rested : String = hour_text(clock_at(full_rest()))
 	match latest:
 		0:
-			notices.post("It's late", "Sleep before %s to wake up rested. %s" % [hour_text(fullRestHour), bedText], infoColor, sleepyIcon)
+			notices.post("It's late", "Sleep before %s to wake up rested. %s" % [rested, bedText], infoColor, sleepyIcon)
 		1:
-			notices.post("Getting sleepy", "Go to bed before %s for full energy." % hour_text(fullRestHour), sleepyColor, sleepyIcon)
+			notices.post("Getting sleepy", "Go to bed before %s for full energy." % rested, sleepyColor, sleepyIcon)
 		2:
-			notices.post("Past %s!" % hour_text(fullRestHour), "Sleeping now only restores %d%% energy." % roundi(lateRest * 100.0), lateColor, urgentIcon)
+			notices.post("Past %s!" % rested, "Sleeping now only restores %d%% energy." % roundi(lateRest * 100.0), lateColor, urgentIcon)
 		3:
-			notices.post("About to pass out!", "At %s you collapse and wake with %d%% energy." % [hour_text(passOutHour), roundi(passOutRest * 100.0)], urgentColor, urgentIcon)
+			notices.post("About to pass out!", "At %s you collapse and wake with %d%% energy." % [hour_text(clock_at(bedtime())), roundi(passOutRest * 100.0)], urgentColor, urgentIcon)
 
 func check_energy() -> void:
 	var empty : bool = player.energy.is_empty()
@@ -267,6 +293,7 @@ func go_to_sleep(passedOut : bool = false) -> void:
 	if nextDay:
 		cycle.set_day(cycle.day + 1)
 	lastAwake = 0.0
+	player.progress.awakeSince = Progress.clock(get_tree())
 	player.refresh_energy_max()
 	player.energy.refill(share)
 	player.progress.count("days")

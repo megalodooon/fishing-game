@@ -202,6 +202,10 @@ func try_open() -> void:
 		if menu and menu.has_method("close"):
 			menu.call("close")
 	atlas.discount = clampf(player.stat(&"travelDiscount") * 0.01, 0.0, 0.6)
+	atlas.timeScale = 0.5 if Equipment.has(player, &"captain") else 1.0
+	# Voyager, fully grown: clear weather trips cost no energy.
+	var weather : Weather = Weather.find(get_tree())
+	atlas.freeEnergy = TideTree.has(player, "voyager") and weather != null and weather.state == Weather.State.CLEAR
 	routes.clear()
 	selected = null
 	hovered = null

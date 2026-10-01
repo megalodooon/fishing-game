@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="Gear" format=3]
+
+[ext_resource type="Texture2D" path="res://items/equipment/icons/souwester.png" id="1_qncvn"]
+[ext_resource type="Resource" path="res://items/rarities/uncommon.tres" id="2_p2sff"]
+[ext_resource type="Script" path="res://items/equipment/gear.gd" id="3_q0t5s"]
+
+[resource]
+script = ExtResource("3_q0t5s")
+stats = Dictionary[StringName, float]({
+&"luck": 2.0
+})
+unique_effect = &"storm_fisher"
+displayName = "Sou'wester"
+icon = ExtResource("1_qncvn")
+rarity = ExtResource("2_p2sff")
+description = "The fish don't mind the rain. Now neither do you."
+sellPrice = 120

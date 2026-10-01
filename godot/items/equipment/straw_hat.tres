@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Gear" format=3]
+
+[ext_resource type="Texture2D" path="res://items/equipment/icons/straw_hat.png" id="1_d4gs6"]
+[ext_resource type="Resource" path="res://items/rarities/common.tres" id="2_qn4cl"]
+[ext_resource type="Script" path="res://items/equipment/gear.gd" id="3_txh3f"]
+
+[resource]
+script = ExtResource("3_txh3f")
+stats = Dictionary[StringName, float]({
+&"biteSpeed": 2.0
+})
+displayName = "Straw Hat"
+icon = ExtResource("1_d4gs6")
+rarity = ExtResource("2_qn4cl")
+description = "Keeps the sun off and the fish curious."
+sellPrice = 30

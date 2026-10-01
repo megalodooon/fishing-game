@@ -43,7 +43,7 @@ static func pick(seaTier : int, luck : float) -> TreasureChest:
 func use(player : Player) -> bool:
 	if player.heldSlot < 0:
 		return false
-	var got : Array = open_loot()
+	var got : Array = open_loot(1 if Equipment.has(player, &"diver") or TideTree.has(player, "treasure_sense") else 0)
 	for pair in got:
 		if not Counter.fits(player, pair[0], pair[1]):
 			player.say("bag full", Color(0.95, 0.38, 0.34))
@@ -62,7 +62,8 @@ func use(player : Player) -> bool:
 		board.post(displayName + " opened!", ", ".join(names), openColor, icon)
 	return true
 
-func open_loot() -> Array:
+# Extra rolls come from what the opener wears and has grown.
+func open_loot(extra : int = 0) -> Array:
 	var got : Array = []
 	var weights : Dictionary = {}
 	for i in loot.size():
@@ -70,7 +71,7 @@ func open_loot() -> Array:
 			weights[i] = lootWeights[i] if i < lootWeights.size() else 1.0
 	if weights.is_empty():
 		return got
-	for roll in randi_range(rolls.x, rolls.y):
+	for roll in randi_range(rolls.x, rolls.y) + extra:
 		var index : int = FishData.pick(weights)
 		var span : Vector2i = lootAmounts[index] if index < lootAmounts.size() else Vector2i.ONE
 		got.append([loot[index], randi_range(span.x, span.y)])

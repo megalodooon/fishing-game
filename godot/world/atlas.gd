@@ -25,6 +25,10 @@ class_name Atlas
 
 # Share taken off trips by the Travel discount stat, set by the chart.
 var discount : float = 0.0
+# How long trips take compared to usual (the Captain's Tricorn halves it).
+var timeScale : float = 1.0
+# Trips cost no energy at all (Voyager, fully grown, in clear weather).
+var freeEnergy : bool = false
 #------------------------#
 
 
@@ -46,14 +50,14 @@ func distance(to : Location) -> float:
 const SHARED_TRIP_ENERGY : float = 1.5
 
 func energy_cost(to : Location) -> float:
-	if to == current or to.freeTravel:
+	if to == current or to.freeTravel or freeEnergy:
 		return 0.0
 	return (SHARED_TRIP_ENERGY if Net.has_company() else 1.0) * maxf(ceilf(distance(to) * energyPerPixel * trip_scale(to) * (1.0 - discount)), ceilf(minEnergy * trip_scale(to)))
 
 func travel_hours(to : Location) -> float:
 	if to == current:
 		return 0.0
-	return maxf(roundf(distance(to) * hoursPerPixel * trip_scale(to) * (1.0 - discount) * 12.0) / 12.0, roundf(minHours * trip_scale(to) * 12.0) / 12.0)
+	return maxf(roundf(distance(to) * hoursPerPixel * trip_scale(to) * (1.0 - discount) * timeScale * 12.0) / 12.0, roundf(minHours * trip_scale(to) * timeScale * 12.0) / 12.0)
 
 # The cheaper of the two ends' travel scales.
 func trip_scale(to : Location) -> float:

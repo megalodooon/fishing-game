@@ -33,6 +33,8 @@ signal quest_handed_in(quest : Quest)
 # Story scenes that played for the other player while this one was elsewhere
 # (multiplayer), to watch from the quest log.
 @export var missedScenes : Array[String] = []
+# When the player last woke, in clock hours since day 0 (see SleepSchedule).
+@export var awakeSince : float = -1.0
 # Seconds played, for the save slots.
 @export var playtime : float = 0.0
 # The story chapter reached (see Story).
@@ -62,8 +64,8 @@ signal quest_handed_in(quest : Quest)
 @export var pickups : Dictionary = {}
 # The recipe pinned to the HUD, its ingredients counted as they come in.
 @export var pinnedRecipe : BaitRecipe
-# Charms in the charm pouch, which count wherever they are (see CharmPouch).
-@export var charms : Array[Item] = []
+# What's worn, by slot (see Equipment).
+@export var equipment : Dictionary = {}
 # Daily harbor orders: the day they were made and which were delivered.
 @export var orders : Dictionary = {}
 # The crew at the crew board: per member its CrewMember, tier, the clock hour
@@ -96,7 +98,7 @@ func setup() -> void:
 	counters = counters.duplicate()
 	pity = pity.duplicate()
 	pickups = pickups.duplicate()
-	charms = charms.duplicate()
+	equipment = equipment.duplicate()
 	orders = orders.duplicate(true)
 	crew = crew.duplicate(true)
 	friends = friends.duplicate(true)

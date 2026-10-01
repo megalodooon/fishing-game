@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="Gear" format=3]
+
+[ext_resource type="Texture2D" path="res://items/equipment/icons/sharkskin_jacket.png" id="1_uiluc"]
+[ext_resource type="Resource" path="res://items/rarities/rare.tres" id="2_soqet"]
+[ext_resource type="Script" path="res://items/equipment/gear.gd" id="3_cqhqc"]
+
+[resource]
+script = ExtResource("3_cqhqc")
+slot = 1
+stats = Dictionary[StringName, float]({
+&"damage": 10.0,
+&"hearts": 1.0
+})
+displayName = "Sharkskin Jacket"
+icon = ExtResource("1_uiluc")
+rarity = ExtResource("2_soqet")
+description = "Tough as the thing it came from."
+sellPrice = 450

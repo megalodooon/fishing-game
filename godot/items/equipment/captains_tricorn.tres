@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="Gear" format=3]
+
+[ext_resource type="Texture2D" path="res://items/equipment/icons/captains_tricorn.png" id="1_fnat4"]
+[ext_resource type="Resource" path="res://items/rarities/rare.tres" id="2_85fy0"]
+[ext_resource type="Script" path="res://items/equipment/gear.gd" id="3_w365s"]
+
+[resource]
+script = ExtResource("3_w365s")
+stats = Dictionary[StringName, float]({
+&"travelDiscount": 5.0
+})
+unique_effect = &"captain"
+displayName = "Captain's Tricorn"
+icon = ExtResource("1_fnat4")
+rarity = ExtResource("2_85fy0")
+description = "Folded by someone who knew the tides by heart."
+sellPrice = 350

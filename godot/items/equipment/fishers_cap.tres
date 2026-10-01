@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Gear" format=3]
+
+[ext_resource type="Texture2D" path="res://items/equipment/icons/fishers_cap.png" id="1_hl5py"]
+[ext_resource type="Resource" path="res://items/rarities/common.tres" id="2_aw6ab"]
+[ext_resource type="Script" path="res://items/equipment/gear.gd" id="3_j31gp"]
+
+[resource]
+script = ExtResource("3_j31gp")
+stats = Dictionary[StringName, float]({
+&"control": 4.0
+})
+displayName = "Fisher's Cap"
+icon = ExtResource("1_hl5py")
+rarity = ExtResource("2_aw6ab")
+description = "Brim low, eyes on the line."
+sellPrice = 40

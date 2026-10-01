@@ -6,7 +6,7 @@ class_name AnglerLevel
 # beaten, quests, pearls, rare catches, crew, Magical Power, recipes,
 # festivals, trophy fish, museum pieces, sea hunts, friendships, treasure
 # trails and achievements all give Angler XP; every 100 XP is a level. Levels raise max
-# energy, and every few levels open another charm pouch slot and another crew
+# energy, every tenth adds a heart in fights, and every few open another crew
 # slot. The skills menu shows where the XP comes from and what's next.
 
 const XP_PER_LEVEL : int = 100
@@ -30,7 +30,7 @@ const SOURCES : Array = [
 	["Treasure trails dug", 3, "trails"],
 	["Achievements", 4, "achievements"],
 ]
-const POUCH_EVERY : int = 3
+const HEART_EVERY : int = 10
 const CREW_EVERY : int = 5
 const ENERGY_PER_LEVEL : float = 1.0
 
@@ -81,7 +81,7 @@ static func counts(player : Player) -> Dictionary:
 	found["crew"] = crew
 	found["recipes"] = recipes
 	found["festivals"] = festivals
-	found["power"] = CharmPouch.pouch_power(player)
+	found["power"] = Equipment.magical_power(player)
 	found["trophies"] = TrophyFishing.tiers_caught(player.progress)
 	found["museum"] = player.progress.counter("museum_items")
 	found["hunts"] = player.progress.counter("hunts_done")
@@ -111,8 +111,8 @@ static func level(player : Player) -> int:
 static func progress_in_level(player : Player) -> float:
 	return fmod(float(xp(player)), XP_PER_LEVEL) / XP_PER_LEVEL
 
-static func pouch_bonus(player : Player) -> int:
-	return floori(level(player) / float(POUCH_EVERY))
+static func heart_bonus(player : Player) -> int:
+	return floori(level(player) / float(HEART_EVERY))
 
 static func crew_bonus(player : Player) -> int:
 	return floori(level(player) / float(CREW_EVERY))
@@ -120,13 +120,15 @@ static func crew_bonus(player : Player) -> int:
 static func bonus(player : Player, stat : StringName) -> float:
 	if stat == &"energyMax" and player and player.progress:
 		return level(player) * ENERGY_PER_LEVEL
+	if stat == &"hearts" and player and player.progress:
+		return heart_bonus(player)
 	return 0.0
 
 # What reaching a level gives, for the menu.
 static func rewards(at : int) -> PackedStringArray:
 	var list : PackedStringArray = PackedStringArray(["+%d max energy" % roundi(ENERGY_PER_LEVEL)])
-	if at % POUCH_EVERY == 0:
-		list.append("+1 charm pouch slot")
+	if at % HEART_EVERY == 0:
+		list.append("+1 heart in fights")
 	if at % CREW_EVERY == 0:
 		list.append("+1 crew slot")
 	return list

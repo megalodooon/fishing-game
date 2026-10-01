@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="Gear" format=3]
+
+[ext_resource type="Texture2D" path="res://items/equipment/icons/work_apron.png" id="1_3gqv4"]
+[ext_resource type="Resource" path="res://items/rarities/common.tres" id="2_vfi08"]
+[ext_resource type="Script" path="res://items/equipment/gear.gd" id="3_2r02b"]
+
+[resource]
+script = ExtResource("3_2r02b")
+slot = 1
+stats = Dictionary[StringName, float]({
+&"craftBonus": 3.0
+})
+displayName = "Work Apron"
+icon = ExtResource("1_3gqv4")
+rarity = ExtResource("2_vfi08")
+description = "Pockets for nails, pockets for bait, pockets for pockets."
+sellPrice = 30

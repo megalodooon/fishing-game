@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="Gear" format=3]
+
+[ext_resource type="Texture2D" path="res://items/equipment/icons/divers_helmet.png" id="1_dq3il"]
+[ext_resource type="Resource" path="res://items/rarities/rare.tres" id="2_wqfn8"]
+[ext_resource type="Script" path="res://items/equipment/gear.gd" id="3_jqkd3"]
+
+[resource]
+script = ExtResource("3_jqkd3")
+stats = Dictionary[StringName, float]({
+&"treasure": 1.0
+})
+unique_effect = &"diver"
+displayName = "Diver's Helmet"
+icon = ExtResource("1_dq3il")
+rarity = ExtResource("2_wqfn8")
+description = "Brass, glass, and a smell of old seawater."
+sellPrice = 320

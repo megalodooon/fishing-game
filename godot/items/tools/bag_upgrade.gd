@@ -7,7 +7,7 @@ class_name BagUpgrade
 
 #------------------------#
 @export var slots : int = 3
-# Stitched into the charm pouch instead of the backpack.
+# Was for the old charm pouch; now these go in the backpack too.
 @export var pouch : bool = false
 #------------------------#
 
@@ -23,19 +23,15 @@ func use(player : Player) -> bool:
 		return true
 	player.inventory.take_one(player.heldSlot)
 	player.progress.set_flag(flag())
-	if pouch:
-		player.progress.count("pouch_slots", slots)
-		player.say("+%d pouch slots!" % slots, Color(0.56, 0.93, 0.44))
-		return true
 	player.progress.count("bag_slots", slots)
 	BoatParts.apply(player)
 	player.say("+%d backpack slots!" % slots, Color(0.56, 0.93, 0.44))
 	return true
 
 func details() -> PackedStringArray:
-	var lines : PackedStringArray = PackedStringArray(["Charm pouch" if pouch else "Backpack", "+%d slots" % slots, "Click to sew it in", ""])
+	var lines : PackedStringArray = PackedStringArray(["Backpack", "+%d slots" % slots, "Click to sew it in", ""])
 	lines.append_array(super())
 	return lines
 
 func default_type() -> String:
-	return "Pouch Upgrade" if pouch else "Bag Upgrade"
+	return "Bag Upgrade"

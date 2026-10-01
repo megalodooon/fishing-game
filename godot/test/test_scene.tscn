@@ -51,7 +51,7 @@
 [ext_resource type="Texture2D" path="res://ui/hub/icons/collections.png" id="h_collections"]
 [ext_resource type="Texture2D" path="res://ui/hub/icons/calendar.png" id="h_calendar"]
 [ext_resource type="Texture2D" path="res://ui/hub/icons/charms.png" id="h_charms"]
-[ext_resource type="Script" path="res://items/charms/charm_pouch_ui.gd" id="h_charms_ui"]
+[ext_resource type="Script" path="res://items/equipment/equipment_ui.gd" id="h_charms_ui"]
 
 [ext_resource type="Script" path="res://world/weather/weather.gd" id="n_weather"]
 [ext_resource type="Script" path="res://ui/hud/status_hud.gd" id="n_status"]
@@ -332,7 +332,7 @@ script = ExtResource("h_hub")
 player = NodePath("../../Player")
 ui = NodePath("../Inventory")
 menus = [NodePath("../Inventory"), NodePath("../Tacklebox"), NodePath("../Journal"), NodePath("../Recipes"), NodePath("../Profile"), NodePath("../Charms"), NodePath("../Collections"), NodePath("../QuestLog"), NodePath("../Calendar"), NodePath("../Pets"), NodePath("../WorldMap")]
-titles = PackedStringArray("Bag", "Tacklebox", "Journal", "Recipes", "Skills", "Charms", "Collections", "Quests", "Calendar", "Pets", "Sea Chart")
+titles = PackedStringArray("Bag", "Tacklebox", "Journal", "Recipes", "Skills", "Gear", "Collections", "Quests", "Calendar", "Pets", "Sea Chart")
 icons = Array[Texture2D]([ExtResource("n_i1"), ExtResource("n_i2"), ExtResource("n_i3"), ExtResource("h_recipes"), ExtResource("h_skills"), ExtResource("h_charms"), ExtResource("h_collections"), ExtResource("n_i5"), ExtResource("h_calendar"), ExtResource("n_i6"), ExtResource("n_i4")])
 actions = Array[StringName]([&"backpack", &"tacklebox", &"journal", &"recipes", &"profile", &"charms", &"collections", &"quests", &"calendar", &"pets", &"map"])
 

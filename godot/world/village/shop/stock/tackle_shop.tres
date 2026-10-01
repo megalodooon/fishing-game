@@ -2,6 +2,9 @@
 
 [ext_resource type="Script" path="res://world/village/shop/shop_stock.gd" id="1_stock"]
 [ext_resource type="Script" path="res://world/village/shop/shop_offer.gd" id="2_offer"]
+[ext_resource type="Resource" path="res://items/equipment/souwester.tres" id="18_v4634"]
+[ext_resource type="Resource" path="res://items/equipment/oilskin_coat.tres" id="19_0r72x"]
+[ext_resource type="Resource" path="res://items/equipment/fishing_vest.tres" id="20_mbtno"]
 [ext_resource type="Resource" path="res://fishing/rods/bamboo_rod.tres" id="i1"]
 [ext_resource type="Resource" path="res://fishing/tacklebox/samples/cork_bobber.tres" id="i2"]
 [ext_resource type="Resource" path="res://fishing/tacklebox/samples/braided_line.tres" id="i3"]
@@ -108,7 +111,28 @@ item = ExtResource("i16")
 requiredSkill = &"fishing"
 requiredLevel = 20
 
+[sub_resource type="Resource" id="Resource_0r72x"]
+script = ExtResource("2_offer")
+item = ExtResource("18_v4634")
+price = 900
+requiredSkill = &"fishing"
+requiredLevel = 5
+
+[sub_resource type="Resource" id="Resource_mbtno"]
+script = ExtResource("2_offer")
+item = ExtResource("19_0r72x")
+price = 1200
+requiredSkill = &"fishing"
+requiredLevel = 6
+
+[sub_resource type="Resource" id="Resource_dcd20"]
+script = ExtResource("2_offer")
+item = ExtResource("20_mbtno")
+price = 1600
+requiredSkill = &"fishing"
+requiredLevel = 8
+
 [resource]
 script = ExtResource("1_stock")
 shopName = "The Tackle Shop"
-offers = Array[ExtResource("2_offer")]([SubResource("o1"), SubResource("o2"), SubResource("o3"), SubResource("o4"), SubResource("o5"), SubResource("o6"), SubResource("o7"), SubResource("o8"), SubResource("o9"), SubResource("o10"), SubResource("o11"), SubResource("o12"), SubResource("o13"), SubResource("o14"), SubResource("o15"), SubResource("o16")])
+offers = Array[ExtResource("2_offer")]([SubResource("o1"), SubResource("o2"), SubResource("o3"), SubResource("o4"), SubResource("o5"), SubResource("o6"), SubResource("o7"), SubResource("o8"), SubResource("o9"), SubResource("o10"), SubResource("o11"), SubResource("o12"), SubResource("o13"), SubResource("o14"), SubResource("o15"), SubResource("o16"), SubResource("Resource_0r72x"), SubResource("Resource_mbtno"), SubResource("Resource_dcd20")])

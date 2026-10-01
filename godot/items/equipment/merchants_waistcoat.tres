@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="Gear" format=3]
+
+[ext_resource type="Texture2D" path="res://items/equipment/icons/merchants_waistcoat.png" id="1_0dfpt"]
+[ext_resource type="Resource" path="res://items/rarities/rare.tres" id="2_214mw"]
+[ext_resource type="Script" path="res://items/equipment/gear.gd" id="3_gy742"]
+
+[resource]
+script = ExtResource("3_gy742")
+slot = 1
+stats = Dictionary[StringName, float]({
+&"sellBonus": 4.0
+})
+displayName = "Merchant's Waistcoat"
+icon = ExtResource("1_0dfpt")
+rarity = ExtResource("2_214mw")
+description = "Gus says it makes you look trustworthy. Gus is wrong but kind."
+sellPrice = 400

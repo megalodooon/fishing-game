@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="Gear" format=3]
+
+[ext_resource type="Texture2D" path="res://items/equipment/icons/crown_of_tides.png" id="1_e3d0v"]
+[ext_resource type="Resource" path="res://items/rarities/legendary.tres" id="2_m4g0b"]
+[ext_resource type="Script" path="res://items/equipment/gear.gd" id="3_1foac"]
+
+[resource]
+script = ExtResource("3_1foac")
+stats = Dictionary[StringName, float]({
+&"damage": 10.0,
+&"hearts": 1.0,
+&"luck": 5.0
+})
+displayName = "Crown of Tides"
+icon = ExtResource("1_e3d0v")
+rarity = ExtResource("2_m4g0b")
+description = "It hums when the tide turns."
+sellPrice = 1200

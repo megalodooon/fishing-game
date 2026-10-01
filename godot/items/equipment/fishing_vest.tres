@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="Gear" format=3]
+
+[ext_resource type="Texture2D" path="res://items/equipment/icons/fishing_vest.png" id="1_8qws0"]
+[ext_resource type="Resource" path="res://items/rarities/uncommon.tres" id="2_x2tw6"]
+[ext_resource type="Script" path="res://items/equipment/gear.gd" id="3_hacen"]
+
+[resource]
+script = ExtResource("3_hacen")
+slot = 1
+stats = Dictionary[StringName, float]({
+&"doubleCatch": 2.0,
+&"weight": 3.0
+})
+displayName = "Fishing Vest"
+icon = ExtResource("1_8qws0")
+rarity = ExtResource("2_x2tw6")
+description = "Twelve pockets and a lucky lure in one of them."
+sellPrice = 150

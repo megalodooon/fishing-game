@@ -57,6 +57,18 @@ func stat_rows(parts : Array[Tackle]) -> Array:
 func default_type() -> String:
 	return "Fishing Rod"
 
+# Better rods fight better: hearts and damage by the rod's rarity.
+const FIGHT : Dictionary = {"Common": [0, 0.0], "Uncommon": [0, 5.0], "Rare": [1, 10.0], "Legendary": [1, 20.0], "Trophy": [2, 30.0]}
+
+func fight_bonus(stat : StringName) -> float:
+	var row : Array = FIGHT.get(rarity.displayName if rarity else "Common", [0, 0.0])
+	match stat:
+		&"hearts":
+			return row[0]
+		&"damage":
+			return row[1]
+	return 0.0
+
 func details() -> PackedStringArray:
 	var lines : PackedStringArray = super()
 	var magic : PackedStringArray = Enchanting.lines(self)

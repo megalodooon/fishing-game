@@ -148,7 +148,7 @@ static func metric(player : Player, name : String) -> int:
 		"angler":
 			return AnglerLevel.level(player)
 		"power":
-			return CharmPouch.magical_power(player)
+			return Equipment.magical_power(player)
 		"crew":
 			return state.crew.size()
 		"museum":

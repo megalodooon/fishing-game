@@ -23,6 +23,7 @@ const INFO : Dictionary = {
 	&"control": ["Catch control", "%"],
 	&"damage": ["Fight damage", "%"],
 	&"hearts": ["Fight hearts", "+"],
+	&"stayUp": ["Stay up later", "+"],
 	&"harvestBonus": ["Extra harvest", "%"],
 	&"foodPower": ["Food power", "%"],
 	&"travelDiscount": ["Travel discount", "%"],
@@ -81,14 +82,15 @@ static func work_out(player : Player, stat : StringName) -> float:
 		total += (player.progress.buff(stat, Progress.clock(tree)) - 1.0) * 100.0
 	return total
 
-# Charms (the best of each family, bag and pouch), Magical Power, the Angler
-# Level, the council's perk, events running now, boat parts, pearls and
-# village projects.
+# What's worn (and Magical Power, see Equipment), the rod in hand, the
+# Angler Level, the council's perk, events running now, boat parts, pearls
+# and village projects.
 static func extras(player : Player, stat : StringName) -> float:
 	var total : float = 0.0
-	for charm in CharmPouch.counted(player):
-		total += charm.stats.get(stat, 0.0)
-	total += CharmPouch.bonus(player, stat)
+	total += Equipment.bonus(player, stat)
+	var rod : RodItem = player.held_data() as RodItem
+	if rod:
+		total += rod.fight_bonus(stat)
 	total += AnglerLevel.bonus(player, stat)
 	total += Council.bonus(player, stat)
 	total += Calendar.bonus(player.get_tree(), stat)

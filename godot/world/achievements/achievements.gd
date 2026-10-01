@@ -215,7 +215,7 @@ static func met(player : Player, each : Array) -> bool:
 		"bank":
 			return Bank.coins(progress) >= int(value)
 		"power":
-			return CharmPouch.magical_power(player) >= int(value)
+			return Equipment.magical_power(player) >= int(value)
 		"tiers":
 			var tiers : int = 0
 			for thing in progress.collectionTiers:

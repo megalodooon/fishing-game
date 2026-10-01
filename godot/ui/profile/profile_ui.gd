@@ -534,7 +534,7 @@ func draw_angler(font : Font) -> void:
 		UiKit.label(self, font, Vector2(inner.position.x, line_at(y)), line, ui.statSize, skin.good, HORIZONTAL_ALIGNMENT_LEFT, inner.size.x)
 		y += ui.statSize + 1.0
 	y += 2.0
-	var rows : Array = [["Max energy", "+%d" % roundi(AnglerLevel.bonus(player, &"energyMax"))], ["Pouch slots", "+%d" % AnglerLevel.pouch_bonus(player)], ["Crew slots", "+%d" % AnglerLevel.crew_bonus(player)]]
+	var rows : Array = [["Max energy", "+%d" % roundi(AnglerLevel.bonus(player, &"energyMax"))], ["Fight hearts", "+%d" % AnglerLevel.heart_bonus(player)], ["Crew slots", "+%d" % AnglerLevel.crew_bonus(player)]]
 	UiKit.label(self, font, Vector2(inner.position.x, line_at(y)), "So far", ui.statSize, skin.title)
 	y += ui.statSize + 1.0
 	for row in rows:

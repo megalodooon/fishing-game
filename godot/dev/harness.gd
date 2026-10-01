@@ -405,3 +405,6 @@ func tool_arrivals() -> void:
 							best = Vector2(x, y)
 			print("ARRIVAL ", path, " ", best)
 		island.free()
+
+func tool_gear() -> void:
+	(load("res://../tools/gear/make_gear.gd").new()).run()
