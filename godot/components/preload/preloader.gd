@@ -17,7 +17,7 @@ const FOLDERS : PackedStringArray = [
 # Pictures looked up by name while playing rather than held by a resource.
 # Textures loaded for the first time while a menu draws come out white, so
 # everything a menu looks up by name is loaded here first.
-const PICTURE_FOLDERS : PackedStringArray = ["res://world/portraits", "res://boat/icons", "res://ui/hub/icons", "res://world/npcs"]
+const PICTURE_FOLDERS : PackedStringArray = ["res://world/portraits", "res://boat/icons", "res://ui/hub/icons", "res://world/npcs", "res://ui/dialogue/icons", "res://world/trophy/icons", "res://world/hunts/art", "res://world/forage/art", "res://world/achievements/icons", "res://world/events/icons"]
 # Where the islands' land pictures are (in "land" folders).
 const LAND_FOLDERS : PackedStringArray = ["res://world/islands", "res://world/village/land"]
 

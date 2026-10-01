@@ -25,6 +25,6 @@ biome = ExtResource("1_67dmy")
 hint = "Glow Bait, at night"
 hours = Vector2(20, 4)
 requirements = Array[ExtResource("3_danos")]([SubResource("Resource_ma62i")])
-chance = 0.03
+chance = 0.06
 tiers = Array[ExtResource("7_xt2ob")]([ExtResource("8_n1x36"), ExtResource("9_2e3jw"), ExtResource("10_8uru7"), ExtResource("11_yy14l")])
 scales = PackedInt32Array(12, 24, 48, 96)

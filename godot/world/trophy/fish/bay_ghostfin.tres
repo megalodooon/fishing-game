@@ -23,6 +23,6 @@ lore = "Some say it's a fish. Some say it's the fog."
 biome = ExtResource("1_ofrer")
 hint = "In the fog"
 requirements = Array[ExtResource("3_qqi1o")]([SubResource("Resource_h7su3")])
-chance = 0.05
+chance = 0.1
 tiers = Array[ExtResource("6_0ht2t")]([ExtResource("7_csiru"), ExtResource("8_sgtw8"), ExtResource("9_jb7f6"), ExtResource("10_ia63y")])
 scales = PackedInt32Array(4, 8, 16, 32)

@@ -72,6 +72,12 @@ func warm_up() -> void:
 	Recipes.used_in(null)
 	Collections.index_things(Catalog.things())
 	Bazaar.traded()
+	TrophyFishing.all()
+	Museum.pieces()
+	for id in Hunts.FAMILIES:
+		load(Hunts.FAMILIES[id][2])
+		load(Hunts.FAMILIES[id][3])
+	Dialogue.load_all()
 	warmLayer = CanvasLayer.new()
 	warmLayer.layer = 99
 	get_tree().root.add_child(warmLayer)

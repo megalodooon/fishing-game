@@ -105,6 +105,8 @@ const LIST : Array = [
 ]
 
 static var lastCheck : int = -100000
+static var cursor : int = -1
+const SLICE : int = 12
 static var byId : Dictionary = {}
 
 
@@ -144,12 +146,17 @@ static func notify(player : Player, event : StringName, data : Variant = null, _
 			player.progress.count("boots")
 	check(player)
 
+# Checks a slice of the list each time (all of it when forced), so it never
+# costs more than a fraction of a millisecond.
 static func check(player : Player, force : bool = false) -> void:
 	var now : int = Time.get_ticks_msec()
 	if not force and now - lastCheck < CHECK_EVERY_MS:
 		return
 	lastCheck = now
-	for each in LIST:
+	var count : int = LIST.size() if force else SLICE
+	for i in count:
+		cursor = (cursor + 1) % LIST.size()
+		var each : Array = LIST[cursor]
 		if not unlocked(player.progress, each[0]) and met(player, each):
 			unlock(player, each)
 

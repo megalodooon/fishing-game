@@ -18,6 +18,6 @@ lore = "Finn swore he hooked one. Nobody believed him."
 biome = ExtResource("1_k8log")
 hint = "Only for grandpa's rod"
 special = 1
-chance = 0.03
+chance = 0.06
 tiers = Array[ExtResource("5_uev3w")]([ExtResource("6_fc4yp"), ExtResource("7_kpnta"), ExtResource("8_ad5lk"), ExtResource("9_lgi2w")])
 scales = PackedInt32Array(12, 24, 48, 96)

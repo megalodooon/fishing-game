@@ -163,6 +163,9 @@ func run() -> void:
 					mark("counter " + node.title)
 					node.interact(player)
 					await frames(40)
+					# First visits play a short intro first.
+					await quiet()
+					await frames(10)
 					CounterUI.find(self).close()
 					await frames(20)
 	mark("weather rain")

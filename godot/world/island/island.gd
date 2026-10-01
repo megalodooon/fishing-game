@@ -22,6 +22,8 @@ var fader : ColorRect
 var switching : bool = false
 var people : Array[Npc] = []
 var grid : WalkGrid
+var pendingGrid : WalkGrid
+var gridTask : int = -1
 var scheduleWait : float = 0.0
 #------------------------#
 
@@ -58,6 +60,19 @@ func enter(into : World) -> void:
 	for person in find_children("*", "Npc", true, false):
 		people.append(person)
 		(person as Npc).follow_schedule(true)
+	start_grid()
+
+# Starts working out the walking grid on a background thread.
+func start_grid() -> void:
+	if grid or gridTask >= 0:
+		return
+	pendingGrid = WalkGrid.prepare(self)
+	gridTask = WorkerThreadPool.add_task(pendingGrid.build, false, "walk grid")
+
+func _exit_tree() -> void:
+	if gridTask >= 0:
+		WorkerThreadPool.wait_for_task_completion(gridTask)
+		gridTask = -1
 
 func room_named(name_of_room : String) -> IslandRoom:
 	for each in rooms:
@@ -65,15 +80,29 @@ func room_named(name_of_room : String) -> IslandRoom:
 			return each
 	return null
 
-# The walking grid, made the first time someone needs a path.
+# The walking grid, or null while it's still being worked out (people then
+# just turn up where they're going).
 func walk_grid() -> WalkGrid:
+	return grid
+
+# The walking grid, waiting for it if needed (for things that can't do
+# without, like burying a treasure trail).
+func walk_grid_now() -> WalkGrid:
 	if not grid:
-		grid = WalkGrid.build(self)
+		if gridTask < 0:
+			start_grid()
+		WorkerThreadPool.wait_for_task_completion(gridTask)
+		gridTask = -1
+		grid = pendingGrid
 	return grid
 
 # Everyone on the island checks their schedule a few times a second: people
 # in the room on screen walk, the rest just turn up where they should be.
 func _process(delta : float) -> void:
+	if gridTask >= 0 and WorkerThreadPool.is_task_completed(gridTask):
+		WorkerThreadPool.wait_for_task_completion(gridTask)
+		gridTask = -1
+		grid = pendingGrid
 	if not world:
 		return
 	scheduleWait -= delta

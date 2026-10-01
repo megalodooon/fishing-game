@@ -3,7 +3,8 @@ class_name Bank
 
 # The Harbor Bank (like SkyBlock's): a coin account and an item vault.
 # Coins in the account earn interest at the start of every season, up to the
-# account tier's cap; the vault keeps items safe, a page of slots per vault
+# account tier's cap (kept modest, so interest is a bonus that never
+# out-earns fishing); the vault keeps items safe, a page of slots per vault
 # tier. Both tiers are raised at the bank for coins and materials (see
 # ACCOUNTS and VAULTS). Saved in Progress.bank ({coins, account, vault,
 # paid season}) and Progress.vault (the stored stacks).
@@ -12,10 +13,10 @@ const PAGE_SLOTS : int = 24
 # Account tiers: name, interest per season, the most of the balance that
 # earns it, what the upgrade costs ([coins, [item path, amount]...]).
 const ACCOUNTS : Array = [
-	["Starter Account", 0.02, 50000, [0]],
-	["Silver Account", 0.025, 200000, [15000, ["res://items/materials/iron_ingot.tres", 10], ["res://items/materials/pearl_dust.tres", 5]]],
-	["Gold Account", 0.03, 750000, [90000, ["res://items/enchanted/enchanted_pearl_oyster.tres", 4], ["res://items/rare/pirate_doubloon.tres", 1]]],
-	["Premier Account", 0.03, 2500000, [400000, ["res://items/materials/storm_core.tres", 3], ["res://items/enchanted/enchanted_deep_coral.tres", 4]]],
+	["Starter Account", 0.015, 30000, [0]],
+	["Silver Account", 0.02, 120000, [12000, ["res://items/materials/iron_ingot.tres", 10], ["res://items/materials/pearl_dust.tres", 5]]],
+	["Gold Account", 0.025, 400000, [60000, ["res://items/enchanted/enchanted_pearl_oyster.tres", 4], ["res://items/rare/pirate_doubloon.tres", 1]]],
+	["Premier Account", 0.03, 1000000, [250000, ["res://items/materials/storm_core.tres", 3], ["res://items/enchanted/enchanted_deep_coral.tres", 4]]],
 ]
 # Vault tiers: name, pages, upgrade cost.
 const VAULTS : Array = [

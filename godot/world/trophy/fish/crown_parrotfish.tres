@@ -22,6 +22,6 @@ lore = "It wears a crest of coral like a crown."
 biome = ExtResource("1_06hjy")
 hint = "A perfect cast"
 requirements = Array[ExtResource("3_uoiur")]([SubResource("Resource_sm5ce")])
-chance = 0.045
+chance = 0.09
 tiers = Array[ExtResource("6_i44bv")]([ExtResource("7_7h7xy"), ExtResource("8_0aot7"), ExtResource("9_o40e6"), ExtResource("10_h0f1n")])
 scales = PackedInt32Array(5, 10, 21, 42)

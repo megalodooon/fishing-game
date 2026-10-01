@@ -3,45 +3,80 @@ class_name WalkGrid
 
 # Where people can walk on an island, for villagers finding their way: a grid
 # over all its rooms, open where there's land and nothing solid (buildings,
-# props, fences). Made once when the island loads; paths are asked for only
-# when someone sets off, so it costs nothing while they stand around.
+# props, fences). What it needs is gathered when the island loads (prepare),
+# then the grid is worked out on a background thread (build) from the land
+# PNGs, so arriving never stutters. Paths are asked for only when someone
+# sets off, so it costs nothing while they stand around.
 
 const CELL : int = 4
 
 var astar : AStarGrid2D = AStarGrid2D.new()
 var origin : Vector2 = Vector2.ZERO
 var cells : Vector2i = Vector2i.ZERO
+# Gathered on the main thread: [land PNG path, global -> texel transform].
+var sources : Array = []
+var blocks : Array[Rect2] = []
 
 
-static func build(island : Island) -> WalkGrid:
+# Gathers what the grid needs from the island's nodes (main thread only).
+static func prepare(island : Island) -> WalkGrid:
 	var grid : WalkGrid = WalkGrid.new()
 	var bounds : Rect2 = Rect2()
 	var first : bool = true
 	for room in island.rooms:
 		bounds = room.rect() if first else bounds.merge(room.rect())
 		first = false
+		for sprite in room.land:
+			if not sprite or not sprite.texture or sprite.texture.resource_path.is_empty():
+				continue
+			var half : Vector2 = sprite.texture.get_size() * 0.5 if sprite.centered else Vector2.ZERO
+			var toTexel : Transform2D = Transform2D(0.0, half - sprite.offset) * sprite.global_transform.affine_inverse()
+			grid.sources.append([sprite.texture.resource_path, toTexel])
 	grid.origin = bounds.position
 	grid.cells = Vector2i(ceili(bounds.size.x / CELL), ceili(bounds.size.y / CELL))
-	grid.astar.region = Rect2i(Vector2i.ZERO, grid.cells)
-	grid.astar.cell_size = Vector2(CELL, CELL)
-	grid.astar.offset = grid.origin + Vector2(CELL, CELL) * 0.5
-	grid.astar.diagonal_mode = AStarGrid2D.DIAGONAL_MODE_ONLY_IF_NO_OBSTACLES
-	grid.astar.update()
-	for y in grid.cells.y:
-		for x in grid.cells.x:
-			var at : Vector2 = grid.origin + Vector2(x + 0.5, y + 0.5) * CELL
-			if not island.is_land(at):
-				grid.astar.set_point_solid(Vector2i(x, y), true)
 	# Solid things: every static body's shapes, except people's own.
 	for body in island.find_children("*", "StaticBody2D", true, false):
 		if body.get_parent() is Npc:
 			continue
 		for shape in body.find_children("*", "CollisionShape2D", false, false):
 			var area : Rect2 = shape_rect(shape as CollisionShape2D)
-			if area.size.x <= 0.0:
-				continue
-			grid.block(area.grow(1.0))
+			if area.size.x > 0.0:
+				grid.blocks.append(area.grow(1.0))
 	return grid
+
+# Works the grid out; safe on a background thread.
+func build() -> void:
+	astar.region = Rect2i(Vector2i.ZERO, cells)
+	astar.cell_size = Vector2(CELL, CELL)
+	astar.offset = origin + Vector2(CELL, CELL) * 0.5
+	astar.diagonal_mode = AStarGrid2D.DIAGONAL_MODE_ONLY_IF_NO_OBSTACLES
+	astar.update()
+	var images : Array[Image] = []
+	for source in sources:
+		# Read from the PNG file itself (exports keep them, see IconOutline):
+		# reading a texture back from the GPU would stall a frame.
+		var image : Image = Image.new()
+		if not FileAccess.file_exists(source[0]) or image.load_png_from_buffer(FileAccess.get_file_as_bytes(source[0])) != OK:
+			image = null
+		images.append(image)
+	for y in cells.y:
+		for x in cells.x:
+			var at : Vector2 = origin + Vector2(x + 0.5, y + 0.5) * CELL
+			var land : bool = false
+			for i in sources.size():
+				var image : Image = images[i]
+				if not image:
+					continue
+				var texel : Vector2 = sources[i][1] * at
+				var px : int = floori(texel.x)
+				var py : int = floori(texel.y)
+				if px >= 0 and py >= 0 and px < image.get_width() and py < image.get_height() and image.get_pixel(px, py).a > 0.5:
+					land = true
+					break
+			if not land:
+				astar.set_point_solid(Vector2i(x, y), true)
+	for area in blocks:
+		block(area)
 
 static func shape_rect(node : CollisionShape2D) -> Rect2:
 	var shape : Shape2D = node.shape

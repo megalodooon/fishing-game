@@ -27,6 +27,6 @@ lore = "The hair on your arms stands up when it bites."
 biome = ExtResource("1_5ikvp")
 hint = "In the rain, with a good cast"
 requirements = Array[ExtResource("3_n0oeg")]([SubResource("Resource_8tset"), SubResource("Resource_bx0fg")])
-chance = 0.03
+chance = 0.06
 tiers = Array[ExtResource("7_nahys")]([ExtResource("8_4r8iw"), ExtResource("9_3voj5"), ExtResource("10_2gvje"), ExtResource("11_xj7xp")])
 scales = PackedInt32Array(10, 20, 40, 80)

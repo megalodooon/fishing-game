@@ -172,7 +172,8 @@ func follow_schedule(snap : bool) -> void:
 	if snap or not seen or not visible:
 		arrive_at(goalRoom, goal)
 		return
-	route = home.walk_grid().path(global_position, goal)
+	var grid : WalkGrid = home.walk_grid()
+	route = grid.path(global_position, goal) if grid else PackedVector2Array()
 	routeAt = 0
 	if route.is_empty():
 		arrive_at(goalRoom, goal)

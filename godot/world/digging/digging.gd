@@ -70,7 +70,7 @@ static func begin(player : Player, map : DigMap) -> String:
 		return "You'll need a spade to dig"
 	if not trail(player.progress).is_empty():
 		return "Finish the treasure trail you're on first"
-	var grid : WalkGrid = island.walk_grid()
+	var grid : WalkGrid = island.walk_grid_now()
 	var random : RandomNumberGenerator = RandomNumberGenerator.new()
 	random.randomize()
 	var points : Array = []

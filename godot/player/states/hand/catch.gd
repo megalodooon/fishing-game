@@ -217,6 +217,8 @@ func land(caught : Fish) -> void:
 		results.append({"text": fullText, "color": fullColor})
 		return
 	var where : Biome = fishBiome
+	# Where results fly up from: the bobber, or the player when there's no line.
+	var from : Vector2 = line.get_bobber_point() if is_instance_valid(line) else player.global_position
 	var first : bool = player.journal.record(caught, where) if player.journal else false
 	use_bait()
 	grow_pet()
@@ -228,7 +230,7 @@ func land(caught : Fish) -> void:
 		player.progress.set_flag("variant/%s/%d" % [caught.species.resource_path.get_file().get_basename(), caught.variant])
 	Quest.notify(player, &"catch", caught, where)
 	player.fish_caught.emit(caught, where)
-	results.append({"icon": caught.icon, "text": "%s%s %s" % [newText if first else "", caught.displayName, caught.weight_text()], "color": Fish.VARIANT_COLORS[caught.variant] if caught.variant != Fish.NORMAL else caught.title_color(), "from": line.get_bobber_point()})
+	results.append({"icon": caught.icon, "text": "%s%s %s" % [newText if first else "", caught.displayName, caught.weight_text()], "color": Fish.VARIANT_COLORS[caught.variant] if caught.variant != Fish.NORMAL else caught.title_color(), "from": from})
 	if randf() * 100.0 < player.stat(&"doubleCatch") and player.inventory.has_space():
 		var twin : Fish = Fish.caught(caught.species, player.stat(&"weight") * 0.01)
 		if player.inventory.add(twin) >= 0:
@@ -236,28 +238,28 @@ func land(caught : Fish) -> void:
 			Skills.add(player, Skills.FISHING, fish_xp(twin, where))
 			player.progress.count("fish_caught")
 			player.fish_caught.emit(twin, where)
-			results.append({"icon": twin.icon, "text": "Double catch! %s" % twin.weight_text(), "color": Color(0.56, 0.93, 0.44), "from": line.get_bobber_point()})
+			results.append({"icon": twin.icon, "text": "Double catch! %s" % twin.weight_text(), "color": Color(0.56, 0.93, 0.44), "from": from})
 	for event in EventDirector.active(get_tree()):
 		for found in event.roll_drops(player.stat(&"luck")):
 			if player.inventory.give(found, 1) == 0:
-				results.append({"icon": found.icon, "text": found.displayName, "color": event.color, "from": line.get_bobber_point()})
+				results.append({"icon": found.icon, "text": found.displayName, "color": event.color, "from": from})
 	for rare in RareDrops.roll(player, where):
 		if Counter.fits(player, rare, 1):
 			Counter.deliver(player, rare, 1)
 			player.progress.count("rare_drops")
-			results.append({"icon": rare.icon, "text": "RARE DROP! %s" % rare.displayName, "color": RareDrops.COLOR, "from": line.get_bobber_point()})
+			results.append({"icon": rare.icon, "text": "RARE DROP! %s" % rare.displayName, "color": RareDrops.COLOR, "from": from})
 			var board : NoticeBoard = NoticeBoard.find(get_tree())
 			if board:
 				board.post("RARE DROP!", "%s came up with the catch." % rare.displayName, RareDrops.COLOR, rare.icon)
 	var context : FishingContext = FishingContext.make(player, line, fishSpot if is_instance_valid(fishSpot) else null)
 	var trophy : Item = TrophyFishing.roll(player, context, where)
 	if trophy:
-		results.append({"icon": trophy.icon, "text": "TROPHY! %s" % trophy.displayName, "color": Color(1.0, 0.82, 0.3), "from": line.get_bobber_point()})
+		results.append({"icon": trophy.icon, "text": "TROPHY! %s" % trophy.displayName, "color": Color(1.0, 0.82, 0.3), "from": from})
 	if randf() * 100.0 < player.stat(&"treasure"):
 		var chest : TreasureChest = TreasureChest.pick(where.tier if where else 0, player.stat(&"luck"))
 		if chest and player.inventory.give(chest, 1) == 0:
 			player.progress.count("treasure_found")
-			results.append({"icon": chest.icon, "text": "Treasure! %s" % chest.displayName, "color": treasureColor, "from": line.get_bobber_point()})
+			results.append({"icon": chest.icon, "text": "Treasure! %s" % chest.displayName, "color": treasureColor, "from": from})
 
 func finish_fight(won : bool) -> void:
 	if Hunts.is_boss(creature):

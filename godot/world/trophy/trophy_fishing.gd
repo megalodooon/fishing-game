@@ -3,18 +3,18 @@ class_name TrophyFishing
 
 # Rolls trophy fish when a fish is landed (see TrophyFish): the tier comes
 # from these odds, better with the Trophy tier luck stat, and a luck meter
-# per fish makes a gold one certain after 100 catches without one and a
-# diamond after 600. Counts the trophies for the lodge, the Angler Level and
+# per fish makes a gold one certain after 50 catches without one and a
+# diamond after 300. Counts the trophies for the lodge, the Angler Level and
 # achievements.
 
 const FOLDER : String = "res://world/trophy/fish"
 const TIER_NAMES : PackedStringArray = ["Bronze", "Silver", "Gold", "Diamond"]
 const TIER_COLORS : Array[Color] = [Color(0.85, 0.55, 0.3), Color(0.82, 0.86, 0.92), Color(1.0, 0.82, 0.3), Color(0.55, 0.95, 1.0)]
-const SILVER : float = 0.25
-const GOLD : float = 0.02
-const DIAMOND : float = 0.002
-const GOLD_PITY : int = 100
-const DIAMOND_PITY : int = 600
+const SILVER : float = 0.3
+const GOLD : float = 0.05
+const DIAMOND : float = 0.005
+const GOLD_PITY : int = 50
+const DIAMOND_PITY : int = 300
 
 static var cache : Array[TrophyFish] = []
 

@@ -18,6 +18,6 @@ lore = "It hunts the harbor lights at first light."
 biome = ExtResource("1_wg8ca")
 hint = "At dawn, 5:00 to 7:00"
 hours = Vector2(5, 7)
-chance = 0.05
+chance = 0.1
 tiers = Array[ExtResource("5_752le")]([ExtResource("6_w086v"), ExtResource("7_uodk1"), ExtResource("8_j848d"), ExtResource("9_fg2nq")])
 scales = PackedInt32Array(4, 8, 16, 32)

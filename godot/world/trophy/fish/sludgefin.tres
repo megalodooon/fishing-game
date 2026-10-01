@@ -24,6 +24,6 @@ lore = "It thrives in the muck. Nobody knows how."
 biome = ExtResource("1_pyk38")
 hint = "Rust Bait on the rod"
 requirements = Array[ExtResource("3_for33")]([SubResource("Resource_en5x1")])
-chance = 0.045
+chance = 0.09
 tiers = Array[ExtResource("7_y6isl")]([ExtResource("8_1bnwg"), ExtResource("9_7kanq"), ExtResource("10_5jhk2"), ExtResource("11_0hrmj")])
 scales = PackedInt32Array(5, 10, 21, 42)

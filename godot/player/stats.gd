@@ -42,9 +42,26 @@ const BASE : Dictionary = {&"treasure": 1.5, &"hearts": 3.0, &"seaCreature": 5.0
 static func multiplies(stat : StringName) -> bool:
 	return MULTIPLY.has(stat)
 
+# Stats are asked for many times a frame, so each is worked out once a frame.
+static var cacheFrame : int = -1
+static var cachePlayer : Player
+static var cache : Dictionary = {}
+
 static func of(player : Player, stat : StringName) -> float:
 	if not player:
 		return 1.0 if multiplies(stat) else BASE.get(stat, 0.0)
+	var frame : int = Engine.get_process_frames()
+	if frame != cacheFrame or player != cachePlayer:
+		cacheFrame = frame
+		cachePlayer = player
+		cache.clear()
+	elif cache.has(stat):
+		return cache[stat]
+	var value : float = work_out(player, stat)
+	cache[stat] = value
+	return value
+
+static func work_out(player : Player, stat : StringName) -> float:
 	var tree : SceneTree = player.get_tree()
 	if multiplies(stat):
 		var value : float = player.pet_stat(stat)
