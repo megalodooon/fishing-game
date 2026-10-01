@@ -47,6 +47,12 @@ func begin() -> void:
 		# A friend's first time in this world: someone says hello.
 		player.progress.set_flag("intro/guest")
 		play("guest_intro")
+	# Pip walks them through the first fish until one is landed.
+	if not player.progress.has_flag(FishingTutorial.FLAG):
+		var tutorial : FishingTutorial = FishingTutorial.new()
+		tutorial.player = player
+		tutorial.dialogue = dialogue
+		add_child(tutorial)
 
 # Pip asks the player's name (once; a guest named themselves when joining).
 func ask_name(then : Callable) -> void:

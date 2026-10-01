@@ -21,13 +21,14 @@ const HEART_COLOR : Color = Color(1.0, 0.45, 0.6)
 const BIRTHDAYS : Dictionary = {
 	"yuki": 3, "pip": 5, "brann": 9, "nora": 12, "mara": 16, "gus": 19, "moss": 23, "tilly": 25, "luma": 27,
 	"silas": 31, "bo": 34, "marina": 38, "hale": 41, "rex": 44, "vera": 45, "opal": 47, "odette": 29,
-	"barnaby": 13, "oriel": 40, "wally": 52, "grim": 53, "finn": 55,
+	"barnaby": 13, "wren": 20, "oriel": 40, "wally": 52, "grim": 53, "finn": 55,
 }
 # What they think of gifts: item paths, "cat:<category or type>",
 # "rarity:<name>" (that rarity or better), "fish" (any fish) or
 # "fish:<rarity>" (fish of that rarity or better). Checked hated, disliked,
 # loved, liked; anything else is neutral, junk is disliked by everyone.
 const TASTES : Dictionary = {
+	"wren": {"loved": ["res://items/snacks/island_coffee.tres", "res://items/snacks/fish_stew.tres"], "liked": ["cat:Food", "res://items/materials/sea_salt.tres"], "disliked": ["cat:Crop"], "hated": ["res://items/snacks/kelp_chips.tres"]},
 	"pip": {"loved": ["res://items/snacks/island_coffee.tres", "res://items/snacks/sunflower_bread.tres", "res://items/materials/honey.tres"], "liked": ["cat:Food", "fish"], "disliked": ["cat:Potion"], "hated": ["res://items/materials/oily_sludge.tres"]},
 	"gus": {"loved": ["fish:rare", "res://items/snacks/fish_taco.tres"], "liked": ["fish", "res://items/materials/sea_salt.tres"], "disliked": ["cat:Crop"], "hated": ["res://items/materials/old_boot.tres"]},
 	"nora": {"loved": ["res://items/rare/sea_glass.tres", "res://items/materials/pearl_oyster.tres", "fish:legendary"], "liked": ["res://items/materials/sea_shell.tres", "res://items/materials/starfish.tres", "fish:uncommon"], "disliked": ["res://items/materials/fish_oil.tres"], "hated": ["res://items/materials/tin_can.tres"]},

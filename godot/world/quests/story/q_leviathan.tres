@@ -10,13 +10,14 @@
 
 [sub_resource type="Resource" id="s1"]
 script = ExtResource("e2")
+kind = 2
 target = ExtResource("e3")
 
 [resource]
 script = ExtResource("e1")
 title = "The Leviathan"
 giver = "Grandpa Finn"
-description = "The Leviathan sleeps in the Abyssal Trench. Grandpa never landed it. You will."
+description = "The Leviathan is rising out of the open trench. Bring it to the surface, then bring it to Grandpa. What happens next is your call."
 story = true
 goals = Array[ExtResource("e2")]([SubResource("s1")])
 startScene = "q_leviathan_start"

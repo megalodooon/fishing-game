@@ -4,498 +4,542 @@
 # ------------------------------------------------------------------ intro
 
 [intro]
-Ten years ago, the Great Storm came out of nowhere and swallowed half of Bramblewick's fleet.
-It took your grandfather too. Finn Marsh, the greatest angler this coast ever knew.
-Now you're back. All you have is his cottage, his old rod, and a letter from the harbor master.
-pip: Well now! You must be Finn's grandkid. You've got his stubborn chin.
-pip: I'm Pip. Harbor master, mayor, lamp lighter, whatever needs doing. There's not many of us left to do it.
-pip: The aquarium's dark, half the shops are boarded up, and... well. Let's not ruin your first day.
-pip: That rod in your hands caught more fish than anyone alive. Let's see if it remembers how.
-player: Where do I start?
-pip: Out on the water. Walk onto your boat, press M for the sea chart, or just cast right here off the pier. Hold the mouse to charge, let go to cast.
-pip: When the bobber dips, click! Then win the fight. Catch five and come find me on the pier.
-pip: Oh, and Tab opens all your menus at once. Bag, journal, recipes, skills, the lot. Finn never could find anything either.
-Far out past the bay, a sleek black boat sits very still, watching the harbor. Then it's gone.
+Ten years ago a storm came out of a clear sky and took half of Bramblewick's fleet in one night.
+It took Finn Marsh too. The best angler this coast ever had, and the loudest laugh on the pier.
+Now his grandkid is back, with his cottage, his old rod, and a letter from the harbor master that says only: come home.
+pip: You found it. Good. The ferry doesn't run anymore, so I wasn't sure.
+pip: I'm Pip. Harbor master. Also the mayor, the lamp lighter and the one who unblocks the drains. There aren't many of us left.
+pip: You've got his chin. He'd hate that I said so.
+pip: I won't pretend the place is doing well. Half the shops are boarded. The aquarium's dark. We owe money to people who'd like us gone.
+pip: But the fish still come into the bay. And you're holding the rod that knew where to find them.
+player: I've never really fished.
+pip: Nobody has, the first time. Come on. The end of the pier. I'll talk you through it.
+Far out past the bay, a black boat sits very still on the water, facing the harbor. Then it's gone.
+
+[intro_named]
+pip: {name}. Right. I'll get it on the second try, I promise.
+pip: Here's the whole job, {name}: cast, wait, and don't let go when it pulls.
+pip: Catch five. Any five. Then find me on the pier, and we'll talk about selling them.
+pip: Tab opens everything you carry, if you ever lose track. Finn never could find anything either.
+
+[guest_intro]
+pip: Another one off the water. You'd be the friend I was told about.
+pip: Good. This place needs hands more than it needs heroes. Fish where you like, sleep where you can, and if the sea gets loud, come home.
 
 # ------------------------------------------------------------------ chapter 0
 
 [q_rod_start]
-pip: Five fish. Any fish. Show old Bramblewick the Marsh family is back.
+pip: Five fish. Any fish. Let the pier see a Marsh with a bent rod again.
 
 [q_rod_end]
-pip: Ha! Look at that. Finn would be grinning ear to ear.
-pip: Now, fish are only worth something once they're sold. Gus runs the fishmonger in the square. Go and introduce yourself.
-pip: And take this bait. Put it on your rod with T, the tacklebox. Bait makes the good fish bite.
+pip: Five. You held on. That's most of it.
+pip: A fish is only money once someone buys it. Gus runs the fishmonger in the Market Hall. He'll talk your ear off. Let him. He pays fair.
+pip: Take this bait, too. It goes on the rod through the tacklebox, T. Bait decides who comes to the hook.
 
 [q_market_start]
-gus: A new supplier! Oh, happy day. Everybody else just brings me boots.
-gus: I pay by the kilo, and I pay more for whatever's in demand today. Check the market board on my Sell tab.
-gus: Bring me 150 coins' worth of fish and we'll call it a partnership.
+gus: A supplier! A real one, with fish, not boots! Do you know how many boots I've been offered this year? Eleven. Left boots. All of them.
+gus: I pay by weight, and more for whatever's wanted today. The market board on my Sell tab tells you which.
+gus: Bring me a hundred and fifty coins' worth and I'll put your name on the chalkboard. Nobody's been on the chalkboard since your grandpa.
 
 [q_market_end]
-gus: Now THAT is a haul. You've got your grandpa's nose for it.
-gus: Say, you should meet Tilly. She farms Meadow Isle, just across the water. Her corn makes the best bait on the coast.
-gus: I told her you'd drop by. She's on your sea chart now.
+gus: There it is. The chalkboard. Marsh. I had to rub out "SPECIAL: BOOTS" to fit it.
+gus: Listen, you should meet Tilly on Meadow Isle. Corn, pumpkins, opinions. Her corn makes the best bait on the coast and she knows it.
+gus: I told her you'd come. She said, "We'll see." That's a yes, from Tilly.
 
 [q_meadow_start]
-tilly: You're Finn's grandkid! He used to trade me fish for pumpkins. Terrible trade. For him.
-tilly: Farming's easy: hold seeds, click the soil. Crops grow by themselves, a few days each.
-tilly: Harvest three and I'll believe you're a natural.
+tilly: So you're the grandkid. Finn used to trade me fish for pumpkins. Worst deal he ever made, and he knew it, and he kept coming back.
+tilly: Farming's simple. Hold the seeds and press on the soil. It costs a little sweat. The crops do the rest in a few days.
+tilly: Bring in three harvests and I'll stop calling you "the grandkid".
 
 [q_meadow_end]
-tilly: Look at you, dirt under the nails already!
-tilly: Crops turn into bait at the village bait crafter, and meals at the smokehouse once it's open. Keep some seeds. You'll want them.
+tilly: Fine. {name}. Happy?
+tilly: Crops turn into bait at the village crafter, and into meals once someone fixes up a kitchen. Keep some seeds back. Always keep some back.
 
 [q_aquarium_start]
-nora: Oh! Hello. Sorry, I'm Nora. I run the aquarium. Well. I run a dark building with empty tanks.
-nora: My mother built it. After the storm, nobody came anymore, and the fish... it's a long story.
-nora: If you could bring me an Anchovy and a Sea Bass, I'd have something to show people again.
+nora: Sorry. Hi. Nora. I run the aquarium, which is a generous word for a dark building full of empty glass.
+nora: My mother built it. She was out on the water the night of the storm, taking samples. She thought something was wrong with the sea. She was right, and then she was gone.
+nora: An Anchovy and a Sea Bass. That's all I need to turn one tank back on. I'd like the lights on again.
 
 [q_aquarium_end]
-nora: They're perfect! Look at them swim.
-nora: Your journal (J) shows every fish you've found. The aquarium's tanks ask for sets of them. Fill a tank and the village gets something back.
-nora: There's... also something you should know. Ask Pip about Deepnet.
+nora: Look at them. They don't know anything happened here. They just swim.
+nora: Your journal, J, keeps every fish you've met. The tanks each want a set. Fill one and the village gets a little more of itself back.
+nora: And... someone should tell you about Deepnet. It shouldn't be me. Ask Pip.
 
 [vera_ch0]
-vera: Don't look so worried. Deepnet is patient. We always get what we want in the end.
+vera: You look like him around the eyes. I'd heard you might. Don't get attached to the harbor.
 
 [q_debt_start]
-A sleek black boat pulls up to the pier. A woman in a purple suit steps off.
-vera: So you're the new angler everyone's whispering about. Vera Voss, Deepnet Industries.
-vera: Deepnet owns this village's harbor loans now. All of them. When Bramblewick can't pay, we'll take the harbor and make it... efficient.
-vera: Enjoy your little fish.
-pip: I'm sorry you had to find out like that.
-pip: After the storm we borrowed to rebuild. Then the fish stopped coming, and Deepnet bought every loan we had.
-pip: If we can't show we're a living village by the end of the year, they take the harbor. And then the sea around it.
-pip: Every coin you earn from selling helps. Earn 500 and we'll talk about what comes next.
+A black boat slides up to the pier without a sound. A woman in a grey coat steps off and doesn't look at the water once.
+vera: Vera Voss. Deepnet. I hold this harbor's loans. All of them.
+vera: I'm not here to threaten anyone. I'm here so you know the arithmetic. Bramblewick can't pay. When it can't, the harbor is mine, and the water past it.
+vera: Fish all you like. Just stay out of the deep water. People who go looking out there don't come back.
+pip: ...I'd hoped you'd have a week before you met her.
+pip: After the storm we borrowed to rebuild. The fish thinned out. The loans got bought up, quietly, one by one, until the only name left on them was hers.
+pip: If we can't show the league by year's end that this is a working harbor, she takes it. Every coin you earn here is a vote against that.
+pip: Earn five hundred. Not for me. So you've felt what it's like to keep something going.
 
 [q_debt_end]
-pip: Five hundred coins. For a village like ours, that's hope.
-pip: There's someone you should meet. An old hermit on Driftwood Cay. He knew your grandfather better than anyone.
-pip: He doesn't like visitors. Bring fish.
+pip: Five hundred. That's more than the harbor took in all last winter.
+pip: There's someone you should see. A hermit on Driftwood Cay, Silas. He knew Finn better than anyone alive.
+pip: He won't want to see you. Take fish. Don't take it personally.
 
 # ------------------------------------------------------------------ chapter 1
 
 [q_hermit_start]
-pip: Driftwood Cay, north-east of the bay. It's on your chart. His name's Silas.
+pip: Driftwood Cay. It's on your chart. If he throws something at you, that means he's thinking about it.
 
 [q_hermit_end]
 silas: ...
-silas: You've got his rod.
+silas: That's his rod.
 player: You knew my grandfather?
-silas: Everybody knew Finn. Not everybody liked him. I did. Mostly.
-silas: Sit. If you want to fish like him, you'll need to read the sky first.
+silas: Everyone knew Finn. Fewer people liked him. I was one of them, most days.
+silas: Sit down. If you want to fish like him, you'll have to learn the one thing he was good at. Looking up.
 
 [q_weather_start]
-silas: Finn never fished without looking up. Rain makes fish hungry and fast. Fog brings up the rare ones.
-silas: Some fish only come out in one or the other. Your journal says which.
-silas: Catch me two in the rain and one in the fog. The weather icon by your clock tells you what's coming. Hover it.
+silas: Rain makes fish careless. Fog brings up the ones that are usually too clever.
+silas: Some only come in one or the other. The journal says which. Most people never read it.
+silas: Two in the rain, one in the fog. The little weather sign by the clock says what's coming. He never looked at it either.
 
 [q_weather_end]
-silas: Hm. Not bad. Not Finn. But not bad.
-silas: Here. I found this washed up years ago. It's his handwriting. Click it to read.
-silas: Now get off my cay. Come back when you've learned patience.
+silas: Hm. Not him. But not nothing.
+silas: Here. It washed up years ago. His handwriting. Read it or don't.
+silas: Now go home. Come back when you can sit still.
 
 [q_workbench_start]
-pip: The village used to make everything itself. Pots, charms, tackle. Then the workbench rotted.
-pip: Fund it at the restoration board in the square. Planks come up with the junk you fish out, and Gus sells some.
+pip: The village used to make its own things. Pots, charms, tackle. Then the workbench rotted through and nobody had the heart.
+pip: The restoration board in the square takes donations for it. Anyone can chip in. Planks come up with the junk you fish out. Gus sells a few.
 
 [q_workbench_end]
-pip: Hear that? Hammering! Haven't heard that in years.
-pip: The workbench learns recipes as your collections grow. Check your profile (K), the collection tab, to see what you've found.
+pip: Hear that? Someone's hammering. I'd forgotten what that sounds like.
+pip: The bench learns new recipes as your collections grow. Your profile, K, keeps track.
 
 [q_pots_start]
-silas: Patience. Your grandfather had none, so he built crab pots. Let the sea work for you.
-silas: Make a wooden pot at the workbench, set it at a trap spot. There's one on my cay. They fill up every day, even while you sleep.
-silas: Collect five catches from pots. Then we'll see.
+silas: Your grandfather had no patience. So he built crab pots and let the sea be patient for him.
+silas: Make a wooden pot at the bench. Set it at a trap spot. There's one on this cay. They fill while you sleep.
+silas: Bring in five catches from pots. Then we'll see what you're for.
 
 [q_pots_end]
-silas: Good. You're learning the thing Finn never did. Waiting.
-silas: Here. Another of his pages. There were more. The sea scattered them.
-silas: ...There's a young fool in your village asking about you. Rex Marlow. Be careful.
+silas: Good. You waited. He never learned that.
+silas: Another of his pages. The sea's been handing them back one at a time, like it's deciding how much you should know.
+silas: There's a boy in your village asking about you. Rex Marlow. He's not cruel. He's scared. That's worse, sometimes.
 
 [q_harbor_tank_start]
-nora: The Harbor Tank was my mother's favorite. It needs a few fish from the bay and the village waters.
-nora: Walk into the aquarium and give them one by one. The Tackle Shop's owner promised to reopen when it glows again.
+nora: The Harbor Tank was my mother's favorite. Bay fish, village fish. Ordinary ones. She said the ordinary ones are the ones you lose without noticing.
+nora: Bring them into the aquarium one at a time. The tackle shop says they'll open again the day it glows.
 
 [q_harbor_tank_end]
 nora: It's glowing. It's actually glowing.
-nora: The tackle shop is opening its doors again. Rods, hooks, lines. The village is breathing!
+nora: The tackle shop's open. Rods, hooks, lines. People are walking past slowly to look in the windows. I'd forgotten people did that.
 
 [rex_ch1]
-rex: So YOU'RE the Marsh kid. Everybody talks about you like you're some kind of legend.
-rex: I'm Rex Marlow. Three-time Village Cup champion. Deepnet sponsors my gear, you know.
-rex: Legends don't exist anymore, kid. There's just better equipment.
+rex: So you're the Marsh. Everyone says the name like it means something.
+rex: Rex Marlow. Village Cup, three years running. Deepnet sponsors my gear.
+rex: Your grandpa's a story people tell so they don't have to look at the boarded windows. That's all.
 
 [q_rex_start]
-hale: Ahem. Commissioner Hale, regional fishing league. I hear there's a new angler making waves.
-hale: The Village Cup was the pride of Bramblewick, before the hall fell apart. Your grandfather won it eleven times.
-hale: Mr. Marlow insists you're a fluke. Reach Fishing level 5 and land a rare fish, and I'll consider bringing the tournaments back.
+hale: Commissioner Hale, regional league. I'm told there's a new angler on the pier and a great deal of talk.
+hale: The Village Cup was Bramblewick's pride once. Your grandfather won it eleven times. Twelve, if you count the year he was disqualified for arguing.
+hale: Mr. Marlow says you're a fluke. Reach Fishing level 5 and land a rare fish, and I'll consider bringing the tournaments back. Considering is not promising.
 
 [q_rex_end]
-hale: A rare fish. Very well. The league will return, on one condition.
-hale: The hall. It needs rebuilding. Talk to the restoration board.
-rex: Tch. Enjoy it while it lasts. The reef will eat you alive.
-hale: The Coral Reef is on your chart now. Good luck, Marsh.
+hale: A rare fish. Properly landed. The league will return, on one condition.
+hale: The Tournament Hall is a ruin. Fix it, through the restoration board, and I'll put the Cup back on the calendar.
+rex: Enjoy it. Out on the reef, nobody's going to clap for you.
+hale: The Coral Reef is on your chart, Marsh. Do try not to drown.
 
 # ------------------------------------------------------------------ chapter 2
 
 [q_hall_start]
-hale: The Tournament Hall. Planks, iron and coin. Once it stands, a tournament runs every week.
+hale: The Tournament Hall. Planks, iron, coin. Once it stands, there's a tournament every week.
 
 [q_hall_end]
-hale: Splendid! Tournaments run Monday to Saturday. Every week, one kind of fish. Enter at the desk, and the heaviest catch wins.
-hale: Results come in on Saturday evening. Win the league and you move up. Take this medal. Every champion started somewhere.
+hale: Splendid. Monday to Saturday, one kind of fish each week. Enter at the desk. Heaviest catch wins.
+hale: Results are posted Saturday evening. Win your league and you move up. This medal is for showing up. Most people don't.
 
 [q_first_cup_start]
-hale: Enter this week's tournament at the desk and see it through. Heavy bait and a good rod help. So does luck.
+hale: Enter this week's tournament at the desk and see it through to the end. Heavy bait helps. So does a good rod. Luck helps most and is the least reliable.
 
 [q_first_cup_end]
-hale: Your first tournament! Win or lose, you're on the board now.
-rex: Nice try, Marsh. Maybe next year.
+hale: Your first tournament. Your name is on the board now. That doesn't come off.
+rex: Not bad. For somebody who learned last week.
 
 [q_boatyard_start]
-marina: You want boat upgrades? Then I need a boatyard that isn't falling into the sea.
-marina: Fund the repairs, and bring driftwood. Lots of driftwood. Then we build you a proper hull.
+marina: You want a better boat. Lovely. I want a boatyard that isn't sliding into the sea one board at a time.
+marina: Fund the repairs and bring me driftwood. Lots of it. Then we talk hulls, and I will talk about hulls for a long time, so get comfortable.
 
 [q_boatyard_end]
-marina: She's got a real hull now. Tougher boats spend less energy sailing, and some seas need a strong one to even get there.
-marina: Sails, a cargo hold, sonar, a winch for treasure, even a cabin to sleep in. Bring me materials and coin.
+marina: Listen to her creak. That's a happy creak. A stronger hull wastes less of you on every trip, and some waters won't let a weak one in.
+marina: Sails, a hold, sonar, a winch, a cabin. You bring me materials and coin, I make her the best boat on the coast. No pressure.
 
 [q_reef_start]
-nora: The Coral Reef! Mom used to take me there. It was the most alive place I've ever seen.
-nora: Catch eight fish there for my records. Oh, and... there have been reports of sea creatures. Big ones. Beat one, anywhere, and tell me what you saw.
+nora: The Coral Reef. Mom took me there when I was small. It was the loudest place I've ever been, and nobody was talking.
+nora: Catch eight there for my records. And there are reports of creatures. Big ones. Beat one, anywhere, and tell me what it looked like up close.
 
 [q_reef_end]
-nora: A sea creature! It's the pollution, I'm sure of it. Something is making them grow and making them angry.
-nora: Stay safe out there. And take this squid bait. The bigger fish love it.
+nora: That size isn't natural. Something's feeding them. Or waking them.
+nora: Take the squid bait. And please don't do anything brave without telling someone first.
 
 [q_win_cup_start]
-hale: The Village Cup. Win a tournament in this league and you move up to Silver.
+hale: The Village Cup. Win a tournament in this league and you go up to Silver.
 rex: Three years undefeated. You'll need more than a dead man's rod.
 
 [q_win_cup_end]
-hale: Ladies and gentlemen, the Village Cup goes to... Marsh!
+hale: The Village Cup goes to Marsh.
 rex: ...
-rex: This isn't over. I have a sponsor who doesn't like losing.
-You overhear Rex on the pier that night.
-vera: You lost, Marlow. To a child with an antique.
-rex: It won't happen again, Ms. Voss.
-vera: See that it doesn't. The Marsh name gives these people hope. Hope is bad for business.
+rex: Fine. Fine. Enjoy it.
+That night, from the end of the pier, voices carry across the water.
+vera: You lost to a beginner with an antique, Rex.
+rex: It won't happen again.
+vera: I don't care about the Cup. I care that the whole village came out to watch. Hope makes people brave. Brave people go out too far.
 
 # ------------------------------------------------------------------ chapter 3
 
 [q_sludge_start]
-nora: I took samples from the Polluted Ocean. It's full of Deepnet's waste. And the creatures there... they're furious.
-nora: Beat three Sludge Serpents. I need to know what they've been eating.
+nora: I've been taking samples in the Polluted Ocean. It's Deepnet's runoff. And the creatures there aren't sick. They're furious.
+nora: Beat three Sludge Serpents. I need to see what's in them.
 
 [q_sludge_end]
-nora: Sludge glands, full of oil. Deepnet is dumping right where the fish breed.
-nora: If I had proof they're doing it on purpose, the league could shut them down.
+nora: Oil. In the glands. They're dumping right on the breeding grounds.
+nora: Mom wrote this exact thing in her notebook ten years ago. Nobody listened then either.
 
 [q_evidence_start]
-nora: Oily sludge and Deepnet's tin cans. Fish them up in the Polluted Ocean. They're everywhere there.
+nora: Oily sludge and Deepnet's tin cans. Fish them out of the Polluted Ocean. They're everywhere, which is rather the point.
 
 [q_evidence_end]
-nora: This is it. This is proof. I'll send it to the regional office.
-nora: Oh, and I found this in one of the cans. Another page from your grandfather's logbook. How did it get there?
+nora: This is proof. Real proof. I'm sending it to the regional office tonight.
+nora: There was paper in one of the cans. It's your grandfather's handwriting. I don't know how it got there. I don't think I like not knowing.
 
 [q_lagoon_start]
-opal: Oh, a visitor! Hello, hello. I'm Opal. I dive for pearls. Well, lost pearls.
-opal: The Great Storm scattered them all over the islands. They glint when the light hits them just so.
-opal: Find me five and I'll show you what pearls can do. Every five buys a blessing, and blessings last forever.
+opal: Oh, a visitor. Hello. I'm Opal. I look for pearls. The lost ones.
+opal: The storm scattered them across every island. They catch the light just so, if you're looking at the right moment.
+opal: Bring me five and I'll show you what they're for. Every five buys a blessing, and a blessing doesn't wear off.
 
 [q_lagoon_end]
-opal: Five! You have good eyes. The sea likes you.
-opal: Bring me more whenever you find them. There are sixty out there, if the old songs are right.
+opal: Five. You see the small things. The sea likes people who see the small things.
+opal: Bring more whenever you find them. The old songs say sixty. The old songs are usually right about numbers and wrong about everything else.
 
 [q_moss_start]
-moss: Heh. Finn's pup. You have his look. Hungry and stubborn.
-moss: My cauldron makes baits the fish can't refuse. Firefly bait for the night hunters. Make four.
-moss: Firefly jars from my stall, marsh rice from your farm. The swamp provides.
+moss: Heh. Finn's pup. You've got his look. Hungry, and pretending you aren't.
+moss: My cauldron makes bait the fish can't say no to. Firefly bait, for the ones that hunt at night. Make four.
+moss: Firefly jars from my stall, marsh rice from your farm. The swamp provides. The swamp also takes. Mind your boots.
 
 [q_moss_end]
-moss: Good brew. The Gator Gar will smell that from a mile off.
-moss: Your grandfather came here the night before the storm, you know. Asked me for a charm against lightning. Didn't work, heh.
+moss: Good brew. The Gator Gar will smell it from the far bank.
+moss: Your grandfather came here the night before the storm. Wanted something to make a very big fish sleep. I told him nothing sleeps forever, only longer. He paid anyway.
 
 [rex_ch3]
 rex: Don't look at me like that.
-rex: You think I wanted this? Deepnet pays for my boat, my gear, my house. My dad's debts.
-rex: Just... beat me fair in the Silver League, Marsh. Then maybe I'll tell you something.
+rex: You think I wanted this? Deepnet pays for my boat. My gear. My dad's medicine. He worked on their rig. He came back from it different.
+rex: Beat me fair in the Silver League. If you can do it with their gear on my rod, I'll tell you something.
 
 [q_rex_secret_start]
-rex: Silver League. Win it. If you beat me with their gear on my rod, then maybe gear isn't everything.
+rex: Silver League. Win it. Then we'll talk.
 
 [q_rex_secret_end]
-rex: You did it. You actually did it.
-rex: Fine. Here's the truth. Deepnet built a rig out past the storm sea. Something they call a weather drill.
-rex: My dad worked on it. He said the night of the Great Storm, they turned it all the way up. He never went back after that.
-rex: And Voss... she keeps asking if anyone ever found Finn Marsh's body. Why would she care?
-You notice a page on the ground where Rex was standing. Grandpa's handwriting again.
+rex: You did it. Of course you did.
+rex: Fine. Deepnet built a rig out past the storm sea. They call it a weather drill. It pulls deep water up, and the deep fish with it.
+rex: My dad was on shift the night of the storm. They turned it all the way up. He won't talk about what he saw. He just says it looked back.
+rex: And Voss. She's asked me three times if anyone ever found Finn Marsh's body. Why would she care?
+You notice a page on the boards where Rex was standing. Grandpa's handwriting again.
 
 # ------------------------------------------------------------------ chapter 4
 
 [q_hull2_start]
-marina: The Kelp Forest's currents would snap your hull like a twig. Oak Hull. Planks and iron.
+marina: The Kelp Forest's currents will fold your hull like a letter. Oak Hull. Planks and iron.
 
 [q_hull2_end]
-marina: She'll hold. The Kelp Forest is on your chart. Watch out for the Kraken. It's not a rumor.
+marina: She'll hold. The Kelp Forest is on your chart. There's a Kraken in there. That's not a story, I've seen the scratches.
 
 [q_kelp_start]
-marina: Catch ten in the kelp. Kelp bait works wonders there, the bait crafter can make it.
+marina: Ten fish from the kelp. Kelp bait, from the crafter. They'll come right up to the boat for it.
 
 [q_kelp_end]
-marina: Kelp fiber! Bring me that and I can make better sails.
+marina: Kelp fiber! I can make sails out of that. Real ones. Bring it by.
 
 [q_kraken_start]
-grim: ARR. You've the look of someone who's seen the Kraken's arms.
-grim: I'm Captain Grim. That beast sank the Jolly Mackerel, finest ship I ever lost at cards. I mean, sailed.
-grim: Beat it for me, and I'll give you my mark. Every hunter knows it.
+grim: ARR. You've the look of someone who's heard of the Kraken and come anyway.
+grim: Captain Grim. That beast sank the Jolly Mackerel, finest ship I ever lost at cards. Sailed. Finest ship I ever sailed.
+grim: Beat it for me and I'll give you my mark. Every hunter on this coast knows it. Several of them owe me money.
 
 [q_kraken_end]
-grim: HA! The Kelp Kraken, beaten! Take the Hunter's Mark, you've earned it.
-grim: Sea creatures get meaner the further out you go. Hunting skill keeps you alive. More hearts, harder hits.
+grim: HA! The Kelp Kraken! I'll be telling this one for years, and in every version I'll be standing a little closer.
+grim: Creatures get meaner the further out you go. Hunting skill keeps you breathing. More hearts, harder hits. Good gear, too.
 
 [q_treasure_start]
-grim: Treasure comes up with the fish, if you're lucky. Wood crates, iron chests, gold if the sea likes you.
+grim: Treasure comes up with the fish, if the sea's feeling generous. Crates, iron chests, gold on a good day.
 grim: Open ten and tell me the sea doesn't give back.
 
 [q_treasure_end]
-grim: Ten chests! You've got the treasure nose. Keep this iron. And keep the winch in mind. Marina builds one.
+grim: Ten chests! You've got the nose for it. Keep the iron. And talk to Marina about a winch. Trust me. Trust me less about other things.
 
 [q_deep_tank_start]
-nora: The Deep Tank wants bigger fish from further out. It's the heart of the aquarium.
+nora: The Deep Tank wants fish from further out. It's the heart of the aquarium. Mom built it last.
 
 [q_deep_tank_end]
-nora: The Deep Tank is restored! People are actually coming to visit. Actual people!
+nora: The Deep Tank is lit. There's a family from the mainland standing in front of it right now, not saying anything. That's what she wanted.
 
 [q_skill15_end]
-pip: Fishing level fifteen. When you walk down the pier now, the old sailors nod. They haven't done that since Finn.
+pip: Fishing level fifteen. The old sailors nod at you on the pier now. They used to do that for Finn.
+pip: I don't say it to flatter you. I say it because I'd stopped expecting to see it.
 
 [q_four_tides_start]
-silas: You've been reading his pages. Don't lie, I can see it on you.
-silas: Prove you can handle yourself out there. Twenty sea creatures. Then we talk about the Tides.
+silas: You've been reading his pages. It's all over your face.
+silas: Out there you'll need to hold your own. Twenty sea creatures. Then we talk about the Tides.
 
 [q_four_tides_end]
-silas: The Four Tides. Ember, Frost, Storm, and Moon.
-silas: Each has a guardian fish, a trophy so rare most people think they're legends. Each one carries a Tide Pearl.
-silas: Put all four pearls on the altar of the Tidal Shrine and the seal on the Abyssal Trench breaks.
-silas: That's where the Leviathan sleeps. That's where Finn was going, the night he... disappeared.
-silas: The Frost Tide is guarded near Frostpeak. The Ember Tide near Ember Isle. Both are on your chart now. Go.
+silas: Four Tides. Ember, Frost, Storm and Moon.
+silas: Each has a guardian fish, rare enough that most people think it's a story. Each one carries a Tide Pearl.
+silas: Put all four on the altar of the Tidal Shrine and the seal over the Abyssal Trench opens.
+silas: The Leviathan sleeps down there. It's where Finn was going, the night he went into the water.
+silas: Frostpeak and Ember Isle are on your chart now. Go. Before I think better of it.
 
 # ------------------------------------------------------------------ chapter 5
 
 [q_frostpeak_start]
-silas: Frostpeak. A woman named Yuki fishes through the ice there. She'll know about the Frost Tide.
+silas: Frostpeak. A woman called Yuki fishes through the ice there. She'll know the Frost Tide.
 
 [q_frostpeak_end]
-yuki: You came all this way? In that boat? Brave. Or silly.
-yuki: I'm Yuki. I cut holes in the ice and wait. It's very peaceful. Here, take some ice bait.
+yuki: You came all this way in that boat. Brave. Or you don't know the weather.
+yuki: Yuki. I cut holes in the ice and wait. Most days nothing happens. I like those days.
+yuki: Take some ice bait. And a scarf, next time.
 
 [q_ice_start]
-yuki: The ice holes are just ponds. Cast right in. The fish under the ice are shy, but curious.
+yuki: The holes are just ponds. Cast right in. The fish under the ice are shy, but they get curious if you're quiet.
 
 [q_ice_end]
-yuki: Ten! You're a natural at waiting. Take these frost crystals. They never melt.
+yuki: Ten. You're good at waiting. Most people from the south aren't.
+yuki: Frost crystals. They don't melt. I've stopped asking why.
 
 [q_aurora_start]
-yuki: The Aurora Sturgeon. It rises on clear nights, when the sky glows green. Only for ice bait.
-yuki: It fights like the whole north wind. Be ready.
+yuki: The Aurora Sturgeon comes up on clear nights, when the sky goes green. Ice bait only.
+yuki: It fights like the north wind. Don't fight back. Lean.
 
 [q_aurora_end]
-yuki: You caught it. You actually caught it! Look, a pearl in its mouth. The Frost Tide Pearl.
-yuki: My grandmother said a man with a laugh like a foghorn tried for it once. Finn, maybe?
+yuki: You caught it. There's a pearl in its mouth. The Frost Tide Pearl.
+yuki: My grandmother told me about a man with a laugh like a foghorn who tried for it once. He didn't catch it. He sat with her for a week anyway, and asked a lot of questions about how old things sleep.
 
 [q_ember_start]
-silas: Ember Isle. The smith there, Brann, made Finn's first hook. He'll help, if he likes you. He likes nobody.
+silas: Ember Isle. The smith there, Brann, made Finn's first hook. He'll help you if he likes you. He likes nobody.
 
 [q_ember_end]
-brann: Hmph. A Marsh. Your grandfather still owes me for a hook.
-brann: I'm Brann. I make things that don't melt. Take this ember bait. The fish here like it hot.
+brann: Hmph. A Marsh. Your grandfather still owes Brann for a hook.
+brann: Brann makes things that don't melt. Take this ember bait. The fish here like it hot.
 
 [q_forge_start]
-brann: You want Brann's steel? Brann needs Ash Cod oil and obsidian. Five shards, three cod. No haggling.
+brann: You want Brann's steel. Brann wants Ash Cod oil and obsidian. Five shards, three cod. No haggling. Brann does not haggle.
 
 [q_forge_end]
-brann: Good materials. My forge is yours. And the Volcanic Ocean opens for those who can pay the way.
-brann: The Phoenix Koi lives out there. Legendary. Rises at night, for ember bait.
+brann: Good materials. The forge is yours. The Volcanic Ocean opens for people who pay the way out.
+brann: The Phoenix Koi lives out there. Legendary. Rises at night for ember bait.
+brann: Your grandfather asked Brann to make a hook once. Big enough for something that doesn't exist. Brann made it. Brann asks no questions. Brann has some now.
 
 [q_phoenix_start]
-brann: The Phoenix Koi guards the Ember Tide. Between eight at night and midnight, with ember bait on your rod. It will try to burn you.
+brann: The Phoenix Koi keeps the Ember Tide. Eight at night to midnight, ember bait on the rod. It will try to burn you. Let it try.
 
 [q_phoenix_end]
-brann: The Ember Tide Pearl. In my forge. I never thought I'd see it.
-brann: Your grandfather would have laughed until he cried. Go on. Two pearls down.
+brann: The Ember Tide Pearl. In Brann's forge. Brann did not think he would see this.
+brann: Two pearls. Go. Brann will be here, not caring.
 
 [q_gold_start]
-hale: The Gold League. Only a handful of anglers in the region have ever won it.
+hale: The Gold League. A handful of anglers in the region have ever won it. Most of them are dead or insufferable.
 
 [q_gold_end]
-hale: Gold League champion! The regional papers want an interview. Say something humble.
+hale: Gold League champion. The regional papers would like an interview. Please say something modest. I'll be checking.
 
 [q_storm_warning_start]
-luma: You're the one collecting Tide Pearls. Silas sent word.
-luma: I'm Luma. I keep the lighthouse on Lantern Key, and I watch the storms. Something about them has always been wrong.
-luma: Learn to sail properly. Reach Sailing level 10 and come see me.
+luma: You're the one collecting Tide Pearls. Silas sent word, which he's never done before, so I'm curious.
+luma: Luma. I keep the lighthouse on Lantern Key and I write down the storms. Something about them has always been wrong.
+luma: Learn to sail properly. Sailing level 10. Then come back and I'll show you my notebooks.
 
 [q_storm_warning_end]
-luma: The night of the Great Storm, I saw a light out past the Storm Sea. A red light, pulsing. Right before the sky went black.
-luma: Your grandfather sailed toward it. I watched his lantern until the waves swallowed it.
-luma: He left this with me that morning. He said, give it to the kid, if they ever come.
+luma: The night of the Great Storm I saw a light out past the Storm Sea. Red, pulsing, slow. Like breathing.
+luma: Then the sea came up. Not waves. The sea itself, rising, the way something rises when it's been pulled.
+luma: Your grandfather sailed straight at it. I watched his lantern until it went under.
+luma: He left a page with me that morning. He said, give it to the kid, if they ever come. He said it like he knew you would.
 
 # ------------------------------------------------------------------ chapter 6
 
 [q_hull3_start]
-marina: The Storm Sea? You're mad. Iron Hull, then. And maybe a will.
+marina: The Storm Sea? You're mad. Iron Hull, then. And maybe write a will.
 
 [q_hull3_end]
-marina: Iron Hull. She'll take a beating. Stormwatch and the Storm Sea are on your chart.
+marina: Iron Hull. She'll take a beating so you don't have to. Stormwatch and the Storm Sea are on your chart.
 
 [q_stormwatch_start]
-luma: Stormwatch. There's an old weather station there. My father used to run it.
+luma: Stormwatch. There's an old weather station there. My father ran it until the night of the storm. He was the one who called the warning in. Nobody believed a storm out of a clear sky.
 
 [q_stormwatch_end]
-luma: The station's still standing. If the village helped restore it, we could see storms coming days ahead. Maybe more than see.
+luma: It's still standing. If the village restored it, we'd see storms coming days ahead. Maybe more than see them.
 
 [q_station_start]
-luma: Fund the weather station at the village board. Storm essence and iron. It's worth it, trust me.
+luma: Fund the station at the board. Storm essence and iron. It's worth it. He'd want it running.
 
 [q_station_end]
-luma: It works! And... it can seed the clouds. Order tomorrow's weather at the station. Rain, fog, or clear.
-luma: That's what Deepnet's drill does too, I think. Only a thousand times stronger.
+luma: It works. It can seed the clouds, too. Order tomorrow's weather here: rain, fog or clear.
+luma: That's the same idea as Deepnet's drill. Pull at the sky a little, and it moves. Pull at the sea hard enough, and something else moves.
 
 [q_tempest_start]
-luma: The Tempest Ray guards the Storm Tide. It glides out of the rain. Only a perfect cast will do.
+luma: The Tempest Ray keeps the Storm Tide. It glides out of the rain. Only a perfect cast will reach it.
 
 [q_tempest_end]
-luma: The Storm Tide Pearl! Three of four. The shrine is waiting for you.
+luma: The Storm Tide Pearl. Three of four.
+luma: Can I tell you something? Every time you bring one in, my barometer twitches. Just a little. Like the sea noticed.
 
 [q_storm_kraken_start]
-grim: The Storm Kraken. Every sailor who ever drowned in this sea, drowned because of that thing. Or so I tell them at the pub.
+grim: The Storm Kraken. Every sailor who ever drowned in this sea drowned because of that thing. Or so I tell people at the tavern, when they're buying.
 
 [q_storm_kraken_end]
-grim: You beat the Storm Kraken. I'm... actually speechless. Take my totem. I never deserved it anyway.
+grim: You beat the Storm Kraken. I am... I'm genuinely speechless, and I have never once been speechless. Take my totem. I won it in a bet I cheated at.
 
 [q_truth_start]
-silas: You want the truth about the storm. Then you need to be strong enough to hear it. And to survive what comes after.
-silas: Hunting level fourteen. Then come back.
+silas: You want the truth about the storm. Then be strong enough to carry it back. Hunting level fourteen.
 
 [q_truth_end]
-silas: The storm wasn't weather. It was Deepnet. Their drill on the rig pulls the storms in to churn up the deep fish for their nets.
-silas: Finn went to stop it. He boarded the rig and pulled the plug. The blast threw him into the sea.
-silas: Here. His last page. And the rig is on your chart. Rex knows a way in.
+silas: The storm wasn't weather. It was the drill. Deepnet ran it at four times what it was built for, to drag the deep fish into their nets.
+silas: Finn went out to shut it down. He got aboard, and he pulled the plug, and the sea threw him off the rig like a coat.
+silas: That's his last page. The rig's on your chart. Rex knows a way in. Read the logs, all of them. Not just the parts that make you angry.
 
 # ------------------------------------------------------------------ chapter 7
 
 [q_rig_start]
-rex: My dad kept the rig's service codes. I can get us close. Meet me there.
+rex: My dad kept his service codes. I can get us close. I'll meet you out there. Don't tell him I took them.
 
 [q_rig_end]
-rex: We're in. Keep your head down. There's a robot shark guarding the water. I wish I was joking.
+rex: We're in. Keep your head down. There's a robot shark guarding the water. I wish that was a joke. It is not a joke.
 
 [q_mecha_start]
-rex: The Mecha-Shark. Deepnet's security. Beat it and we can get to the office.
+rex: The Mecha-Shark. Deepnet security. Beat it and we can reach the office deck.
 
 [q_mecha_end]
-rex: You wrecked a robot shark. With a fishing rod. I've never been so proud and so confused.
+rex: You beat a robot shark. With a fishing rod. I've never been so proud of anyone and so confused at the same time.
 
 [q_logs_start]
-rex: The office is on the far deck. The logs from the night of the storm have to be there. Grab some of the shark's chips too, as proof it's theirs.
+rex: The office is on the far deck. The logs from that night have to be there. Grab some of the shark's chips too. Proof it's theirs.
 
 [q_logs_end]
-rex: This is everything. The drill, the storm, the dumping. Voss signed all of it.
-rex: I'm done with Deepnet. My dad would want me to help you. Let's take this home.
+rex: It's all here. The drill output. The dumping. Voss's signature on everything.
+rex: And the design files. Look at the name on the first page.
+rex: "Tide Engine. F. Marsh."
+player: Grandpa built it.
+rex: Your grandpa built the thing that killed the fleet. And my dad stood next to it and watched.
+rex: ...We take this home. All of it. And then I don't know what.
 
 [q_expose_start]
-pip: You found proof? Bring it here. The whole village is gathering on the pier.
+pip: Rex told me. Not all of it, I think. Bring it here. The whole village is on the pier.
 
 [q_expose_end]
-pip: Deepnet caused the Great Storm. They killed our fleet. They took Finn.
-vera: That's quite the story. You can't prove I...
-pip: We sent copies to the league, the regional office, and every newspaper on the coast.
+pip: Deepnet ran a machine past the storm sea that pulled the storm onto our boats. They knew. They signed for it. They dumped on our breeding grounds for ten years after.
+vera: That's a very tidy story, Harbor Master.
+pip: Copies went to the league, the regional office and every paper on the coast an hour ago.
 vera: ...
-vera: Fine. Keep your little harbor. But the sea rights for this whole coast go to the next World Champion. And Deepnet's champion has never lost.
-vera: See you at Champion Atoll, Marsh.
-pip: The Tidal Shrine is on your chart. Silas asked for you.
+vera: Then you've read the design files.
+pip: I have.
+vera: And you've chosen not to read them out loud. Interesting.
+vera: Keep your harbor. The sea rights to this coast go to whoever wins the World Championship. Deepnet's angler has never lost. See you at Champion Atoll, Marsh. Be careful who you trust before then.
+The boat leaves. The pier is quiet a long while.
+pip: The village got the truth it can carry today, {name}. The rest is Marsh business.
+pip: Silas asked for you. The Tidal Shrine's on your chart.
 
 [q_platinum_start]
-hale: The Platinum League. Win it and you qualify for the World Championship. The whole coast is watching now.
+hale: The Platinum League. Win it and you qualify for the World Championship. The whole coast is watching now. Try to enjoy that rather than be crushed by it.
 
 [q_platinum_end]
-hale: Platinum champion! You're in the World Championship. Deepnet's champion, the best anglers of the world... and you.
+hale: Platinum champion. You're in the World Championship. The best anglers alive, Deepnet's champion, and you. I'm told the betting is unkind.
 
 # ------------------------------------------------------------------ chapter 8
 
 [q_shrine_start]
-silas: Take me to the Tidal Shrine. I want to see it once more.
+silas: Take me to the Tidal Shrine. I want to stand there once more.
 
 [q_shrine_end]
-silas: Four tides meet here. Ember, Frost, Storm and Moon.
-silas: The Moonscale Coelacanth guards the last one. It rises from the shrine basin at midnight. For moon bait.
+silas: Four tides meet here. Ember, Frost, Storm and Moon. The water moves four ways at once and never makes a sound.
+silas: The Moonscale Coelacanth keeps the last one. It rises from the basin at midnight. Moon bait only.
 
 [q_moonscale_start]
-silas: Moon bait. Tilly's moonmelons and a little glowcap. The bait crafter knows it. Midnight, at the basin.
+silas: Moon bait. Tilly's moonmelons and a little glowcap. The crafter knows it. Midnight, at the basin.
 
 [q_moonscale_end]
-silas: The Moon Tide Pearl. All four. After all these years.
+silas: The Moon Tide Pearl. All four. After ten years.
+silas: You don't know how long I've waited to see someone hold them.
 
 [q_seal_start]
 silas: Put them on the altar. All four. I'll be right here.
 
 [q_seal_end]
-The pearls sink into the altar. Somewhere far away, the sea groans and something opens.
-silas: The Abyssal Trench is open. And I suppose... I owe you the truth.
-silas: The blast on the rig didn't kill Finn Marsh. It threw him onto a little cay, broken and half drowned.
-silas: If Deepnet knew he was alive, they'd have come for the village. For you. So Finn stayed dead. And Silas the hermit was born.
-player: Grandpa?
-finn: Hey, kid. You got so tall.
-finn: I watched you from the cay every day. Every cast. You fish better than I ever did.
-finn: Now. There's a Leviathan down there that I never managed to land. And a championship to win. Let's finish this. Together.
+The pearls sink into the stone. Far out, the sea makes a sound like a door that hasn't been opened in a long time.
+silas: It's open.
+silas: I owe you the truth. All of it, this time.
+silas: The blast on the rig didn't kill Finn Marsh. It threw him onto a cay, half drowned and burned, and he decided Finn should stay dead.
+player: Grandpa.
+finn: Hello, kid. You got tall.
+finn: I built the engine. Vera and I. The bay was dying and I thought if we could pull the deep fish up, just a little, the village would live.
+finn: Deepnet's money made it bigger. And what it pulled up wasn't only fish. The storm was the Leviathan rising to the pull. It came up through our fleet.
+finn: I put it back to sleep. Those pearls were the seal. I made the guardians carry them so nobody could ever open the trench again.
+player: Then why did you send me to get them?
+finn: ...Because I've spent ten years on a sandbar looking at the place where it went down. Because I wanted to land it once, before I die. Because I'm the same man who built the engine, kid. I thought I'd stopped being him.
+finn: Vera knew. That's why she bought the harbor, and the loans, and anyone who'd sail out here. She's been keeping people away from this altar for ten years. She was waiting for me to use somebody.
+finn: I used you.
+The sea far out gives a long, low groan. The sky over the trench goes the color of a bruise.
 
 [q_hull4_start]
-marina: Champion Atoll is across the whole Blue Expanse. You need an Obsidian Hull. The best I can build.
+marina: Champion Atoll is across the whole Blue Expanse. And the sea's been strange all week. You need an Obsidian Hull. The best I can build.
+marina: I won't ask what happened at the shrine. Whatever it is, I'd rather you met it in a good boat.
 
 [q_hull4_end]
-marina: The Obsidian Hull. Finest thing I've ever built. Go win this, Marsh.
+marina: Obsidian Hull. Finest thing I've ever built. Bring her back. And bring yourself back in her.
 
 # ------------------------------------------------------------------ chapter 9
 
 [q_expanse_start]
-finn: The Blue Expanse. I haven't seen it in ten years. Take me fishing, kid. Ten fish.
+finn: The Blue Expanse. Ten years. Take me fishing, kid. Ten fish. I'll be quiet. I'm terrible at being quiet.
 
 [q_expanse_end]
-finn: Whale sharks and sunfish and marlins bigger than the boat. It's just like I remember.
+finn: Whale sharks. Sunfish. Marlins bigger than the boat.
+finn: I'm not asking you to forgive me. I just wanted to see it with you before you decide what I am.
 
 [q_worlds_start]
-hale: The World Championship. The best anglers alive, and Deepnet's champion. The prize: the sea rights of this coast.
-rex: Win it for all of us, Marsh.
+hale: The World Championship. The best anglers alive, and Deepnet's champion. The prize is the sea rights of this coast.
+hale: Whoever holds them decides what happens at the rig. I think you understand what that means better than I do.
+rex: Win it for the pier. For my dad. For everybody who stood on the boards that night and watched the lanterns go under.
 
 [q_worlds_end]
-hale: The winner of the World Championship, and the new holder of the coast's sea rights... Bramblewick's own Marsh!
-vera: This isn't...
-hale: The sea rights are no longer Deepnet's concern, Ms. Voss. Good day.
-rex: You did it! You actually did it!
+hale: The winner of the World Championship, and the new holder of this coast's sea rights... Bramblewick's own Marsh.
+vera: ...
+vera: Congratulations. Truly. Now the rig is yours to switch off, and the trench is yours to worry about.
+vera: I know what he told you. I won't pretend I'm innocent. I signed for the dumping. I ran the engine low for ten years because the nets paid for the patrols that kept people away from the shrine.
+vera: He was my teacher. He was the cleverest man I ever met. Don't let him fish for it.
+rex: You did it. You actually did it. Why does nobody look happy?
 
 [q_leviathan_start]
-finn: The Leviathan. I chased it for forty years. Squid bait, and fog. It only comes up in fog.
-finn: It's the oldest thing in the sea. It'll fight like the sea itself. Don't let go.
+finn: It's coming up. Every night a little higher. If nobody brings it to the surface and lets it go, it'll keep rising until it takes the harbor with it.
+finn: Squid bait. Fog. It only comes up in fog.
+finn: It's the oldest thing in the sea. It'll fight like the sea fights. Don't let go. And when you've got it... you decide. Not me.
 
 [q_leviathan_end]
-finn: ...You caught it.
-finn: Forty years. And my grandkid lands it on the first try.
-finn: Take my old rod's big sister. The Abyssal Rod. I built it for this day. Turns out it was your day, not mine.
+The line goes slack. The Leviathan lies at the surface beside the boat, longer than the harbor, older than the coast, and very tired.
+finn: ...You did it. Forty years.
+finn: It's yours. Everyone would believe you now. The biggest catch there will ever be.
+player: Let it go.
+You open the line. The Leviathan sinks back into the trench, slowly, like something going home. The bruise-colored sky clears in an hour.
+finn: Yeah. That's right. That's what I should have done ten years ago.
+finn: Take the rod. The Abyssal Rod. I built it for this. Turns out it was for letting go, not landing.
 
 [q_festival_start]
-pip: The festival stage. We're going to throw the biggest Harbor Festival Bramblewick has ever seen.
+pip: The festival stage. We're going to throw the biggest Harbor Festival this village has ever seen. Everyone's coming. Even the ones who said they wouldn't.
 
 [q_festival_end]
-The lanterns go up across the harbor. The aquarium glows. The whole village is singing.
-pip: Look at this place. Ten years ago I thought Bramblewick was finished.
-nora: The aquarium's full. People come from all over the coast to see it.
-gus: Record sales! Every fish in the market has your name on it.
-rex: Best angler on the planet. I can admit it now. Barely.
-finn: Proud of you, kid. The sea's yours now. Keep fishing.
-Thank you for playing. There's still plenty to find: every fish, every pearl, every collection. The sea never runs out.
+Lanterns go up all along the harbor. The aquarium is lit end to end. Somebody is playing an accordion badly and nobody minds.
+finn: Before anyone drinks anything. I have something to say. About the engine. About who built it.
+The pier goes quiet. Finn tells them all of it. It takes a long time. Nobody interrupts.
+pip: My brother was on the Gull that night. I've known you were alive for nine years, Finn. I carried your groceries to that cay every Thursday.
+pip: I'm not ready to forgive you. I might never be. But you're not leaving again. You're going to stand on this pier every morning and look at what it cost.
+nora: Mom's notebook said the sea was being pulled. She just didn't know by who.
+nora: I'm going to put her name on the Deep Tank. And yours next to the engine, in the museum. Not as a hero. As a warning. You should have to read it.
+rex: My dad came to the festival. First time in ten years. He asked who caught the Leviathan. I said nobody did. Somebody let it go.
+gus: Record sales. Not one boot.
+finn: Proud of you, kid. Not because you won. Because you knew when to let go of the line.
+The festival goes on until the lanterns burn down. The sea is quiet. It has things to think about, too.
+Thank you for playing. There is still more out there: every fish, every pearl, every collection, every friend. The sea never runs out.
 
 # ------------------------------------------------------------------ arrivals
 
@@ -562,203 +606,218 @@ Flags, stands and cheering crowds. The World Championship arena.
 # ------------------------------------------------------------------ chapter talks
 
 [pip_ch1]
-pip: Silas, eh? He's a strange one. Showed up on the cay right after the storm and never left.
+pip: Silas came to that cay the week after the storm and never left. I take him supplies on Thursdays. He doesn't say thank you. He doesn't have to.
 
 [pip_ch2]
-pip: The whole village is talking about the Cup. First time in ten years there's something to cheer for.
+pip: The whole village is talking about the Cup. First time in ten years they've talked about something that isn't money.
 
 [nora_ch2]
-nora: The reef fish are sick. I think Deepnet is dumping upstream. I just can't prove it yet.
+nora: The reef fish have lesions. Something upstream. I know what I think it is. Thinking isn't proof.
 
 [gus_ch2]
-gus: Tip from a pro: the market board shows what's in demand. Sell those, not your whole bag.
+gus: Professional tip: the market board shows what's wanted today. Sell those. Keep the rest. Patience is a price too.
 
 [marina_ch3]
-marina: Cargo hold's my favorite upgrade. More room, fewer trips. Trust me.
+marina: Cargo hold's my favorite upgrade. Nobody ever thanks a cargo hold. I thank it every day.
 
 [silas_ch3]
-silas: The Leviathan's in the old stories. The Four Tides, the Trench. Finn believed every word.
+silas: The Four Tides. The Trench. The Leviathan. Finn believed every word. Believing was never his problem.
 
 [hale_ch4]
-hale: Tournament tip, Marsh: heavy sinkers and big fish charms help. The weight is all that counts.
+hale: A tip, Marsh: only the weight counts in a tournament. Sinkers. Heavy bait. Patience. Not necessarily in that order.
 
 [tilly_ch4]
-tilly: The greenhouse used to feed half the village. If you ever fund it, I'll grow you anything.
+tilly: The greenhouse fed half the village once. Fund it and I'll grow you anything. Within reason. Mostly within reason.
 
 [vera_ch4]
-vera: Still here? Still fishing? How quaint. Deepnet can wait. Deepnet always wins in the end.
+vera: You've been to the Frost and the Ember. I keep records of who sails where. Stop before the shrine, {name}. That's not a threat. I'm asking.
 
 [luma_ch6]
-luma: When the storm light pulses red at the rig, the barometer spins. It's not natural.
+luma: When the rig light pulses, my barometer turns a full circle. Ten years ago it did that once. It's started again.
 
 [rex_ch8]
-rex: Grandpa's alive? Of course he's alive. Legends don't die, apparently. Lucky you.
+rex: Your grandpa's alive. My dad came back from that rig and never really came back. I don't know what to feel about that, so I'm choosing annoyed.
 
 [pip_ch9]
-pip: Finn's alive! The whole pier cried. Then we threw a party. Then we cried again.
+pip: I know you're angry with me. You're allowed. Just don't stop coming to the pier.
 
 [finn_ch10]
-finn: The sea's quiet now. No more storms from the rig. Just fish, and more fish. Let's go catch some.
+finn: The sea's quiet. The rig's dark. I go down to the pier every morning like Pip said. Some people nod. Some don't. Both are fair.
 
 # ------------------------------------------------------------------ small talk
 
 [pip_chat]
-pip: Tab opens every menu you've got. Skills, recipes, collections, the calendar. Handy, that.
-pip: The calendar (C) shows the festivals. The whole village turns out for the Gift Tide in winter.
-pip: You don't have to follow my errands, you know. Fish where you like. The sea opens up as you get better at things.
-pip: Energy runs low? Sleep before two for a full night's rest. My bed rule, and Finn's.
-pip: The restoration board in the square lists everything the village needs. Every project brings something back.
-pip: When you're far from home, you can pass out anywhere. But a bed is better. Rent one, or build a cabin on the boat.
-pip: Weather changes twice a day. Hover the icon next to the clock for tomorrow's forecast.
-pip: Rare fish in the bag? The aquarium might want them before Gus does.
+pip: Tab opens everything you carry. Bag, journal, recipes, skills. Finn never knew where anything was either.
+pip: The calendar, C, has the festivals on it. Everyone comes out for the Gift Tide in winter. Even me.
+pip: You don't have to do my errands. Fish where you like. The sea opens up as you get better at it.
+pip: Low on energy? Bed before two, and you'll wake up whole. Stay up past it and you won't.
+pip: The restoration board lists what the village needs. Every project brings something back. Friends can chip in too.
+pip: Far from home, you can sleep anywhere. A bed's better. Rent one, or build a cabin on the boat.
+pip: Weather turns twice a day. Hover the icon by the clock for tomorrow's forecast.
+pip: A rare fish in the bag? The aquarium might want it before Gus does. Ask Nora.
+pip: Too much in the bag? The bank in the square has a vault. That's what it's for.
+
+[wren_chat]
+wren: Sit anywhere. The stool by the window wobbles. That one is for people I don't like yet.
+wren: I sailed for twenty years before I bought this place. I came for the quiet. Bramblewick is not quiet.
+wren: Cards on Fridays, darts whenever someone is brave. Bring a friend. Losing alone is no fun to watch.
+wren: Grim tells a different Kraken story every night. I keep a list. We are at forty-one.
+wren: Coffee is free if you tell me something I didn't know about the sea. Nobody has managed it yet.
+
+[wren_chat_friend]
+wren: I had a boat once called the Second Chance. Sank her on the first trip. I still think it was a good name.
+wren: People tell a tavern keeper everything. I tell nobody anything. That's the job.
+wren: You're good for this place. Don't let that go to your head. Let it go to your feet. Keep coming in.
 
 [gus_chat]
-gus: I post three orders every morning. Deliver them and I pay way over market. Just ask!
-gus: Everything's got one fair price here. A bobber's a bobber. Better tackle costs more, simple as that.
-gus: Prices move every day. The market board on my Sell tab knows what's hot.
-gus: Shiny fish sell for three times more. Golden ones, eight! If you ever see one.
-gus: Giant fish weigh more than their kind usually can. Weight is money, friend.
-gus: Selling makes you better at selling. Trading skill, they call it. I call it talent.
-gus: Boots! Everyone brings me boots. Take them to the workbench, not me.
+gus: Three orders on the board every morning. Deliver them and I pay over market. I'm generous. Write that down.
+gus: One fair price for everything. A bobber's a bobber. Better tackle costs more. That's the whole philosophy.
+gus: Prices move every day. The market board knows. I just read it louder.
+gus: Shiny fish sell for three times as much. Golden ones, eight. I've seen two in my life and I cried both times.
+gus: Giant fish weigh more than their kind should. Weight is money.
+gus: Selling makes you better at selling. Trading skill. I've been training mine for thirty years and it's still not enough.
+gus: Bring me a boot and I'll scream. Not loudly. But I will.
 
 [nora_chat]
-nora: Every fishing ground has its rare catches. Your journal keeps a luck meter for each one. Keep fishing and it fills up.
-nora: Collections teach recipes. Check the collection case (L) to see what's next.
-nora: Your journal marks fish you haven't caught as silhouettes. Hover them for hints.
-nora: Every fish has a collection. Catch enough and you'll learn something new. Check your profile.
-nora: Sea creatures drop materials the workbench uses. Scales, teeth, ink.
-nora: The aquarium's tanks each ask for a set of fish. Fill them for coins and more.
+nora: Every fishing ground has its rare catches. The journal keeps a luck meter for each. It fills even when you're unlucky.
+nora: Collections teach recipes. The profile, K, shows what's next.
+nora: Fish you haven't caught show as shadows in the journal. Hover them for hints. Mom wrote most of those.
+nora: Sea creatures drop scales and teeth and ink. The workbench uses all of it. Nothing in the sea is wasted, except by people.
+nora: Each tank asks for a set of fish. Fill them, and the village notices.
 
 [tilly_chat]
-tilly: The Blossom Derby is at the end of spring. Petals everywhere, and the Derby fish come out to play!
-tilly: Sunflowers grow fast and sell well. Moonmelons take forever, but oh, they're worth it.
-tilly: Farming skill gives extra crops. Keep harvesting!
-tilly: Honey bait from my honey. The Emperor Koi in my pond goes wild for it, early in the morning.
-tilly: Crops don't need watering. I'm lazy and proud of it.
+tilly: The Blossom Derby is at the end of spring. Petals everywhere, and fish that only show up for it.
+tilly: Sunflowers grow fast and sell fine. Moonmelons take forever and are worth every day.
+tilly: Farming skill gets you bigger harvests. I've got a lot of farming skill. Look at my arms.
+tilly: Honey bait, from my hives. The Emperor Koi in my pond loses its mind for it in the early morning.
+tilly: My crops don't need watering. I'm lazy and I've made it everybody's problem.
 
 [silas_chat]
-silas: Rain makes them bite faster. Fog brings up the rare ones. Look up before you cast.
-silas: Crab pots fill while you sleep. Patience pays.
-silas: Mm. You cast like him. Too hard.
-silas: The best bait is the one the fish wants today. Ask the journal.
+silas: Rain makes them careless. Fog brings up the clever ones. Look up before you cast.
+silas: Crab pots fill while you sleep. The sea works night shifts.
+silas: You cast like him. Too hard. You'll learn.
+silas: The best bait is whatever the fish wants today. The journal knows. Read it.
+silas: ...Thursday. Pip's late. Pip is never late.
 
 [marina_chat]
-marina: There's an anvil next to the workbench. Reforge your rod, see what you get. Sometimes it's great. Sometimes it's Wide.
-marina: Carry a Tinker's Kit and you can use workbench recipes anywhere. I never leave port without mine.
-marina: Hull upgrades lower the energy every trip costs. Far seas need a strong hull.
-marina: Sonar makes fishing spots show up more and last longer. Game changer.
-marina: A winch hauls up more treasure. A lantern draws sea creatures at night.
-marina: Cabin on board means you can sleep anywhere at sea. No more passing out on deck.
+marina: There's an anvil next to the workbench. Reforge your rod and see what you get. Sometimes it's great. Sometimes it's Wide. Nobody wants Wide.
+marina: Carry a Tinker's Kit and you can use the bench's recipes anywhere. I sleep with mine.
+marina: A better hull spends less of you on every trip. Far seas want a strong one.
+marina: The sonar does more than find spots, you know. The good ones show you what's down there before you cast.
+marina: A winch hauls up more treasure. A lantern brings the creatures at night. Whether you want that is your business.
+marina: Cabin on board means you can sleep at sea. No more waking up on the deck with gulls on you.
 
 [rex_chat]
-rex: Hmph. Nice cast. For an amateur.
-rex: Tournaments are about weight, Marsh. Heavy fish. Think about your charms.
-rex: I used to fish with my dad every morning. Before Deepnet.
+rex: Nice cast. For somebody who learned last month.
+rex: Tournaments are weight, Marsh. Heavy fish. Heavy bait. Heavy everything.
+rex: I used to fish with my dad every morning. Before the rig.
+rex: My dad asked about you. He said you have Finn's way of standing. I said that's not a compliment anymore. He didn't laugh.
 
 [vera_chat]
 vera: Deepnet thanks you for your cooperation.
-vera: Everything has a price. Even villages.
-vera: Enjoy the view. It won't be yours for long.
+vera: Everything has a price. I've paid most of mine already.
+vera: The deep water is closed for a reason. I'm not the only one who knows it.
 
 [hale_chat]
-hale: Tournaments run Monday to Saturday. Results on Saturday at six.
+hale: Tournaments run Monday to Saturday. Results on Saturday at six. I'm always on time. I'm always early, in fact.
 hale: Win a league and you move up. Podiums earn tickets for the prize shop.
-hale: Only fish caught after you enter count. Rules are rules.
-hale: The World Championship is held at Champion Atoll. Very prestigious. Very far.
+hale: Only fish caught after you enter count. I don't make the rules. I did write them down, though.
+hale: The World Championship is at Champion Atoll. Very prestigious. Very far. Very windy.
 
 [bo_chat]
-bo: Pets get stronger the more fish you catch with them! Mine's level three! It's a rock.
-bo: You can only take one pet at a time. Press P to see them all.
-bo: The penguin on Frostpeak spots sea creatures. The frog makes fish bite faster!
+bo: Pets get stronger the more fish you catch with them! Mine's level three! It's a rock!
+bo: You can only take one pet at a time. P shows you all of them.
+bo: The penguin on Frostpeak spots sea creatures. The frog makes fish bite faster. The rock does nothing and I love it.
 
 [opal_chat]
-opal: Pearls glint in quiet corners. Under piers, behind rocks, at the ends of paths.
-opal: Every island hides a few. Sixty in all, they say.
-opal: Blessings last forever. Every five pearls, another one.
+opal: Pearls hide in quiet corners. Under piers, behind rocks, at the ends of paths nobody finishes.
+opal: Every island hides a few. Sixty, the songs say.
+opal: A blessing doesn't wear off. Every five pearls, another.
 
 [moss_chat]
 moss: My cauldron brews what the bench can't. Firefly bait, and worse. Heh.
-moss: Heh. The swamp remembers everything.
-moss: Firefly bait for the night hunters. Don't eat it.
-moss: Marsh rice grows in any soil if you believe hard enough. And plant it.
+moss: The swamp remembers everything. It's very rude about it.
+moss: Firefly bait for the night hunters. Don't eat it. Somebody always eats it.
+moss: Nothing sleeps forever. Only longer.
 
 [grim_chat]
-grim: Treasure comes up with the fish. The luckier you are, the richer the chest.
-grim: Arr. Sea creatures hit harder the further out you sail. Get your Hunting up.
-grim: A Leviathan's Hoard! I saw one once. In a dream.
-grim: Charms work from anywhere in your bag. Carry the good ones.
+grim: Treasure comes up with the fish. The luckier you are, the richer the chest. The richer the chest, the more I'll claim I taught you.
+grim: Arr. Creatures hit harder the further out you sail. Get your Hunting up, or get a bigger hat.
+grim: A Leviathan's Hoard! I saw one once. In a dream. It was beautiful. I woke up on a rope.
+grim: Charms go in your gear slots. The more charms you've ever found, the more magic you've got. That's not how magic should work, but there it is.
 
 [yuki_chat]
-yuki: Ice holes are like ponds. Cast right in.
-yuki: The cold makes the fish slow. And me.
-yuki: The aurora comes on clear nights. Everything glows then.
+yuki: Ice holes are just ponds. Cast right in.
+yuki: The cold makes the fish slow. Me too.
+yuki: The aurora comes on clear nights. Everything glows. You should be here for that once.
 
 [brann_chat]
 brann: Stones from the deep give rods better reforges. Lucky, Storm, Abyss. Brann has seen them all.
-brann: My forge makes the rods your little workbench can't.
+brann: Brann's forge makes the rods your little workbench can't.
 brann: Hmph.
 brann: Good steel doesn't melt. Good anglers don't either.
-brann: Obsidian from the volcanic creatures. Bring it and I'll forge.
+brann: Obsidian from the volcanic creatures. Bring it. Brann forges.
 
 [mara_chat]
-mara: A room is 300 coins, once. Sleep here any night after that, right next to the far seas.
-mara: Meals give energy and buffs. The better the cook, the longer they last.
+mara: A room is 300 coins, once. Sleep here any night after that, close to the far seas.
+mara: Meals give energy and buffs. Eat too many in a day and they stop doing much. Your stomach has opinions.
 mara: The hot spring has its own fish. The Salamander Koi comes out in the small hours.
 
 [luma_chat]
 luma: At the end of summer the stars fall. Walk the islands at night and you'll find them.
 luma: The lighthouse lamp could draw sea creatures again, if someone restored it.
-luma: I've watched these waters for thirty years. They were never this angry before the rig.
+luma: Thirty years of storm notes. They were never this angry before the rig.
 luma: Sailing skill makes every trip cheaper. The sea gets smaller as you learn it.
 
 [finn_chat]
-finn: Ha! Cast harder. No, softer. No, like that. Perfect.
-finn: The Leviathan's still down there, if you ever want a rematch.
-finn: You know what the best part of being alive is? Fishing with you.
+finn: Cast harder. No, softer. No. Yes. Like that. Exactly like that.
+finn: I go to the pier every morning. Pip makes me. Pip is right.
+finn: You know what the best part of being alive is? I'm still working that out. Fishing with you is near the top.
+finn: Vera writes to me. I write back. Neither of us says sorry. We're getting closer to it.
 
 # ------------------------------------------------------------------ logbook
 
 [logbook_1]
-finn: First day of the season. The bay is thick with mackerel. Silas says rain brings the shy ones out. He's usually right, the old goat.
+finn: First day of the season. The bay is thin. Thinner than last year, thinner than the year before. Silas says it's a bad cycle. I don't think it's a cycle.
 
 [logbook_2]
 finn: Built a crab pot today. Argued about bait for an hour. The pot caught more than I did. Don't tell anyone.
 
 [logbook_3]
-finn: Deepnet boats in the bay again. They dump something black where the fish breed. Nora's mother took samples. She's worried.
+finn: Vera ran the numbers again. If we can pull deep water up from the trench, just a little, the deep fish follow it, and the bay lives. She's the brightest student I've ever had. I've never had any others.
 
 [logbook_4]
-finn: Found a carving on Wreck Atoll: four fish around a great serpent. The Four Tides. The old stories were true.
+finn: Found a carving on Wreck Atoll: four fish around a great serpent. The Four Tides. The old stories say the serpent sleeps under the trench. The old stories say a lot of things.
 
 [logbook_5]
-finn: Ember, Frost, Storm and Moon. Each Tide has a guardian carrying a pearl. Four pearls on the shrine altar open the way to the Leviathan.
+finn: Ember, Frost, Storm and Moon. Each Tide has a guardian. Each guardian carries a pearl. Four pearls on the altar, and the way to the trench opens. Or closes. The carving could be read either way.
 
 [logbook_6]
-finn: The storms are wrong this year. Too sudden, too angry. Luma says her barometer goes mad whenever the rig lights up red.
+finn: Deepnet bought the Tide Engine. Bigger rig, bigger pumps. The fish came back. So did something else. At night the engine hums and something below hums back.
 
 [logbook_7]
-finn: Tonight I'm going to the rig. If they're making the storms, someone has to stop them. If I don't come back, tell the kid... (the rest is torn away)
+finn: Tonight I go to the rig to shut it down. I built it. I'm the one who has to. If I don't come back, tell the kid... (the rest is torn away)
 
 [logbook_8]
 finn: Saved every coin I could for the village fund. If the harbor ever needs it, Pip knows where the jar is. Under the loose plank. No, the other one.
 
 [logbook_9]
-finn: I am Silas now. Finn Marsh died in the storm. If Deepnet knew I lived, they'd come for the village. For the kid. So I wait on this cay, and I watch.
+finn: I put the pearls back in the guardians' mouths, one by one. It took a year. It'll sleep now. I am Silas now. Finn Marsh drowned with the fleet he sank.
 
 [logbook_10]
-finn: The Moonscale rises from the shrine basin at midnight, and only takes moonlight bait. Moonmelon and glowcap, Tilly's grandmother swore by it.
+finn: The Moonscale rises from the shrine basin at midnight, for moon bait. Moonmelon and glowcap. Tilly's grandmother swore by it. Tilly's grandmother swore by a lot of things.
 
 [logbook_11]
-finn: Brann forged my first hook. Forty years later it still holds. Tell him that. He'll pretend not to care.
+finn: Brann forged my first hook. Forty years later it still holds. Tell him that. He'll pretend not to care, and then he'll make you a better one.
 
 [logbook_12]
-finn: To whoever finds this: the sea gives back what it takes. Maybe not today. Keep fishing.
+finn: To whoever finds this: the sea gives back what it takes. But not everything you pull out of it should stay out. Keep fishing. Know when to let go.
 
 [rig_logs]
-Deepnet Rig, night of the Great Storm.
-Weather drill output at 400 percent. Deep fish rising as planned. Storm front forming over Bramblewick.
-Unauthorized boarding: F. Marsh. Shutdown forced. Explosion on the lower deck. Marsh presumed lost.
-Signed, V. Voss. Do not disclose.
+Deepnet Rig. Night of the Great Storm.
+Tide Engine output at 400 percent. Deep fish rising as projected. Unidentified mass rising beneath the intake. Storm front forming over Bramblewick.
+Unauthorized boarding: F. Marsh, original designer. Shutdown forced. Explosion on the lower deck. Marsh presumed lost.
+Engine to remain at low output indefinitely. Patrols to keep all vessels away from the Tidal Shrine. Signed, V. Voss. Do not disclose.
 
 # ------------------------------------------------------------------ festivals
 

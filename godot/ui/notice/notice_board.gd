@@ -22,6 +22,9 @@ class_name NoticeBoard
 
 var notices : Array[Dictionary] = []
 var banners : Array[Dictionary] = []
+# A hint that stays up until replaced (the first-fish tutorial).
+var coachText : PackedStringArray = PackedStringArray()
+var coachIcon : Texture2D
 #------------------------#
 
 
@@ -63,6 +66,11 @@ func post(title : String, text : String, color : Color, icon : Texture2D = null)
 func banner(title : String, text : String, color : Color, icon : Texture2D = null) -> void:
 	banners.append({"title": title, "text": text, "color": color, "icon": icon, "age": 0.0})
 	set_process(true)
+
+func coach(text : String, icon : Texture2D = null) -> void:
+	coachText = ui.wrap_lines(text, 150.0, ui.statSize) if not text.is_empty() else PackedStringArray()
+	coachIcon = icon
+	queue_redraw()
 
 func wrap_text(text : String, icon : Texture2D) -> PackedStringArray:
 	if text.is_empty():
@@ -147,6 +155,25 @@ func _draw() -> void:
 			draw_string(font, pen + Vector2(0.0, font.get_ascent(ui.statSize)), line, HORIZONTAL_ALIGNMENT_LEFT, area.end.x - pen.x - padding, ui.statSize, Color(ui.textColor.lerp(ui.dimColor, 0.25), alpha))
 			pen.y += ui.statSize + 1.0
 	draw_banner(font)
+	draw_coach(font)
+
+func draw_coach(font : Font) -> void:
+	if coachText.is_empty() or menu_open():
+		return
+	var width : float = 0.0
+	for line in coachText:
+		width = maxf(width, UiKit.text_width(font, line, ui.statSize))
+	var face : float = 12.0 if coachIcon else 0.0
+	var box : Rect2 = Rect2(0.0, 0.0, ceilf(width + face + 6.0), maxf(coachText.size() * (ui.statSize + 1.0) + 4.0, face + 2.0))
+	box.position = Vector2(floorf((size.x - box.size.x) * 0.5), size.y - box.size.y - 26.0)
+	draw_rect(box, Color(0.03, 0.06, 0.11, 0.85))
+	draw_rect(Rect2(box.position, Vector2(box.size.x, 1.0)), Cast.color_of("pip"))
+	if coachIcon:
+		draw_texture_rect(coachIcon, Rect2(box.position + Vector2(2.0, 1.0), Vector2(10.0, 10.0)), false)
+	var pen : Vector2 = box.position + Vector2(face + 3.0, 2.0)
+	for line in coachText:
+		draw_string(font, pen + Vector2(0.0, font.get_ascent(ui.statSize)), line, HORIZONTAL_ALIGNMENT_LEFT, -1, ui.statSize, ui.textColor)
+		pen.y += ui.statSize + 1.0
 
 func draw_banner(font : Font) -> void:
 	if banners.is_empty():

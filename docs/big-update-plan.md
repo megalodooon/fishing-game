@@ -88,7 +88,7 @@ and a local commit. Nothing is pushed until the last phase.
 
 ## Phase 7: Story (25-50 h; 100% in 100+ h)
 
-- [ ] New tutorial: Pip explains, then guides the first fish step by step.
+- [x] New tutorial: Pip explains, then guides the first fish step by step.
 - [ ] Rewrite every scene: distinct voices, emotional beats, hardships, a twist ending. Player is
       named, "they" in text. Story paced across the locations and skill gates.
 
