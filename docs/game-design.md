@@ -12,7 +12,7 @@ progression, and where to change it.
 | T | Tacklebox |
 | J | Journal |
 | R | Recipe book (in the bag or the book: R over an item shows every recipe that uses it) |
-| K | Skills, Angler Level and stats |
+| K | Skills, Angler Level, Tide Tree, achievements and stats |
 | O | Charm pouch |
 | L | Collections |
 | Q | Quests |
@@ -71,8 +71,37 @@ Everything else opens through play:
 
 ## The year
 
-Four seasons of one week each (28 days). Every week has a tournament (results Saturday 18:00) and a
-Sunday market; every season ends with its festival (the Gift Tide fills the whole winter week).
+Four seasons of two weeks each (56 days, `world/events/calendar.gd`). Each season has a one- or
+two-day festival in its middle (Blossom Derby, Starfall Night, Spooky Tide, Gift Tide). Happenings
+repeat all year: Oriel's Caravan every 6 days (rare, rotating stock), the Farming Contest on
+Tuesdays and the Fishing Derby on Wednesdays (medals pay Contest Ribbons), Meteor Night every 9
+days, the Spawning Run every 8, and Shark Frenzy for two days each season. Every week has the
+Saturday tournament, and the Sunday market and council vote. Every villager has a birthday. A
+happening only appears once the story has introduced it (`GameEvent.requiredFlag`). The calendar
+(C) shows a season at a time, each day's happenings, and what's coming up.
+
+## The final update (2026-10-01)
+
+| System | What it is | Where |
+|---|---|---|
+| Forage spots | 31 hand-placed spots (berry bushes, tide pools, driftwood, reeds, ember vents...) that regrow after 1-4 days; F to gather. Some need a foraging tool (Iron Sickle, Coral Knife, Tidecutter), which also adds yield and rare finds. | `world/forage/` |
+| Villagers | Daily schedules (they walk the island on a background-built path grid and go inside at night), friendship hearts (talk daily, two gifts a week, loved/liked/disliked/hated, birthdays x8), heart scenes at 2/4/6/8/10 hearts with gifts, friend discounts in their shops. | `world/npc/` |
+| Conversations | Portrait card with name and hearts, a side menu (Talk, Jobs, Shop, Service, Gift, Bye), a job board with offer and hand-in cards, a gift picker that remembers reactions. | `ui/dialogue/dialogue_ui.gd` |
+| Harbor Bank | Coin account with seasonal interest (capped so it never out-earns fishing) and an item vault with upgradeable pages. Barnaby, in the new Harbor screen. | `world/bank/` |
+| Trophy fishing | 13 trophy fish, one per fishing ground, each with a condition (dawn, fog, a perfect cast, a bait, grandpa's rod, during an event...). Bronze/silver/gold/diamond with luck meters; Odette's Trophy Lodge fillets them for Trophy Scales and has levels. | `world/trophy/` |
+| Sea hunts | Grim's hunters' board: five creature families with four tiers. Fill the meter, then the family's boss bites. Pays Sea Essence and trophy parts for hunt gear; hunt levels add fight damage. | `world/hunts/` |
+| Enchanting | The tide altar: 11 rod enchantments up to V for Sea Essence and coins, gated by Alchemy. | `fishing/enchanting/` |
+| Treasure digging | Dig maps (three tiers) and spades (three tiers): a trail of spots on an island with a HUD compass, ending in a chest. | `world/digging/` |
+| Museum | Nora's museum wing: donate rare catches, relics, gold trophies, hunt trophies and rare charms for points and milestone rewards. | `world/museum/` |
+| Tide Tree | A perk tree (16 nodes) grown with Tide Tokens from Angler Levels and the story. Skills menu, Tide Tree tab. | `player/tide_tree.gd` |
+| Achievements | 85 achievements with Steam API names (`ACH_<ID>`), passed to GodotSteam when it's there. Skills menu, Feats tab. | `world/achievements/` |
+| First-use intros | A short scene the first time each system is used, and hub tabs that stay hidden until they matter (Charms, Pets, Collections). | `story/features.gd` |
+
+Story additions (no chapter renumbering): forage and friendship lessons (chapter 0), the Harbor Bank
+and the first crew member (1), the museum and Odette's lodge (2), Finn's buried caches and the
+ledger that proves Deepnet bought the loans before the storm (3), the hunters' board and Vera's run
+for the council (4), Frostmaw (5), the tide altar (6), and Debt-Free (pay off the harbor) before the
+finale. Plus 38 friendship favors and 14 system quests.
 
 ## Menus and their looks
 

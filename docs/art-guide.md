@@ -58,6 +58,17 @@ Tips:
 | Crew contracts | `items/crew/icons/` | 16x16 | Item icon. Crew members show their product's icon on the board. |
 | Tiered charms | `items/charms/icons/<family>_<tier>.png` | 16x16 | Tier 1 charm, 2 ring, 3 artifact, 4 relic. |
 | Crew board, ballot box | `world/village/props/` | 20x22, 14x16 | Standing props in the village. |
+| Forage spots | `world/forage/art/<kind>.png` | 40x16 (two 20x16 frames) | Left frame full, right frame gathered. Stood on the spot's position. |
+| Foraging tools | `world/forage/icons/` | 16x16 | Item icon. |
+| Harbor buildings and props | `world/village/buildings/bank.png`, `trophy_lodge.png`, `world/village/props/hunt_board.png`, `tide_altar.png` | 44x34, 40x32, 20x22, 18x24 | Placed in `village.tscn` (Harbor room). |
+| Harbor ground | `world/village/land/harbor.png` | 192x108 | Same rules as the other village screens. |
+| Trophy fish | `world/trophy/icons/` (base), `items/trophy/icons/<fish>_<tier>.png` | 16x16 | The tier items are the base fish with a medal in the corner. |
+| Hunt bosses and parts | `world/hunts/art/`, `items/hunts/icons/` | creature size, 16x16 | Bosses are recolored, crowned creatures. |
+| Digging, essence, scales | `items/digging/icons/`, `items/enchanting/icons/`, `items/trophy/icons/` | 16x16 | Item icons. |
+| Event badges | `world/events/icons/` | 16x16 | Calendar, HUD and notices. |
+| Achievement trophies | `world/achievements/icons/` | 12x12 | bronze, silver, gold, locked. |
+| Conversation menu icons | `ui/dialogue/icons/` | 8x8 | Talk, jobs, shop, service, gift, bye. |
+| New villagers | `world/npcs/` and `world/portraits/` (oriel, barnaby, odette) | 12x20, 24x24 | Same as the others. |
 ## Adding new things
 
 - **A fish**: a `FishData` .tres (copy one in `fishing/fish/species/`) with its icon, then add it to
