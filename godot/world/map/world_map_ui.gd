@@ -10,7 +10,9 @@ class_name WorldMapUI
 # route runs from there to the facing side of the next one.
 # Locked places show what they still need and are unlocked from the same card.
 
-enum Zone { NONE, PLACE, CARD, ACTION, CLOSE, LEFT, RIGHT }
+enum Zone { NONE, PLACE, CARD, ACTION, ACTION2, CLOSE, LEFT, RIGHT }
+
+const GROUP : StringName = &"world_maps"
 
 #------------------------#
 @export var player : Player
@@ -88,6 +90,8 @@ var leftRect : Rect2
 var rightRect : Rect2
 var cardRect : Rect2
 var actionRect : Rect2
+# The card's second button (boarding a friend's boat).
+var action2Rect : Rect2
 var scroll : float = 0.0
 var scrollGoal : float = 0.0
 var selected : Location
@@ -119,8 +123,12 @@ var paper : MenuSkin = preload("res://ui/skins/themes/paper.tres")
 #------------------------#
 
 
+static func find(tree : SceneTree) -> WorldMapUI:
+	return tree.get_first_node_in_group(GROUP) as WorldMapUI
+
 func _ready() -> void:
 	super()
+	add_to_group(GROUP)
 	slide = Vector2.ZERO
 	set_anchors_preset(PRESET_TOP_LEFT)
 	atlas = player.atlas
@@ -254,8 +262,24 @@ func place_rect(location : Location) -> Rect2:
 
 func boat_position() -> Vector2:
 	if not trip.is_empty():
-		return along(trip.path, smoothstep(0.0, 1.0, tripDone) * trip.length)[0]
+		return along(trip.path, cruise(tripDone) * trip.length)[0]
 	return rest_point() if atlas.current else Vector2.ZERO
+
+func trip_fraction() -> float:
+	return tripDone
+
+# How far along the route the boat is at this share of the trip's time: it
+# speeds up over the first fifth, sails at an even speed, and slows down to
+# the berth over the last fifth.
+static func cruise(t : float) -> float:
+	const RAMP : float = 0.2
+	var top : float = 1.0 / (1.0 - RAMP)
+	t = clampf(t, 0.0, 1.0)
+	if t < RAMP:
+		return top * t * t / (2.0 * RAMP)
+	if t > 1.0 - RAMP:
+		return 1.0 - top * (1.0 - t) * (1.0 - t) / (2.0 * RAMP)
+	return top * (t - RAMP * 0.5)
 
 # A place's name under its icon, in chart pixels.
 func label_rect(location : Location) -> Rect2:
@@ -309,13 +333,32 @@ func route(to : Location) -> PackedVector2Array:
 	var center : Vector2 = here.mapPosition.round()
 	var start : float = (rest_toward() - center).angle()
 	var sweep : float = wrapf((to.mapPosition - center).angle() - start, -PI, PI)
-	var steps : int = ceili(absf(sweep) / (PI / 8.0))
-	var path : PackedVector2Array = PackedVector2Array([rest_point()])
+	var steps : int = ceili(absf(sweep) / (PI / 4.0))
+	var corners : PackedVector2Array = PackedVector2Array([rest_point()])
 	for i in range(1, steps + 1):
-		path.append(berth(here, center + Vector2.from_angle(start + sweep * i / steps) * 100.0))
-	path.append(berth(to, here.mapPosition))
+		corners.append(berth(here, center + Vector2.from_angle(start + sweep * i / steps) * 100.0))
+	corners.append(berth(to, here.mapPosition))
+	var path : PackedVector2Array = smooth(corners)
 	routes[to] = path
 	return path
+
+# A curve through the corners (Catmull-Rom), as points about a pixel apart, so
+# the boat glides around the island it leaves instead of turning sharply.
+static func smooth(corners : PackedVector2Array) -> PackedVector2Array:
+	if corners.size() < 3:
+		return corners
+	var out : PackedVector2Array = PackedVector2Array([corners[0]])
+	for i in corners.size() - 1:
+		var p0 : Vector2 = corners[maxi(i - 1, 0)]
+		var p1 : Vector2 = corners[i]
+		var p2 : Vector2 = corners[i + 1]
+		var p3 : Vector2 = corners[mini(i + 2, corners.size() - 1)]
+		var steps : int = maxi(ceili(p1.distance_to(p2)), 1)
+		for j in range(1, steps + 1):
+			var t : float = float(j) / steps
+			var t2 : float = t * t
+			out.append(0.5 * ((2.0 * p1) + (p2 - p0) * t + (2.0 * p0 - 5.0 * p1 + 4.0 * p2 - p3) * t2 + (3.0 * p1 - p0 - 3.0 * p2 + p3) * t2 * t))
+	return out
 
 static func path_length(path : PackedVector2Array) -> float:
 	var length : float = 0.0
@@ -434,7 +477,7 @@ func hover_at(point : Vector2) -> void:
 	if closeRect.has_point(point):
 		zone = Zone.CLOSE
 	elif selected and cardRect.has_point(point):
-		zone = Zone.ACTION if actionRect.has_point(point) else Zone.CARD
+		zone = Zone.ACTION if actionRect.has_point(point) else (Zone.ACTION2 if action2Rect.has_point(point) else Zone.CARD)
 	elif scrollGoal > 0.0 and leftRect.has_point(point):
 		zone = Zone.LEFT
 	elif scrollGoal < max_scroll() and rightRect.has_point(point):
@@ -458,6 +501,12 @@ func click() -> void:
 			scrollGoal = clampf(scrollGoal + viewRect.size.x * 0.5, 0.0, max_scroll())
 		Zone.ACTION:
 			act()
+		Zone.ACTION2:
+			if card.get("enabled2", false):
+				var session : NetSession = NetSession.find(get_tree())
+				if session:
+					session.ask_to_board(card.friend)
+					update_card()
 		Zone.PLACE:
 			select(null if hovered == selected else hovered)
 		Zone.NONE:
@@ -471,6 +520,11 @@ func select(location : Location) -> void:
 func act() -> void:
 	if not selected or not card.get("enabled", false):
 		return
+	var session : NetSession = NetSession.find(get_tree())
+	if selected == atlas.current and session and session.boardedOn > 0:
+		session.unboard()
+		update_card()
+		return
 	if atlas.is_unlocked(selected):
 		sail(selected)
 	elif atlas.unlock(selected, player.journal, player.wallet, player.progress):
@@ -480,7 +534,17 @@ func act() -> void:
 func too_late(hours : float) -> bool:
 	return sleep != null and sleep.awake_hours(cycle.time) + hours >= sleep.awake_hours(sleep.passOutHour)
 
+# Sails straight off to a place, like when a friend said yes to boarding.
+func sail_to(to : Location) -> void:
+	if not shown:
+		try_open()
+	if shown and trip.is_empty():
+		sail(to)
+
 func sail(to : Location) -> void:
+	var session : NetSession = NetSession.find(get_tree())
+	if session and session.boardedOn > 0:
+		session.unboard()
 	var path : PackedVector2Array = route(to)
 	var length : float = path_length(path)
 	trip = {
@@ -502,10 +566,12 @@ func advance_trip(delta : float) -> void:
 	var before : float = tripDone
 	tripDone = minf(tripDone + delta / trip.seconds, 1.0)
 	var part : float = tripDone - before
-	cycle.advance(trip.hours * part)
+	# With a friend the clock is shared, so trips don't skip it.
+	if not Net.has_company():
+		cycle.advance(trip.hours * part)
 	if trip.energy > 0.0:
 		player.energy.spend(trip.energy * part)
-	var at : Array[Vector2] = along(trip.path, smoothstep(0.0, 1.0, tripDone) * trip.length)
+	var at : Array[Vector2] = along(trip.path, cruise(tripDone) * trip.length)
 	turn(at[1])
 	scrollGoal = clampf(at[0].x - viewRect.size.x * 0.5, 0.0, max_scroll())
 	if tripDone >= 1.0:
@@ -544,14 +610,22 @@ func card_info(location : Location) -> Dictionary:
 	var rows : Array = []
 	var action : String = ""
 	var enabled : bool = false
+	var session : NetSession = NetSession.find(get_tree())
+	var friends : Array = friends_at(location)
 	if location == atlas.current:
 		action = "You are here"
+		if session and session.boardedOn > 0:
+			action = "Leave %s's boat" % Net.name_of(session.boardedOn)
+			enabled = true
 	elif atlas.is_unlocked(location):
 		var energy : float = atlas.energy_cost(location)
 		var hours : float = atlas.travel_hours(location)
 		rows.append(["Energy", "Free" if energy <= 0.0 else "%d" % energy, goodColor if energy <= 0.0 else ui.textColor])
-		rows.append(["Time", hours_text(hours), ui.textColor])
-		rows.append(["Arrive", clock_text(cycle.time + hours), ui.textColor])
+		if Net.has_company():
+			rows.append(["Time", "Shared clock", ui.dimColor])
+		else:
+			rows.append(["Time", hours_text(hours), ui.textColor])
+			rows.append(["Arrive", clock_text(cycle.time + hours), ui.textColor])
 		if player.energy.value < energy:
 			action = "Too tired"
 		elif too_late(hours):
@@ -566,7 +640,29 @@ func card_info(location : Location) -> Dictionary:
 			rows.append(["Cost", "%d" % location.coinCost, ui.textColor if player.wallet.can_afford(location.coinCost) else ui.blockedColor])
 		action = "Unlock"
 		enabled = atlas.can_unlock(location, player.journal, player.wallet, player.progress)
-	return {"rows": rows, "action": action, "enabled": enabled}
+	# Friends here, and a button to ask to ride on their boat.
+	var action2 : String = ""
+	var enabled2 : bool = false
+	for id in friends:
+		rows.append(["Here", Net.name_of(id), Color(0.55, 0.78, 1.0)])
+	if session and not location.is_island() and atlas.is_unlocked(location) and not friends.is_empty():
+		var friend : int = friends[0]
+		var state : Dictionary = session.states.get(friend, {})
+		if session.boardedOn != friend and state.get("board", 0) == 0 and state.get("at", "") == location.scene:
+			action2 = "Board"
+			enabled2 = session.boardAsked == 0 and session.boardedOn == 0
+	return {"rows": rows, "action": action, "enabled": enabled, "action2": action2, "enabled2": enabled2, "friend": friends[0] if not friends.is_empty() else 0}
+
+# Other players at this place (not out sailing), by peer id.
+func friends_at(location : Location) -> Array:
+	var session : NetSession = NetSession.find(get_tree())
+	var list : Array = []
+	if session and location:
+		for id in session.states:
+			var state : Dictionary = session.states[id]
+			if state.get("loc", "") == location.resource_path and not state.has("trip"):
+				list.append(id)
+	return list
 
 func description_lines(location : Location) -> PackedStringArray:
 	if not wrapped.has(location):
@@ -580,6 +676,7 @@ func update_card() -> void:
 		card = {}
 		cardRect = Rect2()
 		actionRect = Rect2()
+		action2Rect = Rect2()
 		return
 	card = card_info(selected)
 	var lines : int = description_lines(selected).size() + card.rows.size()
@@ -595,6 +692,10 @@ func update_card() -> void:
 		cardRect = card_spot(icon, boat, extent)
 	var width : float = ui.font.get_string_size(card.action, HORIZONTAL_ALIGNMENT_LEFT, -1, ui.statSize).x + 8.0
 	actionRect = Rect2((cardRect.end - Vector2(width + cardPadding, actionHeight + cardPadding)).round(), Vector2(roundf(width), actionHeight))
+	action2Rect = Rect2()
+	if not String(card.get("action2", "")).is_empty():
+		var width2 : float = roundf(ui.font.get_string_size(card.action2, HORIZONTAL_ALIGNMENT_LEFT, -1, ui.statSize).x + 8.0)
+		action2Rect = Rect2(actionRect.position - Vector2(width2 + 2.0, 0.0), Vector2(width2, actionHeight))
 
 func card_spot(icon : Rect2, boat : Rect2, extent : Vector2) -> Rect2:
 	var dots : PackedVector2Array = PackedVector2Array()
@@ -636,6 +737,7 @@ func draw_chart() -> void:
 	order.sort_custom(func(a : Location, b : Location) -> bool: return a.mapPosition.y < b.mapPosition.y)
 	for location in order:
 		draw_place(location, origin)
+	draw_friends(origin)
 	draw_boat(origin + boat_position())
 
 # A dotted line marching from the boat to where it's headed, or would go,
@@ -645,7 +747,7 @@ func draw_route(origin : Vector2) -> void:
 	var sailed : float = 0.0
 	if not trip.is_empty():
 		path = trip.path
-		sailed = smoothstep(0.0, 1.0, tripDone) * trip.length
+		sailed = cruise(tripDone) * trip.length
 	else:
 		var target : Location = hovered if hovered else selected
 		if not target or target == atlas.current or not atlas.is_unlocked(target):
@@ -654,15 +756,67 @@ func draw_route(origin : Vector2) -> void:
 	var length : float = path_length(path)
 	if length - sailed < 3.0:
 		return
-	var step : float = 4.0
-	var at : float = sailed + 5.0 + step - fmod(time * 8.0, step)
-	while at < length - 3.0:
-		chart.draw_rect(Rect2((origin + along(path, at)[0]).floor(), Vector2.ONE), routeColor)
-		at += step
-	var end : Vector2 = (origin + path[path.size() - 1]).floor()
-	var pulse : Color = Color(routeColor, routeColor.a * (0.55 + 0.45 * sin(time * 5.0)))
-	for offset in [Vector2(-1.0, 0.0), Vector2(1.0, 0.0), Vector2(0.0, -1.0), Vector2(0.0, 1.0)]:
-		chart.draw_rect(Rect2(end + offset, Vector2.ONE), pulse)
+	# Dashes with a dark edge so the way reads on any water, marching toward
+	# where the boat is headed.
+	var shadow : Color = Color(ui.frameColor, 0.75)
+	var dash : float = 3.0
+	var gap : float = 2.0
+	var at : float = sailed + 6.0 - fmod(time * 6.0, dash + gap)
+	var pixels : Array[Vector2] = []
+	while at < length - 4.0:
+		var run : float = 0.0
+		while run < dash and at + run < length - 4.0:
+			if at + run > sailed + 5.0:
+				pixels.append((origin + along(path, at + run)[0]).floor())
+			run += 1.0
+		at += dash + gap
+	for pixel in pixels:
+		chart.draw_rect(Rect2(pixel - Vector2.ONE * 0.5, Vector2(2.0, 2.0)), shadow)
+	for pixel in pixels:
+		chart.draw_rect(Rect2(pixel, Vector2.ONE), routeColor)
+	# A ring where it ends, beating gently.
+	var end : Vector2 = (origin + path[path.size() - 1]).floor() + Vector2(0.5, 0.5)
+	var beat : float = 2.5 + sin(time * 4.0) * 0.6
+	chart.draw_arc(end, beat + 0.6, 0.0, TAU, 16, shadow, 1.4)
+	chart.draw_arc(end, beat, 0.0, TAU, 16, routeColor, 0.8)
+
+# The other players' boats, pale, with their names: waiting at their place,
+# or along their way when they're sailing.
+func draw_friends(origin : Vector2) -> void:
+	var session : NetSession = NetSession.find(get_tree())
+	if not session:
+		return
+	var font : Font = ui.font
+	for id in session.states:
+		var state : Dictionary = session.states[id]
+		var at : Vector2
+		var trip_of : Variant = state.get("trip")
+		if trip_of is Array and (trip_of as Array).size() == 3:
+			var from : Location = load_location(trip_of[0])
+			var to : Location = load_location(trip_of[1])
+			if not from or not to:
+				continue
+			at = berth(from, to.mapPosition).lerp(berth(to, from.mapPosition), cruise(trip_of[2]))
+		else:
+			var here : Location = load_location(state.get("loc", ""))
+			if not here:
+				continue
+			# Beside the place, on the other side from where this player waits.
+			at = berth(here, here.mapPosition + (here.mapPosition - rest_toward() if here == atlas.current else Vector2(-20.0, 6.0)))
+		at = (origin + at).round()
+		var bob : float = sin(time * 2.2 + id) * 0.5
+		chart.draw_set_transform(at + Vector2(0.0, bob), 0.0, Vector2(-1.0, 1.0))
+		if playerIcon:
+			chart.draw_texture(playerIcon, Vector2(-playerIcon.get_width() * 0.5 - 1.0, -playerIcon.get_height()), RemotePlayer.GUEST_TINT)
+		if boatIcon:
+			chart.draw_texture(boatIcon, -Vector2(boatIcon.get_width() * 0.5, 2.0), Color(0.85, 0.85, 0.9))
+		chart.draw_set_transform(Vector2.ZERO)
+		var tag : Vector2 = at + Vector2(-30.0, -9.0)
+		chart.draw_string_outline(font, tag, Net.name_of(id), HORIZONTAL_ALIGNMENT_CENTER, 60.0, 3, 1, ui.frameColor)
+		chart.draw_string(font, tag, Net.name_of(id), HORIZONTAL_ALIGNMENT_CENTER, 60.0, 3, RemotePlayer.NAME_COLOR)
+
+func load_location(path : String) -> Location:
+	return load(path) as Location if not path.is_empty() and ResourceLoader.exists(path) else null
 
 func draw_place(location : Location, origin : Vector2) -> void:
 	var center : Vector2 = (origin + location.mapPosition).round()
@@ -707,6 +861,10 @@ func draw_boat(at : Vector2) -> void:
 	if boatIcon:
 		chart.draw_texture(boatIcon, -Vector2(boatIcon.get_width() * 0.5, 2.0))
 	chart.draw_set_transform(Vector2.ZERO)
+	# A small gold marker over this player's own boat.
+	var pin : Vector2 = (at + Vector2(0.0, -11.0 + sin(time * 3.0) * 0.8)).round()
+	chart.draw_colored_polygon(PackedVector2Array([pin + Vector2(-2.5, -2.0), pin + Vector2(2.5, -2.0), pin + Vector2(0.0, 1.0)]), ui.frameColor)
+	chart.draw_colored_polygon(PackedVector2Array([pin + Vector2(-1.5, -1.5), pin + Vector2(1.5, -1.5), pin + Vector2(0.0, 0.3)]), ui.selectedColor)
 
 func draw_overlay() -> void:
 	draw_bar()
@@ -805,6 +963,8 @@ func draw_card() -> void:
 		pen.y += ui.statSize + 1.0
 	var enabled : bool = card.enabled
 	UiKit.button(overlay, font, paper, actionRect, card.action, ui.statSize, enabled, zone == Zone.ACTION, pressedAt != null and zone == Zone.ACTION)
+	if action2Rect.has_area():
+		UiKit.button(overlay, font, paper, action2Rect, card.action2, ui.statSize, card.enabled2, zone == Zone.ACTION2, pressedAt != null and zone == Zone.ACTION2)
 	if selected.coinCost > 0 and not atlas.is_unlocked(selected) and coinIcon:
 		overlay.draw_texture(coinIcon, Vector2(actionRect.position.x - coinIcon.get_width() - 2.0, actionRect.get_center().y - coinIcon.get_height() * 0.5).round())
 

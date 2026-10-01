@@ -18,6 +18,13 @@ const PALETTES : Dictionary = {
 	&"ghost": [Color(0.95, 0.97, 1.0), Color(0.8, 0.85, 1.0, 0.3), Color(0.16, 0.18, 0.25), Color(0.08, 0.09, 0.13), Color(0.9, 0.9, 1.0, 0.35)],
 }
 
+# Co-op fights (multiplayer): the other player can join, each in their own
+# copy of the fight, wearing down one shared foe. Every hit this player lands
+# is told with dealt(), the other player's hits come in through take_damage(),
+# and the health left is kept the same in both.
+@warning_ignore("unused_signal")
+signal dealt(amount : float)
+
 #------------------------#
 @export_group("Lure")
 @export var lureSpeed : float = 170.0
@@ -75,6 +82,20 @@ func take_hit() -> bool:
 		finish(false)
 	return true
 
+# The share of the foe still to go, from 1 at the start to 0 when it's beaten.
+func health_left() -> float:
+	return 1.0
+
+func set_health_left(_share : float) -> void:
+	pass
+
+func take_damage(_amount : float) -> void:
+	pass
+
+# A second fighter joined: the foe gets this much tougher.
+func grow_health(_factor : float) -> void:
+	pass
+
 func shaken() -> Vector2:
 	return Vector2(sin(time * 90.0), cos(time * 77.0)) * shake * 3.0
 
@@ -111,14 +132,27 @@ const ORB_PIXELS : int = 64
 const ORB_GLOW : float = 0.8
 static var orbs : Dictionary = {}
 
+# Bullet sizes the fights use, baked for every style behind the loading screen
+# (building one takes a frame's worth of time, which showed as a hitch when a
+# fight started).
+const ORB_RADII : PackedFloat32Array = [1.3, 1.4]
+
+static func prebake() -> void:
+	for each in PALETTES:
+		for radius in ORB_RADII:
+			bake_orb(each, radius)
+
 func orb_texture(radius : float) -> Texture2D:
-	var key : String = "%s/%s" % [style, radius]
+	return bake_orb(style if PALETTES.has(style) else &"", radius)
+
+static func bake_orb(palette : StringName, radius : float) -> Texture2D:
+	var key : String = "%s/%s" % [palette, radius]
 	if orbs.has(key):
 		return orbs[key]
 	var image : Image = Image.create_empty(ORB_PIXELS, ORB_PIXELS, false, Image.FORMAT_RGBA8)
 	var outer : float = radius + ORB_GLOW
-	var glow : Color = colors[1]
-	var core : Color = colors[0]
+	var glow : Color = PALETTES[palette][1]
+	var core : Color = PALETTES[palette][0]
 	for y in ORB_PIXELS:
 		for x in ORB_PIXELS:
 			var d : float = (Vector2(x + 0.5, y + 0.5) - Vector2.ONE * ORB_PIXELS * 0.5).length() / (ORB_PIXELS * 0.5) * outer

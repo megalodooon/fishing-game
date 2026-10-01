@@ -78,6 +78,9 @@ func warm_up() -> void:
 		load(Hunts.FAMILIES[id][2])
 		load(Hunts.FAMILIES[id][3])
 	Dialogue.load_all()
+	BossMinigame.prebake()
+	for fight in ["res://fishing/minigames/boss_duel/boss_duel.tscn", "res://fishing/minigames/bullet_hell/bullet_hell.tscn"]:
+		(load(fight) as PackedScene).instantiate().free()
 	warmLayer = CanvasLayer.new()
 	warmLayer.layer = 99
 	get_tree().root.add_child(warmLayer)

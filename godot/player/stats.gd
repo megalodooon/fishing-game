@@ -36,7 +36,7 @@ const INFO : Dictionary = {
 	&"digLuck": ["Dig luck", "%"],
 }
 # What every player starts with.
-const BASE : Dictionary = {&"treasure": 1.5, &"hearts": 3.0, &"seaCreature": 5.0}
+const BASE : Dictionary = {&"treasure": 1.5, &"hearts": 1.0, &"seaCreature": 5.0}
 
 
 static func multiplies(stat : StringName) -> bool:

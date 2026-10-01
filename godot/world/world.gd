@@ -46,6 +46,9 @@ func arrive(location : Location) -> void:
 	player.atlas.arrive(location)
 	load_place(location)
 	count_visit()
+	var session : NetSession = NetSession.find(get_tree())
+	if session:
+		session.arrived(location)
 
 # Counts being here for quests that ask to sail here, also for ones taken (or
 # loaded) while already here.

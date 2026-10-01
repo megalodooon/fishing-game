@@ -25,6 +25,7 @@ var timer : float = 0.0
 var sizeScale : float = 1.0
 var lifetimeScale : float = 1.0
 var wasDocked : bool = false
+var session : NetSession
 #------------------------#
 
 
@@ -49,6 +50,11 @@ func _process(delta : float) -> void:
 	if boat.docked != wasDocked:
 		wasDocked = boat.docked
 		timer = randf_range(dockedDelay.x, dockedDelay.y) if boat.docked else randf_range(spawnDelay.x, spawnDelay.y)
+	# With a friend around, one game makes the spots and sends them over.
+	if not session:
+		session = NetSession.find(get_tree())
+	if session and not session.spawns_spots():
+		return
 	if boat.docked:
 		timer -= delta * pace
 		if timer <= 0.0:
@@ -84,9 +90,27 @@ func spawn(screen : Rect2) -> FishingSpot:
 		if spaced(point):
 			add_child(spot)
 			spot.global_position = point
+			shared(spot)
 			return spot
 	spot.free()
 	return null
+
+func shared(spot : FishingSpot) -> void:
+	if session:
+		session.share_spot(spot)
+
+# A spot the other player's game made (see NetSession.share_spot).
+func add_shared(point : Vector2, life : float, biome : Biome) -> void:
+	var spot : FishingSpot = new_spot()
+	if biome:
+		spot.biome = biome
+	add_child(spot)
+	spot.global_position = point
+	spot.life = life
+
+func clear_spots() -> void:
+	for spot in get_children():
+		spot.queue_free()
 
 # Somewhere in open water on screen (islands have sea in several rooms),
 # clear of the land and the hull.
@@ -102,6 +126,7 @@ func spawn_docked(screen : Rect2) -> FishingSpot:
 		if spaced(point) and open_water(point, reach, spot.squash, island):
 			add_child(spot)
 			spot.global_position = point
+			shared(spot)
 			return spot
 	spot.free()
 	return null

@@ -20,6 +20,11 @@ const DATA_RATE : float = 30.0
 const CLOCK_SLACK : float = 0.02
 # A shared quest's coins are split between the players.
 const QUEST_COIN_SHARE : float = 0.5
+# Every message this listens to, each handled by on_<kind>.
+const MESSAGES : Array[StringName] = [&"pose", &"clock", &"world", &"world_all", &"scene", &"quest", &"say", &"sleep", &"night", &"toast", &"board_ask", &"board_reply", &"boarded", &"carry", &"spot", &"fight", &"fight_join", &"fight_hit", &"fight_state", &"fight_end"]
+# Seconds to jump into a friend's fight, and how much tougher a foe gets with two.
+const FIGHT_INVITE : float = 6.0
+const COOP_HEALTH : float = 1.6
 
 #------------------------#
 var player : Player
@@ -41,11 +46,28 @@ var asleep : Dictionary = {}
 var nightReady : bool = false
 # The peer whose boat this player rides, 0 for their own.
 var boardedOn : int = 0
+# Asked to board this peer's boat and waiting for the answer.
+var boardAsked : int = 0
+# They said yes, but they're somewhere else: board once there.
+var boardOnArrival : int = 0
+# Someone asking to board this player's boat, and how long the question stays.
+var boardRequest : int = 0
+var boardRequestTime : float = 0.0
+# Co-op fights: the one this player started, the one they joined, and an
+# offer to join a friend's.
+var fight : Dictionary = {}
+var helping : Dictionary = {}
+var invite : Dictionary = {}
 #------------------------#
 
 
 static func find(tree : SceneTree) -> NetSession:
 	return tree.get_first_node_in_group(GROUP) as NetSession
+
+# Riding on another player's boat.
+static func riding(tree : SceneTree) -> bool:
+	var session : NetSession = find(tree)
+	return session != null and session.boardedOn > 0
 
 func setup(into : World) -> void:
 	world = into
@@ -62,24 +84,14 @@ func _ready() -> void:
 	player.fish_caught.connect(on_caught)
 	Net.peer_joined.connect(on_joined)
 	Net.peer_left.connect(on_left)
-	Net.on(&"pose", on_pose)
-	Net.on(&"clock", on_clock)
-	Net.on(&"world", on_world)
-	Net.on(&"world_all", on_world_all)
-	Net.on(&"scene", on_scene)
-	Net.on(&"quest", on_quest)
-	Net.on(&"say", on_say)
-	Net.on(&"sleep", on_sleep)
-	Net.on(&"night", on_night)
-	Net.on(&"toast", on_toast)
+	for kind in MESSAGES:
+		Net.on(kind, Callable(self, "on_" + kind))
 	worldKnown = world_snapshot()
 	Net.say_ready.call_deferred()
 
 func _exit_tree() -> void:
-	for kind : StringName in [&"pose", &"clock", &"world", &"world_all", &"scene", &"quest", &"say", &"sleep", &"night", &"toast"]:
-		for handler : Callable in Net.handlers.get(kind, []).duplicate():
-			if handler.get_object() == self:
-				Net.off(kind, handler)
+	for kind in MESSAGES:
+		Net.off(kind, Callable(self, "on_" + kind))
 
 func online() -> bool:
 	return Net.has_company()
@@ -112,7 +124,29 @@ func _process(delta : float) -> void:
 		worldTimer = WORLD_RATE
 		worldDirty = false
 		send_world()
+	if boardRequest > 0:
+		boardRequestTime -= delta
+		if boardRequestTime <= 0.0:
+			answer_board(false)
+	if boardedOn > 0 and not Net.names.has(boardedOn):
+		unboard()
+	steer_boat(delta)
+	update_fight(delta)
+	if not invite.is_empty():
+		invite.time -= delta
+		if invite.time <= 0.0:
+			invite = {}
 	update_remotes()
+
+func _unhandled_key_input(event : InputEvent) -> void:
+	var key : InputEventKey = event as InputEventKey
+	if not invite.is_empty() and key and key.pressed and not key.echo and key.keycode == KEY_J:
+		join_fight()
+		get_viewport().set_input_as_handled()
+		return
+	if boardRequest > 0 and key and key.pressed and not key.echo and key.keycode in [KEY_Y, KEY_N]:
+		answer_board(key.keycode == KEY_Y)
+		get_viewport().set_input_as_handled()
 
 #------------------------# Where everyone is
 
@@ -143,7 +177,11 @@ func capture_pose() -> Dictionary:
 		"board": boardedOn,
 		"speed": world.boat.speed if world and world.boat else 0.0,
 		"asleep": player.asleep,
+		"loc": player.atlas.current.resource_path if player.atlas.current else "",
 	}
+	var map : WorldMapUI = WorldMapUI.find(get_tree())
+	if map and not map.trip.is_empty():
+		data["trip"] = [player.atlas.current.resource_path if player.atlas.current else "", (map.trip.to as Location).resource_path, map.trip_fraction()]
 	var rod : FishingRod = player.heldItem as FishingRod
 	if rod and rod.mode != FishingRod.Mode.HOLD and not rod.points.is_empty():
 		data["tip"] = rod.to_global(rod.tip_local())
@@ -221,7 +259,7 @@ func on_left(id : int, who : String) -> void:
 	drop_remote(id)
 	asleep.erase(id)
 	if boardedOn == id:
-		boardedOn = 0
+		unboard(true)
 	toast("%s left" % who, "Their progress is kept in this world's save.", Color(0.98, 0.85, 0.4))
 	if Net.is_host():
 		check_night()
@@ -410,6 +448,254 @@ func toast(title : String, text : String, color : Color) -> void:
 	var board : NoticeBoard = NoticeBoard.find(get_tree())
 	if board:
 		board.post(title, text, color)
+
+#------------------------# Boarding
+
+# Asking to ride along on another player's boat. They get a prompt; once
+# they say yes, this player sails to them if needed and steps aboard. While
+# aboard, the owner steers: the boat here moves at their speed, their
+# fishing spots come over, and when they sail somewhere this player is
+# carried along (until they dock at an island).
+
+func ask_to_board(id : int) -> void:
+	boardAsked = id
+	Net.send(&"board_ask", null, id)
+	toast("Asked to board", "Waiting for %s to say yes..." % Net.name_of(id), Color(0.55, 0.78, 1.0))
+
+func on_board_ask(from : int, _data : Variant) -> void:
+	if not at_sea() or boardedOn > 0:
+		Net.send(&"board_reply", {"ok": false, "why": "%s isn't out at sea on their own boat." % Net.myName}, from)
+		return
+	boardRequest = from
+	boardRequestTime = 15.0
+	toast("%s wants to come aboard" % Net.name_of(from), "Press Y to let them on, N to say no.", Color(0.55, 0.78, 1.0))
+
+func answer_board(yes : bool) -> void:
+	if boardRequest <= 0:
+		return
+	Net.send(&"board_reply", {"ok": yes and at_sea(), "location": SaveGame.encode(player.atlas.current), "at": place_key(), "why": "%s said no." % Net.myName}, boardRequest)
+	boardRequest = 0
+
+func on_board_reply(from : int, data : Variant) -> void:
+	if boardAsked != from or not data is Dictionary:
+		return
+	boardAsked = 0
+	if not data.get("ok", false):
+		toast("Can't board", str(data.get("why", "")), Color(0.98, 0.85, 0.4))
+		return
+	var location : Location = SaveGame.decode(data.get("location")) as Location
+	if location and location != player.atlas.current:
+		# Sail over first; boarding happens on arrival.
+		boardOnArrival = from
+		var map : WorldMapUI = WorldMapUI.find(get_tree())
+		if map:
+			map.sail_to(location)
+		return
+	board(from)
+
+func board(owner : int) -> void:
+	boardedOn = owner
+	boardOnArrival = 0
+	world.spawner.clear_spots()
+	player.global_position = world.boat.global_position + world.boardOffset + Vector2(10.0, 0.0)
+	Net.send(&"boarded", true, owner)
+	toast("Aboard!", "You're on %s's boat. They steer; open the sea chart to leave." % Net.name_of(owner), Color(0.56, 0.93, 0.44))
+
+func unboard(quiet : bool = false) -> void:
+	if boardedOn <= 0:
+		return
+	var owner : int = boardedOn
+	boardedOn = 0
+	world.spawner.clear_spots()
+	if Net.names.has(owner):
+		Net.send(&"boarded", false, owner)
+	if not quiet:
+		toast("Back on your own boat", "", Color(0.55, 0.78, 1.0))
+
+func on_boarded(from : int, data : Variant) -> void:
+	toast("%s %s your boat" % [Net.name_of(from), "came aboard" if data else "left"], "", Color(0.55, 0.78, 1.0))
+
+# The owner sailed somewhere: riders come along.
+func on_carry(from : int, data : Variant) -> void:
+	if boardedOn != from:
+		return
+	var location : Location = SaveGame.decode(data) as Location
+	if not location:
+		unboard()
+		return
+	world.arrive(location)
+	if location.is_island():
+		unboard(true)
+
+func riders() -> Array:
+	var list : Array = []
+	for id in states:
+		if states[id].get("board", 0) == Net.my_id():
+			list.append(id)
+	return list
+
+# Called when this player arrives somewhere: riders come along, a pending
+# boarding happens.
+func arrived(location : Location) -> void:
+	if not online():
+		return
+	if boardOnArrival > 0 and not location.is_island():
+		board(boardOnArrival)
+	for id in riders():
+		Net.send(&"carry", SaveGame.encode(location), id)
+
+# The boat here follows its owner's speed.
+func steer_boat(delta : float) -> void:
+	if boardedOn <= 0 or not world or not world.boat:
+		return
+	var owner : Dictionary = states.get(boardedOn, {})
+	if owner.is_empty() or owner.get("at", "") != place_key():
+		return
+	world.boat.speed = lerpf(world.boat.speed, owner.get("speed", 0.0), 1.0 - exp(-6.0 * delta))
+	world.boat.targetSpeed = world.boat.speed
+
+#------------------------# Fishing spots
+
+# Who makes the fishing spots: out at sea each boat's owner, on an island
+# whoever has the lowest id there (the host when they're around).
+func spawns_spots() -> bool:
+	if not online():
+		return true
+	if boardedOn > 0:
+		return false
+	if at_sea():
+		return true
+	for id in nearby():
+		if id < Net.my_id():
+			return false
+	return true
+
+func share_spot(spot : FishingSpot) -> void:
+	if not online():
+		return
+	var to : Array = riders() if at_sea() else nearby()
+	for id in to:
+		Net.send(&"spot", {"at": place_key(), "p": spot.global_position, "life": spot.life, "biome": SaveGame.encode(spot.biome)}, id)
+
+func on_spot(from : int, data : Variant) -> void:
+	if not data is Dictionary or data.get("at", "") != place_key():
+		return
+	if at_sea() and boardedOn != from:
+		return
+	world.spawner.add_shared(data.p, data.get("life", 20.0), SaveGame.decode(data.get("biome")) as Biome)
+
+#------------------------# Co-op fights
+
+# A creature fight this player started tells the players beside them (on
+# the same boat, or on the same island). They have a few seconds to press J
+# and jump in: each fights in their own copy, hits from both wear down the
+# one foe (which gets tougher with two), and both get the loot.
+
+func fight_partners() -> Array:
+	var list : Array = []
+	for id in nearby():
+		if not at_sea() or same_boat(id):
+			list.append(id)
+	return list
+
+func fight_started(creature : SeaCreature, game : BossMinigame) -> void:
+	var path : Variant = SaveGame.encode(creature)
+	if not online() or path == null:
+		return
+	var partners : Array = fight_partners()
+	if partners.is_empty():
+		return
+	fight = {"id": randi(), "game": game, "helpers": [], "timer": 0.0}
+	game.finished.connect(func(won : bool) -> void: fight_over(won))
+	for id in partners:
+		Net.send(&"fight", {"id": fight.id, "creature": path}, id)
+
+func on_fight(from : int, data : Variant) -> void:
+	var creature : SeaCreature = SaveGame.decode(data.get("creature")) as SeaCreature if data is Dictionary else null
+	if not creature:
+		return
+	invite = {"from": from, "id": data.id, "creature": creature, "time": FIGHT_INVITE}
+	toast("%s hooked a %s!" % [Net.name_of(from), creature.displayName], "Press J to jump in and help.", creature.rarity.color if creature.rarity else Color(1.0, 0.45, 0.4))
+
+# Joins the fight this player was asked to, in their own copy of it.
+func join_fight() -> void:
+	if invite.is_empty() or not helping.is_empty():
+		return
+	if player.asleep or player.charting or not player.handStates.currentState is PlayerHandIdleState or player.minigameScreen.shown:
+		toast("Can't help right now", "Put the rod away from the water first.", Color(0.98, 0.85, 0.4))
+		return
+	var creature : SeaCreature = invite.creature
+	var scene : PackedScene = creature.fight if creature.fight else load("res://fishing/minigames/boss_duel/boss_duel.tscn")
+	var game : BossMinigame = scene.instantiate()
+	game.hearts = roundi(player.stat(&"hearts"))
+	game.power = 1.0 + player.stat(&"damage") * 0.01
+	game.style = creature.style
+	game.toughness = creature.toughness
+	helping = {"owner": invite.from, "id": invite.id, "game": game, "creature": creature, "ended": false}
+	invite = {}
+	game.dealt.connect(func(amount : float) -> void: Net.send(&"fight_hit", {"id": helping.get("id", 0), "amount": amount}, helping.get("owner", 0)))
+	game.finished.connect(on_helper_finished)
+	player.frozen = true
+	player.minigameScreen.caption = "Helping %s" % Net.name_of(helping.owner)
+	player.minigameScreen.play(game)
+	game.begin(creature.difficulty, 0.5, creature.rarity.color if creature.rarity else Color(1.0, 0.45, 0.4), creature.icon)
+	Net.send(&"fight_join", {"id": helping.id}, helping.owner)
+
+func on_fight_join(from : int, data : Variant) -> void:
+	if fight.is_empty() or data.get("id") != fight.id or not is_instance_valid(fight.game):
+		Net.send(&"fight_end", {"id": data.get("id"), "won": false}, from)
+		return
+	fight.helpers.append(from)
+	(fight.game as BossMinigame).grow_health(COOP_HEALTH)
+	toast("%s jumped in!" % Net.name_of(from), "", Color(0.56, 0.93, 0.44))
+
+func on_fight_hit(from : int, data : Variant) -> void:
+	if not fight.is_empty() and data.get("id") == fight.id and fight.helpers.has(from) and is_instance_valid(fight.game):
+		(fight.game as BossMinigame).take_damage(float(data.get("amount", 0.0)))
+
+# The owner keeps the helpers' health bars in step.
+func update_fight(delta : float) -> void:
+	if fight.is_empty() or fight.helpers.is_empty() or not is_instance_valid(fight.game):
+		return
+	fight.timer -= delta
+	if fight.timer <= 0.0:
+		fight.timer = 0.2
+		for id in fight.helpers:
+			Net.send_fast(&"fight_state", {"id": fight.id, "left": (fight.game as BossMinigame).health_left()}, id)
+
+func on_fight_state(_from : int, data : Variant) -> void:
+	if not helping.is_empty() and data.get("id") == helping.id and is_instance_valid(helping.game):
+		(helping.game as BossMinigame).set_health_left(float(data.get("left", 1.0)))
+
+func fight_over(won : bool) -> void:
+	if fight.is_empty():
+		return
+	for id in fight.helpers:
+		Net.send(&"fight_end", {"id": fight.id, "won": won}, id)
+	fight = {}
+
+func on_fight_end(_from : int, data : Variant) -> void:
+	if helping.is_empty() or data.get("id") != helping.id:
+		return
+	helping.ended = true
+	helping.won = data.get("won", false)
+	if is_instance_valid(helping.game) and not (helping.game as BossMinigame).done:
+		(helping.game as BossMinigame).finish(helping.won)
+
+func on_helper_finished(won : bool) -> void:
+	var creature : SeaCreature = helping.get("creature")
+	var shared : bool = helping.get("ended", false) and helping.get("won", false)
+	# Beating it in this copy first means the owner's copy is beaten too a
+	# moment later; the loot comes either way.
+	if won or shared:
+		PlayerCatchState.pay_out(player, creature)
+		player.say("Beat the %s!" % creature.displayName, creature.rarity.color if creature.rarity else Color(1.0, 0.45, 0.4))
+	elif not helping.get("ended", false):
+		player.say("Knocked out of the fight", Color(0.82, 0.86, 0.92))
+	helping = {}
+	player.frozen = false
+	player.minigameScreen.caption = ""
+	player.minigameScreen.close_menu()
 
 #------------------------# Sleeping
 

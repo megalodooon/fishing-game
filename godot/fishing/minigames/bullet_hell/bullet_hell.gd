@@ -219,13 +219,32 @@ func update_knots(delta : float) -> void:
 		var knot : Vector3 = knotList[i]
 		knot.z -= delta
 		if Vector2(knot.x, knot.y).distance_to(lure) < knotReach:
-			progress = minf(progress + 1.0 / needed, 1.0)
-			tugged.emit(0.3)
+			dealt.emit(1.0)
+			take_damage(1.0)
 			knotList.remove_at(i)
 		elif knot.z <= 0.0:
 			knotList.remove_at(i)
 		else:
 			knotList[i] = knot
+
+func health_left() -> float:
+	return 1.0 - progress
+
+func set_health_left(share : float) -> void:
+	progress = maxf(progress, 1.0 - share)
+
+# Knots grabbed, by either player.
+func take_damage(amount : float) -> void:
+	if done:
+		return
+	progress = minf(progress + amount / needed, 1.0)
+	tugged.emit(0.3)
+	if progress >= 1.0:
+		finish(true)
+
+func grow_health(factor : float) -> void:
+	needed *= factor
+	progress /= factor
 
 func draw_orbs() -> void:
 	var orb : Texture2D = orb_texture(bulletRadius)

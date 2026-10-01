@@ -42,10 +42,13 @@ func is_unlocked(location : Location) -> bool:
 func distance(to : Location) -> float:
 	return current.mapPosition.distance_to(to.mapPosition) if current else 0.0
 
+# With a friend the clock doesn't skip for trips, so they cost more energy instead.
+const SHARED_TRIP_ENERGY : float = 1.5
+
 func energy_cost(to : Location) -> float:
 	if to == current or to.freeTravel:
 		return 0.0
-	return maxf(ceilf(distance(to) * energyPerPixel * trip_scale(to) * (1.0 - discount)), ceilf(minEnergy * trip_scale(to)))
+	return (SHARED_TRIP_ENERGY if Net.has_company() else 1.0) * maxf(ceilf(distance(to) * energyPerPixel * trip_scale(to) * (1.0 - discount)), ceilf(minEnergy * trip_scale(to)))
 
 func travel_hours(to : Location) -> float:
 	if to == current:

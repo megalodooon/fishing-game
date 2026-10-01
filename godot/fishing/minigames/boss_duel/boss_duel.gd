@@ -165,16 +165,32 @@ func press() -> void:
 		return
 	var onBoss : bool = pointer().distance_to(boss) <= bossRadius + 1.5
 	if phase == Phase.REST and onBoss and restHits < hitsPerRest:
-		hp -= power
 		restHits += 1
 		swingWait = swingCooldown
-		flash = 0.12
-		tugged.emit(0.4)
-		if hp <= 0.0:
-			finish(true)
+		dealt.emit(power)
+		take_damage(power)
 	else:
 		swingWait = fumbleLock
 		clang = 0.2
+
+func health_left() -> float:
+	return clampf(hp / maxHp, 0.0, 1.0)
+
+func set_health_left(share : float) -> void:
+	hp = minf(hp, share * maxHp)
+
+func take_damage(amount : float) -> void:
+	if done:
+		return
+	hp -= amount
+	flash = 0.12
+	tugged.emit(0.4)
+	if hp <= 0.0:
+		finish(true)
+
+func grow_health(factor : float) -> void:
+	maxHp *= factor
+	hp *= factor
 
 func draw_orbs() -> void:
 	var orb : Texture2D = orb_texture(1.4)

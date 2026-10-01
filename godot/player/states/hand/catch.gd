@@ -173,6 +173,10 @@ func start(scene : PackedScene, difficulty : float, heft : float, color : Color,
 	player.minigameScreen.play(minigame)
 	var control : float = player.stat(&"control") * 0.01
 	minigame.begin(difficulty - control + randf_range(-difficultyJitter, difficultyJitter), heft, color, icon)
+	# A friend nearby can jump in and help with a creature.
+	var session : NetSession = NetSession.find(get_tree())
+	if session and creature and minigame is BossMinigame:
+		session.fight_started(creature, minigame)
 
 func pick_games(data : FishData) -> Array[PackedScene]:
 	if data and data.rarity and not bossMinigames.is_empty() and randf() < bossChance.get(data.rarity, 0.0):
@@ -270,30 +274,35 @@ func finish_fight(won : bool) -> void:
 	if not won:
 		results.append({"text": "%s got away" % creature.displayName, "color": escapeColor})
 		return
-	var coins : int = randi_range(creature.coins.x, creature.coins.y)
-	player.wallet.add(coins)
-	var names : PackedStringArray = PackedStringArray(["$%d" % coins])
-	for pair in creature.roll_drops(player.stat(&"luck")):
-		if Counter.fits(player, pair[0], pair[1]):
-			Counter.deliver(player, pair[0], pair[1])
-			names.append(pair[0].displayName if pair[1] <= 1 else "%s x%d" % [pair[0].displayName, pair[1]])
-	player.progress.bestiary[creature] = player.progress.bestiary.get(creature, 0) + 1
-	player.progress.count("creatures")
-	# Sea Essence for enchanting, more from tougher creatures.
-	var essence : Item = load(Enchanting.ESSENCE) as Item
-	var essenceAmount : int = maxi(ceili(creature.xp / 50.0), 1)
-	if essence and Counter.fits(player, essence, essenceAmount):
-		Counter.deliver(player, essence, essenceAmount)
-		names.append("%d Sea Essence" % essenceAmount)
-	Skills.add(player, Skills.HUNTING, creature.xp)
-	Skills.add(player, Skills.FISHING, creature.xp * 0.5)
-	Collections.check(player, creature)
-	Quest.notify(player, &"beat", creature)
+	pay_out(player, creature)
 	use_bait()
 	results.append({"icon": creature.icon, "text": "Beat the %s!" % creature.displayName, "color": creature.rarity.color if creature.rarity else creatureColor, "from": line.get_bobber_point()})
-	var board : NoticeBoard = NoticeBoard.find(get_tree())
+
+# A beaten creature's loot, XP and bestiary entry, for whoever fought it (both
+# players after a co-op fight).
+static func pay_out(who : Player, beaten : SeaCreature) -> void:
+	var coins : int = randi_range(beaten.coins.x, beaten.coins.y)
+	who.wallet.add(coins)
+	var names : PackedStringArray = PackedStringArray(["$%d" % coins])
+	for pair in beaten.roll_drops(who.stat(&"luck")):
+		if Counter.fits(who, pair[0], pair[1]):
+			Counter.deliver(who, pair[0], pair[1])
+			names.append(pair[0].displayName if pair[1] <= 1 else "%s x%d" % [pair[0].displayName, pair[1]])
+	who.progress.bestiary[beaten] = who.progress.bestiary.get(beaten, 0) + 1
+	who.progress.count("creatures")
+	# Sea Essence for enchanting, more from tougher creatures.
+	var essence : Item = load(Enchanting.ESSENCE) as Item
+	var essenceAmount : int = maxi(ceili(beaten.xp / 50.0), 1)
+	if essence and Counter.fits(who, essence, essenceAmount):
+		Counter.deliver(who, essence, essenceAmount)
+		names.append("%d Sea Essence" % essenceAmount)
+	Skills.add(who, Skills.HUNTING, beaten.xp)
+	Skills.add(who, Skills.FISHING, beaten.xp * 0.5)
+	Collections.check(who, beaten)
+	Quest.notify(who, &"beat", beaten)
+	var board : NoticeBoard = NoticeBoard.find(who.get_tree())
 	if board:
-		board.post("%s defeated!" % creature.displayName, "Loot: " + ", ".join(names), creature.rarity.color if creature.rarity else creatureColor, creature.icon)
+		board.post("%s defeated!" % beaten.displayName, "Loot: " + ", ".join(names), beaten.rarity.color if beaten.rarity else Color(1.0, 0.45, 0.4), beaten.icon)
 
 # The pet that's out levels up with the fish caught.
 func grow_pet() -> void:

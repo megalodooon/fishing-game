@@ -119,7 +119,8 @@ func find_opaque_texels() -> Rect2:
 	return Rect2(best)
 
 func _process(delta : float) -> void:
-	var throttle : float = 0.0 if docked else Input.get_axis("slow_down", "speed_up")
+	# Aboard someone else's boat, they steer.
+	var throttle : float = 0.0 if docked or NetSession.riding(get_tree()) else Input.get_axis("slow_down", "speed_up")
 	if throttle != 0.0:
 		if speedTween:
 			speedTween.kill()
@@ -138,7 +139,7 @@ func _process(delta : float) -> void:
 		item.visible = motion > 0.0
 
 func _unhandled_input(event : InputEvent) -> void:
-	if event.is_action_pressed("anchor") and not docked:
+	if event.is_action_pressed("anchor") and not docked and not NetSession.riding(get_tree()):
 		if is_zero_approx(targetSpeed):
 			change_speed(resumeSpeed if resumeSpeed > 0.0 else cruiseSpeed, startTime)
 		else:
